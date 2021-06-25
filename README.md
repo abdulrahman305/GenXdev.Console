@@ -1,6 +1,6 @@
 <hr/>
 
-![](https://genxdev.net/Powershell.jpg)
+![](powershell.jpg)
 
 <hr/>
 
@@ -14,6 +14,9 @@
 ## TYPE
     PowerShell Module
 
+## DEPENDENCIES
+
+    GenXdev.Helpers, GenXdev.Webbrowser
 ## INSTALLATION
 ````Powershell
 
