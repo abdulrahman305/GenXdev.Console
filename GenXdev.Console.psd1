@@ -3,31 +3,31 @@
 @{
 
     # Script module or binary module file associated with this manifest.
-    RootModule = 'GenXdev.Console.psm1'
+    RootModule             = 'GenXdev.Console.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '1.4.0'
+    ModuleVersion          = '1.5.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
 
     # ID used to uniquely identify this module
-    GUID              = '2f62080f-0483-4421-8497-b3d433b65172'
+    GUID                   = '2f62080f-0483-4421-8497-b3d433b65172'
 
     # Author of this module
-    Author            = 'René Vaessen'
+    Author                 = 'René Vaessen'
 
     # Company or vendor of this module
-    CompanyName       = 'GenXdev'
+    CompanyName            = 'GenXdev'
 
     # Copyright statement for this module
-    Copyright         = 'Copyright (c) 2021 René Vaessen'
+    Copyright              = 'Copyright (c) 2021 René Vaessen'
 
     # Description of the functionality provided by this module
-    Description       = 'Provides a collection of silly cmdlets to -speed up- or -improve on- certain commandline related tasks'
+    Description            = 'A Windows PowerShell module for enhancing the commandline experience'
 
     # Minimum version of the PowerShell engine required by this module
-    PowerShellVersion = '5.1.19041.906'
+    PowerShellVersion      = '5.1.19041.906'
 
     # Name of the PowerShell host required by this module
     # PowerShellHostName = ''
@@ -45,10 +45,10 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules = @(@{ModuleName = 'GenXdev.Helpers'; ModuleVersion = '1.4.0'});
+    RequiredModules        = @(@{ModuleName = 'GenXdev.Helpers'; ModuleVersion = '1.5.0' }, @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion = '1.5.0' });
 
     # Assemblies that must be loaded prior to importing this module
-    RequiredAssemblies = @("System.Speech")
+    RequiredAssemblies     = @("System.Speech", "GenXdev.Console.dll")
 
     # Script files (.ps1) that are run in the caller's environment prior to importing this module.
     # ScriptsToProcess = @()
@@ -63,28 +63,28 @@
     # NestedModules = @()
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-    FunctionsToExport = '*' # @("*")
+    FunctionsToExport      = '*' # @("*")
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-    CmdletsToExport   = '*' # = @("*")
+    CmdletsToExport        = '*' # = @("*")
 
     # Variables to export from this module
-    VariablesToExport = '*'
+    VariablesToExport      = '*'
 
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-    AliasesToExport   = '*'
+    AliasesToExport        = '*'
 
     # DSC resources to export from this module
     # DscResourcesToExport = @()
 
     # List of all modules packaged with this module
-    ModuleList        = @("GenXdev.Console")
+    ModuleList             = @("GenXdev.Console")
 
     # List of all files packaged with this module
-    FileList          = @("GenXdev.Console.psd1", "GenXdev.Console.psm1", "LICENSE", "license.txt", "README.md")
+    FileList               = @("GenXdev.Console.psd1", "GenXdev.Console.psm1","GenXdev.Console.dll",  "EmbedIO.dll",  "Newtonsoft.Json.dll",  "SpotifyAPI.Web.Auth.dll",  "SpotifyAPI.Web.dll",  "Swan.Lite.dll", "LICENSE", "license.txt", "README.md")
 
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
-    PrivateData       = @{
+    PrivateData            = @{
 
         PSData = @{
 
@@ -117,7 +117,7 @@
     } # End of PrivateData hashtable
 
     # HelpInfo URI of this module
-    HelpInfoURI       = 'https://github.com/renevaessen/GenXdev.Console/blob/master/README.md#syntax'
+    HelpInfoURI            = 'https://github.com/renevaessen/GenXdev.Console/blob/master/README.md#syntax'
 
     # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
     # DefaultCommandPrefix = ''

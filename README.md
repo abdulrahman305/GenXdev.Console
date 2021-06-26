@@ -1,32 +1,141 @@
 <hr/>
 
-![](powershell.jpg)
+<img src="powershell.jpg" alt="drawing" width="50%"/>
 
 <hr/>
 
-## NAME
-
+### NAME
     GenXdev.Console
+### SYNOPSIS
+    A Windows PowerShell module for enhancing the commandline experience
+[![GenXdev.Console](https://img.shields.io/powershellgallery/v/GenXdev.Console.svg?style=flat-square&label=GenXdev.Console)](https://www.powershellgallery.com/packages/GenXdev.Console/) [![License](https://img.shields.io/github/license/renevaessen/GenXdev.Console?style=flat-square)](./LICENSE)
 
-## SYNOPSIS
+### FEATURES
 
-    A collection of silly cmdlets to -speed up- or -improve on- certain commandline related tasks
-## TYPE
-    PowerShell Module
+    * ✅ Text-to-speech
+    * ✅ Spotify control
+    * ✅ Microsoft Shell helpers
+    * ✅ after installation, use 'cmds' to see full list of installed GenXdev cmdslets
 
-## DEPENDENCIES
-
-    GenXdev.Helpers, GenXdev.Webbrowser
-## INSTALLATION
-````Powershell
-
-    Install-Module "GenXdev.Console" -Force
-    Import-Module "GenXdev.Console"
-
+### DEPENDENCIES
+[![GenXdev.Helpers](https://img.shields.io/powershellgallery/v/GenXdev.Helpers.svg?style=flat-square&label=GenXdev.Helpers)](https://www.powershellgallery.com/packages/GenXdev.Helpers/) [![GenXdev.Webbrowser](https://img.shields.io/powershellgallery/v/GenXdev.Webbrowser.svg?style=flat-square&label=GenXdev.Webbrowser)](https://www.powershellgallery.com/packages/GenXdev.Webbrowser/)
+### INSTALLATION
+````PowerShell
+Install-Module "GenXdev.Console" -Force
+Import-Module "GenXdev.Console"
+````
+### UPDATE
+````PowerShell
+Update-Module
 ````
 
 <br/><hr/><hr/><hr/><hr/><br/>
 # Cmdlets
+### NAME
+````PowerShell
+Set-SpotifyStart                     --> play, Start-Music
+````
+
+<hr/>
+
+### NAME
+````PowerShell
+Set-SpotifyPause                     --> pausemusic, Resume-Music
+````
+
+<hr/>
+
+### NAME
+````PowerShell
+Set-SpotifyStop                      --> Stop-Music
+````
+
+<hr/>
+
+
+### NAME
+````PowerShell
+Set-SpotifyNext                      --> skip, next
+````
+<hr/>
+
+
+### NAME
+````PowerShell
+Set-SpotifyPrevious                  --> prev, previous
+````
+
+<hr/>
+
+### NAME
+````PowerShell
+Set-SpotifyRepeatContext             --> repeat
+````
+
+<hr/>
+
+### NAME
+````PowerShell
+Set-SpotifyRepeatOff                 --> norepeat, repeatoff
+````
+
+<hr/>
+
+### NAME
+````PowerShell
+Set-SpotifyRepeatSong                --> repeatsong
+````
+
+<hr/>
+
+### NAME
+````PowerShell
+Set-SpotifyShuffleOff                --> noshuffle, shuffleoff
+````
+
+<hr/>
+
+### NAME
+````PowerShell
+Set-SpotifyShuffleOn                 --> shuffle, shuffleon
+````
+
+<br/><hr/><hr/><hr/><hr/><br/>
+
+### NAME
+````PowerShell
+    Set-LocationParent                   --> ..
+````
+
+<hr/>
+
+### NAME
+````PowerShell
+    Set-LocationParent2                  --> ...
+````
+
+<hr/>
+
+### NAME
+````PowerShell
+    Set-LocationParent3                  --> ....
+````
+
+<hr/>
+
+### NAME
+````PowerShell
+    Set-LocationParent4                  --> .....
+````
+
+<hr/>
+
+### NAME
+````PowerShell
+    Set-LocationParent5                  --> ......
+````
+
+<br/><hr/><hr/><hr/><hr/><br/>
 ### NAME
     Show-GenXDevCmdLets -> cmds
 ### SYNOPSIS
@@ -204,94 +313,5 @@ Convert-JsonToXml [[-json] <string[]>] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
         about_CommonParameters
         (https://go.microsoft.com/fwlink/?LinkID=113216).
-<br/><hr/><hr/><hr/><hr/><br/>
-### NAME
-    Set-LocationParent
-### SYNOPSIS
-    Provides the .. alias to go one directory up
-### SYNTAX
-````PowerShell
-Set-LocationParent [<CommonParameters>]
-````
-### DESCRIPTION
-    Provides the .. alias to go one directory up
-### PARAMETERS
-    <CommonParameters>
-        This cmdlet supports the common parameters: Verbose, Debug,
-        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-        OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters
-        (https://go.microsoft.com/fwlink/?LinkID=113216).
-<br/><hr/><hr/><hr/><hr/><br/>
-### NAME
-    Set-LocationParent2
-### SYNOPSIS
-    Provides the ... alias to go two directory up
-### SYNTAX
-````PowerShell
-Set-LocationParent2 [<CommonParameters>]
-````
-### DESCRIPTION
-    Provides the ... alias to go two directory up
-### PARAMETERS
-    <CommonParameters>
-        This cmdlet supports the common parameters: Verbose, Debug,
-        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-        OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters
-        (https://go.microsoft.com/fwlink/?LinkID=113216).
-<br/><hr/><hr/><hr/><hr/><br/>
-### NAME
-    Set-LocationParent3
-### SYNOPSIS
-    Provides the .... alias to go three directory up
-### SYNTAX
-````PowerShell
-Set-LocationParent3 [<CommonParameters>]
-````
-### DESCRIPTION
-    Provides the .... alias to go three directory up
-### PARAMETERS
-    <CommonParameters>
-        This cmdlet supports the common parameters: Verbose, Debug,
-        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-        OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters
-        (https://go.microsoft.com/fwlink/?LinkID=113216).
-<br/><hr/><hr/><hr/><hr/><br/>
-### NAME
-    Set-LocationParent4
-### SYNOPSIS
-    Provides the ..... alias to go four directory up
-### SYNTAX
-````PowerShell
-Set-LocationParent4 [<CommonParameters>]
-````
-### DESCRIPTION
-    Provides the ..... alias to go four directory up
-### PARAMETERS
-    <CommonParameters>
-        This cmdlet supports the common parameters: Verbose, Debug,
-        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-        OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters
-        (https://go.microsoft.com/fwlink/?LinkID=113216).
-<br/><hr/><hr/><hr/><hr/><br/>
-### NAME
-    Set-LocationParent5
-### SYNOPSIS
-    Provides the ...... alias to go five directory up
-### SYNTAX
-````PowerShell
-Set-LocationParent5 [<CommonParameters>]
-````
-### DESCRIPTION
-    Provides the ...... alias to go five directory up
-### PARAMETERS
-    <CommonParameters>
-        This cmdlet supports the common parameters: Verbose, Debug,
-        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-        OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters
-        (https://go.microsoft.com/fwlink/?LinkID=113216).
+
 <br/><hr/><hr/><hr/><hr/><br/>

@@ -142,7 +142,8 @@ function Show-GenXDevCmdLets {
                         if ($first) {
 
                             $first = $false;
-                            "`r`n" + $module.Name.SubString("GenXdev.".Length) + ":" | Write-Host -ForegroundColor "Yellow"
+                            "
+" + $module.Name.SubString("GenXdev.".Length) + ":" | Write-Host -ForegroundColor "Yellow"
                         }
 
                         if ($PSItem.CommandType -eq "Alias") {
@@ -165,7 +166,8 @@ function Show-GenXDevCmdLets {
         }
     }
 
-    "`r`n-------------" | Write-Host -ForegroundColor "DarkGreen"
+    "
+-------------" | Write-Host -ForegroundColor "DarkGreen"
 }
 
 ######################################################################################################################################################
@@ -392,6 +394,156 @@ Function Set-LocationParent5 {
     Set-Location ..
     Get-ChildItem
 }
+
 ######################################################################################################################################################
+function Get-SpotifyApiToken {
+
+    param()
+
+    $path = "$PSScriptRoot\..\GenXdev.Local\Spotify_Auth.json";
+
+    if ([IO.File]::Exists($path)) {
+
+        $ApiToken = [IO.File]::ReadAllText($path);
+    }
+    else {
+
+        $ApiToken = Request-SpotifyApiToken
+        Set-SpotifyApiToken $ApiToken | Out-Null
+    }
+
+    try {
+
+        [GenXdev.Console.Spotify]::GetActiveDevices($ApiToken) | Out-Null
+    }
+    catch {
+
+        $ApiToken = Request-SpotifyApiToken
+        Set-SpotifyApiToken $ApiToken | Out-Null
+    }
+
+    $ApiToken
+}
+
 ######################################################################################################################################################
+function Set-SpotifyApiToken {
+
+    param(
+
+        [parameter(
+            Mandatory = $true,
+            Position = 0
+        )] [string] $ApiToken
+    )
+
+    $dir = "$PSScriptRoot\..\GenXdev.Local";
+    $path = "$dir\Spotify_Auth.json";
+
+    if ([IO.Directory]::Exists($dir)) {
+
+        [IO.Directory]::CreateDirectory($dir);
+    }
+
+    [IO.File]::WriteAllText($path, $ApiToken.Trim("`r`n`t "));
+}
+
+######################################################################################################################################################
+function Request-SpotifyApiToken {
+
+    param()
+
+    Write-Warning "Spotify access token expired, requisting new.."
+
+    $url = [GenXdev.Console.Spotify]::RequestAuthenticationUri(5642);
+
+    [System.Diagnostics.Process] $process = Open-Webbrowser -ReturnProcess -ApplicationMode -NewWindow -Width 1000 -Height 800 -Centered -Monitor 0 -Url $url
+
+    [GenXdev.Console.Spotify]::RequestAuthenticationTokenUsingOAuth(5642)
+
+    if ((!!$process -and $process -is [System.Diagnostics.Process]) -and (!$process.HasExited)) {
+
+        $process.CloseMainWindow() | Out-Null
+    }
+}
+
+######################################################################################################################################################
+
+function Set-SpotifyStop {
+
+    [Alias("stop", "Stop-Music")]
+    param()
+    [GenXdev.Console.Spotify]::Stop((Get-SpotifyApiToken));
+}
+######################################################################################################################################################
+function Set-SpotifyStart {
+
+    [Alias("play", "Start-Music")]
+    param()
+
+    [GenXdev.Console.Spotify]::Start((Get-SpotifyApiToken));
+}
+######################################################################################################################################################
+function Set-SpotifyPause {
+
+    [Alias("pausemusic", "Resume-Music")]
+    param()
+
+    [GenXdev.Console.Spotify]::Pause((Get-SpotifyApiToken));
+}
+######################################################################################################################################################
+function Set-SpotifyPrevious {
+
+    [Alias("previous", "prev")]
+    param()
+
+    [GenXdev.Console.Spotify]::Previous((Get-SpotifyApiToken));
+}
+######################################################################################################################################################
+function Set-SpotifyNext {
+
+    [Alias("next", "skip")]
+    param()
+
+    [GenXdev.Console.Spotify]::Next((Get-SpotifyApiToken));
+}
+######################################################################################################################################################
+function Set-SpotifyRepeatSong {
+
+    [Alias("repeatsong")]
+    param()
+
+    [GenXdev.Console.Spotify]::RepeatSong((Get-SpotifyApiToken));
+}
+######################################################################################################################################################
+function Set-SpotifyRepeatContext {
+
+    [Alias("repeat")]
+    param()
+
+    [GenXdev.Console.Spotify]::RepeatContext((Get-SpotifyApiToken));
+}
+######################################################################################################################################################
+function Set-SpotifyRepeatOff {
+
+    [Alias("norepeat", "repeatoff")]
+    param()
+
+    [GenXdev.Console.Spotify]::RepeatOff((Get-SpotifyApiToken));
+}
+######################################################################################################################################################
+function Set-SpotifyShuffleOn {
+
+    [Alias("shuffle", "shuffleon")]
+    param()
+
+    [GenXdev.Console.Spotify]::ShuffleOn((Get-SpotifyApiToken));
+}
+######################################################################################################################################################
+function Set-SpotifyShuffleOff {
+
+    [Alias("noshuffle", "shuffleoff")]
+    param()
+
+    [GenXdev.Console.Spotify]::ShuffleOff((Get-SpotifyApiToken));
+}
 ######################################################################################################################################################
