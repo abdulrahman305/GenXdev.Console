@@ -443,7 +443,7 @@ function Set-SpotifyApiToken {
     $dir = "$PSScriptRoot\..\GenXdev.Local";
     $path = "$dir\Spotify_Auth.json";
 
-    if ([IO.Directory]::Exists($dir)) {
+    if (![IO.Directory]::Exists($dir)) {
 
         [IO.Directory]::CreateDirectory($dir);
     }
