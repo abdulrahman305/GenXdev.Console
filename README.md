@@ -135,6 +135,26 @@ Set-SpotifyShuffleOn                 --> shuffle, shuffleon
     Set-LocationParent5                  --> ......
 ````
 
+<hr/>
+
+### NAME
+````PowerShell
+    Enable-Screensaver
+````
+
+<hr/>
+
+### NAME
+````PowerShell
+    Set-MonitorPowerOff
+````
+
+<hr/>
+
+### NAME
+````PowerShell
+    Set-MonitorPowerOff
+````
 <br/><hr/><hr/><hr/><hr/><br/>
 ### NAME
     Show-GenXDevCmdLets -> cmds
@@ -170,13 +190,13 @@ PS C:\> cmds
 ````
 <br/><hr/><hr/><hr/><hr/><br/>
 ### NAME
-    Fasti
+    Invoke-Fasti
 ### SYNOPSIS
     Will extract all archive files (zip, 7z, tar, etc) found in current
     directory and then DELETE them
 ### SYNTAX
 ````PowerShell
-Fasti [<CommonParameters>]
+Invoke-Fasti [<CommonParameters>]
 ````
 ### DESCRIPTION
     Will extract all archive files (zip, 7z, tar, etc) found in current
@@ -202,7 +222,7 @@ Fasti [<CommonParameters>]
 
 -------------------------- EXAMPLE 1 --------------------------
 
-PS D:\downloads> Fasti
+PS D:\downloads> Invoke-Fasti
 ````
 <br/><hr/><hr/><hr/><hr/><br/>
 ### NAME

@@ -241,12 +241,15 @@ Will extract all archive files (zip, 7z, tar, etc) found in current directory an
 Each archive file is extracted into their own directory with the same name as the file
 
 .EXAMPLE
-PS D:\downloads> Fasti
+PS D:\downloads> Invoke-Fasti
 
 .NOTES
 You need 7z installed
 #>
-function Fasti {
+function Invoke-Fasti {
+
+    [Alias("Fasti")]
+    param()
 
     Get-ChildItem @("*.7z", "*.xz", "*.bzip2", "*.gzip", "*.tar", "*.zip", "*.wim", "*.ar", "*.arj", "*.cab", "*.chm", "*.cpio", "*.cramfs", "*.dmg", "*.ext", "*.fat", "*.gpt", "*.hfs", "*.ihex", "*.iso", "*.lzh", "*.lzma", "*.mbr", "*.msi", "*.nsis", "*.ntfs", "*.qcow2", "*.rar", "*.rpm", "*.squashfs", "*.udf", "*.uefi", "*.vdi", "*.vhd", "*.vmdk", "*.wim", "*.xar", "*.z") -File -ErrorAction SilentlyContinue  | ForEach-Object {
 
@@ -408,7 +411,7 @@ function Get-SpotifyApiToken {
     }
     else {
 
-        $ApiToken = Request-SpotifyApiToken
+        $ApiToken = Connect-SpotifyApiToken
         Set-SpotifyApiToken $ApiToken | Out-Null
     }
 
@@ -418,9 +421,10 @@ function Get-SpotifyApiToken {
     }
     catch {
 
-        $ApiToken = Request-SpotifyApiToken
+        $ApiToken = Connect-SpotifyApiToken
         Set-SpotifyApiToken $ApiToken | Out-Null
     }
+
 
     $ApiToken
 }
@@ -448,7 +452,7 @@ function Set-SpotifyApiToken {
 }
 
 ######################################################################################################################################################
-function Request-SpotifyApiToken {
+function Connect-SpotifyApiToken {
 
     param()
 
@@ -546,4 +550,89 @@ function Set-SpotifyShuffleOff {
 
     [GenXdev.Console.Spotify]::ShuffleOff((Get-SpotifyApiToken));
 }
+######################################################################################################################################################
+function Invoke-Repeated {
+
+    [Alias("rpt")]
+
+    param(
+        [parameter(Position = 0, Mandatory = $true, ValueFromRemainingArguments = $true)]
+        [string] $script
+    )
+
+    "Press q to quit - any other key to continue" | Out-Host
+
+    do {
+
+        Invoke-Expression $script
+
+        while ([Console]::KeyAvailable) {
+
+            [Console]::ReadKey();
+        }
+    }     while ([Console]::ReadKey() -ne "q");
+}
+
+######################################################################################################################################################
+
+function Enable-Screensaver {
+
+    & "$ENV:SystemRoot\system32\scrnsave.scr" /s
+}
+
+######################################################################################################################################################
+
+function Set-MonitorPowerOff {
+
+    Start-Sleep 2
+
+    [GenXdev.Helpers.WindowObj]::SleepMonitor();
+}
+
+######################################################################################################################################################
+
+function Set-MonitorPowerOn {
+
+    [GenXdev.Helpers.WindowObj]::WakeMonitor();
+}
+
+######################################################################################################################################################
+
+function Show-Verb {
+
+    param(
+
+        [parameter(
+            Position = 0,
+            ValueFromPipeline = $True,
+            ValueFromPipelineByPropertyName = $True,
+            Mandatory = $False
+        )] [string[]] $Verb = @()
+    )
+
+    process {
+
+        if ($Verb.Length -eq 0) {
+
+            $verbs = Get-Verb
+        }
+        else {
+            $verbs = Get-Verb | ForEach-Object -ErrorAction SilentlyContinue {
+
+                $existingVerb = $PSItem;
+
+                foreach ($verb in $Verb) {
+
+                    if ($existingVerb.Verb -like $verb) {
+
+                        $existingVerb
+                    }
+                }
+            }
+        }
+
+        ($verbs | Sort-Object { $PSItem.Verb } | ForEach-Object Verb -ErrorAction SilentlyContinue) -Join ", "
+    }
+}
+
 ######################################################################################################################################################
