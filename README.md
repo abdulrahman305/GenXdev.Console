@@ -104,56 +104,56 @@ Set-SpotifyShuffleOn                 --> shuffle, shuffleon
 
 ### NAME
 ````PowerShell
-    Set-LocationParent                   --> ..
+Set-LocationParent                   --> ..
 ````
 
 <hr/>
 
 ### NAME
 ````PowerShell
-    Set-LocationParent2                  --> ...
+Set-LocationParent2                  --> ...
 ````
 
 <hr/>
 
 ### NAME
 ````PowerShell
-    Set-LocationParent3                  --> ....
+Set-LocationParent3                  --> ....
 ````
 
 <hr/>
 
 ### NAME
 ````PowerShell
-    Set-LocationParent4                  --> .....
+Set-LocationParent4                  --> .....
 ````
 
 <hr/>
 
 ### NAME
 ````PowerShell
-    Set-LocationParent5                  --> ......
+Set-LocationParent5                  --> ......
 ````
 
 <hr/>
 
 ### NAME
 ````PowerShell
-    Enable-Screensaver
+Enable-Screensaver
 ````
 
 <hr/>
 
 ### NAME
 ````PowerShell
-    Set-MonitorPowerOff
+Set-MonitorPowerOff
 ````
 
 <hr/>
 
 ### NAME
 ````PowerShell
-    Set-MonitorPowerOff
+Set-MonitorPowerOff
 ````
 <br/><hr/><hr/><hr/><hr/><br/>
 ### NAME
@@ -212,7 +212,7 @@ Invoke-Fasti [<CommonParameters>]
         (https://go.microsoft.com/fwlink/?LinkID=113216).
 ### NOTES
 ````PowerShell
-    You need 7z installed
+You need 7z installed
 
     Supported archive types:
 
@@ -279,7 +279,7 @@ Start-TextToSpeech -lines <String[]> [-wait] [<CommonParameters>]
         (https://go.microsoft.com/fwlink/?LinkID=113216).
 ### NOTES
 ````PowerShell
-    See also: Stop-TextToSpeech -> sst, and Skip-TextToSpeech -> sstSkip
+See also: Stop-TextToSpeech -> sst, and Skip-TextToSpeech -> sstSkip
 
 -------------------------- EXAMPLE 1 --------------------------
 
@@ -307,7 +307,7 @@ Stop-TextToSpeech [<CommonParameters>]
         (https://go.microsoft.com/fwlink/?LinkID=113216).
 ### NOTES
 ````PowerShell
-    See also: Start-TextToSpeech -> say, and Skip-TextToSpeech -> sstSkip
+See also: Start-TextToSpeech -> say, and Skip-TextToSpeech -> sstSkip
 -------------------------- EXAMPLE 1 --------------------------
 PS C:\> say "Good morning"; say "Good evening"; Stop-TextToSpeech; # -> "G.."
 ````

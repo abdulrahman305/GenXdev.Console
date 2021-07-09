@@ -456,11 +456,11 @@ function Connect-SpotifyApiToken {
 
     param()
 
-    Write-Warning "Spotify access token expired, requisting new.."
+    Write-Warning "Spotify access token expired, requesting new.."
 
     $url = [GenXdev.Console.Spotify]::RequestAuthenticationUri(5642);
 
-    [System.Diagnostics.Process] $process = Open-Webbrowser -ReturnProcess -ApplicationMode -NewWindow -Width 1000 -Height 800 -Centered -Monitor 0 -Url $url
+    [System.Diagnostics.Process] $process = Open-Webbrowser -PassThrough -ApplicationMode -NewWindow -Width 1000 -Height 800 -Centered -Monitor 0 -Url $url
 
     [GenXdev.Console.Spotify]::RequestAuthenticationTokenUsingOAuth(5642)
 
