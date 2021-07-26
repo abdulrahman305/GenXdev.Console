@@ -1,5 +1,4 @@
-﻿######################################################################################################################################################
-######################################################################################################################################################
+﻿###############################################################################
 
 <#
 .SYNOPSIS
@@ -16,7 +15,9 @@ See also: Start-TextToSpeech -> say, and Skip-TextToSpeech -> sstSkip
 #>
 function Stop-TextToSpeech {
 
+    [CmdletBinding()]
     [Alias("sst")]
+
     param()
 
     if ($null -eq $Global:SpeechSynthesizer) {
@@ -27,8 +28,8 @@ function Stop-TextToSpeech {
     $Global:SpeechSynthesizer.SpeakAsyncCancelAll();
 }
 
+###############################################################################
 
-######################################################################################################################################################
 <#
 .SYNOPSIS
 Will use the text-to-speech engine to speak out text
@@ -52,9 +53,10 @@ See also: Stop-TextToSpeech -> sst, and Skip-TextToSpeech -> sstSkip
 #>
 function Start-TextToSpeech {
 
-    [Alias("say")]
     [CmdletBinding()]
-    Param(
+    [Alias("say")]
+
+    param(
         [Parameter(Mandatory = $true, ValueFromPipeline = $true, ValueFromRemainingArguments = $true, ParameterSetName = "strings")]
         [string[]] $lines = $null,
 
@@ -92,7 +94,8 @@ function Start-TextToSpeech {
     }
 }
 
-######################################################################################################################################################
+###############################################################################
+
 <#
 .SYNOPSIS
 Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding aliases
@@ -182,7 +185,8 @@ function Get-GenXDevCmdLets {
     }
 }
 
-######################################################################################################################################################
+###############################################################################
+
 <#
 .SYNOPSIS
 Shows a list of all installed GenXdev modules and their Cmdlets and corresponding aliases
@@ -222,37 +226,59 @@ function Show-GenXDevCmdLets {
         $Filter = "*$Filter*"
     }
 
-
     Clear-Host
 
-    Get-Module $ModuleName |
+    $modules = Get-Module $ModuleName
+    $modules |
     ForEach-Object -Process {
 
         $module = $PSItem
+        $name = $module.Name.SubString("GenXdev.".Length);
         $first = $true;
+        [System.Collections.Generic.List[string]] $commandFilter = [System.Collections.Generic.List[string]]::new();
+
+        if ($name.Contains(".") -eq $false) {
+
+            foreach ($otherModule in $modules) {
+
+                if ($otherModule.Name -like "GenXdev.$name.*") {
+
+                    foreach ($filteredCommand in $otherModule.ExportedCommands.Values) {
+
+                        if ($commandFilter.Contains($filteredCommand.Name)) { continue; }
+
+                        $commandFilter.Add($filteredCommand.Name);
+                    }
+                }
+            }
+        }
 
         $result = [string]::Join(", ", @(
                 $PSItem.ExportedCommands.Values | ForEach-Object -ErrorAction SilentlyContinue {
 
-                    if ($PSItem.Name -like $Filter) {
+                    $exportedCommand = $PSItem;
+
+                    if ($exportedCommand.Name -in $commandFilter) { return }
+
+                    if ($exportedCommand.Name -like $Filter) {
 
                         if ($first) {
 
-                            "`r`n" + $module.Name.SubString("GenXdev.".Length) + ":" | Write-Host -ForegroundColor "Yellow"
+                            "`r`n" + $name + ":" | Write-Host -ForegroundColor "Yellow"
                         }
 
                         $first = $false;
 
-                        if ($PSItem.CommandType -eq "Function") {
+                        if ($exportedCommand.CommandType -eq "Function") {
 
-                            $aliases = ((Get-Alias -Definition $PSItem.Name -ErrorAction SilentlyContinue | ForEach-Object Name) -Join ", ").Trim();
+                            $aliases = ((Get-Alias -Definition $exportedCommand.Name -ErrorAction SilentlyContinue | ForEach-Object Name) -Join ", ").Trim();
 
                             if ([string]::IsNullOrWhiteSpace($aliases) -eq $false) {
 
-                                "$($PSItem.Name) --> $aliases"
+                                "$($exportedCommand.Name) --> $aliases"
                             }
                             else {
-                                $PSItem.Name
+                                $exportedCommand.Name
                             }
                         }
                     }
@@ -266,7 +292,7 @@ function Show-GenXDevCmdLets {
 -------------" | Write-Host -ForegroundColor "DarkGreen"
 }
 
-######################################################################################################################################################
+###############################################################################
 
 <#
 .SYNOPSIS
@@ -304,7 +330,7 @@ function New-MicrosoftShellTab {
     }
 }
 
-######################################################################################################################################################
+###############################################################################
 
 <#
 .SYNOPSIS
@@ -322,7 +348,9 @@ You need 7z installed
 #>
 function Invoke-Fasti {
 
+    [CmdletBinding()]
     [Alias("Fasti")]
+
     param()
 
     Get-ChildItem @("*.7z", "*.xz", "*.bzip2", "*.gzip", "*.tar", "*.zip", "*.wim", "*.ar", "*.arj", "*.cab", "*.chm", "*.cpio", "*.cramfs", "*.dmg", "*.ext", "*.fat", "*.gpt", "*.hfs", "*.ihex", "*.iso", "*.lzh", "*.lzma", "*.mbr", "*.msi", "*.nsis", "*.ntfs", "*.qcow2", "*.rar", "*.rpm", "*.squashfs", "*.udf", "*.uefi", "*.vdi", "*.vhd", "*.vmdk", "*.wim", "*.xar", "*.z") -File -ErrorAction SilentlyContinue  | ForEach-Object {
@@ -371,7 +399,8 @@ function Invoke-Fasti {
     }
 }
 
-######################################################################################################################################################
+###############################################################################
+
 <#
 .SYNOPSIS
 Provides the .. alias to go one directory up
@@ -379,9 +408,11 @@ Provides the .. alias to go one directory up
 .DESCRIPTION
 Provides the .. alias to go one directory up
 #>
-Function Set-LocationParent {
+function Set-LocationParent {
 
+    [CmdletBinding()]
     [Alias("..")]
+
     param (
 
     )
@@ -389,7 +420,8 @@ Function Set-LocationParent {
     Set-Location ..
     Get-ChildItem
 }
-######################################################################################################################################################
+###############################################################################
+
 <#
 .SYNOPSIS
 Provides the ... alias to go two directory up
@@ -397,9 +429,11 @@ Provides the ... alias to go two directory up
 .DESCRIPTION
 Provides the ... alias to go two directory up
 #>
-Function Set-LocationParent2 {
+function Set-LocationParent2 {
 
+    [CmdletBinding()]
     [Alias("...")]
+
     param (
 
     )
@@ -408,7 +442,8 @@ Function Set-LocationParent2 {
     Set-Location ..
     Get-ChildItem
 }
-######################################################################################################################################################
+###############################################################################
+
 <#
 .SYNOPSIS
 Provides the .... alias to go three directory up
@@ -416,9 +451,11 @@ Provides the .... alias to go three directory up
 .DESCRIPTION
 Provides the .... alias to go three directory up
 #>
-Function Set-LocationParent3 {
+function Set-LocationParent3 {
 
+    [CmdletBinding()]
     [Alias("....")]
+
     param (
 
     )
@@ -428,7 +465,8 @@ Function Set-LocationParent3 {
     Set-Location ..
     Get-ChildItem
 }
-######################################################################################################################################################
+###############################################################################
+
 <#
 .SYNOPSIS
 Provides the ..... alias to go four directory up
@@ -436,9 +474,11 @@ Provides the ..... alias to go four directory up
 .DESCRIPTION
 Provides the ..... alias to go four directory up
 #>
-Function Set-LocationParent4 {
+function Set-LocationParent4 {
 
+    [CmdletBinding()]
     [Alias(".....")]
+
     param (
 
     )
@@ -449,7 +489,8 @@ Function Set-LocationParent4 {
     Set-Location ..
     Get-ChildItem
 }
-######################################################################################################################################################
+###############################################################################
+
 <#
 .SYNOPSIS
 Provides the ...... alias to go five directory up
@@ -457,9 +498,11 @@ Provides the ...... alias to go five directory up
 .DESCRIPTION
 Provides the ...... alias to go five directory up
 #>
-Function Set-LocationParent5 {
+function Set-LocationParent5 {
 
+    [CmdletBinding()]
     [Alias("......")]
+
     param (
 
     )
@@ -472,388 +515,8 @@ Function Set-LocationParent5 {
     Get-ChildItem
 }
 
-######################################################################################################################################################
-<#
-.SYNOPSIS
-Returns a ApiToken for spotify
+###############################################################################
 
-.DESCRIPTION
-Returns a ApiToken for spotify
-#>
-function Get-SpotifyApiToken {
-
-    param()
-
-    $path = "$PSScriptRoot\..\..\GenXdev.Local\Spotify_Auth.json";
-
-    if ([IO.File]::Exists($path)) {
-
-        $ApiToken = [IO.File]::ReadAllText($path);
-    }
-    else {
-
-        $ApiToken = Connect-SpotifyApiToken
-        Set-SpotifyApiToken $ApiToken | Out-Null
-    }
-
-    try {
-
-        [GenXdev.Console.Spotify]::GetActiveDevices($ApiToken) | Out-Null
-    }
-    catch {
-
-        $ApiToken = Connect-SpotifyApiToken
-        Set-SpotifyApiToken $ApiToken | Out-Null
-    }
-
-
-    $ApiToken
-}
-
-######################################################################################################################################################
-<#
-.SYNOPSIS
-Caches an Spotify API-token for later use
-
-.DESCRIPTION
-Caches an Spotify API-token for later use
-
-.PARAMETER ApiToken
-The API-token to cache
-#>
-function Set-SpotifyApiToken {
-
-    param(
-
-        [parameter(
-            Mandatory = $true,
-            Position = 0
-        )] [string] $ApiToken
-    )
-
-    $dir = "$PSScriptRoot\..\..\GenXdev.Local";
-    $path = "$dir\Spotify_Auth.json";
-
-    if (![IO.Directory]::Exists($dir)) {
-
-        [IO.Directory]::CreateDirectory($dir);
-    }
-
-    [IO.File]::WriteAllText($path, $ApiToken.Trim("`r`n`t "));
-}
-
-######################################################################################################################################################
-<#
-.SYNOPSIS
-Uses Spotify Open-Auth to request an access token
-
-.DESCRIPTION
-Uses Spotify Open-Auth to request an access token
-
-#>
-function Connect-SpotifyApiToken {
-
-    Write-Warning "Spotify access token expired, requesting new.."
-
-    $url = [GenXdev.Console.Spotify]::RequestAuthenticationUri(5642);
-
-    [System.Diagnostics.Process] $process = Open-Webbrowser -PassThrough -ApplicationMode -NewWindow -Width 1000 -Height 800 -Centered -Monitor 0 -Url $url
-
-    [GenXdev.Console.Spotify]::RequestAuthenticationTokenUsingOAuth(5642)
-
-    if ((!!$process -and $process -is [System.Diagnostics.Process]) -and (!$process.HasExited)) {
-
-        $process.CloseMainWindow() | Out-Null
-    }
-}
-
-######################################################################################################################################################
-<#
-.SYNOPSIS
-Stops Spotify playback
-
-.DESCRIPTION
-Stops playback on the device that is active on Spotify
-#>
-function Set-SpotifyStop {
-
-    [Alias("stop", "Stop-Music")]
-    param()
-    [GenXdev.Console.Spotify]::Stop((Get-SpotifyApiToken));
-}
-######################################################################################################################################################
-<#
-.SYNOPSIS
-Starts Spotify playback
-
-.DESCRIPTION
-Starts playback on the device that is active on Spotify
-#>
-function Set-SpotifyStart {
-
-    [Alias("play", "Start-Music")]
-    param()
-
-    [GenXdev.Console.Spotify]::Start((Get-SpotifyApiToken));
-}
-######################################################################################################################################################
-<#
-.SYNOPSIS
-Pauses Spotify playback
-
-.DESCRIPTION
-Pauses playback on the device that is active on Spotify
-#>
-function Set-SpotifyPause {
-
-    [Alias("pausemusic", "Resume-Music")]
-    param()
-
-    [GenXdev.Console.Spotify]::Pause((Get-SpotifyApiToken));
-}
-######################################################################################################################################################
-<#
-.SYNOPSIS
-Skips to previous track on Spotify
-
-.DESCRIPTION
-Skips to previous track on the device that is active on Spotify
-#>
-function Set-SpotifyPrevious {
-
-    [Alias("previous", "prev")]
-    param()
-
-    [GenXdev.Console.Spotify]::Previous((Get-SpotifyApiToken));
-}
-######################################################################################################################################################
-<#
-.SYNOPSIS
-Skips to next track on Spotify
-
-.DESCRIPTION
-Skips to next track on the device that is active on Spotify
-#>
-function Set-SpotifyNext {
-
-    [Alias("next", "skip")]
-    param()
-
-    [GenXdev.Console.Spotify]::Next((Get-SpotifyApiToken));
-}
-######################################################################################################################################################
-<#
-.SYNOPSIS
-Enables Spotify song-repeat
-
-.DESCRIPTION
-Enables song-repeat on the device that is active on Spotify
-#>
-function Set-SpotifyRepeatSong {
-
-    [Alias("repeatsong")]
-    param()
-
-    [GenXdev.Console.Spotify]::RepeatSong((Get-SpotifyApiToken));
-}
-######################################################################################################################################################
-<#
-.SYNOPSIS
-Enables Spotify playlist-repeat
-
-.DESCRIPTION
-Enables playlist-repeat on the device that is active on Spotify
-#>
-function Set-SpotifyRepeatContext {
-
-    [Alias("repeat")]
-    param()
-
-    [GenXdev.Console.Spotify]::RepeatContext((Get-SpotifyApiToken));
-}
-######################################################################################################################################################
-<#
-.SYNOPSIS
-Disables Spotify repeat
-
-.DESCRIPTION
-Disables repeat on the device that is active on Spotify
-#>
-function Set-SpotifyRepeatOff {
-
-    [Alias("norepeat", "repeatoff")]
-    param()
-
-    [GenXdev.Console.Spotify]::RepeatOff((Get-SpotifyApiToken));
-}
-######################################################################################################################################################
-<#
-.SYNOPSIS
-Enables Spotify song-shuffle
-
-.DESCRIPTION
-Enables song-shuffle on the device that is active on Spotify
-#>
-function Set-SpotifyShuffleOn {
-
-    [Alias("shuffle", "shuffleon")]
-    param()
-
-    [GenXdev.Console.Spotify]::ShuffleOn((Get-SpotifyApiToken));
-}
-######################################################################################################################################################
-<#
-.SYNOPSIS
-Disables Spotify song-shuffle
-
-.DESCRIPTION
-Disables song-shuffle on the device that is active on Spotify
-#>
-function Set-SpotifyShuffleOff {
-
-    [Alias("noshuffle", "shuffleoff")]
-    param()
-
-    [GenXdev.Console.Spotify]::ShuffleOff((Get-SpotifyApiToken));
-}
-
-######################################################################################################################################################
-
-<#
-.SYNOPSIS
-Performs a spotify search and plays the first found item
-
-.DESCRIPTION
-Performs a spotify search and plays the first found item on the active device
-
-.PARAMETER Queries
-The search phrase
-
-.PARAMETER SearchType
-Optionally, the type of item to search for
-
-.EXAMPLE
-PS C:\> Search-SpotifyAndPlay Rage against the machine
-
-.EXAMPLE
-PS C:\> fmp Dire Straits You and your friend
-
-#>
-function Search-SpotifyAndPlay {
-
-    [Alias("smp", "fmp")]
-
-    param(
-        [Alias("q", "Value", "Name", "Text", "Query")]
-        [parameter(
-            Mandatory = $true,
-            Position = 0,
-            ValueFromRemainingArguments = $true,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true
-        )]
-        [string[]] $Queries,
-
-        [Alias("t")]
-        [ValidateSet("Album", "Artist", "Playlist", "Track", "Show", "Episode", "All")]
-        [parameter(Mandatory = $false)]
-        [string[]] $SearchType = @("Track")
-    )
-
-    begin {
-
-        $Queries = Build-InvocationArguments $MyInvocation $Queries
-
-        [int] $SearchTypeTypeId = 0;
-
-        if ($SearchType -contains "Album") { $SearchTypeTypeId += 1 }
-        if ($SearchType -contains "Artist") { $SearchTypeTypeId += 2 }
-        if ($SearchType -contains "Playlist") { $SearchTypeTypeId += 4 }
-        if ($SearchType -contains "Track") { $SearchTypeTypeId += 8 }
-        if ($SearchType -contains "Show") { $SearchTypeTypeId += 16 }
-        if ($SearchType -contains "Episode") { $SearchTypeTypeId += 32 }
-        if ($SearchType -contains "All") { $SearchTypeTypeId += 63 }
-    }
-
-    process {
-
-        foreach ($Query in $Queries) {
-
-            [GenXdev.Console.Spotify]::SearchAndPlay((Get-SpotifyApiToken), $Query, $SearchTypeTypeId) | ForEach-Object { if ($null -ne $PSItem) { $PSItem } } -ErrorAction SilentlyContinue
-        }
-    }
-}
-
-######################################################################################################################################################
-
-
-<#
-.SYNOPSIS
-Performs a spotify search and returns the search results
-
-.DESCRIPTION
-Performs a spotify search and returns the search results
-
-.PARAMETER Queries
-The search phrase
-
-.PARAMETER SearchType
-Optionally, the type of item to search for
-
-.EXAMPLE
-PS C:\> Search-Spotify Rage against the machine
-
-.EXAMPLE
-PS C:\> fm Dire Straits You and your friend
-
-#>
-function Search-Spotify {
-
-    [Alias("sm", "fm")]
-
-    param(
-        [Alias("q", "Value", "Name", "Text", "Query")]
-        [parameter(
-            Mandatory = $true,
-            Position = 0,
-            ValueFromRemainingArguments = $true,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true
-        )]
-        [string[]] $Queries,
-
-
-        [Alias("t")]
-        [ValidateSet("Album", "Artist", "Playlist", "Track", "Show", "Episode", "All")]
-        [parameter(Mandatory = $false)]
-        [string[]] $SearchType = @("Track")
-    )
-
-    begin {
-
-        $Queries = Build-InvocationArguments $MyInvocation $Queries
-
-        [int] $SearchTypeTypeId = 0;
-
-        if ($SearchType -contains "Album") { $SearchTypeTypeId += 1 }
-        if ($SearchType -contains "Artist") { $SearchTypeTypeId += 2 }
-        if ($SearchType -contains "Playlist") { $SearchTypeTypeId += 4 }
-        if ($SearchType -contains "Track") { $SearchTypeTypeId += 8 }
-        if ($SearchType -contains "Show") { $SearchTypeTypeId += 16 }
-        if ($SearchType -contains "Episode") { $SearchTypeTypeId += 32 }
-        if ($SearchType -contains "All") { $SearchTypeTypeId += 63 }
-    }
-
-    process {
-
-        foreach ($Query in $Queries) {
-
-            [GenXdev.Console.Spotify]::Search((Get-SpotifyApiToken), $Query, $SearchTypeTypeId) | ForEach-Object { $PSItem } -ErrorAction SilentlyContinue
-        }
-    }
-}
-
-######################################################################################################################################################
 <#
 .SYNOPSIS
 Pauses Spotify playback
@@ -863,6 +526,7 @@ Pauses playback on the device that is active on Spotify
 #>
 function Invoke-Repeated {
 
+    [CmdletBinding()]
     [Alias("rpt")]
 
     param(
@@ -883,7 +547,7 @@ function Invoke-Repeated {
     }     while ([Console]::ReadKey() -ne "q");
 }
 
-######################################################################################################################################################
+###############################################################################
 
 <#
 .SYNOPSIS
@@ -895,10 +559,15 @@ Starts the configured Windows screensaver
 #>
 function Enable-Screensaver {
 
+    [CmdletBinding()]
+
+    param()
+
     & "$ENV:SystemRoot\system32\scrnsave.scr" / s
 }
 
-######################################################################################################################################################
+###############################################################################
+
 <#
 .SYNOPSIS
 Turns the monitor power off
@@ -908,12 +577,17 @@ Turns the monitor power off
 #>
 function Set-MonitorPowerOff {
 
+    [CmdletBinding()]
+
+    param()
+
     Start-Sleep 2
 
     [GenXdev.Helpers.WindowObj]::SleepMonitor();
 }
 
-######################################################################################################################################################
+###############################################################################
+
 <#
 .SYNOPSIS
 Turns the monitor power on
@@ -923,10 +597,15 @@ Turns the monitor power on
 #>
 function Set-MonitorPowerOn {
 
+    [CmdletBinding()]
+
+    param()
+
     [GenXdev.Helpers.WindowObj]::WakeMonitor();
 }
 
-######################################################################################################################################################
+###############################################################################
+
 <#
 .SYNOPSIS
 Shows a short alphabetical list of all PowerShell verbs
@@ -935,6 +614,8 @@ Shows a short alphabetical list of all PowerShell verbs
 Shows a short alphabetical list of all PowerShell verbs
 #>
 function Show-Verb {
+
+    [CmdletBinding()]
 
     param(
 
@@ -971,4 +652,4 @@ function Show-Verb {
     }
 }
 
-######################################################################################################################################################
+###############################################################################
