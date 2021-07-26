@@ -86,7 +86,7 @@ Update-Module
 
 # Cmdlets
 
-## Add-SpotifyNewPlaylist
+##	Add-SpotifyNewPlaylist
 ````PowerShell
 Add-SpotifyNewPlaylist
 ````
@@ -141,7 +141,7 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>]
 
 <br/><hr/><hr/><br/>
 
-## Add-SpotifyTracksToPlaylist
+##	Add-SpotifyTracksToPlaylist
 ````PowerShell
 Add-SpotifyTracksToPlaylist
 ````
@@ -183,7 +183,7 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String> [-Uri] <String[]>
 
 <br/><hr/><hr/><br/>
 
-## Connect-SpotifyApiToken
+##	Connect-SpotifyApiToken
 ````PowerShell
 Connect-SpotifyApiToken
 ````
@@ -209,7 +209,7 @@ Connect-SpotifyApiToken [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Enable-Screensaver
+##	Enable-Screensaver
 ````PowerShell
 Enable-Screensaver
 ````
@@ -235,7 +235,7 @@ Enable-Screensaver [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Get-GenXDevCmdLets
+##	Get-GenXDevCmdLets
 ````PowerShell
 Get-GenXDevCmdLets
 ````
@@ -278,7 +278,7 @@ Get-GenXDevCmdLets [[-Filter] <String>] [-ModuleName <String[]>]
 
 <br/><hr/><hr/><br/>
 
-## Get-SpotifyActiveDevice
+##	Get-SpotifyActiveDevice
 ````PowerShell
 Get-SpotifyActiveDevice
 ````
@@ -304,7 +304,7 @@ Get-SpotifyActiveDevice [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Get-SpotifyApiToken
+##	Get-SpotifyApiToken
 ````PowerShell
 Get-SpotifyApiToken
 ````
@@ -330,7 +330,7 @@ Get-SpotifyApiToken [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Get-SpotifyCurrentlyPlaying
+##	Get-SpotifyCurrentlyPlaying
 ````PowerShell
 Get-SpotifyCurrentlyPlaying          --> gcp
 ````
@@ -356,7 +356,7 @@ Get-SpotifyCurrentlyPlaying [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Get-SpotifyDevices
+##	Get-SpotifyDevices
 ````PowerShell
 Get-SpotifyDevices
 ````
@@ -382,7 +382,7 @@ Get-SpotifyDevices [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Get-SpotifyLyrics
+##	Get-SpotifyLyrics
 ````PowerShell
 Get-SpotifyLyrics                    --> lyrics
 ````
@@ -423,7 +423,7 @@ Get-SpotifyLyrics [-TrackId <String>] [[-Queries] <String[]>]
 
 <br/><hr/><hr/><br/>
 
-## Get-SpotifyPlaylistTracks
+##	Get-SpotifyPlaylistTracks
 ````PowerShell
 Get-SpotifyPlaylistTracks
 ````
@@ -456,7 +456,7 @@ Get-SpotifyPlaylistTracks [-PlaylistId] <String> [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Get-SpotifyTrackAudioFeatures
+##	Get-SpotifyTrackAudioFeatures
 ````PowerShell
 Get-SpotifyTrackAudioFeatures
 ````
@@ -489,7 +489,7 @@ Get-SpotifyTrackAudioFeatures [-Id] <String[]> [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Get-SpotifyTrackById
+##	Get-SpotifyTrackById
 ````PowerShell
 Get-SpotifyTrackById
 ````
@@ -522,7 +522,7 @@ Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Get-SpotifyUserPlaylists
+##	Get-SpotifyUserPlaylists
 ````PowerShell
 Get-SpotifyUserPlaylists             --> upl
 ````
@@ -556,7 +556,7 @@ Get-SpotifyUserPlaylists [[-Filter] <String[]>] [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Invoke-Fasti
+##	Invoke-Fasti
 ````PowerShell
 Invoke-Fasti                         --> Fasti
 ````
@@ -593,7 +593,7 @@ PS D:\downloads>Invoke-Fasti
 
 <br/><hr/><hr/><br/>
 
-## Invoke-Repeated
+##	Invoke-Repeated
 ````PowerShell
 Invoke-Repeated                      --> rpt
 ````
@@ -625,7 +625,7 @@ Invoke-Repeated [-script] <String> [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## New-MicrosoftShellTab
+##	New-MicrosoftShellTab
 ````PowerShell
 New-MicrosoftShellTab                --> x
 ````
@@ -658,7 +658,7 @@ New-MicrosoftShellTab [-DontCloseThisTab] [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Remove-SpotifyTracksFromPlaylist
+##	Remove-SpotifyTracksFromPlaylist
 ````PowerShell
 Remove-SpotifyTracksFromPlaylist
 ````
@@ -700,7 +700,7 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String> [-Uri] <String[]>
 
 <br/><hr/><hr/><br/>
 
-## Search-Spotify
+##	Search-Spotify
 ````PowerShell
 Search-Spotify                       --> fm, sm
 ````
@@ -741,7 +741,7 @@ Search-Spotify [-Queries] <String[]> [-SearchType <String[]>]
 
 <br/><hr/><hr/><br/>
 
-## Search-SpotifyAndEnqueue
+##	Search-SpotifyAndEnqueue
 ````PowerShell
 Search-SpotifyAndEnqueue             --> fmq, smq
 ````
@@ -782,7 +782,7 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>]
 
 <br/><hr/><hr/><br/>
 
-## Search-SpotifyAndPlay
+##	Search-SpotifyAndPlay
 ````PowerShell
 Search-SpotifyAndPlay                --> fmp, smp
 ````
@@ -824,7 +824,7 @@ Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>]
 
 <br/><hr/><hr/><br/>
 
-## Set-LocationParent
+##	Set-LocationParent
 ````PowerShell
 Set-LocationParent                   --> ..
 ````
@@ -850,7 +850,7 @@ Set-LocationParent [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-LocationParent2
+##	Set-LocationParent2
 ````PowerShell
 Set-LocationParent2                  --> ...
 ````
@@ -876,7 +876,7 @@ Set-LocationParent2 [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-LocationParent3
+##	Set-LocationParent3
 ````PowerShell
 Set-LocationParent3                  --> ....
 ````
@@ -902,7 +902,7 @@ Set-LocationParent3 [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-LocationParent4
+##	Set-LocationParent4
 ````PowerShell
 Set-LocationParent4                  --> .....
 ````
@@ -928,7 +928,7 @@ Set-LocationParent4 [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-LocationParent5
+##	Set-LocationParent5
 ````PowerShell
 Set-LocationParent5                  --> ......
 ````
@@ -954,7 +954,7 @@ Set-LocationParent5 [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-MonitorPowerOff
+##	Set-MonitorPowerOff
 ````PowerShell
 Set-MonitorPowerOff
 ````
@@ -980,7 +980,7 @@ Set-MonitorPowerOff [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-MonitorPowerOn
+##	Set-MonitorPowerOn
 ````PowerShell
 Set-MonitorPowerOn
 ````
@@ -1006,7 +1006,7 @@ Set-MonitorPowerOn [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-SpotifyActiveDevice
+##	Set-SpotifyActiveDevice
 ````PowerShell
 Set-SpotifyActiveDevice
 ````
@@ -1039,7 +1039,7 @@ Set-SpotifyActiveDevice [-DeviceId] <String> [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-SpotifyApiToken
+##	Set-SpotifyApiToken
 ````PowerShell
 Set-SpotifyApiToken
 ````
@@ -1072,7 +1072,7 @@ Set-SpotifyApiToken [-ApiToken] <String> [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-SpotifyNext
+##	Set-SpotifyNext
 ````PowerShell
 Set-SpotifyNext                      --> next, skip
 ````
@@ -1098,7 +1098,7 @@ Set-SpotifyNext [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-SpotifyPause
+##	Set-SpotifyPause
 ````PowerShell
 Set-SpotifyPause                     --> pausemusic, Resume-Music
 ````
@@ -1124,7 +1124,7 @@ Set-SpotifyPause [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-SpotifyPlaylistDetails
+##	Set-SpotifyPlaylistDetails
 ````PowerShell
 Set-SpotifyPlaylistDetails           --> spld
 ````
@@ -1201,7 +1201,7 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String>
 
 <br/><hr/><hr/><br/>
 
-## Set-SpotifyPlaylistOrder
+##	Set-SpotifyPlaylistOrder
 ````PowerShell
 Set-SpotifyPlaylistOrder
 ````
@@ -1272,7 +1272,7 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32>
 
 <br/><hr/><hr/><br/>
 
-## Set-SpotifyPrevious
+##	Set-SpotifyPrevious
 ````PowerShell
 Set-SpotifyPrevious                  --> prev, previous
 ````
@@ -1298,7 +1298,7 @@ Set-SpotifyPrevious [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-SpotifyRepeatContext
+##	Set-SpotifyRepeatContext
 ````PowerShell
 Set-SpotifyRepeatContext             --> repeat
 ````
@@ -1324,7 +1324,7 @@ Set-SpotifyRepeatContext [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-SpotifyRepeatOff
+##	Set-SpotifyRepeatOff
 ````PowerShell
 Set-SpotifyRepeatOff                 --> norepeat, repeatoff
 ````
@@ -1350,7 +1350,7 @@ Set-SpotifyRepeatOff [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-SpotifyRepeatSong
+##	Set-SpotifyRepeatSong
 ````PowerShell
 Set-SpotifyRepeatSong                --> repeatsong
 ````
@@ -1376,7 +1376,7 @@ Set-SpotifyRepeatSong [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-SpotifyShuffleOff
+##	Set-SpotifyShuffleOff
 ````PowerShell
 Set-SpotifyShuffleOff                --> noshuffle, shuffleoff
 ````
@@ -1402,7 +1402,7 @@ Set-SpotifyShuffleOff [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-SpotifyShuffleOn
+##	Set-SpotifyShuffleOn
 ````PowerShell
 Set-SpotifyShuffleOn                 --> shuffle, shuffleon
 ````
@@ -1428,7 +1428,7 @@ Set-SpotifyShuffleOn [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-SpotifyStart
+##	Set-SpotifyStart
 ````PowerShell
 Set-SpotifyStart                     --> play, Start-Music
 ````
@@ -1454,7 +1454,7 @@ Set-SpotifyStart [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Set-SpotifyStop
+##	Set-SpotifyStop
 ````PowerShell
 Set-SpotifyStop                      --> stop, Stop-Music
 ````
@@ -1480,7 +1480,7 @@ Set-SpotifyStop [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Show-GenXDevCmdLets
+##	Show-GenXDevCmdLets
 ````PowerShell
 Show-GenXDevCmdLets                  --> cmds
 ````
@@ -1523,7 +1523,7 @@ Show-GenXDevCmdLets [[-Filter] <String>] [-ModuleName <String[]>]
 
 <br/><hr/><hr/><br/>
 
-## Show-Verb
+##	Show-Verb
 ````PowerShell
 Show-Verb
 ````
@@ -1555,7 +1555,7 @@ Show-Verb [[-Verb] <String[]>] [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-## Start-TextToSpeech
+##	Start-TextToSpeech
 ````PowerShell
 Start-TextToSpeech                   --> say
 ````
@@ -1602,7 +1602,7 @@ PS C:\> "Good morning" | Start-TextToSpeech
 
 <br/><hr/><hr/><br/>
 
-## Stop-TextToSpeech
+##	Stop-TextToSpeech
 ````PowerShell
 Stop-TextToSpeech                    --> sst
 ````
