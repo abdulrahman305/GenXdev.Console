@@ -1248,6 +1248,10 @@ function Get-SpotifyLyrics {
             }
 
             $Queries = $new;
+            if ($new.Count -eq 0) {
+
+                Write-Warning "Nothing found"
+            }
         }
         else {
 
@@ -1284,7 +1288,7 @@ function Get-SpotifyLyrics {
             $q = [Uri]::EscapeUriString($query)
             [string] $html = "";
             try {
-                "https://www.musixmatch.com/search/$q"
+
                 $html = Invoke-WebRequest -Uri "https://www.musixmatch.com/search/$q" -ErrorAction SilentlyContinue
 
             }
@@ -1354,6 +1358,8 @@ function Get-SpotifyLyrics {
 
                 Write-Warning "Nothing found for '$query'"
             }
+
+            $result
         }
     }
 }
