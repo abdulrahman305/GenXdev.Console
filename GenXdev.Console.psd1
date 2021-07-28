@@ -1,4 +1,4 @@
-#
+﻿#
 # Module manifest for module 'GenXdev.Console'
 @{
 
@@ -6,7 +6,7 @@
     RootModule             = 'GenXdev.Console.psm1'
 
     # Version number of this module.
-    ModuleVersion          = '1.20.0'
+    ModuleVersion          = '1.23.2021'
     # Supported PSEditions
     # CompatiblePSEditions = @()
 
@@ -38,16 +38,16 @@
     DotNetFrameworkVersion = '4.6.1'
 
     # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-    # ClrVersion = ''
+    ClrVersion = '4.0.0'
 
     # Processor architecture (None, X86, Amd64) required by this module
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules        = @(@{ModuleName = 'GenXdev.Helpers'; ModuleVersion  = '1.20.0'}, @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion  = '1.20.0'});
+    RequiredModules        = @(@{ModuleName = 'GenXdev.Helpers'; ModuleVersion  = '1.23.2021'}, @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion  = '1.23.2021'});
 
     # Assemblies that must be loaded prior to importing this module
-    RequiredAssemblies     = @("System.Speech", "GenXdev.Console.dll")
+    RequiredAssemblies     = @("System.Speech")
 
     # Script files (.ps1) that are run in the caller's environment prior to importing this module.
     # ScriptsToProcess = @()
@@ -80,7 +80,7 @@
     ModuleList             = @("GenXdev.Console")
 
     # List of all files packaged with this module
-    FileList               = @("EmbedIO.dll", "GenXdev.Console.dll", "GenXdev.Console.psd1", "GenXdev.Console.psm1", "GenXdev.Console.Spotify.psm1", "LICENSE", "license.txt", "Newtonsoft.Json.dll", "powershell.jpg", "README.md", "SpotifyAPI.Web.Auth.dll", "SpotifyAPI.Web.dll", "Swan.Lite.dll")
+    FileList               = @("GenXdev.Console.psd1", "GenXdev.Console.psm1", "GenXdev.Console.Spotify.psm1", "LICENSE", "license.txt", "powershell.jpg", "README.md")
 
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
     PrivateData            = @{

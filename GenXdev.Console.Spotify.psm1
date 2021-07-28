@@ -61,7 +61,7 @@ function Search-SpotifyAndPlay {
 
         foreach ($Query in $Queries) {
 
-            [GenXdev.Console.Spotify]::SearchAndPlay((Get-SpotifyApiToken), $Query, $SearchTypeTypeId) | ForEach-Object { if ($null -ne $PSItem) { $PSItem } } -ErrorAction SilentlyContinue
+            [GenXdev.Helpers.Spotify]::SearchAndPlay((Get-SpotifyApiToken), $Query, $SearchTypeTypeId) | ForEach-Object { if ($null -ne $PSItem) { $PSItem } } -ErrorAction SilentlyContinue
         }
     }
 }
@@ -128,7 +128,7 @@ function Search-SpotifyAndEnqueue {
 
         foreach ($Query in $Queries) {
 
-            [GenXdev.Console.Spotify]::SearchAndAdd((Get-SpotifyApiToken), $Query, $SearchTypeTypeId) | ForEach-Object { if ($null -ne $PSItem) { $PSItem } } -ErrorAction SilentlyContinue
+            [GenXdev.Helpers.Spotify]::SearchAndAdd((Get-SpotifyApiToken), $Query, $SearchTypeTypeId) | ForEach-Object { if ($null -ne $PSItem) { $PSItem } } -ErrorAction SilentlyContinue
         }
     }
 }
@@ -195,7 +195,7 @@ function Search-Spotify {
 
         foreach ($Query in $Queries) {
 
-            [GenXdev.Console.Spotify]::Search((Get-SpotifyApiToken), $Query, $SearchTypeTypeId) | ForEach-Object { $PSItem } -ErrorAction SilentlyContinue
+            [GenXdev.Helpers.Spotify]::Search((Get-SpotifyApiToken), $Query, $SearchTypeTypeId) | ForEach-Object { $PSItem } -ErrorAction SilentlyContinue
         }
     }
 }
@@ -214,7 +214,7 @@ function Set-SpotifyStart {
     [Alias("play", "Start-Music")]
     param()
 
-    [GenXdev.Console.Spotify]::Start((Get-SpotifyApiToken));
+    [GenXdev.Helpers.Spotify]::Start((Get-SpotifyApiToken));
 }
 ###############################################################################
 
@@ -230,7 +230,7 @@ function Set-SpotifyPause {
     [Alias("pausemusic", "Resume-Music")]
     param()
 
-    [GenXdev.Console.Spotify]::Pause((Get-SpotifyApiToken));
+    [GenXdev.Helpers.Spotify]::Pause((Get-SpotifyApiToken));
 }
 ###############################################################################
 
@@ -245,7 +245,7 @@ function Set-SpotifyStop {
 
     [Alias("stop", "Stop-Music")]
     param()
-    [GenXdev.Console.Spotify]::Stop((Get-SpotifyApiToken));
+    [GenXdev.Helpers.Spotify]::Stop((Get-SpotifyApiToken));
 }
 
 ###############################################################################
@@ -262,7 +262,7 @@ function Set-SpotifyPrevious {
     [Alias("previous", "prev")]
     param()
 
-    [GenXdev.Console.Spotify]::Previous((Get-SpotifyApiToken));
+    [GenXdev.Helpers.Spotify]::Previous((Get-SpotifyApiToken));
 }
 ###############################################################################
 
@@ -278,7 +278,7 @@ function Set-SpotifyNext {
     [Alias("next", "skip")]
     param()
 
-    [GenXdev.Console.Spotify]::Next((Get-SpotifyApiToken));
+    [GenXdev.Helpers.Spotify]::Next((Get-SpotifyApiToken));
 }
 ###############################################################################
 
@@ -296,7 +296,7 @@ function Set-SpotifyRepeatSong {
 
     param()
 
-    [GenXdev.Console.Spotify]::RepeatSong((Get-SpotifyApiToken));
+    [GenXdev.Helpers.Spotify]::RepeatSong((Get-SpotifyApiToken));
 }
 ###############################################################################
 
@@ -314,7 +314,7 @@ function Set-SpotifyRepeatContext {
 
     param()
 
-    [GenXdev.Console.Spotify]::RepeatContext((Get-SpotifyApiToken));
+    [GenXdev.Helpers.Spotify]::RepeatContext((Get-SpotifyApiToken));
 }
 ###############################################################################
 
@@ -330,7 +330,7 @@ function Set-SpotifyRepeatOff {
     [Alias("norepeat", "repeatoff")]
     param()
 
-    [GenXdev.Console.Spotify]::RepeatOff((Get-SpotifyApiToken));
+    [GenXdev.Helpers.Spotify]::RepeatOff((Get-SpotifyApiToken));
 }
 ###############################################################################
 
@@ -346,7 +346,7 @@ function Set-SpotifyShuffleOn {
     [Alias("shuffle", "shuffleon")]
     param()
 
-    [GenXdev.Console.Spotify]::ShuffleOn((Get-SpotifyApiToken));
+    [GenXdev.Helpers.Spotify]::ShuffleOn((Get-SpotifyApiToken));
 }
 ###############################################################################
 
@@ -362,7 +362,7 @@ function Set-SpotifyShuffleOff {
     [Alias("noshuffle", "shuffleoff")]
     param()
 
-    [GenXdev.Console.Spotify]::ShuffleOff((Get-SpotifyApiToken));
+    [GenXdev.Helpers.Spotify]::ShuffleOff((Get-SpotifyApiToken));
 }
 
 ###############################################################################
@@ -404,7 +404,7 @@ function Get-SpotifyUserPlaylists {
 
     process {
 
-        [GenXdev.Console.Spotify]::GetUserPlaylists($apiToken, $Filter);
+        [GenXdev.Helpers.Spotify]::GetUserPlaylists($apiToken, $Filter);
     }
 
     end {
@@ -459,7 +459,7 @@ function Add-SpotifyTracksToPlaylist {
 
     process {
 
-        [GenXdev.Console.Spotify]::AddToPlaylist($apiToken, $PlaylistId, $Uris);
+        [GenXdev.Helpers.Spotify]::AddToPlaylist($apiToken, $PlaylistId, $Uris);
     }
 
     end {
@@ -528,7 +528,7 @@ function Add-SpotifyNewPlaylist {
 
     process {
 
-        [GenXdev.Console.Spotify]::NewPlaylist($apiToken, $Name, $Description, ($Public -eq $true), ($Collabrative -eq $true));
+        [GenXdev.Helpers.Spotify]::NewPlaylist($apiToken, $Name, $Description, ($Public -eq $true), ($Collabrative -eq $true));
     }
 
     end {
@@ -645,7 +645,7 @@ function Set-SpotifyPlaylistDetails {
 
     process {
 
-        [GenXdev.Console.Spotify]::ChangePlaylistDetails($PlaylistId, $apiToken, $Name, $P, $C, $Description);
+        [GenXdev.Helpers.Spotify]::ChangePlaylistDetails($PlaylistId, $apiToken, $Name, $P, $C, $Description);
     }
 
     end {
@@ -700,7 +700,7 @@ function Remove-SpotifyTracksFromPlaylist {
 
     process {
 
-        [GenXdev.Console.Spotify]::RemoveFromPlaylist($apiToken, $PlaylistId, $Uri);
+        [GenXdev.Helpers.Spotify]::RemoveFromPlaylist($apiToken, $PlaylistId, $Uri);
     }
 
     end {
@@ -741,7 +741,7 @@ function Get-SpotifyCurrentlyPlaying {
 
     process {
 
-        [GenXdev.Console.Spotify]::GetCurrentlyPlaying($apiToken);
+        [GenXdev.Helpers.Spotify]::GetCurrentlyPlaying($apiToken);
     }
 
     end {
@@ -786,7 +786,7 @@ function Get-SpotifyTrackAudioFeatures {
 
     process {
 
-        [GenXdev.Console.Spotify]::GetSeveralAudioFeatures($apiToken, $Id);
+        [GenXdev.Helpers.Spotify]::GetSeveralAudioFeatures($apiToken, $Id);
     }
 
     end {
@@ -829,7 +829,7 @@ function Get-SpotifyTrackById {
 
     process {
 
-        [GenXdev.Console.Spotify]::GetTrackById($apiToken, $TrackId);
+        [GenXdev.Helpers.Spotify]::GetTrackById($apiToken, $TrackId);
     }
 
     end {
@@ -918,7 +918,7 @@ function Set-SpotifyPlaylistOrder {
 
     process {
 
-        [GenXdev.Console.Spotify]::ReorderPlaylist($apiToken, $PlaylistId, $RangeStart, $InsertBefore, $RangeLength);
+        [GenXdev.Helpers.Spotify]::ReorderPlaylist($apiToken, $PlaylistId, $RangeStart, $InsertBefore, $RangeLength);
     }
 
     end {
@@ -963,7 +963,7 @@ function Get-SpotifyPlaylistTracks {
 
     process {
 
-        [GenXdev.Console.Spotify]::GetPlaylistTracks($apiToken, $PlaylistId);
+        [GenXdev.Helpers.Spotify]::GetPlaylistTracks($apiToken, $PlaylistId);
     }
 
     end {
@@ -998,7 +998,7 @@ function Get-SpotifyDevices {
 
     process {
 
-        [GenXdev.Console.Spotify]::GetDevices($apiToken);
+        [GenXdev.Helpers.Spotify]::GetDevices($apiToken);
     }
 
     end {
@@ -1031,7 +1031,7 @@ function Get-SpotifyActiveDevice {
 
     process {
 
-        [GenXdev.Console.Spotify]::GetDevices($apiToken) | Where-Object { $PSItem.IsActive }
+        [GenXdev.Helpers.Spotify]::GetDevices($apiToken) | Where-Object { $PSItem.IsActive }
     }
 
     end {
@@ -1078,7 +1078,7 @@ function Set-SpotifyActiveDevice {
 
     process {
 
-        [GenXdev.Console.Spotify]::SetActiveDevice($apiToken, $DeviceId);
+        [GenXdev.Helpers.Spotify]::SetActiveDevice($apiToken, $DeviceId);
     }
 
     end {
@@ -1289,7 +1289,7 @@ function Get-SpotifyApiToken {
 
     try {
 
-        [GenXdev.Console.Spotify]::GetDevices($ApiToken) | Out-Null
+        [GenXdev.Helpers.Spotify]::GetDevices($ApiToken) | Out-Null
     }
     catch {
 
@@ -1353,11 +1353,11 @@ function Connect-SpotifyApiToken {
 
     Write-Warning "Spotify access token expired, requesting new.."
 
-    $url = [GenXdev.Console.Spotify]::RequestAuthenticationUri(5642);
+    $url = [GenXdev.Helpers.Spotify]::RequestAuthenticationUri(5642);
 
     [System.Diagnostics.Process] $process = Open-Webbrowser -PassThrough -ApplicationMode -NewWindow -Width 1000 -Height 800 -Centered -Monitor 0 -Url $url
 
-    [GenXdev.Console.Spotify]::RequestAuthenticationTokenUsingOAuth(5642)
+    [GenXdev.Helpers.Spotify]::RequestAuthenticationTokenUsingOAuth(5642)
 
     if ((!!$process -and $process -is [System.Diagnostics.Process]) -and (!$process.HasExited)) {
 

@@ -119,15 +119,13 @@ Stop-TextToSpeech [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 ### NOTES
 ````PowerShell
     See also: Start-TextToSpeech -> say, and Skip-TextToSpeech -> sstSkip
 -------------------------- EXAMPLE 1 --------------------------
-PS C:\> say "Good morning"; say "Good evening"; Stop-TextToSpeech; # -> 
-"G.."
+PS C:\> say "Good morning"; say "Good evening"; Stop-TextToSpeech; # -> "G.."
 ````
 
 <br/><hr/><hr/><br/>
@@ -166,8 +164,7 @@ Start-TextToSpeech -lines <String[]> [-wait] [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 ### NOTES
 ````PowerShell
@@ -185,23 +182,19 @@ Get-GenXDevCmdlets
 ````
 
 ### SYNOPSIS
-    Retreives a list of all installed GenXdev modules and their Cmdlets and 
-    corresponding aliases
+    Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding aliases
 
 ### SYNTAX
 ````PowerShell
-Get-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] 
-[<CommonParameters>]
+Get-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
-    Retreives a list of all installed GenXdev modules and their Cmdlets and 
-    corresponding aliases
+    Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding aliases
 
 ### PARAMETERS
     -Filter <String>
-        Allows you to search for Cmdlets by providing searchstrings, with or 
-        without wildcards
+        Allows you to search for Cmdlets by providing searchstrings, with or without wildcards
         Required?                    false
         Position?                    1
         Default value                *
@@ -217,8 +210,7 @@ Get-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -228,23 +220,19 @@ Show-GenXDevCmdlets                  --> cmds
 ````
 
 ### SYNOPSIS
-    Shows a list of all installed GenXdev modules and their Cmdlets and 
-    corresponding aliases
+    Shows a list of all installed GenXdev modules and their Cmdlets and corresponding aliases
 
 ### SYNTAX
 ````PowerShell
-Show-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] 
-[-Online] [<CommonParameters>]
+Show-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] [-Online] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
-    Shows a list of all installed GenXdev modules and their Cmdlets and 
-    corresponding aliases
+    Shows a list of all installed GenXdev modules and their Cmdlets and corresponding aliases
 
 ### PARAMETERS
     -Filter <String>
-        Allows you to search for Cmdlets by providing searchstrings, with or 
-        without wildcards
+        Allows you to search for Cmdlets by providing searchstrings, with or without wildcards
         Required?                    false
         Position?                    1
         Default value                *
@@ -266,8 +254,7 @@ Show-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -299,8 +286,7 @@ New-MicrosoftShellTab [-DontCloseThisTab] [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -310,8 +296,7 @@ Invoke-Fasti                         --> Fasti
 ````
 
 ### SYNOPSIS
-    Will extract all archive files (zip, 7z, tar, etc) found in current 
-    directory and then DELETE them
+    Will extract all archive files (zip, 7z, tar, etc) found in current directory and then DELETE them
 
 ### SYNTAX
 ````PowerShell
@@ -319,18 +304,15 @@ Invoke-Fasti [<CommonParameters>]
 ````
 
 ### DESCRIPTION
-    Will extract all archive files (zip, 7z, tar, etc) found in current 
-    directory and then DELETE them.
-    Each archive file is extracted into their own directory with the same name 
-    as the file
+    Will extract all archive files (zip, 7z, tar, etc) found in current directory and then DELETE them.
+    Each archive file is extracted into their own directory with the same name as the file
 
 ### PARAMETERS
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 ### NOTES
 ````PowerShell
@@ -362,8 +344,7 @@ Set-LocationParent [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -388,8 +369,7 @@ Set-LocationParent2 [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -414,8 +394,7 @@ Set-LocationParent3 [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -440,8 +419,7 @@ Set-LocationParent4 [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -466,8 +444,7 @@ Set-LocationParent5 [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -498,8 +475,7 @@ Invoke-Repeated [-script] <String> [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -524,8 +500,7 @@ Enable-Screensaver [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -550,8 +525,7 @@ Set-MonitorPowerOff [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -576,8 +550,7 @@ Set-MonitorPowerOn [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -608,8 +581,7 @@ Show-Verb [[-Verb] <String[]>] [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -636,8 +608,7 @@ Get-GenXDevModuleInfo [[-ModuleName] <string[]>] [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -654,8 +625,7 @@ Search-Spotify                       --> fm, sm
 
 ### SYNTAX
 ````PowerShell
-Search-Spotify [-Queries] <String[]> [-SearchType <String[]>] 
-[<CommonParameters>]
+Search-Spotify [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -680,8 +650,7 @@ Search-Spotify [-Queries] <String[]> [-SearchType <String[]>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -695,13 +664,11 @@ Search-SpotifyAndPlay                --> fmp, smp
 
 ### SYNTAX
 ````PowerShell
-Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>] 
-[<CommonParameters>]
+Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
-    Performs a Spotify search and plays the first found item on the active 
-    device
+    Performs a Spotify search and plays the first found item on the active device
 
 ### PARAMETERS
     -Queries <String[]>
@@ -722,8 +689,7 @@ Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -737,8 +703,7 @@ Search-SpotifyAndEnqueue             --> fmq, smq
 
 ### SYNTAX
 ````PowerShell
-Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] 
-[<CommonParameters>]
+Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -763,8 +728,7 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -789,8 +753,7 @@ Set-SpotifyStart [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -815,8 +778,7 @@ Set-SpotifyPause [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -841,8 +803,7 @@ Set-SpotifyStop [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -867,8 +828,7 @@ Set-SpotifyPrevious [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -893,8 +853,7 @@ Set-SpotifyNext [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -919,8 +878,7 @@ Set-SpotifyRepeatSong [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -945,8 +903,7 @@ Set-SpotifyRepeatContext [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -971,8 +928,7 @@ Set-SpotifyRepeatOff [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -997,8 +953,7 @@ Set-SpotifyShuffleOn [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1023,8 +978,7 @@ Set-SpotifyShuffleOff [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1034,8 +988,7 @@ Get-SpotifyUserPlaylists             --> upl
 ````
 
 ### SYNOPSIS
-    Returns a fully populated collection of Spotify playlists owned by current 
-    user
+    Returns a fully populated collection of Spotify playlists owned by current user
 
 ### SYNTAX
 ````PowerShell
@@ -1043,8 +996,7 @@ Get-SpotifyUserPlaylists [[-Filter] <String[]>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
-    Returns a fully populated collection of Spotify playlists owned by current 
-    user
+    Returns a fully populated collection of Spotify playlists owned by current user
 
 ### PARAMETERS
     -Filter <String[]>
@@ -1057,8 +1009,7 @@ Get-SpotifyUserPlaylists [[-Filter] <String[]>] [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1072,8 +1023,7 @@ Add-SpotifyTracksToPlaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyTracksToPlaylist [-PlaylistId] <String> [-Uri] <String[]> 
-[<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistId] <String> [-Uri] <String[]> [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1088,8 +1038,7 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String> [-Uri] <String[]>
         Accept pipeline input?       false
         Accept wildcard characters?  false
     -Uri <String[]>
-        The Spotify track Uris of the songs that should be added to the 
-        playlist"
+        The Spotify track Uris of the songs that should be added to the playlist"
         Required?                    true
         Position?                    2
         Default value                
@@ -1099,8 +1048,7 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String> [-Uri] <String[]>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1114,8 +1062,7 @@ Add-SpotifyNewPlaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] 
-[-Public] [-Collabrative] [<CommonParameters>]
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1154,8 +1101,7 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1169,9 +1115,8 @@ Set-SpotifyPlaylistDetails           --> spld
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> 
-[[-Description] <String>] [-Public] [-Collabrative] [-Private] 
-[-NoCollabrations] [<CommonParameters>]
+Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] <String>] [-Public] 
+[-Collabrative] [-Private] [-NoCollabrations] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1231,8 +1176,7 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1246,8 +1190,7 @@ Remove-SpotifyTracksFromPlaylist
 
 ### SYNTAX
 ````PowerShell
-Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String> [-Uri] <String[]> 
-[<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String> [-Uri] <String[]> [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1262,8 +1205,7 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String> [-Uri] <String[]>
         Accept pipeline input?       false
         Accept wildcard characters?  false
     -Uri <String[]>
-        The Spotify track Uris of the songs that should be removed from the 
-        playlist
+        The Spotify track Uris of the songs that should be removed from the playlist
         Required?                    true
         Position?                    2
         Default value                
@@ -1273,8 +1215,7 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String> [-Uri] <String[]>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1299,8 +1240,7 @@ Get-SpotifyCurrentlyPlaying [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1332,8 +1272,7 @@ Get-SpotifyTrackAudioFeatures [-Id] <String[]> [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1365,8 +1304,7 @@ Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1380,8 +1318,8 @@ Set-SpotifyPlaylistOrder
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> 
-[-InsertBefore] <Int32> [[-RangeLength] <Nullable`1>] [<CommonParameters>]
+Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] <Int32> [[-RangeLength] 
+<Nullable`1>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1403,16 +1341,11 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32>
         Accept pipeline input?       false
         Accept wildcard characters?  false
     -InsertBefore <Int32>
-        The position where the items should be inserted. To reorder the items 
-        to the
-        end of the playlist, simply set insert_before to the position after 
-        the last
-        item. Examples: To reorder the first item to the last position in a 
-        playlist
-        with 10 items, set range_start to 0, and insert_before to 10. To 
-        reorder the
-        last item in a playlist with 10 items to the start of the playlist, 
-        set range_start
+        The position where the items should be inserted. To reorder the items to the
+        end of the playlist, simply set insert_before to the position after the last
+        item. Examples: To reorder the first item to the last position in a playlist
+        with 10 items, set range_start to 0, and insert_before to 10. To reorder the
+        last item in a playlist with 10 items to the start of the playlist, set range_start
         to 9, and insert_before to 0.
         Required?                    true
         Position?                    2
@@ -1420,12 +1353,9 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32>
         Accept pipeline input?       false
         Accept wildcard characters?  false
     -RangeLength <Nullable`1>
-        The amount of items to be reordered. Defaults to 1 if not set. The 
-        range of items
-        to be reordered begins from the range_start position, and includes the 
-        range_length
-        subsequent items. Example: To move the items at index 9-10 to the 
-        start of the
+        The amount of items to be reordered. Defaults to 1 if not set. The range of items
+        to be reordered begins from the range_start position, and includes the range_length
+        subsequent items. Example: To move the items at index 9-10 to the start of the
         playlist, range_start is set to 9, and range_length is set to 2.
         Required?                    false
         Position?                    3
@@ -1436,8 +1366,7 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1469,8 +1398,7 @@ Get-SpotifyPlaylistTracks [-PlaylistId] <String> [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1495,8 +1423,7 @@ Get-SpotifyDevices [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1521,8 +1448,7 @@ Get-SpotifyActiveDevice [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1554,8 +1480,7 @@ Set-SpotifyActiveDevice [-DeviceId] <String> [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1569,8 +1494,7 @@ Get-SpotifyLyrics                    --> lyrics
 
 ### SYNTAX
 ````PowerShell
-Get-SpotifyLyrics [-TrackId <String>] [[-Queries] <String[]>] 
-[<CommonParameters>]
+Get-SpotifyLyrics [-TrackId <String>] [[-Queries] <String[]>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1595,8 +1519,7 @@ Get-SpotifyLyrics [-TrackId <String>] [[-Queries] <String[]>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1621,8 +1544,7 @@ Get-SpotifyApiToken [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1654,8 +1576,7 @@ Set-SpotifyApiToken [-ApiToken] <String> [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
 
@@ -1680,7 +1601,6 @@ Connect-SpotifyApiToken [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
 
 <br/><hr/><hr/><br/>
