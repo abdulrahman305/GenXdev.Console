@@ -61,8 +61,8 @@ Update-Module
 | Command&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | aliases&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description |
 | --- | --- | --- |
 | [Get-SpotifyApiToken](#Get-SpotifyApiToken) |  | Returns a ApiToken for Spotify |
-| [Connect-SpotifyApiToken](#Connect-SpotifyApiToken) |  | Uses Spotify Open-Auth to request an access token |
 | [Set-SpotifyApiToken](#Set-SpotifyApiToken) |  | Caches an Spotify API-token for later use |
+| [Connect-SpotifyApiToken](#Connect-SpotifyApiToken) |  | Uses Spotify Open-Auth to request an access token |
 | [Set-SpotifyStop](#Set-SpotifyStop) | stop, Stop-Music | Stops playback on the device that is active on Spotify |
 | [Set-SpotifyStart](#Set-SpotifyStart) | play, Start-Music | Starts playback on the device that is active on Spotify |
 | [Set-SpotifyPause](#Set-SpotifyPause) | pausemusic, Resume-Music | Pauses playback on the device that is active on Spotify |
@@ -708,32 +708,6 @@ Get-SpotifyApiToken [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-##	Connect-SpotifyApiToken
-````PowerShell
-Connect-SpotifyApiToken
-````
-
-### SYNOPSIS
-    Uses Spotify Open-Auth to request an access token
-
-### SYNTAX
-````PowerShell
-Connect-SpotifyApiToken [<CommonParameters>]
-````
-
-### DESCRIPTION
-    Uses Spotify Open-Auth to request an access token
-
-### PARAMETERS
-    <CommonParameters>
-        This cmdlet supports the common parameters: Verbose, Debug,
-        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-        OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
-
-<br/><hr/><hr/><br/>
-
 ##	Set-SpotifyApiToken
 ````PowerShell
 Set-SpotifyApiToken
@@ -758,6 +732,32 @@ Set-SpotifyApiToken [-ApiToken] <String> [<CommonParameters>]
         Default value                
         Accept pipeline input?       false
         Accept wildcard characters?  false
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters 
+        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+
+<br/><hr/><hr/><br/>
+
+##	Connect-SpotifyApiToken
+````PowerShell
+Connect-SpotifyApiToken
+````
+
+### SYNOPSIS
+    Uses Spotify Open-Auth to request an access token
+
+### SYNTAX
+````PowerShell
+Connect-SpotifyApiToken [<CommonParameters>]
+````
+
+### DESCRIPTION
+    Uses Spotify Open-Auth to request an access token
+
+### PARAMETERS
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
