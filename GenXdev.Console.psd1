@@ -6,7 +6,7 @@
     RootModule             = 'GenXdev.Console.psm1'
 
     # Version number of this module.
-    ModuleVersion          = '1.15.0'
+    ModuleVersion          = '1.20.0'
     # Supported PSEditions
     # CompatiblePSEditions = @()
 
@@ -44,7 +44,7 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules        = @(@{ModuleName = 'GenXdev.Helpers'; ModuleVersion  = '1.13.0'}, @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion  = '1.13.0'});
+    RequiredModules        = @(@{ModuleName = 'GenXdev.Helpers'; ModuleVersion  = '1.20.0'}, @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion  = '1.20.0'});
 
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies     = @("System.Speech", "GenXdev.Console.dll")
@@ -59,12 +59,12 @@
     # FormatsToProcess = @()
 
     # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-    NestedModules = @("GenXDev.Console.Spotify.psm1");
+    NestedModules = @("GenXdev.Console.Spotify.psm1")
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport      = '*' # @("*")
 
-    # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
+    # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no Cmdlets to export.
     CmdletsToExport        = '*' # = @("*")
 
     # Variables to export from this module
@@ -80,7 +80,7 @@
     ModuleList             = @("GenXdev.Console")
 
     # List of all files packaged with this module
-    FileList               = @("GenXdev.Console.psd1", "GenXdev.Console.psm1", "GenXdev.Console.Spotify.psm1", "GenXdev.Console.dll", "EmbedIO.dll", "Newtonsoft.Json.dll", "SpotifyAPI.Web.Auth.dll", "SpotifyAPI.Web.dll", "Swan.Lite.dll", "LICENSE", "license.txt", "powershell.jpg", "README.md")
+    FileList               = @("EmbedIO.dll", "GenXdev.Console.dll", "GenXdev.Console.psd1", "GenXdev.Console.psm1", "GenXdev.Console.Spotify.psm1", "LICENSE", "license.txt", "Newtonsoft.Json.dll", "powershell.jpg", "README.md", "SpotifyAPI.Web.Auth.dll", "SpotifyAPI.Web.dll", "Swan.Lite.dll")
 
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
     PrivateData            = @{
@@ -116,7 +116,7 @@
     } # End of PrivateData hashtable
 
     # HelpInfo URI of this module
-    HelpInfoURI            = 'https://github.com/renevaessen/GenXdev.Console/blob/master/README.md#syntax'
+    HelpInfoURI            = 'https://github.com/renevaessen/GenXdev.Console/blob/master/README.md#cmdlet-index'
 
     # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
     # DefaultCommandPrefix = ''

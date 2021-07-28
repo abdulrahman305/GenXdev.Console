@@ -21,7 +21,7 @@
 [![WinOS - Windows-10](https://img.shields.io/badge/WinOS-Windows--10--10.0.19041--SP0-brightgreen)](https://www.microsoft.com/en-us/windows/get-windows-10) [![GenXdev.Helpers](https://img.shields.io/powershellgallery/v/GenXdev.Helpers.svg?style=flat-square&label=GenXdev.Helpers)](https://www.powershellgallery.com/packages/GenXdev.Helpers/) [![GenXdev.Webbrowser](https://img.shields.io/powershellgallery/v/GenXdev.Webbrowser.svg?style=flat-square&label=GenXdev.Webbrowser)](https://www.powershellgallery.com/packages/GenXdev.Webbrowser/)
 ### INSTALLATION
 ````PowerShell
-Install-Module "GenXdev.Console" 
+Install-Module "GenXdev.Console"
 Import-Module "GenXdev.Console"
 ````
 ### UPDATE
@@ -37,8 +37,8 @@ Update-Module
 | --- | --- | --- |
 | [Stop-TextToSpeech](#Stop-TextToSpeech) | sst | Will stop the text-to-speech engine from saying anything else |
 | [Start-TextToSpeech](#Start-TextToSpeech) | say | Will use the text-to-speech engine to speak out text |
-| [Get-GenXDevCmdLets](#Get-GenXDevCmdLets) |  | Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding aliases |
-| [Show-GenXDevCmdLets](#Show-GenXDevCmdLets) | cmds | Shows a list of all installed GenXdev modules and their Cmdlets and corresponding aliases |
+| [Get-GenXDevCmdlets](#Get-GenXDevCmdlets) |  | Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding aliases |
+| [Show-GenXDevCmdlets](#Show-GenXDevCmdlets) | cmds | Shows a list of all installed GenXdev modules and their Cmdlets and corresponding aliases |
 | [New-MicrosoftShellTab](#New-MicrosoftShellTab) | x | Opens a new Windows Terminal tab and closes current by default |
 | [Invoke-Fasti](#Invoke-Fasti) | Fasti | Will extract all archive files (zip, 7z, tar, etc) found in current directory and then DELETE them.Each archive file is extracted into their own directory with the same name as the file |
 | [Set-LocationParent](#Set-LocationParent) | .. | Provides the .. alias to go one directory up |
@@ -52,20 +52,19 @@ Update-Module
 | [Set-MonitorPowerOn](#Set-MonitorPowerOn) |  | Turns the monitor power on |
 | [Show-Verb](#Show-Verb) |  | Shows a short alphabetical list of all PowerShell verbs |
 | [Get-GenXDevModuleInfo](#Get-GenXDevModuleInfo) |  |  |
-| [Get-GenXDevNewModulesByDependencies](#Get-GenXDevNewModulesByDependencies) |  |  |
 
 <hr/>
 &nbsp;
 
-### GenXDev.Console.Spotify</hr>
+### GenXdev.Console.Spotify</hr>
 | Command&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | aliases&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Description |
 | --- | --- | --- |
-| [Get-SpotifyApiToken](#Get-SpotifyApiToken) |  | Returns a ApiToken for Spotify |
-| [Set-SpotifyApiToken](#Set-SpotifyApiToken) |  | Caches an Spotify API-token for later use |
-| [Connect-SpotifyApiToken](#Connect-SpotifyApiToken) |  | Uses Spotify Open-Auth to request an access token |
-| [Set-SpotifyStop](#Set-SpotifyStop) | stop, Stop-Music | Stops playback on the device that is active on Spotify |
+| [Search-Spotify](#Search-Spotify) | fm, sm | Performs a Spotify search and returns the search results |
+| [Search-SpotifyAndPlay](#Search-SpotifyAndPlay) | fmp, smp | Performs a Spotify search and plays the first found item on the active device |
+| [Search-SpotifyAndEnqueue](#Search-SpotifyAndEnqueue) | fmq, smq | Performs a Spotify search and adds the first item to the queue |
 | [Set-SpotifyStart](#Set-SpotifyStart) | play, Start-Music | Starts playback on the device that is active on Spotify |
 | [Set-SpotifyPause](#Set-SpotifyPause) | pausemusic, Resume-Music | Pauses playback on the device that is active on Spotify |
+| [Set-SpotifyStop](#Set-SpotifyStop) | stop, Stop-Music | Stops playback on the device that is active on Spotify |
 | [Set-SpotifyPrevious](#Set-SpotifyPrevious) | prev, previous | Skips to previous track on the device that is active on Spotify |
 | [Set-SpotifyNext](#Set-SpotifyNext) | next, skip | Skips to next track on the device that is active on Spotify |
 | [Set-SpotifyRepeatSong](#Set-SpotifyRepeatSong) | repeatsong | Enables song-repeat on the device that is active on Spotify |
@@ -73,9 +72,6 @@ Update-Module
 | [Set-SpotifyRepeatOff](#Set-SpotifyRepeatOff) | norepeat, repeatoff | Disables repeat on the device that is active on Spotify |
 | [Set-SpotifyShuffleOn](#Set-SpotifyShuffleOn) | shuffle, shuffleon | Enables song-shuffle on the device that is active on Spotify |
 | [Set-SpotifyShuffleOff](#Set-SpotifyShuffleOff) | noshuffle, shuffleoff | Disables song-shuffle on the device that is active on Spotify |
-| [Search-Spotify](#Search-Spotify) | fm, sm | Performs a Spotify search and returns the search results |
-| [Search-SpotifyAndPlay](#Search-SpotifyAndPlay) | fmp, smp | Performs a Spotify search and plays the first found item on the active device |
-| [Search-SpotifyAndEnqueue](#Search-SpotifyAndEnqueue) | fmq, smq | Performs a Spotify search and adds the first item to the queue |
 | [Get-SpotifyUserPlaylists](#Get-SpotifyUserPlaylists) | upl | Returns a fully populated collection of Spotify playlists owned by current user |
 | [Add-SpotifyTracksToPlaylist](#Add-SpotifyTracksToPlaylist) |  | Adds tracks to a Spotify playlist |
 | [Add-SpotifyNewPlaylist](#Add-SpotifyNewPlaylist) |  | Creates a new Spotify playlist |
@@ -90,6 +86,9 @@ Update-Module
 | [Get-SpotifyActiveDevice](#Get-SpotifyActiveDevice) |  | Returns all currently active Spotify devices for current user |
 | [Set-SpotifyActiveDevice](#Set-SpotifyActiveDevice) |  | Transfers playback to provided Spotify device |
 | [Get-SpotifyLyrics](#Get-SpotifyLyrics) | lyrics | Searches for lyrics of a track |
+| [Get-SpotifyApiToken](#Get-SpotifyApiToken) |  | Returns a ApiToken for Spotify |
+| [Set-SpotifyApiToken](#Set-SpotifyApiToken) |  | Caches an Spotify API-token for later use |
+| [Connect-SpotifyApiToken](#Connect-SpotifyApiToken) |  | Uses Spotify Open-Auth to request an access token |
 
 <br/><hr/><hr/><br/>
 
@@ -180,9 +179,9 @@ PS C:\> "Good morning" | Start-TextToSpeech
 
 <br/><hr/><hr/><br/>
 
-##	Get-GenXDevCmdLets
+##	Get-GenXDevCmdlets
 ````PowerShell
-Get-GenXDevCmdLets
+Get-GenXDevCmdlets
 ````
 
 ### SYNOPSIS
@@ -191,7 +190,7 @@ Get-GenXDevCmdLets
 
 ### SYNTAX
 ````PowerShell
-Get-GenXDevCmdLets [[-Filter] <String>] [-ModuleName <String[]>] 
+Get-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] 
 [<CommonParameters>]
 ````
 
@@ -201,7 +200,7 @@ Get-GenXDevCmdLets [[-Filter] <String>] [-ModuleName <String[]>]
 
 ### PARAMETERS
     -Filter <String>
-        Allows you to search for cmdLets by providing searchstrings, with or 
+        Allows you to search for Cmdlets by providing searchstrings, with or 
         without wildcards
         Required?                    false
         Position?                    1
@@ -223,9 +222,9 @@ Get-GenXDevCmdLets [[-Filter] <String>] [-ModuleName <String[]>]
 
 <br/><hr/><hr/><br/>
 
-##	Show-GenXDevCmdLets
+##	Show-GenXDevCmdlets
 ````PowerShell
-Show-GenXDevCmdLets                  --> cmds
+Show-GenXDevCmdlets                  --> cmds
 ````
 
 ### SYNOPSIS
@@ -234,7 +233,7 @@ Show-GenXDevCmdLets                  --> cmds
 
 ### SYNTAX
 ````PowerShell
-Show-GenXDevCmdLets [[-Filter] <String>] [-ModuleName <String[]>] 
+Show-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] 
 [-Online] [<CommonParameters>]
 ````
 
@@ -244,7 +243,7 @@ Show-GenXDevCmdLets [[-Filter] <String>] [-ModuleName <String[]>]
 
 ### PARAMETERS
     -Filter <String>
-        Allows you to search for cmdLets by providing searchstrings, with or 
+        Allows you to search for Cmdlets by providing searchstrings, with or 
         without wildcards
         Required?                    false
         Position?                    1
@@ -642,94 +641,39 @@ Get-GenXDevModuleInfo [[-ModuleName] <string[]>] [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-##	Get-GenXDevNewModulesByDependencies
-````PowerShell
-Get-GenXDevNewModulesByDependencies
-````
-
-### SYNTAX
-````PowerShell
-Get-GenXDevNewModulesByDependencies [[-ModuleName] <string[]>] [-Ref 
-<psobject>] [<CommonParameters>]
-````
-
-### PARAMETERS
-    -ModuleName <string[]>
-        Required?                    false
-        Position?                    0
-        Accept pipeline input?       true (ByValue, ByPropertyName)
-        Parameter set name           (All)
-        Aliases                      Name, Module
-        Dynamic?                     false
-        Accept wildcard characters?  false
-    -Ref <psobject>
-        Required?                    false
-        Position?                    Named
-        Accept pipeline input?       false
-        Parameter set name           (All)
-        Aliases                      None
-        Dynamic?                     false
-        Accept wildcard characters?  false
-    <CommonParameters>
-        This cmdlet supports the common parameters: Verbose, Debug,
-        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-        OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
-
-<br/><hr/><hr/><br/>
-
 &nbsp;<hr/>
-###	GenXDev.Console.Spotify<hr/>
+###	GenXdev.Console.Spotify<hr/>
 
-##	Get-SpotifyApiToken
+##	Search-Spotify
 ````PowerShell
-Get-SpotifyApiToken
+Search-Spotify                       --> fm, sm
 ````
 
 ### SYNOPSIS
-    Returns a ApiToken for Spotify
+    Performs a Spotify search and returns the search results
 
 ### SYNTAX
 ````PowerShell
-Get-SpotifyApiToken [<CommonParameters>]
+Search-Spotify [-Queries] <String[]> [-SearchType <String[]>] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
-    Returns a ApiToken for Spotify
+    Performs a Spotify search and returns the search results
 
 ### PARAMETERS
-    <CommonParameters>
-        This cmdlet supports the common parameters: Verbose, Debug,
-        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-        OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
-
-<br/><hr/><hr/><br/>
-
-##	Set-SpotifyApiToken
-````PowerShell
-Set-SpotifyApiToken
-````
-
-### SYNOPSIS
-    Caches an Spotify API-token for later use
-
-### SYNTAX
-````PowerShell
-Set-SpotifyApiToken [-ApiToken] <String> [<CommonParameters>]
-````
-
-### DESCRIPTION
-    Caches an Spotify API-token for later use
-
-### PARAMETERS
-    -ApiToken <String>
-        The API-token to cache
+    -Queries <String[]>
+        The search phrase
         Required?                    true
         Position?                    1
         Default value                
+        Accept pipeline input?       true (ByValue, ByPropertyName)
+        Accept wildcard characters?  false
+    -SearchType <String[]>
+        Optionally, the type of item to search for
+        Required?                    false
+        Position?                    named
+        Default value                @("Track")
         Accept pipeline input?       false
         Accept wildcard characters?  false
     <CommonParameters>
@@ -741,23 +685,39 @@ Set-SpotifyApiToken [-ApiToken] <String> [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-##	Connect-SpotifyApiToken
+##	Search-SpotifyAndPlay
 ````PowerShell
-Connect-SpotifyApiToken
+Search-SpotifyAndPlay                --> fmp, smp
 ````
 
 ### SYNOPSIS
-    Uses Spotify Open-Auth to request an access token
+    Performs a Spotify search and plays the first found item
 
 ### SYNTAX
 ````PowerShell
-Connect-SpotifyApiToken [<CommonParameters>]
+Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
-    Uses Spotify Open-Auth to request an access token
+    Performs a Spotify search and plays the first found item on the active 
+    device
 
 ### PARAMETERS
+    -Queries <String[]>
+        The search phrase
+        Required?                    true
+        Position?                    1
+        Default value                
+        Accept pipeline input?       true (ByValue, ByPropertyName)
+        Accept wildcard characters?  false
+    -SearchType <String[]>
+        Optionally, the type of item to search for
+        Required?                    false
+        Position?                    named
+        Default value                @("Track")
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
@@ -767,23 +727,38 @@ Connect-SpotifyApiToken [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-##	Set-SpotifyStop
+##	Search-SpotifyAndEnqueue
 ````PowerShell
-Set-SpotifyStop                      --> stop, Stop-Music
+Search-SpotifyAndEnqueue             --> fmq, smq
 ````
 
 ### SYNOPSIS
-    Stops Spotify playback
+    Performs a Spotify search and adds the first item to the queue
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyStop [<CommonParameters>]
+Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
-    Stops playback on the device that is active on Spotify
+    Performs a Spotify search and adds the first item to the queue
 
 ### PARAMETERS
+    -Queries <String[]>
+        The search phrase
+        Required?                    true
+        Position?                    1
+        Default value                
+        Accept pipeline input?       true (ByValue, ByPropertyName)
+        Accept wildcard characters?  false
+    -SearchType <String[]>
+        Optionally, the type of item to search for
+        Required?                    false
+        Position?                    named
+        Default value                @("Track")
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
@@ -834,6 +809,32 @@ Set-SpotifyPause [<CommonParameters>]
 
 ### DESCRIPTION
     Pauses playback on the device that is active on Spotify
+
+### PARAMETERS
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters 
+        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+
+<br/><hr/><hr/><br/>
+
+##	Set-SpotifyStop
+````PowerShell
+Set-SpotifyStop                      --> stop, Stop-Music
+````
+
+### SYNOPSIS
+    Stops Spotify playback
+
+### SYNTAX
+````PowerShell
+Set-SpotifyStop [<CommonParameters>]
+````
+
+### DESCRIPTION
+    Stops playback on the device that is active on Spotify
 
 ### PARAMETERS
     <CommonParameters>
@@ -1018,130 +1019,6 @@ Set-SpotifyShuffleOff [<CommonParameters>]
     Disables song-shuffle on the device that is active on Spotify
 
 ### PARAMETERS
-    <CommonParameters>
-        This cmdlet supports the common parameters: Verbose, Debug,
-        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-        OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
-
-<br/><hr/><hr/><br/>
-
-##	Search-Spotify
-````PowerShell
-Search-Spotify                       --> fm, sm
-````
-
-### SYNOPSIS
-    Performs a Spotify search and returns the search results
-
-### SYNTAX
-````PowerShell
-Search-Spotify [-Queries] <String[]> [-SearchType <String[]>] 
-[<CommonParameters>]
-````
-
-### DESCRIPTION
-    Performs a Spotify search and returns the search results
-
-### PARAMETERS
-    -Queries <String[]>
-        The search phrase
-        Required?                    true
-        Position?                    1
-        Default value                
-        Accept pipeline input?       true (ByValue, ByPropertyName)
-        Accept wildcard characters?  false
-    -SearchType <String[]>
-        Optionally, the type of item to search for
-        Required?                    false
-        Position?                    named
-        Default value                @("Track")
-        Accept pipeline input?       false
-        Accept wildcard characters?  false
-    <CommonParameters>
-        This cmdlet supports the common parameters: Verbose, Debug,
-        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-        OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
-
-<br/><hr/><hr/><br/>
-
-##	Search-SpotifyAndPlay
-````PowerShell
-Search-SpotifyAndPlay                --> fmp, smp
-````
-
-### SYNOPSIS
-    Performs a Spotify search and plays the first found item
-
-### SYNTAX
-````PowerShell
-Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>] 
-[<CommonParameters>]
-````
-
-### DESCRIPTION
-    Performs a Spotify search and plays the first found item on the active 
-    device
-
-### PARAMETERS
-    -Queries <String[]>
-        The search phrase
-        Required?                    true
-        Position?                    1
-        Default value                
-        Accept pipeline input?       true (ByValue, ByPropertyName)
-        Accept wildcard characters?  false
-    -SearchType <String[]>
-        Optionally, the type of item to search for
-        Required?                    false
-        Position?                    named
-        Default value                @("Track")
-        Accept pipeline input?       false
-        Accept wildcard characters?  false
-    <CommonParameters>
-        This cmdlet supports the common parameters: Verbose, Debug,
-        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-        OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters 
-        (https://go.microsoft.com/fwlink/?LinkID=113216). 
-
-<br/><hr/><hr/><br/>
-
-##	Search-SpotifyAndEnqueue
-````PowerShell
-Search-SpotifyAndEnqueue             --> fmq, smq
-````
-
-### SYNOPSIS
-    Performs a Spotify search and adds the first item to the queue
-
-### SYNTAX
-````PowerShell
-Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] 
-[<CommonParameters>]
-````
-
-### DESCRIPTION
-    Performs a Spotify search and adds the first item to the queue
-
-### PARAMETERS
-    -Queries <String[]>
-        The search phrase
-        Required?                    true
-        Position?                    1
-        Default value                
-        Accept pipeline input?       true (ByValue, ByPropertyName)
-        Accept wildcard characters?  false
-    -SearchType <String[]>
-        Optionally, the type of item to search for
-        Required?                    false
-        Position?                    named
-        Default value                @("Track")
-        Accept pipeline input?       false
-        Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
@@ -1714,6 +1591,91 @@ Get-SpotifyLyrics [-TrackId <String>] [[-Queries] <String[]>]
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
         Accept wildcard characters?  false
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters 
+        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+
+<br/><hr/><hr/><br/>
+
+##	Get-SpotifyApiToken
+````PowerShell
+Get-SpotifyApiToken
+````
+
+### SYNOPSIS
+    Returns a ApiToken for Spotify
+
+### SYNTAX
+````PowerShell
+Get-SpotifyApiToken [<CommonParameters>]
+````
+
+### DESCRIPTION
+    Returns a ApiToken for Spotify
+
+### PARAMETERS
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters 
+        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+
+<br/><hr/><hr/><br/>
+
+##	Set-SpotifyApiToken
+````PowerShell
+Set-SpotifyApiToken
+````
+
+### SYNOPSIS
+    Caches an Spotify API-token for later use
+
+### SYNTAX
+````PowerShell
+Set-SpotifyApiToken [-ApiToken] <String> [<CommonParameters>]
+````
+
+### DESCRIPTION
+    Caches an Spotify API-token for later use
+
+### PARAMETERS
+    -ApiToken <String>
+        The API-token to cache
+        Required?                    true
+        Position?                    1
+        Default value                
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters 
+        (https://go.microsoft.com/fwlink/?LinkID=113216). 
+
+<br/><hr/><hr/><br/>
+
+##	Connect-SpotifyApiToken
+````PowerShell
+Connect-SpotifyApiToken
+````
+
+### SYNOPSIS
+    Uses Spotify Open-Auth to request an access token
+
+### SYNTAX
+````PowerShell
+Connect-SpotifyApiToken [<CommonParameters>]
+````
+
+### DESCRIPTION
+    Uses Spotify Open-Auth to request an access token
+
+### PARAMETERS
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,

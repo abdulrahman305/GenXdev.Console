@@ -1,271 +1,4 @@
 
-<#
-.SYNOPSIS
-Returns a ApiToken for Spotify
-
-.DESCRIPTION
-Returns a ApiToken for Spotify
-#>
-function Get-SpotifyApiToken {
-
-    [CmdletBinding()]
-
-    param()
-
-    $path = "$PSScriptRoot\..\..\GenXdev.Local\Spotify_Auth.json";
-
-    if ([IO.File]::Exists($path)) {
-
-        $ApiToken = [IO.File]::ReadAllText($path);
-    }
-    else {
-
-        $ApiToken = Connect-SpotifyApiToken
-        Set-SpotifyApiToken $ApiToken | Out-Null
-    }
-
-    try {
-
-        [GenXdev.Console.Spotify]::GetDevices($ApiToken) | Out-Null
-    }
-    catch {
-
-        $ApiToken = Connect-SpotifyApiToken
-        Set-SpotifyApiToken $ApiToken | Out-Null
-    }
-
-    $ApiToken
-}
-
-###############################################################################
-
-<#
-.SYNOPSIS
-Caches an Spotify API-token for later use
-
-.DESCRIPTION
-Caches an Spotify API-token for later use
-
-.PARAMETER ApiToken
-The API-token to cache
-#>
-function Set-SpotifyApiToken {
-
-    [CmdletBinding()]
-
-    param(
-
-        [parameter(
-            Mandatory = $true,
-            Position = 0
-        )] [string] $ApiToken
-    )
-
-    $dir = "$PSScriptRoot\..\..\GenXdev.Local";
-    $path = "$dir\Spotify_Auth.json";
-
-    if (![IO.Directory]::Exists($dir)) {
-
-        [IO.Directory]::CreateDirectory($dir);
-    }
-
-    [IO.File]::WriteAllText($path, $ApiToken.Trim("`r`n`t "));
-}
-
-###############################################################################
-
-<#
-.SYNOPSIS
-Uses Spotify Open-Auth to request an access token
-
-.DESCRIPTION
-Uses Spotify Open-Auth to request an access token
-
-#>
-function Connect-SpotifyApiToken {
-
-    [CmdletBinding()]
-
-    param()
-
-    Write-Warning "Spotify access token expired, requesting new.."
-
-    $url = [GenXdev.Console.Spotify]::RequestAuthenticationUri(5642);
-
-    [System.Diagnostics.Process] $process = Open-Webbrowser -PassThrough -ApplicationMode -NewWindow -Width 1000 -Height 800 -Centered -Monitor 0 -Url $url
-
-    [GenXdev.Console.Spotify]::RequestAuthenticationTokenUsingOAuth(5642)
-
-    if ((!!$process -and $process -is [System.Diagnostics.Process]) -and (!$process.HasExited)) {
-
-        $process.CloseMainWindow() | Out-Null
-    }
-}
-
-###############################################################################
-
-<#
-.SYNOPSIS
-Stops Spotify playback
-
-.DESCRIPTION
-Stops playback on the device that is active on Spotify
-#>
-function Set-SpotifyStop {
-
-    [Alias("stop", "Stop-Music")]
-    param()
-    [GenXdev.Console.Spotify]::Stop((Get-SpotifyApiToken));
-}
-###############################################################################
-
-<#
-.SYNOPSIS
-Starts Spotify playback
-
-.DESCRIPTION
-Starts playback on the device that is active on Spotify
-#>
-function Set-SpotifyStart {
-
-    [Alias("play", "Start-Music")]
-    param()
-
-    [GenXdev.Console.Spotify]::Start((Get-SpotifyApiToken));
-}
-###############################################################################
-
-<#
-.SYNOPSIS
-Pauses Spotify playback
-
-.DESCRIPTION
-Pauses playback on the device that is active on Spotify
-#>
-function Set-SpotifyPause {
-
-    [Alias("pausemusic", "Resume-Music")]
-    param()
-
-    [GenXdev.Console.Spotify]::Pause((Get-SpotifyApiToken));
-}
-###############################################################################
-
-<#
-.SYNOPSIS
-Skips to previous track on Spotify
-
-.DESCRIPTION
-Skips to previous track on the device that is active on Spotify
-#>
-function Set-SpotifyPrevious {
-
-    [Alias("previous", "prev")]
-    param()
-
-    [GenXdev.Console.Spotify]::Previous((Get-SpotifyApiToken));
-}
-###############################################################################
-
-<#
-.SYNOPSIS
-Skips to next track on Spotify
-
-.DESCRIPTION
-Skips to next track on the device that is active on Spotify
-#>
-function Set-SpotifyNext {
-
-    [Alias("next", "skip")]
-    param()
-
-    [GenXdev.Console.Spotify]::Next((Get-SpotifyApiToken));
-}
-###############################################################################
-
-<#
-.SYNOPSIS
-Enables Spotify song-repeat
-
-.DESCRIPTION
-Enables song-repeat on the device that is active on Spotify
-#>
-function Set-SpotifyRepeatSong {
-
-    [CmdletBinding()]
-    [Alias("repeatsong")]
-
-    param()
-
-    [GenXdev.Console.Spotify]::RepeatSong((Get-SpotifyApiToken));
-}
-###############################################################################
-
-<#
-.SYNOPSIS
-Enables Spotify playlist-repeat
-
-.DESCRIPTION
-Enables playlist-repeat on the device that is active on Spotify
-#>
-function Set-SpotifyRepeatContext {
-
-    [CmdletBinding()]
-    [Alias("repeat")]
-
-    param()
-
-    [GenXdev.Console.Spotify]::RepeatContext((Get-SpotifyApiToken));
-}
-###############################################################################
-
-<#
-.SYNOPSIS
-Disables Spotify repeat
-
-.DESCRIPTION
-Disables repeat on the device that is active on Spotify
-#>
-function Set-SpotifyRepeatOff {
-
-    [Alias("norepeat", "repeatoff")]
-    param()
-
-    [GenXdev.Console.Spotify]::RepeatOff((Get-SpotifyApiToken));
-}
-###############################################################################
-
-<#
-.SYNOPSIS
-Enables Spotify song-shuffle
-
-.DESCRIPTION
-Enables song-shuffle on the device that is active on Spotify
-#>
-function Set-SpotifyShuffleOn {
-
-    [Alias("shuffle", "shuffleon")]
-    param()
-
-    [GenXdev.Console.Spotify]::ShuffleOn((Get-SpotifyApiToken));
-}
-###############################################################################
-
-<#
-.SYNOPSIS
-Disables Spotify song-shuffle
-
-.DESCRIPTION
-Disables song-shuffle on the device that is active on Spotify
-#>
-function Set-SpotifyShuffleOff {
-
-    [Alias("noshuffle", "shuffleoff")]
-    param()
-
-    [GenXdev.Console.Spotify]::ShuffleOff((Get-SpotifyApiToken));
-}
-
 ###############################################################################
 
 <#
@@ -471,6 +204,171 @@ function Search-Spotify {
 
 <#
 .SYNOPSIS
+Starts Spotify playback
+
+.DESCRIPTION
+Starts playback on the device that is active on Spotify
+#>
+function Set-SpotifyStart {
+
+    [Alias("play", "Start-Music")]
+    param()
+
+    [GenXdev.Console.Spotify]::Start((Get-SpotifyApiToken));
+}
+###############################################################################
+
+<#
+.SYNOPSIS
+Pauses Spotify playback
+
+.DESCRIPTION
+Pauses playback on the device that is active on Spotify
+#>
+function Set-SpotifyPause {
+
+    [Alias("pausemusic", "Resume-Music")]
+    param()
+
+    [GenXdev.Console.Spotify]::Pause((Get-SpotifyApiToken));
+}
+###############################################################################
+
+<#
+.SYNOPSIS
+Stops Spotify playback
+
+.DESCRIPTION
+Stops playback on the device that is active on Spotify
+#>
+function Set-SpotifyStop {
+
+    [Alias("stop", "Stop-Music")]
+    param()
+    [GenXdev.Console.Spotify]::Stop((Get-SpotifyApiToken));
+}
+
+###############################################################################
+
+<#
+.SYNOPSIS
+Skips to previous track on Spotify
+
+.DESCRIPTION
+Skips to previous track on the device that is active on Spotify
+#>
+function Set-SpotifyPrevious {
+
+    [Alias("previous", "prev")]
+    param()
+
+    [GenXdev.Console.Spotify]::Previous((Get-SpotifyApiToken));
+}
+###############################################################################
+
+<#
+.SYNOPSIS
+Skips to next track on Spotify
+
+.DESCRIPTION
+Skips to next track on the device that is active on Spotify
+#>
+function Set-SpotifyNext {
+
+    [Alias("next", "skip")]
+    param()
+
+    [GenXdev.Console.Spotify]::Next((Get-SpotifyApiToken));
+}
+###############################################################################
+
+<#
+.SYNOPSIS
+Enables Spotify song-repeat
+
+.DESCRIPTION
+Enables song-repeat on the device that is active on Spotify
+#>
+function Set-SpotifyRepeatSong {
+
+    [CmdletBinding()]
+    [Alias("repeatsong")]
+
+    param()
+
+    [GenXdev.Console.Spotify]::RepeatSong((Get-SpotifyApiToken));
+}
+###############################################################################
+
+<#
+.SYNOPSIS
+Enables Spotify playlist-repeat
+
+.DESCRIPTION
+Enables playlist-repeat on the device that is active on Spotify
+#>
+function Set-SpotifyRepeatContext {
+
+    [CmdletBinding()]
+    [Alias("repeat")]
+
+    param()
+
+    [GenXdev.Console.Spotify]::RepeatContext((Get-SpotifyApiToken));
+}
+###############################################################################
+
+<#
+.SYNOPSIS
+Disables Spotify repeat
+
+.DESCRIPTION
+Disables repeat on the device that is active on Spotify
+#>
+function Set-SpotifyRepeatOff {
+
+    [Alias("norepeat", "repeatoff")]
+    param()
+
+    [GenXdev.Console.Spotify]::RepeatOff((Get-SpotifyApiToken));
+}
+###############################################################################
+
+<#
+.SYNOPSIS
+Enables Spotify song-shuffle
+
+.DESCRIPTION
+Enables song-shuffle on the device that is active on Spotify
+#>
+function Set-SpotifyShuffleOn {
+
+    [Alias("shuffle", "shuffleon")]
+    param()
+
+    [GenXdev.Console.Spotify]::ShuffleOn((Get-SpotifyApiToken));
+}
+###############################################################################
+
+<#
+.SYNOPSIS
+Disables Spotify song-shuffle
+
+.DESCRIPTION
+Disables song-shuffle on the device that is active on Spotify
+#>
+function Set-SpotifyShuffleOff {
+
+    [Alias("noshuffle", "shuffleoff")]
+    param()
+
+    [GenXdev.Console.Spotify]::ShuffleOff((Get-SpotifyApiToken));
+}
+
+###############################################################################
+
+<#
+.SYNOPSIS
 Returns a fully populated collection of Spotify playlists owned by current user
 
 .DESCRIPTION
@@ -638,7 +536,6 @@ function Add-SpotifyNewPlaylist {
 
     }
 }
-
 
 ###############################################################################
 
@@ -853,7 +750,6 @@ function Get-SpotifyCurrentlyPlaying {
     }
 }
 
-
 ###############################################################################
 
 <#
@@ -941,7 +837,6 @@ function Get-SpotifyTrackById {
 
     }
 }
-
 
 ###############################################################################
 
@@ -1361,5 +1256,111 @@ function Get-SpotifyLyrics {
 
             $result
         }
+    }
+}
+
+
+###############################################################################
+
+<#
+.SYNOPSIS
+Returns a ApiToken for Spotify
+
+.DESCRIPTION
+Returns a ApiToken for Spotify
+#>
+function Get-SpotifyApiToken {
+
+    [CmdletBinding()]
+
+    param()
+
+    $path = "$PSScriptRoot\..\..\GenXdev.Local\Spotify_Auth.json";
+
+    if ([IO.File]::Exists($path)) {
+
+        $ApiToken = [IO.File]::ReadAllText($path);
+    }
+    else {
+
+        $ApiToken = Connect-SpotifyApiToken
+        Set-SpotifyApiToken $ApiToken | Out-Null
+    }
+
+    try {
+
+        [GenXdev.Console.Spotify]::GetDevices($ApiToken) | Out-Null
+    }
+    catch {
+
+        $ApiToken = Connect-SpotifyApiToken
+        Set-SpotifyApiToken $ApiToken | Out-Null
+    }
+
+    $ApiToken
+}
+
+###############################################################################
+
+<#
+.SYNOPSIS
+Caches an Spotify API-token for later use
+
+.DESCRIPTION
+Caches an Spotify API-token for later use
+
+.PARAMETER ApiToken
+The API-token to cache
+#>
+function Set-SpotifyApiToken {
+
+    [CmdletBinding()]
+
+    param(
+
+        [parameter(
+            Mandatory = $true,
+            Position = 0
+        )] [string] $ApiToken
+    )
+
+    $dir = "$PSScriptRoot\..\..\GenXdev.Local";
+    $path = "$dir\Spotify_Auth.json";
+
+    if (![IO.Directory]::Exists($dir)) {
+
+        [IO.Directory]::CreateDirectory($dir);
+    }
+
+    [IO.File]::WriteAllText($path, $ApiToken.Trim("`r`n`t "));
+}
+
+###############################################################################
+
+<#
+.SYNOPSIS
+Uses Spotify Open-Auth to request an access token
+
+.DESCRIPTION
+Uses Spotify Open-Auth to request an access token
+
+#>
+function Connect-SpotifyApiToken {
+
+    [CmdletBinding()]
+
+    param()
+
+    Write-Warning "Spotify access token expired, requesting new.."
+
+    $url = [GenXdev.Console.Spotify]::RequestAuthenticationUri(5642);
+
+    [System.Diagnostics.Process] $process = Open-Webbrowser -PassThrough -ApplicationMode -NewWindow -Width 1000 -Height 800 -Centered -Monitor 0 -Url $url
+
+    [GenXdev.Console.Spotify]::RequestAuthenticationTokenUsingOAuth(5642)
+
+    if ((!!$process -and $process -is [System.Diagnostics.Process]) -and (!$process.HasExited)) {
+
+        $process.CloseMainWindow() | Out-Null
     }
 }

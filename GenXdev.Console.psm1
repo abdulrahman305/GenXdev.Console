@@ -58,7 +58,7 @@ function Start-TextToSpeech {
 
     param(
         [Parameter(Mandatory = $true, ValueFromPipeline = $true, ValueFromRemainingArguments = $true, ParameterSetName = "strings")]
-        [string[]] $lines = $null,
+        [string[]] $lines,
 
         [Parameter(Mandatory = $False)]
         [switch] $wait
@@ -104,7 +104,7 @@ Retreives a list of all installed GenXdev modules and their Cmdlets and correspo
 Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding aliases
 
 .PARAMETER Filter
-Allows you to search for cmdLets by providing searchstrings, with or without wildcards
+Allows you to search for Cmdlets by providing searchstrings, with or without wildcards
 
 .PARAMETER $ModuleName
 Retreives all Cmdlets of provided modulename(s)
@@ -113,10 +113,9 @@ Retreives all Cmdlets of provided modulename(s)
 PS d:\documents\PowerShell> cmds
 
 #>
-function Get-GenXDevCmdLets {
+function Get-GenXDevCmdlets {
 
     [CmdletBinding()]
-    [Alias("cmds")]
 
     param(
         [parameter(
@@ -130,7 +129,7 @@ function Get-GenXDevCmdLets {
             ParameterSetName = "ModuleFilter",
             Mandatory = $false
         )]
-        [string[]] $ModuleName = @("GenXdev.*")
+        [string[]] $ModuleName = @("*")
     )
 
     if (!$Filter.Contains("*")) {
@@ -138,12 +137,15 @@ function Get-GenXDevCmdLets {
         $Filter = "*$Filter*"
     }
 
-    Get-Module $ModuleName |
-    ForEach-Object -Process {
+    $ModuleName = $ModuleName.Replace("GenXdev.", "")
+
+    $results = Get-Module "GenXdev.$ModuleName" -all |  ForEach-Object -Process {
+
+        $Module = $PSItem;
 
         $PSItem.ExportedCommands.Values | ForEach-Object -ErrorAction SilentlyContinue {
 
-            if ($PSItem.Name -like $Filter) {
+            if (($PSItem.Name -like $Filter) -and ($PSItem.Module.Name -eq $Module.Name)) {
 
                 if ($PSItem.CommandType -eq "Function") {
 
@@ -164,7 +166,7 @@ function Get-GenXDevCmdLets {
                     if ([string]::IsNullOrWhiteSpace($desc)) {
 
                         try {
-                            $desc = Select-String "#\s*DESCRIPTION\s+$($PSItem.Name): ([^`r`n]*)" -input "$((Get-Command "$($PSItem.Name)").ScriptBlock)" -AllMatches | ForEach-Object { $_.matches.Groups[1].Value }
+                            $desc = (Select-String "#\s*DESCRIPTION\s+$($PSItem.Name):([^`r`n]*)" -input "$((Get-Command "$($PSItem.Name)").ScriptBlock)".Replace("`u{00A0}", " ") -AllMatches | ForEach-Object { $_.matches.Groups[1].Value }).Trim();
                         }
                         catch {
                             Write-Warning $_.Exception
@@ -176,6 +178,8 @@ function Get-GenXDevCmdLets {
                         Name           = $PSItem.Name;
                         Aliases        = $aliases;
                         Description    = $desc;
+                        ModuleName     = $PSItem.Module.Name;
+                        Position       = "$($Module.Name)_$($Module.Definition.IndexOf("function $($PSItem.Name)").ToString().PadLeft(10,"0"))"
                     }
 
                     $result
@@ -183,6 +187,8 @@ function Get-GenXDevCmdLets {
             }
         }
     }
+
+    $results | Sort-Object -Property Position
 }
 
 ###############################################################################
@@ -195,13 +201,13 @@ Shows a list of all installed GenXdev modules and their Cmdlets and correspondin
 Shows a list of all installed GenXdev modules and their Cmdlets and corresponding aliases
 
 .PARAMETER Filter
-Allows you to search for cmdLets by providing searchstrings, with or without wildcards
+Allows you to search for Cmdlets by providing searchstrings, with or without wildcards
 
 .EXAMPLE
 PS d:\documents\PowerShell> cmds
 
 #>
-function Show-GenXDevCmdLets {
+function Show-GenXDevCmdlets {
 
     [CmdletBinding()]
     [Alias("cmds")]
@@ -214,82 +220,100 @@ function Show-GenXDevCmdLets {
         )]
         [string] $Filter = "*",
 
+        [Alias("m")]
         [parameter(
             ParameterSetName = "ModuleFilter",
             Mandatory = $false
         )]
-        [string[]] $ModuleName = @("GenXdev.*")
+        [string[]] $ModuleName = @("*"),
+
+        [parameter(
+            Mandatory = $false
+        )]
+        [switch] $Online
     )
+
 
     if (!$Filter.Contains("*")) {
 
         $Filter = "*$Filter*"
     }
 
-    Clear-Host
+    $ModuleName = $ModuleName.Replace("GenXdev.", "")
 
-    $modules = Get-Module $ModuleName
-    $modules |
-    ForEach-Object -Process {
+    $modules = Get-Module "GenXdev.$ModuleName" -all;
+    $modules | ForEach-Object -Process {
 
-        $module = $PSItem
-        $name = $module.Name.SubString("GenXdev.".Length);
-        $first = $true;
-        [System.Collections.Generic.List[string]] $commandFilter = [System.Collections.Generic.List[string]]::new();
+        if ($Online -eq $true -and ($PSItem.Name -notin @("GenXdev.Local", "GenXdev.Git", "GenXdev.*.*"))) {
 
-        if ($name.Contains(".") -eq $false) {
+            Open-Webbrowser -Url "https://github.com/renevaessen/$($PSItem.Name)/blob/master/README.md#cmdlet-index" -Monitor -1
+            return;
+        }
+        else {
+            if ($Online -eq $true) {
 
-            foreach ($otherModule in $modules) {
+                return;
+            }
+            $module = $PSItem
+            $name = $module.Name.SubString("GenXdev.".Length);
+            $first = $true;
+            [System.Collections.Generic.List[string]] $commandFilter = [System.Collections.Generic.List[string]]::new();
 
-                if ($otherModule.Name -like "GenXdev.$name.*") {
+            if ($name.Contains(".") -eq $false) {
 
-                    foreach ($filteredCommand in $otherModule.ExportedCommands.Values) {
+                foreach ($otherModule in $modules) {
 
-                        if ($commandFilter.Contains($filteredCommand.Name)) { continue; }
+                    if ($otherModule.Name -like "GenXdev.$name.*") {
 
-                        $commandFilter.Add($filteredCommand.Name);
+                        foreach ($filteredCommand in $otherModule.ExportedCommands.Values) {
+
+                            if ($commandFilter.Contains($filteredCommand.Name)) { continue; }
+
+                            $commandFilter.Add($filteredCommand.Name);
+                        }
                     }
                 }
             }
-        }
 
-        $result = [string]::Join(", ", @(
-                $PSItem.ExportedCommands.Values | ForEach-Object -ErrorAction SilentlyContinue {
+            $result = [string]::Join(", ", @(
+                    $PSItem.ExportedCommands.Values | ForEach-Object -ErrorAction SilentlyContinue {
 
-                    $exportedCommand = $PSItem;
+                        $exportedCommand = $PSItem;
 
-                    if ($exportedCommand.Name -in $commandFilter) { return }
+                        if ($exportedCommand.Name -in $commandFilter) { return }
 
-                    if ($exportedCommand.Name -like $Filter) {
+                        if ($exportedCommand.Name -like $Filter) {
 
-                        if ($first) {
+                            if ($first) {
 
-                            "`r`n" + $name + ":" | Write-Host -ForegroundColor "Yellow"
-                        }
-
-                        $first = $false;
-
-                        if ($exportedCommand.CommandType -eq "Function") {
-
-                            $aliases = ((Get-Alias -Definition $exportedCommand.Name -ErrorAction SilentlyContinue | ForEach-Object Name) -Join ", ").Trim();
-
-                            if ([string]::IsNullOrWhiteSpace($aliases) -eq $false) {
-
-                                "$($exportedCommand.Name) --> $aliases"
+                                "`r`n" + $name + ":" | Write-Host -ForegroundColor "Yellow"
                             }
-                            else {
-                                $exportedCommand.Name
+
+                            $first = $false;
+
+                            if ($exportedCommand.CommandType -eq "Function") {
+
+                                $aliases = ((Get-Alias -Definition $exportedCommand.Name -ErrorAction SilentlyContinue | ForEach-Object Name) -Join ", ").Trim();
+
+                                if ([string]::IsNullOrWhiteSpace($aliases) -eq $false) {
+
+                                    "$($exportedCommand.Name) --> $aliases"
+                                }
+                                else {
+                                    $exportedCommand.Name
+                                }
                             }
                         }
                     }
-                }
-            )
-        ).Trim("`r`n ".ToCharArray())
+                )
+            ).Trim("`r`n ".ToCharArray())
 
-        $result
+            if ([string]::IsNullOrWhiteSpace($result) -eq $false) {
+
+                $result;
+            }
+        }
     }
-    "
--------------" | Write-Host -ForegroundColor "DarkGreen"
 }
 
 ###############################################################################
@@ -653,3 +677,83 @@ function Show-Verb {
 }
 
 ###############################################################################
+
+function Get-GenXDevModuleInfo {
+
+    [CmdletBinding()]
+
+    param(
+        [Alias("Name", "Module")]
+        [parameter(
+            Mandatory = $false,
+            Position = 0,
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true
+        )] [string[]] $ModuleName = @()
+    )
+
+    begin {
+        [System.IO.FileSystemInfo[]] $AllModules = @(Get-GenXDevModules);
+    }
+
+    process {
+
+        if ($ModuleName.Count -gt 0) {
+
+            foreach ($currentModuleName in $ModuleName) {
+
+                foreach ($currentModule in $AllModules) {
+
+                    if ($currentModule.Parent.Name -ne $currentModuleName) {
+
+                        continue;
+                    }
+
+                    $configPath = "$($currentModule.FullName)\$currentModuleName.psd1"
+                    $configText = [IO.File]::ReadAllText($configPath)
+
+                    $config = Invoke-Expression -Command ($configText)
+
+                    $currentVersion = [Version]::new($config.ModuleVersion);
+                    $newVersion = [Version]::new($currentVersion.Major, $currentVersion.Minor + 1, $currentVersion.Build).ToString();
+
+                    @{
+                        ModuleName     = $currentModuleName;
+                        Module         = $currentModule;
+                        ConfigPath     = $configPath;
+                        ConfigText     = $configText
+                        Config         = $config;
+                        CurrentVersion = $currentVersion;
+                        NewVersion     = $newVersion;
+                        HasREADME      = [IO.File]::Exists("$($currentModule.FullName)\README.md");
+                    }
+                }
+            }
+            return;
+        }
+
+        foreach ($currentModule in $AllModules) {
+
+            $currentModuleName = $currentModule.Parent.Name;
+            $configPath = "$($currentModule.FullName)\$currentModuleName.psd1"
+            $configText = [IO.File]::ReadAllText($configPath)
+
+            $config = Invoke-Expression -Command ($configText)
+
+            $currentVersion = [Version]::new($config.ModuleVersion);
+            $newVersion = [Version]::new($currentVersion.Major, $currentVersion.Minor + 1, $currentVersion.Build).ToString();
+
+            @{
+
+                ModuleName     = $currentModuleName;
+                Module         = $currentModule;
+                ConfigPath     = $configPath;
+                ConfigText     = $configText
+                Config         = $config;
+                CurrentVersion = $currentVersion;
+                NewVersion     = $newVersion;
+                HasREADME      = [IO.File]::Exists("$($currentModule.FullName)\README.md");
+            }
+        }
+    }
+}
