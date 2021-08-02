@@ -383,7 +383,7 @@ PS C:\> (upl).Tracks.Items.Track.Name
 function Get-SpotifyUserPlaylists {
 
     [CmdletBinding()]
-    [Alias("upl")]
+    [Alias("gupl")]
 
     param(
         [Alias("Uri", "Id", "Name")]
@@ -393,18 +393,45 @@ function Get-SpotifyUserPlaylists {
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
-        [string[]] $Filter = @("*")
+        [string[]] $Filter = @("*"),
+
+        [switch] $Force
     )
 
     begin {
 
         $apiToken = Get-SpotifyApiToken;
         $Filter = Build-InvocationArguments $MyInvocation $Filter
+        $filePath = Expand-Path "$PSScriptRoot\..\..\GenXdev.Local\Spotify.Playlists.json"
     }
 
     process {
 
-        [GenXdev.Helpers.Spotify]::GetUserPlaylists($apiToken, $Filter);
+        [System.Collections.Generic.List[Object]] $SpotifyPlaylistCache = $null;
+
+        if (($Force -ne $true) -and ($Filter.Length -eq 1) -and ($Filter[0] -eq "*")) {
+
+            if ($null -eq $Global:SpotifyPlaylistCache) {
+
+                $filePath = Expand-Path "$PSScriptRoot\..\..\GenXdev.Local\Spotify.Playlists.json"
+                $playlistCache = [System.IO.FileInfo]::new($filePath);
+
+                if ($playlistCache.Exists -and ([datetime]::Now - $playlistCache.LastWriteTime -lt [timespan]::FromHours(12))) {
+
+                    $SpotifyPlaylistCache = $playlistCache.OpenText().ReadToEnd() | ConvertFrom-Json -Depth 100
+                    Set-Variable -Name SpotifyPlaylistCache -Value $SpotifyPlaylistCache -Scope Global -Force
+                }
+            }
+        }
+
+        if (($null -eq $Global:SpotifyPlaylistCache) -or ( $Global:SpotifyPlaylistCache.Count -eq 0)) {
+
+            $SpotifyPlaylistCache = [GenXdev.Helpers.Spotify]::GetUserPlaylists($apiToken, $Filter);
+            Set-Variable -Name SpotifyPlaylistCache -Value $SpotifyPlaylistCache -Scope Global -Force
+            $SpotifyPlaylistCache | ConvertTo-Json -Depth 100 | Out-File $filePath -Force
+        }
+
+        $Global:SpotifyPlaylistCache
     }
 
     end {
@@ -431,11 +458,21 @@ The Spotify track Uris of the songs that should be added to the playlist"
 
 function Add-SpotifyTracksToPlaylist {
 
-    [CmdletBinding()]
-    [Alias()]
+    [CmdletBinding(DefaultParameterSetName = "ByName")]
+    [Alias("addtoplaylist")]
 
     param(
+        [Alias("Name")]
         [parameter(
+            ParameterSetName = "ByName",
+            Mandatory,
+            Position = 0,
+            HelpMessage = "The Spotify playlist to add tracks to"
+        )]
+        [string] $PlaylistName,
+
+        [parameter(
+            ParameterSetName = "ById",
             Mandatory,
             Position = 0,
             HelpMessage = "The Spotify playlist to add tracks to"
@@ -455,11 +492,16 @@ function Add-SpotifyTracksToPlaylist {
     begin {
 
         $apiToken = Get-SpotifyApiToken;
+
+        if ([string]::IsNullOrWhiteSpace($PlaylistName)) {
+
+            $PlaylistId = Get-SpotifyPlaylistIdsByName -PlaylistName @($PlaylistName)
+        }
     }
 
     process {
 
-        [GenXdev.Helpers.Spotify]::AddToPlaylist($apiToken, $PlaylistId, $Uris);
+        [GenXdev.Helpers.Spotify]::AddToPlaylist($apiToken, $PlaylistId, $Uri);
     }
 
     end {
@@ -493,7 +535,7 @@ Allow others to make changes
 function Add-SpotifyNewPlaylist {
 
     [CmdletBinding()]
-    [Alias()]
+    [Alias("newplaylist")]
 
     param(
 
@@ -528,7 +570,14 @@ function Add-SpotifyNewPlaylist {
 
     process {
 
-        [GenXdev.Helpers.Spotify]::NewPlaylist($apiToken, $Name, $Description, ($Public -eq $true), ($Collabrative -eq $true));
+        $result = [GenXdev.Helpers.Spotify]::NewPlaylist($apiToken, $Name, $Description, ($Public -eq $true), ($Collabrative -eq $true));
+
+        if ($Global:SpotifyPlaylistCache -is [System.Collections.Generic.List[string]]) {
+
+            $Global:SpotifyPlaylistCache.Insert(0, $result);
+            $filePath = Expand-Path "$PSScriptRoot\..\..\GenXdev.Local\Spotify.Playlists.json"
+            $Global:SpotifyPlaylistCache | ConvertTo-Json -Depth 100 | Out-File $filePath -Force
+        }
     }
 
     end {
@@ -673,7 +722,7 @@ The Spotify track Uris of the songs that should be removed from the playlist
 function Remove-SpotifyTracksFromPlaylist {
 
     [CmdletBinding()]
-    [Alias()]
+    [Alias("removefromplaylist")]
 
     param(
         [parameter(
@@ -766,9 +815,10 @@ The Spotify track to return audio features for
 function Get-SpotifyTrackAudioFeatures {
 
     [CmdletBinding()]
-    [Alias()]
+    [Alias("audiofeatures")]
 
     param(
+        [Alias("Id")]
         [parameter(
             Mandatory,
             Position = 0,
@@ -776,7 +826,7 @@ function Get-SpotifyTrackAudioFeatures {
             ValueFromPipelineByPropertyName = $true,
             HelpMessage = "The Spotify track to return audio features for"
         )]
-        [string[]] $Id
+        [string[]] $TrackId
     )
 
     begin {
@@ -786,7 +836,7 @@ function Get-SpotifyTrackAudioFeatures {
 
     process {
 
-        [GenXdev.Helpers.Spotify]::GetSeveralAudioFeatures($apiToken, $Id);
+        [GenXdev.Helpers.Spotify]::GetSeveralAudioFeatures($apiToken, $TrackId);
     }
 
     end {
@@ -809,7 +859,7 @@ The Spotify track id of the track to lookup
 function Get-SpotifyTrackById {
 
     [CmdletBinding()]
-    [Alias()]
+    [Alias("gettrack")]
 
     param(
         [Alias("Id")]
@@ -871,7 +921,7 @@ playlist, range_start is set to 9, and range_length is set to 2.
 function Set-SpotifyPlaylistOrder {
 
     [CmdletBinding()]
-    [Alias()]
+    [Alias("")]
 
     param(
         [parameter(
@@ -942,11 +992,24 @@ The Spotify playlist to return tracks for
 #>
 function Get-SpotifyPlaylistTracks {
 
-    [CmdletBinding()]
-    [Alias()]
+    [CmdletBinding(DefaultParameterSetName = "ByName")]
+    [Alias("getplaylist")]
 
     param(
+        [Alias("Name")]
         [parameter(
+            ParameterSetName = "ByName",
+            Mandatory,
+            Position = 0,
+            HelpMessage = "The Spotify playlist to return tracks for",
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true
+        )]
+        [string] $PlaylistName,
+
+        [Alias("Id")]
+        [parameter(
+            ParameterSetName = "ById",
             Mandatory,
             Position = 0,
             HelpMessage = "The Spotify playlist to return tracks for",
@@ -959,6 +1022,11 @@ function Get-SpotifyPlaylistTracks {
     begin {
 
         $apiToken = Get-SpotifyApiToken;
+
+        if ([string]::IsNullOrWhiteSpace($PlaylistName) -eq $false) {
+
+            $PlaylistId = Get-SpotifyPlaylistIdsByName -PlaylistName @($PlaylistName) | Select-Object -First 1
+        }
     }
 
     process {
@@ -967,6 +1035,302 @@ function Get-SpotifyPlaylistTracks {
     }
 
     end {
+
+    }
+}
+
+###############################################################################
+
+<#
+.SYNOPSIS
+Returns all tracks saved in users own Spotify Library
+
+.DESCRIPTION
+Returns all tracks saved in users own Spotify Library
+
+#>
+function Get-SpotifyLikedTracks {
+
+    [CmdletBinding()]
+    [Alias("liked")]
+
+    param(
+    )
+
+    begin {
+
+        $apiToken = Get-SpotifyApiToken;
+    }
+
+    process {
+
+        [GenXdev.Helpers.Spotify]::GetLibraryTracks($apiToken);
+    }
+
+    end {
+
+    }
+}
+
+###############################################################################
+
+<#
+.SYNOPSIS
+Adds tracks to the users own Spotify Library
+
+.DESCRIPTION
+Adds tracks to the users own Spotify Library
+
+.PARAMETER TrackId
+The Spotify track Ids of the songs that should be added to liked"
+#>
+
+function Add-SpotifyTracksToLiked {
+
+    [CmdletBinding()]
+    [Alias("like")]
+
+    param(
+        [Alias("Id")]
+        [parameter(
+            Mandatory = $false,
+            Position = 0,
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "The Spotify track Uris of the songs that should be added to the playlist"
+        )]
+        [string[]] $TrackId = @()
+    )
+
+    begin {
+
+        $apiToken = Get-SpotifyApiToken;
+    }
+
+    process {
+
+        if ($TrackId.Length -eq 0) {
+
+            $CurrentlyPlaying = Get-SpotifyCurrentlyPlaying
+
+            if ($null -eq $CurrentlyPlaying -or $CurrentlyPlaying.CurrentlyPlayingType -ne "track") {
+
+                Write-Warning "There are no tracks playing at this time"
+
+                return;
+            }
+
+
+            Add-SpotifyTracksToLiked -TrackId ($CurrentlyPlaying.Item.Id)
+
+            $CurrentlyPlaying.Item
+        }
+        else {
+
+            [GenXdev.Helpers.Spotify]::AddToLiked($apiToken, $TrackId);
+        }
+    }
+
+    end {
+
+
+    }
+}
+
+
+###############################################################################
+
+<#
+.SYNOPSIS
+Moves all tracks from the users own Spotify Library to specified playlist
+
+.DESCRIPTION
+Moves all tracks from the users own Spotify Library to specified playlist
+
+.PARAMETER PlaylistId
+The Spotify playlist where all liked tracks should move to"
+#>
+
+function Move-SpotifyLikedTracksToPlaylist {
+
+    [CmdletBinding(DefaultParameterSetName = "ByName")]
+    [Alias("moveliked")]
+
+    param(
+        [Alias("Name")]
+        [parameter(
+            ParameterSetName = "ByName",
+            Mandatory,
+            Position = 0,
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "The Spotify playlist where all liked tracks should move to"
+        )]
+        [string[]] $PlaylistName,
+
+        [Alias("Id")]
+        [parameter(
+            ParameterSetName = "ById",
+            Mandatory,
+            Position = 0,
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "The Spotify playlist where all liked tracks should move to"
+        )]
+        [string[]] $PlaylistId
+    )
+
+    begin {
+
+        if ($PlaylistName.Length -gt 0) {
+
+            $PlaylistId = Get-SpotifyPlaylistIdsByName -PlaylistName $PlaylistName
+        }
+    }
+
+    process {
+
+        $likedTracks = Get-SpotifyLikedTracks
+
+        foreach ($Id in $PlaylistId) {
+
+            Add-SpotifyTracksToPlaylist -PlaylistId $Id -Uri @($likedTracks.Track.Uri)
+        }
+
+        Remove-SpotifyTracksFromLiked -TrackId @($likedTracks.Track.Id)
+
+        $likedTracks
+    }
+
+    end {
+
+
+    }
+}
+
+
+###############################################################################
+
+function Get-SpotifyPlaylistIdsByName {
+
+    [CmdletBinding()]
+
+    param(
+        [Alias("Name")]
+        [parameter(
+            ParameterSetName = "ByName",
+            Mandatory,
+            Position = 0,
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "The Spotify playlist where all liked tracks should move to"
+        )]
+        [string[]] $PlaylistName = @()
+    )
+
+    process {
+
+        $results = @(
+            $PlaylistName | ForEach-Object {
+
+                $Name = $PSItem
+
+                Get-SpotifyUserPlaylists |
+                Where-Object -Property Name -Like $Name |
+                ForEach-Object Id
+            }
+        )
+
+        if ($results.Length -eq 0) {
+
+            $filePath = Expand-Path "$PSScriptRoot\..\..\GenXdev.Local\Spotify.Playlists.json"
+            $playlistCache = [System.IO.FileInfo]::new($filePath);
+
+            if (!$playlistCache.Exists -or ([datetime]::Now - $playlistCache.LastWriteTime -ge [timespan]::FromHours(12))) {
+
+                $pl = Get-SpotifyUserPlaylists -Force
+                $results = @(
+                    $PlaylistName | ForEach-Object {
+
+                        $Name = $PSItem
+
+                        $pl |
+                        Where-Object -Property Name -Like $Name |
+                        ForEach-Object Id
+                    }
+                )
+            }
+        }
+
+        if ($results.Length -eq 0) {
+
+            throw "Playlist not found"
+        }
+
+        $results;
+    }
+}
+
+###############################################################################
+
+<#
+.SYNOPSIS
+Removes tracks from the users own Spotify Library
+
+.DESCRIPTION
+Removes tracks from the users own Spotify Library
+
+.PARAMETER TrackId
+The Spotify track Ids of the songs that should be removed from liked"
+#>
+
+function Remove-SpotifyTracksFromLiked {
+
+    [CmdletBinding()]
+    [Alias("dislike")]
+
+    param(
+        [Alias("Id")]
+        [parameter(
+            Mandatory = $false,
+            Position = 0,
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "The Spotify track Uris of the songs that should be added to the playlist"
+        )]
+        [string[]] $TrackId = @()
+    )
+
+    begin {
+
+        $apiToken = Get-SpotifyApiToken;
+    }
+
+    process {
+
+        if ($TrackId.Length -eq 0) {
+
+            $CurrentlyPlaying = Get-SpotifyCurrentlyPlaying
+
+            if ($null -eq $CurrentlyPlaying -or $CurrentlyPlaying.CurrentlyPlayingType -ne "track") {
+
+                Write-Warning "There are no tracks playing at this time"
+
+                return;
+            }
+
+            Remove-SpotifyTracksFromLiked -TrackId ($CurrentlyPlaying.Item.Id)
+
+            $CurrentlyPlaying.Item
+        }
+        else {
+
+            [GenXdev.Helpers.Spotify]::RemoveFromLiked($apiToken, $TrackId);
+        }
+    }
+
+    end {
+
 
     }
 }
