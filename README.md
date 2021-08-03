@@ -18,7 +18,7 @@
     * ✅ after installation, use 'cmds' to see full list of installed GenXdev cmdslets
 
 ### DEPENDENCIES
-[![WinOS - Windows-10](https://img.shields.io/badge/WinOS-Windows--10--10.0.19041--SP0-brightgreen)](https://www.microsoft.com/en-us/windows/get-windows-10) [![GenXdev.Helpers](https://img.shields.io/powershellgallery/v/GenXdev.Helpers.svg?style=flat-square&label=GenXdev.Helpers)](https://www.powershellgallery.com/packages/GenXdev.Helpers/) [![GenXdev.Webbrowser](https://img.shields.io/powershellgallery/v/GenXdev.Webbrowser.svg?style=flat-square&label=GenXdev.Webbrowser)](https://www.powershellgallery.com/packages/GenXdev.Webbrowser/)
+[![WinOS - Windows-10](https://img.shields.io/badge/WinOS-Windows--10--10.0.19041--SP0-brightgreen)](https://www.microsoft.com/en-us/windows/get-windows-10) [![GenXdev.Helpers](https://img.shields.io/powershellgallery/v/GenXdev.Helpers.svg?style=flat-square&label=GenXdev.Helpers)](https://www.powershellgallery.com/packages/GenXdev.Helpers/) [![GenXdev.Webbrowser](https://img.shields.io/powershellgallery/v/GenXdev.Webbrowser.svg?style=flat-square&label=GenXdev.Webbrowser)](https://www.powershellgallery.com/packages/GenXdev.Webbrowser/) [![GenXdev.FileSystem](https://img.shields.io/powershellgallery/v/GenXdev.Filesystem.svg?style=flat-square&label=GenXdev.FileSystem)](https://www.powershellgallery.com/packages/GenXdev.FileSystem/)
 ### INSTALLATION
 ````PowerShell
 Install-Module "GenXdev.Console"
@@ -1034,21 +1034,21 @@ Add-SpotifyTracksToPlaylist          --> addtoplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyTracksToPlaylist [-PlaylistName] <String> [-Uri] <String[]> [<CommonParameters>]
-Add-SpotifyTracksToPlaylist [-PlaylistId] <String> [-Uri] <String[]> [<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
     Adds tracks to a Spotify playlist
 
 ### PARAMETERS
-    -PlaylistName <String>
+    -PlaylistName <String[]>
         Required?                    true
         Position?                    1
         Default value                
         Accept pipeline input?       false
         Accept wildcard characters?  false
-    -PlaylistId <String>
+    -PlaylistId <String[]>
         The Spotify playlist to add tracks to
         Required?                    true
         Position?                    1
@@ -1056,10 +1056,10 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String> [-Uri] <String[]> [<CommonPar
         Accept pipeline input?       false
         Accept wildcard characters?  false
     -Uri <String[]>
-        The Spotify track Uris of the songs that should be added to the playlist"
-        Required?                    true
+        The Spotify tracks that should be added to the playlist
+        Required?                    false
         Position?                    2
-        Default value                
+        Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
         Accept wildcard characters?  false
     <CommonParameters>
@@ -1208,14 +1208,21 @@ Remove-SpotifyTracksFromPlaylist     --> removefromplaylist
 
 ### SYNTAX
 ````PowerShell
-Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String> [-Uri] <String[]> [<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
     Removes tracks from a Spotify playlist
 
 ### PARAMETERS
-    -PlaylistId <String>
+    -PlaylistName <String[]>
+        Required?                    true
+        Position?                    1
+        Default value                
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    -PlaylistId <String[]>
         The Spotify playlist to delete tracks from
         Required?                    true
         Position?                    1
@@ -1223,10 +1230,10 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String> [-Uri] <String[]> [<Comm
         Accept pipeline input?       false
         Accept wildcard characters?  false
     -Uri <String[]>
-        The Spotify track Uris of the songs that should be removed from the playlist
-        Required?                    true
+        The Spotify tracks that should be removed from the playlist
+        Required?                    false
         Position?                    2
-        Default value                
+        Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
         Accept wildcard characters?  false
     <CommonParameters>

@@ -409,7 +409,7 @@ function Get-SpotifyUserPlaylists {
 
         [System.Collections.Generic.List[Object]] $SpotifyPlaylistCache = $null;
 
-        if (($Force -ne $true) -and ($Filter.Length -eq 1) -and ($Filter[0] -eq "*")) {
+        if ($Force -ne $true) {
 
             if ($null -eq $Global:SpotifyPlaylistCache) {
 
@@ -424,14 +424,20 @@ function Get-SpotifyUserPlaylists {
             }
         }
 
-        if (($null -eq $Global:SpotifyPlaylistCache) -or ( $Global:SpotifyPlaylistCache.Count -eq 0)) {
+        if (($Force -eq $true) -or ($null -eq $Global:SpotifyPlaylistCache) -or ( $Global:SpotifyPlaylistCache.Count -eq 0)) {
 
-            $SpotifyPlaylistCache = [GenXdev.Helpers.Spotify]::GetUserPlaylists($apiToken, $Filter);
+            $SpotifyPlaylistCache = [GenXdev.Helpers.Spotify]::GetUserPlaylists($apiToken, "*");
             Set-Variable -Name SpotifyPlaylistCache -Value $SpotifyPlaylistCache -Scope Global -Force
             $SpotifyPlaylistCache | ConvertTo-Json -Depth 100 | Out-File $filePath -Force
         }
 
-        $Global:SpotifyPlaylistCache
+        $Global:SpotifyPlaylistCache | ForEach-Object -ErrorAction SilentlyContinue {
+
+            if ($PSItem.Name -like $Filter) {
+
+                $PSItem
+            }
+        }
     }
 
     end {
@@ -453,7 +459,7 @@ Adds tracks to a Spotify playlist
 The Spotify playlist to add tracks to
 
 .PARAMETER Uri
-The Spotify track Uris of the songs that should be added to the playlist"
+The Spotify tracks that should be added to the playlist
 #>
 
 function Add-SpotifyTracksToPlaylist {
@@ -469,7 +475,7 @@ function Add-SpotifyTracksToPlaylist {
             Position = 0,
             HelpMessage = "The Spotify playlist to add tracks to"
         )]
-        [string] $PlaylistName,
+        [string[]] $PlaylistName,
 
         [parameter(
             ParameterSetName = "ById",
@@ -477,31 +483,34 @@ function Add-SpotifyTracksToPlaylist {
             Position = 0,
             HelpMessage = "The Spotify playlist to add tracks to"
         )]
-        [string] $PlaylistId,
+        [string[]] $PlaylistId,
 
         [parameter(
-            Mandatory,
+            Mandatory = $false,
             Position = 1,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
-            HelpMessage = "The Spotify track Uris of the songs that should be added to the playlist"
+            HelpMessage = "The Spotify tracks that should be added to the playlist"
         )]
-        [string[]] $Uri
+        [string[]] $Uri = @()
     )
 
     begin {
 
         $apiToken = Get-SpotifyApiToken;
 
-        if ([string]::IsNullOrWhiteSpace($PlaylistName)) {
+        if ($PlaylistName.Length -gt 0) {
 
-            $PlaylistId = Get-SpotifyPlaylistIdsByName -PlaylistName @($PlaylistName)
+            $PlaylistId = @(Get-SpotifyPlaylistIdsByName -PlaylistName @($PlaylistName))
         }
     }
 
     process {
 
-        [GenXdev.Helpers.Spotify]::AddToPlaylist($apiToken, $PlaylistId, $Uri);
+        foreach ($Id in $PlaylistId) {
+
+            [GenXdev.Helpers.Spotify]::AddToPlaylist($apiToken, $Id, $Uri);
+        }
     }
 
     end {
@@ -572,12 +581,14 @@ function Add-SpotifyNewPlaylist {
 
         $result = [GenXdev.Helpers.Spotify]::NewPlaylist($apiToken, $Name, $Description, ($Public -eq $true), ($Collabrative -eq $true));
 
-        if ($Global:SpotifyPlaylistCache -is [System.Collections.Generic.List[string]]) {
+        if ($Global:SpotifyPlaylistCache -is [System.Collections.Generic.List[object]]) {
 
             $Global:SpotifyPlaylistCache.Insert(0, $result);
             $filePath = Expand-Path "$PSScriptRoot\..\..\GenXdev.Local\Spotify.Playlists.json"
             $Global:SpotifyPlaylistCache | ConvertTo-Json -Depth 100 | Out-File $filePath -Force
         }
+
+        $result
     }
 
     end {
@@ -716,40 +727,57 @@ Removes tracks from a Spotify playlist
 The Spotify playlist to delete tracks from
 
 .PARAMETER Uri
-The Spotify track Uris of the songs that should be removed from the playlist
+The Spotify tracks that should be removed from the playlist
 #>
 
 function Remove-SpotifyTracksFromPlaylist {
 
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = "ByName")]
     [Alias("removefromplaylist")]
 
     param(
         [parameter(
+            ParameterSetName="ByName",
             Mandatory,
             Position = 0,
             HelpMessage = "The Spotify playlist to delete tracks from"
         )]
-        [string] $PlaylistId,
+        [string[]] $PlaylistName,
 
         [parameter(
+            ParameterSetName="ById",
             Mandatory,
+            Position = 0,
+            HelpMessage = "The Spotify playlist to delete tracks from"
+        )]
+        [string[]] $PlaylistId,
+
+        [parameter(
+            Mandatory = $false,
             Position = 1,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
-            HelpMessage = "The Spotify track Uris of the songs that should be removed from the playlist"
+            HelpMessage = "The Spotify tracks that should be removed from the playlist"
         )]
-        [string[]] $Uri
+        [string[]] $Uri = @()
     )
 
     begin {
 
         $apiToken = Get-SpotifyApiToken;
+
+        if ($PlaylistName.Length -gt 0) {
+
+            $PlaylistId = @(Get-SpotifyPlaylistIdsByName -PlaylistName $PlaylistName)
+        }
     }
 
     process {
 
-        [GenXdev.Helpers.Spotify]::RemoveFromPlaylist($apiToken, $PlaylistId, $Uri);
+        foreach ($Id in $PlaylistId) {
+
+            [GenXdev.Helpers.Spotify]::RemoveFromPlaylist($apiToken, $Id, $Uri);
+        }
     }
 
     end {
@@ -1025,7 +1053,7 @@ function Get-SpotifyPlaylistTracks {
 
         if ([string]::IsNullOrWhiteSpace($PlaylistName) -eq $false) {
 
-            $PlaylistId = Get-SpotifyPlaylistIdsByName -PlaylistName @($PlaylistName) | Select-Object -First 1
+            $PlaylistId = @(Get-SpotifyPlaylistIdsByName -PlaylistName @($PlaylistName)) | Select-Object -First 1
         }
     }
 
@@ -1190,16 +1218,26 @@ function Move-SpotifyLikedTracksToPlaylist {
 
     process {
 
+        if ($PlaylistId.Length -eq 0) {
+
+            return;
+        }
+
         $likedTracks = Get-SpotifyLikedTracks
+        [bool] $done = $false
 
         foreach ($Id in $PlaylistId) {
 
             Add-SpotifyTracksToPlaylist -PlaylistId $Id -Uri @($likedTracks.Track.Uri)
+            $done = $true
         }
 
-        Remove-SpotifyTracksFromLiked -TrackId @($likedTracks.Track.Id)
+        if ($done) {
 
-        $likedTracks
+            Remove-SpotifyTracksFromLiked -TrackId @($likedTracks.Track.Id)
+
+            $likedTracks
+        }
     }
 
     end {
@@ -1230,35 +1268,16 @@ function Get-SpotifyPlaylistIdsByName {
 
     process {
 
-        $results = @(
-            $PlaylistName | ForEach-Object {
-
-                $Name = $PSItem
-
-                Get-SpotifyUserPlaylists |
-                Where-Object -Property Name -Like $Name |
-                ForEach-Object Id
-            }
-        )
+        $results = @(Get-SpotifyUserPlaylists -Filter $PlaylistName)
 
         if ($results.Length -eq 0) {
 
-            $filePath = Expand-Path "$PSScriptRoot\..\..\GenXdev.Local\Spotify.Playlists.json"
+            $filePath = Expand-Path -FilePath "$PSScriptRoot\..\..\GenXdev.Local\Spotify.Playlists.json" -CreateDirectory
             $playlistCache = [System.IO.FileInfo]::new($filePath);
 
             if (!$playlistCache.Exists -or ([datetime]::Now - $playlistCache.LastWriteTime -ge [timespan]::FromHours(12))) {
 
-                $pl = Get-SpotifyUserPlaylists -Force
-                $results = @(
-                    $PlaylistName | ForEach-Object {
-
-                        $Name = $PSItem
-
-                        $pl |
-                        Where-Object -Property Name -Like $Name |
-                        ForEach-Object Id
-                    }
-                )
+                $results = @(Get-SpotifyUserPlaylists -Force -Filter $PlaylistName)
             }
         }
 
@@ -1267,7 +1286,7 @@ function Get-SpotifyPlaylistIdsByName {
             throw "Playlist not found"
         }
 
-        $results;
+        $results | ForEach-Object Id
     }
 }
 
