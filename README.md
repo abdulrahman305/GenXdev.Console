@@ -46,7 +46,6 @@ Update-Module
 | [Set-LocationParent3](#Set-LocationParent3) | .... | Provides the .... alias to go three directory up |
 | [Set-LocationParent4](#Set-LocationParent4) | ..... | Provides the ..... alias to go four directory up |
 | [Set-LocationParent5](#Set-LocationParent5) | ...... | Provides the ...... alias to go five directory up |
-| [Invoke-Repeated](#Invoke-Repeated) | rpt | Pauses playback on the device that is active on Spotify |
 | [Enable-Screensaver](#Enable-Screensaver) |  | Starts the configured Windows screensaver |
 | [Set-MonitorPowerOff](#Set-MonitorPowerOff) |  | Turns the monitor power off |
 | [Set-MonitorPowerOn](#Set-MonitorPowerOn) |  | Turns the monitor power on |
@@ -445,37 +444,6 @@ Set-LocationParent5 [<CommonParameters>]
     Provides the ...... alias to go five directory up
 
 ### PARAMETERS
-    <CommonParameters>
-        This cmdlet supports the common parameters: Verbose, Debug,
-        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-        OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
-
-<br/><hr/><hr/><br/>
-
-##	Invoke-Repeated
-````PowerShell
-Invoke-Repeated                      --> rpt
-````
-
-### SYNOPSIS
-    Pauses Spotify playback
-
-### SYNTAX
-````PowerShell
-Invoke-Repeated [-script] <String> [<CommonParameters>]
-````
-
-### DESCRIPTION
-    Pauses playback on the device that is active on Spotify
-
-### PARAMETERS
-    -script <String>
-        Required?                    true
-        Position?                    1
-        Default value                
-        Accept pipeline input?       false
-        Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
@@ -1133,8 +1101,8 @@ Set-SpotifyPlaylistDetails           --> spld
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] <String>] [-Public] 
-[-Collabrative] [-Private] [-NoCollabrations] [<CommonParameters>]
+Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1342,8 +1310,7 @@ Set-SpotifyPlaylistOrder
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] <Int32> [[-RangeLength] 
-<Nullable`1>] [<CommonParameters>]
+Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] <Int32> [[-RangeLength] <Nullable`1>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION

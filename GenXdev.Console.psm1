@@ -539,37 +539,6 @@ function Set-LocationParent5 {
     Get-ChildItem
 }
 
-###############################################################################
-
-<#
-.SYNOPSIS
-Pauses Spotify playback
-
-.DESCRIPTION
-Pauses playback on the device that is active on Spotify
-#>
-function Invoke-Repeated {
-
-    [CmdletBinding()]
-    [Alias("rpt")]
-
-    param(
-        [parameter(Position = 0, Mandatory = $true, ValueFromRemainingArguments = $true)]
-        [string] $script
-    )
-
-    "Press q to quit - any other key to continue" | Out-Host
-
-    do {
-
-        Invoke-Expression $script
-
-        while ([Console]::KeyAvailable) {
-
-            [Console]::ReadKey();
-        }
-    }     while ([Console]::ReadKey() -ne "q");
-}
 
 ###############################################################################
 

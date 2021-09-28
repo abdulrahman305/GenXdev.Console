@@ -1423,7 +1423,7 @@ function Get-SpotifyActiveDevice {
     }
 }
 
-###############################################################################
+###################################################11############################
 
 <#
 .SYNOPSIS
@@ -1573,6 +1573,7 @@ function Get-SpotifyLyrics {
             catch {
 
                 Write-Warning "Nothing found for '$query'"
+                Open-GoogleQuery "lyrics $query"
                 continue;
             }
             [int] $idx = $html.IndexOf("Best Result");
@@ -1580,6 +1581,7 @@ function Get-SpotifyLyrics {
             if ($idx -lt 0) {
 
                 Write-Warning "Nothing found for '$query'"
+                Open-GoogleQuery "lyrics $query"
                 continue;
             }
 
@@ -1588,6 +1590,7 @@ function Get-SpotifyLyrics {
             if ($idx -lt 0) {
 
                 Write-Warning "Nothing found for '$query'"
+                Open-GoogleQuery "lyrics $query"
                 continue;
             }
 
@@ -1598,6 +1601,7 @@ function Get-SpotifyLyrics {
             if ($idx2 -lt 0) {
 
                 Write-Warning "Nothing found for '$query'"
+                Open-GoogleQuery "lyrics $query"
                 continue;
             }
 
@@ -1609,6 +1613,7 @@ function Get-SpotifyLyrics {
             catch {
 
                 Write-Warning "Nothing found for '$query'"
+                Open-GoogleQuery "lyrics $query"
                 continue;
             }
 
@@ -1617,6 +1622,7 @@ function Get-SpotifyLyrics {
             if ($idx -lt 0) {
 
                 Write-Warning "Nothing found for '$query'"
+                Open-GoogleQuery "lyrics $query"
                 continue;
             }
 
@@ -1627,6 +1633,7 @@ function Get-SpotifyLyrics {
             if ($idx2 -lt 0) {
 
                 Write-Warning "Nothing found for '$query'"
+                Open-GoogleQuery "lyrics $query"
                 continue;
             }
 
@@ -1635,6 +1642,7 @@ function Get-SpotifyLyrics {
             if ([String]::IsNullOrWhiteSpace($result)) {
 
                 Write-Warning "Nothing found for '$query'"
+                Open-GoogleQuery "lyrics $query"1
             }
 
             $result
