@@ -1645,7 +1645,7 @@ function Get-SpotifyLyrics {
                 Open-GoogleQuery "lyrics $query"1
             }
 
-            $result
+            $result.Replace("???", "'");
         }
     }
 }
