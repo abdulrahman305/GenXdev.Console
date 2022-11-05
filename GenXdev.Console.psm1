@@ -20,12 +20,12 @@ function Stop-TextToSpeech {
 
     param()
 
-    if ($null -eq $Global:SpeechSynthesizer) {
-
-        $Global:SpeechSynthesizer = New-Object System.Speech.Synthesis.SpeechSynthesizer
+    try {
+        [GenXdev.Helpers.Misc]::Speech.SpeakAsyncCancelAll();
     }
+    catch {
 
-    $Global:SpeechSynthesizer.SpeakAsyncCancelAll();
+    }
 }
 
 ###############################################################################
@@ -66,10 +66,6 @@ function Start-TextToSpeech {
 
     Begin {
 
-        if ($null -eq $Global:SpeechSynthesizer) {
-
-            $Global:SpeechSynthesizer = New-Object System.Speech.Synthesis.SpeechSynthesizer
-        }
     }
 
     Process {
@@ -82,13 +78,19 @@ function Start-TextToSpeech {
 
                 $txt = "$txt"
             }
+            try {
 
-            if ($wait -eq $true) {
+                if ($wait -eq $true) {
 
-                $Global:SpeechSynthesizer.Speak((($txt -replace '\-[\r]*\n', ' ') -replace '[\r]*\n', ' ')) | Out-Null
+                    [GenXdev.Helpers.Misc]::Speech.Speak((($txt -replace '\-[\r]*\n', ' ') -replace '[\r]*\n', ' ')) | Out-Null
+                }
+                else {
+                    [GenXdev.Helpers.Misc]::Speech.SpeakAsync((($txt -replace '\-[\r]*\n', ' ') -replace '[\r]*\n', ' ')) | Out-Null
+                }
             }
-            else {
-                $Global:SpeechSynthesizer.SpeakAsync((($txt -replace '\-[\r]*\n', ' ') -replace '[\r]*\n', ' ')) | Out-Null
+            catch {
+
+                $txt | Out-Host
             }
         }
     }
@@ -139,7 +141,7 @@ function Get-GenXDevCmdlets {
 
     $ModuleName = $ModuleName.Replace("GenXdev.", "")
 
-    $results = Get-Module "GenXdev.$ModuleName" -all |  ForEach-Object -Process {
+    $results = Get-Module "GenXdev.$ModuleName" -All |  ForEach-Object -Process {
 
         $Module = $PSItem;
 
@@ -241,7 +243,7 @@ function Show-GenXDevCmdlets {
 
     $ModuleName = $ModuleName.Replace("GenXdev.", "")
 
-    $modules = Get-Module "GenXdev.$ModuleName" -all;
+    $modules = Get-Module "GenXdev.$ModuleName" -All;
     $modules | ForEach-Object -Process {
 
         if ($Online -eq $true -and ($PSItem.Name -notin @("GenXdev.Local", "GenXdev.Git", "GenXdev.*.*"))) {
