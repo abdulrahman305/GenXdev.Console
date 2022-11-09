@@ -248,7 +248,7 @@ function Show-GenXDevCmdlets {
 
         if ($Online -eq $true -and ($PSItem.Name -notin @("GenXdev.Local", "GenXdev.Git", "GenXdev.*.*"))) {
 
-            Open-Webbrowser -Url "https://github.com/genXdev/$($PSItem.Name)/blob/master/README.md#cmdlet-index" -Monitor -1
+            Open-Webbrowser -Url "https://github.com/genXdev/$($PSItem.Name)/blob/main/README.md#cmdlet-index" -Monitor -1
             return;
         }
         else {
