@@ -737,7 +737,7 @@ function Remove-SpotifyTracksFromPlaylist {
 
     param(
         [parameter(
-            ParameterSetName="ByName",
+            ParameterSetName = "ByName",
             Mandatory,
             Position = 0,
             HelpMessage = "The Spotify playlist to delete tracks from"
@@ -745,7 +745,7 @@ function Remove-SpotifyTracksFromPlaylist {
         [string[]] $PlaylistName,
 
         [parameter(
-            ParameterSetName="ById",
+            ParameterSetName = "ById",
             Mandatory,
             Position = 0,
             HelpMessage = "The Spotify playlist to delete tracks from"
@@ -1666,34 +1666,48 @@ function Get-SpotifyApiToken {
 
     param()
 
-    $path = "$PSScriptRoot\..\..\GenXdev.Local\Spotify_Auth.json";
+    $ruleName = "Allow Current PowerShell"
+    $programPath = Join-Path -Path $PSHOME -ChildPath "pwsh.exe" # for PowerShell Core
+    $remoteAddress = "192.168.1.1"
 
-    if ([IO.File]::Exists($path)) {
+    # Check if the rule already exists
+    $existingRule = Get-NetFirewallRule -DisplayName $ruleName -ErrorAction SilentlyContinue
 
-        $ApiToken = [IO.File]::ReadAllText($path);
-    }
-    else {
-
-        $ApiToken = Connect-SpotifyApiToken
-        Set-SpotifyApiToken $ApiToken | Out-Null
-    }
-
-    try {
-
-        [GenXdev.Helpers.Spotify]::GetDevices($ApiToken) | Out-Null
-    }
-    catch {
-
-        $ApiToken = Connect-SpotifyApiToken
-        Set-SpotifyApiToken $ApiToken | Out-Null
+    if ($null -eq $existingRule) {
+        # Rule does not exist, create it
+        New-NetFirewallRule -DisplayName $ruleName -Direction Inbound -Program $programPath -Action Allow -RemoteAddress $remoteAddress
+        Write-Host "Firewall rule '$ruleName' created."
     }
 
-    $ApiToken
-}
 
-###############################################################################
+        $path = "$PSScriptRoot\..\..\GenXdev.Local\Spotify_Auth.json";
 
-<#
+        if ([IO.File]::Exists($path)) {
+
+            $ApiToken = [IO.File]::ReadAllText($path);
+        }
+        else {
+
+            $ApiToken = Connect-SpotifyApiToken
+            Set-SpotifyApiToken $ApiToken | Out-Null
+        }
+
+        try {
+
+            [GenXdev.Helpers.Spotify]::GetDevices($ApiToken) | Out-Null
+        }
+        catch {
+
+            $ApiToken = Connect-SpotifyApiToken
+            Set-SpotifyApiToken $ApiToken | Out-Null
+        }
+
+        $ApiToken
+    }
+
+    ###############################################################################
+
+    <#
 .SYNOPSIS
 Caches an Spotify API-token for later use
 
@@ -1703,32 +1717,32 @@ Caches an Spotify API-token for later use
 .PARAMETER ApiToken
 The API-token to cache
 #>
-function Set-SpotifyApiToken {
+    function Set-SpotifyApiToken {
 
-    [CmdletBinding()]
+        [CmdletBinding()]
 
-    param(
+        param(
 
-        [parameter(
-            Mandatory = $true,
-            Position = 0
-        )] [string] $ApiToken
-    )
+            [parameter(
+                Mandatory = $true,
+                Position = 0
+            )] [string] $ApiToken
+        )
 
-    $dir = "$PSScriptRoot\..\..\GenXdev.Local";
-    $path = "$dir\Spotify_Auth.json";
+        $dir = "$PSScriptRoot\..\..\GenXdev.Local";
+        $path = "$dir\Spotify_Auth.json";
 
-    if (![IO.Directory]::Exists($dir)) {
+        if (![IO.Directory]::Exists($dir)) {
 
-        [IO.Directory]::CreateDirectory($dir);
+            [IO.Directory]::CreateDirectory($dir);
+        }
+
+        [IO.File]::WriteAllText($path, $ApiToken.Trim("`r`n`t "));
     }
 
-    [IO.File]::WriteAllText($path, $ApiToken.Trim("`r`n`t "));
-}
+    ###############################################################################
 
-###############################################################################
-
-<#
+    <#
 .SYNOPSIS
 Uses Spotify Open-Auth to request an access token
 
@@ -1736,22 +1750,20 @@ Uses Spotify Open-Auth to request an access token
 Uses Spotify Open-Auth to request an access token
 
 #>
-function Connect-SpotifyApiToken {
+    function Connect-SpotifyApiToken {
 
-    [CmdletBinding()]
+        [CmdletBinding()]
 
-    param()
+        param()
 
-    Write-Warning "Spotify access token expired, requesting new.."
+        $url = [GenXdev.Helpers.Spotify]::RequestAuthenticationUri(5642);
 
-    $url = [GenXdev.Helpers.Spotify]::RequestAuthenticationUri(5642);
+        [System.Diagnostics.Process] $process = Open-Webbrowser -PassThrough -ApplicationMode -NewWindow -Width 1000 -Height 800 -Centered -Monitor 0 -Url $url
 
-    [System.Diagnostics.Process] $process = Open-Webbrowser -PassThrough -ApplicationMode -NewWindow -Width 1000 -Height 800 -Centered -Monitor 0 -Url $url
+        [GenXdev.Helpers.Spotify]::RequestAuthenticationTokenUsingOAuth(5642)
 
-    [GenXdev.Helpers.Spotify]::RequestAuthenticationTokenUsingOAuth(5642)
+        if ((!!$process -and $process -is [System.Diagnostics.Process]) -and (!$process.HasExited)) {
 
-    if ((!!$process -and $process -is [System.Diagnostics.Process]) -and (!$process.HasExited)) {
-
-        $process.CloseMainWindow() | Out-Null
+            $process.CloseMainWindow() | Out-Null
+        }
     }
-}

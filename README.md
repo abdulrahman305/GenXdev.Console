@@ -51,6 +51,10 @@ Update-Module
 | [Set-MonitorPowerOn](#Set-MonitorPowerOn) |  | Turns the monitor power on |
 | [Show-Verb](#Show-Verb) |  | Shows a short alphabetical list of all PowerShell verbs |
 | [Get-GenXDevModuleInfo](#Get-GenXDevModuleInfo) |  |  |
+| [SayTime](#SayTime) |  |  |
+| [SayDate](#SayDate) |  |  |
+| [Now](#Now) |  |  |
+| [UtcNow](#UtcNow) |  |  |
 
 <hr/>
 &nbsp;
@@ -186,7 +190,8 @@ Get-GenXDevCmdlets
 ````
 
 ### SYNOPSIS
-    Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding aliases
+    Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding 
+    aliases
 
 ### SYNTAX
 ````PowerShell
@@ -194,7 +199,8 @@ Get-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] [<CommonParamet
 ````
 
 ### DESCRIPTION
-    Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding aliases
+    Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding 
+    aliases
 
 ### PARAMETERS
     -Filter <String>
@@ -228,7 +234,8 @@ Show-GenXDevCmdlets                  --> cmds
 
 ### SYNTAX
 ````PowerShell
-Show-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] [-Online] [<CommonParameters>]
+Show-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] [-Online] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -300,7 +307,8 @@ Invoke-Fasti                         --> Fasti
 ````
 
 ### SYNOPSIS
-    Will extract all archive files (zip, 7z, tar, etc) found in current directory and then DELETE them
+    Will extract all archive files (zip, 7z, tar, etc) found in current directory and then 
+    DELETE them
 
 ### SYNTAX
 ````PowerShell
@@ -308,7 +316,8 @@ Invoke-Fasti [<CommonParameters>]
 ````
 
 ### DESCRIPTION
-    Will extract all archive files (zip, 7z, tar, etc) found in current directory and then DELETE them.
+    Will extract all archive files (zip, 7z, tar, etc) found in current directory and then 
+    DELETE them.
     Each archive file is extracted into their own directory with the same name as the file
 
 ### PARAMETERS
@@ -577,6 +586,74 @@ Get-GenXDevModuleInfo [[-ModuleName] <string[]>] [<CommonParameters>]
         Aliases                      Name, Module
         Dynamic?                     false
         Accept wildcard characters?  false
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+
+<br/><hr/><hr/><br/>
+
+##	SayTime
+````PowerShell
+SayTime
+````
+
+### SYNTAX
+````PowerShell
+SayTime 
+````
+
+### PARAMETERS
+    None
+
+<br/><hr/><hr/><br/>
+
+##	SayDate
+````PowerShell
+SayDate
+````
+
+### SYNTAX
+````PowerShell
+SayDate 
+````
+
+### PARAMETERS
+    None
+
+<br/><hr/><hr/><br/>
+
+##	Now
+````PowerShell
+Now
+````
+
+### SYNTAX
+````PowerShell
+Now [<CommonParameters>]
+````
+
+### PARAMETERS
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+
+<br/><hr/><hr/><br/>
+
+##	UtcNow
+````PowerShell
+UtcNow
+````
+
+### SYNTAX
+````PowerShell
+UtcNow [<CommonParameters>]
+````
+
+### PARAMETERS
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
@@ -1002,8 +1079,10 @@ Add-SpotifyTracksToPlaylist          --> addtoplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
-Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1048,7 +1127,8 @@ Add-SpotifyNewPlaylist               --> newplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [<CommonParameters>]
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1101,8 +1181,8 @@ Set-SpotifyPlaylistDetails           --> spld
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] <String>] [-Public] 
-[-Collabrative] [-Private] [-NoCollabrations] [<CommonParameters>]
+Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] 
+<String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1176,8 +1256,10 @@ Remove-SpotifyTracksFromPlaylist     --> removefromplaylist
 
 ### SYNTAX
 ````PowerShell
-Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
-Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1310,8 +1392,8 @@ Set-SpotifyPlaylistOrder
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] <Int32> [[-RangeLength] 
-<Nullable`1>] [<CommonParameters>]
+Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] 
+<Int32> [[-RangeLength] <Nullable`1>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION

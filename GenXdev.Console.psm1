@@ -728,3 +728,46 @@ function Get-GenXDevModuleInfo {
         }
     }
 }
+
+###############################################################################
+
+function SayTime() {
+
+	$d = Get-Date
+	$h = $d.Hour
+	$m = $d.Minute
+	say ("The time is "+$h.ToString("0")+" hours and "+$m.ToString("0")+" minutes")
+}
+
+function SayDate() {
+
+	say ("It is "+[DateTime]::Now.ToString("dddd, MMMM d yyyy"))
+}
+
+
+###############################################################################
+
+function Now() {
+
+    [CmdletBinding()]
+    [OutputType("System.DateTime")]
+
+    param()
+
+    return [DateTime]::Now
+}
+
+###############################################################################
+
+function UtcNow() {
+
+    [CmdletBinding()]
+    [OutputType("System.DateTime")]
+
+    param()
+
+    return [DateTime]::UtcNow
+}
+
+###############################################################################
+
