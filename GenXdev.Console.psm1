@@ -689,6 +689,7 @@ function Get-GenXDevModuleInfo {
                     $newVersion = [Version]::new($currentVersion.Major, $currentVersion.Minor + 1, $currentVersion.Build).ToString();
 
                     @{
+                        ModulePath     = $currentModule.FullName;
                         ModuleName     = $currentModuleName;
                         Module         = $currentModule;
                         ConfigPath     = $configPath;
