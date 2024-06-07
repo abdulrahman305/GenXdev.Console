@@ -195,7 +195,6 @@ Start-TextToSpeech -lines <String[]> [-wait] [<CommonParameters>]
         Position?                    named
         Default value                
         Accept pipeline input?       true (ByValue)
-        Aliases                      
         Accept wildcard characters?  false
     -wait [<SwitchParameter>]
         Will wait until all text is spoken
@@ -203,7 +202,6 @@ Start-TextToSpeech -lines <String[]> [-wait] [<CommonParameters>]
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -227,7 +225,8 @@ Get-GenXDevCmdlets
 ````
 
 ### SYNOPSIS
-    Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding aliases
+    Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding 
+    aliases
 
 ### SYNTAX
 ````PowerShell
@@ -235,7 +234,8 @@ Get-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] [<CommonParamet
 ````
 
 ### DESCRIPTION
-    Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding aliases
+    Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding 
+    aliases
 
 ### PARAMETERS
     -Filter <String>
@@ -244,14 +244,12 @@ Get-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] [<CommonParamet
         Position?                    1
         Default value                *
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -ModuleName <String[]>
         Required?                    false
         Position?                    named
         Default value                @("*")
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -271,7 +269,8 @@ Show-GenXDevCmdlets                  --> cmds
 
 ### SYNTAX
 ````PowerShell
-Show-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] [-Online] [<CommonParameters>]
+Show-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] [-Online] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -284,21 +283,18 @@ Show-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] [-Online] [<Co
         Position?                    1
         Default value                *
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -ModuleName <String[]>
         Required?                    false
         Position?                    named
         Default value                @("*")
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Online [<SwitchParameter>]
         Required?                    false
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -331,7 +327,6 @@ New-MicrosoftShellTab [-DontCloseThisTab] [<CommonParameters>]
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -347,7 +342,8 @@ Invoke-Fasti                         --> Fasti
 ````
 
 ### SYNOPSIS
-    Will extract all archive files (zip, 7z, tar, etc) found in current directory and then DELETE them
+    Will extract all archive files (zip, 7z, tar, etc) found in current directory and then 
+    DELETE them
 
 ### SYNTAX
 ````PowerShell
@@ -355,7 +351,8 @@ Invoke-Fasti [<CommonParameters>]
 ````
 
 ### DESCRIPTION
-    Will extract all archive files (zip, 7z, tar, etc) found in current directory and then DELETE them.
+    Will extract all archive files (zip, 7z, tar, etc) found in current directory and then 
+    DELETE them.
     Each archive file is extracted into their own directory with the same name as the file
 
 ### PARAMETERS
@@ -596,7 +593,6 @@ Show-Verb [[-Verb] <String[]>] [<CommonParameters>]
         Position?                    1
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -727,7 +723,6 @@ Set-SpotifyActiveDevice [-DeviceId] <String> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -760,7 +755,6 @@ Set-SpotifyApiToken [-ApiToken] <String> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -780,7 +774,8 @@ Set-SpotifyPlaylistOrder
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] <Int32> [[-RangeLength] <Nullable`1>] [<CommonParameters>]
+Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] 
+<Int32> [[-RangeLength] <Nullable`1>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -793,7 +788,6 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -RangeStart <Int32>
         The position of the first item to be reordered
@@ -801,7 +795,6 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         Position?                    1
         Default value                0
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -InsertBefore <Int32>
         The position where the items should be inserted. To reorder the items to the
@@ -814,7 +807,6 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         Position?                    2
         Default value                0
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -RangeLength <Nullable`1>
         The amount of items to be reordered. Defaults to 1 if not set. The range of items
@@ -825,7 +817,6 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         Position?                    3
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -870,7 +861,8 @@ Set-SpotifyPlaylistDetails           --> spld
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [<CommonParameters>]
+Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] 
+<String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -883,7 +875,6 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Name <String>
         The new name for the playlist
@@ -891,7 +882,6 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    2
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Description <String>
         The new description for the playlist
@@ -899,7 +889,6 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    3
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Public [<SwitchParameter>]
         Make the playlist public
@@ -907,7 +896,6 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Collabrative [<SwitchParameter>]
         Allow others to make changes
@@ -915,7 +903,6 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Private [<SwitchParameter>]
         Make the playlist private
@@ -923,7 +910,6 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -NoCollabrations [<SwitchParameter>]
         Disallow others to make changes
@@ -931,7 +917,6 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1151,7 +1136,8 @@ Add-SpotifyNewPlaylist               --> newplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [<CommonParameters>]
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1164,7 +1150,6 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Description <String>
         The description for the new playlist
@@ -1172,7 +1157,6 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         Position?                    2
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Public [<SwitchParameter>]
         Make this a public playlist
@@ -1180,7 +1164,6 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Collabrative [<SwitchParameter>]
         Allow others to make changes
@@ -1188,7 +1171,6 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1246,7 +1228,6 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<Common
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     -SearchType <String[]>
         Optionally, the type of item to search for
@@ -1254,7 +1235,6 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<Common
         Position?                    named
         Default value                @("Track")
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1287,7 +1267,6 @@ Add-SpotifyTracksToLiked [[-TrackId] <String[]>] [<CommonParameters>]
         Position?                    1
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1307,8 +1286,10 @@ Add-SpotifyTracksToPlaylist          --> addtoplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
-Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1320,7 +1301,6 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<Commo
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -PlaylistId <String[]>
         The Spotify playlist to add tracks to
@@ -1328,7 +1308,6 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<Commo
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Uri <String[]>
         The Spotify tracks that should be added to the playlist
@@ -1336,7 +1315,6 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<Commo
         Position?                    2
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1494,7 +1472,6 @@ Get-SpotifyLyrics [-TrackId <String>] [[-Queries] <String[]>] [<CommonParameters
         Position?                    named
         Default value                
         Accept pipeline input?       true (ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     -Queries <String[]>
         Optional: A query to find a track to lookup lyrics for
@@ -1502,7 +1479,6 @@ Get-SpotifyLyrics [-TrackId <String>] [[-Queries] <String[]>] [<CommonParameters
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1588,7 +1564,6 @@ Get-SpotifyPlaylistTracks [-PlaylistId] <String> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     -PlaylistId <String>
         The Spotify playlist to return tracks for
@@ -1596,7 +1571,6 @@ Get-SpotifyPlaylistTracks [-PlaylistId] <String> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1628,7 +1602,6 @@ Get-SpotifyTrackAudioFeatures [-TrackId] <String[]> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1661,7 +1634,6 @@ Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1693,14 +1665,12 @@ Get-SpotifyUserPlaylists [[-Filter] <String[]>] [-Force] [<CommonParameters>]
         Position?                    1
         Default value                @("*")
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     -Force [<SwitchParameter>]
         Required?                    false
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1733,7 +1703,6 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <String[]> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     -PlaylistId <String[]>
         The Spotify playlist where all liked tracks should move to"
@@ -1741,7 +1710,6 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <String[]> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1774,7 +1742,6 @@ Remove-SpotifyTracksFromLiked [[-TrackId] <String[]>] [<CommonParameters>]
         Position?                    1
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1794,8 +1761,10 @@ Remove-SpotifyTracksFromPlaylist     --> removefromplaylist
 
 ### SYNTAX
 ````PowerShell
-Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
-Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1807,7 +1776,6 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -PlaylistId <String[]>
         The Spotify playlist to delete tracks from
@@ -1815,7 +1783,6 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Uri <String[]>
         The Spotify tracks that should be removed from the playlist
@@ -1823,7 +1790,6 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<
         Position?                    2
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1856,7 +1822,6 @@ Search-Spotify [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     -SearchType <String[]>
         Optionally, the type of item to search for
@@ -1864,7 +1829,6 @@ Search-Spotify [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters
         Position?                    named
         Default value                @("Track")
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1897,7 +1861,6 @@ Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>] [<CommonPar
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     -SearchType <String[]>
         Optionally, the type of item to search for
@@ -1905,7 +1868,6 @@ Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>] [<CommonPar
         Position?                    named
         Default value                @("Track")
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1938,7 +1900,6 @@ Search-Spotify [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     -SearchType <String[]>
         Optionally, the type of item to search for
@@ -1946,7 +1907,6 @@ Search-Spotify [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters
         Position?                    named
         Default value                @("Track")
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1979,7 +1939,6 @@ Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>] [<CommonPar
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     -SearchType <String[]>
         Optionally, the type of item to search for
@@ -1987,7 +1946,6 @@ Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>] [<CommonPar
         Position?                    named
         Default value                @("Track")
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2020,7 +1978,6 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<Common
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     -SearchType <String[]>
         Optionally, the type of item to search for
@@ -2028,7 +1985,6 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<Common
         Position?                    named
         Default value                @("Track")
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2310,14 +2266,12 @@ Get-SpotifyUserPlaylists [[-Filter] <String[]>] [-Force] [<CommonParameters>]
         Position?                    1
         Default value                @("*")
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     -Force [<SwitchParameter>]
         Required?                    false
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2337,8 +2291,10 @@ Add-SpotifyTracksToPlaylist          --> addtoplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
-Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -2350,7 +2306,6 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<Commo
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -PlaylistId <String[]>
         The Spotify playlist to add tracks to
@@ -2358,7 +2313,6 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<Commo
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Uri <String[]>
         The Spotify tracks that should be added to the playlist
@@ -2366,7 +2320,6 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<Commo
         Position?                    2
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2386,7 +2339,8 @@ Add-SpotifyNewPlaylist               --> newplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [<CommonParameters>]
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -2399,7 +2353,6 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Description <String>
         The description for the new playlist
@@ -2407,7 +2360,6 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         Position?                    2
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Public [<SwitchParameter>]
         Make this a public playlist
@@ -2415,7 +2367,6 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Collabrative [<SwitchParameter>]
         Allow others to make changes
@@ -2423,7 +2374,6 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2443,7 +2393,8 @@ Set-SpotifyPlaylistDetails           --> spld
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [<CommonParameters>]
+Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] 
+<String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -2456,7 +2407,6 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Name <String>
         The new name for the playlist
@@ -2464,7 +2414,6 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    2
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Description <String>
         The new description for the playlist
@@ -2472,7 +2421,6 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    3
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Public [<SwitchParameter>]
         Make the playlist public
@@ -2480,7 +2428,6 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Collabrative [<SwitchParameter>]
         Allow others to make changes
@@ -2488,7 +2435,6 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Private [<SwitchParameter>]
         Make the playlist private
@@ -2496,7 +2442,6 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -NoCollabrations [<SwitchParameter>]
         Disallow others to make changes
@@ -2504,7 +2449,6 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2524,8 +2468,10 @@ Remove-SpotifyTracksFromPlaylist     --> removefromplaylist
 
 ### SYNTAX
 ````PowerShell
-Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
-Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -2537,7 +2483,6 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -PlaylistId <String[]>
         The Spotify playlist to delete tracks from
@@ -2545,7 +2490,6 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -Uri <String[]>
         The Spotify tracks that should be removed from the playlist
@@ -2553,7 +2497,6 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<
         Position?                    2
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2610,7 +2553,6 @@ Get-SpotifyTrackAudioFeatures [-TrackId] <String[]> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2643,7 +2585,6 @@ Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2663,7 +2604,8 @@ Set-SpotifyPlaylistOrder
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] <Int32> [[-RangeLength] <Nullable`1>] [<CommonParameters>]
+Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] 
+<Int32> [[-RangeLength] <Nullable`1>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -2676,7 +2618,6 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -RangeStart <Int32>
         The position of the first item to be reordered
@@ -2684,7 +2625,6 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         Position?                    1
         Default value                0
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -InsertBefore <Int32>
         The position where the items should be inserted. To reorder the items to the
@@ -2697,7 +2637,6 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         Position?                    2
         Default value                0
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     -RangeLength <Nullable`1>
         The amount of items to be reordered. Defaults to 1 if not set. The range of items
@@ -2708,7 +2647,6 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         Position?                    3
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2741,7 +2679,6 @@ Get-SpotifyPlaylistTracks [-PlaylistId] <String> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     -PlaylistId <String>
         The Spotify playlist to return tracks for
@@ -2749,7 +2686,6 @@ Get-SpotifyPlaylistTracks [-PlaylistId] <String> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2807,7 +2743,6 @@ Add-SpotifyTracksToLiked [[-TrackId] <String[]>] [<CommonParameters>]
         Position?                    1
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2840,7 +2775,6 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <String[]> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     -PlaylistId <String[]>
         The Spotify playlist where all liked tracks should move to"
@@ -2848,7 +2782,6 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <String[]> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2909,7 +2842,6 @@ Remove-SpotifyTracksFromLiked [[-TrackId] <String[]>] [<CommonParameters>]
         Position?                    1
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2992,7 +2924,6 @@ Set-SpotifyActiveDevice [-DeviceId] <String> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -3025,7 +2956,6 @@ Get-SpotifyLyrics [-TrackId <String>] [[-Queries] <String[]>] [<CommonParameters
         Position?                    named
         Default value                
         Accept pipeline input?       true (ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     -Queries <String[]>
         Optional: A query to find a track to lookup lyrics for
@@ -3033,7 +2963,6 @@ Get-SpotifyLyrics [-TrackId <String>] [[-Queries] <String[]>] [<CommonParameters
         Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -3091,7 +3020,6 @@ Set-SpotifyApiToken [-ApiToken] <String> [<CommonParameters>]
         Position?                    1
         Default value                
         Accept pipeline input?       false
-        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
