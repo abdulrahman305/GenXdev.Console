@@ -7,6 +7,9 @@ Will stop the text-to-speech engine from saying anything else
 .DESCRIPTION
 Will stop the text-to-speech engine from saying anything else
 
+.PARAMETER None
+This function does not take any parameters.
+
 .EXAMPLE
 PS C:\> say "Good morning"; say "Good evening"; Stop-TextToSpeech; # -> "G.."
 
@@ -21,15 +24,13 @@ function Stop-TextToSpeech {
     param()
 
     try {
-        [GenXdev.Helpers.Misc]::Speech.SpeakAsyncCancelAll();
+        [GenXdev.Helpers.Misc]::Speech.SpeakAsyncCancelAll() | Out-Null
+        [GenXdev.Helpers.Misc]::SpeechCustomized.SpeakAsyncCancelAll() | Out-Null
     }
     catch {
 
     }
 }
-
-###############################################################################
-
 <#
 .SYNOPSIS
 Will use the text-to-speech engine to speak out text
@@ -37,11 +38,17 @@ Will use the text-to-speech engine to speak out text
 .DESCRIPTION
 Will use the text-to-speech engine to speak out text
 
-.PARAMETER input
-The text to speak
+.PARAMETER lines
+The text to speak.
+
+.PARAMETER Language
+The language to use.
+
+.PARAMETER PassThru
+Will pass the text through the pipeline.
 
 .PARAMETER wait
-Will wait until all text is spoken
+Will wait until all text is spoken.
 
 .EXAMPLE
 PS C:\> say "Good morning"
@@ -57,8 +64,17 @@ function Start-TextToSpeech {
     [Alias("say")]
 
     param(
-        [Parameter(Mandatory = $true, ValueFromPipeline = $true, ValueFromRemainingArguments = $true, ParameterSetName = "strings")]
+        [Parameter(Mandatory = $true, Position = 0, ValueFromPipeline = $true, ValueFromRemainingArguments = $true, ParameterSetName = "strings")]
         [string[]] $lines,
+
+        [Parameter(Mandatory = $false, Position = 2, HelpMessage = "The language locale id to use, e.g. 'en-US'")]
+        [string] $Locale = $null,
+
+        [Parameter(Mandatory = $False)]
+        [string] $VoiceName = $null,
+
+        [Parameter(Mandatory = $False)]
+        [switch] $PassThru,
 
         [Parameter(Mandatory = $False)]
         [switch] $wait
@@ -78,19 +94,42 @@ function Start-TextToSpeech {
 
                 $txt = "$txt"
             }
+
             try {
 
-                if ($wait -eq $true) {
+                if ($PassThru -eq $true) {
 
-                    [GenXdev.Helpers.Misc]::Speech.Speak($txt.Replace('\-[\r\n]*', ' ').Replace( '[\r\n]*', ' ')) | Out-Null
+                    $txt
                 }
-                else {
-                    [GenXdev.Helpers.Misc]::Speech.SpeakAsync($txt.Replace('\-[\r\n]*', ' ').Replace( '[\r\n]*', ' ')) | Out-Null
+
+                $txt = $txt.Replace('\-[\r\n]*', ' ').Replace( '[\r\n]*', ' ');
+
+                if ([string]::IsNullOrWhiteSpace($Locale)) {
+
+                    if ([string]::IsNullOrWhiteSpace($VoiceName)) {
+
+                        if ($wait -eq $true) {
+
+                            [GenXdev.Helpers.Misc]::Speech.Speak($txt) | Out-Null;
+                            return;
+                        }
+                        [GenXdev.Helpers.Misc]::Speech.SpeakAsync($txt) | Out-Null;
+
+                        return;
+                    }
+
+                    [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice((([GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices()) | Where-Object { if ([string]::IsNullOrWhiteSpace($VoiceName) -or ($_.VoiceInfo.Name -like "*$VoiceName*")) { $_ } } | Where-Object Name | Select-Object -First 1))
+                    [GenXdev.Helpers.Misc]::SpeechCustomized.Speak($txt) | Out-Null;
+                    return;
                 }
+
+                [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice((([GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices($locale)) | Where-Object { if ([string]::IsNullOrWhiteSpace($VoiceName) -or ($_.VoiceInfo.Name -like "*$VoiceName*")) { $_ } } | Where-Object Name | Select-Object -First 1))
+                [GenXdev.Helpers.Misc]::SpeechCustomized.Speak($txt) | Out-Null;
+                return;
             }
             catch {
-
-                $txt | Out-Host
+                [System.Console]::WriteLine("Error: $($_.Exception.Message)");
+                [GenXdev.Helpers.Misc]::Speech.Speak($txt) | Out-Null;
             }
         }
     }
