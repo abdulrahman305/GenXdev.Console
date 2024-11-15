@@ -55,6 +55,7 @@ Update-Module
 | [SayDate](#SayDate) |  |  |
 | [Now](#Now) |  |  |
 | [UtcNow](#UtcNow) |  |  |
+| [Invoke-VLCPlayer](#Invoke-VLCPlayer) | vlc |  |
 
 <hr/>
 &nbsp;
@@ -64,9 +65,9 @@ Update-Module
 | --- | --- | --- |
 | [Set-SpotifyActiveDevice](#Set-SpotifyActiveDevice) |  | Transfers playback to provided Spotify device |
 | [Set-SpotifyApiToken](#Set-SpotifyApiToken) |  | Caches an Spotify API-token for later use |
-| [Set-SpotifyPlaylistOrder](#Set-SpotifyPlaylistOrder) |  | Reorders a range of tracks inside a Spotify playlist |
-| [Set-SpotifyPause](#Set-SpotifyPause) | pausemusic, Resume-Music | Pauses playback on the device that is active on Spotify |
 | [Set-SpotifyPlaylistDetails](#Set-SpotifyPlaylistDetails) | spld | Sets the main properties of a Spotify playlist |
+| [Set-SpotifyPause](#Set-SpotifyPause) | pausemusic, Resume-Music | Pauses playback on the device that is active on Spotify |
+| [Set-SpotifyPlaylistOrder](#Set-SpotifyPlaylistOrder) |  | Reorders a range of tracks inside a Spotify playlist |
 | [Set-SpotifyPrevious](#Set-SpotifyPrevious) | prev, previous | Skips to previous track on the device that is active on Spotify |
 | [Set-SpotifyRepeatContext](#Set-SpotifyRepeatContext) | repeat | Enables playlist-repeat on the device that is active on Spotify |
 | [Set-SpotifyRepeatSong](#Set-SpotifyRepeatSong) | repeatsong | Enables song-repeat on the device that is active on Spotify |
@@ -183,7 +184,8 @@ Start-TextToSpeech                   --> say
 
 ### SYNTAX
 ````PowerShell
-Start-TextToSpeech -lines <String[]> [-wait] [<CommonParameters>]
+Start-TextToSpeech [-lines] <String[]> [-Locale <String>] [-VoiceName <String>] 
+[-PassThru] [-wait] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -191,13 +193,33 @@ Start-TextToSpeech -lines <String[]> [-wait] [<CommonParameters>]
 
 ### PARAMETERS
     -lines <String[]>
+        The text to speak.
         Required?                    true
-        Position?                    named
+        Position?                    1
         Default value                
         Accept pipeline input?       true (ByValue)
         Accept wildcard characters?  false
+    -Locale <String>
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    -VoiceName <String>
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    -PassThru [<SwitchParameter>]
+        Will pass the text through the pipeline.
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
     -wait [<SwitchParameter>]
-        Will wait until all text is spoken
+        Will wait until all text is spoken.
         Required?                    false
         Position?                    named
         Default value                False
@@ -225,7 +247,8 @@ Get-GenXDevCmdlets
 ````
 
 ### SYNOPSIS
-    Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding aliases
+    Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding 
+    aliases
 
 ### SYNTAX
 ````PowerShell
@@ -233,7 +256,8 @@ Get-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] [<CommonParamet
 ````
 
 ### DESCRIPTION
-    Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding aliases
+    Retreives a list of all installed GenXdev modules and their Cmdlets and corresponding 
+    aliases
 
 ### PARAMETERS
     -Filter <String>
@@ -267,7 +291,8 @@ Show-GenXDevCmdlets                  --> cmds
 
 ### SYNTAX
 ````PowerShell
-Show-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] [-Online] [<CommonParameters>]
+Show-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] [-Online] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -339,7 +364,8 @@ Invoke-Fasti                         --> Fasti
 ````
 
 ### SYNOPSIS
-    Will extract all archive files (zip, 7z, tar, etc) found in current directory and then DELETE them
+    Will extract all archive files (zip, 7z, tar, etc) found in current directory and then 
+    DELETE them
 
 ### SYNTAX
 ````PowerShell
@@ -347,7 +373,8 @@ Invoke-Fasti [<CommonParameters>]
 ````
 
 ### DESCRIPTION
-    Will extract all archive files (zip, 7z, tar, etc) found in current directory and then DELETE them.
+    Will extract all archive files (zip, 7z, tar, etc) found in current directory and then 
+    DELETE them.
     Each archive file is extracted into their own directory with the same name as the file
 
 ### PARAMETERS
@@ -692,6 +719,53 @@ UtcNow [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
+##	Invoke-VLCPlayer
+````PowerShell
+Invoke-VLCPlayer                     --> vlc
+````
+
+### SYNTAX
+````PowerShell
+Invoke-VLCPlayer [[-DirectoryPath] <string>] [-OnlyVideos] [-OnlyAudio] 
+[<CommonParameters>]
+````
+
+### PARAMETERS
+    -DirectoryPath <string>
+        Specify the directory path containing media files.
+        Required?                    false
+        Position?                    0
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      None
+        Dynamic?                     false
+        Accept wildcard characters?  false
+    -OnlyAudio
+        Only include audio files in the playlist.
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      None
+        Dynamic?                     false
+        Accept wildcard characters?  false
+    -OnlyVideos
+        Only include video files in the playlist.
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      None
+        Dynamic?                     false
+        Accept wildcard characters?  false
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+
+<br/><hr/><hr/><br/>
+
 &nbsp;<hr/>
 ###	GenXdev.Console.Spotify<hr/>
 
@@ -759,92 +833,6 @@ Set-SpotifyApiToken [-ApiToken] <String> [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-##	Set-SpotifyPlaylistOrder
-````PowerShell
-Set-SpotifyPlaylistOrder
-````
-
-### SYNOPSIS
-    Reorders a range of tracks inside a Spotify playlist
-
-### SYNTAX
-````PowerShell
-Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] <Int32> [[-RangeLength] <Nullable`1>] [<CommonParameters>]
-````
-
-### DESCRIPTION
-    Reorders a range of tracks inside a Spotify playlist
-
-### PARAMETERS
-    -PlaylistId <String>
-        The Spotify playlist to perform the re-ordering on
-        Required?                    true
-        Position?                    1
-        Default value                
-        Accept pipeline input?       false
-        Accept wildcard characters?  false
-    -RangeStart <Int32>
-        The position of the first item to be reordered
-        Required?                    true
-        Position?                    1
-        Default value                0
-        Accept pipeline input?       false
-        Accept wildcard characters?  false
-    -InsertBefore <Int32>
-        The position where the items should be inserted. To reorder the items to the
-        end of the playlist, simply set insert_before to the position after the last
-        item. Examples: To reorder the first item to the last position in a playlist
-        with 10 items, set range_start to 0, and insert_before to 10. To reorder the
-        last item in a playlist with 10 items to the start of the playlist, set range_start
-        to 9, and insert_before to 0.
-        Required?                    true
-        Position?                    2
-        Default value                0
-        Accept pipeline input?       false
-        Accept wildcard characters?  false
-    -RangeLength <Nullable`1>
-        The amount of items to be reordered. Defaults to 1 if not set. The range of items
-        to be reordered begins from the range_start position, and includes the range_length
-        subsequent items. Example: To move the items at index 9-10 to the start of the
-        playlist, range_start is set to 9, and range_length is set to 2.
-        Required?                    false
-        Position?                    3
-        Default value                
-        Accept pipeline input?       false
-        Accept wildcard characters?  false
-    <CommonParameters>
-        This cmdlet supports the common parameters: Verbose, Debug,
-        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-        OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
-
-<br/><hr/><hr/><br/>
-
-##	Set-SpotifyPause
-````PowerShell
-Set-SpotifyPause                     --> pausemusic, Resume-Music
-````
-
-### SYNOPSIS
-    Pauses Spotify playback
-
-### SYNTAX
-````PowerShell
-Set-SpotifyPause [<CommonParameters>]
-````
-
-### DESCRIPTION
-    Pauses playback on the device that is active on Spotify
-
-### PARAMETERS
-    <CommonParameters>
-        This cmdlet supports the common parameters: Verbose, Debug,
-        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
-        OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
-
-<br/><hr/><hr/><br/>
-
 ##	Set-SpotifyPlaylistDetails
 ````PowerShell
 Set-SpotifyPlaylistDetails           --> spld
@@ -855,7 +843,8 @@ Set-SpotifyPlaylistDetails           --> spld
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [<CommonParameters>]
+Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] 
+<String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -909,6 +898,93 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Required?                    false
         Position?                    named
         Default value                False
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+
+<br/><hr/><hr/><br/>
+
+##	Set-SpotifyPause
+````PowerShell
+Set-SpotifyPause                     --> pausemusic, Resume-Music
+````
+
+### SYNOPSIS
+    Pauses Spotify playback
+
+### SYNTAX
+````PowerShell
+Set-SpotifyPause [<CommonParameters>]
+````
+
+### DESCRIPTION
+    Pauses playback on the device that is active on Spotify
+
+### PARAMETERS
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+
+<br/><hr/><hr/><br/>
+
+##	Set-SpotifyPlaylistOrder
+````PowerShell
+Set-SpotifyPlaylistOrder
+````
+
+### SYNOPSIS
+    Reorders a range of tracks inside a Spotify playlist
+
+### SYNTAX
+````PowerShell
+Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] 
+<Int32> [[-RangeLength] <Nullable`1>] [<CommonParameters>]
+````
+
+### DESCRIPTION
+    Reorders a range of tracks inside a Spotify playlist
+
+### PARAMETERS
+    -PlaylistId <String>
+        The Spotify playlist to perform the re-ordering on
+        Required?                    true
+        Position?                    1
+        Default value                
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    -RangeStart <Int32>
+        The position of the first item to be reordered
+        Required?                    true
+        Position?                    1
+        Default value                0
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    -InsertBefore <Int32>
+        The position where the items should be inserted. To reorder the items to the
+        end of the playlist, simply set insert_before to the position after the last
+        item. Examples: To reorder the first item to the last position in a playlist
+        with 10 items, set range_start to 0, and insert_before to 10. To reorder the
+        last item in a playlist with 10 items to the start of the playlist, set range_start
+        to 9, and insert_before to 0.
+        Required?                    true
+        Position?                    2
+        Default value                0
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    -RangeLength <Nullable`1>
+        The amount of items to be reordered. Defaults to 1 if not set. The range of items
+        to be reordered begins from the range_start position, and includes the range_length
+        subsequent items. Example: To move the items at index 9-10 to the start of the
+        playlist, range_start is set to 9, and range_length is set to 2.
+        Required?                    false
+        Position?                    3
+        Default value                
         Accept pipeline input?       false
         Accept wildcard characters?  false
     <CommonParameters>
@@ -1129,7 +1205,8 @@ Add-SpotifyNewPlaylist               --> newplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [<CommonParameters>]
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] 
+[-Collabrative] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1207,7 +1284,8 @@ Search-SpotifyAndEnqueue             --> fmq, smq
 
 ### SYNTAX
 ````PowerShell
-Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters>]
+Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1278,8 +1356,10 @@ Add-SpotifyTracksToPlaylist          --> addtoplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
-Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1751,8 +1831,10 @@ Remove-SpotifyTracksFromPlaylist     --> removefromplaylist
 
 ### SYNTAX
 ````PowerShell
-Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
-Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1953,7 +2035,8 @@ Search-SpotifyAndEnqueue             --> fmq, smq
 
 ### SYNTAX
 ````PowerShell
-Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters>]
+Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -2279,8 +2362,10 @@ Add-SpotifyTracksToPlaylist          --> addtoplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
-Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -2325,7 +2410,8 @@ Add-SpotifyNewPlaylist               --> newplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [<CommonParameters>]
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] 
+[-Collabrative] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -2378,7 +2464,8 @@ Set-SpotifyPlaylistDetails           --> spld
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [<CommonParameters>]
+Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] 
+<String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -2452,8 +2539,10 @@ Remove-SpotifyTracksFromPlaylist     --> removefromplaylist
 
 ### SYNTAX
 ````PowerShell
-Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
-Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -2586,7 +2675,8 @@ Set-SpotifyPlaylistOrder
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] <Int32> [[-RangeLength] <Nullable`1>] [<CommonParameters>]
+Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] 
+<Int32> [[-RangeLength] <Nullable`1>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION

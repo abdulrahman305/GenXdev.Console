@@ -67,7 +67,7 @@ function Start-TextToSpeech {
         [Parameter(Mandatory = $true, Position = 0, ValueFromPipeline = $true, ValueFromRemainingArguments = $true, ParameterSetName = "strings")]
         [string[]] $lines,
 
-        [Parameter(Mandatory = $false, Position = 2, HelpMessage = "The language locale id to use, e.g. 'en-US'")]
+        [Parameter(Mandatory = $false, HelpMessage = "The language locale id to use, e.g. 'en-US'")]
         [string] $Locale = $null,
 
         [Parameter(Mandatory = $False)]
@@ -102,7 +102,7 @@ function Start-TextToSpeech {
                     $txt
                 }
 
-                $txt = $txt.Replace('\-[\r\n]*', ' ').Replace( '[\r\n]*', ' ');
+                $txt = $txt.Replace("`r", ' ').Replace('`n', ' ').Replace('`t', ' ');
 
                 if ([string]::IsNullOrWhiteSpace($Locale)) {
 
@@ -118,12 +118,23 @@ function Start-TextToSpeech {
                         return;
                     }
 
-                    [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice((([GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices()) | Where-Object { if ([string]::IsNullOrWhiteSpace($VoiceName) -or ($_.VoiceInfo.Name -like "*$VoiceName*")) { $_ } } | Where-Object Name | Select-Object -First 1))
+                    try {
+                        [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice((([GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices()) | Where-Object { if ([string]::IsNullOrWhiteSpace($VoiceName) -or ($_.VoiceInfo.Name -like "* $VoiceName * ")) { $_ } } | Where-Object Name | Select-Object -First 1))
+                    }
+                    catch {
+                        Write-Warning "Could not set voice with provided parameters, maybe no installation found of the voice with your selection parameters"
+                    }
                     [GenXdev.Helpers.Misc]::SpeechCustomized.Speak($txt) | Out-Null;
                     return;
                 }
 
-                [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice((([GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices($locale)) | Where-Object { if ([string]::IsNullOrWhiteSpace($VoiceName) -or ($_.VoiceInfo.Name -like "*$VoiceName*")) { $_ } } | Where-Object Name | Select-Object -First 1))
+                try {
+                    [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice((([GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices($locale)) | Where-Object { if ([string]::IsNullOrWhiteSpace($VoiceName) -or ($_.VoiceInfo.Name -like "* $VoiceName * ")) { $_ } } | Where-Object Name | Select-Object -First 1))
+                }
+                catch {
+                    Write-Warning "Could not set voice with provided parameters, maybe no installation found of the voice with your selection parameters"
+                }
+
                 [GenXdev.Helpers.Misc]::SpeechCustomized.Speak($txt) | Out-Null;
                 return;
             }
@@ -825,5 +836,120 @@ function UtcNow() {
 }
 
 ################################################################################
+
+function Invoke-VLCPlayer {
+
+    [CmdletBinding()]
+    [alias("vlc")]
+
+    param(
+
+        [Parameter(Mandatory = $false, HelpMessage = "Specify the directory path containing media files.")]
+        [string]$DirectoryPath = ".\*",
+
+        [Parameter(Mandatory = $false, HelpMessage = "Only include video files in the playlist.")]
+        [switch]$OnlyVideos,
+
+        [Parameter(Mandatory = $false, HelpMessage = "Only include audio files in the playlist.")]
+        [switch]$OnlyAudio
+    )
+
+    # Get the list of files in the directory and subdirectories
+    $files = Get-ChildItem -Path $DirectoryPath -File -Recurse
+
+    # Filter files to only include those with extensions that VLC player can play
+    $validExtensions = $OnlyVideos ? @(".mp4", ".avi", ".mkv", ".mov", ".wmv") : ($OnlyAudio ? @(".mp3", ".flac", ".wav") : @(".mp3", ".mp4", ".avi", ".mkv", ".flac", ".wav", ".mov", ".wmv"));
+    $files = $files | Where-Object { $validExtensions -contains $_.Extension.ToLower() }
+
+    $playlist = @();
+
+    # Create or overwrite the playlist file
+    foreach ($file in $files) {
+        $playlist += $file.FullName
+    }
+
+    [string]$PlaylistPath = [System.IO.Path]::ChangeExtension([System.IO.Path]::GetTempFileName(), ".xspf")
+
+    # Generate the .xspf formatted XML content
+    $xspfContent = @"
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">
+                    <title>Playlist</title>
+                    <trackList>
+
+"@
+
+    [int]$i = 0
+    foreach ($file in $playlist) {
+
+        $xspfContent += @"
+
+                    <track>
+                    <location>file:///$([Uri]::EscapeUriString($file.Replace("\","/")))</location>
+                    <duration>1000000</duration>
+                    <extension application="http://www.videolan.org/vlc/playlist/0">
+                    <vlc:id>$(($i++))</vlc:id>
+                    </extension>
+                    </track>
+
+"@
+    }
+
+    $xspfContent += @"
+
+                    </trackList>
+                    <extension application="http://www.videolan.org/vlc/playlist/0">
+
+"@;
+
+    [int] $i = 0
+    foreach ($file in $playlist) {
+
+        $xspfContent += @"
+
+                    <vlc:item tid="$(($i++))"/>
+
+"@;
+    }
+
+    $xspfContent += @"
+
+                    </extension>
+                    </playlist>
+
+"@;
+
+    # Save the playlist to the specified file
+    $xspfContent | Out-File -FilePath $PlaylistPath -Encoding utf8 -Force
+
+    "$PlaylistPath" | Set-Clipboard
+
+    if ($playlist.Length -eq 0) {
+
+        Write-Host "No media files found in the specified directory."
+        exit
+    }
+
+    # check if VLC player is installed
+    if (-not (Test-Path "C:\Program Files\VideoLAN\VLC\vlc.exe")) {
+
+        # check if powershell module 'Microsoft.WinGet.Client' is installed
+        if (-not (Get-Module -ListAvailable -Name 'Microsoft.WinGet.Client')) {
+
+            # install module 'Microsoft.WinGet.Client'
+            Install-Module -Name 'Microsoft.WinGet.Client' -Force -Scope CurrentUser -AllowClobber -SkipPublisherCheck -AcceptLicense
+
+            # import module
+            Import-Module -Name 'Microsoft.WinGet.Client'
+        }
+
+        # install VLC player using 'Microsoft.WinGet.Client'
+        Install-WinGetPackage -Name 'VLC media player' -Scope System -Force -AcceptLicense
+    }
+
+    # Start VLC player with the playlist file
+    Start-Process -FilePath "C:\Program Files\VideoLAN\VLC\vlc.exe" -ArgumentList @("--started-from-file", "$PlaylistPath")
+}
+
 ################################################################################
 ################################################################################
