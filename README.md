@@ -184,8 +184,8 @@ Start-TextToSpeech                   --> say
 
 ### SYNTAX
 ````PowerShell
-Start-TextToSpeech [-lines] <String[]> [-Locale <String>] [-VoiceName <String>] 
-[-PassThru] [-wait] [<CommonParameters>]
+Start-TextToSpeech [-lines] <String[]> [-Locale <String>] [-VoiceName <String>] [-PassThru] 
+[-wait] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -726,8 +726,7 @@ Invoke-VLCPlayer                     --> vlc
 
 ### SYNTAX
 ````PowerShell
-Invoke-VLCPlayer [[-DirectoryPath] <string>] [-OnlyVideos] [-OnlyAudio] 
-[<CommonParameters>]
+Invoke-VLCPlayer [[-DirectoryPath] <string>] [-OnlyVideos] [-OnlyAudio] [<CommonParameters>]
 ````
 
 ### PARAMETERS
@@ -1205,8 +1204,8 @@ Add-SpotifyNewPlaylist               --> newplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] 
-[-Collabrative] [<CommonParameters>]
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1284,8 +1283,7 @@ Search-SpotifyAndEnqueue             --> fmq, smq
 
 ### SYNTAX
 ````PowerShell
-Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] 
-[<CommonParameters>]
+Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -2035,8 +2033,7 @@ Search-SpotifyAndEnqueue             --> fmq, smq
 
 ### SYNTAX
 ````PowerShell
-Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] 
-[<CommonParameters>]
+Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -2410,8 +2407,8 @@ Add-SpotifyNewPlaylist               --> newplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] 
-[-Collabrative] [<CommonParameters>]
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
