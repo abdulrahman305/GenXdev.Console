@@ -15,10 +15,10 @@ The search phrase
 Optionally, the type of item to search for
 
 .EXAMPLE
-PS C:\> Search-SpotifyAndPlay Rage against the machine
+PS C:\> Search-SpotifyAndPlay "Rage against the machine"
 
 .EXAMPLE
-PS C:\> fmp Dire Straits You and your friend
+PS C:\> fmp "Dire Straits You and your friend"
 
 #>
 function Search-SpotifyAndPlay {
@@ -44,7 +44,7 @@ function Search-SpotifyAndPlay {
 
     begin {
 
-        $Queries = Build-InvocationArguments $MyInvocation $Queries
+
 
         [int] $SearchTypeTypeId = 0;
 
@@ -82,10 +82,10 @@ The search phrase
 Optionally, the type of item to search for
 
 .EXAMPLE
-PS C:\> Search-SpotifyAndEnqueue Rage against the machine
+PS C:\> Search-SpotifyAndEnqueue "Rage against the machine"
 
 .EXAMPLE
-PS C:\> fmq Dire Straits You and your friend
+PS C:\> fmq "Dire Straits You and your friend"
 
 #>
 function Search-SpotifyAndEnqueue {
@@ -111,7 +111,7 @@ function Search-SpotifyAndEnqueue {
 
     begin {
 
-        $Queries = Build-InvocationArguments $MyInvocation $Queries
+
 
         [int] $SearchTypeTypeId = 0;
 
@@ -149,10 +149,10 @@ The search phrase
 Optionally, the type of item to search for
 
 .EXAMPLE
-PS C:\> Search-Spotify Rage against the machine
+PS C:\> Search-Spotify "Rage against the machine"
 
 .EXAMPLE
-PS C:\> fm Dire Straits You and your friend
+PS C:\> fm "Dire Straits You and your friend"
 
 #>
 function Search-Spotify {
@@ -178,7 +178,7 @@ function Search-Spotify {
 
     begin {
 
-        $Queries = Build-InvocationArguments $MyInvocation $Queries
+
 
         [int] $SearchTypeTypeId = 0;
 
@@ -401,7 +401,6 @@ function Get-SpotifyUserPlaylists {
     begin {
 
         $apiToken = Get-SpotifyApiToken;
-        $Filter = Build-InvocationArguments $MyInvocation $Filter
         $filePath = Expand-Path "$PSScriptRoot\..\..\GenXdev.Local\Spotify.Playlists.json"
     }
 
@@ -1512,7 +1511,7 @@ function Get-SpotifyLyrics {
 
         if ($null -ne $Queries) {
 
-            $Queries = Build-InvocationArguments $MyInvocation $Queries
+
         }
 
         if ($null -ne $Queries) {
