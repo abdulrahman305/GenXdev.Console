@@ -287,8 +287,7 @@ Get-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] [<CommonParamet
 
 ### PARAMETERS
     -Filter <String>
-        Allows you to search for Cmdlets by providing searchstrings, with or without 
-        wildcards
+        Allows you to search for Cmdlets by providing searchstrings, with or without wildcards
         Required?                    false
         Position?                    1
         Default value                *
@@ -327,8 +326,7 @@ Show-GenXDevCmdlets [[-Filter] <String>] [-ModuleName <String[]>] [-Online]
 
 ### PARAMETERS
     -Filter <String>
-        Allows you to search for Cmdlets by providing searchstrings, with or without 
-        wildcards
+        Allows you to search for Cmdlets by providing searchstrings, with or without wildcards
         Required?                    false
         Position?                    1
         Default value                *
