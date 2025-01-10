@@ -26,13 +26,13 @@ function Search-SpotifyAndPlay {
     [Alias("smp", "fmp")]
 
     param(
-        [Alias("q", "Value", "Name", "Text", "Query")]
         [parameter(
-            Mandatory = $true,
+            Mandatory,
             Position = 0,
-            ValueFromRemainingArguments = $true,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true
+            ValueFromRemainingArguments,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName,
+            HelpMessage = "The query to perform"
         )]
         [string[]] $Queries,
 
@@ -93,13 +93,13 @@ function Search-SpotifyAndEnqueue {
     [Alias("smq", "fmq")]
 
     param(
-        [Alias("q", "Value", "Name", "Text", "Query")]
         [parameter(
-            Mandatory = $true,
+            Mandatory,
             Position = 0,
-            ValueFromRemainingArguments = $true,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true
+            ValueFromRemainingArguments,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName,
+            HelpMessage = "The query to perform"
         )]
         [string[]] $Queries,
 
@@ -160,13 +160,13 @@ function Search-Spotify {
     [Alias("sm", "fm")]
 
     param(
-        [Alias("q", "Value", "Name", "Text", "Query")]
         [parameter(
-            Mandatory = $true,
+            Mandatory,
             Position = 0,
-            ValueFromRemainingArguments = $true,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true
+            ValueFromRemainingArguments,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName,
+            HelpMessage = "The query to perform"
         )]
         [string[]] $Queries,
 
@@ -390,8 +390,8 @@ function Get-SpotifyUserPlaylists {
         [parameter(
             Mandatory = $false,
             Position = 0,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName
         )]
         [string[]] $Filter = @("*"),
 
@@ -487,8 +487,8 @@ function Add-SpotifyTracksToPlaylist {
         [parameter(
             Mandatory = $false,
             Position = 1,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName,
             HelpMessage = "The Spotify tracks that should be added to the playlist"
         )]
         [string[]] $Uri = @()
@@ -754,8 +754,8 @@ function Remove-SpotifyTracksFromPlaylist {
         [parameter(
             Mandatory = $false,
             Position = 1,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName,
             HelpMessage = "The Spotify tracks that should be removed from the playlist"
         )]
         [string[]] $Uri = @()
@@ -849,8 +849,8 @@ function Get-SpotifyTrackAudioFeatures {
         [parameter(
             Mandatory,
             Position = 0,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName,
             HelpMessage = "The Spotify track to return audio features for"
         )]
         [string[]] $TrackId
@@ -893,8 +893,8 @@ function Get-SpotifyTrackById {
         [parameter(
             Mandatory,
             Position = 0,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName
         )]
         [string] $TrackId
     )
@@ -1029,8 +1029,8 @@ function Get-SpotifyPlaylistTracks {
             Mandatory,
             Position = 0,
             HelpMessage = "The Spotify playlist to return tracks for",
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName
         )]
         [string] $PlaylistName,
 
@@ -1040,8 +1040,8 @@ function Get-SpotifyPlaylistTracks {
             Mandatory,
             Position = 0,
             HelpMessage = "The Spotify playlist to return tracks for",
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName
         )]
         [string] $PlaylistId
     )
@@ -1122,8 +1122,8 @@ function Add-SpotifyTracksToLiked {
         [parameter(
             Mandatory = $false,
             Position = 0,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName,
             HelpMessage = "The Spotify track Uris of the songs that should be added to the playlist"
         )]
         [string[]] $TrackId = @()
@@ -1189,8 +1189,8 @@ function Move-SpotifyLikedTracksToPlaylist {
             ParameterSetName = "ByName",
             Mandatory,
             Position = 0,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName,
             HelpMessage = "The Spotify playlist where all liked tracks should move to"
         )]
         [string[]] $PlaylistName,
@@ -1200,8 +1200,8 @@ function Move-SpotifyLikedTracksToPlaylist {
             ParameterSetName = "ById",
             Mandatory,
             Position = 0,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName,
             HelpMessage = "The Spotify playlist where all liked tracks should move to"
         )]
         [string[]] $PlaylistId
@@ -1258,8 +1258,8 @@ function Get-SpotifyPlaylistIdsByName {
             ParameterSetName = "ByName",
             Mandatory,
             Position = 0,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName,
             HelpMessage = "The Spotify playlist where all liked tracks should move to"
         )]
         [string[]] $PlaylistName = @()
@@ -1312,8 +1312,8 @@ function Remove-SpotifyTracksFromLiked {
         [parameter(
             Mandatory = $false,
             Position = 0,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName,
             HelpMessage = "The Spotify track Uris of the songs that should be added to the playlist"
         )]
         [string[]] $TrackId = @()
@@ -1366,7 +1366,7 @@ Returns all currently available Spotify devices for current user
 function Get-SpotifyDevices {
 
     [CmdletBinding()]
-    [Alias()]
+
 
     param(
     )
@@ -1400,7 +1400,7 @@ Returns all currently active Spotify devices for current user
 function Get-SpotifyActiveDevice {
 
     [CmdletBinding()]
-    [Alias()]
+
 
     param(
     )
@@ -1438,7 +1438,7 @@ The Spotify deviceId to transfer playback to
 function Set-SpotifyActiveDevice {
 
     [CmdletBinding()]
-    [Alias()]
+
 
     param(
         [Alias("Id")]
@@ -1446,7 +1446,7 @@ function Set-SpotifyActiveDevice {
             Mandatory,
             Position = 0,
             ValueFromPipeline = $false,
-            ValueFromPipelineByPropertyName = $true,
+            ValueFromPipelineByPropertyName,
             HelpMessage = "The Spotify deviceId to transfer playback to"
         )]
         [string] $DeviceId
@@ -1491,7 +1491,7 @@ function Get-SpotifyLyrics {
         [Alias("Id")]
         [parameter(
             Mandatory = $false,
-            ValueFromPipelineByPropertyName = $True,
+            ValueFromPipelineByPropertyName,
             ParameterSetName = ""
         )]
         [string] $TrackId = $null,
@@ -1500,9 +1500,9 @@ function Get-SpotifyLyrics {
         [parameter(
             Mandatory = $false,
             Position = 0,
-            ValueFromRemainingArguments = $true,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true
+            ValueFromRemainingArguments,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName
         )]
         [string[]] $Queries = $null
     )
@@ -1679,34 +1679,34 @@ function Get-SpotifyApiToken {
     }
 
 
-        $path = "$PSScriptRoot\..\..\GenXdev.Local\Spotify_Auth.json";
+    $path = "$PSScriptRoot\..\..\GenXdev.Local\Spotify_Auth.json";
 
-        if ([IO.File]::Exists($path)) {
+    if ([IO.File]::Exists($path)) {
 
-            $ApiToken = [IO.File]::ReadAllText($path);
-        }
-        else {
+        $ApiToken = [IO.File]::ReadAllText($path);
+    }
+    else {
 
-            $ApiToken = Connect-SpotifyApiToken
-            Set-SpotifyApiToken $ApiToken | Out-Null
-        }
-
-        try {
-
-            [GenXdev.Helpers.Spotify]::GetDevices($ApiToken) | Out-Null
-        }
-        catch {
-
-            $ApiToken = Connect-SpotifyApiToken
-            Set-SpotifyApiToken $ApiToken | Out-Null
-        }
-
-        $ApiToken
+        $ApiToken = Connect-SpotifyApiToken
+        Set-SpotifyApiToken $ApiToken | Out-Null
     }
 
-    ###############################################################################
+    try {
 
-    <#
+        [GenXdev.Helpers.Spotify]::GetDevices($ApiToken) | Out-Null
+    }
+    catch {
+
+        $ApiToken = Connect-SpotifyApiToken
+        Set-SpotifyApiToken $ApiToken | Out-Null
+    }
+
+    $ApiToken
+}
+
+###############################################################################
+
+<#
 .SYNOPSIS
 Caches an Spotify API-token for later use
 
@@ -1716,32 +1716,32 @@ Caches an Spotify API-token for later use
 .PARAMETER ApiToken
 The API-token to cache
 #>
-    function Set-SpotifyApiToken {
+function Set-SpotifyApiToken {
 
-        [CmdletBinding()]
+    [CmdletBinding()]
 
-        param(
+    param(
 
-            [parameter(
-                Mandatory = $true,
-                Position = 0
-            )] [string] $ApiToken
-        )
+        [parameter(
+            Mandatory,
+            Position = 0
+        )] [string] $ApiToken
+    )
 
-        $dir = "$PSScriptRoot\..\..\GenXdev.Local";
-        $path = "$dir\Spotify_Auth.json";
+    $dir = "$PSScriptRoot\..\..\GenXdev.Local";
+    $path = "$dir\Spotify_Auth.json";
 
-        if (![IO.Directory]::Exists($dir)) {
+    if (![IO.Directory]::Exists($dir)) {
 
-            [IO.Directory]::CreateDirectory($dir);
-        }
-
-        [IO.File]::WriteAllText($path, $ApiToken.Trim("`r`n`t "));
+        [IO.Directory]::CreateDirectory($dir);
     }
 
-    ###############################################################################
+    [IO.File]::WriteAllText($path, $ApiToken.Trim("`r`n`t "));
+}
 
-    <#
+###############################################################################
+
+<#
 .SYNOPSIS
 Uses Spotify Open-Auth to request an access token
 
@@ -1749,21 +1749,21 @@ Uses Spotify Open-Auth to request an access token
 Uses Spotify Open-Auth to request an access token
 
 #>
-    function Connect-SpotifyApiToken {
+function Connect-SpotifyApiToken {
 
-        [CmdletBinding()]
+    [CmdletBinding()]
 
-        param()
+    param()
 
-        $url = [GenXdev.Helpers.Spotify]::RequestAuthenticationUri(5642);
+    $url = [GenXdev.Helpers.Spotify]::RequestAuthenticationUri(5642);
 
-        [System.Diagnostics.Process] $process = Open-Webbrowser -PassThrough -ApplicationMode -NewWindow -Width 1000 -Height 800 -Centered -Monitor 0 -Url $url
+    [System.Diagnostics.Process] $process = Open-Webbrowser -PassThru -ApplicationMode -NewWindow -Width 1000 -Height 800 -Centered -Monitor 0 -Url $url
 
-        [GenXdev.Helpers.Spotify]::RequestAuthenticationTokenUsingOAuth(5642)
+    [GenXdev.Helpers.Spotify]::RequestAuthenticationTokenUsingOAuth(5642)
 
-        if ((!!$process -and $process -is [System.Diagnostics.Process]) -and (!$process.HasExited)) {
+    if ((!!$process -and $process -is [System.Diagnostics.Process]) -and (!$process.HasExited)) {
 
-            $process.CloseMainWindow() | Out-Null
-        }
+        $process.CloseMainWindow() | Out-Null
     }
+}
 

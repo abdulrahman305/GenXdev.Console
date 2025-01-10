@@ -91,7 +91,7 @@ function Start-TextToSpeech {
     [Alias("say")]
 
     param(
-        [Parameter(Mandatory = $true, Position = 0, ValueFromPipeline = $true, ValueFromRemainingArguments = $true, ParameterSetName = "strings")]
+        [Parameter(Mandatory, Position = 0, ValueFromPipeline, ValueFromRemainingArguments, ParameterSetName = "strings")]
         [string[]] $lines,
 
         [Parameter(Mandatory = $false, HelpMessage = "The language locale id to use, e.g. 'en-US'")]
@@ -146,7 +146,7 @@ function Start-TextToSpeech {
                     }
 
                     try {
-                        [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice((([GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices()) | Where-Object { if ([string]::IsNullOrWhiteSpace($VoiceName) -or ($_.VoiceInfo.Name -like "* $VoiceName * ")) { $_ } } | Where-Object Name | Select-Object -First 1))
+                        [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice((([GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices()) | Where-Object { if ([string]::IsNullOrWhiteSpace($VoiceName) -or ($PSItem.VoiceInfo.Name -like "* $VoiceName * ")) { $PSItem } } | Where-Object Name | Select-Object -First 1))
                     }
                     catch {
                         Write-Warning "Could not set voice with provided parameters, maybe no installation found of the voice with your selection parameters"
@@ -156,7 +156,7 @@ function Start-TextToSpeech {
                 }
 
                 try {
-                    [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice((([GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices($locale)) | Where-Object { if ([string]::IsNullOrWhiteSpace($VoiceName) -or ($_.VoiceInfo.Name -like "* $VoiceName * ")) { $_ } } | Where-Object Name | Select-Object -First 1))
+                    [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice((([GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices($locale)) | Where-Object { if ([string]::IsNullOrWhiteSpace($VoiceName) -or ($PSItem.VoiceInfo.Name -like "* $VoiceName * ")) { $PSItem } } | Where-Object Name | Select-Object -First 1))
                 }
                 catch {
                     Write-Warning "Could not set voice with provided parameters, maybe no installation found of the voice with your selection parameters"
@@ -166,7 +166,7 @@ function Start-TextToSpeech {
                 return;
             }
             catch {
-                [System.Console]::WriteLine("Error: $($_.Exception.Message)");
+                [System.Console]::WriteLine("Error: $($PSItem.Exception.Message)");
                 [GenXdev.Helpers.Misc]::Speech.Speak($txt) | Out-Null;
             }
         }
@@ -200,7 +200,7 @@ function Get-GenXDevCmdlets {
         [parameter(
             Mandatory = $false,
             Position = 0,
-            ValueFromRemainingArguments = $true
+            ValueFromRemainingArguments
         )]
         [string] $Filter = "*",
 
@@ -247,10 +247,10 @@ function Get-GenXDevCmdlets {
                         if ([string]::IsNullOrWhiteSpace($desc)) {
 
                             try {
-                                $desc = (Select-String "#\s*DESCRIPTION\s+$($PSItem.Name):([^`r`n]*)" -input "$((Get-Command "$($PSItem.Name)").ScriptBlock)".Replace("`u{00A0}", " ") -AllMatches | ForEach-Object { $_.matches.Groups[1].Value }).Trim();
+                                $desc = (Select-String "#\s*DESCRIPTION\s+$($PSItem.Name):([^`r`n]*)" -input "$((Get-Command "$($PSItem.Name)").ScriptBlock)".Replace("`u{00A0}", " ") -AllMatches | ForEach-Object { $PSItem.matches.Groups[1].Value }).Trim();
                             }
                             catch {
-                                # Write-Warning $_.Exception
+                                # Write-Warning $PSItem.Exception
                                 $desc = "";
                             }
                         }
@@ -302,7 +302,7 @@ function Show-GenXDevCmdlets {
         [parameter(
             Mandatory = $false,
             Position = 0,
-            ValueFromRemainingArguments = $true
+            ValueFromRemainingArguments
         )]
         [string] $Filter = "*",
 
@@ -468,7 +468,7 @@ function Invoke-Fasti {
     Get-ChildItem @("*.7z", "*.xz", "*.bzip2", "*.gzip", "*.tar", "*.zip", "*.wim", "*.ar", "*.arj", "*.cab", "*.chm", "*.cpio", "*.cramfs", "*.dmg", "*.ext", "*.fat", "*.gpt", "*.hfs", "*.ihex", "*.iso", "*.lzh", "*.lzma", "*.mbr", "*.msi", "*.nsis", "*.ntfs", "*.qcow2", "*.rar", "*.rpm", "*.squashfs", "*.udf", "*.uefi", "*.vdi", "*.vhd", "*.vmdk", "*.wim", "*.xar", "*.z") -File -ErrorAction SilentlyContinue  | ForEach-Object {
 
         $7z = "7z"
-        $zip = $_.fullname;
+        $zip = $PSItem.fullname;
         $n = [system.IO.Path]::GetFileNameWithoutExtension($zip);
         $p = [System.IO.Path]::GetDirectoryName($zip);
         $r = [system.Io.Path]::Combine($p, $n);
@@ -702,8 +702,8 @@ function Show-Verb {
 
         [parameter(
             Position = 0,
-            ValueFromPipeline = $True,
-            ValueFromPipelineByPropertyName = $True,
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName,
             Mandatory = $False
         )] [string[]] $Verb = @()
     )
@@ -744,8 +744,8 @@ function Get-GenXDevModuleInfo {
         [parameter(
             Mandatory = $false,
             Position = 0,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true
+            ValueFromPipeline,
+            ValueFromPipelineByPropertyName
         )] [string[]] $ModuleName = @()
     )
 
@@ -863,99 +863,172 @@ function UtcNow() {
 }
 
 ################################################################################
+<#
+.SYNOPSIS
+Selects media files and plays them in VLC player
 
+.DESCRIPTION
+Selects media files and plays them in VLC player
+
+.PARAMETER DirectoryPath
+Specify the directory path containing media files.
+Default is the current directory.
+
+.PARAMETER OnlyVideos
+Only include video files in the playlist.
+
+.PARAMETER OnlyAudio
+Only include audio files in the playlist.
+
+.PARAMETER OnlyPictures
+Only include pictures in the playlist.
+
+.PARAMETER IncludeVideos
+Also include videos in the playlist.
+
+.PARAMETER IncludeAudio
+Also include audio files in the playlist.
+
+.PARAMETER IncludePictures
+Also include pictures in the playlist.
+
+.EXAMPLE
+PS C:\users\MyName\Videos> media
+
+.EXAMPLE
+PS C:\> media ~\Pictures -OnlyPictures
+
+.EXAMPLE
+PS C:\> media ~\
+#>
 function Invoke-VLCPlayer {
 
     [CmdletBinding()]
-    [alias("vlc")]
+    [alias("vlc", "media")]
 
     param(
 
-        [Parameter(Mandatory = $false, HelpMessage = "Specify the directory path containing media files.")]
+        [Parameter(Mandatory = $false, Position = 0, HelpMessage = "Specify the directory path containing media files.")]
         [string]$DirectoryPath = ".\*",
+
+        [Parameter(Mandatory = $false, Position = 1, HelpMessage = "Specify the keywords to search for in the file meta data")]
+        [string[]]$keywords = @(),
+
+        [Parameter(Mandatory = $false, Position = 2, HelpMessage = "Specify the search mask for files.")]
+        [string]$SearchMask = "*",
 
         [Parameter(Mandatory = $false, HelpMessage = "Only include video files in the playlist.")]
         [switch]$OnlyVideos,
 
         [Parameter(Mandatory = $false, HelpMessage = "Only include audio files in the playlist.")]
-        [switch]$OnlyAudio
+        [switch]$OnlyAudio,
+
+        [Parameter(Mandatory = $false, HelpMessage = "Only include pictures in the playlist.")]
+        [switch]$OnlyPictures,
+
+        [Parameter(Mandatory = $false, HelpMessage = "Also include videos in the playlist.")]
+        [switch]$IncludeVideos,
+
+        [Parameter(Mandatory = $false, HelpMessage = "Also include audio files in the playlist.")]
+        [switch]$IncludeAudio,
+
+        [Parameter(Mandatory = $false, HelpMessage = "Also include pictures in the playlist.")]
+        [switch]$IncludePictures
     )
 
     # Get the list of files in the directory and subdirectories
-    $files = Get-ChildItem -Path $DirectoryPath -File -Recurse
+    $SearchMask = "$((Expand-Path $DirectoryPath))\$SearchMask"
+    $files = Find-Item -SearchMask $SearchMask -PassThru | Sort-Object -Property FullName
 
     # Filter files to only include those with extensions that VLC player can play
-    $validExtensions = $OnlyVideos ? @(".mp4", ".avi", ".mkv", ".mov", ".wmv") : ($OnlyAudio ? @(".mp3", ".flac", ".wav") : @(".mp3", ".mp4", ".avi", ".mkv", ".flac", ".wav", ".mov", ".wmv"));
-    $files = $files | Where-Object { $validExtensions -contains $_.Extension.ToLower() }
+    $videoFiles = @(".mp4", ".avi", ".mkv", ".mov", ".wmv");
+    $audioFiles = @(".mp3", ".flac", ".wav", ".midi", ".mid", ".au", ".aiff", ".aac", ".m4a", ".ogg", ".wma", ".ra", ".ram", ".rm", ".rmm");
+    $pictureFiles = @(".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff", ".tif");
 
-    $playlist = @();
+    $validExtensions = $OnlyVideos ? $videoFiles : ($OnlyAudio ? $audioFiles : ($OnlyPictures ? $pictureFiles : ($videoFiles + $audioFiles + $pictureFiles)) );
 
-    # Create or overwrite the playlist file
-    foreach ($file in $files) {
-        $playlist += $file.FullName
+    if ($IncludeVideos) {
+
+        $validExtensions += $videoFiles
+    }
+    if ($IncludeAudio) {
+
+        $validExtensions += $audioFiles
+    }
+    if ($IncludePictures) {
+
+        $validExtensions += $pictureFiles
     }
 
-    [string]$PlaylistPath = [System.IO.Path]::ChangeExtension([System.IO.Path]::GetTempFileName(), ".xspf")
+    $files = $files | Where-Object {
 
-    # Generate the .xspf formatted XML content
-    $xspfContent = @"
-                    <?xml version="1.0" encoding="UTF-8"?>
-                    <playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">
-                    <title>Playlist</title>
-                    <trackList>
+        try {
+            if (-not ($validExtensions -contains $PSItem.Extension.ToLower())) {
 
-"@
+                return $false;
+            }
 
-    [int]$i = 0
-    foreach ($file in $playlist) {
+            if ($keywords.Length -gt 0) {
 
-        $xspfContent += @"
+                $srtSearchMask = [io.Path]::Combine([IO.Path]::GetDirectoryName($PSItem.FullName), [IO.Path]::GetFileNameWithoutExtension($PSItem.FullName) + "*.srt");
 
-                    <track>
-                    <location>file:///$([Uri]::EscapeUriString($file.Replace("\","/")))</location>
-                    <duration>1000000</duration>
-                    <extension application="http://www.videolan.org/vlc/playlist/0">
-                    <vlc:id>$(($i++))</vlc:id>
-                    </extension>
-                    </track>
+                Get-ChildItem $srtSearchMask -File -ErrorAction SilentlyContinue | ForEach-Object {
 
-"@
+                    $srt = [IO.File]::ReadAllText($PSItem.FullName);
+
+                    foreach ($keyword in $keywords) {
+
+                        if ($srt -like "*$keyword*") {
+
+                            return $true;
+                        }
+                    }
+                }
+
+                if ([IO.File]::Exists("$($PSItem.FullName):description.json")) {
+
+                    $description = [IO.File]::ReadAllText("$($PSItem.FullName):description.json");
+
+                    foreach ($keyword in $keywords) {
+
+                        if ($description -like "*$keyword*") {
+
+                            return $true;
+                        }
+                    }
+                }
+
+                return $false;
+            }
+
+            return $true;
+        }
+        catch {
+
+            return $false;
+        }
     }
 
-    $xspfContent += @"
-
-                    </trackList>
-                    <extension application="http://www.videolan.org/vlc/playlist/0">
-
-"@;
-
-    [int] $i = 0
-    foreach ($file in $playlist) {
-
-        $xspfContent += @"
-
-                    <vlc:item tid="$(($i++))"/>
-
-"@;
-    }
-
-    $xspfContent += @"
-
-                    </extension>
-                    </playlist>
-
-"@;
-
-    # Save the playlist to the specified file
-    $xspfContent | Out-File -FilePath $PlaylistPath -Encoding utf8 -Force
-
-    "$PlaylistPath" | Set-Clipboard
-
-    if ($playlist.Length -eq 0) {
+    if ($files.Length -eq 0) {
 
         Write-Host "No media files found in the specified directory."
-        exit
+        return
     }
+
+    [string]$PlaylistPath = [System.IO.Path]::ChangeExtension([System.IO.Path]::GetTempFileName(), ".m3u")
+
+    # Generate the .xspf formatted XML content
+    $m3uContent = "#EXTM3U`r`n";
+
+    foreach ($file in $files) {
+
+        $m3uContent += "#EXTINF:-1, $($file.Name.Replace("_", " ").Replace(".", " ").Replace("  ", " "))`r`n$(($file.FullName))`r`n";
+    }
+
+    # Save the playlist to the specified file
+    $m3uContent | Out-File -FilePath $PlaylistPath -Encoding utf8 -Force
+
+    "$PlaylistPath" | Set-Clipboard
 
     # check if VLC player is installed
     if (-not (Test-Path "C:\Program Files\VideoLAN\VLC\vlc.exe")) {
@@ -975,8 +1048,64 @@ function Invoke-VLCPlayer {
     }
 
     # Start VLC player with the playlist file
-    Start-Process -FilePath "C:\Program Files\VideoLAN\VLC\vlc.exe" -ArgumentList @("--started-from-file", "$PlaylistPath")
+    Get-Process vlc -ErrorAction SilentlyContinue | Stop-Process -Force
+    $p = Start-Process -FilePath "C:\Program Files\VideoLAN\VLC\vlc.exe" -ArgumentList @($PlaylistPath) -PassThru
+
+    try {
+        Write-Verbose "Launching VLC player with the playlist file: $PlaylistPath"
+
+        [System.Threading.Thread]::Sleep(4000) | Out-Null
+
+        Set-VLCPlayerFocused
+
+        # Set fullscreen
+        if ($p -and $p.MainWindowHandle -ge 0) {
+
+            [System.Threading.Thread]::Sleep(1000) | Out-Null
+
+            if (($Global:DefaultSecondaryMonitor -gt 0) -and ((Get-MonitorCount) -gt 1)) {
+
+                Set-WindowPosition -Process $p -Fullscreen -Monitor -2
+            }
+            else {
+
+                Set-WindowPosition -Process $p -Right
+                Set-WindowPosition -Process (Get-PowershellMainWindowProcess) -Left
+            }
+        }
+    }
+    finally {
+        Set-VLCPlayerFocused
+
+        # send F11
+        $helper = New-Object -ComObject WScript.Shell;
+        $helper.sendKeys("F");
+
+        Write-Verbose "Sending F"
+
+        [System.Threading.Thread]::Sleep(1000) | Out-Null
+
+    (Get-PowershellMainWindow).SetForeground();
+    }
 }
 
 ################################################################################
+
+function Set-VLCPlayerFocused {
+
+    [CmdletBinding()]
+    [alias("showvlc", "vlcf", "fvlc")]
+    param()
+
+    try {
+        Write-Verbose "Focussing VLC player"
+        $w = Get-Window -ProcessName vlc
+        $w.SetForeground();
+    }
+    catch {
+
+        Write-Warning "VLC player is not running"
+    }
+}
+
 ################################################################################

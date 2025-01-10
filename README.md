@@ -18,7 +18,7 @@
     * ✅ after installation, use 'cmds' to see full list of installed GenXdev cmdslets
 
 ### DEPENDENCIES
-[![WinOS - Windows-10](https://img.shields.io/badge/WinOS-Windows--10--10.0.19041--SP0-brightgreen)](https://www.microsoft.com/en-us/windows/get-windows-10) [![GenXdev.Helpers](https://img.shields.io/powershellgallery/v/GenXdev.Helpers.svg?style=flat-square&label=GenXdev.Helpers)](https://www.powershellgallery.com/packages/GenXdev.Helpers/) [![GenXdev.Webbrowser](https://img.shields.io/powershellgallery/v/GenXdev.Webbrowser.svg?style=flat-square&label=GenXdev.Webbrowser)](https://www.powershellgallery.com/packages/GenXdev.Webbrowser/) [![GenXdev.FileSystem](https://img.shields.io/powershellgallery/v/GenXdev.Filesystem.svg?style=flat-square&label=GenXdev.FileSystem)](https://www.powershellgallery.com/packages/GenXdev.FileSystem/)
+[![WinOS - Windows-10 or later](https://img.shields.io/badge/WinOS-Windows--10--10.0.19041--SP0-brightgreen)](https://www.microsoft.com/en-us/windows/get-windows-10) [![GenXdev.Helpers](https://img.shields.io/powershellgallery/v/GenXdev.Helpers.svg?style=flat-square&label=GenXdev.Helpers)](https://www.powershellgallery.com/packages/GenXdev.Helpers/) [![GenXdev.Webbrowser](https://img.shields.io/powershellgallery/v/GenXdev.Webbrowser.svg?style=flat-square&label=GenXdev.Webbrowser)](https://www.powershellgallery.com/packages/GenXdev.Webbrowser/) [![GenXdev.FileSystem](https://img.shields.io/powershellgallery/v/GenXdev.Filesystem.svg?style=flat-square&label=GenXdev.FileSystem)](https://www.powershellgallery.com/packages/GenXdev.FileSystem/)
 ### INSTALLATION
 ````PowerShell
 Install-Module "GenXdev.Console"
@@ -56,7 +56,8 @@ Update-Module
 | [SayDate](#SayDate) |  |  |
 | [Now](#Now) |  |  |
 | [UtcNow](#UtcNow) |  |  |
-| [Invoke-VLCPlayer](#Invoke-VLCPlayer) | vlc |  |
+| [Invoke-VLCPlayer](#Invoke-VLCPlayer) | media, vlc | Selects media files and plays them in VLC player |
+| [Set-VLCPlayerFocused](#Set-VLCPlayerFocused) | fvlc, showvlc, vlcf |  |
 
 <hr/>
 &nbsp;
@@ -70,7 +71,7 @@ Update-Module
 | [Set-SpotifyPause](#Set-SpotifyPause) | pausemusic, Resume-Music | Pauses playback on the device that is active on Spotify |
 | [Set-SpotifyPlaylistDetails](#Set-SpotifyPlaylistDetails) | spld | Sets the main properties of a Spotify playlist |
 | [Set-SpotifyPrevious](#Set-SpotifyPrevious) | prev, previous | Skips to previous track on the device that is active on Spotify |
-| [Set-SpotifyRepeatOff](#Set-SpotifyRepeatOff) | norepeat, repeatoff | Disables repeat on the device that is active on Spotify |
+| [Set-SpotifyRepeatContext](#Set-SpotifyRepeatContext) | repeat | Enables playlist-repeat on the device that is active on Spotify |
 | [Set-SpotifyRepeatSong](#Set-SpotifyRepeatSong) | repeatsong | Enables song-repeat on the device that is active on Spotify |
 | [Set-SpotifyShuffleOff](#Set-SpotifyShuffleOff) | noshuffle, shuffleoff | Disables song-shuffle on the device that is active on Spotify |
 | [Set-SpotifyShuffleOn](#Set-SpotifyShuffleOn) | shuffle, shuffleon | Enables song-shuffle on the device that is active on Spotify |
@@ -78,7 +79,7 @@ Update-Module
 | [Set-SpotifyStop](#Set-SpotifyStop) | stop, Stop-Music | Stops playback on the device that is active on Spotify |
 | [Set-SpotifyNext](#Set-SpotifyNext) | next, skip | Skips to next track on the device that is active on Spotify |
 | [Add-SpotifyNewPlaylist](#Add-SpotifyNewPlaylist) | newplaylist | Creates a new Spotify playlist |
-| [Set-SpotifyRepeatContext](#Set-SpotifyRepeatContext) | repeat | Enables playlist-repeat on the device that is active on Spotify |
+| [Set-SpotifyRepeatOff](#Set-SpotifyRepeatOff) | norepeat, repeatoff | Disables repeat on the device that is active on Spotify |
 | [Search-SpotifyAndEnqueue](#Search-SpotifyAndEnqueue) | fmq, smq | Performs a Spotify search and adds the first item to the queue |
 | [Add-SpotifyTracksToLiked](#Add-SpotifyTracksToLiked) | like | Adds tracks to the users own Spotify Library |
 | [Add-SpotifyTracksToPlaylist](#Add-SpotifyTracksToPlaylist) | addtoplaylist | Adds tracks to a Spotify playlist |
@@ -210,8 +211,8 @@ Start-TextToSpeech                   --> say
 
 ### SYNTAX
 ````PowerShell
-Start-TextToSpeech [-lines] <String[]> [-Locale <String>] [-VoiceName <String>] 
-[-PassThru] [-wait] [<CommonParameters>]
+Start-TextToSpeech [-lines] <String[]> [-Locale <String>] [-VoiceName <String>] [-PassThru] 
+[-wait] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -747,43 +748,104 @@ UtcNow [<CommonParameters>]
 
 ##	Invoke-VLCPlayer
 ````PowerShell
-Invoke-VLCPlayer                     --> vlc
+Invoke-VLCPlayer                     --> media, vlc
+````
+
+### SYNOPSIS
+    Selects media files and plays them in VLC player
+
+### SYNTAX
+````PowerShell
+Invoke-VLCPlayer [[-DirectoryPath] <String>] [[-keywords] <String[]>] [[-SearchMask] 
+<String>] [-OnlyVideos] [-OnlyAudio] [-OnlyPictures] [-IncludeVideos] [-IncludeAudio] 
+[-IncludePictures] [<CommonParameters>]
+````
+
+### DESCRIPTION
+    Selects media files and plays them in VLC player
+
+### PARAMETERS
+    -DirectoryPath <String>
+        Specify the directory path containing media files.
+        Default is the current directory.
+        Required?                    false
+        Position?                    1
+        Default value                .\*
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    -keywords <String[]>
+        Required?                    false
+        Position?                    2
+        Default value                @()
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    -SearchMask <String>
+        Required?                    false
+        Position?                    3
+        Default value                *
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    -OnlyVideos [<SwitchParameter>]
+        Only include video files in the playlist.
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    -OnlyAudio [<SwitchParameter>]
+        Only include audio files in the playlist.
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    -OnlyPictures [<SwitchParameter>]
+        Only include pictures in the playlist.
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    -IncludeVideos [<SwitchParameter>]
+        Also include videos in the playlist.
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    -IncludeAudio [<SwitchParameter>]
+        Also include audio files in the playlist.
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    -IncludePictures [<SwitchParameter>]
+        Also include pictures in the playlist.
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Accept wildcard characters?  false
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+
+<br/><hr/><hr/><br/>
+
+##	Set-VLCPlayerFocused
+````PowerShell
+Set-VLCPlayerFocused                 --> fvlc, showvlc, vlcf
 ````
 
 ### SYNTAX
 ````PowerShell
-Invoke-VLCPlayer [[-DirectoryPath] <string>] [-OnlyVideos] [-OnlyAudio] 
-[<CommonParameters>]
+Set-VLCPlayerFocused [<CommonParameters>]
 ````
 
 ### PARAMETERS
-    -DirectoryPath <string>
-        Specify the directory path containing media files.
-        Required?                    false
-        Position?                    0
-        Accept pipeline input?       false
-        Parameter set name           (All)
-        Aliases                      None
-        Dynamic?                     false
-        Accept wildcard characters?  false
-    -OnlyAudio
-        Only include audio files in the playlist.
-        Required?                    false
-        Position?                    Named
-        Accept pipeline input?       false
-        Parameter set name           (All)
-        Aliases                      None
-        Dynamic?                     false
-        Accept wildcard characters?  false
-    -OnlyVideos
-        Only include video files in the playlist.
-        Required?                    false
-        Position?                    Named
-        Accept pipeline input?       false
-        Parameter set name           (All)
-        Aliases                      None
-        Dynamic?                     false
-        Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
@@ -1046,21 +1108,21 @@ Set-SpotifyPrevious [<CommonParameters>]
 
 <br/><hr/><hr/><br/>
 
-##	Set-SpotifyRepeatOff
+##	Set-SpotifyRepeatContext
 ````PowerShell
-Set-SpotifyRepeatOff                 --> norepeat, repeatoff
+Set-SpotifyRepeatContext             --> repeat
 ````
 
 ### SYNOPSIS
-    Disables Spotify repeat
+    Enables Spotify playlist-repeat
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyRepeatOff [<CommonParameters>]
+Set-SpotifyRepeatContext [<CommonParameters>]
 ````
 
 ### DESCRIPTION
-    Disables repeat on the device that is active on Spotify
+    Enables playlist-repeat on the device that is active on Spotify
 
 ### PARAMETERS
     <CommonParameters>
@@ -1231,8 +1293,8 @@ Add-SpotifyNewPlaylist               --> newplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] 
-[-Collabrative] [<CommonParameters>]
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -1275,21 +1337,21 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public]
 
 <br/><hr/><hr/><br/>
 
-##	Set-SpotifyRepeatContext
+##	Set-SpotifyRepeatOff
 ````PowerShell
-Set-SpotifyRepeatContext             --> repeat
+Set-SpotifyRepeatOff                 --> norepeat, repeatoff
 ````
 
 ### SYNOPSIS
-    Enables Spotify playlist-repeat
+    Disables Spotify repeat
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyRepeatContext [<CommonParameters>]
+Set-SpotifyRepeatOff [<CommonParameters>]
 ````
 
 ### DESCRIPTION
-    Enables playlist-repeat on the device that is active on Spotify
+    Disables repeat on the device that is active on Spotify
 
 ### PARAMETERS
     <CommonParameters>
@@ -1310,8 +1372,7 @@ Search-SpotifyAndEnqueue             --> fmq, smq
 
 ### SYNTAX
 ````PowerShell
-Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] 
-[<CommonParameters>]
+Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -2061,8 +2122,7 @@ Search-SpotifyAndEnqueue             --> fmq, smq
 
 ### SYNTAX
 ````PowerShell
-Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] 
-[<CommonParameters>]
+Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters>]
 ````
 
 ### DESCRIPTION
@@ -2436,8 +2496,8 @@ Add-SpotifyNewPlaylist               --> newplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] 
-[-Collabrative] [<CommonParameters>]
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] 
+[<CommonParameters>]
 ````
 
 ### DESCRIPTION
