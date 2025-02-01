@@ -6,7 +6,7 @@
   RootModule           = 'GenXdev.Console.psm1'
 
   # Version number of this module.
-  ModuleVersion        = '1.94.2025'
+  ModuleVersion        = '1.98.2025'
   # Supported PSEditions
   # CompatiblePSEditions = @()
 
@@ -38,7 +38,7 @@
   # ProcessorArchitecture = ''
 
   # Modules that must be imported into the global environment prior to importing this module
-  RequiredModules      = @(@{ModuleName = 'GenXdev.Data'; ModuleVersion = '1.94.2025' },@{ModuleName = 'GenXdev.Helpers'; ModuleVersion = '1.94.2025' }, @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion = '1.94.2025' }, @{ModuleName = 'GenXdev.Windows'; ModuleVersion = '1.94.2025' }, @{ModuleName = 'GenXdev.FileSystem'; ModuleVersion = '1.94.2025' });
+  RequiredModules      = @(@{ModuleName = 'GenXdev.Data'; ModuleVersion = '1.98.2025' },@{ModuleName = 'GenXdev.Helpers'; ModuleVersion = '1.98.2025' }, @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion = '1.98.2025' }, @{ModuleName = 'GenXdev.Windows'; ModuleVersion = '1.98.2025' }, @{ModuleName = 'GenXdev.FileSystem'; ModuleVersion = '1.98.2025' });
 
   # Assemblies that must be loaded prior to importing this module
   RequiredAssemblies   = @()
@@ -134,8 +134,6 @@
   ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyShuffleOn.ps1",
   ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyStart.ps1",
   ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyStop.ps1",
-  ".\\GenXdev.Local\\Spotify_Auth.json",
-  ".\\GenXdev.Local\\Spotify.Playlists.json",
   ".\\GenXdev.Console.psd1",
   ".\\GenXdev.Console.psm1",
   ".\\GenXdev.Console.Spotify.psm1",
