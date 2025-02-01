@@ -6,7 +6,7 @@
   RootModule           = 'GenXdev.Console.psm1'
 
   # Version number of this module.
-  ModuleVersion        = '1.90.2025'
+  ModuleVersion        = '1.94.2025'
   # Supported PSEditions
   # CompatiblePSEditions = @()
 
@@ -26,19 +26,19 @@
   Description          = 'A Windows PowerShell module for enhancing the commandline experience'
 
   # Minimum version of the PowerShell engine required by this module
-  PowerShellVersion    = '7.4.6'
+  PowerShellVersion    = '7.5.0'
 
   # # Intended for PowerShell Core
   CompatiblePSEditions = 'Core'
 
   # # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-  ClrVersion           = '8.0.10'
+  ClrVersion           = '9.0.1'
 
   # Processor architecture (None, X86, Amd64) required by this module
   # ProcessorArchitecture = ''
 
   # Modules that must be imported into the global environment prior to importing this module
-  RequiredModules      = @(@{ModuleName = 'GenXdev.Helpers'; ModuleVersion = '1.90.2025' }, @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion = '1.90.2025' }, @{ModuleName = 'GenXdev.Windows'; ModuleVersion = '1.90.2025' }, @{ModuleName = 'GenXdev.FileSystem'; ModuleVersion = '1.90.2025' });
+  RequiredModules      = @(@{ModuleName = 'GenXdev.Data'; ModuleVersion = '1.94.2025' },@{ModuleName = 'GenXdev.Helpers'; ModuleVersion = '1.94.2025' }, @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion = '1.94.2025' }, @{ModuleName = 'GenXdev.Windows'; ModuleVersion = '1.94.2025' }, @{ModuleName = 'GenXdev.FileSystem'; ModuleVersion = '1.94.2025' });
 
   # Assemblies that must be loaded prior to importing this module
   RequiredAssemblies   = @()
@@ -77,6 +77,65 @@
   FileList             = @(
 
 
+  ".\\Functions\\GenXdev.Console\\Enable-Screensaver.ps1",
+  ".\\Functions\\GenXdev.Console\\Get-GenXDevCmdlets.ps1",
+  ".\\Functions\\GenXdev.Console\\Get-IsSpeaking.ps1",
+  ".\\Functions\\GenXdev.Console\\Invoke-Fasti.ps1",
+  ".\\Functions\\GenXdev.Console\\Invoke-VLCPlayer.ps1",
+  ".\\Functions\\GenXdev.Console\\New-MicrosoftShellTab.ps1",
+  ".\\Functions\\GenXdev.Console\\Now.ps1",
+  ".\\Functions\\GenXdev.Console\\SayDate.ps1",
+  ".\\Functions\\GenXdev.Console\\SayTime.ps1",
+  ".\\Functions\\GenXdev.Console\\Set-LocationParent.ps1",
+  ".\\Functions\\GenXdev.Console\\Set-LocationParent2.ps1",
+  ".\\Functions\\GenXdev.Console\\Set-LocationParent3.ps1",
+  ".\\Functions\\GenXdev.Console\\Set-LocationParent4.ps1",
+  ".\\Functions\\GenXdev.Console\\Set-LocationParent5.ps1",
+  ".\\Functions\\GenXdev.Console\\Set-MonitorPowerOff.ps1",
+  ".\\Functions\\GenXdev.Console\\Set-MonitorPowerOn.ps1",
+  ".\\Functions\\GenXdev.Console\\Set-VLCPlayerFocused.ps1",
+  ".\\Functions\\GenXdev.Console\\Show-GenXDevCmdlets.ps1",
+  ".\\Functions\\GenXdev.Console\\Show-Verb.ps1",
+  ".\\Functions\\GenXdev.Console\\Start-TextToSpeech.ps1",
+  ".\\Functions\\GenXdev.Console\\Stop-TextToSpeech.ps1",
+  ".\\Functions\\GenXdev.Console\\UtcNow.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Add-SpotifyNewPlaylist.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Add-SpotifyTracksToLiked.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Add-SpotifyTracksToPlaylist.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Connect-SpotifyApiToken.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Get-SpotifyActiveDevice.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Get-SpotifyApiToken.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Get-SpotifyCurrentlyPlaying.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Get-SpotifyDevices.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Get-SpotifyLikedTracks.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Get-SpotifyLyrics.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Get-SpotifyPlaylistIdsByName.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Get-SpotifyPlaylistTracks.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Get-SpotifyTrackAudioFeatures.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Get-SpotifyTrackById.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Get-SpotifyUserPlaylists.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Move-SpotifyLikedTracksToPlaylist.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Remove-SpotifyTracksFromLiked.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Remove-SpotifyTracksFromPlaylist.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Search-Spotify.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Search-SpotifyAndEnqueue.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Search-SpotifyAndPlay.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyActiveDevice.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyApiToken.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyNext.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyPause.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyPlaylistDetails.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyPlaylistOrder.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyPrevious.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyRepeatContext.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyRepeatOff.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyRepeatSong.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyShuffleOff.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyShuffleOn.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyStart.ps1",
+  ".\\Functions\\GenXdev.Console.Spotify\\Set-SpotifyStop.ps1",
+  ".\\GenXdev.Local\\Spotify_Auth.json",
+  ".\\GenXdev.Local\\Spotify.Playlists.json",
   ".\\GenXdev.Console.psd1",
   ".\\GenXdev.Console.psm1",
   ".\\GenXdev.Console.Spotify.psm1",
