@@ -173,14 +173,14 @@ function Invoke-VLCPlayer {
         if (-not (Get-Module -ListAvailable -Name 'Microsoft.WinGet.Client')) {
 
             # install module 'Microsoft.WinGet.Client'
-            Install-Module -Name 'Microsoft.WinGet.Client' -Force -Scope CurrentUser -AllowClobber -SkipPublisherCheck -AcceptLicense
+            Install-Module -Name 'Microsoft.WinGet.Client' -Force -Scope CurrentUser -AllowClobber -SkipPublisherCheck 
 
             # import module
             Import-Module -Name 'Microsoft.WinGet.Client'
         }
 
         # install VLC player using 'Microsoft.WinGet.Client'
-        Install-WinGetPackage -Name 'VLC media player' -Scope System -Force -AcceptLicense
+        Install-WinGetPackage -Name 'VideoLAN.VLC' -Scope System -Force
     }
 
     # Start VLC player with the playlist file
