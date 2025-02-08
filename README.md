@@ -55,7 +55,7 @@ Update-Module
 | [Set-SpotifyPause](#Set-SpotifyPause) | pausemusic, Resume-Music | Pauses playback on the device that is active on Spotify |
 | [Set-SpotifyNext](#Set-SpotifyNext) | next, skip | Skips to next track on the device that is active on Spotify |
 | [Set-SpotifyApiToken](#Set-SpotifyApiToken) |  | Caches an Spotify API-token for later use |
-| [Set-SpotifyActiveDevice](#Set-SpotifyActiveDevice) |  |  |
+| [Set-SpotifyActiveDevice](#Set-SpotifyActiveDevice) | Set-SpotifyDevice | Transfers playback to the specified Spotify device using the Spotify Web API. |
 | [Search-SpotifyAndPlay](#Search-SpotifyAndPlay) | fmp, smp | Performs a Spotify search and plays the first found item on the active device |
 | [Search-SpotifyAndEnqueue](#Search-SpotifyAndEnqueue) | fmq, smq | Performs a Spotify search and adds the first item to the queue |
 | [Set-SpotifyRepeatOff](#Set-SpotifyRepeatOff) | norepeat, repeatoff | Disables repeat on the device that is active on Spotify |
@@ -73,7 +73,7 @@ Update-Module
 | [Set-SpotifyPause](#Set-SpotifyPause) | pausemusic, Resume-Music | Pauses playback on the device that is active on Spotify |
 | [Set-SpotifyNext](#Set-SpotifyNext) | next, skip | Skips to next track on the device that is active on Spotify |
 | [Set-SpotifyApiToken](#Set-SpotifyApiToken) |  | Caches an Spotify API-token for later use |
-| [Set-SpotifyActiveDevice](#Set-SpotifyActiveDevice) |  |  |
+| [Set-SpotifyActiveDevice](#Set-SpotifyActiveDevice) | Set-SpotifyDevice | Transfers playback to the specified Spotify device using the Spotify Web API. |
 | [Search-SpotifyAndPlay](#Search-SpotifyAndPlay) | fmp, smp | Performs a Spotify search and plays the first found item on the active device |
 | [Search-SpotifyAndEnqueue](#Search-SpotifyAndEnqueue) | fmq, smq | Performs a Spotify search and adds the first item to the queue |
 | [Search-Spotify](#Search-Spotify) | fm, sm | Performs a Spotify search and returns the search results |
@@ -84,13 +84,13 @@ Update-Module
 | [Get-SpotifyTrackById](#Get-SpotifyTrackById) | gettrack | Returns full Spotify track information by given TrackId |
 | [Get-SpotifyTrackAudioFeatures](#Get-SpotifyTrackAudioFeatures) | audiofeatures | Returns Spotify track audio feature information |
 | [Get-SpotifyPlaylistTracks](#Get-SpotifyPlaylistTracks) | getplaylist | Returns all tracks of a Spotify playlist |
-| [Get-SpotifyPlaylistIdsByName](#Get-SpotifyPlaylistIdsByName) |  |  |
+| [Get-SpotifyPlaylistIdsByName](#Get-SpotifyPlaylistIdsByName) |  | This function searches for Spotify playlists by name and returns theircorresponding IDs. It first attempts to find playlists in the current session,then falls back to a cached list if available, and finally forces a new fetch ifneeded. |
 | [Search-Spotify](#Search-Spotify) | fm, sm | Performs a Spotify search and returns the search results |
 | [Set-SpotifyStart](#Set-SpotifyStart) | play, Start-Music | Starts playback on the device that is active on Spotify |
 | [Remove-SpotifyTracksFromPlaylist](#Remove-SpotifyTracksFromPlaylist) | removefromplaylist | Removes tracks from a Spotify playlist |
 | [Move-SpotifyLikedTracksToPlaylist](#Move-SpotifyLikedTracksToPlaylist) | moveliked | Moves all tracks from the users own Spotify Library to specified playlist |
 | [Set-SpotifyApiToken](#Set-SpotifyApiToken) |  | Caches an Spotify API-token for later use |
-| [Set-SpotifyActiveDevice](#Set-SpotifyActiveDevice) |  |  |
+| [Set-SpotifyActiveDevice](#Set-SpotifyActiveDevice) | Set-SpotifyDevice | Transfers playback to the specified Spotify device using the Spotify Web API. |
 | [Search-SpotifyAndPlay](#Search-SpotifyAndPlay) | fmp, smp | Performs a Spotify search and plays the first found item on the active device |
 | [Search-SpotifyAndEnqueue](#Search-SpotifyAndEnqueue) | fmq, smq | Performs a Spotify search and adds the first item to the queue |
 | [Search-Spotify](#Search-Spotify) | fm, sm | Performs a Spotify search and returns the search results |
@@ -101,7 +101,7 @@ Update-Module
 | [Get-SpotifyTrackById](#Get-SpotifyTrackById) | gettrack | Returns full Spotify track information by given TrackId |
 | [Set-SpotifyNext](#Set-SpotifyNext) | next, skip | Skips to next track on the device that is active on Spotify |
 | [Get-SpotifyTrackAudioFeatures](#Get-SpotifyTrackAudioFeatures) | audiofeatures | Returns Spotify track audio feature information |
-| [Get-SpotifyPlaylistIdsByName](#Get-SpotifyPlaylistIdsByName) |  |  |
+| [Get-SpotifyPlaylistIdsByName](#Get-SpotifyPlaylistIdsByName) |  | This function searches for Spotify playlists by name and returns theircorresponding IDs. It first attempts to find playlists in the current session,then falls back to a cached list if available, and finally forces a new fetch ifneeded. |
 | [Get-SpotifyLyrics](#Get-SpotifyLyrics) | lyrics | Searches for lyrics of a track |
 | [Get-SpotifyLikedTracks](#Get-SpotifyLikedTracks) | liked | Returns all tracks saved in users own Spotify Library |
 | [Get-SpotifyDevices](#Get-SpotifyDevices) |  | Returns all currently available Spotify devices for current user |
@@ -119,7 +119,7 @@ Update-Module
 | [Get-SpotifyTrackById](#Get-SpotifyTrackById) | gettrack | Returns full Spotify track information by given TrackId |
 | [Get-SpotifyTrackAudioFeatures](#Get-SpotifyTrackAudioFeatures) | audiofeatures | Returns Spotify track audio feature information |
 | [Get-SpotifyPlaylistTracks](#Get-SpotifyPlaylistTracks) | getplaylist | Returns all tracks of a Spotify playlist |
-| [Get-SpotifyPlaylistIdsByName](#Get-SpotifyPlaylistIdsByName) |  |  |
+| [Get-SpotifyPlaylistIdsByName](#Get-SpotifyPlaylistIdsByName) |  | This function searches for Spotify playlists by name and returns theircorresponding IDs. It first attempts to find playlists in the current session,then falls back to a cached list if available, and finally forces a new fetch ifneeded. |
 | [Get-SpotifyLyrics](#Get-SpotifyLyrics) | lyrics | Searches for lyrics of a track |
 | [Get-SpotifyLikedTracks](#Get-SpotifyLikedTracks) | liked | Returns all tracks saved in users own Spotify Library |
 | [Get-SpotifyDevices](#Get-SpotifyDevices) |  | Returns all currently available Spotify devices for current user |
@@ -857,23 +857,29 @@ Set-SpotifyApiToken [-ApiToken] <String> [<CommonParameters>]
 
 ##	Set-SpotifyActiveDevice
 ````PowerShell
-Set-SpotifyActiveDevice
+Set-SpotifyActiveDevice              --> Set-SpotifyDevice
 ````
+
+### SYNOPSIS
+    Sets the active Spotify playback device.
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyActiveDevice [-DeviceId] <string> [<CommonParameters>]
+Set-SpotifyActiveDevice [-DeviceId] <String> [<CommonParameters>]
 ````
 
+### DESCRIPTION
+    Transfers playback to the specified Spotify device using the Spotify Web API.
+
 ### PARAMETERS
-    -DeviceId <string>
-        The Spotify deviceId to transfer playback to
+    -DeviceId <String>
+        The Spotify device ID to transfer playback to. This can be obtained from
+        Get-SpotifyDevices.
         Required?                    true
-        Position?                    0
-        Accept pipeline input?       true (ByPropertyName)
-        Parameter set name           (All)
-        Aliases                      Id
-        Dynamic?                     false
+        Position?                    1
+        Default value                
+        Accept pipeline input?       true (ByValue, ByPropertyName)
+        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1464,23 +1470,29 @@ Set-SpotifyApiToken [-ApiToken] <String> [<CommonParameters>]
 
 ##	Set-SpotifyActiveDevice
 ````PowerShell
-Set-SpotifyActiveDevice
+Set-SpotifyActiveDevice              --> Set-SpotifyDevice
 ````
+
+### SYNOPSIS
+    Sets the active Spotify playback device.
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyActiveDevice [-DeviceId] <string> [<CommonParameters>]
+Set-SpotifyActiveDevice [-DeviceId] <String> [<CommonParameters>]
 ````
 
+### DESCRIPTION
+    Transfers playback to the specified Spotify device using the Spotify Web API.
+
 ### PARAMETERS
-    -DeviceId <string>
-        The Spotify deviceId to transfer playback to
+    -DeviceId <String>
+        The Spotify device ID to transfer playback to. This can be obtained from
+        Get-SpotifyDevices.
         Required?                    true
-        Position?                    0
-        Accept pipeline input?       true (ByPropertyName)
-        Parameter set name           (All)
-        Aliases                      Id
-        Dynamic?                     false
+        Position?                    1
+        Default value                
+        Accept pipeline input?       true (ByValue, ByPropertyName)
+        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -1888,20 +1900,29 @@ Get-SpotifyPlaylistTracks [-PlaylistId] <String> [<CommonParameters>]
 Get-SpotifyPlaylistIdsByName
 ````
 
+### SYNOPSIS
+    Retrieves Spotify playlist IDs by their names.
+
 ### SYNTAX
 ````PowerShell
-Get-SpotifyPlaylistIdsByName [-PlaylistName] <string[]> [<CommonParameters>]
+Get-SpotifyPlaylistIdsByName [-PlaylistName] <String[]> [<CommonParameters>]
 ````
 
+### DESCRIPTION
+    This function searches for Spotify playlists by name and returns their
+    corresponding IDs. It first attempts to find playlists in the current session,
+    then falls back to a cached list if available, and finally forces a new fetch if
+    needed.
+
 ### PARAMETERS
-    -PlaylistName <string[]>
-        The Spotify playlist where all liked tracks should move to
+    -PlaylistName <String[]>
+        An array of playlist names to search for. The function will return IDs for all
+        matching playlists.
         Required?                    true
-        Position?                    0
+        Position?                    1
+        Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Parameter set name           ByName
-        Aliases                      Name
-        Dynamic?                     false
+        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2104,23 +2125,29 @@ Set-SpotifyApiToken [-ApiToken] <String> [<CommonParameters>]
 
 ##	Set-SpotifyActiveDevice
 ````PowerShell
-Set-SpotifyActiveDevice
+Set-SpotifyActiveDevice              --> Set-SpotifyDevice
 ````
+
+### SYNOPSIS
+    Sets the active Spotify playback device.
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyActiveDevice [-DeviceId] <string> [<CommonParameters>]
+Set-SpotifyActiveDevice [-DeviceId] <String> [<CommonParameters>]
 ````
 
+### DESCRIPTION
+    Transfers playback to the specified Spotify device using the Spotify Web API.
+
 ### PARAMETERS
-    -DeviceId <string>
-        The Spotify deviceId to transfer playback to
+    -DeviceId <String>
+        The Spotify device ID to transfer playback to. This can be obtained from
+        Get-SpotifyDevices.
         Required?                    true
-        Position?                    0
-        Accept pipeline input?       true (ByPropertyName)
-        Parameter set name           (All)
-        Aliases                      Id
-        Dynamic?                     false
+        Position?                    1
+        Default value                
+        Accept pipeline input?       true (ByValue, ByPropertyName)
+        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -2512,20 +2539,29 @@ Get-SpotifyTrackAudioFeatures [-TrackId] <String[]> [<CommonParameters>]
 Get-SpotifyPlaylistIdsByName
 ````
 
+### SYNOPSIS
+    Retrieves Spotify playlist IDs by their names.
+
 ### SYNTAX
 ````PowerShell
-Get-SpotifyPlaylistIdsByName [-PlaylistName] <string[]> [<CommonParameters>]
+Get-SpotifyPlaylistIdsByName [-PlaylistName] <String[]> [<CommonParameters>]
 ````
 
+### DESCRIPTION
+    This function searches for Spotify playlists by name and returns their
+    corresponding IDs. It first attempts to find playlists in the current session,
+    then falls back to a cached list if available, and finally forces a new fetch if
+    needed.
+
 ### PARAMETERS
-    -PlaylistName <string[]>
-        The Spotify playlist where all liked tracks should move to
+    -PlaylistName <String[]>
+        An array of playlist names to search for. The function will return IDs for all
+        matching playlists.
         Required?                    true
-        Position?                    0
+        Position?                    1
+        Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Parameter set name           ByName
-        Aliases                      Name
-        Dynamic?                     false
+        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
@@ -3174,20 +3210,29 @@ Get-SpotifyPlaylistTracks [-PlaylistId] <String> [<CommonParameters>]
 Get-SpotifyPlaylistIdsByName
 ````
 
+### SYNOPSIS
+    Retrieves Spotify playlist IDs by their names.
+
 ### SYNTAX
 ````PowerShell
-Get-SpotifyPlaylistIdsByName [-PlaylistName] <string[]> [<CommonParameters>]
+Get-SpotifyPlaylistIdsByName [-PlaylistName] <String[]> [<CommonParameters>]
 ````
 
+### DESCRIPTION
+    This function searches for Spotify playlists by name and returns their
+    corresponding IDs. It first attempts to find playlists in the current session,
+    then falls back to a cached list if available, and finally forces a new fetch if
+    needed.
+
 ### PARAMETERS
-    -PlaylistName <string[]>
-        The Spotify playlist where all liked tracks should move to
+    -PlaylistName <String[]>
+        An array of playlist names to search for. The function will return IDs for all
+        matching playlists.
         Required?                    true
-        Position?                    0
+        Position?                    1
+        Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Parameter set name           ByName
-        Aliases                      Name
-        Dynamic?                     false
+        Aliases                      
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,

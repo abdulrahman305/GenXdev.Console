@@ -1,11 +1,35 @@
-###############################################################################
+################################################################################
+<#
+.SYNOPSIS
+Returns the current date and time.
 
-function Now() {
+.DESCRIPTION
+This function returns the current system date and time as a DateTime object
+without any parameters.
+
+.EXAMPLE
+Now
+Returns: Current system date and time
+
+.EXAMPLE
+$currentTime = Now
+#>
+function Now {
 
     [CmdletBinding()]
-    [OutputType("System.DateTime")]
-
+    [OutputType([System.DateTime])]
     param()
 
-    return [DateTime]::Now
+    begin {
+        Write-Verbose "Getting current system date and time"
+    }
+
+    process {
+        # return the current system date and time
+        return [DateTime]::Now
+    }
+
+    end {
+    }
 }
+################################################################################
