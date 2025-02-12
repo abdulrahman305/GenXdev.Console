@@ -38,7 +38,7 @@ function Start-TextToSpeech {
             Mandatory = $true,
             Position = 0,
             ValueFromPipeline = $true,
-            ValueFromRemainingArguments = $true,
+            ValueFromRemainingArguments = $false,
             ParameterSetName = "strings",
             HelpMessage = "Text to be spoken"
         )]

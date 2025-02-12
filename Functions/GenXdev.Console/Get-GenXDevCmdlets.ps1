@@ -28,7 +28,7 @@ function Get-GenXDevCmdlets {
         [parameter(
             Mandatory = $false,
             Position = 0,
-            ValueFromRemainingArguments = $true,
+            ValueFromRemainingArguments = $false,
             HelpMessage = "Search pattern to filter cmdlets"
         )]
         [string] $Filter = "*",
