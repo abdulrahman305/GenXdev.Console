@@ -12,9 +12,9 @@
 
 ### FEATURES
 
-    * ✅ Text-to-speech
-    * ✅ Spotify control
-    * ✅ Microsoft Shell helpers
+    * ✅ text-to-speech
+    * ✅ spotify control
+    * ✅ microsoft Shell helpers
     * ✅ after installation, use 'cmds' to see full list of installed GenXdev cmdslets
 
 ### DEPENDENCIES
@@ -159,7 +159,7 @@ Add-SpotifyNewPlaylist               --> newplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] 
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative]
 [<CommonParameters>]
 ````
 
@@ -171,17 +171,17 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         The name for the new playlist
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Description <String>
         The description for the new playlist
         Required?                    false
         Position?                    2
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Public [<SwitchParameter>]
         Make this a public playlist
@@ -189,7 +189,7 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Collabrative [<SwitchParameter>]
         Allow others to make changes
@@ -197,13 +197,13 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -228,7 +228,7 @@ Get-SpotifyApiToken [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -253,7 +253,7 @@ Get-SpotifyActiveDevice [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -278,7 +278,7 @@ Connect-SpotifyApiToken [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -292,9 +292,9 @@ Add-SpotifyTracksToPlaylist          --> addtoplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>]
 [<CommonParameters>]
-Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
 [<CommonParameters>]
 ````
 
@@ -305,17 +305,17 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
     -PlaylistName <String[]>
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -PlaylistId <String[]>
         The Spotify playlist to add tracks to
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Uri <String[]>
         The Spotify tracks that should be added to the playlist
@@ -323,13 +323,13 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
         Position?                    2
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -356,13 +356,13 @@ Add-SpotifyTracksToLiked [[-TrackId] <String[]>] [<CommonParameters>]
         Position?                    1
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -376,7 +376,7 @@ Add-SpotifyNewPlaylist               --> newplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] 
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative]
 [<CommonParameters>]
 ````
 
@@ -388,17 +388,17 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         The name for the new playlist
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Description <String>
         The description for the new playlist
         Required?                    false
         Position?                    2
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Public [<SwitchParameter>]
         Make this a public playlist
@@ -406,7 +406,7 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Collabrative [<SwitchParameter>]
         Allow others to make changes
@@ -414,13 +414,13 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -445,7 +445,7 @@ Set-SpotifyStop [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -470,7 +470,7 @@ Set-SpotifyStart [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -495,7 +495,7 @@ Set-SpotifyShuffleOn [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -520,7 +520,7 @@ Set-SpotifyShuffleOff [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -545,7 +545,7 @@ Get-SpotifyCurrentlyPlaying [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -570,7 +570,7 @@ Set-SpotifyRepeatSong [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -595,7 +595,7 @@ Set-SpotifyRepeatContext [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -620,7 +620,7 @@ Set-SpotifyPrevious [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -634,7 +634,7 @@ Set-SpotifyPlaylistOrder
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] 
+Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore]
 <Int32> [[-RangeLength] <Nullable`1>] [<CommonParameters>]
 ````
 
@@ -646,9 +646,9 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         The Spotify playlist to perform the re-ordering on
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -RangeStart <Int32>
         The position of the first item to be reordered
@@ -656,7 +656,7 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         Position?                    1
         Default value                0
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -InsertBefore <Int32>
         The position where the items should be inserted. To reorder the items to the
@@ -669,7 +669,7 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         Position?                    2
         Default value                0
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -RangeLength <Nullable`1>
         The amount of items to be reordered. Defaults to 1 if not set. The range of items
@@ -678,15 +678,15 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         playlist, range_start is set to 9, and range_length is set to 2.
         Required?                    false
         Position?                    3
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -700,7 +700,7 @@ Set-SpotifyPlaylistDetails           --> spld
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] 
+Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description]
 <String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [<CommonParameters>]
 ````
 
@@ -712,25 +712,25 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         The Spotify playlist to set properties for
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Name <String>
         The new name for the playlist
         Required?                    true
         Position?                    2
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Description <String>
         The new description for the playlist
         Required?                    false
         Position?                    3
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Public [<SwitchParameter>]
         Make the playlist public
@@ -738,7 +738,7 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Collabrative [<SwitchParameter>]
         Allow others to make changes
@@ -746,7 +746,7 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Private [<SwitchParameter>]
         Make the playlist private
@@ -754,7 +754,7 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -NoCollabrations [<SwitchParameter>]
         Disallow others to make changes
@@ -762,13 +762,13 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -793,7 +793,7 @@ Set-SpotifyPause [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -818,7 +818,7 @@ Set-SpotifyNext [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -843,15 +843,15 @@ Set-SpotifyApiToken [-ApiToken] <String> [<CommonParameters>]
         The API-token to cache
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -877,15 +877,15 @@ Set-SpotifyActiveDevice [-DeviceId] <String> [<CommonParameters>]
         Get-SpotifyDevices.
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -910,9 +910,9 @@ Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>] [<CommonPar
         The search phrase
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -SearchType <String[]>
         Optionally, the type of item to search for
@@ -920,13 +920,13 @@ Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>] [<CommonPar
         Position?                    named
         Default value                @("Track")
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -951,9 +951,9 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<Common
         The search phrase
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -SearchType <String[]>
         Optionally, the type of item to search for
@@ -961,13 +961,13 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<Common
         Position?                    named
         Default value                @("Track")
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -992,7 +992,7 @@ Set-SpotifyRepeatOff [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1017,7 +1017,7 @@ Get-SpotifyDevices [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1042,7 +1042,7 @@ Get-SpotifyLikedTracks [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1067,23 +1067,23 @@ Get-SpotifyLyrics [-TrackId <String>] [[-Queries] <String[]>] [<CommonParameters
         Optional: Spotify id of track to lookup lyrics for
         Required?                    false
         Position?                    named
-        Default value                
+        Default value
         Accept pipeline input?       true (ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Queries <String[]>
         Optional: A query to find a track to lookup lyrics for
         Required?                    false
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1108,7 +1108,7 @@ Set-SpotifyShuffleOn [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1133,7 +1133,7 @@ Set-SpotifyShuffleOff [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1158,7 +1158,7 @@ Set-SpotifyRepeatSong [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1183,7 +1183,7 @@ Set-SpotifyRepeatOff [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1208,7 +1208,7 @@ Set-SpotifyRepeatContext [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1233,7 +1233,7 @@ Set-SpotifyPrevious [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1247,7 +1247,7 @@ Set-SpotifyPlaylistOrder
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] 
+Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore]
 <Int32> [[-RangeLength] <Nullable`1>] [<CommonParameters>]
 ````
 
@@ -1259,9 +1259,9 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         The Spotify playlist to perform the re-ordering on
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -RangeStart <Int32>
         The position of the first item to be reordered
@@ -1269,7 +1269,7 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         Position?                    1
         Default value                0
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -InsertBefore <Int32>
         The position where the items should be inserted. To reorder the items to the
@@ -1282,7 +1282,7 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         Position?                    2
         Default value                0
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -RangeLength <Nullable`1>
         The amount of items to be reordered. Defaults to 1 if not set. The range of items
@@ -1291,15 +1291,15 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         playlist, range_start is set to 9, and range_length is set to 2.
         Required?                    false
         Position?                    3
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1313,7 +1313,7 @@ Set-SpotifyPlaylistDetails           --> spld
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] 
+Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description]
 <String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [<CommonParameters>]
 ````
 
@@ -1325,25 +1325,25 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         The Spotify playlist to set properties for
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Name <String>
         The new name for the playlist
         Required?                    true
         Position?                    2
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Description <String>
         The new description for the playlist
         Required?                    false
         Position?                    3
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Public [<SwitchParameter>]
         Make the playlist public
@@ -1351,7 +1351,7 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Collabrative [<SwitchParameter>]
         Allow others to make changes
@@ -1359,7 +1359,7 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Private [<SwitchParameter>]
         Make the playlist private
@@ -1367,7 +1367,7 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -NoCollabrations [<SwitchParameter>]
         Disallow others to make changes
@@ -1375,13 +1375,13 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1406,7 +1406,7 @@ Set-SpotifyPause [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1431,7 +1431,7 @@ Set-SpotifyNext [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1456,15 +1456,15 @@ Set-SpotifyApiToken [-ApiToken] <String> [<CommonParameters>]
         The API-token to cache
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1490,15 +1490,15 @@ Set-SpotifyActiveDevice [-DeviceId] <String> [<CommonParameters>]
         Get-SpotifyDevices.
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1523,9 +1523,9 @@ Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>] [<CommonPar
         The search phrase
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -SearchType <String[]>
         Optionally, the type of item to search for
@@ -1533,13 +1533,13 @@ Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>] [<CommonPar
         Position?                    named
         Default value                @("Track")
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1564,9 +1564,9 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<Common
         The search phrase
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -SearchType <String[]>
         Optionally, the type of item to search for
@@ -1574,13 +1574,13 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<Common
         Position?                    named
         Default value                @("Track")
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1605,9 +1605,9 @@ Search-Spotify [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters
         The search phrase
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -SearchType <String[]>
         Optionally, the type of item to search for
@@ -1615,13 +1615,13 @@ Search-Spotify [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters
         Position?                    named
         Default value                @("Track")
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1635,9 +1635,9 @@ Remove-SpotifyTracksFromPlaylist     --> removefromplaylist
 
 ### SYNTAX
 ````PowerShell
-Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>]
 [<CommonParameters>]
-Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
 [<CommonParameters>]
 ````
 
@@ -1648,17 +1648,17 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
     -PlaylistName <String[]>
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -PlaylistId <String[]>
         The Spotify playlist to delete tracks from
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Uri <String[]>
         The Spotify tracks that should be removed from the playlist
@@ -1666,13 +1666,13 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
         Position?                    2
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1699,13 +1699,13 @@ Remove-SpotifyTracksFromLiked [[-TrackId] <String[]>] [<CommonParameters>]
         Position?                    1
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1730,23 +1730,23 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <String[]> [<CommonParameters>]
     -PlaylistName <String[]>
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -PlaylistId <String[]>
         The Spotify playlist where all liked tracks should move to"
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1772,20 +1772,20 @@ Get-SpotifyUserPlaylists [[-Filter] <String[]>] [-Force] [<CommonParameters>]
         Position?                    1
         Default value                @("*")
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Force [<SwitchParameter>]
         Required?                    false
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1810,15 +1810,15 @@ Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>]
         The Spotify track id of the track to lookup
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1842,15 +1842,15 @@ Get-SpotifyTrackAudioFeatures [-TrackId] <String[]> [<CommonParameters>]
     -TrackId <String[]>
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1875,23 +1875,23 @@ Get-SpotifyPlaylistTracks [-PlaylistId] <String> [<CommonParameters>]
     -PlaylistName <String>
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -PlaylistId <String>
         The Spotify playlist to return tracks for
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1922,13 +1922,13 @@ Get-SpotifyPlaylistIdsByName [-PlaylistName] <String[]> [<CommonParameters>]
         Position?                    1
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1953,9 +1953,9 @@ Search-Spotify [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters
         The search phrase
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -SearchType <String[]>
         Optionally, the type of item to search for
@@ -1963,13 +1963,13 @@ Search-Spotify [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters
         Position?                    named
         Default value                @("Track")
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -1994,7 +1994,7 @@ Set-SpotifyStart [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2008,9 +2008,9 @@ Remove-SpotifyTracksFromPlaylist     --> removefromplaylist
 
 ### SYNTAX
 ````PowerShell
-Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>]
 [<CommonParameters>]
-Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
 [<CommonParameters>]
 ````
 
@@ -2021,17 +2021,17 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
     -PlaylistName <String[]>
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -PlaylistId <String[]>
         The Spotify playlist to delete tracks from
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Uri <String[]>
         The Spotify tracks that should be removed from the playlist
@@ -2039,13 +2039,13 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
         Position?                    2
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2070,23 +2070,23 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <String[]> [<CommonParameters>]
     -PlaylistName <String[]>
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -PlaylistId <String[]>
         The Spotify playlist where all liked tracks should move to"
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2111,15 +2111,15 @@ Set-SpotifyApiToken [-ApiToken] <String> [<CommonParameters>]
         The API-token to cache
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2145,15 +2145,15 @@ Set-SpotifyActiveDevice [-DeviceId] <String> [<CommonParameters>]
         Get-SpotifyDevices.
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2178,9 +2178,9 @@ Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>] [<CommonPar
         The search phrase
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -SearchType <String[]>
         Optionally, the type of item to search for
@@ -2188,13 +2188,13 @@ Search-SpotifyAndPlay [-Queries] <String[]> [-SearchType <String[]>] [<CommonPar
         Position?                    named
         Default value                @("Track")
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2219,9 +2219,9 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<Common
         The search phrase
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -SearchType <String[]>
         Optionally, the type of item to search for
@@ -2229,13 +2229,13 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [-SearchType <String[]>] [<Common
         Position?                    named
         Default value                @("Track")
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2260,9 +2260,9 @@ Search-Spotify [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters
         The search phrase
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -SearchType <String[]>
         Optionally, the type of item to search for
@@ -2270,13 +2270,13 @@ Search-Spotify [-Queries] <String[]> [-SearchType <String[]>] [<CommonParameters
         Position?                    named
         Default value                @("Track")
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2290,9 +2290,9 @@ Remove-SpotifyTracksFromPlaylist     --> removefromplaylist
 
 ### SYNTAX
 ````PowerShell
-Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>]
 [<CommonParameters>]
-Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
 [<CommonParameters>]
 ````
 
@@ -2303,17 +2303,17 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
     -PlaylistName <String[]>
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -PlaylistId <String[]>
         The Spotify playlist to delete tracks from
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Uri <String[]>
         The Spotify tracks that should be removed from the playlist
@@ -2321,13 +2321,13 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
         Position?                    2
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2354,13 +2354,13 @@ Remove-SpotifyTracksFromLiked [[-TrackId] <String[]>] [<CommonParameters>]
         Position?                    1
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2385,23 +2385,23 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <String[]> [<CommonParameters>]
     -PlaylistName <String[]>
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -PlaylistId <String[]>
         The Spotify playlist where all liked tracks should move to"
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2427,20 +2427,20 @@ Get-SpotifyUserPlaylists [[-Filter] <String[]>] [-Force] [<CommonParameters>]
         Position?                    1
         Default value                @("*")
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Force [<SwitchParameter>]
         Required?                    false
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2465,15 +2465,15 @@ Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>]
         The Spotify track id of the track to lookup
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2498,7 +2498,7 @@ Set-SpotifyNext [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2522,15 +2522,15 @@ Get-SpotifyTrackAudioFeatures [-TrackId] <String[]> [<CommonParameters>]
     -TrackId <String[]>
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2561,13 +2561,13 @@ Get-SpotifyPlaylistIdsByName [-PlaylistName] <String[]> [<CommonParameters>]
         Position?                    1
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2592,23 +2592,23 @@ Get-SpotifyLyrics [-TrackId <String>] [[-Queries] <String[]>] [<CommonParameters
         Optional: Spotify id of track to lookup lyrics for
         Required?                    false
         Position?                    named
-        Default value                
+        Default value
         Accept pipeline input?       true (ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Queries <String[]>
         Optional: A query to find a track to lookup lyrics for
         Required?                    false
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2633,7 +2633,7 @@ Get-SpotifyLikedTracks [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2658,7 +2658,7 @@ Get-SpotifyDevices [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2683,7 +2683,7 @@ Get-SpotifyCurrentlyPlaying [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2708,7 +2708,7 @@ Get-SpotifyApiToken [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2733,7 +2733,7 @@ Get-SpotifyActiveDevice [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2758,7 +2758,7 @@ Connect-SpotifyApiToken [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2772,9 +2772,9 @@ Add-SpotifyTracksToPlaylist          --> addtoplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>]
 [<CommonParameters>]
-Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
 [<CommonParameters>]
 ````
 
@@ -2785,17 +2785,17 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
     -PlaylistName <String[]>
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -PlaylistId <String[]>
         The Spotify playlist to add tracks to
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Uri <String[]>
         The Spotify tracks that should be added to the playlist
@@ -2803,13 +2803,13 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
         Position?                    2
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2836,13 +2836,13 @@ Add-SpotifyTracksToLiked [[-TrackId] <String[]>] [<CommonParameters>]
         Position?                    1
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2867,23 +2867,23 @@ Get-SpotifyPlaylistTracks [-PlaylistId] <String> [<CommonParameters>]
     -PlaylistName <String>
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -PlaylistId <String>
         The Spotify playlist to return tracks for
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2908,7 +2908,7 @@ Set-SpotifyPause [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -2922,7 +2922,7 @@ Set-SpotifyPlaylistDetails           --> spld
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] 
+Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description]
 <String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [<CommonParameters>]
 ````
 
@@ -2934,25 +2934,25 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         The Spotify playlist to set properties for
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Name <String>
         The new name for the playlist
         Required?                    true
         Position?                    2
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Description <String>
         The new description for the playlist
         Required?                    false
         Position?                    3
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Public [<SwitchParameter>]
         Make the playlist public
@@ -2960,7 +2960,7 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Collabrative [<SwitchParameter>]
         Allow others to make changes
@@ -2968,7 +2968,7 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Private [<SwitchParameter>]
         Make the playlist private
@@ -2976,7 +2976,7 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -NoCollabrations [<SwitchParameter>]
         Disallow others to make changes
@@ -2984,13 +2984,13 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3004,7 +3004,7 @@ Set-SpotifyPlaylistOrder
 
 ### SYNTAX
 ````PowerShell
-Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] 
+Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore]
 <Int32> [[-RangeLength] <Nullable`1>] [<CommonParameters>]
 ````
 
@@ -3016,9 +3016,9 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         The Spotify playlist to perform the re-ordering on
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -RangeStart <Int32>
         The position of the first item to be reordered
@@ -3026,7 +3026,7 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         Position?                    1
         Default value                0
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -InsertBefore <Int32>
         The position where the items should be inserted. To reorder the items to the
@@ -3039,7 +3039,7 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         Position?                    2
         Default value                0
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -RangeLength <Nullable`1>
         The amount of items to be reordered. Defaults to 1 if not set. The range of items
@@ -3048,15 +3048,15 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         playlist, range_start is set to 9, and range_length is set to 2.
         Required?                    false
         Position?                    3
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3082,20 +3082,20 @@ Get-SpotifyUserPlaylists [[-Filter] <String[]>] [-Force] [<CommonParameters>]
         Position?                    1
         Default value                @("*")
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Force [<SwitchParameter>]
         Required?                    false
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3120,15 +3120,15 @@ Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>]
         The Spotify track id of the track to lookup
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3152,15 +3152,15 @@ Get-SpotifyTrackAudioFeatures [-TrackId] <String[]> [<CommonParameters>]
     -TrackId <String[]>
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3185,23 +3185,23 @@ Get-SpotifyPlaylistTracks [-PlaylistId] <String> [<CommonParameters>]
     -PlaylistName <String>
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -PlaylistId <String>
         The Spotify playlist to return tracks for
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3232,13 +3232,13 @@ Get-SpotifyPlaylistIdsByName [-PlaylistName] <String[]> [<CommonParameters>]
         Position?                    1
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3263,23 +3263,23 @@ Get-SpotifyLyrics [-TrackId <String>] [[-Queries] <String[]>] [<CommonParameters
         Optional: Spotify id of track to lookup lyrics for
         Required?                    false
         Position?                    named
-        Default value                
+        Default value
         Accept pipeline input?       true (ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Queries <String[]>
         Optional: A query to find a track to lookup lyrics for
         Required?                    false
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3304,7 +3304,7 @@ Get-SpotifyLikedTracks [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3329,7 +3329,7 @@ Get-SpotifyDevices [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3354,7 +3354,7 @@ Get-SpotifyCurrentlyPlaying [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3379,7 +3379,7 @@ Get-SpotifyApiToken [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3404,7 +3404,7 @@ Get-SpotifyActiveDevice [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3429,7 +3429,7 @@ Connect-SpotifyApiToken [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3443,9 +3443,9 @@ Add-SpotifyTracksToPlaylist          --> addtoplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
+Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>]
 [<CommonParameters>]
-Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] 
+Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
 [<CommonParameters>]
 ````
 
@@ -3456,17 +3456,17 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
     -PlaylistName <String[]>
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -PlaylistId <String[]>
         The Spotify playlist to add tracks to
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Uri <String[]>
         The Spotify tracks that should be added to the playlist
@@ -3474,13 +3474,13 @@ Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>]
         Position?                    2
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3507,13 +3507,13 @@ Add-SpotifyTracksToLiked [[-TrackId] <String[]>] [<CommonParameters>]
         Position?                    1
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3527,7 +3527,7 @@ Add-SpotifyNewPlaylist               --> newplaylist
 
 ### SYNTAX
 ````PowerShell
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] 
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative]
 [<CommonParameters>]
 ````
 
@@ -3539,17 +3539,17 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         The name for the new playlist
         Required?                    true
         Position?                    1
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Description <String>
         The description for the new playlist
         Required?                    false
         Position?                    2
-        Default value                
+        Default value
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Public [<SwitchParameter>]
         Make this a public playlist
@@ -3557,7 +3557,7 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     -Collabrative [<SwitchParameter>]
         Allow others to make changes
@@ -3565,13 +3565,13 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         Position?                    named
         Default value                False
         Accept pipeline input?       false
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3596,7 +3596,7 @@ Set-SpotifyStop [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3621,7 +3621,7 @@ Set-SpotifyStart [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3646,7 +3646,7 @@ Set-SpotifyShuffleOn [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3671,7 +3671,7 @@ Set-SpotifyShuffleOff [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3696,7 +3696,7 @@ Set-SpotifyRepeatSong [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3721,7 +3721,7 @@ Set-SpotifyRepeatOff [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3746,7 +3746,7 @@ Set-SpotifyRepeatContext [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3771,7 +3771,7 @@ Set-SpotifyPrevious [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3798,13 +3798,13 @@ Remove-SpotifyTracksFromLiked [[-TrackId] <String[]>] [<CommonParameters>]
         Position?                    1
         Default value                @()
         Accept pipeline input?       true (ByValue, ByPropertyName)
-        Aliases                      
+        Aliases
         Accept wildcard characters?  false
     <CommonParameters>
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>
 
@@ -3829,6 +3829,6 @@ Set-SpotifyStop [<CommonParameters>]
         This cmdlet supports the common parameters: Verbose, Debug,
         ErrorAction, ErrorVariable, WarningAction, WarningVariable,
         OutBuffer, PipelineVariable, and OutVariable. For more information, see
-        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216). 
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).
 
 <br/><hr/><hr/><br/>

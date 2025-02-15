@@ -90,7 +90,7 @@ function Get-SpotifyLyrics {
                 $current = Get-SpotifyCurrentlyPlaying
 
                 if ($null -ne $current) {
-                    $Queries = @("$($current.Item.Artists[0].Name) - " + `
+                    $Queries = @("$($current.Item.Artists[0].Name) - " +
                             "$($current.Item.Name)")
                 }
             }
