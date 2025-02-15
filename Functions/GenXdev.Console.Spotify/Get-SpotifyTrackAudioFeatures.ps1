@@ -1,44 +1,58 @@
-###############################################################################
-
+################################################################################
 <#
 .SYNOPSIS
-Returns Spotify track audio feature information
+Retrieves audio feature information for one or more Spotify tracks.
 
 .DESCRIPTION
-Returns Spotify track audio feature information
+This function connects to the Spotify API to fetch detailed audio features for the
+specified tracks. Audio features include characteristics like danceability,
+energy, key, loudness, mode, speechiness, acousticness, instrumentalness,
+liveness, valence, tempo, and time signature.
 
-.PARAMETER Id
-The Spotify track to return audio features for
+.PARAMETER TrackId
+One or more Spotify track IDs to analyze. These must be valid Spotify track
+identifiers.
+
+.EXAMPLE
+Get-SpotifyTrackAudioFeatures -TrackId "1301WleyT98MSxVHPZCA6M"
+
+.EXAMPLE
+audiofeatures "1301WleyT98MSxVHPZCA6M", "6rqhFgbbKwnb9MLmUQDhG6"
 #>
-
 function Get-SpotifyTrackAudioFeatures {
 
     [CmdletBinding()]
     [Alias("audiofeatures")]
 
     param(
+        ########################################################################
         [Alias("Id")]
         [parameter(
-            Mandatory,
+            Mandatory = $true,
             Position = 0,
-            ValueFromPipeline,
-            ValueFromPipelineByPropertyName,
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true,
             HelpMessage = "The Spotify track to return audio features for"
         )]
         [string[]] $TrackId
+        ########################################################################
     )
 
     begin {
 
-        $apiToken = Get-SpotifyApiToken;
+        # obtain the spotify api authentication token for subsequent requests
+        Write-Verbose "Acquiring Spotify API authentication token"
+        $apiToken = Get-SpotifyApiToken
     }
 
     process {
 
-        [GenXdev.Helpers.Spotify]::GetSeveralAudioFeatures($apiToken, $TrackId);
+        # fetch audio features for the specified tracks using the spotify api
+        Write-Verbose "Retrieving audio features for $($TrackId.Count) tracks"
+        [GenXdev.Helpers.Spotify]::GetSeveralAudioFeatures($apiToken, $TrackId)
     }
 
     end {
-
     }
 }
+################################################################################

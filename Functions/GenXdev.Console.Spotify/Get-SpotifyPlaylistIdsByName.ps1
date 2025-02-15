@@ -5,19 +5,22 @@ Retrieves Spotify playlist IDs by their names.
 
 .DESCRIPTION
 This function searches for Spotify playlists by name and returns their
-corresponding IDs. It first attempts to find playlists in the current session,
-then falls back to a cached list if available, and finally forces a new fetch if
-needed.
+corresponding IDs. It follows a three-step process:
+1. Searches in the current session's playlists
+2. Checks a local cache file if no results found
+3. Forces a fresh fetch if cache is outdated or missing
+
+The function returns all playlist IDs that match the provided names.
 
 .PARAMETER PlaylistName
-An array of playlist names to search for. The function will return IDs for all
-matching playlists.
+An array of playlist names to search for. The function will match these names
+against your Spotify playlists and return the IDs of matching playlists.
 
 .EXAMPLE
-Get-SpotifyPlaylistIdsByName -PlaylistName "My Favorites"
+Get-SpotifyPlaylistIdsByName -PlaylistName "My Favorites", "Workout Mix"
 
 .EXAMPLE
-"My Favorites" | Get-SpotifyPlaylistIdsByName
+"Chill Vibes" | Get-SpotifyPlaylistIdsByName
 #>
 function Get-SpotifyPlaylistIdsByName {
 
@@ -31,31 +34,37 @@ function Get-SpotifyPlaylistIdsByName {
             Position = 0,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
-            HelpMessage = "The Spotify playlist names to search for"
+            HelpMessage = "One or more Spotify playlist names to search for"
         )]
         [string[]] $PlaylistName = @()
         ########################################################################
     )
 
     begin {
+
+        # log the start of playlist lookup with provided names
         Write-Verbose "Starting playlist ID lookup for: $($PlaylistName -join ', ')"
     }
 
     process {
-        # try to get playlists from current session
+
+        # attempt to find playlists in current session
         $Results = @(Get-SpotifyUserPlaylists -Filter $PlaylistName)
 
-        # if no results found, check cached playlists
+        # handle case when no playlists found in current session
         if ($Results.Length -eq 0) {
-            Write-Verbose "No playlists found in current session, checking cache..."
 
+            Write-Verbose "No playlists found in session, checking local cache..."
+
+            # construct path to cache file
             $FilePath = Expand-Path `
                 -FilePath "$PSScriptRoot\..\..\..\..\GenXdev.Local\Spotify.Playlists.json" `
                 -CreateDirectory
 
+            # get cache file info
             $PlaylistCache = [System.IO.FileInfo]::new($FilePath)
 
-            # if cache is old or doesn't exist, force refresh
+            # refresh if cache is outdated (>12 hours) or missing
             if (!$PlaylistCache.Exists -or
                 ([datetime]::Now - $PlaylistCache.LastWriteTime -ge [timespan]::FromHours(12))) {
 
@@ -64,12 +73,12 @@ function Get-SpotifyPlaylistIdsByName {
             }
         }
 
-        # throw if no playlists found
+        # throw error if no matching playlists found
         if ($Results.Length -eq 0) {
             throw "Playlist not found"
         }
 
-        # return playlist IDs
+        # return the IDs of matching playlists
         $Results | ForEach-Object Id
     }
 

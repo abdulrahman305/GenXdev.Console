@@ -4,14 +4,17 @@
 Sets focus to the VLC media player window.
 
 .DESCRIPTION
-Finds the running VLC media player window and brings it to the foreground,
-making it the active window.
+Locates a running instance of VLC media player and brings its window to the
+foreground, making it the active window. If VLC is not running, silently
+continues without error. Uses Windows API calls to manipulate window focus.
 
 .EXAMPLE
 Set-VLCPlayerFocused
+# Brings the VLC player window to front and gives it focus
 
 .EXAMPLE
 vlcf
+# Same operation using the short alias
 #>
 function Set-VLCPlayerFocused {
 
@@ -21,24 +24,26 @@ function Set-VLCPlayerFocused {
 
     begin {
 
-        Write-Verbose "Starting VLC player focus operation"
+        # log operation start for troubleshooting
+        Write-Verbose "Starting Set-VLCPlayerFocused operation"
     }
 
     process {
 
         try {
-            # attempt to find the vlc window
-            Write-Verbose "Searching for VLC player window"
+            # find vlc window by process name, returns null if not found
+            Write-Verbose "Attempting to locate VLC player window"
             $window = Get-Window -ProcessName vlc
 
-            # bring the window to the foreground
-            Write-Verbose "Setting VLC player window as foreground window"
+            # set window as active and bring to foreground if found
+            Write-Verbose "Setting VLC window as foreground window"
             $null = $window.Show()
             $null = $window.SetForeground()
+            $null = Set-ForegroundWindow -WindowHandle ($window.Handle)
         }
         catch {
-            # notify user if vlc is not running
-            Write-Warning "VLC player is not running"
+            # silently continue if window not found or other errors occur
+            Write-Verbose "Failed to set VLC window focus: $_"
         }
     }
 

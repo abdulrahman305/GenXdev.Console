@@ -1,33 +1,39 @@
-###############################################################################
-
+################################################################################
 <#
 .SYNOPSIS
-Sets the main properties of a Spotify playlist
+Sets the main properties of a Spotify playlist.
 
 .DESCRIPTION
-Sets the main properties of a Spotify playlist
+Modifies playlist properties including name, description, visibility and
+collaboration settings using the Spotify API.
 
 .PARAMETER PlaylistId
-The Spotify playlist to set properties for
+The unique identifier of the Spotify playlist to modify.
 
 .PARAMETER Name
-The new name for the playlist
+The new name to set for the playlist.
 
 .PARAMETER Description
-The new description for the playlist
+Optional description text for the playlist.
 
 .PARAMETER Public
-Make the playlist public
+Switch to make the playlist visible to all users.
 
 .PARAMETER Collabrative
-Allow others to make changes
+Switch to allow other users to modify the playlist.
 
 .PARAMETER Private
-Make the playlist private
+Switch to make the playlist only visible to you.
 
 .PARAMETER NoCollabrations
-Disallow others to make changes
+Switch to prevent other users from modifying the playlist.
 
+.EXAMPLE
+Set-SpotifyPlaylistDetails -PlaylistId "1234567890" -Name "My Playlist" `
+    -Description "My favorite songs" -Public
+
+.EXAMPLE
+spld "1234567890" "Weekend Mix" -Private -NoCollabrations
 #>
 function Set-SpotifyPlaylistDetails {
 
@@ -35,81 +41,105 @@ function Set-SpotifyPlaylistDetails {
     [Alias("spld")]
 
     param(
+        ########################################################################
         [parameter(
-            Mandatory,
+            Mandatory = $true,
             Position = 0,
             HelpMessage = "The Spotify playlist to make changes to"
         )]
         [string] $PlaylistId,
+        ########################################################################
         [parameter(
-            Mandatory,
+            Mandatory = $true,
             Position = 1,
             HelpMessage = "The name for the new playlist"
         )]
         [string] $Name,
+        ########################################################################
         [parameter(
             Mandatory = $false,
             Position = 2,
             HelpMessage = "The description for the new playlist"
         )]
         [string] $Description = "",
+        ########################################################################
         [parameter(
             Mandatory = $false,
             HelpMessage = "Make this a public playlist"
         )]
         [switch] $Public,
+        ########################################################################
         [parameter(
             Mandatory = $false,
             HelpMessage = "Allow others to make changes to this playlist"
         )]
         [switch] $Collabrative,
+        ########################################################################
         [parameter(
             Mandatory = $false,
             HelpMessage = "Make the playlist private"
         )]
         [switch] $Private,
+        ########################################################################
         [parameter(
             Mandatory = $false,
             HelpMessage = "Disallow others to make changes"
         )]
         [switch] $NoCollabrations
-
+        ########################################################################
     )
 
     begin {
 
-        $apiToken = Get-SpotifyApiToken;
+        # get the spotify api authentication token
+        $apiToken = Get-SpotifyApiToken
+        Write-Verbose "Retrieved Spotify API token"
 
-        $P = $null;
-        $C = $null;
+        # initialize visibility and collaboration flags
+        $publicFlag = $null
+        $collabFlag = $null
 
+        # set playlist visibility based on switches
         if ($Public -eq $true) {
-
-            $P = $true
+            $publicFlag = $true
+            Write-Verbose "Setting playlist to public"
         }
 
+        # set collaboration permission based on switches
         if ($Collabrative -eq $true) {
-
-            $C = $true
+            $collabFlag = $true
+            Write-Verbose "Enabling playlist collaboration"
         }
 
+        # override public flag if private switch is used
         if ($Private -eq $true) {
-
-            $P = $false
+            $publicFlag = $false
+            Write-Verbose "Setting playlist to private"
         }
 
+        # override collab flag if no collaborations switch is used
         if ($NoCollabrations -eq $true) {
-
-            $C = $False
+            $collabFlag = $false
+            Write-Verbose "Disabling playlist collaboration"
         }
     }
 
     process {
 
-        [GenXdev.Helpers.Spotify]::ChangePlaylistDetails($PlaylistId, $apiToken, $Name, $P, $C, $Description);
+        Write-Verbose "Updating playlist $PlaylistId with new settings"
+
+        # call spotify api to update playlist details
+        [GenXdev.Helpers.Spotify]::ChangePlaylistDetails(
+            $PlaylistId,
+            $apiToken,
+            $Name,
+            $publicFlag,
+            $collabFlag,
+            $Description
+        )
     }
 
     end {
-
     }
 }
+################################################################################

@@ -13,7 +13,7 @@ Describe "Get-GenXDevCmdlets" {
         $count = 0;
         $results | ForEach-Object {
 
-            if ($_.Name -eq "AssureLMStudio") {
+            if ($_.Name -like "AssureLMStudio") {
 
                 $count++
             }

@@ -1,33 +1,45 @@
-###############################################################################
+################################################################################
 <#
 .SYNOPSIS
-Returns all currently active Spotify devices for current user
+Returns all currently active Spotify devices for the current user.
 
 .DESCRIPTION
-Returns all currently active Spotify devices for current user
-#>
+Retrieves a list of Spotify devices that are currently marked as active for the
+authenticated user's account. This includes devices like phones, computers,
+speakers, etc. that are currently available to play music.
 
+.EXAMPLE
+Get-SpotifyActiveDevice
+
+Returns all active Spotify devices for the current user, displaying properties
+like name, type, and volume.
+#>
 function Get-SpotifyActiveDevice {
 
     [CmdletBinding()]
 
-
     param(
+        ########################################################################
     )
-
 
     begin {
 
-        $apiToken = Get-SpotifyApiToken;
+        # retrieve the spotify api authentication token for subsequent requests
+        Write-Verbose "Retrieving Spotify API authentication token"
+        $apiToken = Get-SpotifyApiToken
     }
 
     process {
 
-        [GenXdev.Helpers.Spotify]::GetDevices($apiToken) | Where-Object { $PSItem.IsActive }
+        # get all devices and filter only active ones
+        Write-Verbose "Fetching active Spotify devices"
+        [GenXdev.Helpers.Spotify]::GetDevices($apiToken) |
+        Where-Object {
+            $PSItem.IsActive
+        }
     }
 
     end {
-
-
     }
 }
+################################################################################

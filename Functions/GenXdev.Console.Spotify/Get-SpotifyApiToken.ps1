@@ -1,53 +1,86 @@
-###############################################################################
-
+################################################################################
 <#
 .SYNOPSIS
-Returns a ApiToken for Spotify
+Retrieves or generates a valid Spotify API authentication token.
 
 .DESCRIPTION
-Returns a ApiToken for Spotify
+This function manages Spotify API authentication by either retrieving a cached
+token or obtaining a new one. It also ensures proper firewall access and
+validates the token's functionality.
+
+.EXAMPLE
+$token = Get-SpotifyApiToken
 #>
 function Get-SpotifyApiToken {
 
     [CmdletBinding()]
-
     param()
 
-    $ruleName = "Allow Current PowerShell"
-    $programPath = Join-Path -Path $PSHOME -ChildPath "pwsh.exe" # for PowerShell Core
-    $remoteAddress = "192.168.1.1"
+    begin {
 
-    # Check if the rule already exists
-    $existingRule = Get-NetFirewallRule -DisplayName $ruleName -ErrorAction SilentlyContinue
+        # define firewall rule settings
+        $ruleName = "Allow Current PowerShell"
+        $programPath = Join-Path -Path $PSHOME -ChildPath "pwsh.exe"
+        $remoteAddress = "192.168.1.1"
 
-    if ($null -eq $existingRule) {
-        # Rule does not exist, create it
-        New-NetFirewallRule -DisplayName $ruleName -Direction Inbound -Program $programPath -Action Allow -RemoteAddress $remoteAddress
-        Write-Host "Firewall rule '$ruleName' created."
+        Write-Verbose "Checking firewall rule: $ruleName"
     }
 
+    process {
 
-    $path = "$PSScriptRoot\..\..\..\..\GenXdev.Local\Spotify_Auth.json";
+        # verify if firewall rule exists
+        $existingRule = Get-NetFirewallRule `
+            -DisplayName $ruleName `
+            -ErrorAction SilentlyContinue
 
-    if ([IO.File]::Exists($path)) {
+        # create firewall rule if it doesn't exist
+        if ($null -eq $existingRule) {
 
-        $ApiToken = [IO.File]::ReadAllText($path);
+            Write-Verbose "Creating new firewall rule"
+            New-NetFirewallRule `
+                -DisplayName $ruleName `
+                -Direction Inbound `
+                -Program $programPath `
+                -Action Allow `
+                -RemoteAddress $remoteAddress
+
+            Write-Host "Firewall rule '$ruleName' created."
+        }
+
+        # path to cached authentication token
+        $path = "$PSScriptRoot\..\..\..\..\GenXdev.Local\Spotify_Auth.json"
+
+        # attempt to load existing token
+        if ([IO.File]::Exists($path)) {
+
+            Write-Verbose "Loading existing token from $path"
+            $apiToken = [IO.File]::ReadAllText($path)
+        }
+        else {
+
+            Write-Verbose "No existing token found, connecting to Spotify"
+            $apiToken = Connect-SpotifyApiToken
+            $null = Set-SpotifyApiToken $apiToken
+        }
+
+        # validate token by attempting to list devices
+        try {
+
+            Write-Verbose "Validating token by retrieving devices"
+            $null = [GenXdev.Helpers.Spotify]::GetDevices($apiToken)
+        }
+        catch {
+
+            Write-Verbose "Token validation failed, obtaining new token"
+            $apiToken = Connect-SpotifyApiToken
+            $null = Set-SpotifyApiToken $apiToken
+        }
+
+        # return the valid token
+        $apiToken
     }
-    else {
 
-        $ApiToken = Connect-SpotifyApiToken
-        Set-SpotifyApiToken $ApiToken | Out-Null
+    end {
     }
-
-    try {
-
-        [GenXdev.Helpers.Spotify]::GetDevices($ApiToken) | Out-Null
-    }
-    catch {
-
-        $ApiToken = Connect-SpotifyApiToken
-        Set-SpotifyApiToken $ApiToken | Out-Null
-    }
-
-    $ApiToken
 }
+################################################################################

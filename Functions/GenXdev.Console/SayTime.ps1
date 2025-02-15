@@ -1,14 +1,16 @@
 ################################################################################
 <#
 .SYNOPSIS
-Speaks the current time using text-to-speech.
+Announces the current time using text-to-speech.
 
 .DESCRIPTION
-This function retrieves the current time and uses text-to-speech to announce it
-in hours and minutes format.
+This function gets the current time and uses the system's text-to-speech engine
+to verbally announce it in hours and minutes format. It's useful for
+accessibility purposes or when you need an audible time announcement.
 
 .EXAMPLE
 SayTime
+# Speaks the current time, e.g. "The time is 14 hours and 30 minutes"
 #>
 function SayTime {
 
@@ -17,23 +19,27 @@ function SayTime {
 
     begin {
 
-        # get current date and time
+        # get the current system time
         $date = Get-Date
 
-        # extract hours and minutes
+        # extract hours (0-23) and minutes (0-59) from current time
         $hours = $date.Hour
         $minutes = $date.Minute
 
-        Write-Verbose "Current time: $hours hours and $minutes minutes"
+        # log the current time for troubleshooting
+        Write-Verbose "Processing time announcement for $hours`:$minutes"
     }
 
     process {
 
-        # construct speech text
+        # construct the speech text in a clear, consistent format
         $speechText = "The time is $($hours.ToString('0')) hours and " +
-            "$($minutes.ToString('0')) minutes"
+        "$($minutes.ToString('0')) minutes"
 
-        # speak the time
+        # log the text that will be spoken
+        Write-Verbose "Speaking: $speechText"
+
+        # convert the text to speech using system TTS engine
         Start-TextToSpeech $speechText
     }
 

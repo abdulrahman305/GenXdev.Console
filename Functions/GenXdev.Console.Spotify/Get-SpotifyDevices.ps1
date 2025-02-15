@@ -1,33 +1,42 @@
-###############################################################################
-
+################################################################################
 <#
 .SYNOPSIS
-Returns all currently available Spotify devices for current user
+Returns all currently available Spotify devices for current user.
 
 .DESCRIPTION
-Returns all currently available Spotify devices for current user
-#>
+Retrieves a list of all Spotify devices that are currently available for the
+authenticated user. This includes any active or recently active devices such as
+smartphones, computers, speakers, and other Spotify-enabled devices.
 
+.EXAMPLE
+Get-SpotifyDevices
+
+This command returns all available Spotify devices for the current user.
+
+.NOTES
+Requires valid Spotify authentication token to function. The token is automatically
+retrieved using Get-SpotifyApiToken.
+#>
 function Get-SpotifyDevices {
 
     [CmdletBinding()]
-
-
-    param(
-    )
-
+    param()
 
     begin {
 
-        $apiToken = Get-SpotifyApiToken;
-
+        # retrieve the spotify api authentication token for subsequent api calls
+        Write-Verbose "Retrieving Spotify API authentication token..."
+        $apiToken = Get-SpotifyApiToken
     }
 
     process {
 
-        [GenXdev.Helpers.Spotify]::GetDevices($apiToken);
+        # query spotify api for all available devices using helper class
+        Write-Verbose "Querying Spotify API for available devices..."
+        [GenXdev.Helpers.Spotify]::GetDevices($apiToken)
     }
 
     end {
     }
 }
+################################################################################

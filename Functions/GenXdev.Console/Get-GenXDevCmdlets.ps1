@@ -4,14 +4,17 @@
 Retrieves a list of all installed GenXdev modules, their cmdlets and aliases.
 
 .DESCRIPTION
-This function searches through all installed GenXdev modules and returns detailed
-information about their cmdlets including names, aliases, and descriptions.
+Searches through installed GenXdev modules and returns detailed information about
+their cmdlets, including names, aliases, and descriptions. Supports filtering by
+module name and cmdlet name patterns.
 
 .PARAMETER Filter
-Specifies a search pattern to filter cmdlets. Wildcards are supported.
+A search pattern to filter cmdlets. Supports wildcards. If no wildcards are
+provided, pattern is wrapped with * on both sides.
 
 .PARAMETER ModuleName
-Specifies which GenXdev modules to search. Defaults to all modules.
+One or more GenXdev module names to search. Defaults to all modules (*).
+The "GenXdev." prefix is optional and will be added if missing.
 
 .EXAMPLE
 Get-GenXDevCmdlets -Filter "Get-*" -ModuleName "Console"
@@ -22,7 +25,6 @@ cmds Get-*
 function Get-GenXDevCmdlets {
 
     [CmdletBinding()]
-    [Alias("cmds")]
     param(
         ########################################################################
         [parameter(
@@ -44,101 +46,126 @@ function Get-GenXDevCmdlets {
 
     begin {
 
-        # ensure filter has wildcards if not explicitly provided
-        if (!$Filter.Contains("*")) {
+        # ensure search pattern has wildcards for partial matches
+        if (-not $Filter.Contains("*")) {
             $Filter = "*$Filter*"
         }
 
-        # remove GenXdev prefix from module names if present
-        $ModuleName = $ModuleName.Replace("GenXdev.", "")
+        # normalize module names by adding GenXdev prefix if not present
+        $ModuleName = "GenXdev." + $ModuleName.Replace("GenXdev.", "")
 
         Write-Verbose "Searching for cmdlets matching '$Filter' in modules: $($ModuleName -join ',')"
     }
 
     process {
 
-        # get all matching modules and their nested modules
-        $results = Get-Module "GenXdev.$ModuleName" -All |
+        # initialize results collection for found cmdlets
+        $results = [System.Collections.Generic.List[object]]::new()
+
+        # get all matching modules including their nested modules
+        $modules = Get-Module "$($ModuleName.TrimEnd("*"))*" -All |
         ForEach-Object {
             $module = $PSItem
             $module.NestedModules | ForEach-Object { $_ }
             $module
         } |
         Select-Object -Unique |
-        Sort-Object { $_.Name.Length } |
-        ForEach-Object {
-            $_.ExportedCommands.Values
-        } |
-        Select-Object -Unique |
-        ForEach-Object -ErrorAction SilentlyContinue {
+        Sort-Object { $_.Name.Length }
 
-            if ($PSItem.CommandType -eq "Function") {
+        foreach ($module in $modules) {
 
-                # get aliases for functions
-                $aliases = ((Get-Alias -Definition $PSItem.Name `
-                            -ErrorAction SilentlyContinue |
-                        ForEach-Object Name) -join ", ").Trim()
-            }
-            else {
-                $aliases = ""
-            }
+            # get all exported commands from the module
+            $exportedCommands = $module.ExportedCommands.Values |
+            ForEach-Object { $_ } |
+            Select-Object -Unique
 
-            # check if command matches filter criteria
-            if ((($PSItem.Name -like $Filter) -or
-                            ($aliases -like $Filter)) -and
-                            (($PSItem.Module.Name -eq $module.Name) -or
-                            ($PSItem.Module.Name -like "$($module.Name).*"))) {
+            $exportedCommands |
+            ForEach-Object -ErrorAction SilentlyContinue {
 
                 if ($PSItem.CommandType -eq "Function") {
-                    # format name and aliases string
-                    $nameAndAliases = if ($aliases) {
-                        "$($PSItem.Name) --> $aliases"
-                    }
-                    else {
-                        $PSItem.Name
-                    }
 
-                    # get function description
-                    $desc = Get-FunctionDescription -Command $PSItem
+                    # get all aliases for this function
+                    $aliases = ((Get-Alias -Definition ($PSItem.Name) `
+                                -ErrorAction SilentlyContinue |
+                            ForEach-Object Name) -join ", ").Trim()
+                }
+                else {
+                    $aliases = ""
+                }
 
-                    @{
-                        NameAndAliases = $nameAndAliases
-                        Name           = $PSItem.Name
-                        Aliases        = $aliases
-                        Description    = $desc
-                        ModuleName     = $PSItem.Module.Name
-                        Position       = 0
+                # check if command matches filter criteria
+                if ((($PSItem.Name -like $Filter) -or
+                                ($aliases -like $Filter)) -and
+                                (($PSItem.Module.Name -eq $moduleName) -or
+                                ($PSItem.Module.Name -like "$($ModuleName.TrimEnd("*"))*"))) {
+
+                    if ($PSItem.CommandType -eq "Function") {
+
+                        # format display string with name and aliases
+                        $nameAndAliases = if ($aliases) {
+                            "$($PSItem.Name) --> $aliases"
+                        }
+                        else {
+                            $PSItem.Name
+                        }
+
+                        # get function description from help or script block
+                        $desc = Get-FunctionDescription -Command $PSItem
+
+                        # add function info to results
+                        $null = $results.Add(
+                            @{
+                                NameAndAliases = $nameAndAliases
+                                Name           = $PSItem.Name
+                                Aliases        = $aliases
+                                Description    = $desc
+                                ModuleName     = $PSItem.Module.Name
+                                Position       = 0
+                            }
+                        )
                     }
                 }
             }
         }
 
-        # sort and return results
-        $results | Sort-Object {
-            $_.ModuleName.Length.ToString().PadLeft(4, "0") +
-            $_.Name.Length.ToString().PadLeft(4, "0") +
-            $_.Position.ToString().PadLeft("5", 0) +
-            $_.ModuleName + "_" + $_.Name
-        } -Unique
+        # sort and return results by module name length, function name length
+        $results | Sort-Object { (
+                $_.ModuleName.Length.ToString().PadLeft(4, "0") +
+                $_.Name.Length.ToString().PadLeft(4, "0") +
+                $_.Position.ToString().PadLeft("5", 0) +
+                $_.ModuleName + "_" + $_.Name
+            ) } -Unique
     }
 
     end {
     }
 }
 
+########################################################################
+<#
+.SYNOPSIS
+Helper function to extract function descriptions from help or script block.
+
+.PARAMETER Command
+The function info object to get the description for.
+#>
 function Get-FunctionDescription {
+
     param([System.Management.Automation.FunctionInfo]$Command)
 
     try {
-        # try getting description from help
+        # try getting description from help documentation
         $help = Get-Help $Command.Name -Detailed -ErrorAction SilentlyContinue
         if ($help.Description.Text) { return $help.Description.Text }
 
-        # fallback to parsing description from script block
+        # fallback to parsing description from script block comments
         $pattern = "#\s*DESCRIPTION\s+$($Command.Name):([^`r`n]*)"
         $match = [regex]::Match("$($Command.ScriptBlock)".Replace("`u{00A0}", " "),
             $pattern)
-        if ($match.Success) { return $match.Groups[1].Value.Trim() }
+
+        if ($match.Success) {
+            return $match.Groups[1].Value.Trim()
+        }
     }
     catch {
         Write-Verbose "Failed to get description for $($Command.Name): $($_.Exception.Message)"

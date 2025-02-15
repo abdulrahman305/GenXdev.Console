@@ -1,23 +1,33 @@
-###############################################################################
+################################################################################
 
 <#
 .SYNOPSIS
-Creates a new Spotify playlist
+Creates a new Spotify playlist with customizable settings.
 
 .DESCRIPTION
-Creates a new Spotify playlist
+Creates a new Spotify playlist with the specified name, description, and privacy
+settings. The function authenticates with Spotify, creates the playlist, and
+updates the local playlist cache.
 
 .PARAMETER Name
-The name for the new playlist
+The name for the new playlist. This will be visible to users who can access the
+playlist.
 
 .PARAMETER Description
-The description for the new playlist
+An optional description for the playlist that provides additional context about
+its contents or purpose.
 
 .PARAMETER Public
-Make this a public playlist
+When specified, makes the playlist publicly visible to other Spotify users.
 
 .PARAMETER Collabrative
-Allow others to make changes
+When specified, allows other users to modify the playlist contents.
+
+.EXAMPLE
+Add-SpotifyNewPlaylist -Name "My Awesome Mix" -Description "Best songs of 2023" -Public
+
+.EXAMPLE
+newplaylist "Road Trip Songs" -Collabrative
 #>
 function Add-SpotifyNewPlaylist {
 
@@ -25,52 +35,73 @@ function Add-SpotifyNewPlaylist {
     [Alias("newplaylist")]
 
     param(
-
+        ########################################################################
         [parameter(
-            Mandatory,
+            Mandatory = $true,
             Position = 0,
             HelpMessage = "The name for the new playlist"
         )]
         [string] $Name,
+        ########################################################################
         [parameter(
             Mandatory = $false,
             Position = 1,
             HelpMessage = "The description for the new playlist"
         )]
         [string] $Description = "",
+        ########################################################################
         [parameter(
             Mandatory = $false,
             HelpMessage = "Make this a public playlist"
         )]
         [switch] $Public,
+        ########################################################################
         [parameter(
             Mandatory = $false,
             HelpMessage = "Allow others to make changes"
         )]
         [switch] $Collabrative
+        ########################################################################
     )
 
     begin {
 
-        $apiToken = Get-SpotifyApiToken;
+        # retrieve spotify api authentication token
+        Write-Verbose "Retrieving Spotify API authentication token"
+        $apiToken = Get-SpotifyApiToken
     }
 
     process {
 
-        $result = [GenXdev.Helpers.Spotify]::NewPlaylist($apiToken, $Name, $Description, ($Public -eq $true), ($Collabrative -eq $true));
+        # create new playlist using spotify api helper
+        Write-Verbose "Creating new Spotify playlist '$Name'"
+        $result = [GenXdev.Helpers.Spotify]::NewPlaylist(
+            $apiToken,
+            $Name,
+            $Description,
+            ($Public -eq $true),
+            ($Collabrative -eq $true))
 
+        # update local playlist cache if it exists
         if ($Global:SpotifyPlaylistCache -is [System.Collections.Generic.List[object]]) {
 
-            $Global:SpotifyPlaylistCache.Insert(0, $result);
-            $filePath = Expand-Path "$PSScriptRoot\..\..\..\..\GenXdev.Local\Spotify.Playlists.json"
-            $Global:SpotifyPlaylistCache | ConvertTo-Json -Depth 100 | Out-File $filePath -Force
+            Write-Verbose "Updating local playlist cache"
+            $Global:SpotifyPlaylistCache.Insert(0, $result)
+
+            # save updated cache to json file
+            $filePath = Expand-Path "$PSScriptRoot\..\..\..\..\GenXdev.Local\`
+                Spotify.Playlists.json"
+            $Global:SpotifyPlaylistCache |
+            ConvertTo-Json -Depth 100 |
+            Out-File $filePath -Force
         }
 
+        # return the newly created playlist
         $result
     }
 
     end {
-
-
     }
 }
+
+################################################################################

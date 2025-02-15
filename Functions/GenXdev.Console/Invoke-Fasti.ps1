@@ -1,68 +1,106 @@
-###############################################################################
-
+################################################################################
 <#
 .SYNOPSIS
-Will extract all archive files (zip, 7z, tar, etc) found in current directory and then DELETE them
+Extracts archive files in the current directory and deletes the originals.
 
 .DESCRIPTION
-Will extract all archive files (zip, 7z, tar, etc) found in current directory and then DELETE them.
-Each archive file is extracted into their own directory with the same name as the file
+Automatically extracts common archive formats (zip, 7z, tar, etc.) found in the
+current directory into individual folders named after each archive. After
+successful extraction, the original archive files are deleted. Requires 7-Zip
+to be installed on the system.
 
 .EXAMPLE
-PS D:\downloads> Invoke-Fasti
+PS C:\Downloads> Invoke-Fasti
+
+.EXAMPLE
+PS C:\Downloads> fasti
 
 .NOTES
-You need 7z installed
+Supported formats: 7z, zip, rar, tar, iso and many others.
+Requires 7-Zip installation (will attempt auto-install via winget if missing).
 #>
 function Invoke-Fasti {
 
     [CmdletBinding()]
     [Alias("Fasti")]
-
     param()
 
-    Get-ChildItem @("*.7z", "*.xz", "*.bzip2", "*.gzip", "*.tar", "*.zip", "*.wim", "*.ar", "*.arj", "*.cab", "*.chm", "*.cpio", "*.cramfs", "*.dmg", "*.ext", "*.fat", "*.gpt", "*.hfs", "*.ihex", "*.iso", "*.lzh", "*.lzma", "*.mbr", "*.msi", "*.nsis", "*.ntfs", "*.qcow2", "*.rar", "*.rpm", "*.squashfs", "*.udf", "*.uefi", "*.vdi", "*.vhd", "*.vmdk", "*.wim", "*.xar", "*.z") -File -ErrorAction SilentlyContinue  | ForEach-Object {
+    begin {
 
-        $7z = "7z"
-        $zip = $PSItem.fullname;
-        $n = [system.IO.Path]::GetFileNameWithoutExtension($zip);
-        $p = [System.IO.Path]::GetDirectoryName($zip);
-        $r = [system.Io.Path]::Combine($p, $n);
+        # list of supported archive extensions
+        $extensions = @("*.7z", "*.xz", "*.bzip2", "*.gzip", "*.tar", "*.zip",
+            "*.wim", "*.ar", "*.arj", "*.cab", "*.chm", "*.cpio", "*.cramfs",
+            "*.dmg", "*.ext", "*.fat", "*.gpt", "*.hfs", "*.ihex", "*.iso",
+            "*.lzh", "*.lzma", "*.mbr", "*.msi", "*.nsis", "*.ntfs", "*.qcow2",
+            "*.rar", "*.rpm", "*.squashfs", "*.udf", "*.uefi", "*.vdi", "*.vhd",
+            "*.vmdk", "*.wim", "*.xar", "*.z")
+    }
 
-        if ([System.IO.Directory]::exists($r) -eq $false) {
+    process {
 
-            [System.IO.Directory]::CreateDirectory($r)
-        }
+        # process each archive file found in current directory
+        Get-ChildItem $extensions -File -ErrorAction SilentlyContinue |
+        ForEach-Object {
 
-        if ((Get-Command $7z -ErrorAction SilentlyContinue).Length -eq 0) {
+            Write-Verbose "Processing archive: $($PSItem.Name)"
 
-            $7z = "C:\Program Files\7-Zip\7z.exe";
+            # initialize 7zip executable path
+            $sevenZip = "7z"
 
-            if (![IO.File]::Exists($7z)) {
+            # get archive details
+            $zipFile = $PSItem.fullname
+            $name = [system.IO.Path]::GetFileNameWithoutExtension($zipFile)
+            $path = [System.IO.Path]::GetDirectoryName($zipFile)
+            $extractPath = [system.Io.Path]::Combine($path, $name)
 
-                if ((Get-Command winget -ErrorAction SilentlyContinue).Length -eq 0) {
+            # create extraction directory if it doesn't exist
+            if ([System.IO.Directory]::exists($extractPath) -eq $false) {
 
-                    throw "You need to install 7zip or winget first";
-                }
+                Write-Verbose "Creating directory: $extractPath"
+                [System.IO.Directory]::CreateDirectory($extractPath)
+            }
 
-                winget install 7zip
+            # verify 7zip installation or attempt to install it
+            if ((Get-Command $sevenZip -ErrorAction SilentlyContinue).Length -eq 0) {
 
-                if (![IO.File]::Exists($7z)) {
+                $sevenZip = "C:\Program Files\7-Zip\7z.exe"
 
-                    throw "You need to install 7-zip";
+                if (![IO.File]::Exists($sevenZip)) {
+
+                    if ((Get-Command winget -ErrorAction SilentlyContinue).Length -eq 0) {
+
+                        throw "You need to install 7zip or winget first"
+                    }
+
+                    Write-Verbose "Installing 7-Zip via winget..."
+                    winget install 7zip
+
+                    if (![IO.File]::Exists($sevenZip)) {
+
+                        throw "You need to install 7-zip"
+                    }
                 }
             }
-        }
 
-        & $7z x -y "-o$r" $zip;
+            # extract archive contents
+            Write-Verbose "Extracting to: $extractPath"
+            & $sevenZip x -y "-o$extractPath" $zipFile
 
-        if ($?) {
+            # delete original archive if extraction succeeded
+            if ($?) {
 
-            try {
-                Remove-Item "$zip" -Force -ErrorAction silentlycontinue
-            }
-            catch {
+                try {
+                    Write-Verbose "Removing original archive: $zipFile"
+                    Remove-Item "$zipFile" -Force -ErrorAction silentlycontinue
+                }
+                catch {
+                    Write-Verbose "Failed to remove original archive"
+                }
             }
         }
     }
+
+    end {
+    }
 }
+################################################################################

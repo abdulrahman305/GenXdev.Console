@@ -1,17 +1,16 @@
 ################################################################################
 <#
 .SYNOPSIS
-Speaks the current date using text-to-speech.
+Speaks the current date using text-to-speech synthesis.
 
 .DESCRIPTION
-This function uses the text-to-speech engine to announce the current date in a
-natural language format (e.g., "It is Monday, January 1 2024").
+Converts the current date into a natural language format and announces it using
+the system's text-to-speech engine. The date is spoken in the format:
+"It is [day of week], [month] [day] [year]"
 
 .EXAMPLE
 SayDate
-
-.NOTES
-Uses the Start-TextToSpeech cmdlet for speech synthesis.
+# Announces today's date using text-to-speech
 #>
 function SayDate {
 
@@ -19,13 +18,19 @@ function SayDate {
     param()
 
     begin {
-        # get the current date in natural language format
+
+        # format current date into natural speech pattern
+        # e.g. "It is Monday, January 1 2024"
         $dateText = "It is " + [DateTime]::Now.ToString("dddd, MMMM d yyyy")
-        Write-Verbose "Preparing to speak date: $dateText"
+
+        # log the text that will be spoken
+        Write-Verbose "Preparing to speak: $dateText"
     }
 
     process {
-        # speak the date using text-to-speech
+
+        # use text-to-speech engine to announce the date
+        # suppress output by assigning to $null
         $null = Start-TextToSpeech $dateText
     }
 

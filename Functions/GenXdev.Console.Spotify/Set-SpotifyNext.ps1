@@ -1,16 +1,45 @@
-###############################################################################
-
+################################################################################
 <#
 .SYNOPSIS
-Skips to next track on Spotify
+Skips to next track on Spotify.
 
 .DESCRIPTION
-Skips to next track on the device that is active on Spotify
+Advances playback to the next track in the current playlist or album on the
+currently active Spotify device. This function requires a valid Spotify API token
+and an active playback session.
+
+.EXAMPLE
+Set-SpotifyNext
+
+.EXAMPLE
+next
+
+.EXAMPLE
+skip
 #>
 function Set-SpotifyNext {
 
+    [CmdletBinding()]
     [Alias("next", "skip")]
     param()
 
-    [GenXdev.Helpers.Spotify]::Next((Get-SpotifyApiToken));
+    begin {
+
+        Write-Verbose "Starting Set-SpotifyNext operation"
+    }
+
+    process {
+
+        # retrieve the current spotify api token
+        Write-Verbose "Retrieving Spotify API token"
+        $token = Get-SpotifyApiToken
+
+        # skip to the next track using the spotify api
+        Write-Verbose "Sending next track command to Spotify"
+        [GenXdev.Helpers.Spotify]::Next($token)
+    }
+
+    end {
+    }
 }
+################################################################################

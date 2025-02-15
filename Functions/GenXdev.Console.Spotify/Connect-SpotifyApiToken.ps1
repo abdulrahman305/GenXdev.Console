@@ -1,27 +1,73 @@
-###############################################################################
-
+################################################################################
 <#
 .SYNOPSIS
-Uses Spotify Open-Auth to request an access token
+Authenticates with Spotify API using OAuth flow to obtain an access token.
 
 .DESCRIPTION
-Uses Spotify Open-Auth to request an access token
+Opens a browser window in application mode to handle the Spotify OAuth
+authentication flow. Once authenticated, retrieves and stores the access token for
+subsequent API calls. The browser window automatically closes after successful
+authentication. Uses port 5642 for the OAuth callback listener.
 
+.EXAMPLE
+# Authenticate with Spotify and obtain access token
+Connect-SpotifyApiToken
+
+.NOTES
+Uses port 5642 as the default callback port for OAuth flow
+Minimizes browser window during authentication
+Automatically closes browser window after successful authentication
 #>
 function Connect-SpotifyApiToken {
 
     [CmdletBinding()]
-
     param()
 
-    $url = [GenXdev.Helpers.Spotify]::RequestAuthenticationUri(5642);
+    begin {
 
-    [System.Diagnostics.Process] $process = Open-Webbrowser -PassThru -ApplicationMode -NewWindow -Width 1000 -Height 800 -Centered -Monitor 0 -Url $url
+        # inform user that authentication flow is starting
+        Write-Verbose "Starting Spotify OAuth authentication flow on port 5642"
+    }
 
-    [GenXdev.Helpers.Spotify]::RequestAuthenticationTokenUsingOAuth(5642)
+    process {
 
-    if ((!!$process -and $process -is [System.Diagnostics.Process]) -and (!$process.HasExited)) {
+        # construct oauth url using helper class method
+        $url = [GenXdev.Helpers.Spotify]::RequestAuthenticationUri(5642)
 
-        $process.CloseMainWindow() | Out-Null
+        # launch minimal browser window for authentication
+        [System.Diagnostics.Process] $process = Open-Webbrowser `
+            -PassThru `
+            -ApplicationMode `
+            -NewWindow `
+            -Width 10 `
+            -Height 8 `
+            -Centered `
+            -Monitor 0 `
+            -Url $url
+
+        # attempt to minimize the browser window
+        try {
+            $windowHelper = Get-Window -ProcessId $process.Id
+            $windowHelper.Minimize()
+        }
+        catch {
+            # silently continue if window manipulation fails
+        }
+
+        # wait for oauth callback and retrieve token
+        Write-Verbose "Waiting for OAuth callback on port 5642"
+        [GenXdev.Helpers.Spotify]::RequestAuthenticationTokenUsingOAuth(5642)
+
+        # cleanup: close browser window if still running
+        if ((!!$process -and $process -is [System.Diagnostics.Process]) `
+                -and (!$process.HasExited)) {
+
+            Write-Verbose "Closing authentication browser window"
+            $null = $process.CloseMainWindow()
+        }
+    }
+
+    end {
     }
 }
+################################################################################

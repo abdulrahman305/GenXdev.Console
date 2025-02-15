@@ -1,40 +1,47 @@
-###############################################################################
-
+################################################################################
 <#
 .SYNOPSIS
-Returns the currently on Spotify playing track
+Returns information about the currently playing track on Spotify.
 
 .DESCRIPTION
-Returns the currently on Spotify playing track
+Retrieves detailed information about the track currently playing on Spotify,
+including track name, artist, album, and playback status using the Spotify Web
+API.
 
 .EXAMPLE
 PS C:\> Get-SpotifyCurrentlyPlaying
+Returns the full currently playing track information object.
 
 .EXAMPLE
-PS C:\> (gcp).Item
+PS C:\> gcp
+Uses the alias to get the currently playing track information.
 
+.EXAMPLE
+PS C:\> (Get-SpotifyCurrentlyPlaying).Item.Name
+Returns just the name of the currently playing track.
 #>
 function Get-SpotifyCurrentlyPlaying {
 
     [CmdletBinding()]
     [Alias("gcp")]
 
-    param(
-    )
-
+    param()
 
     begin {
 
-        $apiToken = Get-SpotifyApiToken;
+        # retrieve the current spotify api authentication token
+        Write-Verbose "Getting Spotify API authentication token"
+        $apiToken = Get-SpotifyApiToken
     }
 
     process {
 
-        [GenXdev.Helpers.Spotify]::GetCurrentlyPlaying($apiToken);
+        # query the spotify api for currently playing track information
+        Write-Verbose "Querying Spotify API for currently playing track"
+        [GenXdev.Helpers.Spotify]::GetCurrentlyPlaying($apiToken)
     }
 
     end {
-
-
     }
 }
+################################################################################

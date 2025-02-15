@@ -1,66 +1,101 @@
-###############################################################################
+################################################################################
 
 <#
 .SYNOPSIS
-Performs a Spotify search and adds the first item to the queue
+Searches Spotify and adds the first matching item to the playback queue.
 
 .DESCRIPTION
-Performs a Spotify search and adds the first item to the queue
+Performs a search on Spotify using specified criteria and automatically adds the
+first matching result to the current playback queue. Supports searching for
+tracks, albums, artists, playlists, shows, and episodes.
 
 .PARAMETER Queries
-The search phrase
+One or more search phrases to find content on Spotify. Each query is processed
+sequentially and the first match for each is added to the queue.
 
 .PARAMETER SearchType
-Optionally, the type of item to search for
+Specifies the type(s) of content to search for. Valid options are:
+- Track (default)
+- Album
+- Artist
+- Playlist
+- Show
+- Episode
+- All
 
 .EXAMPLE
-PS C:\> Search-SpotifyAndEnqueue "Rage against the machine"
+Search-SpotifyAndEnqueue -Queries "Rage against the machine" -SearchType Track
 
 .EXAMPLE
-PS C:\> fmq "Dire Straits You and your friend"
-
+fmq "Dire Straits You and your friend"
 #>
 function Search-SpotifyAndEnqueue {
 
+    [CmdletBinding()]
     [Alias("smq", "fmq")]
 
     param(
+        ########################################################################
         [parameter(
-            Mandatory,
+            Mandatory = $true,
             Position = 0,
-            ValueFromRemainingArguments,
-            ValueFromPipeline,
-            ValueFromPipelineByPropertyName,
+            ValueFromRemainingArguments = $true,
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true,
             HelpMessage = "The query to perform"
         )]
         [string[]] $Queries,
-
+        ########################################################################
         [Alias("t")]
-        [ValidateSet("Album", "Artist", "Playlist", "Track", "Show", "Episode", "All")]
-        [parameter(Mandatory = $false)]
+        [ValidateSet("Album", "Artist", "Playlist", "Track", "Show", "Episode",
+            "All")]
+        [parameter(
+            Mandatory = $false,
+            HelpMessage = "The type of content to search for"
+        )]
         [string[]] $SearchType = @("Track")
+        ########################################################################
     )
 
     begin {
 
+        # initialize search type bit mask for filtering results
+        [int] $searchTypeTypeId = 0
 
+        # build composite search type mask based on selected content types
+        if ($SearchType -contains "Album") { $searchTypeTypeId += 1 }
+        if ($SearchType -contains "Artist") { $searchTypeTypeId += 2 }
+        if ($SearchType -contains "Playlist") { $searchTypeTypeId += 4 }
+        if ($SearchType -contains "Track") { $searchTypeTypeId += 8 }
+        if ($SearchType -contains "Show") { $searchTypeTypeId += 16 }
+        if ($SearchType -contains "Episode") { $searchTypeTypeId += 32 }
+        if ($SearchType -contains "All") { $searchTypeTypeId += 63 }
 
-        [int] $SearchTypeTypeId = 0;
-
-        if ($SearchType -contains "Album") { $SearchTypeTypeId += 1 }
-        if ($SearchType -contains "Artist") { $SearchTypeTypeId += 2 }
-        if ($SearchType -contains "Playlist") { $SearchTypeTypeId += 4 }
-        if ($SearchType -contains "Track") { $SearchTypeTypeId += 8 }
-        if ($SearchType -contains "Show") { $SearchTypeTypeId += 16 }
-        if ($SearchType -contains "Episode") { $SearchTypeTypeId += 32 }
-        if ($SearchType -contains "All") { $SearchTypeTypeId += 63 }
+        Write-Verbose "Initialized search type mask: $searchTypeTypeId"
     }
 
     process {
 
         foreach ($Query in $Queries) {
 
-            [GenXdev.Helpers.Spotify]::SearchAndAdd((Get-SpotifyApiToken), $Query, $SearchTypeTypeId) | ForEach-Object { if ($null -ne $PSItem) { $PSItem } } -ErrorAction SilentlyContinue
+            Write-Verbose "Processing query: $Query"
+
+            # search spotify and add first matching result to queue
+            [GenXdev.Helpers.Spotify]::SearchAndAdd(
+                (Get-SpotifyApiToken),
+                $Query,
+                $searchTypeTypeId
+            ) |
+            ForEach-Object {
+                if ($null -ne $PSItem) {
+                    $PSItem
+                }
+            } -ErrorAction SilentlyContinue
         }
     }
+
+    end {
+    }
 }
+
+################################################################################

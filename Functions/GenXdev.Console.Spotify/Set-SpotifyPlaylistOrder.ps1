@@ -1,87 +1,96 @@
-###############################################################################
-
+################################################################################
 <#
 .SYNOPSIS
-Reorders a range of tracks inside a Spotify playlist
+Reorders tracks within a Spotify playlist by moving a range of items to a new
+position.
 
 .DESCRIPTION
-Reorders a range of tracks inside a Spotify playlist
+Allows repositioning of one or more tracks within a Spotify playlist by
+specifying the start position of items to move and their destination position.
+Requires valid Spotify API authentication.
 
 .PARAMETER PlaylistId
-The Spotify playlist to perform the re-ordering on
+The unique identifier of the Spotify playlist to modify.
 
 .PARAMETER RangeStart
-The position of the first item to be reordered
+The zero-based position index of the first track to be moved.
 
 .PARAMETER InsertBefore
-The position where the items should be inserted. To reorder the items to the
-end of the playlist, simply set insert_before to the position after the last
-item. Examples: To reorder the first item to the last position in a playlist
-with 10 items, set range_start to 0, and insert_before to 10. To reorder the
-last item in a playlist with 10 items to the start of the playlist, set range_start
-to 9, and insert_before to 0.
+The zero-based position index where the moved tracks should be inserted.
+For example, to move items to the end of a 10-track playlist, use 10.
+To move items to the start, use 0.
 
 .PARAMETER RangeLength
-The amount of items to be reordered. Defaults to 1 if not set. The range of items
-to be reordered begins from the range_start position, and includes the range_length
-subsequent items. Example: To move the items at index 9-10 to the start of the
-playlist, range_start is set to 9, and range_length is set to 2.
+Optional. The number of consecutive tracks to move, starting from RangeStart.
+Defaults to 1 if not specified.
 
+.EXAMPLE
+Set-SpotifyPlaylistOrder -PlaylistId "2v3iNvBX8Ay1Gt2uXtUKUT" `
+                        -RangeStart 5 `
+                        -InsertBefore 0 `
+                        -RangeLength 2
+
+.EXAMPLE
+# Move last track to start of playlist
+Set-SpotifyPlaylistOrder "2v3iNvBX8Ay1Gt2uXtUKUT" 9 0
 #>
 function Set-SpotifyPlaylistOrder {
 
     [CmdletBinding()]
-    [Alias("")]
 
     param(
+        ########################################################################
         [parameter(
-            Mandatory,
+            Mandatory = $true,
             Position = 0,
-            HelpMessage = "The Spotify playlist to perform the re-ordering on"
+            HelpMessage = "The Spotify playlist identifier to modify"
         )]
         [string] $PlaylistId,
-
+        ########################################################################
         [parameter(
-            Mandatory,
-            Position = 0,
-            HelpMessage = "The position of the first item to be reordered"
+            Mandatory = $true,
+            Position = 1,
+            HelpMessage = "The position of the first track to move"
         )]
         [int] $RangeStart,
-
+        ########################################################################
         [parameter(
-            Mandatory,
-            Position = 1,
-            HelpMessage = "The position where the items should be inserted. To reorder the items to the
-            end of the playlist, simply set insert_before to the position after the last
-            item. Examples: To reorder the first item to the last position in a playlist
-            with 10 items, set range_start to 0, and insert_before to 10. To reorder the
-            last item in a playlist with 10 items to the start of the playlist, set range_start
-            to 9, and insert_before to 0."
+            Mandatory = $true,
+            Position = 2,
+            HelpMessage = "The position where tracks should be inserted"
         )]
         [int] $InsertBefore,
-
+        ########################################################################
         [parameter(
             Mandatory = $false,
-            Position = 2,
-            HelpMessage = "The amount of items to be reordered. Defaults to 1 if not set. The range of items
-            to be reordered begins from the range_start position, and includes the range_length
-            subsequent items. Example: To move the items at index 9-10 to the start of the
-            playlist, range_start is set to 9, and range_length is set to 2."
+            Position = 3,
+            HelpMessage = "Number of consecutive tracks to move (defaults to 1)"
         )]
         [System.Nullable[int]] $RangeLength = $null
+        ########################################################################
     )
 
     begin {
 
-        $apiToken = Get-SpotifyApiToken;
+        # retrieve the current spotify api authentication token
+        $apiToken = Get-SpotifyApiToken
     }
 
     process {
 
-        [GenXdev.Helpers.Spotify]::ReorderPlaylist($apiToken, $PlaylistId, $RangeStart, $InsertBefore, $RangeLength);
+        Write-Verbose "Reordering playlist $PlaylistId - Moving $RangeLength tracks
+            from position $RangeStart to position $InsertBefore"
+
+        # call the spotify api to reorder the playlist tracks
+        [GenXdev.Helpers.Spotify]::ReorderPlaylist(
+            $apiToken,
+            $PlaylistId,
+            $RangeStart,
+            $InsertBefore,
+            $RangeLength)
     }
 
     end {
-
     }
 }
+################################################################################

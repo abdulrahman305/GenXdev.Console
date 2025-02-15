@@ -1,18 +1,20 @@
 ################################################################################
 <#
 .SYNOPSIS
-Returns the current date and time.
+Returns the current system date and time as a DateTime object.
 
 .DESCRIPTION
-This function returns the current system date and time as a DateTime object
-without any parameters.
+Provides a simple way to get the current system date and time without any
+parameters. Returns a standard .NET DateTime object that can be used for
+datetime calculations, formatting, and comparisons.
 
 .EXAMPLE
 Now
-Returns: Current system date and time
+Returns the current system date and time as a DateTime object
 
 .EXAMPLE
-$currentTime = Now
+$timestamp = Now
+Stores the current date and time in a variable for later use
 #>
 function Now {
 
@@ -21,11 +23,15 @@ function Now {
     param()
 
     begin {
-        Write-Verbose "Getting current system date and time"
+
+        # log function start with verbose output
+        Write-Verbose "Starting Now function to retrieve system date and time"
     }
 
     process {
-        # return the current system date and time
+
+        # return the current system datetime using .NET DateTime.Now property
+        # this provides high-precision timestamp including date and time
         return [DateTime]::Now
     }
 

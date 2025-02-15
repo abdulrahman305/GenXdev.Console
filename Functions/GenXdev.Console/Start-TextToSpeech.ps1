@@ -4,29 +4,36 @@
 Converts text to speech using the Windows Speech API.
 
 .DESCRIPTION
-Uses the Windows Speech API to convert text to speech. Supports different voices
-and locales, with options for synchronous or asynchronous playback.
+Uses the Windows Speech API to convert text to speech. This function provides
+flexible text-to-speech capabilities with support for different voices, locales,
+and synchronous/asynchronous playback options. It can handle both single strings
+and arrays of text, with error handling for speech synthesis failures.
 
 .PARAMETER Lines
-The text to be spoken. Can be a single string or array of strings.
+The text to be spoken. Accepts single string or array of strings. Each line will
+be processed sequentially for speech synthesis.
 
 .PARAMETER Locale
-The language locale ID to use (e.g., 'en-US', 'es-ES').
+The language locale ID to use (e.g., 'en-US', 'es-ES'). When specified, the
+function will attempt to use a voice matching this locale.
 
 .PARAMETER VoiceName
-The specific voice name to use for speech synthesis.
+The specific voice name to use for speech synthesis. If specified, the function
+will attempt to find and use a matching voice from installed voices.
 
 .PARAMETER PassThru
-When specified, outputs the text being spoken to the pipeline.
+When specified, outputs the text being spoken to the pipeline, allowing for
+text processing while speaking.
 
 .PARAMETER Wait
-When specified, waits for speech to complete before continuing.
+When specified, waits for speech to complete before continuing execution.
+Useful for synchronous operations.
 
 .EXAMPLE
-Start-TextToSpeech "Hello World" -Locale "en-US"
+Start-TextToSpeech -Lines "Hello World" -Locale "en-US" -Wait
 
 .EXAMPLE
-"Hello World" | say -Wait
+"Hello World" | say
 #>
 function Start-TextToSpeech {
 
@@ -71,34 +78,36 @@ function Start-TextToSpeech {
     )
 
     begin {
+
         Write-Verbose "Initializing text-to-speech with Locale: $Locale, Voice: $VoiceName"
     }
 
     process {
-        # process each line of text
+
+        # iterate through each line of text for processing
         @($Lines) | ForEach-Object {
 
             $text = $PSItem
 
-            # convert non-string objects to string
+            # ensure non-string objects are converted to strings
             if ($text -isnot [string]) {
                 $text = "$text"
             }
 
             try {
-                # output text if passthru is enabled
+                # output text to pipeline if passthru is enabled
                 if ($PassThru) {
                     $text
                 }
 
-                # clean up text by removing special characters
+                # normalize text by removing newlines and tabs
                 $text = $text.Replace("`r", ' ').Replace("`n", ' ').Replace("`t", ' ')
                 Write-Verbose "Processing text: $text"
 
-                # handle default voice scenario
+                # handle case when no locale is specified
                 if ([string]::IsNullOrWhiteSpace($Locale)) {
                     if ([string]::IsNullOrWhiteSpace($VoiceName)) {
-                        # use default voice with optional wait
+                        # use default voice with wait option
                         if ($Wait) {
                             Write-Verbose "Speaking synchronously with default voice"
                             $null = [GenXdev.Helpers.Misc]::Speech.Speak($text)
@@ -109,17 +118,17 @@ function Start-TextToSpeech {
                         return
                     }
 
-                    # use specified voice name without locale
+                    # attempt to use specified voice without locale
                     try {
                         $voice = [GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices() |
-                            Where-Object {
-                                if ([string]::IsNullOrWhiteSpace($VoiceName) -or
+                        Where-Object {
+                            if ([string]::IsNullOrWhiteSpace($VoiceName) -or
                                     ($PSItem.VoiceInfo.Name -like "* $VoiceName *")) {
-                                    $PSItem
-                                }
-                            } |
-                            Where-Object Name |
-                            Select-Object -First 1
+                                $PSItem
+                            }
+                        } |
+                        Where-Object Name |
+                        Select-Object -First 1
 
                         [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice($voice)
                     }
@@ -131,17 +140,17 @@ function Start-TextToSpeech {
                     return
                 }
 
-                # use specified locale and optional voice name
+                # attempt to use voice with specified locale
                 try {
                     $voice = [GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices($Locale) |
-                        Where-Object {
-                            if ([string]::IsNullOrWhiteSpace($VoiceName) -or
+                    Where-Object {
+                        if ([string]::IsNullOrWhiteSpace($VoiceName) -or
                                 ($PSItem.VoiceInfo.Name -like "* $VoiceName *")) {
-                                $PSItem
-                            }
-                        } |
-                        Where-Object Name |
-                        Select-Object -First 1
+                            $PSItem
+                        }
+                    } |
+                    Where-Object Name |
+                    Select-Object -First 1
 
                     [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice($voice)
                 }

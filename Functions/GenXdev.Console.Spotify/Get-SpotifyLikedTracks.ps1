@@ -1,32 +1,44 @@
-###############################################################################
-
+################################################################################
 <#
 .SYNOPSIS
-Returns all tracks saved in users own Spotify Library
+Retrieves all tracks saved in the user's Spotify Library.
 
 .DESCRIPTION
-Returns all tracks saved in users own Spotify Library
+This function authenticates with Spotify using an API token and retrieves all
+tracks that the user has saved (liked) in their Spotify library. The tracks are
+returned as collection of track objects containing metadata like title, artist,
+and album information.
 
+.EXAMPLE
+Get-SpotifyLikedTracks
+
+.EXAMPLE
+liked
 #>
 function Get-SpotifyLikedTracks {
 
     [CmdletBinding()]
     [Alias("liked")]
 
-    param(
-    )
+    param()
 
     begin {
 
-        $apiToken = Get-SpotifyApiToken;
+        # retrieve authentication token for spotify api access
+        $apiToken = Get-SpotifyApiToken
+
+        # log api authentication attempt
+        Write-Verbose "Retrieved Spotify API authentication token"
     }
 
     process {
 
-        [GenXdev.Helpers.Spotify]::GetLibraryTracks($apiToken);
+        # fetch all tracks from user's spotify library using helper class
+        Write-Verbose "Retrieving saved tracks from Spotify library..."
+        [GenXdev.Helpers.Spotify]::GetLibraryTracks($apiToken)
     }
 
     end {
-
     }
 }
+################################################################################

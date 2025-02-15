@@ -1,90 +1,103 @@
-###############################################################################
-
+################################################################################
 <#
 .SYNOPSIS
-Searches for lyrics of a track
+Retrieves lyrics for Spotify tracks from Musixmatch.com
 
 .DESCRIPTION
-Searches for lyrics of a track
+Searches for and displays song lyrics by either:
+- Using a Spotify track ID
+- Searching for tracks by name/artist
+- Getting lyrics for currently playing track
+If lyrics aren't found on Musixmatch, opens a Google search as fallback.
 
 .PARAMETER TrackId
-Optional: Spotify id of track to lookup lyrics for
+The Spotify track ID to look up lyrics for. If omitted, uses currently playing
+track or allows searching by name.
 
 .PARAMETER Queries
-Optional: A query to find a track to lookup lyrics for
+Search terms to find a track. Can include artist name and/or song title.
+Results will be shown for selection.
+
+.EXAMPLE
+Get-SpotifyLyrics -TrackId "1301WleyT98MSxVHPZCA6M"
+
+.EXAMPLE
+lyrics "bohemian rhapsody queen"
 #>
 function Get-SpotifyLyrics {
 
     [CmdLetBinding(DefaultParameterSetName = "")]
     [Alias("lyrics")]
     param(
-        [Alias("Id")]
+        ########################################################################
         [parameter(
             Mandatory = $false,
             ValueFromPipelineByPropertyName,
-            ParameterSetName = ""
+            ParameterSetName = "",
+            HelpMessage = "Spotify track ID to lookup lyrics for"
         )]
+        [Alias("Id")]
         [string] $TrackId = $null,
 
-        [Alias("q", "Value", "Name", "Text", "Query")]
+        ########################################################################
         [parameter(
             Mandatory = $false,
             Position = 0,
             ValueFromRemainingArguments,
             ValueFromPipeline,
-            ValueFromPipelineByPropertyName
+            ValueFromPipelineByPropertyName,
+            HelpMessage = "Search terms to find a track"
         )]
+        [Alias("q", "Value", "Name", "Text", "Query")]
         [string[]] $Queries = $null
+        ########################################################################
     )
 
     begin {
 
+        # handle track search if queries provided
         if ($null -ne $Queries) {
 
+            Write-Verbose "Searching Spotify for tracks matching query: $Queries"
 
-        }
-
-        if ($null -ne $Queries) {
-
+            # search spotify and build list of track names with artists
             $results = Search-Spotify -SearchType Track -Queries $Queries
-            $new = [System.Collections.Generic.List[string]]::new();
+            $new = [System.Collections.Generic.List[string]]::new()
 
             foreach ($track in $results.Tracks.Items) {
-
                 $new.Add("$($track.Artists[0].Name) - $($track.Name)")
             }
 
-            $Queries = $new;
+            $Queries = $new
             if ($new.Count -eq 0) {
-
-                Write-Warning "Nothing found"
+                Write-Warning "No tracks found matching search terms"
             }
         }
         else {
-
+            # use track ID if provided
             if ([String]::IsNullOrWhiteSpace($TrackId) -eq $false) {
 
+                Write-Verbose "Looking up track by ID: $TrackId"
                 $track = Get-SpotifyTrackById -TrackId $TrackId
 
                 if ($null -ne $track) {
-
-                    $Queries = @("$($track.Artists[0].Name) - $($track.Name)");
+                    $Queries = @("$($track.Artists[0].Name) - $($track.Name)")
                 }
             }
             else {
-
+                # get currently playing track
+                Write-Verbose "Getting currently playing track"
                 $current = Get-SpotifyCurrentlyPlaying
 
                 if ($null -ne $current) {
-
-                    $Queries = @("$($current.Item.Artists[0].Name) - $($current.Item.Name)");
+                    $Queries = @("$($current.Item.Artists[0].Name) - " + `
+                            "$($current.Item.Name)")
                 }
             }
         }
 
         if ($null -eq $Queries) {
-
-            throw "Currently no song playing, please specify search phrase"
+            throw "No song playing and no search terms provided"
         }
     }
 
@@ -92,89 +105,89 @@ function Get-SpotifyLyrics {
 
         foreach ($query in $Queries) {
 
+            Write-Verbose "Searching Musixmatch for lyrics: $query"
+
+            # encode query for URL
             $q = [Uri]::EscapeUriString($query)
-            [string] $html = "";
+            [string] $html = ""
+
+            # attempt to get search results page
             try {
-
-                $html = Invoke-WebRequest -Uri "https://www.musixmatch.com/search/$q" -ErrorAction SilentlyContinue
-
+                $html = Invoke-WebRequest `
+                    -Uri "https://www.musixmatch.com/search/$q" `
+                    -ErrorAction SilentlyContinue
             }
             catch {
-
-                Write-Warning "Nothing found for '$query'"
+                Write-Warning "No results found for '$query'"
                 Open-GoogleQuery "lyrics $query"
-                continue;
+                continue
             }
-            [int] $idx = $html.IndexOf("Best Result");
 
+            # extract best match URL from search results
+            [int] $idx = $html.IndexOf("Best Result")
             if ($idx -lt 0) {
-
-                Write-Warning "Nothing found for '$query'"
+                Write-Warning "No results found for '$query'"
                 Open-GoogleQuery "lyrics $query"
-                continue;
+                continue
             }
 
-            $idx = $html.IndexOf('<a class="title" href="', $idx);
-
+            $idx = $html.IndexOf('<a class="title" href="', $idx)
             if ($idx -lt 0) {
-
-                Write-Warning "Nothing found for '$query'"
+                Write-Warning "No results found for '$query'"
                 Open-GoogleQuery "lyrics $query"
-                continue;
+                continue
             }
 
-            $idx += '<a class="title" href="'.Length;
-
-            [int] $idx2 = $html.IndexOf('"', $idx);
+            $idx += '<a class="title" href="'.Length
+            [int] $idx2 = $html.IndexOf('"', $idx)
 
             if ($idx2 -lt 0) {
-
-                Write-Warning "Nothing found for '$query'"
+                Write-Warning "No results found for '$query'"
                 Open-GoogleQuery "lyrics $query"
-                continue;
+                continue
             }
 
+            # get lyrics page
             $url = "https://www.musixmatch.com$($html.Substring($idx, $idx2-$idx))"
+            Write-Verbose "Fetching lyrics from: $url"
 
             try {
                 $html = Invoke-WebRequest -Uri $url -ErrorAction SilentlyContinue
             }
             catch {
-
-                Write-Warning "Nothing found for '$query'"
+                Write-Warning "Failed to get lyrics for '$query'"
                 Open-GoogleQuery "lyrics $query"
-                continue;
+                continue
             }
 
+            # extract lyrics from page
             $idx = $html.IndexOf('"body":"')
-
             if ($idx -lt 0) {
-
-                Write-Warning "Nothing found for '$query'"
+                Write-Warning "No lyrics found for '$query'"
                 Open-GoogleQuery "lyrics $query"
-                continue;
+                continue
             }
 
-            $idx += '"body":"'.Length;
-
-            $idx2 = $html.IndexOf('","language":', $idx);
+            $idx += '"body":"'.Length
+            $idx2 = $html.IndexOf('","language":', $idx)
 
             if ($idx2 -lt 0) {
-
-                Write-Warning "Nothing found for '$query'"
+                Write-Warning "No lyrics found for '$query'"
                 Open-GoogleQuery "lyrics $query"
-                continue;
+                continue
             }
 
-            $result = "`"$($html.Substring($idx, $idx2-$idx))`"" | ConvertFrom-Json;
+            # parse and clean up lyrics
+            $result = "`"$($html.Substring($idx, $idx2-$idx))`"" |
+            ConvertFrom-Json
 
             if ([String]::IsNullOrWhiteSpace($result)) {
-
-                Write-Warning "Nothing found for '$query'"
-                Open-GoogleQuery "lyrics $query"1
+                Write-Warning "Empty lyrics found for '$query'"
+                Open-GoogleQuery "lyrics $query"
             }
 
-            $result.Replace("???", "'");
+            $result.Replace("???", "'")
         }
     }
 }
+################################################################################

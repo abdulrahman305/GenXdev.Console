@@ -1,16 +1,41 @@
-###############################################################################
-
+################################################################################
 <#
 .SYNOPSIS
-Disables Spotify song-shuffle
+Disables Spotify song-shuffle mode on the active device.
 
 .DESCRIPTION
-Disables song-shuffle on the device that is active on Spotify
+Disables the shuffle playback mode on the currently active Spotify device. This
+function uses the Spotify Web API to modify the shuffle state of the playback.
+
+.EXAMPLE
+Set-SpotifyShuffleOff
+
+.EXAMPLE
+noshuffle
+
+.EXAMPLE
+shuffleoff
 #>
 function Set-SpotifyShuffleOff {
 
+    [CmdletBinding()]
     [Alias("noshuffle", "shuffleoff")]
     param()
 
-    [GenXdev.Helpers.Spotify]::ShuffleOff((Get-SpotifyApiToken));
+    begin {
+
+        # output information about the operation being performed
+        Write-Verbose "Disabling shuffle mode on active Spotify device..."
+    }
+
+    process {
+
+        # retrieve the current api token for spotify authentication
+        # and disable shuffle mode using the spotify helper class
+        [GenXdev.Helpers.Spotify]::ShuffleOff((Get-SpotifyApiToken))
+    }
+
+    end {
+    }
 }
+################################################################################

@@ -1,17 +1,39 @@
-###############################################################################
-
+################################################################################
 <#
 .SYNOPSIS
-Turns the monitor power on
+Turns the monitor power on.
 
 .DESCRIPTION
-Turns the monitor power on
+Uses the Windows API through GenXdev.Helpers.WindowObj to wake up the monitor
+from sleep/power off state. This is useful for automation scripts that need to
+ensure the monitor is powered on.
+
+.EXAMPLE
+Set-MonitorPowerOn
+
+.EXAMPLE
+wake-monitor
 #>
 function Set-MonitorPowerOn {
 
     [CmdletBinding()]
+    [Alias("wake-monitor")]
 
     param()
 
-    [GenXdev.Helpers.WindowObj]::WakeMonitor();
+    begin {
+
+        # inform user that we're attempting to wake the monitor
+        Write-Verbose "Attempting to wake monitor from sleep/power off state"
+    }
+
+    process {
+
+        # call the windows api through our helper class to wake the monitor
+        [GenXdev.Helpers.WindowObj]::WakeMonitor()
+    }
+
+    end {
+    }
 }
+################################################################################

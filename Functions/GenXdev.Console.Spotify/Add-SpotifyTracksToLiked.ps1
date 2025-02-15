@@ -1,64 +1,83 @@
-###############################################################################
-
+################################################################################
 <#
 .SYNOPSIS
-Adds tracks to the users own Spotify Library
+Adds tracks to the user's Spotify liked songs library.
 
 .DESCRIPTION
-Adds tracks to the users own Spotify Library
+This function allows you to add one or more tracks to your Spotify liked songs
+library. If no track IDs are provided, it will attempt to like the currently
+playing track.
 
 .PARAMETER TrackId
-The Spotify track Ids of the songs that should be added to liked"
-#>
+An array of Spotify track IDs that should be added to your liked songs. If not
+provided, the currently playing track will be liked instead.
 
+.EXAMPLE
+Add-SpotifyTracksToLiked -TrackId "spotify:track:123456789"
+
+.EXAMPLE
+like "spotify:track:123456789"
+
+.EXAMPLE
+Get-SpotifyCurrentlyPlaying | Add-SpotifyTracksToLiked
+#>
 function Add-SpotifyTracksToLiked {
 
     [CmdletBinding()]
     [Alias("like")]
 
     param(
+        ########################################################################
         [Alias("Id")]
         [parameter(
             Mandatory = $false,
             Position = 0,
-            ValueFromPipeline,
-            ValueFromPipelineByPropertyName,
-            HelpMessage = "The Spotify track Uris of the songs that should be added to the playlist"
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "The Spotify track IDs to add to liked songs"
         )]
         [string[]] $TrackId = @()
+        ########################################################################
     )
 
     begin {
 
-        $apiToken = Get-SpotifyApiToken;
+        # retrieve spotify api authentication token for subsequent requests
+        $apiToken = Get-SpotifyApiToken
+        Write-Verbose "Retrieved Spotify API token"
     }
 
     process {
 
         if ($TrackId.Length -eq 0) {
 
+            # if no track specified, get the currently playing track
+            Write-Verbose "No track ID provided, checking currently playing track"
             $CurrentlyPlaying = Get-SpotifyCurrentlyPlaying
 
-            if ($null -eq $CurrentlyPlaying -or $CurrentlyPlaying.CurrentlyPlayingType -ne "track") {
+            if ($null -eq $CurrentlyPlaying -or
+                $CurrentlyPlaying.CurrentlyPlayingType -ne "track") {
 
                 Write-Warning "There are no tracks playing at this time"
-
-                return;
+                return
             }
 
-
+            # add the currently playing track to liked songs
+            Write-Verbose "Adding currently playing track to liked songs"
             Add-SpotifyTracksToLiked -TrackId ($CurrentlyPlaying.Item.Id)
 
+            # return the track that was liked
             $CurrentlyPlaying.Item
         }
         else {
 
-            [GenXdev.Helpers.Spotify]::AddToLiked($apiToken, $TrackId);
+            # add the specified tracks to liked songs
+            Write-Verbose "Adding $($TrackId.Length) track(s) to liked songs"
+            [GenXdev.Helpers.Spotify]::AddToLiked($apiToken, $TrackId)
         }
     }
 
     end {
-
-
     }
 }
+################################################################################
