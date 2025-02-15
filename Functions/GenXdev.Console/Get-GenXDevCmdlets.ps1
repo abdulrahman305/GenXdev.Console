@@ -51,26 +51,34 @@ function Get-GenXDevCmdlets {
             $Filter = "*$Filter*"
         }
 
-        # normalize module names by adding GenXdev prefix if not present
-        $ModuleName = "GenXdev." + $ModuleName.Replace("GenXdev.", "")
+
 
         Write-Verbose "Searching for cmdlets matching '$Filter' in modules: $($ModuleName -join ',')"
     }
 
     process {
 
+        # normalize module names by adding GenXdev prefix if not present
+        $ModuleName = "GenXdev." + $ModuleName.Replace("GenXdev.", "")
+
         # initialize results collection for found cmdlets
         $results = [System.Collections.Generic.List[object]]::new()
 
-        # get all matching modules including their nested modules
-        $modules = Get-Module "$($ModuleName.TrimEnd("*"))*" -All |
-        ForEach-Object {
-            $module = $PSItem
-            $module.NestedModules | ForEach-Object { $_ }
-            $module
+        $modules = $ModuleName | ForEach-Object {
+
+            # normalize module names by adding GenXdev prefix if not present
+            $name = "GenXdev." + $PSItem.Replace("GenXdev.", "")
+
+            # get all matching modules including their nested modules
+            Get-Module "$($name.TrimEnd("*"))*" -All |
+            ForEach-Object {
+                $module = $PSItem
+                $module.NestedModules | ForEach-Object { $_ }
+                $module
+            }
         } |
         Select-Object -Unique |
-        Sort-Object { $_.Name.Length }
+        Sort-Object { $_.Name.Length.PadLeft(4, '0') + "_" + $_.Name }
 
         foreach ($module in $modules) {
 
@@ -83,7 +91,6 @@ function Get-GenXDevCmdlets {
             ForEach-Object -ErrorAction SilentlyContinue {
 
                 if ($PSItem.CommandType -eq "Function") {
-
                     # get all aliases for this function
                     $aliases = ((Get-Alias -Definition ($PSItem.Name) `
                                 -ErrorAction SilentlyContinue |
