@@ -57,7 +57,6 @@ function Search-SpotifyAndPlay {
     )
 
     begin {
-
         # calculate the search type bit mask based on selected content types
         [int] $searchTypeTypeId = 0
 

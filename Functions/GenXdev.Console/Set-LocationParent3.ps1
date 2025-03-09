@@ -15,7 +15,7 @@ Set-LocationParent3
 #>
 function Set-LocationParent3 {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
     [Alias("....")]
 
     param (
@@ -30,33 +30,32 @@ function Set-LocationParent3 {
 
     process {
 
-        # store initial location to revert if needed
-        $initialLocation = Get-Location
+        # navigate up three levels
+        for ($i = 1; $i -le 3; $i++) {
 
-        # try to navigate up 3 levels
-        try {
-            for ($i = 1; $i -le 3; $i++) {
-
-                # check if we can move up before attempting
-                $parent = Split-Path -Path (Get-Location) -Parent
-                if ($null -eq $parent) {
-                    Write-Verbose "Cannot go up further - at root level"
-                    break
-                }
-
-                # attempt to change directory
-                Set-Location -Path $parent -ErrorAction Stop
+            # check if we can move up before attempting
+            $parent = Split-Path -Path (Get-Location) -Parent
+            if ($null -eq $parent) {
+                Write-Verbose "Cannot go up further - at root level"
+                break
             }
 
-            # display contents only if in filesystem
-            if ((Get-Location).Provider.Name -eq 'FileSystem') {
-                Get-ChildItem
+            # prepare target description for ShouldProcess
+            $target = "from '$(Get-Location)' to '$parent' (level $i of 3)"
+
+            # only navigate if ShouldProcess returns true
+            if ($PSCmdlet.ShouldProcess($target, "Change location")) {
+                Set-Location -Path $parent
+            }
+            else {
+                # exit the loop if user declined
+                break
             }
         }
-        catch {
-            # revert to initial location on error
-            Set-Location -Path $initialLocation
-            Write-Warning "Unable to navigate up: $($_.Exception.Message)"
+
+        # show contents of the new current directory if not in WhatIf mode
+        if (-not $WhatIfPreference -and (Get-Location).Provider.Name -eq 'FileSystem') {
+            Get-ChildItem
         }
     }
 

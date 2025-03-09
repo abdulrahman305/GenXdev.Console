@@ -16,7 +16,7 @@ pausemusic
 #>
 function Set-SpotifyPause {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     [Alias("pausemusic", "Resume-Music")]
     param()
 
@@ -28,8 +28,12 @@ function Set-SpotifyPause {
 
     process {
 
-        # call spotify api to toggle pause state using the current auth token
-        [GenXdev.Helpers.Spotify]::Pause((Get-SpotifyApiToken))
+        # check if we should proceed with the operation
+        if ($PSCmdlet.ShouldProcess("Spotify", "Pause/Resume playback")) {
+
+            # call spotify api to toggle pause state using the current auth token
+            [GenXdev.Helpers.Spotify]::Pause((Get-SpotifyApiToken))
+        }
     }
 
     end {

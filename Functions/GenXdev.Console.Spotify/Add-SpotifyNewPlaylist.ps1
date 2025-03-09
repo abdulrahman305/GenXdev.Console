@@ -32,6 +32,7 @@ newplaylist "Road Trip Songs" -Collabrative
 function Add-SpotifyNewPlaylist {
 
     [CmdletBinding()]
+    [OutputType([SpotifyAPI.Web.FullPlaylist])]
     [Alias("newplaylist")]
 
     param(
@@ -83,15 +84,15 @@ function Add-SpotifyNewPlaylist {
             ($Collabrative -eq $true))
 
         # update local playlist cache if it exists
-        if ($Global:SpotifyPlaylistCache -is [System.Collections.Generic.List[object]]) {
+        if ($Script:SpotifyPlaylistCache -is [System.Collections.Generic.List[object]]) {
 
             Write-Verbose "Updating local playlist cache"
-            $Global:SpotifyPlaylistCache.Insert(0, $result)
+            $null = $Script:SpotifyPlaylistCache.Insert(0, $result)
 
             # save updated cache to json file
-            $filePath = Expand-Path "$PSScriptRoot\..\..\..\..\GenXdev.Local\`
+            $filePath = GenXdev.FileSystem\Expand-Path "$PSScriptRoot\..\..\..\..\GenXdev.Local\`
                 Spotify.Playlists.json"
-            $Global:SpotifyPlaylistCache |
+            $Script:SpotifyPlaylistCache |
             ConvertTo-Json -Depth 100 |
             Out-File $filePath -Force
         }

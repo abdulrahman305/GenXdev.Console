@@ -37,7 +37,8 @@ spld "1234567890" "Weekend Mix" -Private -NoCollabrations
 #>
 function Set-SpotifyPlaylistDetails {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [Alias("spld")]
 
     param(
@@ -128,15 +129,18 @@ function Set-SpotifyPlaylistDetails {
 
         Write-Verbose "Updating playlist $PlaylistId with new settings"
 
-        # call spotify api to update playlist details
-        [GenXdev.Helpers.Spotify]::ChangePlaylistDetails(
-            $PlaylistId,
-            $apiToken,
-            $Name,
-            $publicFlag,
-            $collabFlag,
-            $Description
-        )
+        # call spotify api to update playlist details only if ShouldProcess confirms the action
+        if ($PSCmdlet.ShouldProcess("Spotify playlist '$PlaylistId'", "Update playlist details")) {
+
+            [GenXdev.Helpers.Spotify]::ChangePlaylistDetails(
+                $PlaylistId,
+                $apiToken,
+                $Name,
+                $publicFlag,
+                $collabFlag,
+                $Description
+            )
+        }
     }
 
     end {

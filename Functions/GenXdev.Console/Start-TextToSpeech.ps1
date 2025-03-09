@@ -37,7 +37,7 @@ Start-TextToSpeech -Lines "Hello World" -Locale "en-US" -Wait
 #>
 function Start-TextToSpeech {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     [Alias("say")]
     param(
         ########################################################################
@@ -91,12 +91,14 @@ function Start-TextToSpeech {
 
             # ensure non-string objects are converted to strings
             if ($text -isnot [string]) {
+
                 $text = "$text"
             }
 
             try {
                 # output text to pipeline if passthru is enabled
                 if ($PassThru) {
+
                     $text
                 }
 
@@ -106,63 +108,98 @@ function Start-TextToSpeech {
 
                 # handle case when no locale is specified
                 if ([string]::IsNullOrWhiteSpace($Locale)) {
+
                     if ([string]::IsNullOrWhiteSpace($VoiceName)) {
+
                         # use default voice with wait option
                         if ($Wait) {
+
                             Write-Verbose "Speaking synchronously with default voice"
-                            $null = [GenXdev.Helpers.Misc]::Speech.Speak($text)
+
+                            if ($PSCmdlet.ShouldProcess($text, "Speak")) {
+
+                                $null = [GenXdev.Helpers.Misc]::Speech.Speak($text)
+                            }
                             return
                         }
+
                         Write-Verbose "Speaking asynchronously with default voice"
-                        $null = [GenXdev.Helpers.Misc]::Speech.SpeakAsync($text)
+
+                        if ($PSCmdlet.ShouldProcess($text, "Speak asynchronously")) {
+
+                            $null = [GenXdev.Helpers.Misc]::Speech.SpeakAsync($text)
+                        }
                         return
                     }
 
                     # attempt to use specified voice without locale
                     try {
+
                         $voice = [GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices() |
                         Where-Object {
                             if ([string]::IsNullOrWhiteSpace($VoiceName) -or
                                     ($PSItem.VoiceInfo.Name -like "* $VoiceName *")) {
+
                                 $PSItem
                             }
                         } |
                         Where-Object Name |
                         Select-Object -First 1
 
-                        [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice($voice)
+                        if ($PSCmdlet.ShouldProcess("Voice: $($voice.Name)", "Select voice")) {
+
+                            $null = [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice($voice)
+                        }
                     }
                     catch {
+
                         Write-Warning "Could not set voice: $VoiceName"
                     }
 
-                    $null = [GenXdev.Helpers.Misc]::SpeechCustomized.Speak($text)
+                    if ($PSCmdlet.ShouldProcess($text, "Speak with selected voice")) {
+
+                        $null = [GenXdev.Helpers.Misc]::SpeechCustomized.Speak($text)
+                    }
                     return
                 }
 
                 # attempt to use voice with specified locale
                 try {
+
                     $voice = [GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices($Locale) |
                     Where-Object {
                         if ([string]::IsNullOrWhiteSpace($VoiceName) -or
                                 ($PSItem.VoiceInfo.Name -like "* $VoiceName *")) {
+
                             $PSItem
                         }
                     } |
                     Where-Object Name |
                     Select-Object -First 1
 
-                    [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice($voice)
+                    if ($PSCmdlet.ShouldProcess("Voice: $($voice.Name)", "Select voice")) {
+
+                        $null = [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice($voice)
+                    }
                 }
                 catch {
+
                     Write-Warning "Could not set voice for locale: $Locale"
                 }
 
-                $null = [GenXdev.Helpers.Misc]::SpeechCustomized.Speak($text)
+                if ($PSCmdlet.ShouldProcess($text, "Speak with locale-specific voice")) {
+
+                    $null = [GenXdev.Helpers.Misc]::SpeechCustomized.Speak($text)
+                }
             }
             catch {
+
                 Write-Error "Speech synthesis failed: $($PSItem.Exception.Message)"
-                $null = [GenXdev.Helpers.Misc]::Speech.Speak($text)
+
+                if ($PSCmdlet.ShouldProcess($text, "Speak with default voice (fallback)")) {
+
+                    $null = [GenXdev.Helpers.Misc]::Speech.Speak($text)
+                }
             }
         }
     }

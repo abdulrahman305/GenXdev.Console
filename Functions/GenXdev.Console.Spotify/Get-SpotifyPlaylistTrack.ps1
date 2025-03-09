@@ -16,18 +16,19 @@ playlist found with this name.
 The unique Spotify ID of the playlist to retrieve tracks from.
 
 .EXAMPLE
-Get-SpotifyPlaylistTracks -PlaylistName "My Favorite Songs"
+Get-SpotifyPlaylistTrack -PlaylistName "My Favorite Songs"
 
 .EXAMPLE
-Get-SpotifyPlaylistTracks -PlaylistId "37i9dQZF1DXcBWIGoYBM5M"
+Get-SpotifyPlaylistTrack -PlaylistId "37i9dQZF1DXcBWIGoYBM5M"
 
 .EXAMPLE
 "My Workout Mix" | getplaylist
 #>
-function Get-SpotifyPlaylistTracks {
+function Get-SpotifyPlaylistTrack {
 
     [CmdletBinding(DefaultParameterSetName = "ByName")]
     [Alias("getplaylist")]
+    [OutputType([System.Collections.Generic.List`1[SpotifyAPI.Web.PlaylistTrack`1[SpotifyAPI.Web.IPlayableItem]]])]
 
     param(
         ########################################################################

@@ -18,7 +18,7 @@ prev
 #>
 function Set-SpotifyPrevious {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
     [Alias("previous", "prev")]
     param()
 
@@ -33,8 +33,12 @@ function Set-SpotifyPrevious {
         # retrieve the current spotify api authentication token
         $token = Get-SpotifyApiToken
 
-        # call spotify api to skip to previous track
-        [GenXdev.Helpers.Spotify]::Previous($token)
+        # check if should process is supported and confirmed
+        if ($PSCmdlet.ShouldProcess("Spotify", "Skip to previous track")) {
+
+            # call spotify api to skip to previous track
+            [GenXdev.Helpers.Spotify]::Previous($token)
+        }
     }
 
     end {

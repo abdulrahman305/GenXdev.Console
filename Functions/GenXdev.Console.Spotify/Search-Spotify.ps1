@@ -52,7 +52,6 @@ function Search-Spotify {
     )
 
     begin {
-
         # calculate the combined search type bit mask
         # each content type is represented by a power of 2
         [int] $searchTypeTypeId = 0

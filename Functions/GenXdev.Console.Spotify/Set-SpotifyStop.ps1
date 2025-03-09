@@ -18,8 +18,8 @@ Stop-Music
 #>
 function Set-SpotifyStop {
 
-    [CmdletBinding()]
-    [Alias("stop", "Stop-Music")]
+    [CmdletBinding(SupportsShouldProcess = $true)]
+    [Alias("stop")]
     param()
 
     begin {
@@ -32,9 +32,12 @@ function Set-SpotifyStop {
         Write-Verbose "Retrieving Spotify API token"
         $token = Get-SpotifyApiToken
 
-        # call spotify api to stop playback
-        Write-Verbose "Sending stop command to Spotify"
-        [GenXdev.Helpers.Spotify]::Stop($token)
+        # check if we should proceed with stopping playback
+        if ($PSCmdlet.ShouldProcess("Spotify", "Stop playback")) {
+            # call spotify api to stop playback
+            Write-Verbose "Sending stop command to Spotify"
+            [GenXdev.Helpers.Spotify]::Stop($token)
+        }
     }
 
     end {

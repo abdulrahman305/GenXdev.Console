@@ -12,10 +12,14 @@ Set-SpotifyRepeatContext
 
 .EXAMPLE
 repeat
+
+.NOTES
+This cmdlet supports ShouldProcess, allowing use of -WhatIf and -Confirm parameters
+to control execution of state-changing operations.
 #>
 function Set-SpotifyRepeatContext {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     [Alias("repeat")]
 
     param()
@@ -33,8 +37,12 @@ function Set-SpotifyRepeatContext {
         $token = Get-SpotifyApiToken
 
         # enable repeat mode for the current context using the spotify helper
-        Write-Verbose "Setting repeat mode to context"
-        [GenXdev.Helpers.Spotify]::RepeatContext($token)
+        # only if ShouldProcess confirms the action
+        if ($PSCmdlet.ShouldProcess("Current Spotify context", "Enable repeat mode")) {
+
+            Write-Verbose "Setting repeat mode to context"
+            [GenXdev.Helpers.Spotify]::RepeatContext($token)
+        }
     }
 
     end {

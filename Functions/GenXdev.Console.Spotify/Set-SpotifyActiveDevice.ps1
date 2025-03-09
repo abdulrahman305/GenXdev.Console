@@ -6,12 +6,12 @@ Sets the active Spotify playback device.
 .DESCRIPTION
 Transfers playback to the specified Spotify device using the Spotify Web API.
 This cmdlet requires an authenticated Spotify session and a valid device ID.
-The device ID can be obtained using the Get-SpotifyDevices cmdlet.
+The device ID can be obtained using the Get-SpotifyDevice cmdlet.
 
 .PARAMETER DeviceId
 The Spotify device ID to transfer playback to. This is a unique identifier
 assigned by Spotify to each playback device (speakers, computers, phones, etc.).
-Use Get-SpotifyDevices to get a list of available device IDs.
+Use Get-SpotifyDevice to get a list of available device IDs.
 
 .EXAMPLE
 Set-SpotifyActiveDevice -DeviceId "1234567890abcdef"
@@ -23,7 +23,8 @@ Same as above but using pipeline input
 #>
 function Set-SpotifyActiveDevice {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
+    [OutputType([System.Collections.Generic.List[SpotifyAPI.Web.Device]])]
     [Alias("Set-SpotifyDevice")]
 
     param(
@@ -51,7 +52,11 @@ function Set-SpotifyActiveDevice {
 
         # use spotify api to transfer playback to the specified device
         Write-Verbose "Attempting to transfer playback to device ID: $DeviceId"
-        [GenXdev.Helpers.Spotify]::SetActiveDevice($apiToken, $DeviceId)
+
+        if ($PSCmdlet.ShouldProcess("device $DeviceId", "Transfer Spotify playback")) {
+
+            [GenXdev.Helpers.Spotify]::SetActiveDevice($apiToken, $DeviceId)
+        }
     }
 
     end {

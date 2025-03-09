@@ -16,7 +16,7 @@ repeatsong
 #>
 function Set-SpotifyRepeatSong {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
     [Alias("repeatsong")]
 
     param()
@@ -32,8 +32,12 @@ function Set-SpotifyRepeatSong {
         # get the current spotify api authentication token
         $token = Get-SpotifyApiToken
 
-        # send api request to enable repeat mode for the current song
-        [GenXdev.Helpers.Spotify]::RepeatSong($token)
+        # only proceed if ShouldProcess returns true
+        if ($PSCmdlet.ShouldProcess("Spotify", "Set repeat mode to 'track'")) {
+
+            # send api request to enable repeat mode for the current song
+            [GenXdev.Helpers.Spotify]::RepeatSong($token)
+        }
     }
 
     end {

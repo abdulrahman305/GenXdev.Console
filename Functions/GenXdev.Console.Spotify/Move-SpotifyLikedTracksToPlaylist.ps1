@@ -54,7 +54,6 @@ function Move-SpotifyLikedTracksToPlaylist {
     )
 
     begin {
-
         # if playlist names were provided, convert them to playlist IDs
         if ($PlaylistName.Length -gt 0) {
 
@@ -74,7 +73,7 @@ function Move-SpotifyLikedTracksToPlaylist {
 
         # retrieve all liked tracks from the user's library
         Write-Verbose "Retrieving liked tracks from library"
-        $likedTracks = Get-SpotifyLikedTracks
+        $likedTracks = Get-SpotifyLikedTrack
 
         # track whether we successfully added tracks to at least one playlist
         [bool] $done = $false

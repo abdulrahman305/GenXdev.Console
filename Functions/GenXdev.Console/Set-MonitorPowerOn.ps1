@@ -16,7 +16,7 @@ wake-monitor
 #>
 function Set-MonitorPowerOn {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     [Alias("wake-monitor")]
 
     param()
@@ -29,8 +29,12 @@ function Set-MonitorPowerOn {
 
     process {
 
-        # call the windows api through our helper class to wake the monitor
-        [GenXdev.Helpers.WindowObj]::WakeMonitor()
+        # only proceed if ShouldProcess approves the action
+        if ($PSCmdlet.ShouldProcess("Monitor", "Power On")) {
+
+            # call the windows api through our helper class to wake the monitor
+            $null = [GenXdev.Helpers.WindowObj]::WakeMonitor()
+        }
     }
 
     end {

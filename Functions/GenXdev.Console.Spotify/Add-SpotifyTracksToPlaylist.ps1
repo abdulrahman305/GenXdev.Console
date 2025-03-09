@@ -59,7 +59,6 @@ function Add-SpotifyTracksToPlaylist {
     )
 
     begin {
-
         # get the spotify api authentication token
         $apiToken = Get-SpotifyApiToken
         Write-Verbose "Retrieved Spotify API token"

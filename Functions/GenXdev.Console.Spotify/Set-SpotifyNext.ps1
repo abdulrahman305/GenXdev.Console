@@ -19,7 +19,7 @@ skip
 #>
 function Set-SpotifyNext {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
     [Alias("next", "skip")]
     param()
 
@@ -35,8 +35,11 @@ function Set-SpotifyNext {
         $token = Get-SpotifyApiToken
 
         # skip to the next track using the spotify api
-        Write-Verbose "Sending next track command to Spotify"
-        [GenXdev.Helpers.Spotify]::Next($token)
+        if ($PSCmdlet.ShouldProcess("Spotify", "Skip to next track")) {
+
+            Write-Verbose "Sending next track command to Spotify"
+            [GenXdev.Helpers.Spotify]::Next($token)
+        }
     }
 
     end {

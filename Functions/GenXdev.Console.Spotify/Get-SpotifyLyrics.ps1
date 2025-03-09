@@ -27,7 +27,9 @@ lyrics "bohemian rhapsody queen"
 function Get-SpotifyLyrics {
 
     [CmdLetBinding(DefaultParameterSetName = "")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "Get-SpotifyLyrics")]
     [Alias("lyrics")]
+
     param(
         ########################################################################
         [parameter(
@@ -54,7 +56,6 @@ function Get-SpotifyLyrics {
     )
 
     begin {
-
         # handle track search if queries provided
         if ($null -ne $Queries) {
 
@@ -65,7 +66,7 @@ function Get-SpotifyLyrics {
             $new = [System.Collections.Generic.List[string]]::new()
 
             foreach ($track in $results.Tracks.Items) {
-                $new.Add("$($track.Artists[0].Name) - $($track.Name)")
+                $null = $new.Add("$($track.Artists[0].Name) - $($track.Name)")
             }
 
             $Queries = $new
@@ -91,7 +92,7 @@ function Get-SpotifyLyrics {
 
                 if ($null -ne $current) {
                     $Queries = @("$($current.Item.Artists[0].Name) - " +
-                            "$($current.Item.Name)")
+                        "$($current.Item.Name)")
                 }
             }
         }

@@ -36,12 +36,11 @@ function Get-SpotifyPlaylistIdsByName {
             ValueFromPipelineByPropertyName = $true,
             HelpMessage = "One or more Spotify playlist names to search for"
         )]
-        [string[]] $PlaylistName = @()
+        [string[]] $PlaylistName
         ########################################################################
     )
 
     begin {
-
         # log the start of playlist lookup with provided names
         Write-Verbose "Starting playlist ID lookup for: $($PlaylistName -join ', ')"
     }
@@ -57,7 +56,7 @@ function Get-SpotifyPlaylistIdsByName {
             Write-Verbose "No playlists found in session, checking local cache..."
 
             # construct path to cache file
-            $FilePath = Expand-Path `
+            $FilePath = GenXdev.FileSystem\Expand-Path `
                 -FilePath "$PSScriptRoot\..\..\..\..\GenXdev.Local\Spotify.Playlists.json" `
                 -CreateDirectory
 
@@ -66,7 +65,7 @@ function Get-SpotifyPlaylistIdsByName {
 
             # refresh if cache is outdated (>12 hours) or missing
             if (!$PlaylistCache.Exists -or
-                ([datetime]::Now - $PlaylistCache.LastWriteTime -ge [timespan]::FromHours(12))) {
+                ([datetime]::Now - $PlaylistCache.LastWriteTime -ge [System.TimeSpan]::FromHours(12))) {
 
                 Write-Verbose "Cache missing or expired, forcing playlist refresh..."
                 $Results = @(Get-SpotifyUserPlaylists -Force -Filter $PlaylistName)

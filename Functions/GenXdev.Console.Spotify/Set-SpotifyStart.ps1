@@ -16,7 +16,7 @@ play
 #>
 function Set-SpotifyStart {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     [Alias("play", "Start-Music")]
     param()
 
@@ -31,8 +31,12 @@ function Set-SpotifyStart {
         # retrieve the current spotify api token for authentication
         $token = Get-SpotifyApiToken
 
-        # use the spotify helper class to start playback
-        [GenXdev.Helpers.Spotify]::Start($token)
+        # check if we should proceed with starting playback
+        if ($PSCmdlet.ShouldProcess("active Spotify device", "Start playback")) {
+
+            # use the spotify helper class to start playback
+            [GenXdev.Helpers.Spotify]::Start($token)
+        }
     }
 
     end {

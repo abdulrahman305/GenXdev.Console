@@ -18,7 +18,7 @@ vlcf
 #>
 function Set-VLCPlayerFocused {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     [Alias("showvlc", "vlcf", "fvlc")]
     param()
 
@@ -35,11 +35,15 @@ function Set-VLCPlayerFocused {
             Write-Verbose "Attempting to locate VLC player window"
             $window = Get-Window -ProcessName vlc
 
-            # set window as active and bring to foreground if found
-            Write-Verbose "Setting VLC window as foreground window"
-            $null = $window.Show()
-            $null = $window.SetForeground()
-            $null = Set-ForegroundWindow -WindowHandle ($window.Handle)
+            # only proceed if window was found and ShouldProcess confirms
+            if ($window -and $PSCmdlet.ShouldProcess("VLC media player window",
+                    "Set as foreground window")) {
+
+                Write-Verbose "Setting VLC window as foreground window"
+                $null = $window.Show()
+                $null = $window.SetForeground()
+                $null = Set-ForegroundWindow -WindowHandle ($window.Handle)
+            }
         }
         catch {
             # silently continue if window not found or other errors occur

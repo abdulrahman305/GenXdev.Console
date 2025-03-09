@@ -16,7 +16,7 @@ shuffle
 #>
 function Set-SpotifyShuffleOn {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     [Alias("shuffle", "shuffleon")]
     param()
 
@@ -31,8 +31,12 @@ function Set-SpotifyShuffleOn {
         # retrieve the current spotify api token
         $token = Get-SpotifyApiToken
 
-        # enable shuffle mode using the spotify api
-        [GenXdev.Helpers.Spotify]::ShuffleOn($token)
+        # check if we should proceed with enabling shuffle mode
+        if ($PSCmdlet.ShouldProcess("active Spotify device", "Enable shuffle mode")) {
+
+            # enable shuffle mode using the spotify api
+            [GenXdev.Helpers.Spotify]::ShuffleOn($token)
+        }
     }
 
     end {

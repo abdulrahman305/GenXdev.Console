@@ -17,7 +17,7 @@ poweroff
 #>
 function Set-MonitorPowerOff {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     [Alias("poweroff")]
 
     param()
@@ -33,8 +33,12 @@ function Set-MonitorPowerOff {
         # wait briefly to allow any pending screen operations to complete
         Start-Sleep 2
 
-        # invoke windows power management api to trigger monitor power-off
-        [GenXdev.Helpers.WindowObj]::SleepMonitor();
+        # check if we should proceed with turning off the monitors
+        if ($PSCmdlet.ShouldProcess("All Monitors", "Turn Off")) {
+
+            # invoke windows power management api to trigger monitor power-off
+            $null = [GenXdev.Helpers.WindowObj]::SleepMonitor();
+        }
     }
 
     end {

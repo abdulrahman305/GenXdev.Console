@@ -16,7 +16,7 @@ Set-LocationParent
 #>
 function Set-LocationParent {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
     [Alias("..")]
     param()
 
@@ -31,8 +31,14 @@ function Set-LocationParent {
         $parent = Split-Path -Path (Get-Location) -Parent
         if ($null -ne $parent) {
 
-            # navigate up one directory level
-            Set-Location ..
+            # prepare target description for ShouldProcess
+            $target = "from '$(Get-Location)' to '$parent'"
+
+            # only navigate if ShouldProcess returns true
+            if ($PSCmdlet.ShouldProcess($target, "Change location")) {
+                # navigate up one directory level
+                Set-Location ..
+            }
         }
         else {
             Write-Verbose "Cannot go up further - at root level"

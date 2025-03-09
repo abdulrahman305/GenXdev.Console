@@ -24,6 +24,7 @@ function Get-SpotifyCurrentlyPlaying {
 
     [CmdletBinding()]
     [Alias("gcp")]
+    [OutputType([SpotifyAPI.Web.CurrentlyPlaying])]
 
     param()
 

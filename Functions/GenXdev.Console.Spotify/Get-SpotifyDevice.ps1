@@ -9,7 +9,7 @@ authenticated user. This includes any active or recently active devices such as
 smartphones, computers, speakers, and other Spotify-enabled devices.
 
 .EXAMPLE
-Get-SpotifyDevices
+Get-SpotifyDevice
 
 This command returns all available Spotify devices for the current user.
 
@@ -17,9 +17,11 @@ This command returns all available Spotify devices for the current user.
 Requires valid Spotify authentication token to function. The token is automatically
 retrieved using Get-SpotifyApiToken.
 #>
-function Get-SpotifyDevices {
+function Get-SpotifyDevice {
 
     [CmdletBinding()]
+    [Alias("Get-SpotifyDevices")]
+    [OutputType([System.Collections.Generic.List[SpotifyAPI.Web.Device]])]
     param()
 
     begin {

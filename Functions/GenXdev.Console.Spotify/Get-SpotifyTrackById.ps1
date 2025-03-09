@@ -22,6 +22,7 @@ gettrack "3n3Ppam7vgaVa1iaRUc9Lp"
 function Get-SpotifyTrackById {
 
     [CmdletBinding()]
+    [OutputType([SpotifyAPI.Web.FullTrack])]
     [Alias("gettrack")]
 
     param(

@@ -22,6 +22,7 @@ audiofeatures "1301WleyT98MSxVHPZCA6M", "6rqhFgbbKwnb9MLmUQDhG6"
 function Get-SpotifyTrackAudioFeatures {
 
     [CmdletBinding()]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "Get-SpotifyTrackAudioFeatures")]
     [Alias("audiofeatures")]
 
     param(
@@ -39,7 +40,6 @@ function Get-SpotifyTrackAudioFeatures {
     )
 
     begin {
-
         # obtain the spotify api authentication token for subsequent requests
         Write-Verbose "Acquiring Spotify API authentication token"
         $apiToken = Get-SpotifyApiToken

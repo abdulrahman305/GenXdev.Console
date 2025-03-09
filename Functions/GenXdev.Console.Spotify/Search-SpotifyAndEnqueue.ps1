@@ -58,7 +58,6 @@ function Search-SpotifyAndEnqueue {
     )
 
     begin {
-
         # initialize search type bit mask for filtering results
         [int] $searchTypeTypeId = 0
 
@@ -78,7 +77,7 @@ function Search-SpotifyAndEnqueue {
 
         foreach ($Query in $Queries) {
 
-            Write-Verbose "Processing query: $Query"
+            Write-Verbose "Processing query: $query"
 
             # search spotify and add first matching result to queue
             [GenXdev.Helpers.Spotify]::SearchAndAdd(

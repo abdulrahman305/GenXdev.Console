@@ -19,7 +19,7 @@ dislike "1234567890abcdef"
 #>
 function Remove-SpotifyTracksFromLiked {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     [Alias("dislike")]
     param(
         ########################################################################
@@ -36,7 +36,6 @@ function Remove-SpotifyTracksFromLiked {
     )
 
     begin {
-
         # retrieve the spotify api access token for authentication
         $apiToken = Get-SpotifyApiToken
     }
@@ -69,8 +68,15 @@ function Remove-SpotifyTracksFromLiked {
 
             Write-Verbose "Removing $($TrackId.Count) track(s) from Liked Songs"
 
-            # remove the specified tracks from liked songs using the spotify api
-            [GenXdev.Helpers.Spotify]::RemoveFromLiked($apiToken, $TrackId)
+            # use shouldprocess to confirm the operation
+            if ($PSCmdlet.ShouldProcess(
+                    "Remove $($TrackId.Count) track(s) from Liked Songs",
+                    "Are you sure you want to remove these tracks from your Liked Songs?",
+                    "Removing tracks from Liked Songs")) {
+
+                # remove the specified tracks from liked songs using the spotify api
+                [GenXdev.Helpers.Spotify]::RemoveFromLiked($apiToken, $TrackId)
+            }
         }
     }
 

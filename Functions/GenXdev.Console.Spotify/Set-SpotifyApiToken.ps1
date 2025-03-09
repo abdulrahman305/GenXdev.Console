@@ -16,7 +16,7 @@ Set-SpotifyApiToken -ApiToken "YOUR-SPOTIFY-API-TOKEN"
 #>
 function Set-SpotifyApiToken {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     param(
         ########################################################################
         [parameter(
@@ -31,7 +31,7 @@ function Set-SpotifyApiToken {
     begin {
 
         # define the storage location for the api token
-        $dir = "$PSScriptRoot\..\..\..\GenXdev.Local"
+        $dir = "$PSScriptRoot\..\..\..\..\GenXdev.Local"
         $path = "$dir\Spotify_Auth.json"
 
         Write-Verbose "Storing Spotify API token in: $path"
@@ -43,12 +43,18 @@ function Set-SpotifyApiToken {
         if (![IO.Directory]::Exists($dir)) {
 
             Write-Verbose "Creating directory: $dir"
-            [IO.Directory]::CreateDirectory($dir)
+
+            if ($PSCmdlet.ShouldProcess($dir, "Create Directory")) {
+                $null = [IO.Directory]::CreateDirectory($dir)
+            }
         }
 
         # save the trimmed api token to the json file
         Write-Verbose "Writing API token to file"
-        [IO.File]::WriteAllText($path, $ApiToken.Trim("`r`n`t "))
+
+        if ($PSCmdlet.ShouldProcess($path, "Save Spotify API Token")) {
+            [IO.File]::WriteAllText($path, $ApiToken.Trim("`r`n`t "))
+        }
     }
 
     end {

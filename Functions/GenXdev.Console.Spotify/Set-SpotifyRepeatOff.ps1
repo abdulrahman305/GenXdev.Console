@@ -19,7 +19,7 @@ repeatoff
 #>
 function Set-SpotifyRepeatOff {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     [Alias("norepeat", "repeatoff")]
     param()
 
@@ -34,8 +34,12 @@ function Set-SpotifyRepeatOff {
         # get the current spotify api authentication token
         $token = Get-SpotifyApiToken
 
-        # call the spotify api to disable repeat mode
-        [GenXdev.Helpers.Spotify]::RepeatOff($token)
+        # use ShouldProcess to confirm the operation
+        if ($PSCmdlet.ShouldProcess("Spotify active device", "Turn off repeat mode")) {
+
+            # call the spotify api to disable repeat mode
+            [GenXdev.Helpers.Spotify]::RepeatOff($token)
+        }
     }
 
     end {

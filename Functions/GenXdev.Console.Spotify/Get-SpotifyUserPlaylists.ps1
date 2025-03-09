@@ -24,6 +24,7 @@ Get-SpotifyUserPlaylists -Filter "Rock*" -Force
 function Get-SpotifyUserPlaylists {
 
     [CmdletBinding()]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
     [Alias("gupl")]
 
     param(
@@ -47,12 +48,11 @@ function Get-SpotifyUserPlaylists {
     )
 
     begin {
-
         # get spotify api authentication token
         $apiToken = Get-SpotifyApiToken
 
         # determine cache file location
-        $filePath = Expand-Path `
+        $filePath = GenXdev.FileSystem\Expand-Path `
             "$PSScriptRoot\..\..\..\..\GenXdev.Local\Spotify.Playlists.json"
 
         Write-Verbose "Cache file: $filePath"
@@ -67,7 +67,7 @@ function Get-SpotifyUserPlaylists {
         if ($Force -ne $true) {
 
             # check if global cache is empty
-            if ($null -eq $Global:SpotifyPlaylistCache) {
+            if ($null -eq $Script:SpotifyPlaylistCache) {
 
                 Write-Verbose "Global cache empty, checking file cache"
 
@@ -77,7 +77,7 @@ function Get-SpotifyUserPlaylists {
                 # check if cache file exists and is less than 12 hours old
                 if ($playlistCache.Exists -and `
                     ([datetime]::Now - $playlistCache.LastWriteTime -lt `
-                            [timespan]::FromHours(12))) {
+                            [System.TimeSpan]::FromHours(12))) {
 
                     Write-Verbose "Loading playlists from cache file"
 
@@ -93,8 +93,8 @@ function Get-SpotifyUserPlaylists {
         }
 
         # check if we need to fetch fresh data
-        if (($Force -eq $true) -or ($null -eq $Global:SpotifyPlaylistCache) -or `
-            ($Global:SpotifyPlaylistCache.Count -eq 0)) {
+        if (($Force -eq $true) -or ($null -eq $Script:SpotifyPlaylistCache) -or `
+            ($Script:SpotifyPlaylistCache.Count -eq 0)) {
 
             Write-Verbose "Retrieving fresh playlist data from Spotify API"
 
@@ -112,7 +112,7 @@ function Get-SpotifyUserPlaylists {
         }
 
         # filter and return playlists matching pattern
-        $Global:SpotifyPlaylistCache `
+        $Script:SpotifyPlaylistCache `
         | ForEach-Object -ErrorAction SilentlyContinue {
 
             if ($PSItem.Name -like $Filter) {

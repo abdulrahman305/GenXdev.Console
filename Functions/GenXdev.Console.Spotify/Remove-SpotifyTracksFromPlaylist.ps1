@@ -26,7 +26,7 @@ Remove-SpotifyTracksFromPlaylist -PlaylistName "My Playlist" `
 
 function Remove-SpotifyTracksFromPlaylist {
 
-    [CmdletBinding(DefaultParameterSetName = "ByName")]
+    [CmdletBinding(DefaultParameterSetName = "ByName", SupportsShouldProcess)]
     [Alias("removefromplaylist")]
 
     param(
@@ -59,7 +59,6 @@ function Remove-SpotifyTracksFromPlaylist {
     )
 
     begin {
-
         # get authentication token for spotify api
         $apiToken = Get-SpotifyApiToken
 
@@ -77,10 +76,16 @@ function Remove-SpotifyTracksFromPlaylist {
     process {
 
         # process each playlist id and remove the specified tracks
-        foreach ($Id in $PlaylistId) {
+        foreach ($id in $PlaylistId) {
 
-            Write-Verbose "Removing tracks from playlist with ID: $Id"
-            [GenXdev.Helpers.Spotify]::RemoveFromPlaylist($apiToken, $Id, $Uri)
+            Write-Verbose "Preparing to remove tracks from playlist with ID: $id"
+
+            # use shouldprocess to get confirmation before removing tracks
+            if ($PSCmdlet.ShouldProcess("Playlist ID: $id", "Remove tracks")) {
+
+                Write-Verbose "Removing tracks from playlist with ID: $id"
+                [GenXdev.Helpers.Spotify]::RemoveFromPlaylist($apiToken, $id, $Uri)
+            }
         }
     }
 

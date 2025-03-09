@@ -41,7 +41,6 @@ function Add-SpotifyTracksToLiked {
     )
 
     begin {
-
         # retrieve spotify api authentication token for subsequent requests
         $apiToken = Get-SpotifyApiToken
         Write-Verbose "Retrieved Spotify API token"

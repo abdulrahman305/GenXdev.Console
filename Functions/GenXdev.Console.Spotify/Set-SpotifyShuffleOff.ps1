@@ -18,7 +18,7 @@ shuffleoff
 #>
 function Set-SpotifyShuffleOff {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess)]
     [Alias("noshuffle", "shuffleoff")]
     param()
 
@@ -30,9 +30,13 @@ function Set-SpotifyShuffleOff {
 
     process {
 
-        # retrieve the current api token for spotify authentication
-        # and disable shuffle mode using the spotify helper class
-        [GenXdev.Helpers.Spotify]::ShuffleOff((Get-SpotifyApiToken))
+        # only perform the action if ShouldProcess returns true
+        if ($PSCmdlet.ShouldProcess("Spotify", "Disable shuffle mode")) {
+
+            # retrieve the current api token for spotify authentication
+            # and disable shuffle mode using the spotify helper class
+            [GenXdev.Helpers.Spotify]::ShuffleOff((Get-SpotifyApiToken))
+        }
     }
 
     end {

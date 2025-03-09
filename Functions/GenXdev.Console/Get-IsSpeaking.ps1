@@ -18,6 +18,7 @@ function Get-IsSpeaking {
 
     [CmdletBinding()]
     [Alias("iss")]
+    [OutputType([System.Boolean])]
 
     param()
 

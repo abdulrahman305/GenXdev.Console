@@ -36,7 +36,7 @@ Set-SpotifyPlaylistOrder "2v3iNvBX8Ay1Gt2uXtUKUT" 9 0
 #>
 function Set-SpotifyPlaylistOrder {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
 
     param(
         ########################################################################
@@ -78,16 +78,23 @@ function Set-SpotifyPlaylistOrder {
 
     process {
 
-        Write-Verbose "Reordering playlist $PlaylistId - Moving $RangeLength tracks
-            from position $RangeStart to position $InsertBefore"
+        # prepare message for should process and verbose output
+        $operationDescription = "Moving $($RangeLength ?? 1) tracks from position $RangeStart to position $InsertBefore"
+        $targetDescription = "Spotify playlist $PlaylistId"
 
-        # call the spotify api to reorder the playlist tracks
-        [GenXdev.Helpers.Spotify]::ReorderPlaylist(
-            $apiToken,
-            $PlaylistId,
-            $RangeStart,
-            $InsertBefore,
-            $RangeLength)
+        Write-Verbose "Reordering $targetDescription - $operationDescription"
+
+        # check if the action should be performed
+        if ($PSCmdlet.ShouldProcess($targetDescription, $operationDescription)) {
+
+            # call the spotify api to reorder the playlist tracks
+            [GenXdev.Helpers.Spotify]::ReorderPlaylist(
+                $apiToken,
+                $PlaylistId,
+                $RangeStart,
+                $InsertBefore,
+                $RangeLength)
+        }
     }
 
     end {

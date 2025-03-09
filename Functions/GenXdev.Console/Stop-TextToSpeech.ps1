@@ -23,7 +23,7 @@ and Skip-TextToSpeech (alias: sstSkip) for speech control.
 #>
 function Stop-TextToSpeech {
 
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess = $true)]
     [Alias("sst")]
     param()
 
@@ -35,13 +35,15 @@ function Stop-TextToSpeech {
     process {
 
         try {
-            # cancel all pending standard speech operations
-            $null = [GenXdev.Helpers.Misc]::Speech.SpeakAsyncCancelAll()
+            if ($PSCmdlet.ShouldProcess("Text-to-speech output", "Stop")) {
+                # cancel all pending standard speech operations
+                $null = [GenXdev.Helpers.Misc]::Speech.SpeakAsyncCancelAll()
 
-            # cancel all pending customized speech operations
-            $null = [GenXdev.Helpers.Misc]::SpeechCustomized.SpeakAsyncCancelAll()
+                # cancel all pending customized speech operations
+                $null = [GenXdev.Helpers.Misc]::SpeechCustomized.SpeakAsyncCancelAll()
 
-            Write-Verbose "Successfully cancelled all speech operations"
+                Write-Verbose "Successfully cancelled all speech operations"
+            }
         }
         catch {
             # silently handle any speech cancellation errors

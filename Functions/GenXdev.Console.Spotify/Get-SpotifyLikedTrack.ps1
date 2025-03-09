@@ -10,12 +10,14 @@ returned as collection of track objects containing metadata like title, artist,
 and album information.
 
 .EXAMPLE
-Get-SpotifyLikedTracks
+Get-SpotifyLikedTrack
 
 .EXAMPLE
 liked
 #>
-function Get-SpotifyLikedTracks {
+function Get-SpotifyLikedTrack {
+
+    [OutputType([System.Collections.Generic.List[SpotifyAPI.Web.SavedTrack]])]
 
     [CmdletBinding()]
     [Alias("liked")]
