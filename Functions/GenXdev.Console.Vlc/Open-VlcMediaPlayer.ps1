@@ -559,7 +559,7 @@ function Open-VlcMediaPlayer {
 
             # install VLC
             Write-Verbose "Installing VLC media player"
-            Install-WinGetPackage -Name 'VideoLAN.VLC' -Scope System -Force
+            Install-WinGetPackage -Id 'VideoLAN.VLC' -Scope System -Force
         }
 
         function ConvertTo-VLCParameter {
@@ -677,7 +677,7 @@ function Open-VlcMediaPlayer {
                 }
 
                 Write-Verbose "Installing VLC media player"
-                Install-WinGetPackage -Name 'VideoLAN.VLC' -Scope System -Force
+                Install-WinGetPackage -Id 'VideoLAN.VLC' -Scope System -Force
             }
 
             Get-Process vlc -ErrorAction SilentlyContinue |

@@ -2,7 +2,7 @@
 ################################################################################
 Describe "Get-SpotifyUserPlaylists" {
 
-    It "should pass PSScriptAnalyzer rules" {
+    It "Should pass PSScriptAnalyzer rules" {
 
         # get the script path for analysis
         $scriptPath = GenXdev.FileSystem\Expand-Path "$PSScriptRoot\..\..\Functions\GenXdev.Console.Spotify\Get-SpotifyUserPlaylists.ps1"

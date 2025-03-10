@@ -32,7 +32,7 @@ function Set-SpotifyApiToken {
 
         # define the storage location for the api token
         $dir = "$PSScriptRoot\..\..\..\..\GenXdev.Local"
-        $path = "$dir\Spotify_Auth.json"
+        $path = Expand-Path "$dir\Spotify_Auth.json"
 
         Write-Verbose "Storing Spotify API token in: $path"
     }
