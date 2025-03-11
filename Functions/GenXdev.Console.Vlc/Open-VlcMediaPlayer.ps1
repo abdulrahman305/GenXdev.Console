@@ -570,9 +570,16 @@ function Open-VlcMediaPlayer {
 
             # Parameter mapping logic here
             switch ($Name) {
-                # 'Fullscreen' { if ($Value) { return '--fullscreen' } }
-                'AlwaysOnTop' { if ($Value) { return '--video-on-top' } }
-                'DisableAudio' { if ($Value) { return '--no-audio' } }
+                # These parameters need explicit off states
+                'Random' { return $Value ? '--random' : '--no-random' }
+                'Loop' { return $Value ? '--loop' : '--no-loop' }
+                'Repeat' { return $Value ? '--repeat' : '--no-repeat' }
+                'StartPaused' { return $Value ? '--start-paused' : '--no-start-paused' }
+                'PlayAndExit' { return $Value ? '--play-and-exit' : '--no-play-and-exit' }
+                'AlwaysOnTop' { return $Value ? '--video-on-top' : '--no-video-on-top' }
+                'DisableAudio' { return $Value ? '--no-audio' : '--audio' }
+
+                # Remaining parameters unchanged
                 'ReplayGainMode' { return "--audio-replay-gain-mode=$($Value.ToLower())" }
                 'ReplayGainPreamp' { return "--audio-replay-gain-preamp=$Value" }
                 'ForceDolbySurround' { return "--force-dolby-surround=$($Value.ToLower())" }
@@ -588,7 +595,8 @@ function Open-VlcMediaPlayer {
                 'DisableSubtitles' { if ($Value) { return '--no-spu' } }
                 'SubtitleScale' { return "--sub-text-scale=$Value" }
                 'SubtitleLanguage' { return "--sub-language=$((Get-WebLanguageDictionary)[$Value])" }
-                'AudioLanguage' { return "--audio-language=$((Get-WebLanguageDictionary)[$Value])" }
+                'AudioLanguage' { return "--audio-language=$((Get-WebLanguageDictionary)[$Value])" }  # Forces audio track
+                'PreferredAudioLanguage' { return "--preferred-audio-language=$((Get-WebLanguageDictionary)[$Value])" }  # Sets default
                 'HttpProxy' { return "--http-proxy=$Value" }
                 'HttpProxyPassword' { return "--http-proxy-pwd=$Value" }
                 'VerbosityLevel' { return "--verbose=$Value" }
@@ -602,11 +610,8 @@ function Open-VlcMediaPlayer {
                 'AudioFilterModules' { return "--audio-filter=$($Value -join ',')" }
                 'AudioVisualization' { return "--audio-visual=$($Value.ToLower())" }
                 'PreferredSubtitleLanguage' { return "--sub-language=$Value" }
-                'PreferredAudioLanguage' { return "--audio-language=$((Get-WebLanguageDictionary)[$Value])" }
-                'AudioLanguage' { return "--audio-language=$((Get-WebLanguageDictionary)[$Value])" }
                 'IgnoredFileExtensions' { return "--ignore-filetypes=$Value" }
                 'EnableAudioTimeStretch' { if ($Value) { return '--audio-time-stretch' } }
-                # Add more mappings as needed
             }
         }
 
