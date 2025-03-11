@@ -33,7 +33,6 @@ function Search-Spotify {
         [parameter(
             Mandatory = $true,
             Position = 0,
-            ValueFromRemainingArguments = $true,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
             HelpMessage = "The query to perform"
@@ -41,31 +40,17 @@ function Search-Spotify {
         [string[]] $Queries,
         ########################################################################
         [parameter(
+            Position = 1,
             Mandatory = $false,
             HelpMessage = "Type of content to search for"
         )]
         [Alias("t")]
-        [ValidateSet("Album", "Artist", "Playlist", "Track", "Show", "Episode",
-            "All")]
-        [string[]] $SearchType = @("Track")
+        [SpotifyAPI.Web.SearchRequest+Types] $SearchType = [SpotifyAPI.Web.SearchRequest+Types]::Track
         ########################################################################
     )
 
     begin {
-        # calculate the combined search type bit mask
-        # each content type is represented by a power of 2
-        [int] $searchTypeTypeId = 0
-
-        # build up the type mask based on requested search types
-        if ($SearchType -contains "Album") { $searchTypeTypeId += 1 }
-        if ($SearchType -contains "Artist") { $searchTypeTypeId += 2 }
-        if ($SearchType -contains "Playlist") { $searchTypeTypeId += 4 }
-        if ($SearchType -contains "Track") { $searchTypeTypeId += 8 }
-        if ($SearchType -contains "Show") { $searchTypeTypeId += 16 }
-        if ($SearchType -contains "Episode") { $searchTypeTypeId += 32 }
-        if ($SearchType -eq "All") { $searchTypeTypeId += 63 }
-
-        Write-Verbose "Search type bit mask: $searchTypeTypeId"
+        Write-Verbose "Search type bit mask: $SearchType"
     }
 
     process {
@@ -78,7 +63,7 @@ function Search-Spotify {
             [GenXdev.Helpers.Spotify]::Search(
                 (Get-SpotifyApiToken),
                 $Query,
-                $searchTypeTypeId) |
+                $SearchType) |
             ForEach-Object { $PSItem } -ErrorAction SilentlyContinue
         }
     }

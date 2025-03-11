@@ -38,7 +38,6 @@ function Search-SpotifyAndPlay {
         [parameter(
             Mandatory = $true,
             Position = 0,
-            ValueFromRemainingArguments = $true,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
             HelpMessage = "One or more search phrases to look for on Spotify"
@@ -46,30 +45,17 @@ function Search-SpotifyAndPlay {
         [string[]] $Queries,
         ########################################################################
         [parameter(
+            Position = 1,
             Mandatory = $false,
             HelpMessage = "The type of content to search for"
         )]
         [Alias("t")]
-        [ValidateSet("Album", "Artist", "Playlist", "Track", "Show", "Episode",
-            "All")]
-        [string[]] $SearchType = @("Track")
+        [SpotifyAPI.Web.SearchRequest+Types] $SearchType = [SpotifyAPI.Web.SearchRequest+Types]::Track
         ########################################################################
     )
 
     begin {
-        # calculate the search type bit mask based on selected content types
-        [int] $searchTypeTypeId = 0
-
-        # build bit flags for each content type
-        if ($SearchType -contains "Album") { $searchTypeTypeId += 1 }
-        if ($SearchType -contains "Artist") { $searchTypeTypeId += 2 }
-        if ($SearchType -contains "Playlist") { $searchTypeTypeId += 4 }
-        if ($SearchType -contains "Track") { $searchTypeTypeId += 8 }
-        if ($SearchType -contains "Show") { $searchTypeTypeId += 16 }
-        if ($SearchType -contains "Episode") { $searchTypeTypeId += 32 }
-        if ($SearchType -contains "All") { $searchTypeTypeId += 63 }
-
-        Write-Verbose "Search type bit mask: $searchTypeTypeId"
+        Write-Verbose "Search type bit mask: $SearchType"
     }
 
     process {
@@ -82,7 +68,7 @@ function Search-SpotifyAndPlay {
             [GenXdev.Helpers.Spotify]::SearchAndPlay(
                 (Get-SpotifyApiToken),
                 $Query,
-                $searchTypeTypeId) |
+                $SearchType) |
             ForEach-Object {
                 if ($null -ne $PSItem) {
                     $PSItem
