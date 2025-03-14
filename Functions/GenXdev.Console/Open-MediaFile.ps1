@@ -575,6 +575,7 @@ function Open-MediaFile {
     )
 
     begin {
+
         # define supported file extensions for each media type
         $videoFiles = @(".mp4", ".avi", ".mkv", ".mov", ".wmv")
         $audioFiles = @(".mp3", ".flac", ".wav", ".midi", ".mid", ".au",
