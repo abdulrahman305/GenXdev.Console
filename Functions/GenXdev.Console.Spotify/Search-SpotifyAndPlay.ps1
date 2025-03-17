@@ -42,6 +42,7 @@ function Search-SpotifyAndPlay {
             ValueFromPipelineByPropertyName = $true,
             HelpMessage = "One or more search phrases to look for on Spotify"
         )]
+        [Alias("q", "Value", "Name", "Text", "Query")]
         [string[]] $Queries,
         ########################################################################
         [parameter(

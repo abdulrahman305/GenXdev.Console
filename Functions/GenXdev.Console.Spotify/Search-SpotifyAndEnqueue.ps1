@@ -43,6 +43,7 @@ function Search-SpotifyAndEnqueue {
             ValueFromPipelineByPropertyName = $true,
             HelpMessage = "The query to perform"
         )]
+        [Alias("q", "Value", "Name", "Text", "Query")]
         [string[]] $Queries,
         ########################################################################
         [Alias("t")]

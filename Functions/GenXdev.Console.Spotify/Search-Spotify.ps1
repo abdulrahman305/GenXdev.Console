@@ -37,6 +37,7 @@ function Search-Spotify {
             ValueFromPipelineByPropertyName = $true,
             HelpMessage = "The query to perform"
         )]
+        [Alias("q", "Value", "Name", "Text", "Query")]
         [string[]] $Queries,
         ########################################################################
         [parameter(
