@@ -12,7 +12,7 @@
 RootModule = 'GenXdev.Console.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.136.2025'
+ModuleVersion = '1.138.2025'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -52,12 +52,12 @@ ProcessorArchitecture = 'Amd64'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'PSReadLine'; ModuleVersion = '2.3.6'; }, 
-               @{ModuleName = 'GenXdev.Data'; ModuleVersion = '1.136.2025'; }, 
-               @{ModuleName = 'GenXdev.Helpers'; ModuleVersion = '1.136.2025'; }, 
-               @{ModuleName = 'GenXdev.Windows'; ModuleVersion = '1.136.2025'; }, 
-               @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion = '1.136.2025'; }, 
-               @{ModuleName = 'GenXdev.Windows'; ModuleVersion = '1.136.2025'; }, 
-               @{ModuleName = 'GenXdev.FileSystem'; ModuleVersion = '1.136.2025'; })
+               @{ModuleName = 'GenXdev.Data'; ModuleVersion = '1.138.2025'; }, 
+               @{ModuleName = 'GenXdev.Helpers'; ModuleVersion = '1.138.2025'; }, 
+               @{ModuleName = 'GenXdev.Windows'; ModuleVersion = '1.138.2025'; }, 
+               @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion = '1.138.2025'; }, 
+               @{ModuleName = 'GenXdev.Windows'; ModuleVersion = '1.138.2025'; }, 
+               @{ModuleName = 'GenXdev.FileSystem'; ModuleVersion = '1.138.2025'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()

@@ -284,13 +284,16 @@ Update-Module
 ### SYNTAX 
 ````PowerShell 
 
-   Open-MediaFile [[-SearchMask] <String[]>] [-Keywords <String[]>] [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio] [-OnlyPictures] [-IncludeVideos] [-IncludeAudio] [-IncludePictures] [[-KeysToSend] <String[]>] [-Escape] [-ShiftEnter]   
-   [-DelayMilliSeconds <Int32>] [-Monitor <Int32>] [-NoBorders] [-Width <Int32>] [-Height <Int32>] [-X <Int32>] [-Y <Int32>] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-Fullscreen] [-PassThru] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat]   
-   [-StartPaused] [-PlayAndExit] [-DisableAudio] [-ReplayGainMode <String>] [-ReplayGainPreamp <Single>] [-ForceDolbySurround <String>] [-AudioFilters <String[]>] [-Visualization <String>] [-Deinterlace <String>] [-DeinterlaceMode   
-   <String>] [-AspectRatio <String>] [-Crop <String>] [-AutoScale] [-VideoFilters <String[]>] [-SubtitleFile <String>] [-DisableSubtitles] [-SubtitleScale <Int32>] [-SubtitleLanguage <String>] [-AudioLanguage <String>]   
-   [-PreferredAudioLanguage <String>] [-HttpProxy <String>] [-HttpProxyPassword <String>] [-VerbosityLevel <Int32>] [-SubdirectoryBehavior <String>] [-IgnoredExtensions <String>] [-HighPriority] [-EnableTimeStretch] [-VLCPath <String>]   
-   [-NewWindow] [-EnableWallpaperMode] [-VideoFilterModules <String[]>] [-Modules <String[]>] [-AudioFilterModules <String[]>] [-AudioVisualization <String>] [-PreferredSubtitleLanguage <String>] [-IgnoredFileExtensions <String>]   
-   [-EnableAudioTimeStretch] [-Arguments <String>] [-SideBySide] [<CommonParameters>]  
+   Open-MediaFile [[-SearchMask] <String[]>] [-Keywords <String[]>] [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio] [-OnlyPictures] [-IncludeVideos]   
+   [-IncludeAudio] [-IncludePictures] [[-KeysToSend] <String[]>] [-Escape] [-ShiftEnter] [-DelayMilliSeconds <Int32>] [-Monitor <Int32>] [-NoBorders] [-Width <Int32>]   
+   [-Height <Int32>] [-X <Int32>] [-Y <Int32>] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-Fullscreen] [-PassThru] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat]   
+   [-StartPaused] [-PlayAndExit] [-DisableAudio] [-ReplayGainMode <String>] [-ReplayGainPreamp <Single>] [-ForceDolbySurround <String>] [-AudioFilters <String[]>]   
+   [-Visualization <String>] [-Deinterlace <String>] [-DeinterlaceMode <String>] [-AspectRatio <String>] [-Crop <String>] [-AutoScale] [-VideoFilters <String[]>]   
+   [-SubtitleFile <String>] [-DisableSubtitles] [-SubtitleScale <Int32>] [-SubtitleLanguage <String>] [-AudioLanguage <String>] [-PreferredAudioLanguage <String>]   
+   [-HttpProxy <String>] [-HttpProxyPassword <String>] [-VerbosityLevel <Int32>] [-SubdirectoryBehavior <String>] [-IgnoredExtensions <String>] [-HighPriority]   
+   [-EnableTimeStretch] [-VLCPath <String>] [-NewWindow] [-EnableWallpaperMode] [-VideoFilterModules <String[]>] [-Modules <String[]>] [-AudioFilterModules <String[]>]   
+   [-AudioVisualization <String>] [-PreferredSubtitleLanguage <String>] [-IgnoredFileExtensions <String>] [-EnableAudioTimeStretch] [-Arguments <String>] [-SideBySide]   
+   [<CommonParameters>]  
 ```` 
 
 ### DESCRIPTION 
@@ -2605,7 +2608,8 @@ Update-Module
 ### SYNTAX 
 ````PowerShell 
 
-   Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [-WhatIf] [-Confirm] [<CommonParameters>]  
+   Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [-WhatIf]   
+   [-Confirm] [<CommonParameters>]  
 ```` 
 
 ### DESCRIPTION 
@@ -3145,12 +3149,15 @@ Update-Module
 ### SYNTAX 
 ````PowerShell 
 
-   Open-VlcMediaPlayer [[-Path] <String[]>] [-KeysToSend <String[]>] [-Escape] [-ShiftEnter] [-DelayMilliSeconds <Int32>] [-Monitor <Int32>] [-NoBorders] [-Width <Int32>] [-Height <Int32>] [-X <Int32>] [-Y <Int32>] [-Left] [-Right] [-Top]   
-   [-Bottom] [-Centered] [-Fullscreen] [-PassThru] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-ReplayGainMode <String>] [-ReplayGainPreamp <Single>] [-ForceDolbySurround <String>]   
-   [-AudioFilters <String[]>] [-Visualization <String>] [-Deinterlace <String>] [-DeinterlaceMode <String>] [-AspectRatio <String>] [-Crop <String>] [-AutoScale] [-VideoFilters <String[]>] [-SubtitleFile <String>] [-DisableSubtitles]   
-   [-SubtitleScale <Int32>] [-SubtitleLanguage <String>] [-AudioLanguage <String>] [-PreferredAudioLanguage <String>] [-HttpProxy <String>] [-HttpProxyPassword <String>] [-VerbosityLevel <Int32>] [-SubdirectoryBehavior <String>]   
-   [-IgnoredExtensions <String>] [-HighPriority] [-EnableTimeStretch] [-VLCPath <String>] [-NewWindow] [-EnableWallpaperMode] [-VideoFilterModules <String[]>] [-Modules <String[]>] [-AudioFilterModules <String[]>] [-AudioVisualization   
-   <String>] [-PreferredSubtitleLanguage <String>] [-IgnoredFileExtensions <String>] [-EnableAudioTimeStretch] [-Arguments <String>] [-Close] [-SideBySide] [<CommonParameters>]  
+   Open-VlcMediaPlayer [[-Path] <String[]>] [-KeysToSend <String[]>] [-Escape] [-ShiftEnter] [-DelayMilliSeconds <Int32>] [-Monitor <Int32>] [-NoBorders] [-Width   
+   <Int32>] [-Height <Int32>] [-X <Int32>] [-Y <Int32>] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-Fullscreen] [-PassThru] [-AlwaysOnTop] [-Random] [-Loop]   
+   [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-ReplayGainMode <String>] [-ReplayGainPreamp <Single>] [-ForceDolbySurround <String>] [-AudioFilters   
+   <String[]>] [-Visualization <String>] [-Deinterlace <String>] [-DeinterlaceMode <String>] [-AspectRatio <String>] [-Crop <String>] [-AutoScale] [-VideoFilters   
+   <String[]>] [-SubtitleFile <String>] [-DisableSubtitles] [-SubtitleScale <Int32>] [-SubtitleLanguage <String>] [-AudioLanguage <String>] [-PreferredAudioLanguage   
+   <String>] [-HttpProxy <String>] [-HttpProxyPassword <String>] [-VerbosityLevel <Int32>] [-SubdirectoryBehavior <String>] [-IgnoredExtensions <String>]   
+   [-HighPriority] [-EnableTimeStretch] [-VLCPath <String>] [-NewWindow] [-EnableWallpaperMode] [-VideoFilterModules <String[]>] [-Modules <String[]>]   
+   [-AudioFilterModules <String[]>] [-AudioVisualization <String>] [-PreferredSubtitleLanguage <String>] [-IgnoredFileExtensions <String>] [-EnableAudioTimeStretch]   
+   [-Arguments <String>] [-Close] [-SideBySide] [<CommonParameters>]  
 ```` 
 
 ### DESCRIPTION 
@@ -3636,16 +3643,20 @@ Update-Module
 ### SYNTAX 
 ````PowerShell 
 
-   Open-VlcMediaPlayerLyrics [[-Queries] <string[]>] [[-EndPoint] {Bing | Github | Google | IMDB | InstantStreetView | StackOverflow | Wikipedia | WikipediaNL | WolframAlpha | Youtube}] [[-Language] {Afrikaans | Akan | Albanian | Amharic |   
-   Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican |   
-   Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa |   
-   Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish   
-   (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali |   
-   Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara |   
-   Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil   
-   | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-Private] [-Force] [-Edge] [-Chrome]   
-   [-Chromium] [-Firefox] [-All] [-Monitor <int>] [-FullScreen] [-Width <int>] [-Height <int>] [-X <int>] [-Y <int>] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-AcceptLang <string>]   
-   [-RestoreFocus] [-NewWindow] [-PassThru] [-ReturnURL] [-ReturnOnlyURL] [<CommonParameters>]  
+   Open-VlcMediaPlayerLyrics [[-Queries] <string[]>] [[-EndPoint] {Bing | Github | Google | IMDB | InstantStreetView | StackOverflow | Wikipedia | WikipediaNL |   
+   WolframAlpha | Youtube}] [[-Language] {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari |   
+   Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian |   
+   Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German |   
+   Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian   
+   | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian |   
+   Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian   
+   | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate |   
+   Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian |   
+   Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili |   
+   Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese |   
+   Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [-All] [-Monitor <int>] [-FullScreen] [-Width <int>]   
+   [-Height <int>] [-X <int>] [-Y <int>] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-AcceptLang <string>] [-RestoreFocus]   
+   [-NewWindow] [-PassThru] [-ReturnURL] [-ReturnOnlyURL] [<CommonParameters>]  
 ```` 
 
 ### PARAMETERS 
