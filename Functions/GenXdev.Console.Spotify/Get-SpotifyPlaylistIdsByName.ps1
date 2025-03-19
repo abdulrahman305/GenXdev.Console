@@ -42,18 +42,18 @@ function Get-SpotifyPlaylistIdsByName {
 
     begin {
         # log the start of playlist lookup with provided names
-        Write-Verbose "Starting playlist ID lookup for: $($PlaylistName -join ', ')"
+        Microsoft.PowerShell.Utility\Write-Verbose "Starting playlist ID lookup for: $($PlaylistName -join ', ')"
     }
 
     process {
 
         # attempt to find playlists in current session
-        $Results = @(Get-SpotifyUserPlaylists -Filter $PlaylistName)
+        $Results = @(GenXdev.Console\Get-SpotifyUserPlaylists -Filter $PlaylistName)
 
         # handle case when no playlists found in current session
         if ($Results.Length -eq 0) {
 
-            Write-Verbose "No playlists found in session, checking local cache..."
+            Microsoft.PowerShell.Utility\Write-Verbose "No playlists found in session, checking local cache..."
 
             # construct path to cache file
             $FilePath = GenXdev.FileSystem\Expand-Path `
@@ -67,8 +67,8 @@ function Get-SpotifyPlaylistIdsByName {
             if (!$PlaylistCache.Exists -or
                 ([datetime]::Now - $PlaylistCache.LastWriteTime -ge [System.TimeSpan]::FromHours(12))) {
 
-                Write-Verbose "Cache missing or expired, forcing playlist refresh..."
-                $Results = @(Get-SpotifyUserPlaylists -Force -Filter $PlaylistName)
+                Microsoft.PowerShell.Utility\Write-Verbose "Cache missing or expired, forcing playlist refresh..."
+                $Results = @(GenXdev.Console\Get-SpotifyUserPlaylists -Force -Filter $PlaylistName)
             }
         }
 
@@ -78,7 +78,7 @@ function Get-SpotifyPlaylistIdsByName {
         }
 
         # return the IDs of matching playlists
-        $Results | ForEach-Object Id
+        $Results | Microsoft.PowerShell.Core\ForEach-Object Id
     }
 
     end {

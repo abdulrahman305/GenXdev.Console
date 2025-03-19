@@ -93,8 +93,8 @@ function Set-SpotifyPlaylistDetails {
     begin {
 
         # get the spotify api authentication token
-        $apiToken = Get-SpotifyApiToken
-        Write-Verbose "Retrieved Spotify API token"
+        $apiToken = GenXdev.Console\Get-SpotifyApiToken
+        Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API token"
 
         # initialize visibility and collaboration flags
         $publicFlag = $null
@@ -103,31 +103,31 @@ function Set-SpotifyPlaylistDetails {
         # set playlist visibility based on switches
         if ($Public -eq $true) {
             $publicFlag = $true
-            Write-Verbose "Setting playlist to public"
+            Microsoft.PowerShell.Utility\Write-Verbose "Setting playlist to public"
         }
 
         # set collaboration permission based on switches
         if ($Collabrative -eq $true) {
             $collabFlag = $true
-            Write-Verbose "Enabling playlist collaboration"
+            Microsoft.PowerShell.Utility\Write-Verbose "Enabling playlist collaboration"
         }
 
         # override public flag if private switch is used
         if ($Private -eq $true) {
             $publicFlag = $false
-            Write-Verbose "Setting playlist to private"
+            Microsoft.PowerShell.Utility\Write-Verbose "Setting playlist to private"
         }
 
         # override collab flag if no collaborations switch is used
         if ($NoCollabrations -eq $true) {
             $collabFlag = $false
-            Write-Verbose "Disabling playlist collaboration"
+            Microsoft.PowerShell.Utility\Write-Verbose "Disabling playlist collaboration"
         }
     }
 
     process {
 
-        Write-Verbose "Updating playlist $PlaylistId with new settings"
+        Microsoft.PowerShell.Utility\Write-Verbose "Updating playlist $PlaylistId with new settings"
 
         # call spotify api to update playlist details only if ShouldProcess confirms the action
         if ($PSCmdlet.ShouldProcess("Spotify playlist '$PlaylistId'", "Update playlist details")) {

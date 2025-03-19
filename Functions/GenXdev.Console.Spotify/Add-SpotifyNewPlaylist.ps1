@@ -68,14 +68,14 @@ function Add-SpotifyNewPlaylist {
     begin {
 
         # retrieve spotify api authentication token
-        Write-Verbose "Retrieving Spotify API authentication token"
-        $apiToken = Get-SpotifyApiToken
+        Microsoft.PowerShell.Utility\Write-Verbose "Retrieving Spotify API authentication token"
+        $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
     process {
 
         # create new playlist using spotify api helper
-        Write-Verbose "Creating new Spotify playlist '$Name'"
+        Microsoft.PowerShell.Utility\Write-Verbose "Creating new Spotify playlist '$Name'"
         $result = [GenXdev.Helpers.Spotify]::NewPlaylist(
             $apiToken,
             $Name,
@@ -86,15 +86,15 @@ function Add-SpotifyNewPlaylist {
         # update local playlist cache if it exists
         if ($Script:SpotifyPlaylistCache -is [System.Collections.Generic.List[object]]) {
 
-            Write-Verbose "Updating local playlist cache"
+            Microsoft.PowerShell.Utility\Write-Verbose "Updating local playlist cache"
             $null = $Script:SpotifyPlaylistCache.Insert(0, $result)
 
             # save updated cache to json file
             $filePath = GenXdev.FileSystem\Expand-Path "$PSScriptRoot\..\..\..\..\GenXdev.Local\`
                 Spotify.Playlists.json"
             $Script:SpotifyPlaylistCache |
-            ConvertTo-Json -Depth 100 |
-            Out-File $filePath -Force
+            Microsoft.PowerShell.Utility\ConvertTo-Json -Depth 100 |
+            Microsoft.PowerShell.Utility\Out-File $filePath -Force
         }
 
         # return the newly created playlist

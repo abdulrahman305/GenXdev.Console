@@ -73,7 +73,7 @@ function Set-SpotifyPlaylistOrder {
     begin {
 
         # retrieve the current spotify api authentication token
-        $apiToken = Get-SpotifyApiToken
+        $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
     process {
@@ -82,7 +82,7 @@ function Set-SpotifyPlaylistOrder {
         $operationDescription = "Moving $($RangeLength ?? 1) tracks from position $RangeStart to position $InsertBefore"
         $targetDescription = "Spotify playlist $PlaylistId"
 
-        Write-Verbose "Reordering $targetDescription - $operationDescription"
+        Microsoft.PowerShell.Utility\Write-Verbose "Reordering $targetDescription - $operationDescription"
 
         # check if the action should be performed
         if ($PSCmdlet.ShouldProcess($targetDescription, $operationDescription)) {

@@ -51,21 +51,21 @@ function Search-Spotify {
     )
 
     begin {
-        Write-Verbose "Search type bit mask: $SearchType"
+        Microsoft.PowerShell.Utility\Write-Verbose "Search type bit mask: $SearchType"
     }
 
     process {
 
         foreach ($Query in $Queries) {
 
-            Write-Verbose "Searching Spotify for: $Query"
+            Microsoft.PowerShell.Utility\Write-Verbose "Searching Spotify for: $Query"
 
             # perform the search using the helper class and emit results
             [GenXdev.Helpers.Spotify]::Search(
-                (Get-SpotifyApiToken),
+                (GenXdev.Console\Get-SpotifyApiToken),
                 $Query,
                 $SearchType) |
-            ForEach-Object { $PSItem } -ErrorAction SilentlyContinue
+            Microsoft.PowerShell.Core\ForEach-Object { $PSItem } -ErrorAction SilentlyContinue
         }
     }
 }

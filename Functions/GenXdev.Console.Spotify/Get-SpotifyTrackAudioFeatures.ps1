@@ -41,14 +41,14 @@ function Get-SpotifyTrackAudioFeatures {
 
     begin {
         # obtain the spotify api authentication token for subsequent requests
-        Write-Verbose "Acquiring Spotify API authentication token"
-        $apiToken = Get-SpotifyApiToken
+        Microsoft.PowerShell.Utility\Write-Verbose "Acquiring Spotify API authentication token"
+        $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
     process {
 
         # fetch audio features for the specified tracks using the spotify api
-        Write-Verbose "Retrieving audio features for $($TrackId.Count) tracks"
+        Microsoft.PowerShell.Utility\Write-Verbose "Retrieving audio features for $($TrackId.Count) tracks"
         [GenXdev.Helpers.Spotify]::GetSeveralAudioFeatures($apiToken, $TrackId)
     }
 

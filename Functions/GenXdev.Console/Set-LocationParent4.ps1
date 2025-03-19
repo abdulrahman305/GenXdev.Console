@@ -26,7 +26,7 @@ function Set-LocationParent4 {
 
     begin {
 
-        Write-Verbose "Starting navigation up four directory levels from $(Get-Location)"
+        Microsoft.PowerShell.Utility\Write-Verbose "Starting navigation up four directory levels from $(Microsoft.PowerShell.Management\Get-Location)"
     }
 
     process {
@@ -35,18 +35,18 @@ function Set-LocationParent4 {
         for ($i = 1; $i -le 4; $i++) {
 
             # check if we can move up before attempting
-            $parent = Split-Path -Path (Get-Location) -Parent
+            $parent = Microsoft.PowerShell.Management\Split-Path -Path (Microsoft.PowerShell.Management\Get-Location) -Parent
             if ($null -eq $parent) {
-                Write-Verbose "Cannot go up further - at root level"
+                Microsoft.PowerShell.Utility\Write-Verbose "Cannot go up further - at root level"
                 break
             }
 
             # prepare target description for ShouldProcess
-            $target = "from '$(Get-Location)' to '$parent' (level $i of 4)"
+            $target = "from '$(Microsoft.PowerShell.Management\Get-Location)' to '$parent' (level $i of 4)"
 
             # only navigate if ShouldProcess returns true
             if ($PSCmdlet.ShouldProcess($target, "Change location")) {
-                Set-Location -Path $parent
+                Microsoft.PowerShell.Management\Set-Location -Path $parent
             }
             else {
                 # exit the loop if user declined
@@ -55,14 +55,14 @@ function Set-LocationParent4 {
         }
 
         # show contents of the new current directory if not in WhatIf mode
-        if (-not $WhatIfPreference -and (Get-Location).Provider.Name -eq 'FileSystem') {
-            Get-ChildItem
+        if (-not $WhatIfPreference -and (Microsoft.PowerShell.Management\Get-Location).Provider.Name -eq 'FileSystem') {
+            Microsoft.PowerShell.Management\Get-ChildItem
         }
     }
 
     end {
 
-        Write-Verbose "Completed navigation. New location: $PWD"
+        Microsoft.PowerShell.Utility\Write-Verbose "Completed navigation. New location: $PWD"
     }
 }
 ################################################################################

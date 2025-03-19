@@ -22,7 +22,7 @@ function Enable-Screensaver {
 
     begin {
 
-        Write-Verbose "Starting Windows screensaver activation"
+        Microsoft.PowerShell.Utility\Write-Verbose "Starting Windows screensaver activation"
     }
 
     process {

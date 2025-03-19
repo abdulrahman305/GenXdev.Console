@@ -59,25 +59,25 @@ function Get-SpotifyPlaylistTrack {
     begin {
 
         # get spotify api authentication token
-        $apiToken = Get-SpotifyApiToken
+        $apiToken = GenXdev.Console\Get-SpotifyApiToken
 
-        Write-Verbose "Retrieved Spotify API token"
+        Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API token"
 
         # if playlist name provided, get its ID
         if ([string]::IsNullOrWhiteSpace($PlaylistName) -eq $false) {
 
-            Write-Verbose "Looking up playlist ID for name: $PlaylistName"
+            Microsoft.PowerShell.Utility\Write-Verbose "Looking up playlist ID for name: $PlaylistName"
 
-            $PlaylistId = @(Get-SpotifyPlaylistIdsByName -PlaylistName @($PlaylistName)) |
-            Select-Object -First 1
+            $PlaylistId = @(GenXdev.Console\Get-SpotifyPlaylistIdsByName -PlaylistName @($PlaylistName)) |
+            Microsoft.PowerShell.Utility\Select-Object -First 1
 
-            Write-Verbose "Found playlist ID: $PlaylistId"
+            Microsoft.PowerShell.Utility\Write-Verbose "Found playlist ID: $PlaylistId"
         }
     }
 
     process {
 
-        Write-Verbose "Retrieving tracks for playlist ID: $PlaylistId"
+        Microsoft.PowerShell.Utility\Write-Verbose "Retrieving tracks for playlist ID: $PlaylistId"
 
         # call spotify api to get playlist tracks
         [GenXdev.Helpers.Spotify]::GetPlaylistTracks($apiToken, $PlaylistId)

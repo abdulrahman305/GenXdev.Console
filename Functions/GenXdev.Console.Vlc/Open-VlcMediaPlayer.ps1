@@ -542,24 +542,24 @@ function Open-VlcMediaPlayer {
         if ($Close) { return }
 
         # ensure VLC is installed and install if needed
-        if (-not (Test-Path "${env:ProgramFiles}\VideoLAN\VLC\vlc.exe")) {
+        if (-not (Microsoft.PowerShell.Management\Test-Path "${env:ProgramFiles}\VideoLAN\VLC\vlc.exe")) {
 
-            Write-Verbose "VLC not found, installing via WinGet..."
+            Microsoft.PowerShell.Utility\Write-Verbose "VLC not found, installing via WinGet..."
 
             # check/install winget module
-            if (-not (Get-Module -ListAvailable -Name 'Microsoft.WinGet.Client')) {
+            if (-not (Microsoft.PowerShell.Core\Get-Module -ListAvailable -Name 'Microsoft.WinGet.Client')) {
 
-                Write-Verbose "Installing WinGet client module"
-                $null = Install-Module -Name 'Microsoft.WinGet.Client' `
+                Microsoft.PowerShell.Utility\Write-Verbose "Installing WinGet client module"
+                $null = PowerShellGet\Install-Module -Name 'Microsoft.WinGet.Client' `
                     -Force -Scope CurrentUser -AllowClobber -SkipPublisherCheck
 
-                Write-Verbose "Importing WinGet client module"
-                Import-Module -Name 'Microsoft.WinGet.Client'
+                Microsoft.PowerShell.Utility\Write-Verbose "Importing WinGet client module"
+                Microsoft.PowerShell.Core\Import-Module -Name 'Microsoft.WinGet.Client'
             }
 
             # install VLC
-            Write-Verbose "Installing VLC media player"
-            Install-WinGetPackage -Id 'VideoLAN.VLC' -Scope System -Force
+            Microsoft.PowerShell.Utility\Write-Verbose "Installing VLC media player"
+            Microsoft.WinGet.Client\Install-WinGetPackage -Id 'VideoLAN.VLC' -Scope System -Force
         }
 
         function ConvertTo-VLCParameter {
@@ -594,9 +594,9 @@ function Open-VlcMediaPlayer {
                 'SubtitleFile' { return "--sub-file=$Value" }
                 'DisableSubtitles' { if ($Value) { return '--no-spu' } }
                 'SubtitleScale' { return "--sub-text-scale=$Value" }
-                'SubtitleLanguage' { return "--sub-language=$((Get-WebLanguageDictionary)[$Value])" }
-                'AudioLanguage' { return "--audio-language=$((Get-WebLanguageDictionary)[$Value])" }  # Forces audio track
-                'PreferredAudioLanguage' { return "--preferred-audio-language=$((Get-WebLanguageDictionary)[$Value])" }  # Sets default
+                'SubtitleLanguage' { return "--sub-language=$((GenXdev.Helpers\Get-WebLanguageDictionary)[$Value])" }
+                'AudioLanguage' { return "--audio-language=$((GenXdev.Helpers\Get-WebLanguageDictionary)[$Value])" }  # Forces audio track
+                'PreferredAudioLanguage' { return "--preferred-audio-language=$((GenXdev.Helpers\Get-WebLanguageDictionary)[$Value])" }  # Sets default
                 'HttpProxy' { return "--http-proxy=$Value" }
                 'HttpProxyPassword' { return "--http-proxy-pwd=$Value" }
                 'VerbosityLevel' { return "--verbose=$Value" }
@@ -632,7 +632,7 @@ function Open-VlcMediaPlayer {
         }
 
         # Process each parameter and convert to VLC arguments
-        $null = $PSBoundParameters.GetEnumerator() | ForEach-Object {
+        $null = $PSBoundParameters.GetEnumerator() | Microsoft.PowerShell.Core\ForEach-Object {
             if ($_.Key -notin @('VLCPath', 'Path', 'Arguments')) {
                 $vlcArg = ConvertTo-VLCParameter -Name $_.Key -Value $_.Value
                 if ($vlcArg) {
@@ -644,14 +644,14 @@ function Open-VlcMediaPlayer {
         # Add custom arguments if specified
         if ($Arguments) {
 
-            $Arguments | ForEach-Object {
+            $Arguments | Microsoft.PowerShell.Core\ForEach-Object {
 
                 $null = $vlcArgs.Add($_)
             }
         }
 
         # Add media paths
-        @($Path) | ForEach-Object {
+        @($Path) | Microsoft.PowerShell.Core\ForEach-Object {
 
             if ($null -eq $_) { return }
             $null = $vlcArgs.Add('"' + (GenXdev.FileSystem\Expand-Path $_) + '"')
@@ -668,53 +668,53 @@ function Open-VlcMediaPlayer {
         if ($null -eq $vlcWindow) {
 
             # ensure vlc is installed
-            if (-not (Test-Path $processArgs.FilePath -ErrorAction SilentlyContinue)) {
+            if (-not (Microsoft.PowerShell.Management\Test-Path $processArgs.FilePath -ErrorAction SilentlyContinue)) {
 
                 # install winget if needed
-                if (-not (Get-Module -ListAvailable -Name 'Microsoft.WinGet.Client')) {
+                if (-not (Microsoft.PowerShell.Core\Get-Module -ListAvailable -Name 'Microsoft.WinGet.Client')) {
 
-                    Write-Verbose "Installing WinGet client module"
-                    $null = Install-Module -Name 'Microsoft.WinGet.Client' `
+                    Microsoft.PowerShell.Utility\Write-Verbose "Installing WinGet client module"
+                    $null = PowerShellGet\Install-Module -Name 'Microsoft.WinGet.Client' `
                         -Force -Scope CurrentUser -AllowClobber -SkipPublisherCheck
 
-                    Write-Verbose "Importing WinGet client module"
-                    Import-Module -Name 'Microsoft.WinGet.Client'
+                    Microsoft.PowerShell.Utility\Write-Verbose "Importing WinGet client module"
+                    Microsoft.PowerShell.Core\Import-Module -Name 'Microsoft.WinGet.Client'
                 }
 
-                Write-Verbose "Installing VLC media player"
-                Install-WinGetPackage -Id 'VideoLAN.VLC' -Scope System -Force
+                Microsoft.PowerShell.Utility\Write-Verbose "Installing VLC media player"
+                Microsoft.WinGet.Client\Install-WinGetPackage -Id 'VideoLAN.VLC' -Scope System -Force
             }
 
-            Get-Process vlc -ErrorAction SilentlyContinue |
-            Stop-Process -Force
+            Microsoft.PowerShell.Management\Get-Process vlc -ErrorAction SilentlyContinue |
+            Microsoft.PowerShell.Management\Stop-Process -Force
         }
         else {
 
-            $vlcProcess = Get-Process -Name vlc -ErrorAction SilentlyContinue |
-            Where-Object -Property MainWindowHandle -NE 0
+            $vlcProcess = Microsoft.PowerShell.Management\Get-Process -Name vlc -ErrorAction SilentlyContinue |
+            Microsoft.PowerShell.Core\Where-Object -Property MainWindowHandle -NE 0
         }
 
         if (($null -eq $vlcWindow) -or ($processArgs.Keys.Count -gt 1)) {
 
             # Start VLC
             try {
-                Write-Verbose "Starting VLC with arguments: $($vlcArgs -join ' ')"
-                $vlcProcess = Start-Process @processArgs
-                Write-Verbose "VLC started with PID: $($vlcProcess.Id)"
+                Microsoft.PowerShell.Utility\Write-Verbose "Starting VLC with arguments: $($vlcArgs -join ' ')"
+                $vlcProcess = Microsoft.PowerShell.Management\Start-Process @processArgs
+                Microsoft.PowerShell.Utility\Write-Verbose "VLC started with PID: $($vlcProcess.Id)"
             }
             catch {
-                Write-Error "Failed to start VLC: $_"
+                Microsoft.PowerShell.Utility\Write-Error "Failed to start VLC: $_"
             }
         }
 
-        Start-Sleep 2
+        Microsoft.PowerShell.Utility\Start-Sleep 2
 
         $vlcWindow = GenXdev.Windows\Get-Window -ProcessName vlc `
             -ErrorAction SilentlyContinue
 
         if ($null -eq $vlcWindow) {
 
-            Write-Warning "Failed to find VLC window"
+            Microsoft.PowerShell.Utility\Write-Warning "Failed to find VLC window"
             return
         }
 
@@ -740,14 +740,14 @@ function Open-VlcMediaPlayer {
         # handle close request
         if ($Close) {
 
-            Write-Verbose "Closing VLC windows"
+            Microsoft.PowerShell.Utility\Write-Verbose "Closing VLC windows"
             if ($vlcProcess) {
                 $null = $vlcProcess.CloseMainWindow()
                 $null = $vlc.Process.WaitForExit(2000)
             }
 
-            $null = Get-Process vlc -ErrorAction SilentlyContinue |
-            Stop-Process -Force
+            $null = Microsoft.PowerShell.Management\Get-Process vlc -ErrorAction SilentlyContinue |
+            Microsoft.PowerShell.Management\Stop-Process -Force
 
             return
         }
@@ -760,7 +760,7 @@ function Open-VlcMediaPlayer {
         # send keys if specified
         if ($null -ne $KeysToSend -and ($KeysToSend.Count -gt 0)) {
 
-            Write-Verbose "Sending keystrokes to VLC window"
+            Microsoft.PowerShell.Utility\Write-Verbose "Sending keystrokes to VLC window"
 
             # copy key sending parameters
             $invocationParams = GenXdev.Helpers\Copy-IdenticalParamValues `
@@ -778,7 +778,7 @@ function Open-VlcMediaPlayer {
     end {
 
         # get powershell window reference
-        $pwsh = Get-PowershellMainWindow
+        $pwsh = GenXdev.Windows\Get-PowershellMainWindow
 
         # restore powershell window focus
         if ($null -ne $pwsh) {

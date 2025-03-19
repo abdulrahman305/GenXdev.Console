@@ -57,22 +57,22 @@ function Search-SpotifyAndEnqueue {
     )
 
     begin {
-        Write-Verbose "Initialized search type mask: $SearchType"
+        Microsoft.PowerShell.Utility\Write-Verbose "Initialized search type mask: $SearchType"
     }
 
     process {
 
         foreach ($Query in $Queries) {
 
-            Write-Verbose "Processing query: $query"
+            Microsoft.PowerShell.Utility\Write-Verbose "Processing query: $query"
 
             # search spotify and add first matching result to queue
             [GenXdev.Helpers.Spotify]::SearchAndAdd(
-                (Get-SpotifyApiToken),
+                (GenXdev.Console\Get-SpotifyApiToken),
                 $Query,
                 $SearchType
             ) |
-            ForEach-Object {
+            Microsoft.PowerShell.Core\ForEach-Object {
                 if ($null -ne $PSItem) {
                     $PSItem
                 }

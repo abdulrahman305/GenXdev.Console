@@ -25,13 +25,13 @@ function Set-MonitorPowerOff {
     begin {
 
         # inform user that monitor power-off sequence is starting
-        Write-Verbose "Preparing to turn off monitor(s)..."
+        Microsoft.PowerShell.Utility\Write-Verbose "Preparing to turn off monitor(s)..."
     }
 
     process {
 
         # wait briefly to allow any pending screen operations to complete
-        Start-Sleep 2
+        Microsoft.PowerShell.Utility\Start-Sleep 2
 
         # check if we should proceed with turning off the monitors
         if ($PSCmdlet.ShouldProcess("All Monitors", "Turn Off")) {

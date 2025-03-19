@@ -27,20 +27,20 @@ function Set-SpotifyRepeatContext {
     begin {
 
         # output information about enabling repeat mode
-        Write-Verbose "Enabling repeat mode for current Spotify context"
+        Microsoft.PowerShell.Utility\Write-Verbose "Enabling repeat mode for current Spotify context"
     }
 
     process {
 
         # get the current api token for authentication
-        Write-Verbose "Retrieving Spotify API token"
-        $token = Get-SpotifyApiToken
+        Microsoft.PowerShell.Utility\Write-Verbose "Retrieving Spotify API token"
+        $token = GenXdev.Console\Get-SpotifyApiToken
 
         # enable repeat mode for the current context using the spotify helper
         # only if ShouldProcess confirms the action
         if ($PSCmdlet.ShouldProcess("Current Spotify context", "Enable repeat mode")) {
 
-            Write-Verbose "Setting repeat mode to context"
+            Microsoft.PowerShell.Utility\Write-Verbose "Setting repeat mode to context"
             [GenXdev.Helpers.Spotify]::RepeatContext($token)
         }
     }

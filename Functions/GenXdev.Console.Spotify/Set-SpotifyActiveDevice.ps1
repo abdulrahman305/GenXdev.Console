@@ -44,14 +44,14 @@ function Set-SpotifyActiveDevice {
     begin {
 
         # retrieve authentication token from spotify api for subsequent requests
-        $apiToken = Get-SpotifyApiToken
-        Write-Verbose "Retrieved Spotify API token for authentication"
+        $apiToken = GenXdev.Console\Get-SpotifyApiToken
+        Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API token for authentication"
     }
 
     process {
 
         # use spotify api to transfer playback to the specified device
-        Write-Verbose "Attempting to transfer playback to device ID: $DeviceId"
+        Microsoft.PowerShell.Utility\Write-Verbose "Attempting to transfer playback to device ID: $DeviceId"
 
         if ($PSCmdlet.ShouldProcess("device $DeviceId", "Transfer Spotify playback")) {
 

@@ -25,7 +25,7 @@ function Set-LocationParent3 {
     begin {
 
         # output verbose information about starting directory movement
-        Write-Verbose "Moving up three directory levels from: $($PWD.Path)"
+        Microsoft.PowerShell.Utility\Write-Verbose "Moving up three directory levels from: $($PWD.Path)"
     }
 
     process {
@@ -34,18 +34,18 @@ function Set-LocationParent3 {
         for ($i = 1; $i -le 3; $i++) {
 
             # check if we can move up before attempting
-            $parent = Split-Path -Path (Get-Location) -Parent
+            $parent = Microsoft.PowerShell.Management\Split-Path -Path (Microsoft.PowerShell.Management\Get-Location) -Parent
             if ($null -eq $parent) {
-                Write-Verbose "Cannot go up further - at root level"
+                Microsoft.PowerShell.Utility\Write-Verbose "Cannot go up further - at root level"
                 break
             }
 
             # prepare target description for ShouldProcess
-            $target = "from '$(Get-Location)' to '$parent' (level $i of 3)"
+            $target = "from '$(Microsoft.PowerShell.Management\Get-Location)' to '$parent' (level $i of 3)"
 
             # only navigate if ShouldProcess returns true
             if ($PSCmdlet.ShouldProcess($target, "Change location")) {
-                Set-Location -Path $parent
+                Microsoft.PowerShell.Management\Set-Location -Path $parent
             }
             else {
                 # exit the loop if user declined
@@ -54,15 +54,15 @@ function Set-LocationParent3 {
         }
 
         # show contents of the new current directory if not in WhatIf mode
-        if (-not $WhatIfPreference -and (Get-Location).Provider.Name -eq 'FileSystem') {
-            Get-ChildItem
+        if (-not $WhatIfPreference -and (Microsoft.PowerShell.Management\Get-Location).Provider.Name -eq 'FileSystem') {
+            Microsoft.PowerShell.Management\Get-ChildItem
         }
     }
 
     end {
 
         # output verbose information about final directory location
-        Write-Verbose "Arrived at new location: $($PWD.Path)"
+        Microsoft.PowerShell.Utility\Write-Verbose "Arrived at new location: $($PWD.Path)"
     }
 }
 ################################################################################

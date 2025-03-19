@@ -25,16 +25,16 @@ function Get-SpotifyActiveDevice {
     begin {
 
         # retrieve the spotify api authentication token for subsequent requests
-        Write-Verbose "Retrieving Spotify API authentication token"
-        $apiToken = Get-SpotifyApiToken
+        Microsoft.PowerShell.Utility\Write-Verbose "Retrieving Spotify API authentication token"
+        $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
     process {
 
         # get all devices and filter only active ones
-        Write-Verbose "Fetching active Spotify devices"
+        Microsoft.PowerShell.Utility\Write-Verbose "Fetching active Spotify devices"
         [GenXdev.Helpers.Spotify]::GetDevices($apiToken) |
-        Where-Object {
+        Microsoft.PowerShell.Core\Where-Object {
             $PSItem.IsActive
         }
     }

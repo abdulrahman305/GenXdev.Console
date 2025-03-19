@@ -32,9 +32,9 @@ function Set-SpotifyApiToken {
 
         # define the storage location for the api token
         $dir = "$PSScriptRoot\..\..\..\..\GenXdev.Local"
-        $path = Expand-Path "$dir\Spotify_Auth.json"
+        $path = GenXdev.FileSystem\Expand-Path "$dir\Spotify_Auth.json"
 
-        Write-Verbose "Storing Spotify API token in: $path"
+        Microsoft.PowerShell.Utility\Write-Verbose "Storing Spotify API token in: $path"
     }
 
     process {
@@ -42,7 +42,7 @@ function Set-SpotifyApiToken {
         # ensure the storage directory exists
         if (![IO.Directory]::Exists($dir)) {
 
-            Write-Verbose "Creating directory: $dir"
+            Microsoft.PowerShell.Utility\Write-Verbose "Creating directory: $dir"
 
             if ($PSCmdlet.ShouldProcess($dir, "Create Directory")) {
                 $null = [IO.Directory]::CreateDirectory($dir)
@@ -50,7 +50,7 @@ function Set-SpotifyApiToken {
         }
 
         # save the trimmed api token to the json file
-        Write-Verbose "Writing API token to file"
+        Microsoft.PowerShell.Utility\Write-Verbose "Writing API token to file"
 
         if ($PSCmdlet.ShouldProcess($path, "Save Spotify API Token")) {
             [IO.File]::WriteAllText($path, $ApiToken.Trim("`r`n`t "))

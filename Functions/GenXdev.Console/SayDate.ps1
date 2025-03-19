@@ -24,14 +24,14 @@ function SayDate {
         $dateText = "It is " + [DateTime]::Now.ToString("dddd, MMMM d yyyy")
 
         # log the text that will be spoken
-        Write-Verbose "Preparing to speak: $dateText"
+        Microsoft.PowerShell.Utility\Write-Verbose "Preparing to speak: $dateText"
     }
 
     process {
 
         # use text-to-speech engine to announce the date
         # suppress output by assigning to $null
-        $null = Start-TextToSpeech $dateText
+        $null = GenXdev.Console\Start-TextToSpeech $dateText
     }
 
     end {

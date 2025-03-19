@@ -56,13 +56,20 @@ function Get-SpotifyLyrics {
     )
 
     begin {
+
+        if (@(Microsoft.PowerShell.Core\Get-Module GenXdev.Queries -ErrorAction SilentlyContinue).Count -eq 0) {
+
+            $null = PowerShellGet\Install-Module GenXdev.Queries -SkipPublisherCheck
+            $null = Microsoft.PowerShell.Core\Import-Module GenXdev.Queries
+        }
+
         # handle track search if queries provided
         if ($null -ne $Queries) {
 
-            Write-Verbose "Searching Spotify for tracks matching query: $Queries"
+            Microsoft.PowerShell.Utility\Write-Verbose "Searching Spotify for tracks matching query: $Queries"
 
             # search spotify and build list of track names with artists
-            $results = Search-Spotify -SearchType Track -Queries $Queries
+            $results = GenXdev.Console\Search-Spotify -SearchType Track -Queries $Queries
             $new = [System.Collections.Generic.List[string]]::new()
 
             foreach ($track in $results.Tracks.Items) {
@@ -71,15 +78,15 @@ function Get-SpotifyLyrics {
 
             $Queries = $new
             if ($new.Count -eq 0) {
-                Write-Warning "No tracks found matching search terms"
+                Microsoft.PowerShell.Utility\Write-Warning "No tracks found matching search terms"
             }
         }
         else {
             # use track ID if provided
             if ([String]::IsNullOrWhiteSpace($TrackId) -eq $false) {
 
-                Write-Verbose "Looking up track by ID: $TrackId"
-                $track = Get-SpotifyTrackById -TrackId $TrackId
+                Microsoft.PowerShell.Utility\Write-Verbose "Looking up track by ID: $TrackId"
+                $track = GenXdev.Console\Get-SpotifyTrackById -TrackId $TrackId
 
                 if ($null -ne $track) {
                     $Queries = @("$($track.Artists[0].Name) - $($track.Name)")
@@ -87,8 +94,8 @@ function Get-SpotifyLyrics {
             }
             else {
                 # get currently playing track
-                Write-Verbose "Getting currently playing track"
-                $current = Get-SpotifyCurrentlyPlaying
+                Microsoft.PowerShell.Utility\Write-Verbose "Getting currently playing track"
+                $current = GenXdev.Console\Get-SpotifyCurrentlyPlaying
 
                 if ($null -ne $current) {
                     $Queries = @("$($current.Item.Artists[0].Name) - " +
@@ -100,13 +107,19 @@ function Get-SpotifyLyrics {
         if ($null -eq $Queries) {
             throw "No song playing and no search terms provided"
         }
+
+         if (@(Microsoft.PowerShell.Core\Get-Module GenXdev.Queries -ErrorAction SilentlyContinue).Count -eq 0) {
+
+                $null = PowerShellGet\Install-Module GenXdev.Queries -SkipPublisherCheck
+                $null = Microsoft.PowerShell.Core\Import-Module GenXdev.Queries
+            }
     }
 
     process {
 
         foreach ($query in $Queries) {
 
-            Write-Verbose "Searching Musixmatch for lyrics: $query"
+            Microsoft.PowerShell.Utility\Write-Verbose "Searching Musixmatch for lyrics: $query"
 
             # encode query for URL
             $q = [Uri]::EscapeUriString($query)
@@ -114,28 +127,28 @@ function Get-SpotifyLyrics {
 
             # attempt to get search results page
             try {
-                $html = Invoke-WebRequest `
+                $html = Microsoft.PowerShell.Utility\Invoke-WebRequest `
                     -Uri "https://www.musixmatch.com/search/$q" `
                     -ErrorAction SilentlyContinue
             }
             catch {
-                Write-Warning "No results found for '$query'"
-                Open-GoogleQuery "lyrics $query"
+                Microsoft.PowerShell.Utility\Write-Warning "No results found for '$query'"
+                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
                 continue
             }
 
             # extract best match URL from search results
             [int] $idx = $html.IndexOf("Best Result")
             if ($idx -lt 0) {
-                Write-Warning "No results found for '$query'"
-                Open-GoogleQuery "lyrics $query"
+                Microsoft.PowerShell.Utility\Write-Warning "No results found for '$query'"
+                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
                 continue
             }
 
             $idx = $html.IndexOf('<a class="title" href="', $idx)
             if ($idx -lt 0) {
-                Write-Warning "No results found for '$query'"
-                Open-GoogleQuery "lyrics $query"
+                Microsoft.PowerShell.Utility\Write-Warning "No results found for '$query'"
+                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
                 continue
             }
 
@@ -143,29 +156,29 @@ function Get-SpotifyLyrics {
             [int] $idx2 = $html.IndexOf('"', $idx)
 
             if ($idx2 -lt 0) {
-                Write-Warning "No results found for '$query'"
-                Open-GoogleQuery "lyrics $query"
+                Microsoft.PowerShell.Utility\Write-Warning "No results found for '$query'"
+                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
                 continue
             }
 
             # get lyrics page
             $url = "https://www.musixmatch.com$($html.Substring($idx, $idx2-$idx))"
-            Write-Verbose "Fetching lyrics from: $url"
+            Microsoft.PowerShell.Utility\Write-Verbose "Fetching lyrics from: $url"
 
             try {
-                $html = Invoke-WebRequest -Uri $url -ErrorAction SilentlyContinue
+                $html = Microsoft.PowerShell.Utility\Invoke-WebRequest -Uri $url -ErrorAction SilentlyContinue
             }
             catch {
-                Write-Warning "Failed to get lyrics for '$query'"
-                Open-GoogleQuery "lyrics $query"
+                Microsoft.PowerShell.Utility\Write-Warning "Failed to get lyrics for '$query'"
+                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
                 continue
             }
 
             # extract lyrics from page
             $idx = $html.IndexOf('"body":"')
             if ($idx -lt 0) {
-                Write-Warning "No lyrics found for '$query'"
-                Open-GoogleQuery "lyrics $query"
+                Microsoft.PowerShell.Utility\Write-Warning "No lyrics found for '$query'"
+                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
                 continue
             }
 
@@ -173,18 +186,18 @@ function Get-SpotifyLyrics {
             $idx2 = $html.IndexOf('","language":', $idx)
 
             if ($idx2 -lt 0) {
-                Write-Warning "No lyrics found for '$query'"
-                Open-GoogleQuery "lyrics $query"
+                Microsoft.PowerShell.Utility\Write-Warning "No lyrics found for '$query'"
+                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
                 continue
             }
 
             # parse and clean up lyrics
             $result = "`"$($html.Substring($idx, $idx2-$idx))`"" |
-            ConvertFrom-Json
+            Microsoft.PowerShell.Utility\ConvertFrom-Json
 
             if ([String]::IsNullOrWhiteSpace($result)) {
-                Write-Warning "Empty lyrics found for '$query'"
-                Open-GoogleQuery "lyrics $query"
+                Microsoft.PowerShell.Utility\Write-Warning "Empty lyrics found for '$query'"
+                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
             }
 
             $result.Replace("???", "'")

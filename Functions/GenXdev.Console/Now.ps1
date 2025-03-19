@@ -25,7 +25,7 @@ function Now {
     begin {
 
         # log function start with verbose output
-        Write-Verbose "Starting Now function to retrieve system date and time"
+        Microsoft.PowerShell.Utility\Write-Verbose "Starting Now function to retrieve system date and time"
     }
 
     process {

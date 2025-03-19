@@ -23,7 +23,7 @@ function Set-SpotifyPause {
     begin {
 
         # output verbose information about the action
-        Write-Verbose "Attempting to pause/resume Spotify playback"
+        Microsoft.PowerShell.Utility\Write-Verbose "Attempting to pause/resume Spotify playback"
     }
 
     process {
@@ -32,7 +32,7 @@ function Set-SpotifyPause {
         if ($PSCmdlet.ShouldProcess("Spotify", "Pause/Resume playback")) {
 
             # call spotify api to toggle pause state using the current auth token
-            [GenXdev.Helpers.Spotify]::Pause((Get-SpotifyApiToken))
+            [GenXdev.Helpers.Spotify]::Pause((GenXdev.Console\Get-SpotifyApiToken))
         }
     }
 

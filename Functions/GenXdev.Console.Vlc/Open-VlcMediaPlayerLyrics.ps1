@@ -389,11 +389,17 @@ function Open-VlcMediaPlayerLyrics {
     }
 
     end {
-        $w = Get-Window -ProcessName vlc
+        $w = GenXdev.Windows\Get-Window -ProcessName vlc
         if ($null -ne $w) {
 
+            if (@(Microsoft.PowerShell.Core\Get-Module GenXdev.Queries -ErrorAction SilentlyContinue).Count -eq 0) {
+
+                $null = PowerShellGet\Install-Module GenXdev.Queries -SkipPublisherCheck
+                $null = Microsoft.PowerShell.Core\Import-Module GenXdev.Queries
+            }
+
             $invocationArguments = GenXdev.Helpers\Copy-IdenticalParamValues `
-                -FunctionName GenXdev.Queries\Open-GoogleQuery `
+                -FunctionName "GenXdev.Queries\Open-GoogleQuery" `
                 -BoundParameters $PSBoundParameters
 
             # if queries were collected from pipeline, use them, otherwise use window title
@@ -404,7 +410,7 @@ function Open-VlcMediaPlayerLyrics {
                 $invocationArguments.Queries = @("lyrics " + $w.Title)
             }
 
-            $null = Open-GoogleQuery @invocationArguments
+            $null = GenXdev.Queries\Open-GoogleQuery @invocationArguments
         }
     }
 }

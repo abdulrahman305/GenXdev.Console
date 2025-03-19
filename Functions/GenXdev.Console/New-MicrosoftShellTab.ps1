@@ -44,29 +44,29 @@ function New-MicrosoftShellTab {
     begin {
 
         # activate the powershell window to enable keyboard input processing
-        Write-Verbose "Bringing PowerShell window to foreground"
-        $null = (Get-PowershellMainWindow).SetForeground()
+        Microsoft.PowerShell.Utility\Write-Verbose "Bringing PowerShell window to foreground"
+        $null = (GenXdev.Windows\Get-PowershellMainWindow).SetForeground()
 
         try {
             # initialize windows script automation object for keyboard simulation
-            Write-Verbose "Creating WScript.Shell for sending keystrokes"
-            $helper = New-Object -ComObject WScript.Shell
+            Microsoft.PowerShell.Utility\Write-Verbose "Creating WScript.Shell for sending keystrokes"
+            $helper = Microsoft.PowerShell.Utility\New-Object -ComObject WScript.Shell
 
             # check if we should proceed with creating a new tab
             if ($PSCmdlet.ShouldProcess("Windows Terminal", "Create new tab")) {
                 # simulate ctrl+shift+t keystroke to trigger new tab creation
-                Write-Verbose "Sending Ctrl+Shift+T to create new tab"
+                Microsoft.PowerShell.Utility\Write-Verbose "Sending Ctrl+Shift+T to create new tab"
                 $null = $helper.sendKeys("^+t")
 
                 # handle tab closure if not explicitly prevented
                 if ($DontCloseThisTab -ne $true) {
 
-                    Write-Verbose "Waiting 3 seconds before closing current tab"
-                    Start-Sleep 3
+                    Microsoft.PowerShell.Utility\Write-Verbose "Waiting 3 seconds before closing current tab"
+                    Microsoft.PowerShell.Utility\Start-Sleep 3
 
                     if ($PSCmdlet.ShouldProcess("Current Windows Terminal tab",
                             "Close tab")) {
-                        Write-Verbose "Exiting current tab"
+                        Microsoft.PowerShell.Utility\Write-Verbose "Exiting current tab"
                         exit
                     }
                 }

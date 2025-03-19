@@ -25,19 +25,19 @@ function Set-SpotifyNext {
 
     begin {
 
-        Write-Verbose "Starting Set-SpotifyNext operation"
+        Microsoft.PowerShell.Utility\Write-Verbose "Starting Set-SpotifyNext operation"
     }
 
     process {
 
         # retrieve the current spotify api token
-        Write-Verbose "Retrieving Spotify API token"
-        $token = Get-SpotifyApiToken
+        Microsoft.PowerShell.Utility\Write-Verbose "Retrieving Spotify API token"
+        $token = GenXdev.Console\Get-SpotifyApiToken
 
         # skip to the next track using the spotify api
         if ($PSCmdlet.ShouldProcess("Spotify", "Skip to next track")) {
 
-            Write-Verbose "Sending next track command to Spotify"
+            Microsoft.PowerShell.Utility\Write-Verbose "Sending next track command to Spotify"
             [GenXdev.Helpers.Spotify]::Next($token)
         }
     }

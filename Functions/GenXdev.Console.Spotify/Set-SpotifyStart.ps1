@@ -23,13 +23,13 @@ function Set-SpotifyStart {
     begin {
 
         # output verbose information about starting playback
-        Write-Verbose "Initiating Spotify playback on active device"
+        Microsoft.PowerShell.Utility\Write-Verbose "Initiating Spotify playback on active device"
     }
 
     process {
 
         # retrieve the current spotify api token for authentication
-        $token = Get-SpotifyApiToken
+        $token = GenXdev.Console\Get-SpotifyApiToken
 
         # check if we should proceed with starting playback
         if ($PSCmdlet.ShouldProcess("active Spotify device", "Start playback")) {

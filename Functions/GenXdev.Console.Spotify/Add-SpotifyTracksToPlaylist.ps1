@@ -60,15 +60,15 @@ function Add-SpotifyTracksToPlaylist {
 
     begin {
         # get the spotify api authentication token
-        $apiToken = Get-SpotifyApiToken
-        Write-Verbose "Retrieved Spotify API token"
+        $apiToken = GenXdev.Console\Get-SpotifyApiToken
+        Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API token"
 
         # if playlist names were provided, convert them to playlist ids
         if ($PlaylistName.Length -gt 0) {
 
-            Write-Verbose "Converting playlist names to IDs"
-            $PlaylistId = @(Get-SpotifyPlaylistIdsByName -PlaylistName @($PlaylistName))
-            Write-Verbose "Found $($PlaylistId.Length) matching playlists"
+            Microsoft.PowerShell.Utility\Write-Verbose "Converting playlist names to IDs"
+            $PlaylistId = @(GenXdev.Console\Get-SpotifyPlaylistIdsByName -PlaylistName @($PlaylistName))
+            Microsoft.PowerShell.Utility\Write-Verbose "Found $($PlaylistId.Length) matching playlists"
         }
     }
 
@@ -77,7 +77,7 @@ function Add-SpotifyTracksToPlaylist {
         # add provided tracks to each specified playlist
         foreach ($Id in $PlaylistId) {
 
-            Write-Verbose "Adding $($Uri.Length) tracks to playlist $Id"
+            Microsoft.PowerShell.Utility\Write-Verbose "Adding $($Uri.Length) tracks to playlist $Id"
             [GenXdev.Helpers.Spotify]::AddToPlaylist($apiToken, $Id, $Uri)
         }
     }

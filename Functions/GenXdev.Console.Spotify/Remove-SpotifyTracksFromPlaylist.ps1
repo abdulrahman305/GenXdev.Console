@@ -60,16 +60,16 @@ function Remove-SpotifyTracksFromPlaylist {
 
     begin {
         # get authentication token for spotify api
-        $apiToken = Get-SpotifyApiToken
+        $apiToken = GenXdev.Console\Get-SpotifyApiToken
 
-        Write-Verbose "Retrieved Spotify API token"
+        Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API token"
 
         # if playlist names were provided, convert them to playlist ids
         if ($PlaylistName.Length -gt 0) {
 
-            Write-Verbose "Converting playlist names to IDs"
-            $PlaylistId = @(Get-SpotifyPlaylistIdsByName -PlaylistName $PlaylistName)
-            Write-Verbose "Found $($PlaylistId.Count) matching playlists"
+            Microsoft.PowerShell.Utility\Write-Verbose "Converting playlist names to IDs"
+            $PlaylistId = @(GenXdev.Console\Get-SpotifyPlaylistIdsByName -PlaylistName $PlaylistName)
+            Microsoft.PowerShell.Utility\Write-Verbose "Found $($PlaylistId.Count) matching playlists"
         }
     }
 
@@ -78,12 +78,12 @@ function Remove-SpotifyTracksFromPlaylist {
         # process each playlist id and remove the specified tracks
         foreach ($id in $PlaylistId) {
 
-            Write-Verbose "Preparing to remove tracks from playlist with ID: $id"
+            Microsoft.PowerShell.Utility\Write-Verbose "Preparing to remove tracks from playlist with ID: $id"
 
             # use shouldprocess to get confirmation before removing tracks
             if ($PSCmdlet.ShouldProcess("Playlist ID: $id", "Remove tracks")) {
 
-                Write-Verbose "Removing tracks from playlist with ID: $id"
+                Microsoft.PowerShell.Utility\Write-Verbose "Removing tracks from playlist with ID: $id"
                 [GenXdev.Helpers.Spotify]::RemoveFromPlaylist($apiToken, $id, $Uri)
             }
         }

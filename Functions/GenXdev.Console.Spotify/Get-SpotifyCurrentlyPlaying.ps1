@@ -31,14 +31,14 @@ function Get-SpotifyCurrentlyPlaying {
     begin {
 
         # retrieve the current spotify api authentication token
-        Write-Verbose "Getting Spotify API authentication token"
-        $apiToken = Get-SpotifyApiToken
+        Microsoft.PowerShell.Utility\Write-Verbose "Getting Spotify API authentication token"
+        $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
     process {
 
         # query the spotify api for currently playing track information
-        Write-Verbose "Querying Spotify API for currently playing track"
+        Microsoft.PowerShell.Utility\Write-Verbose "Querying Spotify API for currently playing track"
         [GenXdev.Helpers.Spotify]::GetCurrentlyPlaying($apiToken)
     }
 

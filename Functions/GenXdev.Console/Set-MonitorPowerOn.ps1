@@ -24,7 +24,7 @@ function Set-MonitorPowerOn {
     begin {
 
         # inform user that we're attempting to wake the monitor
-        Write-Verbose "Attempting to wake monitor from sleep/power off state"
+        Microsoft.PowerShell.Utility\Write-Verbose "Attempting to wake monitor from sleep/power off state"
     }
 
     process {

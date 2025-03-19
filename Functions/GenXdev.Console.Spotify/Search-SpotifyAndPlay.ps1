@@ -56,21 +56,21 @@ function Search-SpotifyAndPlay {
     )
 
     begin {
-        Write-Verbose "Search type bit mask: $SearchType"
+        Microsoft.PowerShell.Utility\Write-Verbose "Search type bit mask: $SearchType"
     }
 
     process {
 
         foreach ($Query in $Queries) {
 
-            Write-Verbose "Searching Spotify for: $Query"
+            Microsoft.PowerShell.Utility\Write-Verbose "Searching Spotify for: $Query"
 
             # search spotify and play the first matching item
             [GenXdev.Helpers.Spotify]::SearchAndPlay(
-                (Get-SpotifyApiToken),
+                (GenXdev.Console\Get-SpotifyApiToken),
                 $Query,
                 $SearchType) |
-            ForEach-Object {
+            Microsoft.PowerShell.Core\ForEach-Object {
                 if ($null -ne $PSItem) {
                     $PSItem
                 }

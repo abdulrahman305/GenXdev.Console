@@ -594,7 +594,7 @@ function Open-MediaFile {
 
         $invocationParams.PassThru = $true
 
-        $files = GenXdev.FileSystem\Find-Item @invocationParams | Sort-Object -Property FullName
+        $files = GenXdev.FileSystem\Find-Item @invocationParams | Microsoft.PowerShell.Utility\Sort-Object -Property FullName
 
         # determine which file types to include based on parameters
         $validExtensions = $OnlyVideos ? $videoFiles : (
@@ -617,7 +617,7 @@ function Open-MediaFile {
         }
 
         # filter files by extension and keywords
-        $files = $files | Where-Object {
+        $files = $files | Microsoft.PowerShell.Core\Where-Object {
             try {
                 if (-not ($validExtensions -contains $PSItem.Extension.ToLower())) {
                     return $false;
@@ -626,7 +626,7 @@ function Open-MediaFile {
                 if ($Keywords.Length -gt 0) {
                     $srtSearchMask = [io.Path]::Combine([IO.Path]::GetDirectoryName($PSItem.FullName), [IO.Path]::GetFileNameWithoutExtension($PSItem.FullName) + "*.srt");
 
-                    Get-ChildItem $srtSearchMask -File -ErrorAction SilentlyContinue | ForEach-Object {
+                    Microsoft.PowerShell.Management\Get-ChildItem $srtSearchMask -File -ErrorAction SilentlyContinue | Microsoft.PowerShell.Core\ForEach-Object {
                         $srt = [IO.File]::ReadAllText($PSItem.FullName);
 
                         foreach ($keyword in $Keywords) {
@@ -657,7 +657,7 @@ function Open-MediaFile {
         }
 
         if ($files.Length -eq 0) {
-            Write-Host "No media files found in the specified directory."
+            Microsoft.PowerShell.Utility\Write-Host "No media files found in the specified directory."
             return
         }
 
@@ -667,7 +667,7 @@ function Open-MediaFile {
             ".m3u"
         )
 
-        Write-Verbose "Creating playlist at: $playlistPath"
+        Microsoft.PowerShell.Utility\Write-Verbose "Creating playlist at: $playlistPath"
 
         # generate m3u playlist content
         $m3uContent = "#EXTM3U`r`n"
@@ -676,27 +676,27 @@ function Open-MediaFile {
         }
 
         # save playlist file
-        $m3uContent | Out-File -FilePath $playlistPath -Encoding utf8 -Force
+        $m3uContent | Microsoft.PowerShell.Utility\Out-File -FilePath $playlistPath -Encoding utf8 -Force
 
         # launch VLC with playlist
-        Write-Verbose "Starting VLC player"
-        Get-Process vlc -ErrorAction SilentlyContinue | Stop-Process -Force
+        Microsoft.PowerShell.Utility\Write-Verbose "Starting VLC player"
+        Microsoft.PowerShell.Management\Get-Process vlc -ErrorAction SilentlyContinue | Microsoft.PowerShell.Management\Stop-Process -Force
 
         $invocationParams = GenXdev.Helpers\Copy-IdenticalParamValues `
-            -FunctionName "Open-VlcMediaPlayer" `
+            -FunctionName "GenXdev.Console\Open-VlcMediaPlayer" `
             -BoundParameters $PSBoundParameters
 
         $invocationParams.Path = $playlistPath
         $invocationParams.PassThru = $true
         $invocationParams.KeysToSend = $KeysToSend
 
-        $vlcWindowHelper = Open-VlcMediaPlayer @invocationParams
+        $vlcWindowHelper = GenXdev.Console\Open-VlcMediaPlayer @invocationParams
     }
 
     end {
         if ($PassThru) {
 
-            Write-Output $vlcWindowHelper
+            Microsoft.PowerShell.Utility\Write-Output $vlcWindowHelper
         }
     }
 }

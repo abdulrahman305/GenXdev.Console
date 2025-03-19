@@ -37,7 +37,7 @@ function Remove-SpotifyTracksFromLiked {
 
     begin {
         # retrieve the spotify api access token for authentication
-        $apiToken = Get-SpotifyApiToken
+        $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
     process {
@@ -46,27 +46,27 @@ function Remove-SpotifyTracksFromLiked {
         if ($TrackId.Length -eq 0) {
 
             # get information about the currently playing track
-            $CurrentlyPlaying = Get-SpotifyCurrentlyPlaying
+            $CurrentlyPlaying = GenXdev.Console\Get-SpotifyCurrentlyPlaying
 
             # verify there is a track currently playing
             if ($null -eq $CurrentlyPlaying -or
                 $CurrentlyPlaying.CurrentlyPlayingType -ne "track") {
 
-                Write-Warning "There are no tracks playing at this time"
+                Microsoft.PowerShell.Utility\Write-Warning "There are no tracks playing at this time"
                 return
             }
 
-            Write-Verbose "Removing currently playing track from Liked Songs"
+            Microsoft.PowerShell.Utility\Write-Verbose "Removing currently playing track from Liked Songs"
 
             # recursively call this function with the current track's id
-            Remove-SpotifyTracksFromLiked -TrackId ($CurrentlyPlaying.Item.Id)
+            GenXdev.Console\Remove-SpotifyTracksFromLiked -TrackId ($CurrentlyPlaying.Item.Id)
 
             # return the track that was removed
             $CurrentlyPlaying.Item
         }
         else {
 
-            Write-Verbose "Removing $($TrackId.Count) track(s) from Liked Songs"
+            Microsoft.PowerShell.Utility\Write-Verbose "Removing $($TrackId.Count) track(s) from Liked Songs"
 
             # use shouldprocess to confirm the operation
             if ($PSCmdlet.ShouldProcess(

@@ -25,13 +25,13 @@ function Set-SpotifyPrevious {
     begin {
 
         # output information about the operation
-        Write-Verbose "Attempting to skip to previous track in Spotify"
+        Microsoft.PowerShell.Utility\Write-Verbose "Attempting to skip to previous track in Spotify"
     }
 
     process {
 
         # retrieve the current spotify api authentication token
-        $token = Get-SpotifyApiToken
+        $token = GenXdev.Console\Get-SpotifyApiToken
 
         # check if should process is supported and confirmed
         if ($PSCmdlet.ShouldProcess("Spotify", "Skip to previous track")) {

@@ -24,13 +24,13 @@ function Set-SpotifyRepeatSong {
     begin {
 
         # inform user that we're about to enable repeat mode
-        Write-Verbose "Attempting to enable song repeat mode in Spotify..."
+        Microsoft.PowerShell.Utility\Write-Verbose "Attempting to enable song repeat mode in Spotify..."
     }
 
     process {
 
         # get the current spotify api authentication token
-        $token = Get-SpotifyApiToken
+        $token = GenXdev.Console\Get-SpotifyApiToken
 
         # only proceed if ShouldProcess returns true
         if ($PSCmdlet.ShouldProcess("Spotify", "Set repeat mode to 'track'")) {
@@ -43,7 +43,7 @@ function Set-SpotifyRepeatSong {
     end {
 
         # inform user that the operation completed
-        Write-Verbose "Spotify repeat mode has been set to 'track'"
+        Microsoft.PowerShell.Utility\Write-Verbose "Spotify repeat mode has been set to 'track'"
     }
 }
 ################################################################################

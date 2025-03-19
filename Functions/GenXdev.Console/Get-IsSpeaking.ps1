@@ -24,7 +24,7 @@ function Get-IsSpeaking {
 
     begin {
 
-        Write-Verbose "Checking speech synthesizer states..."
+        Microsoft.PowerShell.Utility\Write-Verbose "Checking speech synthesizer states..."
     }
 
     process {
@@ -38,7 +38,7 @@ function Get-IsSpeaking {
         }
         catch {
             # return false if unable to check speech state
-            Write-Verbose "Failed to check speech state: $_"
+            Microsoft.PowerShell.Utility\Write-Verbose "Failed to check speech state: $_"
             return $false
         }
     }

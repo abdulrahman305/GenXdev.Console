@@ -49,13 +49,13 @@ function Get-SpotifyUserPlaylists {
 
     begin {
         # get spotify api authentication token
-        $apiToken = Get-SpotifyApiToken
+        $apiToken = GenXdev.Console\Get-SpotifyApiToken
 
         # determine cache file location
         $filePath = GenXdev.FileSystem\Expand-Path `
             "$PSScriptRoot\..\..\..\..\GenXdev.Local\Spotify.Playlists.json"
 
-        Write-Verbose "Cache file: $filePath"
+        Microsoft.PowerShell.Utility\Write-Verbose "Cache file: $filePath"
     }
 
     process {
@@ -69,7 +69,7 @@ function Get-SpotifyUserPlaylists {
             # check if global cache is empty
             if ($null -eq $Script:SpotifyPlaylistCache) {
 
-                Write-Verbose "Global cache empty, checking file cache"
+                Microsoft.PowerShell.Utility\Write-Verbose "Global cache empty, checking file cache"
 
                 # create file info object for cache file
                 $playlistCache = [System.IO.FileInfo]::new($filePath)
@@ -79,14 +79,14 @@ function Get-SpotifyUserPlaylists {
                     ([datetime]::Now - $playlistCache.LastWriteTime -lt `
                             [System.TimeSpan]::FromHours(12))) {
 
-                    Write-Verbose "Loading playlists from cache file"
+                    Microsoft.PowerShell.Utility\Write-Verbose "Loading playlists from cache file"
 
                     # load cached data from file
                     $SpotifyPlaylistCache = $playlistCache.OpenText().ReadToEnd() `
-                    | ConvertFrom-Json -Depth 100
+                    | Microsoft.PowerShell.Utility\ConvertFrom-Json -Depth 100
 
                     # store in global cache
-                    Set-Variable -Name SpotifyPlaylistCache `
+                    Microsoft.PowerShell.Utility\Set-Variable -Name SpotifyPlaylistCache `
                         -Value $SpotifyPlaylistCache -Scope Global -Force
                 }
             }
@@ -96,24 +96,24 @@ function Get-SpotifyUserPlaylists {
         if (($Force -eq $true) -or ($null -eq $Script:SpotifyPlaylistCache) -or `
             ($Script:SpotifyPlaylistCache.Count -eq 0)) {
 
-            Write-Verbose "Retrieving fresh playlist data from Spotify API"
+            Microsoft.PowerShell.Utility\Write-Verbose "Retrieving fresh playlist data from Spotify API"
 
             # get playlists from spotify api
             $SpotifyPlaylistCache = `
                 [GenXdev.Helpers.Spotify]::GetUserPlaylists($apiToken, "*")
 
             # update global cache
-            Set-Variable -Name SpotifyPlaylistCache `
+            Microsoft.PowerShell.Utility\Set-Variable -Name SpotifyPlaylistCache `
                 -Value $SpotifyPlaylistCache -Scope Global -Force
 
             # save to cache file
-            $SpotifyPlaylistCache | ConvertTo-Json -Depth 100 `
-            | Out-File $filePath -Force
+            $SpotifyPlaylistCache | Microsoft.PowerShell.Utility\ConvertTo-Json -Depth 100 `
+            | Microsoft.PowerShell.Utility\Out-File $filePath -Force
         }
 
         # filter and return playlists matching pattern
         $Script:SpotifyPlaylistCache `
-        | ForEach-Object -ErrorAction SilentlyContinue {
+        | Microsoft.PowerShell.Core\ForEach-Object -ErrorAction SilentlyContinue {
 
             if ($PSItem.Name -like $Filter) {
 

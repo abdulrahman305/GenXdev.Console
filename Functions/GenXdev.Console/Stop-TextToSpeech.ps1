@@ -29,7 +29,7 @@ function Stop-TextToSpeech {
 
     begin {
 
-        Write-Verbose "Initiating speech cancellation request"
+        Microsoft.PowerShell.Utility\Write-Verbose "Initiating speech cancellation request"
     }
 
     process {
@@ -42,12 +42,12 @@ function Stop-TextToSpeech {
                 # cancel all pending customized speech operations
                 $null = [GenXdev.Helpers.Misc]::SpeechCustomized.SpeakAsyncCancelAll()
 
-                Write-Verbose "Successfully cancelled all speech operations"
+                Microsoft.PowerShell.Utility\Write-Verbose "Successfully cancelled all speech operations"
             }
         }
         catch {
             # silently handle any speech cancellation errors
-            Write-Verbose "Error occurred while attempting to cancel speech"
+            Microsoft.PowerShell.Utility\Write-Verbose "Error occurred while attempting to cancel speech"
         }
     }
 

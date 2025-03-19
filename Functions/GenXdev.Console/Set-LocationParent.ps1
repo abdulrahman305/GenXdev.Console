@@ -22,30 +22,30 @@ function Set-LocationParent {
 
     begin {
 
-        Write-Verbose "Changing location to parent directory"
+        Microsoft.PowerShell.Utility\Write-Verbose "Changing location to parent directory"
     }
 
     process {
 
         # check if we can move up before attempting
-        $parent = Split-Path -Path (Get-Location) -Parent
+        $parent = Microsoft.PowerShell.Management\Split-Path -Path (Microsoft.PowerShell.Management\Get-Location) -Parent
         if ($null -ne $parent) {
 
             # prepare target description for ShouldProcess
-            $target = "from '$(Get-Location)' to '$parent'"
+            $target = "from '$(Microsoft.PowerShell.Management\Get-Location)' to '$parent'"
 
             # only navigate if ShouldProcess returns true
             if ($PSCmdlet.ShouldProcess($target, "Change location")) {
                 # navigate up one directory level
-                Set-Location ..
+                Microsoft.PowerShell.Management\Set-Location ..
             }
         }
         else {
-            Write-Verbose "Cannot go up further - at root level"
+            Microsoft.PowerShell.Utility\Write-Verbose "Cannot go up further - at root level"
         }
 
         # show contents of the new current directory
-        Get-ChildItem
+        Microsoft.PowerShell.Management\Get-ChildItem
     }
 
     end {

@@ -42,8 +42,8 @@ function Add-SpotifyTracksToLiked {
 
     begin {
         # retrieve spotify api authentication token for subsequent requests
-        $apiToken = Get-SpotifyApiToken
-        Write-Verbose "Retrieved Spotify API token"
+        $apiToken = GenXdev.Console\Get-SpotifyApiToken
+        Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API token"
     }
 
     process {
@@ -51,19 +51,19 @@ function Add-SpotifyTracksToLiked {
         if ($TrackId.Length -eq 0) {
 
             # if no track specified, get the currently playing track
-            Write-Verbose "No track ID provided, checking currently playing track"
-            $CurrentlyPlaying = Get-SpotifyCurrentlyPlaying
+            Microsoft.PowerShell.Utility\Write-Verbose "No track ID provided, checking currently playing track"
+            $CurrentlyPlaying = GenXdev.Console\Get-SpotifyCurrentlyPlaying
 
             if ($null -eq $CurrentlyPlaying -or
                 $CurrentlyPlaying.CurrentlyPlayingType -ne "track") {
 
-                Write-Warning "There are no tracks playing at this time"
+                Microsoft.PowerShell.Utility\Write-Warning "There are no tracks playing at this time"
                 return
             }
 
             # add the currently playing track to liked songs
-            Write-Verbose "Adding currently playing track to liked songs"
-            Add-SpotifyTracksToLiked -TrackId ($CurrentlyPlaying.Item.Id)
+            Microsoft.PowerShell.Utility\Write-Verbose "Adding currently playing track to liked songs"
+            GenXdev.Console\Add-SpotifyTracksToLiked -TrackId ($CurrentlyPlaying.Item.Id)
 
             # return the track that was liked
             $CurrentlyPlaying.Item
@@ -71,7 +71,7 @@ function Add-SpotifyTracksToLiked {
         else {
 
             # add the specified tracks to liked songs
-            Write-Verbose "Adding $($TrackId.Length) track(s) to liked songs"
+            Microsoft.PowerShell.Utility\Write-Verbose "Adding $($TrackId.Length) track(s) to liked songs"
             [GenXdev.Helpers.Spotify]::AddToLiked($apiToken, $TrackId)
         }
     }

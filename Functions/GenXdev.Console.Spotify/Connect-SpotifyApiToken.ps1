@@ -31,7 +31,7 @@ function Connect-SpotifyApiToken {
     begin {
 
         # inform user that authentication flow is starting
-        Write-Verbose "Starting Spotify OAuth authentication flow on port 5642"
+        Microsoft.PowerShell.Utility\Write-Verbose "Starting Spotify OAuth authentication flow on port 5642"
     }
 
     process {
@@ -40,7 +40,7 @@ function Connect-SpotifyApiToken {
         $url = [GenXdev.Helpers.Spotify]::RequestAuthenticationUri(5642)
 
         # launch minimal browser window for authentication
-        [System.Diagnostics.Process] $process = Open-Webbrowser `
+        [System.Diagnostics.Process] $process = GenXdev.Webbrowser\Open-Webbrowser `
             -PassThru `
             -ApplicationMode `
             -NewWindow `
@@ -52,7 +52,7 @@ function Connect-SpotifyApiToken {
 
         # attempt to minimize the browser window
         try {
-            $windowHelper = Get-Window -ProcessId $process.Id
+            $windowHelper = GenXdev.Windows\Get-Window -ProcessId $process.Id
             $null = $windowHelper.Minimize()
         }
         catch {
@@ -60,14 +60,14 @@ function Connect-SpotifyApiToken {
         }
 
         # wait for oauth callback and retrieve token
-        Write-Verbose "Waiting for OAuth callback on port 5642"
+        Microsoft.PowerShell.Utility\Write-Verbose "Waiting for OAuth callback on port 5642"
         $authToken = [GenXdev.Helpers.Spotify]::RequestAuthenticationTokenUsingOAuth(5642)
 
         # cleanup: close browser window if still running
         if ((!!$process -and $process -is [System.Diagnostics.Process]) `
                 -and (!$process.HasExited)) {
 
-            Write-Verbose "Closing authentication browser window"
+            Microsoft.PowerShell.Utility\Write-Verbose "Closing authentication browser window"
             $null = $process.CloseMainWindow()
         }
 

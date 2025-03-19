@@ -42,14 +42,14 @@ function Get-SpotifyTrackById {
     begin {
 
         # get authentication token for spotify api access
-        Write-Verbose "Acquiring Spotify API authentication token"
-        $apiToken = Get-SpotifyApiToken
+        Microsoft.PowerShell.Utility\Write-Verbose "Acquiring Spotify API authentication token"
+        $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
     process {
 
         # fetch track information using the spotify api helper class
-        Write-Verbose "Retrieving track information for ID: $TrackId"
+        Microsoft.PowerShell.Utility\Write-Verbose "Retrieving track information for ID: $TrackId"
         [GenXdev.Helpers.Spotify]::GetTrackById($apiToken, $TrackId)
     }
 

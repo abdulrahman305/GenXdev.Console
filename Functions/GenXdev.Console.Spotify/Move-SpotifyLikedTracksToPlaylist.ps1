@@ -57,8 +57,8 @@ function Move-SpotifyLikedTracksToPlaylist {
         # if playlist names were provided, convert them to playlist IDs
         if ($PlaylistName.Length -gt 0) {
 
-            Write-Verbose "Converting playlist names to IDs"
-            $PlaylistId = Get-SpotifyPlaylistIdsByName -PlaylistName $PlaylistName
+            Microsoft.PowerShell.Utility\Write-Verbose "Converting playlist names to IDs"
+            $PlaylistId = GenXdev.Console\Get-SpotifyPlaylistIdsByName -PlaylistName $PlaylistName
         }
     }
 
@@ -67,13 +67,13 @@ function Move-SpotifyLikedTracksToPlaylist {
         # exit if no valid playlist IDs were found
         if ($PlaylistId.Length -eq 0) {
 
-            Write-Verbose "No valid playlist IDs found, exiting"
+            Microsoft.PowerShell.Utility\Write-Verbose "No valid playlist IDs found, exiting"
             return
         }
 
         # retrieve all liked tracks from the user's library
-        Write-Verbose "Retrieving liked tracks from library"
-        $likedTracks = Get-SpotifyLikedTrack
+        Microsoft.PowerShell.Utility\Write-Verbose "Retrieving liked tracks from library"
+        $likedTracks = GenXdev.Console\Get-SpotifyLikedTrack
 
         # track whether we successfully added tracks to at least one playlist
         [bool] $done = $false
@@ -81,16 +81,16 @@ function Move-SpotifyLikedTracksToPlaylist {
         # attempt to add tracks to each specified playlist
         foreach ($Id in $PlaylistId) {
 
-            Write-Verbose "Adding tracks to playlist with ID: $Id"
-            Add-SpotifyTracksToPlaylist -PlaylistId $Id -Uri @($likedTracks.Track.Uri)
+            Microsoft.PowerShell.Utility\Write-Verbose "Adding tracks to playlist with ID: $Id"
+            GenXdev.Console\Add-SpotifyTracksToPlaylist -PlaylistId $Id -Uri @($likedTracks.Track.Uri)
             $done = $true
         }
 
         # if tracks were added successfully, remove them from liked songs
         if ($done) {
 
-            Write-Verbose "Removing tracks from liked songs"
-            Remove-SpotifyTracksFromLiked -TrackId @($likedTracks.Track.Id)
+            Microsoft.PowerShell.Utility\Write-Verbose "Removing tracks from liked songs"
+            GenXdev.Console\Remove-SpotifyTracksFromLiked -TrackId @($likedTracks.Track.Id)
 
             # return the tracks that were moved
             $likedTracks

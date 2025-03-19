@@ -25,7 +25,7 @@ function Set-SpotifyShuffleOff {
     begin {
 
         # output information about the operation being performed
-        Write-Verbose "Disabling shuffle mode on active Spotify device..."
+        Microsoft.PowerShell.Utility\Write-Verbose "Disabling shuffle mode on active Spotify device..."
     }
 
     process {
@@ -35,7 +35,7 @@ function Set-SpotifyShuffleOff {
 
             # retrieve the current api token for spotify authentication
             # and disable shuffle mode using the spotify helper class
-            [GenXdev.Helpers.Spotify]::ShuffleOff((Get-SpotifyApiToken))
+            [GenXdev.Helpers.Spotify]::ShuffleOff((GenXdev.Console\Get-SpotifyApiToken))
         }
     }
 

@@ -25,29 +25,29 @@ function Set-VLCPlayerFocused {
     begin {
 
         # log operation start for troubleshooting
-        Write-Verbose "Starting Set-VLCPlayerFocused operation"
+        Microsoft.PowerShell.Utility\Write-Verbose "Starting Set-VLCPlayerFocused operation"
     }
 
     process {
 
         try {
             # find vlc window by process name, returns null if not found
-            Write-Verbose "Attempting to locate VLC player window"
-            $window = Get-Window -ProcessName vlc
+            Microsoft.PowerShell.Utility\Write-Verbose "Attempting to locate VLC player window"
+            $window = GenXdev.Windows\Get-Window -ProcessName vlc
 
             # only proceed if window was found and ShouldProcess confirms
             if ($window -and $PSCmdlet.ShouldProcess("VLC media player window",
                     "Set as foreground window")) {
 
-                Write-Verbose "Setting VLC window as foreground window"
+                Microsoft.PowerShell.Utility\Write-Verbose "Setting VLC window as foreground window"
                 $null = $window.Show()
                 $null = $window.SetForeground()
-                $null = Set-ForegroundWindow -WindowHandle ($window.Handle)
+                $null = GenXdev.Windows\Set-ForegroundWindow -WindowHandle ($window.Handle)
             }
         }
         catch {
             # silently continue if window not found or other errors occur
-            Write-Verbose "Failed to set VLC window focus: $_"
+            Microsoft.PowerShell.Utility\Write-Verbose "Failed to set VLC window focus: $_"
         }
     }
 

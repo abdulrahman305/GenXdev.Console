@@ -20,14 +20,14 @@ function SayTime {
     begin {
 
         # get the current system time
-        $date = Get-Date
+        $date = Microsoft.PowerShell.Utility\Get-Date
 
         # extract hours (0-23) and minutes (0-59) from current time
         $hours = $date.Hour
         $minutes = $date.Minute
 
         # log the current time for troubleshooting
-        Write-Verbose "Processing time announcement for $hours`:$minutes"
+        Microsoft.PowerShell.Utility\Write-Verbose "Processing time announcement for $hours`:$minutes"
     }
 
     process {
@@ -37,10 +37,10 @@ function SayTime {
         "$($minutes.ToString('0')) minutes"
 
         # log the text that will be spoken
-        Write-Verbose "Speaking: $speechText"
+        Microsoft.PowerShell.Utility\Write-Verbose "Speaking: $speechText"
 
         # convert the text to speech using system TTS engine
-        Start-TextToSpeech $speechText
+        GenXdev.Console\Start-TextToSpeech $speechText
     }
 
     end {

@@ -23,13 +23,13 @@ function Set-SpotifyShuffleOn {
     begin {
 
         # output verbose information about the operation
-        Write-Verbose "Enabling shuffle mode on active Spotify device"
+        Microsoft.PowerShell.Utility\Write-Verbose "Enabling shuffle mode on active Spotify device"
     }
 
     process {
 
         # retrieve the current spotify api token
-        $token = Get-SpotifyApiToken
+        $token = GenXdev.Console\Get-SpotifyApiToken
 
         # check if we should proceed with enabling shuffle mode
         if ($PSCmdlet.ShouldProcess("active Spotify device", "Enable shuffle mode")) {
