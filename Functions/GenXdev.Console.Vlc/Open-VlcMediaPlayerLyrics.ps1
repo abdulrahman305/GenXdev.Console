@@ -381,7 +381,8 @@ function Open-VlcMediaPlayerLyrics {
         $queryList = @()
     }
 
-    process {
+
+process {
         # handle each pipeline input object
         if ($Queries) {
             $queryList += $Queries

@@ -29,7 +29,8 @@ function Set-LocationParent2 {
         Microsoft.PowerShell.Utility\Write-Verbose "Current location: $(Microsoft.PowerShell.Management\Get-Location)"
     }
 
-    process {
+
+process {
 
         # navigate up two levels
         for ($i = 1; $i -le 2; $i++) {

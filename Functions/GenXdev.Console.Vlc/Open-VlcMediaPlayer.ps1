@@ -735,7 +735,8 @@ function Open-VlcMediaPlayer {
         $null = GenXdev.Windows\Set-WindowPosition @invocationParams
     }
 
-    process {
+
+process {
 
         # handle close request
         if ($Close) {

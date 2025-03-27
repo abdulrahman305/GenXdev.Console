@@ -33,7 +33,8 @@ function Get-SpotifyLikedTrack {
         Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API authentication token"
     }
 
-    process {
+
+process {
 
         # fetch all tracks from user's spotify library using helper class
         Microsoft.PowerShell.Utility\Write-Verbose "Retrieving saved tracks from Spotify library..."

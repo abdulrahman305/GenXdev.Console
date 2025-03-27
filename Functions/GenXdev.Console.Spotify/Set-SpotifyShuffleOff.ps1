@@ -28,7 +28,8 @@ function Set-SpotifyShuffleOff {
         Microsoft.PowerShell.Utility\Write-Verbose "Disabling shuffle mode on active Spotify device..."
     }
 
-    process {
+
+process {
 
         # only perform the action if ShouldProcess returns true
         if ($PSCmdlet.ShouldProcess("Spotify", "Disable shuffle mode")) {

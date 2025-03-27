@@ -5,7 +5,8 @@ function Switch-VlcMediaPlayerMute {
     param (
     )
 
-    process {
+
+process {
 
         GenXdev.Console\Open-VlcMediaPlayer -KeysToSend "m"
     }

@@ -115,7 +115,8 @@ function Get-SpotifyLyrics {
             }
     }
 
-    process {
+
+process {
 
         foreach ($query in $Queries) {
 

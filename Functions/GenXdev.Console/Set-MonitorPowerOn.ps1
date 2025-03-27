@@ -27,7 +27,8 @@ function Set-MonitorPowerOn {
         Microsoft.PowerShell.Utility\Write-Verbose "Attempting to wake monitor from sleep/power off state"
     }
 
-    process {
+
+process {
 
         # only proceed if ShouldProcess approves the action
         if ($PSCmdlet.ShouldProcess("Monitor", "Power On")) {

@@ -29,7 +29,8 @@ function Set-SpotifyRepeatOff {
         Microsoft.PowerShell.Utility\Write-Verbose "Disabling Spotify repeat mode on active device..."
     }
 
-    process {
+
+process {
 
         # get the current spotify api authentication token
         $token = GenXdev.Console\Get-SpotifyApiToken

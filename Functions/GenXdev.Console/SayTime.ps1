@@ -30,7 +30,8 @@ function SayTime {
         Microsoft.PowerShell.Utility\Write-Verbose "Processing time announcement for $hours`:$minutes"
     }
 
-    process {
+
+process {
 
         # construct the speech text in a clear, consistent format
         $speechText = "The time is $($hours.ToString('0')) hours and " +

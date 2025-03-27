@@ -45,7 +45,8 @@ function Get-SpotifyTrackAudioFeatures {
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
-    process {
+
+process {
 
         # fetch audio features for the specified tracks using the spotify api
         Microsoft.PowerShell.Utility\Write-Verbose "Retrieving audio features for $($TrackId.Count) tracks"

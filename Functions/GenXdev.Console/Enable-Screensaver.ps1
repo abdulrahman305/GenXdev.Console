@@ -25,7 +25,8 @@ function Enable-Screensaver {
         Microsoft.PowerShell.Utility\Write-Verbose "Starting Windows screensaver activation"
     }
 
-    process {
+
+process {
 
         # execute the windows screensaver executable with the start switch
         & "$ENV:SystemRoot\system32\scrnsave.scr" /s

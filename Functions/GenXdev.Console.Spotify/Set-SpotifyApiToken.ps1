@@ -37,7 +37,8 @@ function Set-SpotifyApiToken {
         Microsoft.PowerShell.Utility\Write-Verbose "Storing Spotify API token in: $path"
     }
 
-    process {
+
+process {
 
         # ensure the storage directory exists
         if (![IO.Directory]::Exists($dir)) {

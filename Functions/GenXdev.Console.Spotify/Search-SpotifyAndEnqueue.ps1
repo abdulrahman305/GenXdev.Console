@@ -60,7 +60,8 @@ function Search-SpotifyAndEnqueue {
         Microsoft.PowerShell.Utility\Write-Verbose "Initialized search type mask: $SearchType"
     }
 
-    process {
+
+process {
 
         foreach ($Query in $Queries) {
 

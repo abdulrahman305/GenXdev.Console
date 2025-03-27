@@ -26,7 +26,8 @@ function Set-SpotifyPause {
         Microsoft.PowerShell.Utility\Write-Verbose "Attempting to pause/resume Spotify playback"
     }
 
-    process {
+
+process {
 
         # check if we should proceed with the operation
         if ($PSCmdlet.ShouldProcess("Spotify", "Pause/Resume playback")) {

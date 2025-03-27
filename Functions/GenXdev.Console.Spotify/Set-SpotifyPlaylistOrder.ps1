@@ -76,7 +76,8 @@ function Set-SpotifyPlaylistOrder {
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
-    process {
+
+process {
 
         # prepare message for should process and verbose output
         $operationDescription = "Moving $($RangeLength ?? 1) tracks from position $RangeStart to position $InsertBefore"

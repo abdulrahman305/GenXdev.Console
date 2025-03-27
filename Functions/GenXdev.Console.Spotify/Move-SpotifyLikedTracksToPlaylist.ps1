@@ -62,7 +62,8 @@ function Move-SpotifyLikedTracksToPlaylist {
         }
     }
 
-    process {
+
+process {
 
         # exit if no valid playlist IDs were found
         if ($PlaylistId.Length -eq 0) {

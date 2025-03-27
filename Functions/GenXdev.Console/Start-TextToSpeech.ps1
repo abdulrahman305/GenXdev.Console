@@ -82,7 +82,8 @@ function Start-TextToSpeech {
         Microsoft.PowerShell.Utility\Write-Verbose "Initializing text-to-speech with Locale: $Locale, Voice: $VoiceName"
     }
 
-    process {
+
+process {
 
         # iterate through each line of text for processing
         @($Lines) | Microsoft.PowerShell.Core\ForEach-Object {

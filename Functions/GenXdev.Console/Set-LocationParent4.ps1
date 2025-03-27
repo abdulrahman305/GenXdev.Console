@@ -29,7 +29,8 @@ function Set-LocationParent4 {
         Microsoft.PowerShell.Utility\Write-Verbose "Starting navigation up four directory levels from $(Microsoft.PowerShell.Management\Get-Location)"
     }
 
-    process {
+
+process {
 
         # navigate up four levels
         for ($i = 1; $i -le 4; $i++) {

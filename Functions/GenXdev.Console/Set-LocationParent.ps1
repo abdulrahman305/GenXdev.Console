@@ -25,7 +25,8 @@ function Set-LocationParent {
         Microsoft.PowerShell.Utility\Write-Verbose "Changing location to parent directory"
     }
 
-    process {
+
+process {
 
         # check if we can move up before attempting
         $parent = Microsoft.PowerShell.Management\Split-Path -Path (Microsoft.PowerShell.Management\Get-Location) -Parent

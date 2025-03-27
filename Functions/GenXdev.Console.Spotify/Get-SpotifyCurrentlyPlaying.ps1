@@ -35,7 +35,8 @@ function Get-SpotifyCurrentlyPlaying {
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
-    process {
+
+process {
 
         # query the spotify api for currently playing track information
         Microsoft.PowerShell.Utility\Write-Verbose "Querying Spotify API for currently playing track"

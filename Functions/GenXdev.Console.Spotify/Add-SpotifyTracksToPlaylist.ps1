@@ -72,7 +72,8 @@ function Add-SpotifyTracksToPlaylist {
         }
     }
 
-    process {
+
+process {
 
         # add provided tracks to each specified playlist
         foreach ($Id in $PlaylistId) {

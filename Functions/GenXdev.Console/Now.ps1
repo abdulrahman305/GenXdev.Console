@@ -28,7 +28,8 @@ function Now {
         Microsoft.PowerShell.Utility\Write-Verbose "Starting Now function to retrieve system date and time"
     }
 
-    process {
+
+process {
 
         # return the current system datetime using .NET DateTime.Now property
         # this provides high-precision timestamp including date and time

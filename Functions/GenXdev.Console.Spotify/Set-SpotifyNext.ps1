@@ -28,7 +28,8 @@ function Set-SpotifyNext {
         Microsoft.PowerShell.Utility\Write-Verbose "Starting Set-SpotifyNext operation"
     }
 
-    process {
+
+process {
 
         # retrieve the current spotify api token
         Microsoft.PowerShell.Utility\Write-Verbose "Retrieving Spotify API token"

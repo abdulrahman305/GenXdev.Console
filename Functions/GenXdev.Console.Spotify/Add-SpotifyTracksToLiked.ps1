@@ -46,7 +46,8 @@ function Add-SpotifyTracksToLiked {
         Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API token"
     }
 
-    process {
+
+process {
 
         if ($TrackId.Length -eq 0) {
 

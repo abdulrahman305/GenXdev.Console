@@ -75,7 +75,8 @@ function Get-SpotifyPlaylistTrack {
         }
     }
 
-    process {
+
+process {
 
         Microsoft.PowerShell.Utility\Write-Verbose "Retrieving tracks for playlist ID: $PlaylistId"
 

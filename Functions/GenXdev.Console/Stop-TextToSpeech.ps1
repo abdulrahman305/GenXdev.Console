@@ -32,7 +32,8 @@ function Stop-TextToSpeech {
         Microsoft.PowerShell.Utility\Write-Verbose "Initiating speech cancellation request"
     }
 
-    process {
+
+process {
 
         try {
             if ($PSCmdlet.ShouldProcess("Text-to-speech output", "Stop")) {

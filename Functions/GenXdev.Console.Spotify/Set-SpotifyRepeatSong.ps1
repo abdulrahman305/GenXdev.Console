@@ -27,7 +27,8 @@ function Set-SpotifyRepeatSong {
         Microsoft.PowerShell.Utility\Write-Verbose "Attempting to enable song repeat mode in Spotify..."
     }
 
-    process {
+
+process {
 
         # get the current spotify api authentication token
         $token = GenXdev.Console\Get-SpotifyApiToken

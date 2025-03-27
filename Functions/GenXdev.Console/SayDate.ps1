@@ -27,7 +27,8 @@ function SayDate {
         Microsoft.PowerShell.Utility\Write-Verbose "Preparing to speak: $dateText"
     }
 
-    process {
+
+process {
 
         # use text-to-speech engine to announce the date
         # suppress output by assigning to $null

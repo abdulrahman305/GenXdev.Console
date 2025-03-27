@@ -5,7 +5,8 @@ function Start-VlcMediaPlayerNextInPlaylist {
     param (
     )
 
-    process {
+
+process {
 
         if ($PSCmdlet.ShouldProcess("VLC Media Player", "Next in playlist")) {
 

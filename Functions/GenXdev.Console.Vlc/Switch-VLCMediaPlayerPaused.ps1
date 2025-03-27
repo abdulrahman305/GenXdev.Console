@@ -5,7 +5,8 @@ function Switch-VlcMediaPlayerPaused {
     param (
     )
 
-    process {
+
+process {
 
         GenXdev.Console\Open-VlcMediaPlayer -KeysToSend " "
     }

@@ -28,7 +28,8 @@ function Set-VLCPlayerFocused {
         Microsoft.PowerShell.Utility\Write-Verbose "Starting Set-VLCPlayerFocused operation"
     }
 
-    process {
+
+process {
 
         try {
             # find vlc window by process name, returns null if not found

@@ -585,7 +585,8 @@ function Open-MediaFile {
             ".tif")
     }
 
-    process {
+
+process {
 
         # get sorted list of all matching files
         $invocationParams = GenXdev.Helpers\Copy-IdenticalParamValues `

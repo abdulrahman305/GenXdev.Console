@@ -27,7 +27,8 @@ function Get-IsSpeaking {
         Microsoft.PowerShell.Utility\Write-Verbose "Checking speech synthesizer states..."
     }
 
-    process {
+
+process {
 
         try {
             # check both default and customized speech synthesizer states

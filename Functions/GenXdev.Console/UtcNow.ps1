@@ -29,7 +29,8 @@ function UtcNow {
         Microsoft.PowerShell.Utility\Write-Verbose "Starting UtcNow function execution"
     }
 
-    process {
+
+process {
 
         # retrieve the current utc time using .net datetime for precision
         Microsoft.PowerShell.Utility\Write-Verbose "Retrieving current UTC datetime"

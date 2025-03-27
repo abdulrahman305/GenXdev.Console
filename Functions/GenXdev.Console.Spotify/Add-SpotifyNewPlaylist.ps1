@@ -72,7 +72,8 @@ function Add-SpotifyNewPlaylist {
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
-    process {
+
+process {
 
         # create new playlist using spotify api helper
         Microsoft.PowerShell.Utility\Write-Verbose "Creating new Spotify playlist '$Name'"

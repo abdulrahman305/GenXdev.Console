@@ -125,7 +125,8 @@ function Set-SpotifyPlaylistDetails {
         }
     }
 
-    process {
+
+process {
 
         Microsoft.PowerShell.Utility\Write-Verbose "Updating playlist $PlaylistId with new settings"
 

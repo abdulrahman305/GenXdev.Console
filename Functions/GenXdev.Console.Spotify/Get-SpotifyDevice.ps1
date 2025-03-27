@@ -31,7 +31,8 @@ function Get-SpotifyDevice {
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
-    process {
+
+process {
 
         # query spotify api for all available devices using helper class
         Microsoft.PowerShell.Utility\Write-Verbose "Querying Spotify API for available devices..."

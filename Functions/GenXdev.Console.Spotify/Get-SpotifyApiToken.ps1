@@ -26,7 +26,8 @@ function Get-SpotifyApiToken {
         Microsoft.PowerShell.Utility\Write-Verbose "Checking firewall rule: $ruleName"
     }
 
-    process {
+
+process {
 
         # verify if firewall rule exists
         $existingRule = NetSecurity\Get-NetFirewallRule `

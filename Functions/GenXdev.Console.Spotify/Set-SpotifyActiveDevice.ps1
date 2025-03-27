@@ -48,7 +48,8 @@ function Set-SpotifyActiveDevice {
         Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API token for authentication"
     }
 
-    process {
+
+process {
 
         # use spotify api to transfer playback to the specified device
         Microsoft.PowerShell.Utility\Write-Verbose "Attempting to transfer playback to device ID: $DeviceId"

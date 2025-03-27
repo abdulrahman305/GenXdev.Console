@@ -28,7 +28,8 @@ function Set-MonitorPowerOff {
         Microsoft.PowerShell.Utility\Write-Verbose "Preparing to turn off monitor(s)..."
     }
 
-    process {
+
+process {
 
         # wait briefly to allow any pending screen operations to complete
         Microsoft.PowerShell.Utility\Start-Sleep 2

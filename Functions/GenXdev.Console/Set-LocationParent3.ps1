@@ -28,7 +28,8 @@ function Set-LocationParent3 {
         Microsoft.PowerShell.Utility\Write-Verbose "Moving up three directory levels from: $($PWD.Path)"
     }
 
-    process {
+
+process {
 
         # navigate up three levels
         for ($i = 1; $i -le 3; $i++) {

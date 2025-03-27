@@ -46,7 +46,8 @@ function Get-SpotifyTrackById {
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
-    process {
+
+process {
 
         # fetch track information using the spotify api helper class
         Microsoft.PowerShell.Utility\Write-Verbose "Retrieving track information for ID: $TrackId"

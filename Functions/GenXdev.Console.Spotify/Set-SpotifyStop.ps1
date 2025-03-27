@@ -27,7 +27,8 @@ function Set-SpotifyStop {
         Microsoft.PowerShell.Utility\Write-Verbose "Attempting to stop Spotify playback on active device"
     }
 
-    process {
+
+process {
         # retrieve the current spotify api authentication token
         Microsoft.PowerShell.Utility\Write-Verbose "Retrieving Spotify API token"
         $token = GenXdev.Console\Get-SpotifyApiToken

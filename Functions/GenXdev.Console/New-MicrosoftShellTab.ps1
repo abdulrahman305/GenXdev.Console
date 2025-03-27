@@ -77,7 +77,8 @@ function New-MicrosoftShellTab {
         }
     }
 
-    process {
+
+process {
     }
 
     end {

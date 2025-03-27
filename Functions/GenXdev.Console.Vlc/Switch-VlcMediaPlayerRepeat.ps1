@@ -5,7 +5,8 @@ function Switch-VlcMediaPlayerRepeat {
     param (
     )
 
-    process {
+
+process {
 
         GenXdev.Console\Open-VlcMediaPlayer -KeysToSend "r"
     }

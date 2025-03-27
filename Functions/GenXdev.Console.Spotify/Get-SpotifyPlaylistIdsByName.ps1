@@ -45,7 +45,8 @@ function Get-SpotifyPlaylistIdsByName {
         Microsoft.PowerShell.Utility\Write-Verbose "Starting playlist ID lookup for: $($PlaylistName -join ', ')"
     }
 
-    process {
+
+process {
 
         # attempt to find playlists in current session
         $Results = @(GenXdev.Console\Get-SpotifyUserPlaylists -Filter $PlaylistName)

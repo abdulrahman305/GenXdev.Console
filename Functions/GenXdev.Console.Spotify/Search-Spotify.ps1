@@ -54,7 +54,8 @@ function Search-Spotify {
         Microsoft.PowerShell.Utility\Write-Verbose "Search type bit mask: $SearchType"
     }
 
-    process {
+
+process {
 
         foreach ($Query in $Queries) {
 

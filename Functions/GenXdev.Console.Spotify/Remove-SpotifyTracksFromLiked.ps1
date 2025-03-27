@@ -40,7 +40,8 @@ function Remove-SpotifyTracksFromLiked {
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
-    process {
+
+process {
 
         # if no track ids were provided, handle currently playing track
         if ($TrackId.Length -eq 0) {

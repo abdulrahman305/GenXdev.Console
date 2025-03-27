@@ -30,7 +30,8 @@ function Set-SpotifyRepeatContext {
         Microsoft.PowerShell.Utility\Write-Verbose "Enabling repeat mode for current Spotify context"
     }
 
-    process {
+
+process {
 
         # get the current api token for authentication
         Microsoft.PowerShell.Utility\Write-Verbose "Retrieving Spotify API token"

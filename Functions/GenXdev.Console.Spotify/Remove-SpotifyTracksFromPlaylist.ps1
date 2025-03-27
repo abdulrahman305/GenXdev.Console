@@ -73,7 +73,8 @@ function Remove-SpotifyTracksFromPlaylist {
         }
     }
 
-    process {
+
+process {
 
         # process each playlist id and remove the specified tracks
         foreach ($id in $PlaylistId) {

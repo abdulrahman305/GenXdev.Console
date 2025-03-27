@@ -34,7 +34,8 @@ function Connect-SpotifyApiToken {
         Microsoft.PowerShell.Utility\Write-Verbose "Starting Spotify OAuth authentication flow on port 5642"
     }
 
-    process {
+
+process {
 
         # construct oauth url using helper class method
         $url = [GenXdev.Helpers.Spotify]::RequestAuthenticationUri(5642)

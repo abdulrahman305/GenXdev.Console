@@ -58,7 +58,8 @@ function Get-SpotifyUserPlaylists {
         Microsoft.PowerShell.Utility\Write-Verbose "Cache file: $filePath"
     }
 
-    process {
+
+process {
 
         # initialize playlist cache list
         [System.Collections.Generic.List[Object]] $SpotifyPlaylistCache = $null

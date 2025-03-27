@@ -28,7 +28,8 @@ function Set-LocationParent5 {
         Microsoft.PowerShell.Utility\Write-Verbose "Starting directory navigation up 5 levels from: $PWD"
     }
 
-    process {
+
+process {
 
         # navigate up five levels
         for ($i = 1; $i -le 5; $i++) {
