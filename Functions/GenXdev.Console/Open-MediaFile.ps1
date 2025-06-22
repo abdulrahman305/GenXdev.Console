@@ -1,177 +1,257 @@
 ################################################################################
 <#
 .SYNOPSIS
-Plays media files using VLC player with flexible filtering options.
+Opens and plays media files using VLC media player with advanced filtering and
+configuration options.
 
 .DESCRIPTION
-This function scans for media files in the specified directory, filters them based
-on file type and optional keywords, creates a playlist, and launches VLC player.
-It supports videos, audio files and pictures with automatic installation of VLC
-if needed.
-
-.PARAMETER DirectoryPath
-The directory path to scan for media files. Defaults to current directory.
-
-.PARAMETER Keywords
-Keywords to search for in subtitle files (.srt) and media descriptions.
+This function scans for media files based on search patterns and optional
+keywords, creates a playlist, and launches VLC media player with comprehensive
+configuration options. It supports videos, audio files, and pictures with
+automatic VLC installation if needed. The function provides extensive control
+over playback behavior, window positioning, audio/video settings, and subtitle
+handling.
 
 .PARAMETER SearchMask
-File pattern to filter media files. Default is "*".
+File name or pattern to search for. Supports wildcards. Default is '*' to find
+all media files.
+
+.PARAMETER Keywords
+Keywords to search for in subtitle files (.srt) and media descriptions stored
+in alternate data streams.
+
+.PARAMETER AllDrives
+Search across all available drives instead of just the current directory.
+
+.PARAMETER NoRecurse
+Do not recurse into subdirectories during the file search.
 
 .PARAMETER OnlyVideos
-Filter to only include video files in the playlist.
+Filter to only include video files in the playlist (.mp4, .avi, .mkv, .mov,
+.wmv).
 
 .PARAMETER OnlyAudio
-Filter to only include audio files in the playlist.
+Filter to only include audio files in the playlist (.mp3, .flac, .wav, .midi,
+.mid, .au, .aiff, .aac, .m4a, .ogg, .wma, .ra, .ram, .rm, .rmm).
 
 .PARAMETER OnlyPictures
-Filter to only include picture files in the playlist.
+Filter to only include picture files in the playlist (.jpg, .jpeg, .png, .gif,
+.bmp, .tiff, .tif).
 
 .PARAMETER IncludeVideos
-Additionally include video files in the playlist.
+Additionally include video files in the playlist when other filters are applied.
 
 .PARAMETER IncludeAudio
-Additionally include audio files in the playlist.
+Additionally include audio files in the playlist when other filters are applied.
 
 .PARAMETER IncludePictures
-Additionally include picture files in the playlist.
+Additionally include picture files in the playlist when other filters are
+applied.
 
 .PARAMETER KeysToSend
-Keystrokes to send to the VLC window.
+Keystrokes to send to the VLC player window after launch. See documentation for
+GenXdev.Windows\Send-Key cmdlet for available key combinations.
 
-.PARAMETER Process
-The VLC process to control.
+.PARAMETER Escape
+Escape control characters and modifiers in the KeysToSend parameter.
+
+.PARAMETER ShiftEnter
+Use Shift+Enter instead of Enter when processing KeysToSend.
+
+.PARAMETER DelayMilliSeconds
+Delay between different input strings in milliseconds when sending keys.
 
 .PARAMETER Monitor
-Monitor to display VLC on (-1=discard, 0=default).
+The monitor to display VLC on. 0 = default monitor, -1 = discard positioning.
 
 .PARAMETER NoBorders
-Removes window borders.
+Removes the window borders from the VLC player window.
 
 .PARAMETER Width
-Initial window width.
+The initial width of the VLC player window in pixels.
 
 .PARAMETER Height
-Initial window height.
+The initial height of the VLC player window in pixels.
 
 .PARAMETER X
-Initial window X position.
+The initial X position of the VLC player window on screen.
 
 .PARAMETER Y
-Initial window Y position.
+The initial Y position of the VLC player window on screen.
 
 .PARAMETER Left
-Places window on left side of screen.
+Place the VLC window on the left side of the screen.
 
 .PARAMETER Right
-Places window on right side of screen.
+Place the VLC window on the right side of the screen.
 
 .PARAMETER Top
-Places window on top of screen.
+Place the VLC window on the top side of the screen.
 
 .PARAMETER Bottom
-Places window on bottom of screen.
+Place the VLC window on the bottom side of the screen.
 
 .PARAMETER Centered
-Centers the window on screen.
+Place the VLC window in the center of the screen.
 
 .PARAMETER Fullscreen
-Maximizes the window.
+Maximize the VLC window to fullscreen mode.
 
 .PARAMETER PassThru
-Returns the window helper for each VLC process.
-
-.PARAMETER EnableAudio
-Enables audio playback.
-
-.PARAMETER ForceDolbySurroundMode
-Sets Dolby surround mode (Auto/On/Off).
-
-.PARAMETER AudioReplayGainMode
-Sets audio replay gain mode (None/Track/Album).
-
-.PARAMETER AudioReplayGainPreamp
-Sets audio replay gain preamp level.
-
-.PARAMETER AudioReplayGainDefault
-Sets default audio replay gain.
-
-.PARAMETER EnableAudioTimeStretch
-Enables audio time stretching.
-
-.PARAMETER AudioFilterModules
-Specifies audio filter modules to use.
-
-.PARAMETER AudioVisualization
-Sets audio visualization mode.
+Returns the window helper object for each VLC process launched.
 
 .PARAMETER AlwaysOnTop
-Keeps VLC window always on top.
-
-.PARAMETER EnableWallpaperMode
-Enables wallpaper mode.
-
-.PARAMETER ShowMediaTitle
-Shows media title during playback.
-
-.PARAMETER MediaTitlePosition
-Sets position of media title display.
-
-.PARAMETER MouseHideTimeoutMilliseconds
-Sets mouse cursor hide timeout.
-
-.PARAMETER SnapshotDirectory
-Sets directory for saving snapshots.
-
-.PARAMETER SnapshotFormat
-Sets snapshot image format (PNG/JPG/TIFF).
+Keeps the VLC window always on top of other windows.
 
 .PARAMETER Random
-Enables random playback order or shuffle.
+Enables random playback order (shuffle mode) for the playlist.
 
-.PARAMETER LoopPlayback
-Enables playlist looping.
+.PARAMETER Loop
+Enables playlist looping - repeats the entire playlist when finished.
 
-.PARAMETER RepeatCurrentItem
-Enables single item repeat.
+.PARAMETER Repeat
+Enables single item repeat - repeats the current media file indefinitely.
 
-.PARAMETER PlaybackSpeed
-Sets playback speed multiplier.
+.PARAMETER StartPaused
+Starts VLC in paused state instead of immediately playing.
 
-.PARAMETER AspectRatio
-Sets video aspect ratio.
+.PARAMETER PlayAndExit
+Automatically exits VLC when playback is completed.
+
+.PARAMETER DisableAudio
+Completely disables audio output during playback.
+
+.PARAMETER ReplayGainMode
+Sets the audio replay gain mode to normalize volume levels across tracks.
+
+.PARAMETER ReplayGainPreamp
+Sets the replay gain preamp level in decibels (-20.0 to 20.0).
+
+.PARAMETER ForceDolbySurround
+Forces detection of Dolby Surround audio encoding.
+
+.PARAMETER AudioFilters
+Specifies audio filter modules to apply during playback.
+
+.PARAMETER Visualization
+Sets the audio visualization mode for audio-only content.
+
+.PARAMETER Deinterlace
+Controls video deinterlacing for improved quality on interlaced content.
 
 .PARAMETER DeinterlaceMode
-Sets deinterlacing mode.
+Specifies the deinterlacing algorithm to use.
+
+.PARAMETER AspectRatio
+Forces a specific aspect ratio for video content.
+
+.PARAMETER Crop
+Applies video cropping with specified dimensions.
+
+.PARAMETER AutoScale
+Enables automatic video scaling to fit the window.
+
+.PARAMETER VideoFilters
+Specifies video filter modules to apply during playback.
 
 .PARAMETER SubtitleFile
-Specifies external subtitle file.
+Path to an external subtitle file to use with video content.
 
-.PARAMETER SubtitleTextScale
-Sets subtitle text scale (10-500).
+.PARAMETER DisableSubtitles
+Completely disables subtitle display during playback.
+
+.PARAMETER SubtitleScale
+Sets the subtitle text scaling factor (10-500 percent).
+
+.PARAMETER SubtitleLanguage
+Specifies the preferred subtitle language from available tracks.
+
+.PARAMETER AudioLanguage
+Specifies the preferred audio language from available tracks.
 
 .PARAMETER PreferredAudioLanguage
-Sets preferred audio language.
+Sets the default preferred audio language for future playback.
 
-.PARAMETER PreferredVideoResolution
-Sets preferred video quality.
+.PARAMETER HttpProxy
+HTTP proxy server address for network streaming content.
+
+.PARAMETER HttpProxyPassword
+Password for HTTP proxy authentication.
+
+.PARAMETER VerbosityLevel
+Sets VLC's log verbosity level (0=quiet, 1=errors, 2=verbose).
+
+.PARAMETER SubdirectoryBehavior
+Controls how subdirectories are handled in the playlist.
+
+.PARAMETER IgnoredExtensions
+File extensions to ignore during media file scanning.
+
+.PARAMETER HighPriority
+Increases the process priority of the VLC player for better performance.
+
+.PARAMETER EnableTimeStretch
+Enables audio time stretching to maintain pitch during speed changes.
+
+.PARAMETER VLCPath
+Full path to the VLC executable. Defaults to standard installation location.
+
+.PARAMETER NewWindow
+Forces opening a new VLC instance instead of using existing one.
+
+.PARAMETER EnableWallpaperMode
+Enables video wallpaper mode where video plays as desktop background.
+
+.PARAMETER VideoFilterModules
+Additional video filter modules to load and apply.
+
+.PARAMETER Modules
+General VLC modules to load during startup.
+
+.PARAMETER AudioFilterModules
+Additional audio filter modules to load and apply.
+
+.PARAMETER AudioVisualization
+Sets the audio visualization mode for enhanced audio-only experience.
+
+.PARAMETER PreferredSubtitleLanguage
+Sets the default preferred subtitle language for future playback.
+
+.PARAMETER IgnoredFileExtensions
+File extensions to completely ignore during scanning.
+
+.PARAMETER EnableAudioTimeStretch
+Enables advanced audio time stretching capabilities.
+
+.PARAMETER Arguments
+Additional command-line arguments to pass directly to VLC.
+
+.PARAMETER SideBySide
+Places the VLC window side by side with PowerShell or on a different monitor
+for fullscreen mode.
 
 .EXAMPLE
-# Play all media in current directory
 Open-MediaFile
 
-.EXAMPLE
-# Play only pictures from Pictures folder
-vlc ~\Pictures -OnlyPictures
+Opens all media files in the current directory using default VLC settings.
 
 .EXAMPLE
-# Play videos containing "birthday" in subtitles
-media ~\Videos -Keywords "birthday" -OnlyVideos
+vlc ~\Pictures -OnlyPictures -Fullscreen
+
+Opens only picture files from the Pictures folder in fullscreen mode using the
+alias 'vlc'.
+
+.EXAMPLE
+media ~\Videos -Keywords "*birthday*" -OnlyVideos -Loop
+
+Opens video files containing "birthday" in subtitles with looping enabled using
+the alias 'media'.
 #>
 function Open-MediaFile {
 
     [CmdletBinding()]
     [Alias("vlcmedia", "media")]
+
     param(
         ########################################################################
         [Parameter(
@@ -191,7 +271,7 @@ function Open-MediaFile {
             HelpMessage = "Keywords to search in file metadata"
         )]
         [SupportsWildcards()]
-        [string[]]$Keywords = @(),
+        [string[]] $Keywords = @(),
         ########################################################################
         [Parameter(
             Mandatory = $false,
@@ -210,60 +290,58 @@ function Open-MediaFile {
             Mandatory = $false,
             HelpMessage = "Only include video files in the playlist"
         )]
-        [switch]$OnlyVideos,
+        [switch] $OnlyVideos,
         ########################################################################
         [Parameter(
             Mandatory = $false,
             HelpMessage = "Only include audio files in the playlist"
         )]
-        [switch]$OnlyAudio,
+        [switch] $OnlyAudio,
         ########################################################################
         [Parameter(
             Mandatory = $false,
             HelpMessage = "Only include pictures in the playlist"
         )]
-        [switch]$OnlyPictures,
+        [switch] $OnlyPictures,
         ########################################################################
         [Parameter(
             Mandatory = $false,
             HelpMessage = "Additionally include videos in the playlist"
         )]
-        [switch]$IncludeVideos,
+        [switch] $IncludeVideos,
         ########################################################################
         [Parameter(
             Mandatory = $false,
             HelpMessage = "Additionally include audio files in the playlist"
         )]
-        [switch]$IncludeAudio,
+        [switch] $IncludeAudio,
         ########################################################################
         [Parameter(
             Mandatory = $false,
             HelpMessage = "Additionally include pictures in the playlist"
         )]
-        [switch]$IncludePictures,
+        [switch] $IncludePictures,
         ########################################################################
         [Parameter(
             Position = 1,
             Mandatory = $false,
-            HelpMessage = "Keystrokes to send to the VLC Player Window, see documentation for cmdlet GenXdev.Windows\Send-Key"
+            HelpMessage = ("Keystrokes to send to the VLC Player Window, see " +
+                          "documentation for cmdlet GenXdev.Windows\Send-Key")
         )]
         [ValidateNotNullOrEmpty()]
         [string[]] $KeysToSend = @("f"),
-
         ########################################################################
         [Parameter(
             Mandatory = $false,
             HelpMessage = "Escape control characters and modifiers"
         )]
         [switch] $Escape,
-
         ########################################################################
         [Parameter(
             Mandatory = $false,
             HelpMessage = "Use Shift+Enter instead of Enter"
         )]
         [switch] $ShiftEnter,
-
         ########################################################################
         [Parameter(
             Mandatory = $false,
@@ -272,309 +350,448 @@ function Open-MediaFile {
         [ValidateRange(0, [int]::MaxValue)]
         [int] $DelayMilliSeconds = 0,
         ########################################################################
-
-        [Alias("m", "mon")]
-        [parameter(
+        [Parameter(
             Mandatory = $false,
             HelpMessage = "The monitor to use, 0 = default, -1 is discard"
         )]
+        [Alias("m", "mon")]
         [int] $Monitor = -1,
-        ###############################################################################
-
-        [Alias("nb")]
-        [parameter(
+        ########################################################################
+        [Parameter(
             Mandatory = $false,
             HelpMessage = "Removes the borders of the window"
         )]
+        [Alias("nb")]
         [switch] $NoBorders,
-        ###############################################################################
-
-        [parameter(
+        ########################################################################
+        [Parameter(
             Mandatory = $false,
             HelpMessage = "The initial width of the window"
         )]
         [int] $Width = -1,
-        ###############################################################################
-
-        [parameter(
+        ########################################################################
+        [Parameter(
             Mandatory = $false,
             HelpMessage = "The initial height of the window"
         )]
         [int] $Height = -1,
-        ###############################################################################
-
-        [parameter(
+        ########################################################################
+        [Parameter(
             Mandatory = $false,
             HelpMessage = "The initial X position of the window"
         )]
         [int] $X = -1,
-        ###############################################################################
-
-        [parameter(
+        ########################################################################
+        [Parameter(
             Mandatory = $false,
             HelpMessage = "The initial Y position of the window"
         )]
         [int] $Y = -1,
-        ###############################################################################
-
-        [parameter(
+        ########################################################################
+        [Parameter(
             Mandatory = $false,
             HelpMessage = "Place window on the left side of the screen"
         )]
         [switch] $Left,
-        ###############################################################################
-
-        [parameter(
+        ########################################################################
+        [Parameter(
             Mandatory = $false,
             HelpMessage = "Place window on the right side of the screen"
         )]
         [switch] $Right,
-        ###############################################################################
-
-        [parameter(
+        ########################################################################
+        [Parameter(
             Mandatory = $false,
             HelpMessage = "Place window on the top side of the screen"
         )]
         [switch] $Top,
-        ###############################################################################
-
-        [parameter(
+        ########################################################################
+        [Parameter(
             Mandatory = $false,
             HelpMessage = "Place window on the bottom side of the screen"
         )]
         [switch] $Bottom,
-        ###############################################################################
-
-        [parameter(
+        ########################################################################
+        [Parameter(
             Mandatory = $false,
             HelpMessage = "Place window in the center of the screen"
         )]
         [switch] $Centered,
-        ###############################################################################
-
-        [parameter(
+        ########################################################################
+        [Parameter(
             Mandatory = $false,
             HelpMessage = "Maximize the window"
         )]
         [switch] $Fullscreen,
-        ###############################################################################
-        [parameter(
+        ########################################################################
+        [Parameter(
             Mandatory = $false,
             HelpMessage = "Returns the window helper for each process"
         )]
         [switch] $PassThru,
-        ###############################################################################
-        # Core Options
-
-        [Parameter(HelpMessage = "Always on top")]
-        [switch]$AlwaysOnTop,
-
-        [Parameter(HelpMessage = "Play files randomly forever")]
-        [switch]$Random,
-
-        [Parameter(HelpMessage = "Repeat all")]
-        [switch]$Loop,
-
-        [Parameter(HelpMessage = "Repeat current item")]
-        [switch]$Repeat,
-
-        [Parameter(HelpMessage = "Start paused")]
-        [switch]$StartPaused,
-
-        [Parameter(HelpMessage = "Play and exit")]
-        [switch]$PlayAndExit,
-
-        # Audio Options
-        [Parameter(HelpMessage = "Disable audio")]
-        [switch]$DisableAudio,
-
-        [Parameter(HelpMessage = "Replay gain mode")]
-        [ValidateSet("None", "Track", "Album")]
-        [string]$ReplayGainMode,
-
-        [Parameter(HelpMessage = "Replay gain preamp")]
-        [ValidateRange(-20.0, 20.0)]
-        [float]$ReplayGainPreamp,
-
-        [Parameter(HelpMessage = "Force detection of Dolby Surround")]
-        [ValidateSet("Auto", "On", "Off")]
-        [string]$ForceDolbySurround,
-
-        [Parameter(HelpMessage = "Audio filters")]
-        [string[]]$AudioFilters,
-
-        [Parameter(HelpMessage = "Audio visualizations")]
-        [ValidateSet("None", "Goom", "ProjectM", "Visual", "GLSpectrum")]
-        [string]$Visualization,
-
-        # Video Options
-        [Parameter(HelpMessage = "Deinterlace")]
-        [ValidateSet("Off", "Automatic", "On")]
-        [string]$Deinterlace,
-
-        [Parameter(HelpMessage = "Deinterlace mode")]
-        [ValidateSet("Auto", "Discard", "Blend", "Mean", "Bob", "Linear", "X", "Yadif", "Yadif2x", "Phosphor", "IVTC")]
-        [string]$DeinterlaceMode,
-
-        [Parameter(HelpMessage = "Source aspect ratio")]
-        [string]$AspectRatio,
-
-        [Parameter(HelpMessage = "Video cropping")]
-        [string]$Crop,
-
-        [Parameter(HelpMessage = "Video Auto Scaling")]
-        [switch]$AutoScale,
-
-        [Parameter(HelpMessage = "Video filter module")]
-        [string[]]$VideoFilters,
-
-        # Subtitle Options
-        [Parameter(HelpMessage = "Use subtitle file")]
-        [string]$SubtitleFile,
-
-        [Parameter(HelpMessage = "Disable subtitles")]
-        [switch]$DisableSubtitles,
-
-        [Parameter(HelpMessage = "Subtitles text scaling factor")]
-        [ValidateRange(10, 500)]
-        [int]$SubtitleScale,
-
-        [Parameter(HelpMessage = "Subtitle language")]
-        [ValidateSet(
-            "Afrikaans", "Akan", "Albanian", "Amharic", "Arabic", "Armenian", "Azerbaijani", "Basque", "Belarusian",
-            "Bemba", "Bengali", "Bihari", "Bork, bork, bork!", "Bosnian", "Breton", "Bulgarian", "Cambodian",
-            "Catalan", "Cherokee", "Chichewa", "Chinese (Simplified)", "Chinese (Traditional)", "Corsican",
-            "Croatian", "Czech", "Danish", "Dutch", "Elmer Fudd", "English", "Esperanto", "Estonian", "Ewe",
-            "Faroese", "Filipino", "Finnish", "French", "Frisian", "Ga", "Galician", "Georgian", "German", "Greek",
-            "Guarani", "Gujarati", "Hacker", "Haitian Creole", "Hausa", "Hawaiian", "Hebrew", "Hindi", "Hungarian",
-            "Icelandic", "Igbo", "Indonesian", "Interlingua", "Irish", "Italian", "Japanese", "Javanese", "Kannada",
-            "Kazakh", "Kinyarwanda", "Kirundi", "Klingon", "Kongo", "Korean", "Krio (Sierra Leone)", "Kurdish",
-            "Kurdish (Soranî)", "Kyrgyz", "Laothian", "Latin", "Latvian", "Lingala", "Lithuanian", "Lozi", "Luganda",
-            "Luo", "Macedonian", "Malagasy", "Malay", "Malayalam", "Maltese", "Maori", "Marathi", "Mauritian Creole",
-            "Moldavian", "Mongolian", "Montenegrin", "Nepali", "Nigerian Pidgin", "Northern Sotho", "Norwegian",
-            "Norwegian (Nynorsk)", "Occitan", "Oriya", "Oromo", "Pashto", "Persian", "Pirate", "Polish",
-            "Portuguese (Brazil)", "Portuguese (Portugal)", "Punjabi", "Quechua", "Romanian", "Romansh", "Runyakitara",
-            "Russian", "Scots Gaelic", "Serbian", "Serbo-Croatian", "Sesotho", "Setswana", "Seychellois Creole",
-            "Shona", "Sindhi", "Sinhalese", "Slovak", "Slovenian", "Somali", "Spanish", "Spanish (Latin American)",
-            "Sundanese", "Swahili", "Swedish", "Tajik", "Tamil", "Tatar", "Telugu", "Thai", "Tigrinya", "Tonga",
-            "Tshiluba", "Tumbuka", "Turkish", "Turkmen", "Twi", "Uighur", "Ukrainian", "Urdu", "Uzbek", "Vietnamese",
-            "Welsh", "Wolof", "Xhosa", "Yiddish", "Yoruba", "Zulu")]
-        [string]$SubtitleLanguage,
-
-        [Parameter(HelpMessage = "Audio language")]
-        [ValidateSet(
-            "Afrikaans", "Akan", "Albanian", "Amharic", "Arabic", "Armenian", "Azerbaijani", "Basque", "Belarusian",
-            "Bemba", "Bengali", "Bihari", "Bork, bork, bork!", "Bosnian", "Breton", "Bulgarian", "Cambodian",
-            "Catalan", "Cherokee", "Chichewa", "Chinese (Simplified)", "Chinese (Traditional)", "Corsican",
-            "Croatian", "Czech", "Danish", "Dutch", "Elmer Fudd", "English", "Esperanto", "Estonian", "Ewe",
-            "Faroese", "Filipino", "Finnish", "French", "Frisian", "Ga", "Galician", "Georgian", "German", "Greek",
-            "Guarani", "Gujarati", "Hacker", "Haitian Creole", "Hausa", "Hawaiian", "Hebrew", "Hindi", "Hungarian",
-            "Icelandic", "Igbo", "Indonesian", "Interlingua", "Irish", "Italian", "Japanese", "Javanese", "Kannada",
-            "Kazakh", "Kinyarwanda", "Kirundi", "Klingon", "Kongo", "Korean", "Krio (Sierra Leone)", "Kurdish",
-            "Kurdish (Soranî)", "Kyrgyz", "Laothian", "Latin", "Latvian", "Lingala", "Lithuanian", "Lozi", "Luganda",
-            "Luo", "Macedonian", "Malagasy", "Malay", "Malayalam", "Maltese", "Maori", "Marathi", "Mauritian Creole",
-            "Moldavian", "Mongolian", "Montenegrin", "Nepali", "Nigerian Pidgin", "Northern Sotho", "Norwegian",
-            "Norwegian (Nynorsk)", "Occitan", "Oriya", "Oromo", "Pashto", "Persian", "Pirate", "Polish",
-            "Portuguese (Brazil)", "Portuguese (Portugal)", "Punjabi", "Quechua", "Romanian", "Romansh", "Runyakitara",
-            "Russian", "Scots Gaelic", "Serbian", "Serbo-Croatian", "Sesotho", "Setswana", "Seychellois Creole",
-            "Shona", "Sindhi", "Sinhalese", "Slovak", "Slovenian", "Somali", "Spanish", "Spanish (Latin American)",
-            "Sundanese", "Swahili", "Swedish", "Tajik", "Tamil", "Tatar", "Telugu", "Thai", "Tigrinya", "Tonga",
-            "Tshiluba", "Tumbuka", "Turkish", "Turkmen", "Twi", "Uighur", "Ukrainian", "Urdu", "Uzbek", "Vietnamese",
-            "Welsh", "Wolof", "Xhosa", "Yiddish", "Yoruba", "Zulu")]
-        [string]$AudioLanguage,
-
-        [Parameter(HelpMessage = "Preferred audio language")]
-        [ValidateSet(
-            "Afrikaans", "Akan", "Albanian", "Amharic", "Arabic", "Armenian", "Azerbaijani", "Basque", "Belarusian",
-            "Bemba", "Bengali", "Bihari", "Bork, bork, bork!", "Bosnian", "Breton", "Bulgarian", "Cambodian",
-            "Catalan", "Cherokee", "Chichewa", "Chinese (Simplified)", "Chinese (Traditional)", "Corsican",
-            "Croatian", "Czech", "Danish", "Dutch", "Elmer Fudd", "English", "Esperanto", "Estonian", "Ewe",
-            "Faroese", "Filipino", "Finnish", "French", "Frisian", "Ga", "Galician", "Georgian", "German", "Greek",
-            "Guarani", "Gujarati", "Hacker", "Haitian Creole", "Hausa", "Hawaiian", "Hebrew", "Hindi", "Hungarian",
-            "Icelandic", "Igbo", "Indonesian", "Interlingua", "Irish", "Italian", "Japanese", "Javanese", "Kannada",
-            "Kazakh", "Kinyarwanda", "Kirundi", "Klingon", "Kongo", "Korean", "Krio (Sierra Leone)", "Kurdish",
-            "Kurdish (Soranî)", "Kyrgyz", "Laothian", "Latin", "Latvian", "Lingala", "Lithuanian", "Lozi", "Luganda",
-            "Luo", "Macedonian", "Malagasy", "Malay", "Malayalam", "Maltese", "Maori", "Marathi", "Mauritian Creole",
-            "Moldavian", "Mongolian", "Montenegrin", "Nepali", "Nigerian Pidgin", "Northern Sotho", "Norwegian",
-            "Norwegian (Nynorsk)", "Occitan", "Oriya", "Oromo", "Pashto", "Persian", "Pirate", "Polish",
-            "Portuguese (Brazil)", "Portuguese (Portugal)", "Punjabi", "Quechua", "Romanian", "Romansh", "Runyakitara",
-            "Russian", "Scots Gaelic", "Serbian", "Serbo-Croatian", "Sesotho", "Setswana", "Seychellois Creole",
-            "Shona", "Sindhi", "Sinhalese", "Slovak", "Slovenian", "Somali", "Spanish", "Spanish (Latin American)",
-            "Sundanese", "Swahili", "Swedish", "Tajik", "Tamil", "Tatar", "Telugu", "Thai", "Tigrinya", "Tonga",
-            "Tshiluba", "Tumbuka", "Turkish", "Turkmen", "Twi", "Uighur", "Ukrainian", "Urdu", "Uzbek", "Vietnamese",
-            "Welsh", "Wolof", "Xhosa", "Yiddish", "Yoruba", "Zulu")]
-        [string]$PreferredAudioLanguage,
-
-        # Network Options
-        [Parameter(HelpMessage = "HTTP proxy")]
-        [string]$HttpProxy,
-
-        [Parameter(HelpMessage = "HTTP proxy password")]
-        [string]$HttpProxyPassword,
-
-        # Advanced Options
-        [Parameter(HelpMessage = "Verbosity level")]
-        [ValidateRange(0, 2)]
-        [int]$VerbosityLevel,
-
-        [Parameter(HelpMessage = "Subdirectory behavior")]
-        [ValidateSet("None", "Collapse", "Expand")]
-        [string]$SubdirectoryBehavior,
-
-        [Parameter(HelpMessage = "Ignored extensions")]
-        [string]$IgnoredExtensions,
-
-        # Performance Options
-        [Parameter(HelpMessage = "Increase the priority of the process")]
-        [switch]$HighPriority,
-
-        [Parameter(HelpMessage = "Enable time stretching audio")]
-        [switch]$EnableTimeStretch,
-
-        [Parameter(HelpMessage = "Path to VLC executable")]
-        [string]$VLCPath = "${env:ProgramFiles}\VideoLAN\VLC\vlc.exe",
-
-        [Parameter(HelpMessage = "Open new VLC mediaplayer instance")]
-        [switch] $NewWindow,
-
-        [Parameter(HelpMessage = "Enable video wallpaper mode")]
-        [switch]$EnableWallpaperMode,
-
-        [Parameter(HelpMessage = "Video filter modules")]
-        [string[]]$VideoFilterModules,
-
-        [Parameter(HelpMessage = "Modules")]
-        [string[]]$Modules,
-
-        [Parameter(HelpMessage = "Audio filter modules")]
-        [string[]]$AudioFilterModules,
-
-        [Parameter(HelpMessage = "Audio visualization mode")]
-        [ValidateSet("None", "Goom", "ProjectM", "Visual", "GLSpectrum")]
-        [string]$AudioVisualization,
-
-        [Parameter(HelpMessage = "Preferred subtitle language")]
-        [string]$PreferredSubtitleLanguage,
-
-        [Parameter(HelpMessage = "Ignored file extensions")]
-        [string]$IgnoredFileExtensions,
-
-        [Parameter(HelpMessage = "Enable audio time stretching")]
-        [switch]$EnableAudioTimeStretch,
-
-        [Parameter(HelpMessage = "Additional arguments for VLC media player")]
-        [string]$Arguments,
-        #############################################################
-        [parameter(
+        ########################################################################
+        [Parameter(
             Mandatory = $false,
-            HelpMessage = "Will either set the window fullscreen on a different monitor than Powershell, or " +
-            "side by side with Powershell on the same monitor"
+            HelpMessage = "Always on top"
+        )]
+        [switch] $AlwaysOnTop,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Play files randomly forever"
+        )]
+        [switch] $Random,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Repeat all"
+        )]
+        [switch] $Loop,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Repeat current item"
+        )]
+        [switch] $Repeat,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Start paused"
+        )]
+        [switch] $StartPaused,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Play and exit"
+        )]
+        [switch] $PlayAndExit,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Disable audio"
+        )]
+        [switch] $DisableAudio,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Replay gain mode"
+        )]
+        [ValidateSet("None", "Track", "Album")]
+        [string] $ReplayGainMode,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Replay gain preamp"
+        )]
+        [ValidateRange(-20.0, 20.0)]
+        [float] $ReplayGainPreamp,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Force detection of Dolby Surround"
+        )]
+        [ValidateSet("Auto", "On", "Off")]
+        [string] $ForceDolbySurround,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Audio filters"
+        )]
+        [string[]] $AudioFilters,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Audio visualizations"
+        )]
+        [ValidateSet("None", "Goom", "ProjectM", "Visual", "GLSpectrum")]
+        [string] $Visualization,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Deinterlace"
+        )]
+        [ValidateSet("Off", "Automatic", "On")]
+        [string] $Deinterlace,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Deinterlace mode"
+        )]
+        [ValidateSet("Auto", "Discard", "Blend", "Mean", "Bob", "Linear", "X",
+                     "Yadif", "Yadif2x", "Phosphor", "IVTC")]
+        [string] $DeinterlaceMode,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Source aspect ratio"
+        )]
+        [string] $AspectRatio,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Video cropping"
+        )]
+        [string] $Crop,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Video Auto Scaling"
+        )]
+        [switch] $AutoScale,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Video filter module"
+        )]
+        [string[]] $VideoFilters,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Use subtitle file"
+        )]
+        [string] $SubtitleFile,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Disable subtitles"
+        )]
+        [switch] $DisableSubtitles,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Subtitles text scaling factor"
+        )]
+        [ValidateRange(10, 500)]
+        [int] $SubtitleScale,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Subtitle language"
+        )]
+        [ValidateSet(
+            "Afrikaans", "Akan", "Albanian", "Amharic", "Arabic", "Armenian",
+            "Azerbaijani", "Basque", "Belarusian", "Bemba", "Bengali", "Bihari",
+            "Bork, bork, bork!", "Bosnian", "Breton", "Bulgarian", "Cambodian",
+            "Catalan", "Cherokee", "Chichewa", "Chinese (Simplified)",
+            "Chinese (Traditional)", "Corsican", "Croatian", "Czech", "Danish",
+            "Dutch", "Elmer Fudd", "English", "Esperanto", "Estonian", "Ewe",
+            "Faroese", "Filipino", "Finnish", "French", "Frisian", "Ga",
+            "Galician", "Georgian", "German", "Greek", "Guarani", "Gujarati",
+            "Hacker", "Haitian Creole", "Hausa", "Hawaiian", "Hebrew", "Hindi",
+            "Hungarian", "Icelandic", "Igbo", "Indonesian", "Interlingua",
+            "Irish", "Italian", "Japanese", "Javanese", "Kannada", "Kazakh",
+            "Kinyarwanda", "Kirundi", "Klingon", "Kongo", "Korean",
+            "Krio (Sierra Leone)", "Kurdish", "Kurdish (Soranî)", "Kyrgyz",
+            "Laothian", "Latin", "Latvian", "Lingala", "Lithuanian", "Lozi",
+            "Luganda", "Luo", "Macedonian", "Malagasy", "Malay", "Malayalam",
+            "Maltese", "Maori", "Marathi", "Mauritian Creole", "Moldavian",
+            "Mongolian", "Montenegrin", "Nepali", "Nigerian Pidgin",
+            "Northern Sotho", "Norwegian", "Norwegian (Nynorsk)", "Occitan",
+            "Oriya", "Oromo", "Pashto", "Persian", "Pirate", "Polish",
+            "Portuguese (Brazil)", "Portuguese (Portugal)", "Punjabi",
+            "Quechua", "Romanian", "Romansh", "Runyakitara", "Russian",
+            "Scots Gaelic", "Serbian", "Serbo-Croatian", "Sesotho", "Setswana",
+            "Seychellois Creole", "Shona", "Sindhi", "Sinhalese", "Slovak",
+            "Slovenian", "Somali", "Spanish", "Spanish (Latin American)",
+            "Sundanese", "Swahili", "Swedish", "Tajik", "Tamil", "Tatar",
+            "Telugu", "Thai", "Tigrinya", "Tonga", "Tshiluba", "Tumbuka",
+            "Turkish", "Turkmen", "Twi", "Uighur", "Ukrainian", "Urdu",
+            "Uzbek", "Vietnamese", "Welsh", "Wolof", "Xhosa", "Yiddish",
+            "Yoruba", "Zulu")]
+        [string] $SubtitleLanguage,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Audio language"
+        )]
+        [ValidateSet(
+            "Afrikaans", "Akan", "Albanian", "Amharic", "Arabic", "Armenian",
+            "Azerbaijani", "Basque", "Belarusian", "Bemba", "Bengali", "Bihari",
+            "Bork, bork, bork!", "Bosnian", "Breton", "Bulgarian", "Cambodian",
+            "Catalan", "Cherokee", "Chichewa", "Chinese (Simplified)",
+            "Chinese (Traditional)", "Corsican", "Croatian", "Czech", "Danish",
+            "Dutch", "Elmer Fudd", "English", "Esperanto", "Estonian", "Ewe",
+            "Faroese", "Filipino", "Finnish", "French", "Frisian", "Ga",
+            "Galician", "Georgian", "German", "Greek", "Guarani", "Gujarati",
+            "Hacker", "Haitian Creole", "Hausa", "Hawaiian", "Hebrew", "Hindi",
+            "Hungarian", "Icelandic", "Igbo", "Indonesian", "Interlingua",
+            "Irish", "Italian", "Japanese", "Javanese", "Kannada", "Kazakh",
+            "Kinyarwanda", "Kirundi", "Klingon", "Kongo", "Korean",
+            "Krio (Sierra Leone)", "Kurdish", "Kurdish (Soranî)", "Kyrgyz",
+            "Laothian", "Latin", "Latvian", "Lingala", "Lithuanian", "Lozi",
+            "Luganda", "Luo", "Macedonian", "Malagasy", "Malay", "Malayalam",
+            "Maltese", "Maori", "Marathi", "Mauritian Creole", "Moldavian",
+            "Mongolian", "Montenegrin", "Nepali", "Nigerian Pidgin",
+            "Northern Sotho", "Norwegian", "Norwegian (Nynorsk)", "Occitan",
+            "Oriya", "Oromo", "Pashto", "Persian", "Pirate", "Polish",
+            "Portuguese (Brazil)", "Portuguese (Portugal)", "Punjabi",
+            "Quechua", "Romanian", "Romansh", "Runyakitara", "Russian",
+            "Scots Gaelic", "Serbian", "Serbo-Croatian", "Sesotho", "Setswana",
+            "Seychellois Creole", "Shona", "Sindhi", "Sinhalese", "Slovak",
+            "Slovenian", "Somali", "Spanish", "Spanish (Latin American)",
+            "Sundanese", "Swahili", "Swedish", "Tajik", "Tamil", "Tatar",
+            "Telugu", "Thai", "Tigrinya", "Tonga", "Tshiluba", "Tumbuka",
+            "Turkish", "Turkmen", "Twi", "Uighur", "Ukrainian", "Urdu",
+            "Uzbek", "Vietnamese", "Welsh", "Wolof", "Xhosa", "Yiddish",
+            "Yoruba", "Zulu")]
+        [string] $AudioLanguage,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Preferred audio language"
+        )]
+        [ValidateSet(
+            "Afrikaans", "Akan", "Albanian", "Amharic", "Arabic", "Armenian",
+            "Azerbaijani", "Basque", "Belarusian", "Bemba", "Bengali", "Bihari",
+            "Bork, bork, bork!", "Bosnian", "Breton", "Bulgarian", "Cambodian",
+            "Catalan", "Cherokee", "Chichewa", "Chinese (Simplified)",
+            "Chinese (Traditional)", "Corsican", "Croatian", "Czech", "Danish",
+            "Dutch", "Elmer Fudd", "English", "Esperanto", "Estonian", "Ewe",
+            "Faroese", "Filipino", "Finnish", "French", "Frisian", "Ga",
+            "Galician", "Georgian", "German", "Greek", "Guarani", "Gujarati",
+            "Hacker", "Haitian Creole", "Hausa", "Hawaiian", "Hebrew", "Hindi",
+            "Hungarian", "Icelandic", "Igbo", "Indonesian", "Interlingua",
+            "Irish", "Italian", "Japanese", "Javanese", "Kannada", "Kazakh",
+            "Kinyarwanda", "Kirundi", "Klingon", "Kongo", "Korean",
+            "Krio (Sierra Leone)", "Kurdish", "Kurdish (Soranî)", "Kyrgyz",
+            "Laothian", "Latin", "Latvian", "Lingala", "Lithuanian", "Lozi",
+            "Luganda", "Luo", "Macedonian", "Malagasy", "Malay", "Malayalam",
+            "Maltese", "Maori", "Marathi", "Mauritian Creole", "Moldavian",
+            "Mongolian", "Montenegrin", "Nepali", "Nigerian Pidgin",
+            "Northern Sotho", "Norwegian", "Norwegian (Nynorsk)", "Occitan",
+            "Oriya", "Oromo", "Pashto", "Persian", "Pirate", "Polish",
+            "Portuguese (Brazil)", "Portuguese (Portugal)", "Punjabi",
+            "Quechua", "Romanian", "Romansh", "Runyakitara", "Russian",
+            "Scots Gaelic", "Serbian", "Serbo-Croatian", "Sesotho", "Setswana",
+            "Seychellois Creole", "Shona", "Sindhi", "Sinhalese", "Slovak",
+            "Slovenian", "Somali", "Spanish", "Spanish (Latin American)",
+            "Sundanese", "Swahili", "Swedish", "Tajik", "Tamil", "Tatar",
+            "Telugu", "Thai", "Tigrinya", "Tonga", "Tshiluba", "Tumbuka",
+            "Turkish", "Turkmen", "Twi", "Uighur", "Ukrainian", "Urdu",
+            "Uzbek", "Vietnamese", "Welsh", "Wolof", "Xhosa", "Yiddish",
+            "Yoruba", "Zulu")]
+        [string] $PreferredAudioLanguage,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "HTTP proxy"
+        )]
+        [string] $HttpProxy,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "HTTP proxy password"
+        )]
+        [string] $HttpProxyPassword,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Verbosity level"
+        )]
+        [ValidateRange(0, 2)]
+        [int] $VerbosityLevel,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Subdirectory behavior"
+        )]
+        [ValidateSet("None", "Collapse", "Expand")]
+        [string] $SubdirectoryBehavior,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Ignored extensions"
+        )]
+        [string] $IgnoredExtensions,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Increase the priority of the process"
+        )]
+        [switch] $HighPriority,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Enable time stretching audio"
+        )]
+        [switch] $EnableTimeStretch,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Path to VLC executable"
+        )]
+        [string] $VLCPath = "${env:ProgramFiles}\VideoLAN\VLC\vlc.exe",
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Open new VLC mediaplayer instance"
+        )]
+        [switch] $NewWindow,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Enable video wallpaper mode"
+        )]
+        [switch] $EnableWallpaperMode,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Video filter modules"
+        )]
+        [string[]] $VideoFilterModules,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Modules"
+        )]
+        [string[]] $Modules,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Audio filter modules"
+        )]
+        [string[]] $AudioFilterModules,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Audio visualization mode"
+        )]
+        [ValidateSet("None", "Goom", "ProjectM", "Visual", "GLSpectrum")]
+        [string] $AudioVisualization,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Preferred subtitle language"
+        )]
+        [string] $PreferredSubtitleLanguage,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Ignored file extensions"
+        )]
+        [string] $IgnoredFileExtensions,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Enable audio time stretching"
+        )]
+        [switch] $EnableAudioTimeStretch,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = "Additional arguments for VLC media player"
+        )]
+        [string] $Arguments,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = ("Will either set the window fullscreen on a " +
+                          "different monitor than Powershell, or side by side " +
+                          "with Powershell on the same monitor")
         )]
         [switch] $SideBySide
-        ###############################################################################
-    )
-
-    begin {
+        ########################################################################
+    )    begin {
 
         # define supported file extensions for each media type
         $videoFiles = @(".mp4", ".avi", ".mkv", ".mov", ".wmv")
@@ -583,19 +800,34 @@ function Open-MediaFile {
             ".rmm")
         $pictureFiles = @(".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tiff",
             ".tif")
+
+        # output verbose information about supported file types
+        Microsoft.PowerShell.Utility\Write-Verbose ("Supported video files: " +
+                                                     ($videoFiles -join ", "))
+
+        Microsoft.PowerShell.Utility\Write-Verbose ("Supported audio files: " +
+                                                     ($audioFiles -join ", "))
+
+        Microsoft.PowerShell.Utility\Write-Verbose ("Supported picture files: " +
+                                                     ($pictureFiles -join ", "))
     }
 
+    process {
 
-process {
-
-        # get sorted list of all matching files
+        # get sorted list of all matching files using helper function
         $invocationParams = GenXdev.Helpers\Copy-IdenticalParamValues `
             -FunctionName "GenXdev.FileSystem\Find-Item" `
             -BoundParameters $PSBoundParameters
 
         $invocationParams.PassThru = $true
 
-        $files = GenXdev.FileSystem\Find-Item @invocationParams | Microsoft.PowerShell.Utility\Sort-Object -Property FullName
+        Microsoft.PowerShell.Utility\Write-Verbose ("Searching for files with " +
+                                                     "parameters: " +
+                                                     ($invocationParams.Keys -join ", "))
+
+        # find all files matching the search criteria
+        $files = GenXdev.FileSystem\Find-Item @invocationParams |
+            Microsoft.PowerShell.Utility\Sort-Object -Property FullName
 
         # determine which file types to include based on parameters
         $validExtensions = $OnlyVideos ? $videoFiles : (
@@ -608,81 +840,154 @@ process {
 
         # add additional file types if specified
         if ($IncludeVideos) {
+
             $validExtensions += $videoFiles
+
+            Microsoft.PowerShell.Utility\Write-Verbose "Including video files"
         }
+
         if ($IncludeAudio) {
+
             $validExtensions += $audioFiles
+
+            Microsoft.PowerShell.Utility\Write-Verbose "Including audio files"
         }
+
         if ($IncludePictures) {
+
             $validExtensions += $pictureFiles
+
+            Microsoft.PowerShell.Utility\Write-Verbose "Including picture files"
         }
+
+        # remove duplicate extensions from the array
+        $validExtensions = $validExtensions | Microsoft.PowerShell.Utility\Select-Object -Unique
+
+        Microsoft.PowerShell.Utility\Write-Verbose ("Valid extensions: " +
+                                                     ($validExtensions -join ", "))
 
         # filter files by extension and keywords
-        $files = $files | Microsoft.PowerShell.Core\Where-Object {
-            try {
-                if (-not ($validExtensions -contains $PSItem.Extension.ToLower())) {
-                    return $false;
-                }
+        $files = $files |
+            Microsoft.PowerShell.Core\Where-Object {
+                try {
 
-                if ($Keywords.Length -gt 0) {
-                    $srtSearchMask = [io.Path]::Combine([IO.Path]::GetDirectoryName($PSItem.FullName), [IO.Path]::GetFileNameWithoutExtension($PSItem.FullName) + "*.srt");
+                    # check if file extension is in the valid extensions list
+                    if (-not ($validExtensions -contains $PSItem.Extension.ToLower())) {
 
-                    Microsoft.PowerShell.Management\Get-ChildItem $srtSearchMask -File -ErrorAction SilentlyContinue | Microsoft.PowerShell.Core\ForEach-Object {
-                        $srt = [IO.File]::ReadAllText($PSItem.FullName);
-
-                        foreach ($keyword in $Keywords) {
-                            if ($srt -like "*$keyword*") {
-                                return $true;
-                            }
-                        }
+                        return $false;
                     }
 
-                    if ([IO.File]::Exists("$($PSItem.FullName):description.json")) {
-                        $description = [IO.File]::ReadAllText("$($PSItem.FullName):description.json");
+                    # if keywords are specified, search in subtitle and description files
+                    if ($Keywords.Length -gt 0) {
 
-                        foreach ($keyword in $Keywords) {
-                            if ($description -like "*$keyword*") {
-                                return $true;
+                        # construct search mask for subtitle files
+                        $srtSearchMask = [IO.Path]::Combine(
+                            [IO.Path]::GetDirectoryName($PSItem.FullName),
+                            [IO.Path]::GetFileNameWithoutExtension($PSItem.FullName) +
+                            "*.srt"
+                        );
+
+                        # search for keywords in subtitle files
+                        Microsoft.PowerShell.Management\Get-ChildItem $srtSearchMask `
+                            -File `
+                            -ErrorAction SilentlyContinue |
+                            Microsoft.PowerShell.Core\ForEach-Object {
+
+                                # read subtitle file content
+                                $srt = [IO.File]::ReadAllText($PSItem.FullName);
+
+                                # check each keyword against subtitle content
+                                foreach ($keyword in $Keywords) {
+
+                                    if ($srt -like "*$keyword*") {
+
+                                        return $true;
+                                    }
+                                }
+                            }
+
+                        # check for description in alternate data stream
+                        if ([IO.File]::Exists("$($PSItem.FullName):description.json")) {
+
+                            # read description file content
+                            $description = [IO.File]::ReadAllText(
+                                "$($PSItem.FullName):description.json"
+                            );
+
+                            # check each keyword against description content
+                            foreach ($keyword in $Keywords) {
+
+                                if ($description -like "*$keyword*") {
+
+                                    return $true;
+                                }
                             }
                         }
+
+                        return $false;
                     }
 
+                    return $true;
+                }
+                catch {
+
+                    # if any error occurs during filtering, exclude the file
                     return $false;
                 }
-
-                return $true;
             }
-            catch {
-                return $false;
-            }
-        }
 
+        # check if any media files were found
         if ($files.Length -eq 0) {
-            Microsoft.PowerShell.Utility\Write-Host "No media files found in the specified directory."
+
+            Microsoft.PowerShell.Utility\Write-Host ("No media files found in " +
+                                                      "the specified directory.")
+
             return
         }
 
-        # create temporary playlist file
+        Microsoft.PowerShell.Utility\Write-Verbose ("Found $($files.Length) " +
+                                                     "media files")
+
+        # create temporary playlist file with m3u extension
         $playlistPath = [System.IO.Path]::ChangeExtension(
             [System.IO.Path]::GetTempFileName(),
             ".m3u"
         )
 
-        Microsoft.PowerShell.Utility\Write-Verbose "Creating playlist at: $playlistPath"
+        Microsoft.PowerShell.Utility\Write-Verbose ("Creating playlist at: " +
+                                                     $playlistPath)
 
-        # generate m3u playlist content
+        # generate m3u playlist content with header
         $m3uContent = "#EXTM3U`r`n"
+
+        # add each file to the playlist with proper formatting
         foreach ($file in $files) {
-            $m3uContent += "#EXTINF:-1, $($file.Name.Replace("_", " ").Replace(".", " ").Replace("  ", " "))`r`n$(($file.FullName))`r`n";
+
+            # create friendly display name by cleaning up filename
+            $displayName = $file.Name.Replace("_", " ").Replace(".", " ").Replace("  ", " ")
+
+            # add entry with duration placeholder and file path
+            $m3uContent += "#EXTINF:-1, $displayName`r`n$(($file.FullName))`r`n";
         }
 
-        # save playlist file
-        $m3uContent | Microsoft.PowerShell.Utility\Out-File -FilePath $playlistPath -Encoding utf8 -Force
+        # save playlist file to disk with utf8 encoding
+        $null = $m3uContent |
+            Microsoft.PowerShell.Utility\Out-File `
+                -FilePath $playlistPath `
+                -Encoding utf8 `
+                -Force
 
-        # launch VLC with playlist
-        Microsoft.PowerShell.Utility\Write-Verbose "Starting VLC player"
-        Microsoft.PowerShell.Management\Get-Process vlc -ErrorAction SilentlyContinue | Microsoft.PowerShell.Management\Stop-Process -Force
+        Microsoft.PowerShell.Utility\Write-Verbose ("Playlist created " +
+                                                     "successfully")
 
+        # terminate any existing vlc processes to avoid conflicts
+        Microsoft.PowerShell.Utility\Write-Verbose "Stopping existing VLC processes"
+
+        $null = Microsoft.PowerShell.Management\Get-Process vlc `
+            -ErrorAction SilentlyContinue |
+            Microsoft.PowerShell.Management\Stop-Process -Force
+
+        # prepare parameters for vlc media player launch
         $invocationParams = GenXdev.Helpers\Copy-IdenticalParamValues `
             -FunctionName "GenXdev.Console\Open-VlcMediaPlayer" `
             -BoundParameters $PSBoundParameters
@@ -691,10 +996,15 @@ process {
         $invocationParams.PassThru = $true
         $invocationParams.KeysToSend = $KeysToSend
 
+        Microsoft.PowerShell.Utility\Write-Verbose "Starting VLC player"
+
+        # launch vlc media player with the generated playlist
         $vlcWindowHelper = GenXdev.Console\Open-VlcMediaPlayer @invocationParams
     }
 
     end {
+
+        # return window helper object if passthru was requested
         if ($PassThru) {
 
             Microsoft.PowerShell.Utility\Write-Output $vlcWindowHelper

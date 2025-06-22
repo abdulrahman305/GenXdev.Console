@@ -39,7 +39,7 @@ Update-Module
 | [Get-IsSpeaking](#Get-IsSpeaking) | iss | Returns true if the text-to-speech engine is speaking. |
 | [New-MicrosoftShellTab](#New-MicrosoftShellTab) | x | Creates a new Windows Terminal tab running PowerShell. |
 | [Now](#Now) |  | Returns the current system date and time as a DateTime object. |
-| [Open-MediaFile](#Open-MediaFile) | vlcmedia, media | Plays media files using VLC player with flexible filtering options. |
+| [Open-MediaFile](#Open-MediaFile) | vlcmedia, media |  |
 | [SayDate](#SayDate) |  | Speaks the current date using text-to-speech synthesis. |
 | [SayTime](#SayTime) |  | Announces the current time using text-to-speech. |
 | [Set-LocationParent](#Set-LocationParent) | .. | Changes the current location to the parent directory and lists its contents. |
@@ -361,7 +361,8 @@ NAME
     Open-MediaFile
     
 SYNOPSIS
-    Plays media files using VLC player with flexible filtering options.
+    Opens and plays media files using VLC media player with advanced filtering and
+    configuration options.
     
     
 SYNTAX
@@ -369,15 +370,18 @@ SYNTAX
     
     
 DESCRIPTION
-    This function scans for media files in the specified directory, filters them based
-    on file type and optional keywords, creates a playlist, and launches VLC player.
-    It supports videos, audio files and pictures with automatic installation of VLC
-    if needed.
+    This function scans for media files based on search patterns and optional
+    keywords, creates a playlist, and launches VLC media player with comprehensive
+    configuration options. It supports videos, audio files, and pictures with
+    automatic VLC installation if needed. The function provides extensive control
+    over playback behavior, window positioning, audio/video settings, and subtitle
+    handling.
     
 
 PARAMETERS
     -SearchMask <String[]>
-        File pattern to filter media files. Default is "*".
+        File name or pattern to search for. Supports wildcards. Default is '*' to find
+        all media files.
         
         Required?                    false
         Position?                    1
@@ -387,7 +391,8 @@ PARAMETERS
         Accept wildcard characters?  true
         
     -Keywords <String[]>
-        Keywords to search for in subtitle files (.srt) and media descriptions.
+        Keywords to search for in subtitle files (.srt) and media descriptions stored
+        in alternate data streams.
         
         Required?                    false
         Position?                    named
@@ -397,6 +402,7 @@ PARAMETERS
         Accept wildcard characters?  true
         
     -AllDrives [<SwitchParameter>]
+        Search across all available drives instead of just the current directory.
         
         Required?                    false
         Position?                    named
@@ -406,6 +412,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -NoRecurse [<SwitchParameter>]
+        Do not recurse into subdirectories during the file search.
         
         Required?                    false
         Position?                    named
@@ -415,7 +422,8 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -OnlyVideos [<SwitchParameter>]
-        Filter to only include video files in the playlist.
+        Filter to only include video files in the playlist (.mp4, .avi, .mkv, .mov,
+        .wmv).
         
         Required?                    false
         Position?                    named
@@ -425,7 +433,8 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -OnlyAudio [<SwitchParameter>]
-        Filter to only include audio files in the playlist.
+        Filter to only include audio files in the playlist (.mp3, .flac, .wav, .midi,
+        .mid, .au, .aiff, .aac, .m4a, .ogg, .wma, .ra, .ram, .rm, .rmm).
         
         Required?                    false
         Position?                    named
@@ -435,7 +444,8 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -OnlyPictures [<SwitchParameter>]
-        Filter to only include picture files in the playlist.
+        Filter to only include picture files in the playlist (.jpg, .jpeg, .png, .gif,
+        .bmp, .tiff, .tif).
         
         Required?                    false
         Position?                    named
@@ -445,7 +455,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -IncludeVideos [<SwitchParameter>]
-        Additionally include video files in the playlist.
+        Additionally include video files in the playlist when other filters are applied.
         
         Required?                    false
         Position?                    named
@@ -455,7 +465,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -IncludeAudio [<SwitchParameter>]
-        Additionally include audio files in the playlist.
+        Additionally include audio files in the playlist when other filters are applied.
         
         Required?                    false
         Position?                    named
@@ -465,7 +475,8 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -IncludePictures [<SwitchParameter>]
-        Additionally include picture files in the playlist.
+        Additionally include picture files in the playlist when other filters are
+        applied.
         
         Required?                    false
         Position?                    named
@@ -475,7 +486,8 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -KeysToSend <String[]>
-        Keystrokes to send to the VLC window.
+        Keystrokes to send to the VLC player window after launch. See documentation for
+        GenXdev.Windows\Send-Key cmdlet for available key combinations.
         
         Required?                    false
         Position?                    2
@@ -485,6 +497,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Escape [<SwitchParameter>]
+        Escape control characters and modifiers in the KeysToSend parameter.
         
         Required?                    false
         Position?                    named
@@ -494,6 +507,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -ShiftEnter [<SwitchParameter>]
+        Use Shift+Enter instead of Enter when processing KeysToSend.
         
         Required?                    false
         Position?                    named
@@ -503,6 +517,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -DelayMilliSeconds <Int32>
+        Delay between different input strings in milliseconds when sending keys.
         
         Required?                    false
         Position?                    named
@@ -512,7 +527,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Monitor <Int32>
-        Monitor to display VLC on (-1=discard, 0=default).
+        The monitor to display VLC on. 0 = default monitor, -1 = discard positioning.
         
         Required?                    false
         Position?                    named
@@ -522,7 +537,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -NoBorders [<SwitchParameter>]
-        Removes window borders.
+        Removes the window borders from the VLC player window.
         
         Required?                    false
         Position?                    named
@@ -532,7 +547,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Width <Int32>
-        Initial window width.
+        The initial width of the VLC player window in pixels.
         
         Required?                    false
         Position?                    named
@@ -542,7 +557,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Height <Int32>
-        Initial window height.
+        The initial height of the VLC player window in pixels.
         
         Required?                    false
         Position?                    named
@@ -552,7 +567,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -X <Int32>
-        Initial window X position.
+        The initial X position of the VLC player window on screen.
         
         Required?                    false
         Position?                    named
@@ -562,7 +577,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Y <Int32>
-        Initial window Y position.
+        The initial Y position of the VLC player window on screen.
         
         Required?                    false
         Position?                    named
@@ -572,7 +587,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Left [<SwitchParameter>]
-        Places window on left side of screen.
+        Place the VLC window on the left side of the screen.
         
         Required?                    false
         Position?                    named
@@ -582,7 +597,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Right [<SwitchParameter>]
-        Places window on right side of screen.
+        Place the VLC window on the right side of the screen.
         
         Required?                    false
         Position?                    named
@@ -592,7 +607,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Top [<SwitchParameter>]
-        Places window on top of screen.
+        Place the VLC window on the top side of the screen.
         
         Required?                    false
         Position?                    named
@@ -602,7 +617,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Bottom [<SwitchParameter>]
-        Places window on bottom of screen.
+        Place the VLC window on the bottom side of the screen.
         
         Required?                    false
         Position?                    named
@@ -612,7 +627,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Centered [<SwitchParameter>]
-        Centers the window on screen.
+        Place the VLC window in the center of the screen.
         
         Required?                    false
         Position?                    named
@@ -622,7 +637,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Fullscreen [<SwitchParameter>]
-        Maximizes the window.
+        Maximize the VLC window to fullscreen mode.
         
         Required?                    false
         Position?                    named
@@ -632,7 +647,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -PassThru [<SwitchParameter>]
-        Returns the window helper for each VLC process.
+        Returns the window helper object for each VLC process launched.
         
         Required?                    false
         Position?                    named
@@ -642,7 +657,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -AlwaysOnTop [<SwitchParameter>]
-        Keeps VLC window always on top.
+        Keeps the VLC window always on top of other windows.
         
         Required?                    false
         Position?                    named
@@ -652,7 +667,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Random [<SwitchParameter>]
-        Enables random playback order or shuffle.
+        Enables random playback order (shuffle mode) for the playlist.
         
         Required?                    false
         Position?                    named
@@ -662,6 +677,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Loop [<SwitchParameter>]
+        Enables playlist looping - repeats the entire playlist when finished.
         
         Required?                    false
         Position?                    named
@@ -671,6 +687,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Repeat [<SwitchParameter>]
+        Enables single item repeat - repeats the current media file indefinitely.
         
         Required?                    false
         Position?                    named
@@ -680,6 +697,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -StartPaused [<SwitchParameter>]
+        Starts VLC in paused state instead of immediately playing.
         
         Required?                    false
         Position?                    named
@@ -689,6 +707,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -PlayAndExit [<SwitchParameter>]
+        Automatically exits VLC when playback is completed.
         
         Required?                    false
         Position?                    named
@@ -698,7 +717,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -DisableAudio [<SwitchParameter>]
-        Audio Options
+        Completely disables audio output during playback.
         
         Required?                    false
         Position?                    named
@@ -708,6 +727,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -ReplayGainMode <String>
+        Sets the audio replay gain mode to normalize volume levels across tracks.
         
         Required?                    false
         Position?                    named
@@ -717,6 +737,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -ReplayGainPreamp <Single>
+        Sets the replay gain preamp level in decibels (-20.0 to 20.0).
         
         Required?                    false
         Position?                    named
@@ -726,6 +747,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -ForceDolbySurround <String>
+        Forces detection of Dolby Surround audio encoding.
         
         Required?                    false
         Position?                    named
@@ -735,6 +757,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -AudioFilters <String[]>
+        Specifies audio filter modules to apply during playback.
         
         Required?                    false
         Position?                    named
@@ -744,6 +767,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Visualization <String>
+        Sets the audio visualization mode for audio-only content.
         
         Required?                    false
         Position?                    named
@@ -753,7 +777,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Deinterlace <String>
-        Video Options
+        Controls video deinterlacing for improved quality on interlaced content.
         
         Required?                    false
         Position?                    named
@@ -763,7 +787,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -DeinterlaceMode <String>
-        Sets deinterlacing mode.
+        Specifies the deinterlacing algorithm to use.
         
         Required?                    false
         Position?                    named
@@ -773,7 +797,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -AspectRatio <String>
-        Sets video aspect ratio.
+        Forces a specific aspect ratio for video content.
         
         Required?                    false
         Position?                    named
@@ -783,6 +807,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Crop <String>
+        Applies video cropping with specified dimensions.
         
         Required?                    false
         Position?                    named
@@ -792,6 +817,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -AutoScale [<SwitchParameter>]
+        Enables automatic video scaling to fit the window.
         
         Required?                    false
         Position?                    named
@@ -801,6 +827,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -VideoFilters <String[]>
+        Specifies video filter modules to apply during playback.
         
         Required?                    false
         Position?                    named
@@ -810,7 +837,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -SubtitleFile <String>
-        Specifies external subtitle file.
+        Path to an external subtitle file to use with video content.
         
         Required?                    false
         Position?                    named
@@ -820,6 +847,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -DisableSubtitles [<SwitchParameter>]
+        Completely disables subtitle display during playback.
         
         Required?                    false
         Position?                    named
@@ -829,6 +857,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -SubtitleScale <Int32>
+        Sets the subtitle text scaling factor (10-500 percent).
         
         Required?                    false
         Position?                    named
@@ -838,6 +867,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -SubtitleLanguage <String>
+        Specifies the preferred subtitle language from available tracks.
         
         Required?                    false
         Position?                    named
@@ -847,6 +877,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -AudioLanguage <String>
+        Specifies the preferred audio language from available tracks.
         
         Required?                    false
         Position?                    named
@@ -856,7 +887,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -PreferredAudioLanguage <String>
-        Sets preferred audio language.
+        Sets the default preferred audio language for future playback.
         
         Required?                    false
         Position?                    named
@@ -866,7 +897,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -HttpProxy <String>
-        Network Options
+        HTTP proxy server address for network streaming content.
         
         Required?                    false
         Position?                    named
@@ -876,6 +907,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -HttpProxyPassword <String>
+        Password for HTTP proxy authentication.
         
         Required?                    false
         Position?                    named
@@ -885,7 +917,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -VerbosityLevel <Int32>
-        Advanced Options
+        Sets VLC's log verbosity level (0=quiet, 1=errors, 2=verbose).
         
         Required?                    false
         Position?                    named
@@ -895,6 +927,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -SubdirectoryBehavior <String>
+        Controls how subdirectories are handled in the playlist.
         
         Required?                    false
         Position?                    named
@@ -904,6 +937,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -IgnoredExtensions <String>
+        File extensions to ignore during media file scanning.
         
         Required?                    false
         Position?                    named
@@ -913,7 +947,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -HighPriority [<SwitchParameter>]
-        Performance Options
+        Increases the process priority of the VLC player for better performance.
         
         Required?                    false
         Position?                    named
@@ -923,6 +957,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -EnableTimeStretch [<SwitchParameter>]
+        Enables audio time stretching to maintain pitch during speed changes.
         
         Required?                    false
         Position?                    named
@@ -932,6 +967,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -VLCPath <String>
+        Full path to the VLC executable. Defaults to standard installation location.
         
         Required?                    false
         Position?                    named
@@ -941,6 +977,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -NewWindow [<SwitchParameter>]
+        Forces opening a new VLC instance instead of using existing one.
         
         Required?                    false
         Position?                    named
@@ -950,7 +987,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -EnableWallpaperMode [<SwitchParameter>]
-        Enables wallpaper mode.
+        Enables video wallpaper mode where video plays as desktop background.
         
         Required?                    false
         Position?                    named
@@ -960,6 +997,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -VideoFilterModules <String[]>
+        Additional video filter modules to load and apply.
         
         Required?                    false
         Position?                    named
@@ -969,6 +1007,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Modules <String[]>
+        General VLC modules to load during startup.
         
         Required?                    false
         Position?                    named
@@ -978,7 +1017,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -AudioFilterModules <String[]>
-        Specifies audio filter modules to use.
+        Additional audio filter modules to load and apply.
         
         Required?                    false
         Position?                    named
@@ -988,7 +1027,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -AudioVisualization <String>
-        Sets audio visualization mode.
+        Sets the audio visualization mode for enhanced audio-only experience.
         
         Required?                    false
         Position?                    named
@@ -998,6 +1037,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -PreferredSubtitleLanguage <String>
+        Sets the default preferred subtitle language for future playback.
         
         Required?                    false
         Position?                    named
@@ -1007,6 +1047,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -IgnoredFileExtensions <String>
+        File extensions to completely ignore during scanning.
         
         Required?                    false
         Position?                    named
@@ -1016,7 +1057,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -EnableAudioTimeStretch [<SwitchParameter>]
-        Enables audio time stretching.
+        Enables advanced audio time stretching capabilities.
         
         Required?                    false
         Position?                    named
@@ -1026,6 +1067,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Arguments <String>
+        Additional command-line arguments to pass directly to VLC.
         
         Required?                    false
         Position?                    named
@@ -1035,6 +1077,8 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -SideBySide [<SwitchParameter>]
+        Places the VLC window side by side with PowerShell or on a different monitor
+        for fullscreen mode.
         
         Required?                    false
         Position?                    named
@@ -1055,30 +1099,29 @@ OUTPUTS
     
     -------------------------- EXAMPLE 1 --------------------------
     
-    PS > # Play all media in current directory
-    Open-MediaFile
+    PS > Open-MediaFile
     
-    
+    Opens all media files in the current directory using default VLC settings.
     
     
     
     
     -------------------------- EXAMPLE 2 --------------------------
     
-    PS > # Play only pictures from Pictures folder
-    vlc ~\Pictures -OnlyPictures
+    PS > vlc ~\Pictures -OnlyPictures -Fullscreen
     
-    
+    Opens only picture files from the Pictures folder in fullscreen mode using the
+    alias 'vlc'.
     
     
     
     
     -------------------------- EXAMPLE 3 --------------------------
     
-    PS > # Play videos containing "birthday" in subtitles
-    media ~\Videos -Keywords "birthday" -OnlyVideos
+    PS > media ~\Videos -Keywords "*birthday*" -OnlyVideos -Loop
     
-    
+    Opens video files containing "birthday" in subtitles with looping enabled using
+    the alias 'media'.
     
     
     
