@@ -91,8 +91,7 @@ process {
             $null = $Script:SpotifyPlaylistCache.Insert(0, $result)
 
             # save updated cache to json file
-            $filePath = GenXdev.FileSystem\Expand-Path "$PSScriptRoot\..\..\..\..\GenXdev.Local\`
-                Spotify.Playlists.json"
+            $filePath = GenXdev.FileSystem\Expand-Path "$($Env:ALLAPPDATA)\GenXdev.PowerShell\Spotify.Playlists.json"
             $Script:SpotifyPlaylistCache |
             Microsoft.PowerShell.Utility\ConvertTo-Json -Depth 100 |
             Microsoft.PowerShell.Utility\Out-File $filePath -Force

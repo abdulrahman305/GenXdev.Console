@@ -49,7 +49,7 @@ process {
         }
 
         # path to cached authentication token
-        $path = "$PSScriptRoot\..\..\..\..\GenXdev.Local\Spotify_Auth.json"
+        $path = "$($Env:ALLAPPDATA)\GenXdev.PowerShell\Spotify_Auth.json"
 
         # attempt to load existing token
         if ([IO.File]::Exists($path)) {

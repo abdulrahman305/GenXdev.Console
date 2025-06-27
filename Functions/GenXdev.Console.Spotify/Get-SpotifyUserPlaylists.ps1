@@ -53,7 +53,7 @@ function Get-SpotifyUserPlaylists {
 
         # determine cache file location
         $filePath = GenXdev.FileSystem\Expand-Path `
-            "$PSScriptRoot\..\..\..\..\GenXdev.Local\Spotify.Playlists.json"
+            "$($Env:ALLAPPDATA)\GenXdev.PowerShell\Spotify.Playlists.json"
 
         Microsoft.PowerShell.Utility\Write-Verbose "Cache file: $filePath"
     }

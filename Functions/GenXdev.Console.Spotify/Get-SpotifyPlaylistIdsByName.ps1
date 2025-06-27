@@ -58,7 +58,7 @@ process {
 
             # construct path to cache file
             $FilePath = GenXdev.FileSystem\Expand-Path `
-                -FilePath "$PSScriptRoot\..\..\..\..\GenXdev.Local\Spotify.Playlists.json" `
+                -FilePath "$($Env:ALLAPPDATA)\GenXdev.PowerShell\Spotify.Playlists.json" `
                 -CreateDirectory
 
             # get cache file info
