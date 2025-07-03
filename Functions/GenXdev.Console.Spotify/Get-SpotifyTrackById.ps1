@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Retrieves detailed track information from Spotify using a track ID.
@@ -14,11 +14,11 @@ that can be found in the Spotify track URL or through the Spotify client.
 
 .EXAMPLE
 Get-SpotifyTrackById -TrackId "3n3Ppam7vgaVa1iaRUc9Lp"
-# Returns full track details for "Mr. Brightside" by The Killers
+        ###############################################################################Returns full track details for "Mr. Brightside" by The Killers
 
 .EXAMPLE
 gettrack "3n3Ppam7vgaVa1iaRUc9Lp"
-#>
+        ###############################################################################>
 function Get-SpotifyTrackById {
 
     [CmdletBinding()]
@@ -57,4 +57,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

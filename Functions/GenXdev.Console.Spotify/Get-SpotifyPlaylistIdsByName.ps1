@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Retrieves Spotify playlist IDs by their names.
@@ -21,7 +21,7 @@ Get-SpotifyPlaylistIdsByName -PlaylistName "My Favorites", "Workout Mix"
 
 .EXAMPLE
 "Chill Vibes" | Get-SpotifyPlaylistIdsByName
-#>
+        ###############################################################################>
 function Get-SpotifyPlaylistIdsByName {
 
     [CmdletBinding()]
@@ -85,4 +85,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

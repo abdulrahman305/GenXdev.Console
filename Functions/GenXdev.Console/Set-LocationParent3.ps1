@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Navigates up three directory levels in the file system hierarchy.
@@ -12,7 +12,7 @@ Set-LocationParent3
 
 .EXAMPLE
 ....
-#>
+        ###############################################################################>
 function Set-LocationParent3 {
 
     [CmdletBinding(SupportsShouldProcess)]
@@ -66,4 +66,4 @@ process {
         Microsoft.PowerShell.Utility\Write-Verbose "Arrived at new location: $($PWD.Path)"
     }
 }
-################################################################################
+        ###############################################################################

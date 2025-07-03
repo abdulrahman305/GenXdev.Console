@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Performs a Spotify search and returns matching items.
@@ -20,9 +20,9 @@ Track, Show, Episode, or All. Default is Track.
 Search-Spotify -Queries "Rage against the machine" -SearchType Track
 
 .EXAMPLE
-# Using alias and positional parameter
+        ###############################################################################Using alias and positional parameter
 fm "Dire Straits"
-#>
+        ###############################################################################>
 function Search-Spotify {
 
     [CmdletBinding()]
@@ -70,4 +70,4 @@ process {
         }
     }
 }
-################################################################################
+        ###############################################################################

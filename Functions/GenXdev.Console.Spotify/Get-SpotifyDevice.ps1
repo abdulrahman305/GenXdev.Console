@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Returns all currently available Spotify devices for current user.
@@ -16,7 +16,7 @@ This command returns all available Spotify devices for the current user.
 .NOTES
 Requires valid Spotify authentication token to function. The token is automatically
 retrieved using Get-SpotifyApiToken.
-#>
+        ###############################################################################>
 function Get-SpotifyDevice {
 
     [CmdletBinding()]
@@ -42,4 +42,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Returns all tracks from a Spotify playlist.
@@ -23,7 +23,7 @@ Get-SpotifyPlaylistTrack -PlaylistId "37i9dQZF1DXcBWIGoYBM5M"
 
 .EXAMPLE
 "My Workout Mix" | getplaylist
-#>
+        ###############################################################################>
 function Get-SpotifyPlaylistTrack {
 
     [CmdletBinding(DefaultParameterSetName = "ByName")]
@@ -87,4 +87,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

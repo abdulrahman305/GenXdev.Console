@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Navigates up two directory levels in the file system hierarchy.
@@ -15,7 +15,7 @@ Set-LocationParent2
 
 .NOTES
 This function supports -WhatIf and -Confirm parameters through ShouldProcess.
-#>
+        ###############################################################################>
 function Set-LocationParent2 {
 
     [CmdletBinding(SupportsShouldProcess)]
@@ -66,4 +66,4 @@ process {
         Microsoft.PowerShell.Utility\Write-Verbose "Navigation completed to: $($PWD.Path)"
     }
 }
-################################################################################
+        ###############################################################################

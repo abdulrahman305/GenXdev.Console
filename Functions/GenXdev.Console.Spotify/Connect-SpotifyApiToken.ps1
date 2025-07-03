@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Authenticates with Spotify API using OAuth flow to obtain an access token.
@@ -10,7 +10,7 @@ subsequent API calls. The browser window automatically closes after successful
 authentication. Uses port 5642 for the OAuth callback listener.
 
 .EXAMPLE
-# Authenticate with Spotify and obtain access token
+        ###############################################################################Authenticate with Spotify and obtain access token
 Connect-SpotifyApiToken
 
 .OUTPUTS
@@ -21,7 +21,7 @@ Returns the Spotify authentication token as a string.
 Uses port 5642 as the default callback port for OAuth flow
 Minimizes browser window during authentication
 Automatically closes browser window after successful authentication
-#>
+        ###############################################################################>
 function Connect-SpotifyApiToken {
 
     [CmdletBinding()]
@@ -79,4 +79,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

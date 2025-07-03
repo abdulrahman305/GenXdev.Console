@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Enables song repeat mode in Spotify.
@@ -13,7 +13,7 @@ Set-SpotifyRepeatSong
 
 .EXAMPLE
 repeatsong
-#>
+        ###############################################################################>
 function Set-SpotifyRepeatSong {
 
     [CmdletBinding(SupportsShouldProcess)]
@@ -47,4 +47,4 @@ process {
         Microsoft.PowerShell.Utility\Write-Verbose "Spotify repeat mode has been set to 'track'"
     }
 }
-################################################################################
+        ###############################################################################

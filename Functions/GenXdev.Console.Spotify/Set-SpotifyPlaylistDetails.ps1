@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Sets the main properties of a Spotify playlist.
@@ -34,7 +34,7 @@ Set-SpotifyPlaylistDetails -PlaylistId "1234567890" -Name "My Playlist" `
 
 .EXAMPLE
 spld "1234567890" "Weekend Mix" -Private -NoCollabrations
-#>
+        ###############################################################################>
 function Set-SpotifyPlaylistDetails {
 
     [CmdletBinding(SupportsShouldProcess)]
@@ -147,4 +147,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

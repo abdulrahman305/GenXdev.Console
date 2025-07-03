@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Reorders tracks within a Spotify playlist by moving a range of items to a new
@@ -31,9 +31,9 @@ Set-SpotifyPlaylistOrder -PlaylistId "2v3iNvBX8Ay1Gt2uXtUKUT" `
                         -RangeLength 2
 
 .EXAMPLE
-# Move last track to start of playlist
+        ###############################################################################Move last track to start of playlist
 Set-SpotifyPlaylistOrder "2v3iNvBX8Ay1Gt2uXtUKUT" 9 0
-#>
+        ###############################################################################>
 function Set-SpotifyPlaylistOrder {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
@@ -101,4 +101,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

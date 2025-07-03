@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Starts the configured Windows screensaver.
@@ -14,7 +14,7 @@ Enable-Screensaver
 This function requires the Windows screensaver to be properly configured in the
 system settings. The screensaver executable must exist at the default Windows
 System32 location.
-#>
+        ###############################################################################>
 function Enable-Screensaver {
 
     [CmdletBinding()]
@@ -35,4 +35,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

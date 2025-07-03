@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Opens and plays media files using VLC media player with advanced filtering and
@@ -246,7 +246,7 @@ media ~\Videos -Keywords "*birthday*" -OnlyVideos -Loop
 
 Opens video files containing "birthday" in subtitles with looping enabled using
 the alias 'media'.
-#>
+        ###############################################################################>
 function Open-MediaFile {
 
     [CmdletBinding()]
@@ -1011,4 +1011,4 @@ function Open-MediaFile {
         }
     }
 }
-################################################################################
+        ###############################################################################

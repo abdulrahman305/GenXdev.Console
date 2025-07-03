@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Returns the current system date and time as a DateTime object.
@@ -15,7 +15,7 @@ Returns the current system date and time as a DateTime object
 .EXAMPLE
 $timestamp = Now
 Stores the current date and time in a variable for later use
-#>
+        ###############################################################################>
 function Now {
 
     [CmdletBinding()]
@@ -39,4 +39,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

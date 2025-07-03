@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Navigates up four directory levels in the filesystem hierarchy.
@@ -17,7 +17,7 @@ Set-LocationParent4
 .NOTES
 The alias '.....'' represents moving up four parent directories, where each dot
 represents one level up.
-#>
+        ###############################################################################>
 function Set-LocationParent4 {
 
     [CmdletBinding(SupportsShouldProcess)]
@@ -66,4 +66,4 @@ process {
         Microsoft.PowerShell.Utility\Write-Verbose "Completed navigation. New location: $PWD"
     }
 }
-################################################################################
+        ###############################################################################

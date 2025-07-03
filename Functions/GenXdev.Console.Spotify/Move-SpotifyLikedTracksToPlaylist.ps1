@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Moves all liked tracks from your Spotify library to specified playlist(s)
@@ -21,7 +21,7 @@ Move-SpotifyLikedTracksToPlaylist -PlaylistName "My Archived Likes"
 
 .EXAMPLE
 moveliked "My Archived Likes"
-#>
+        ###############################################################################>
 function Move-SpotifyLikedTracksToPlaylist {
 
     [CmdletBinding(DefaultParameterSetName = "ByName")]
@@ -101,4 +101,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

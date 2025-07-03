@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Returns all currently active Spotify devices for the current user.
@@ -13,7 +13,7 @@ Get-SpotifyActiveDevice
 
 Returns all active Spotify devices for the current user, displaying properties
 like name, type, and volume.
-#>
+        ###############################################################################>
 function Get-SpotifyActiveDevice {
 
     [CmdletBinding()]
@@ -43,4 +43,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

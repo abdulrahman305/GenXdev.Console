@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Launches and controls VLC Media Player with extensive configuration options.
@@ -72,13 +72,13 @@ Forces new VLC instance.
 Closes VLC window.
 
 .EXAMPLE
-# Open video fullscreen on monitor 0 with audio
+        ###############################################################################Open video fullscreen on monitor 0 with audio
 Open-VlcMediaPlayer -Path "video.mp4" -Fullscreen -Monitor 0
 
 .EXAMPLE
-# Short form using aliases
+        ###############################################################################Short form using aliases
 vlc "video.mp4" -fs -m 0
-#>
+        ###############################################################################>
 function Open-VlcMediaPlayer {
 
     [CmdletBinding()]
@@ -793,4 +793,4 @@ process {
         }
     }
 }
-################################################################################
+        ###############################################################################

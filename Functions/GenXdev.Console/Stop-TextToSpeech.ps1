@@ -1,4 +1,4 @@
-################################################################################
+        ###############################################################################
 
 <#
 .SYNOPSIS
@@ -11,16 +11,16 @@ text-to-speech activities.
 
 .EXAMPLE
 PS C:\> Stop-TextToSpeech
-# Immediately stops any ongoing speech
+        ###############################################################################Immediately stops any ongoing speech
 
 .EXAMPLE
 PS C:\> say "Hello world"; sst
-# Starts speaking but gets interrupted immediately
+        ###############################################################################Starts speaking but gets interrupted immediately
 
 .NOTES
 This cmdlet is commonly used in conjunction with Start-TextToSpeech (alias: say)
 and Skip-TextToSpeech (alias: sstSkip) for speech control.
-#>
+        ###############################################################################>
 function Stop-TextToSpeech {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
@@ -55,4 +55,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

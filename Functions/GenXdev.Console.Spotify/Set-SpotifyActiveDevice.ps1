@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Sets the active Spotify playback device.
@@ -20,7 +20,7 @@ Transfers playback to the device with ID "1234567890abcdef"
 .EXAMPLE
 "1234567890abcdef" | Set-SpotifyActiveDevice
 Same as above but using pipeline input
-#>
+        ###############################################################################>
 function Set-SpotifyActiveDevice {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
@@ -63,4 +63,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

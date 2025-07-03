@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Creates a new Windows Terminal tab running PowerShell.
@@ -25,7 +25,7 @@ Creates a new terminal tab while keeping the current tab open.
 .EXAMPLE
 x
 Creates a new terminal tab and closes the current one after 3 seconds.
-#>
+        ###############################################################################>
 function New-MicrosoftShellTab {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
@@ -84,4 +84,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

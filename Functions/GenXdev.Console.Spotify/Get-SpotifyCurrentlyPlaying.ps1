@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Returns information about the currently playing track on Spotify.
@@ -19,7 +19,7 @@ Uses the alias to get the currently playing track information.
 .EXAMPLE
 PS C:\> (Get-SpotifyCurrentlyPlaying).Item.Name
 Returns just the name of the currently playing track.
-#>
+        ###############################################################################>
 function Get-SpotifyCurrentlyPlaying {
 
     [CmdletBinding()]
@@ -46,4 +46,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

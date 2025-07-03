@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Enables playlist repeat mode for Spotify playback.
@@ -16,7 +16,7 @@ repeat
 .NOTES
 This cmdlet supports ShouldProcess, allowing use of -WhatIf and -Confirm parameters
 to control execution of state-changing operations.
-#>
+        ###############################################################################>
 function Set-SpotifyRepeatContext {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
@@ -49,4 +49,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

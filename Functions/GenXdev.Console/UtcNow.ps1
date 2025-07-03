@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Gets the current UTC (Coordinated Universal Time) date and time.
@@ -16,7 +16,7 @@ Returns the current UTC time as a DateTime object.
 .EXAMPLE
 $timestamp = (UtcNow).ToString("yyyy-MM-dd HH:mm:ss")
 Gets the current UTC time and formats it as a string.
-#>
+        ###############################################################################>
 function UtcNow {
 
     [CmdletBinding()]
@@ -40,4 +40,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

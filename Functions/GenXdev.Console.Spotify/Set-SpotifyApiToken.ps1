@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Caches a Spotify API token for later use in the local configuration.
@@ -13,7 +13,7 @@ The Spotify API authentication token to be cached locally.
 
 .EXAMPLE
 Set-SpotifyApiToken -ApiToken "YOUR-SPOTIFY-API-TOKEN"
-#>
+        ###############################################################################>
 function Set-SpotifyApiToken {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
@@ -61,4 +61,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Performs a Spotify search and plays the first found item.
@@ -27,7 +27,7 @@ Search-SpotifyAndPlay -Queries "Rage against the machine" -SearchType Track
 
 .EXAMPLE
 fmp "Dire Straits You and your friend"
-#>
+        ###############################################################################>
 function Search-SpotifyAndPlay {
 
     [CmdletBinding()]
@@ -82,4 +82,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

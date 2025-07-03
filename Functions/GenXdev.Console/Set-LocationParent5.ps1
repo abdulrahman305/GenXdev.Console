@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Navigates up five directory levels in the file system hierarchy.
@@ -13,7 +13,7 @@ Set-LocationParent5
 
 .EXAMPLE
 ......
-#>
+        ###############################################################################>
 function Set-LocationParent5 {
 
     [CmdletBinding(SupportsShouldProcess)]
@@ -65,4 +65,4 @@ process {
         Microsoft.PowerShell.Utility\Write-Verbose "Completed navigation. New location: $PWD"
     }
 }
-################################################################################
+        ###############################################################################

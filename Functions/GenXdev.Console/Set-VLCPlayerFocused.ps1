@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Sets focus to the VLC media player window.
@@ -10,12 +10,12 @@ continues without error. Uses Windows API calls to manipulate window focus.
 
 .EXAMPLE
 Set-VLCPlayerFocused
-# Brings the VLC player window to front and gives it focus
+        ###############################################################################Brings the VLC player window to front and gives it focus
 
 .EXAMPLE
 vlcf
-# Same operation using the short alias
-#>
+        ###############################################################################Same operation using the short alias
+        ###############################################################################>
 function Set-VLCPlayerFocused {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
@@ -55,4 +55,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

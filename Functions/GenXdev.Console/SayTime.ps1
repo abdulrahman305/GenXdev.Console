@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Announces the current time using text-to-speech.
@@ -10,8 +10,8 @@ accessibility purposes or when you need an audible time announcement.
 
 .EXAMPLE
 SayTime
-# Speaks the current time, e.g. "The time is 14 hours and 30 minutes"
-#>
+        ###############################################################################Speaks the current time, e.g. "The time is 14 hours and 30 minutes"
+        ###############################################################################>
 function SayTime {
 
     [CmdletBinding()]
@@ -47,4 +47,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

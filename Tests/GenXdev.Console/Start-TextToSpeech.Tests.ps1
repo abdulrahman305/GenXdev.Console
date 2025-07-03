@@ -1,9 +1,9 @@
-################################################################################
+###############################################################################
 Pester\Describe "Start-TextToSpeech" {
 
     Pester\It "Should pass PSScriptAnalyzer rules" {
 
-        # get the script path for analysis
+# get the script path for analysis
         $scriptPath = GenXdev.FileSystem\Expand-Path "$PSScriptRoot\..\..\Functions\GenXdev.Console\Start-TextToSpeech.ps1"
 
         $analyzerResults = GenXdev.Coding\Invoke-GenXdevScriptAnalyzer `
@@ -27,4 +27,4 @@ $message
 "@;
     }
 }
-################################################################################
+###############################################################################

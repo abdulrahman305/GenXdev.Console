@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Adds tracks to a Spotify playlist.
@@ -22,7 +22,7 @@ Add-SpotifyTracksToPlaylist -PlaylistName "My Favorites" `
 
 .EXAMPLE
 "spotify:track:1234567890" | addtoplaylist "My Playlist"
-#>
+        ###############################################################################>
 function Add-SpotifyTracksToPlaylist {
 
     [CmdletBinding(DefaultParameterSetName = "ByName")]
@@ -86,4 +86,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################

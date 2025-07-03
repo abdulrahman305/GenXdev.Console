@@ -1,4 +1,4 @@
-################################################################################
+###############################################################################
 <#
 .SYNOPSIS
 Retrieves audio feature information for one or more Spotify tracks.
@@ -18,7 +18,7 @@ Get-SpotifyTrackAudioFeatures -TrackId "1301WleyT98MSxVHPZCA6M"
 
 .EXAMPLE
 audiofeatures "1301WleyT98MSxVHPZCA6M", "6rqhFgbbKwnb9MLmUQDhG6"
-#>
+        ###############################################################################>
 function Get-SpotifyTrackAudioFeatures {
 
     [CmdletBinding()]
@@ -56,4 +56,4 @@ process {
     end {
     }
 }
-################################################################################
+        ###############################################################################
