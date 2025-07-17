@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Reorders tracks within a Spotify playlist by moving a range of items to a new
@@ -31,9 +31,9 @@ Set-SpotifyPlaylistOrder -PlaylistId "2v3iNvBX8Ay1Gt2uXtUKUT" `
                         -RangeLength 2
 
 .EXAMPLE
-        ###############################################################################Move last track to start of playlist
+Move last track to start of playlist
 Set-SpotifyPlaylistOrder "2v3iNvBX8Ay1Gt2uXtUKUT" 9 0
-        ###############################################################################>
+#>
 function Set-SpotifyPlaylistOrder {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
@@ -43,28 +43,28 @@ function Set-SpotifyPlaylistOrder {
         [parameter(
             Mandatory = $true,
             Position = 0,
-            HelpMessage = "The Spotify playlist identifier to modify"
+            HelpMessage = 'The Spotify playlist identifier to modify'
         )]
         [string] $PlaylistId,
         ########################################################################
         [parameter(
             Mandatory = $true,
             Position = 1,
-            HelpMessage = "The position of the first track to move"
+            HelpMessage = 'The position of the first track to move'
         )]
         [int] $RangeStart,
         ########################################################################
         [parameter(
             Mandatory = $true,
             Position = 2,
-            HelpMessage = "The position where tracks should be inserted"
+            HelpMessage = 'The position where tracks should be inserted'
         )]
         [int] $InsertBefore,
         ########################################################################
         [parameter(
             Mandatory = $false,
             Position = 3,
-            HelpMessage = "Number of consecutive tracks to move (defaults to 1)"
+            HelpMessage = 'Number of consecutive tracks to move (defaults to 1)'
         )]
         [System.Nullable[int]] $RangeLength = $null
         ########################################################################
@@ -77,7 +77,7 @@ function Set-SpotifyPlaylistOrder {
     }
 
 
-process {
+    process {
 
         # prepare message for should process and verbose output
         $operationDescription = "Moving $($RangeLength ?? 1) tracks from position $RangeStart to position $InsertBefore"
@@ -101,4 +101,3 @@ process {
     end {
     }
 }
-        ###############################################################################

@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Returns the current system date and time as a DateTime object.
@@ -15,7 +15,7 @@ Returns the current system date and time as a DateTime object
 .EXAMPLE
 $timestamp = Now
 Stores the current date and time in a variable for later use
-        ###############################################################################>
+#>
 function Now {
 
     [CmdletBinding()]
@@ -25,11 +25,11 @@ function Now {
     begin {
 
         # log function start with verbose output
-        Microsoft.PowerShell.Utility\Write-Verbose "Starting Now function to retrieve system date and time"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Starting Now function to retrieve system date and time'
     }
 
 
-process {
+    process {
 
         # return the current system datetime using .NET DateTime.Now property
         # this provides high-precision timestamp including date and time
@@ -39,4 +39,3 @@ process {
     end {
     }
 }
-        ###############################################################################

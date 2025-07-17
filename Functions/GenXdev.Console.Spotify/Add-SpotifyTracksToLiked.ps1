@@ -20,21 +20,21 @@ like "spotify:track:123456789"
 
 .EXAMPLE
 Get-SpotifyCurrentlyPlaying | Add-SpotifyTracksToLiked
-        ###############################################################################>
+#>
 function Add-SpotifyTracksToLiked {
 
     [CmdletBinding()]
-    [Alias("like")]
+    [Alias('like')]
 
     param(
         ########################################################################
-        [Alias("Id")]
+        [Alias('Id')]
         [parameter(
             Mandatory = $false,
             Position = 0,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
-            HelpMessage = "The Spotify track IDs to add to liked songs"
+            HelpMessage = 'The Spotify track IDs to add to liked songs'
         )]
         [string[]] $TrackId = @()
         ########################################################################
@@ -43,27 +43,27 @@ function Add-SpotifyTracksToLiked {
     begin {
         # retrieve spotify api authentication token for subsequent requests
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
-        Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API token"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Retrieved Spotify API token'
     }
 
 
-process {
+    process {
 
         if ($TrackId.Length -eq 0) {
 
             # if no track specified, get the currently playing track
-            Microsoft.PowerShell.Utility\Write-Verbose "No track ID provided, checking currently playing track"
+            Microsoft.PowerShell.Utility\Write-Verbose 'No track ID provided, checking currently playing track'
             $CurrentlyPlaying = GenXdev.Console\Get-SpotifyCurrentlyPlaying
 
             if ($null -eq $CurrentlyPlaying -or
-                $CurrentlyPlaying.CurrentlyPlayingType -ne "track") {
+                $CurrentlyPlaying.CurrentlyPlayingType -ne 'track') {
 
-                Microsoft.PowerShell.Utility\Write-Warning "There are no tracks playing at this time"
+                Microsoft.PowerShell.Utility\Write-Warning 'There are no tracks playing at this time'
                 return
             }
 
             # add the currently playing track to liked songs
-            Microsoft.PowerShell.Utility\Write-Verbose "Adding currently playing track to liked songs"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Adding currently playing track to liked songs'
             GenXdev.Console\Add-SpotifyTracksToLiked -TrackId ($CurrentlyPlaying.Item.Id)
 
             # return the track that was liked
@@ -80,4 +80,3 @@ process {
     end {
     }
 }
-        ###############################################################################

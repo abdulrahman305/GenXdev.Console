@@ -1,13 +1,13 @@
 function Switch-VlcMediaPlayerMute {
 
     [CmdletBinding()]
-    [Alias("vlcmute", "vlcunmute")]
+    [Alias('vlcmute', 'vlcunmute')]
     param (
     )
 
 
-process {
+    process {
 
-        GenXdev.Console\Open-VlcMediaPlayer -KeysToSend "m"
+        GenXdev.Console\Open-VlcMediaPlayer -KeysToSend 'm' -RestoreFocus
     }
 }

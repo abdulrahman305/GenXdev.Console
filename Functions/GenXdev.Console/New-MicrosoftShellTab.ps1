@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Creates a new Windows Terminal tab running PowerShell.
@@ -25,16 +25,16 @@ Creates a new terminal tab while keeping the current tab open.
 .EXAMPLE
 x
 Creates a new terminal tab and closes the current one after 3 seconds.
-        ###############################################################################>
+#>
 function New-MicrosoftShellTab {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
-    [Alias("x")]
+    [Alias('x')]
 
     param(
         ########################################################################
         [Parameter(
-            HelpMessage = "Keep current tab open after creating new tab",
+            HelpMessage = 'Keep current tab open after creating new tab',
             Mandatory = $false
         )]
         [switch] $DontCloseThisTab
@@ -44,29 +44,32 @@ function New-MicrosoftShellTab {
     begin {
 
         # activate the powershell window to enable keyboard input processing
-        Microsoft.PowerShell.Utility\Write-Verbose "Bringing PowerShell window to foreground"
-        $null = (GenXdev.Windows\Get-PowershellMainWindow).SetForeground()
+        Microsoft.PowerShell.Utility\Write-Verbose 'Bringing PowerShell window to foreground'
+        $w = (GenXdev.Windows\Get-PowershellMainWindow);
+        if ($w) {
+            $null = $w.SetForeground()
+        }
 
         try {
             # initialize windows script automation object for keyboard simulation
-            Microsoft.PowerShell.Utility\Write-Verbose "Creating WScript.Shell for sending keystrokes"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Creating WScript.Shell for sending keystrokes'
             $helper = Microsoft.PowerShell.Utility\New-Object -ComObject WScript.Shell
 
             # check if we should proceed with creating a new tab
-            if ($PSCmdlet.ShouldProcess("Windows Terminal", "Create new tab")) {
+            if ($PSCmdlet.ShouldProcess('Windows Terminal', 'Create new tab')) {
                 # simulate ctrl+shift+t keystroke to trigger new tab creation
-                Microsoft.PowerShell.Utility\Write-Verbose "Sending Ctrl+Shift+T to create new tab"
-                $null = $helper.sendKeys("^+t")
+                Microsoft.PowerShell.Utility\Write-Verbose 'Sending Ctrl+Shift+T to create new tab'
+                $null = $helper.sendKeys('^+t')
 
                 # handle tab closure if not explicitly prevented
                 if ($DontCloseThisTab -ne $true) {
 
-                    Microsoft.PowerShell.Utility\Write-Verbose "Waiting 3 seconds before closing current tab"
+                    Microsoft.PowerShell.Utility\Write-Verbose 'Waiting 3 seconds before closing current tab'
                     Microsoft.PowerShell.Utility\Start-Sleep 3
 
-                    if ($PSCmdlet.ShouldProcess("Current Windows Terminal tab",
-                            "Close tab")) {
-                        Microsoft.PowerShell.Utility\Write-Verbose "Exiting current tab"
+                    if ($PSCmdlet.ShouldProcess('Current Windows Terminal tab',
+                            'Close tab')) {
+                        Microsoft.PowerShell.Utility\Write-Verbose 'Exiting current tab'
                         exit
                     }
                 }
@@ -78,10 +81,9 @@ function New-MicrosoftShellTab {
     }
 
 
-process {
+    process {
     }
 
     end {
     }
 }
-        ###############################################################################

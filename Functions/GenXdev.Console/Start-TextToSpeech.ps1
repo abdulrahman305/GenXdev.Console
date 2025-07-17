@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Converts text to speech using the Windows Speech API.
@@ -34,11 +34,11 @@ Start-TextToSpeech -Lines "Hello World" -Locale "en-US" -Wait
 
 .EXAMPLE
 "Hello World" | say
-        ###############################################################################>
+#>
 function Start-TextToSpeech {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
-    [Alias("say")]
+    [Alias('say')]
     param(
         ########################################################################
         [Parameter(
@@ -46,8 +46,8 @@ function Start-TextToSpeech {
             Position = 0,
             ValueFromPipeline = $true,
             ValueFromRemainingArguments = $false,
-            ParameterSetName = "strings",
-            HelpMessage = "Text to be spoken"
+            ParameterSetName = 'strings',
+            HelpMessage = 'Text to be spoken'
         )]
         [string[]] $Lines,
         ########################################################################
@@ -59,19 +59,21 @@ function Start-TextToSpeech {
         ########################################################################
         [Parameter(
             Mandatory = $false,
-            HelpMessage = "Name of the voice to use for speech"
+            HelpMessage = 'Name of the voice to use for speech'
         )]
         [string] $VoiceName = $null,
         ########################################################################
         [Parameter(
             Mandatory = $false,
-            HelpMessage = "Output the text being spoken to the pipeline"
+            HelpMessage = 'Output the text being spoken to the pipeline'
         )]
-        [switch] $PassThru,
+        [Alias('pt')]
+        [switch]$PassThru,
+
         ########################################################################
         [Parameter(
             Mandatory = $false,
-            HelpMessage = "Wait for speech to complete before continuing"
+            HelpMessage = 'Wait for speech to complete before continuing'
         )]
         [switch] $Wait
         ########################################################################
@@ -83,7 +85,7 @@ function Start-TextToSpeech {
     }
 
 
-process {
+    process {
 
         # iterate through each line of text for processing
         @($Lines) | Microsoft.PowerShell.Core\ForEach-Object {
@@ -115,18 +117,18 @@ process {
                         # use default voice with wait option
                         if ($Wait) {
 
-                            Microsoft.PowerShell.Utility\Write-Verbose "Speaking synchronously with default voice"
+                            Microsoft.PowerShell.Utility\Write-Verbose 'Speaking synchronously with default voice'
 
-                            if ($PSCmdlet.ShouldProcess($text, "Speak")) {
+                            if ($PSCmdlet.ShouldProcess($text, 'Speak')) {
 
                                 $null = [GenXdev.Helpers.Misc]::Speech.Speak($text)
                             }
                             return
                         }
 
-                        Microsoft.PowerShell.Utility\Write-Verbose "Speaking asynchronously with default voice"
+                        Microsoft.PowerShell.Utility\Write-Verbose 'Speaking asynchronously with default voice'
 
-                        if ($PSCmdlet.ShouldProcess($text, "Speak asynchronously")) {
+                        if ($PSCmdlet.ShouldProcess($text, 'Speak asynchronously')) {
 
                             $null = [GenXdev.Helpers.Misc]::Speech.SpeakAsync($text)
                         }
@@ -137,75 +139,74 @@ process {
                     try {
 
                         $voice = [GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices() |
-                        Microsoft.PowerShell.Core\Where-Object {
-                            if ([string]::IsNullOrWhiteSpace($VoiceName) -or
+                            Microsoft.PowerShell.Core\Where-Object {
+                                if ([string]::IsNullOrWhiteSpace($VoiceName) -or
                                     ($PSItem.VoiceInfo.Name -like "* $VoiceName *")) {
 
-                                $PSItem
+                                    $PSItem
+                                }
+                            } |
+                            Microsoft.PowerShell.Core\Where-Object Name |
+                            Microsoft.PowerShell.Utility\Select-Object -First 1
+
+                            if ($PSCmdlet.ShouldProcess("Voice: $($voice.Name)", 'Select voice')) {
+
+                                $null = [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice($voice)
                             }
-                        } |
-                        Microsoft.PowerShell.Core\Where-Object Name |
-                        Microsoft.PowerShell.Utility\Select-Object -First 1
+                        }
+                        catch {
 
-                        if ($PSCmdlet.ShouldProcess("Voice: $($voice.Name)", "Select voice")) {
+                            Microsoft.PowerShell.Utility\Write-Warning "Could not set voice: $VoiceName"
+                        }
 
-                            $null = [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice($voice)
+                        if ($PSCmdlet.ShouldProcess($text, 'Speak with selected voice')) {
+
+                            $null = [GenXdev.Helpers.Misc]::SpeechCustomized.Speak($text)
+                        }
+                        return
+                    }
+
+                    # attempt to use voice with specified locale
+                    try {
+
+                        $voice = [GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices($Locale) |
+                            Microsoft.PowerShell.Core\Where-Object {
+                                if ([string]::IsNullOrWhiteSpace($VoiceName) -or
+                                ($PSItem.VoiceInfo.Name -like "* $VoiceName *")) {
+
+                                    $PSItem
+                                }
+                            } |
+                            Microsoft.PowerShell.Core\Where-Object Name |
+                            Microsoft.PowerShell.Utility\Select-Object -First 1
+
+                            if ($PSCmdlet.ShouldProcess("Voice: $($voice.Name)", 'Select voice')) {
+
+                                $null = [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice($voice)
+                            }
+                        }
+                        catch {
+
+                            Microsoft.PowerShell.Utility\Write-Warning "Could not set voice for locale: $Locale"
+                        }
+
+                        if ($PSCmdlet.ShouldProcess($text, 'Speak with locale-specific voice')) {
+
+                            $null = [GenXdev.Helpers.Misc]::SpeechCustomized.Speak($text)
                         }
                     }
                     catch {
 
-                        Microsoft.PowerShell.Utility\Write-Warning "Could not set voice: $VoiceName"
-                    }
+                        Microsoft.PowerShell.Utility\Write-Error "Speech synthesis failed: $($PSItem.Exception.Message)"
 
-                    if ($PSCmdlet.ShouldProcess($text, "Speak with selected voice")) {
+                        if ($PSCmdlet.ShouldProcess($text, 'Speak with default voice (fallback)')) {
 
-                        $null = [GenXdev.Helpers.Misc]::SpeechCustomized.Speak($text)
-                    }
-                    return
-                }
-
-                # attempt to use voice with specified locale
-                try {
-
-                    $voice = [GenXdev.Helpers.Misc]::SpeechCustomized.GetInstalledVoices($Locale) |
-                    Microsoft.PowerShell.Core\Where-Object {
-                        if ([string]::IsNullOrWhiteSpace($VoiceName) -or
-                                ($PSItem.VoiceInfo.Name -like "* $VoiceName *")) {
-
-                            $PSItem
+                            $null = [GenXdev.Helpers.Misc]::Speech.Speak($text)
                         }
-                    } |
-                    Microsoft.PowerShell.Core\Where-Object Name |
-                    Microsoft.PowerShell.Utility\Select-Object -First 1
-
-                    if ($PSCmdlet.ShouldProcess("Voice: $($voice.Name)", "Select voice")) {
-
-                        $null = [GenXdev.Helpers.Misc]::SpeechCustomized.SelectVoice($voice)
                     }
-                }
-                catch {
-
-                    Microsoft.PowerShell.Utility\Write-Warning "Could not set voice for locale: $Locale"
-                }
-
-                if ($PSCmdlet.ShouldProcess($text, "Speak with locale-specific voice")) {
-
-                    $null = [GenXdev.Helpers.Misc]::SpeechCustomized.Speak($text)
                 }
             }
-            catch {
 
-                Microsoft.PowerShell.Utility\Write-Error "Speech synthesis failed: $($PSItem.Exception.Message)"
-
-                if ($PSCmdlet.ShouldProcess($text, "Speak with default voice (fallback)")) {
-
-                    $null = [GenXdev.Helpers.Misc]::Speech.Speak($text)
-                }
+            end {
             }
         }
-    }
-
-    end {
-    }
-}
-        ###############################################################################

@@ -10,7 +10,7 @@ validates the token's functionality.
 
 .EXAMPLE
 $token = Get-SpotifyApiToken
-        ###############################################################################>
+#>
 function Get-SpotifyApiToken {
 
     [CmdletBinding()]
@@ -19,15 +19,15 @@ function Get-SpotifyApiToken {
     begin {
 
         # define firewall rule settings
-        $ruleName = "Allow Current PowerShell"
-        $programPath = Microsoft.PowerShell.Management\Join-Path -Path $PSHOME -ChildPath "pwsh.exe"
-        $remoteAddress = "192.168.1.1"
+        $ruleName = 'Allow Current PowerShell'
+        $programPath = Microsoft.PowerShell.Management\Join-Path -Path $PSHOME -ChildPath 'pwsh.exe'
+        $remoteAddress = '192.168.1.1'
 
         Microsoft.PowerShell.Utility\Write-Verbose "Checking firewall rule: $ruleName"
     }
 
 
-process {
+    process {
 
         # verify if firewall rule exists
         $existingRule = NetSecurity\Get-NetFirewallRule `
@@ -37,7 +37,7 @@ process {
         # create firewall rule if it doesn't exist
         if ($null -eq $existingRule) {
 
-            Microsoft.PowerShell.Utility\Write-Verbose "Creating new firewall rule"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Creating new firewall rule'
             NetSecurity\New-NetFirewallRule `
                 -DisplayName $ruleName `
                 -Direction Inbound `
@@ -49,7 +49,7 @@ process {
         }
 
         # path to cached authentication token
-        $path = "$($Env:ALLAPPDATA)\GenXdev.PowerShell\Spotify_Auth.json"
+        $path = "$($Env:LOCALAPPDATA)\GenXdev.PowerShell\Spotify_Auth.json"
 
         # attempt to load existing token
         if ([IO.File]::Exists($path)) {
@@ -59,7 +59,7 @@ process {
         }
         else {
 
-            Microsoft.PowerShell.Utility\Write-Verbose "No existing token found, connecting to Spotify"
+            Microsoft.PowerShell.Utility\Write-Verbose 'No existing token found, connecting to Spotify'
             $apiToken = GenXdev.Console\Connect-SpotifyApiToken
             $null = GenXdev.Console\Set-SpotifyApiToken $apiToken
         }
@@ -67,12 +67,12 @@ process {
         # validate token by attempting to list devices
         try {
 
-            Microsoft.PowerShell.Utility\Write-Verbose "Validating token by retrieving devices"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Validating token by retrieving devices'
             $null = [GenXdev.Helpers.Spotify]::GetDevices($apiToken)
         }
         catch {
 
-            Microsoft.PowerShell.Utility\Write-Verbose "Token validation failed, obtaining new token"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Token validation failed, obtaining new token'
             $apiToken = GenXdev.Console\Connect-SpotifyApiToken
             $null = GenXdev.Console\Set-SpotifyApiToken $apiToken
         }
@@ -84,4 +84,3 @@ process {
     end {
     }
 }
-        ###############################################################################

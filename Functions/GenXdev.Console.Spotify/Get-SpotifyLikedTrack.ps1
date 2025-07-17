@@ -14,13 +14,13 @@ Get-SpotifyLikedTrack
 
 .EXAMPLE
 liked
-        ###############################################################################>
+#>
 function Get-SpotifyLikedTrack {
 
     [OutputType([System.Collections.Generic.List[SpotifyAPI.Web.SavedTrack]])]
 
     [CmdletBinding()]
-    [Alias("liked")]
+    [Alias('liked')]
 
     param()
 
@@ -30,18 +30,17 @@ function Get-SpotifyLikedTrack {
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
 
         # log api authentication attempt
-        Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API authentication token"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Retrieved Spotify API authentication token'
     }
 
 
-process {
+    process {
 
         # fetch all tracks from user's spotify library using helper class
-        Microsoft.PowerShell.Utility\Write-Verbose "Retrieving saved tracks from Spotify library..."
+        Microsoft.PowerShell.Utility\Write-Verbose 'Retrieving saved tracks from Spotify library...'
         [GenXdev.Helpers.Spotify]::GetLibraryTracks($apiToken)
     }
 
     end {
     }
 }
-        ###############################################################################

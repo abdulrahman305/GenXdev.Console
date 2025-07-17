@@ -13,7 +13,7 @@ Get-SpotifyActiveDevice
 
 Returns all active Spotify devices for the current user, displaying properties
 like name, type, and volume.
-        ###############################################################################>
+#>
 function Get-SpotifyActiveDevice {
 
     [CmdletBinding()]
@@ -25,22 +25,21 @@ function Get-SpotifyActiveDevice {
     begin {
 
         # retrieve the spotify api authentication token for subsequent requests
-        Microsoft.PowerShell.Utility\Write-Verbose "Retrieving Spotify API authentication token"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Retrieving Spotify API authentication token'
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
 
-process {
+    process {
 
         # get all devices and filter only active ones
-        Microsoft.PowerShell.Utility\Write-Verbose "Fetching active Spotify devices"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Fetching active Spotify devices'
         [GenXdev.Helpers.Spotify]::GetDevices($apiToken) |
-        Microsoft.PowerShell.Core\Where-Object {
-            $PSItem.IsActive
-        }
+            Microsoft.PowerShell.Core\Where-Object {
+                $PSItem.IsActive
+            }
     }
 
     end {
     }
 }
-        ###############################################################################

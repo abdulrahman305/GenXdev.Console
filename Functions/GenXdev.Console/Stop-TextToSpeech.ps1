@@ -1,4 +1,4 @@
-        ###############################################################################
+﻿###############################################################################
 
 <#
 .SYNOPSIS
@@ -11,48 +11,47 @@ text-to-speech activities.
 
 .EXAMPLE
 PS C:\> Stop-TextToSpeech
-        ###############################################################################Immediately stops any ongoing speech
+Immediately stops any ongoing speech
 
 .EXAMPLE
 PS C:\> say "Hello world"; sst
-        ###############################################################################Starts speaking but gets interrupted immediately
+Starts speaking but gets interrupted immediately
 
 .NOTES
 This cmdlet is commonly used in conjunction with Start-TextToSpeech (alias: say)
 and Skip-TextToSpeech (alias: sstSkip) for speech control.
-        ###############################################################################>
+#>
 function Stop-TextToSpeech {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
-    [Alias("sst")]
+    [Alias('sst')]
     param()
 
     begin {
 
-        Microsoft.PowerShell.Utility\Write-Verbose "Initiating speech cancellation request"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Initiating speech cancellation request'
     }
 
 
-process {
+    process {
 
         try {
-            if ($PSCmdlet.ShouldProcess("Text-to-speech output", "Stop")) {
+            if ($PSCmdlet.ShouldProcess('Text-to-speech output', 'Stop')) {
                 # cancel all pending standard speech operations
                 $null = [GenXdev.Helpers.Misc]::Speech.SpeakAsyncCancelAll()
 
                 # cancel all pending customized speech operations
                 $null = [GenXdev.Helpers.Misc]::SpeechCustomized.SpeakAsyncCancelAll()
 
-                Microsoft.PowerShell.Utility\Write-Verbose "Successfully cancelled all speech operations"
+                Microsoft.PowerShell.Utility\Write-Verbose 'Successfully cancelled all speech operations'
             }
         }
         catch {
             # silently handle any speech cancellation errors
-            Microsoft.PowerShell.Utility\Write-Verbose "Error occurred while attempting to cancel speech"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Error occurred while attempting to cancel speech'
         }
     }
 
     end {
     }
 }
-        ###############################################################################

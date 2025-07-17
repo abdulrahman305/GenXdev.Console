@@ -16,30 +16,29 @@ This command returns all available Spotify devices for the current user.
 .NOTES
 Requires valid Spotify authentication token to function. The token is automatically
 retrieved using Get-SpotifyApiToken.
-        ###############################################################################>
+#>
 function Get-SpotifyDevice {
 
     [CmdletBinding()]
-    [Alias("Get-SpotifyDevices")]
+    [Alias('Get-SpotifyDevices')]
     [OutputType([System.Collections.Generic.List[SpotifyAPI.Web.Device]])]
     param()
 
     begin {
 
         # retrieve the spotify api authentication token for subsequent api calls
-        Microsoft.PowerShell.Utility\Write-Verbose "Retrieving Spotify API authentication token..."
+        Microsoft.PowerShell.Utility\Write-Verbose 'Retrieving Spotify API authentication token...'
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
 
-process {
+    process {
 
         # query spotify api for all available devices using helper class
-        Microsoft.PowerShell.Utility\Write-Verbose "Querying Spotify API for available devices..."
+        Microsoft.PowerShell.Utility\Write-Verbose 'Querying Spotify API for available devices...'
         [GenXdev.Helpers.Spotify]::GetDevices($apiToken)
     }
 
     end {
     }
 }
-        ###############################################################################

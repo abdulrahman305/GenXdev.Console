@@ -1,16 +1,16 @@
 function Start-VlcMediaPlayerNextInPlaylist {
 
     [CmdletBinding(SupportsShouldProcess)]
-    [Alias("vlcnext")]
+    [Alias('vlcnext')]
     param (
     )
 
 
-process {
+    process {
 
-        if ($PSCmdlet.ShouldProcess("VLC Media Player", "Next in playlist")) {
+        if ($PSCmdlet.ShouldProcess('VLC Media Player', 'Next in playlist')) {
 
-            GenXdev.Console\Open-VlcMediaPlayer -KeysToSend "n"
+            GenXdev.Console\Open-VlcMediaPlayer -KeysToSend 'n' -RestoreFocus
         }
     }
 }

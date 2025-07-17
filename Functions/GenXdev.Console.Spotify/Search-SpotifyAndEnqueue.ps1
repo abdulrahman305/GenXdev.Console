@@ -1,4 +1,4 @@
-        ###############################################################################
+﻿###############################################################################
 
 <#
 .SYNOPSIS
@@ -28,11 +28,11 @@ Search-SpotifyAndEnqueue -Queries "Rage against the machine" -SearchType Track
 
 .EXAMPLE
 fmq "Dire Straits You and your friend"
-        ###############################################################################>
+#>
 function Search-SpotifyAndEnqueue {
 
     [CmdletBinding()]
-    [Alias("smq", "fmq")]
+    [Alias('smq', 'fmq')]
 
     param(
         ########################################################################
@@ -41,16 +41,16 @@ function Search-SpotifyAndEnqueue {
             Position = 0,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
-            HelpMessage = "The query to perform"
+            HelpMessage = 'The query to perform'
         )]
-        [Alias("q", "Value", "Name", "Text", "Query")]
+        [Alias('q', 'Name', 'Text', 'Query')]
         [string[]] $Queries,
         ########################################################################
-        [Alias("t")]
+        [Alias('t')]
         [parameter(
             Position = 1,
             Mandatory = $false,
-            HelpMessage = "The type of content to search for"
+            HelpMessage = 'The type of content to search for'
         )]
         [SpotifyAPI.Web.SearchRequest+Types]  $SearchType = [SpotifyAPI.Web.SearchRequest+Types]::Track
         ########################################################################
@@ -61,7 +61,7 @@ function Search-SpotifyAndEnqueue {
     }
 
 
-process {
+    process {
 
         foreach ($Query in $Queries) {
 
@@ -69,20 +69,18 @@ process {
 
             # search spotify and add first matching result to queue
             [GenXdev.Helpers.Spotify]::SearchAndAdd(
-                (GenXdev.Console\Get-SpotifyApiToken),
+                            (GenXdev.Console\Get-SpotifyApiToken),
                 $Query,
                 $SearchType
             ) |
-            Microsoft.PowerShell.Core\ForEach-Object {
-                if ($null -ne $PSItem) {
-                    $PSItem
-                }
-            } -ErrorAction SilentlyContinue
+                Microsoft.PowerShell.Core\ForEach-Object {
+                    if ($null -ne $PSItem) {
+                        $PSItem
+                    }
+                } -ErrorAction SilentlyContinue
         }
     }
 
     end {
     }
 }
-
-        ###############################################################################

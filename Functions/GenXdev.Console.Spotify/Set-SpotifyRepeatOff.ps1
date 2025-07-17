@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Disables Spotify repeat mode for the currently active device.
@@ -16,27 +16,27 @@ norepeat
 
 .EXAMPLE
 repeatoff
-        ###############################################################################>
+#>
 function Set-SpotifyRepeatOff {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
-    [Alias("norepeat", "repeatoff")]
+    [Alias('norepeat', 'repeatoff')]
     param()
 
     begin {
 
         # output verbose information about disabling repeat mode
-        Microsoft.PowerShell.Utility\Write-Verbose "Disabling Spotify repeat mode on active device..."
+        Microsoft.PowerShell.Utility\Write-Verbose 'Disabling Spotify repeat mode on active device...'
     }
 
 
-process {
+    process {
 
         # get the current spotify api authentication token
-        $token = GenXdev.Console\Get-SpotifyApiToken
+    $token = GenXdev.Console\Get-SpotifyApiToken
 
         # use ShouldProcess to confirm the operation
-        if ($PSCmdlet.ShouldProcess("Spotify active device", "Turn off repeat mode")) {
+        if ($PSCmdlet.ShouldProcess('Spotify active device', 'Turn off repeat mode')) {
 
             # call the spotify api to disable repeat mode
             [GenXdev.Helpers.Spotify]::RepeatOff($token)
@@ -46,4 +46,3 @@ process {
     end {
     }
 }
-        ###############################################################################

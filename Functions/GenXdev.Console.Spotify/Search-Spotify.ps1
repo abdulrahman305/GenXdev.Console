@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Performs a Spotify search and returns matching items.
@@ -20,13 +20,13 @@ Track, Show, Episode, or All. Default is Track.
 Search-Spotify -Queries "Rage against the machine" -SearchType Track
 
 .EXAMPLE
-        ###############################################################################Using alias and positional parameter
+Using alias and positional parameter
 fm "Dire Straits"
-        ###############################################################################>
+#>
 function Search-Spotify {
 
     [CmdletBinding()]
-    [Alias("sm", "fm")]
+    [Alias('sm', 'fm')]
 
     param(
         ########################################################################
@@ -35,17 +35,17 @@ function Search-Spotify {
             Position = 0,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
-            HelpMessage = "The query to perform"
+            HelpMessage = 'The query to perform'
         )]
-        [Alias("q", "Value", "Name", "Text", "Query")]
+        [Alias('q', 'Name', 'Text', 'Query')]
         [string[]] $Queries,
         ########################################################################
         [parameter(
             Position = 1,
             Mandatory = $false,
-            HelpMessage = "Type of content to search for"
+            HelpMessage = 'Type of content to search for'
         )]
-        [Alias("t")]
+        [Alias('t')]
         [SpotifyAPI.Web.SearchRequest+Types] $SearchType = [SpotifyAPI.Web.SearchRequest+Types]::Track
         ########################################################################
     )
@@ -55,7 +55,7 @@ function Search-Spotify {
     }
 
 
-process {
+    process {
 
         foreach ($Query in $Queries) {
 
@@ -66,8 +66,7 @@ process {
                 (GenXdev.Console\Get-SpotifyApiToken),
                 $Query,
                 $SearchType) |
-            Microsoft.PowerShell.Core\ForEach-Object { $PSItem } -ErrorAction SilentlyContinue
+                Microsoft.PowerShell.Core\ForEach-Object { $PSItem } -ErrorAction SilentlyContinue
         }
     }
 }
-        ###############################################################################

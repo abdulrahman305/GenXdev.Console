@@ -39,7 +39,7 @@ Update-Module
 | [Get-IsSpeaking](#Get-IsSpeaking) | iss | Returns true if the text-to-speech engine is speaking. |
 | [New-MicrosoftShellTab](#New-MicrosoftShellTab) | x | Creates a new Windows Terminal tab running PowerShell. |
 | [Now](#Now) |  | Returns the current system date and time as a DateTime object. |
-| [Open-MediaFile](#Open-MediaFile) | vlcmedia, media |  |
+| [Open-MediaFile](#Open-MediaFile) | vlcmedia, media, findmedia |  |
 | [SayDate](#SayDate) |  | Speaks the current date using text-to-speech synthesis. |
 | [SayTime](#SayTime) |  | Announces the current time using text-to-speech. |
 | [Set-LocationParent](#Set-LocationParent) | .. | Changes the current location to the parent directory and lists its contents. |
@@ -150,7 +150,6 @@ NOTES
         This function requires the Windows screensaver to be properly configured in the
         system settings. The screensaver executable must exist at the default Windows
         System32 location.
-                ##############################################################################
     
     -------------------------- EXAMPLE 1 --------------------------
     
@@ -208,7 +207,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > iss
-            ##############################################################################
     
     
     
@@ -293,7 +291,6 @@ OUTPUTS
     
     PS > x
     Creates a new terminal tab and closes the current one after 3 seconds.
-            ##############################################################################
     
     
     
@@ -349,7 +346,6 @@ OUTPUTS
     
     PS > $timestamp = Now
     Stores the current date and time in a variable for later use
-            ##############################################################################
     
     
     
@@ -370,7 +366,7 @@ SYNOPSIS
     
     
 SYNTAX
-    Open-MediaFile [[-SearchMask] <String[]>] [-Keywords <String[]>] [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio] [-OnlyPictures] [-IncludeVideos] [-IncludeAudio] [-IncludePictures] [[-KeysToSend] <String[]>] [-Escape] [-ShiftEnter] [-DelayMilliSeconds <Int32>] [-Monitor <Int32>] [-NoBorders] [-Width <Int32>] [-Height <Int32>] [-X <Int32>] [-Y <Int32>] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-Fullscreen] [-PassThru] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-ReplayGainMode <String>] [-ReplayGainPreamp <Single>] [-ForceDolbySurround <String>] [-AudioFilters <String[]>] [-Visualization <String>] [-Deinterlace <String>] [-DeinterlaceMode <String>] [-AspectRatio <String>] [-Crop <String>] [-AutoScale] [-VideoFilters <String[]>] [-SubtitleFile <String>] [-DisableSubtitles] [-SubtitleScale <Int32>] [-SubtitleLanguage <String>] [-AudioLanguage <String>] [-PreferredAudioLanguage <String>] [-HttpProxy <String>] [-HttpProxyPassword <String>] [-VerbosityLevel <Int32>] [-SubdirectoryBehavior <String>] [-IgnoredExtensions <String>] [-HighPriority] [-EnableTimeStretch] [-VLCPath <String>] [-NewWindow] [-EnableWallpaperMode] [-VideoFilterModules <String[]>] [-Modules <String[]>] [-AudioFilterModules <String[]>] [-AudioVisualization <String>] [-PreferredSubtitleLanguage <String>] [-IgnoredFileExtensions <String>] [-EnableAudioTimeStretch] [-Arguments <String>] [-SideBySide] [<CommonParameters>]
+    Open-MediaFile [[-SearchMask] <String[]>] [-PlaylistPath <String>] [[-Width] <Int32>] [[-Height] <Int32>] [[-X] <Int32>] [[-Y] <Int32>] [-KeysToSend <String[]>] [-Keywords <String[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds <Int32>] [-SendKeyHoldKeyboardFocus] [-Monitor <Int32>] [-AspectRatio <String>] [-Crop <String>] [-SubtitleFile <String>] [-SubtitleScale <Int32>] [-SubtitleLanguage <String>] [-AudioLanguage <String>] [-PreferredAudioLanguage <String>] [-HttpProxy <String>] [-HttpProxyPassword <String>] [-VerbosityLevel <Int32>] [-SubdirectoryBehavior <String>] [-IgnoredExtensions <String>] [-VLCPath <String>] [-ReplayGainMode <String>] [-ReplayGainPreamp <Single>] [-ForceDolbySurround <String>] [-AudioFilters <String[]>] [-Visualization <String>] [-Deinterlace <String>] [-DeinterlaceMode <String>] [-VideoFilters <String[]>] [-VideoFilterModules <String[]>] [-Modules <String[]>] [-AudioFilterModules <String[]>] [-AudioVisualization <String>] [-PreferredSubtitleLanguage <String>] [-IgnoredFileExtensions <String>] [-Arguments <String>] [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio] [-OnlyPictures] [-IncludeVideos] [-IncludeAudio] [-IncludePictures] [-NoBorders] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-FullScreen] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-DisableSubtitles] [-AutoScale] [-HighPriority] [-EnableTimeStretch] [-NewWindow] [-EnableWallpaperMode] [-EnableAudioTimeStretch] [-Close] [-SideBySide] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-SessionOnly] [-ClearSession] [-SkipSession] [-PassThru] [-PassThruNoOpen] [-PassThruWindow] [<CommonParameters>]
     
     
 DESCRIPTION
@@ -394,6 +390,66 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  true
         
+    -PlaylistPath <String>
+        
+        Required?                    false
+        Position?                    named
+        Default value                [System.IO.Path]::GetTempFileName() + '.m3u'
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Width <Int32>
+        The initial width of the VLC player window in pixels.
+        
+        Required?                    false
+        Position?                    2
+        Default value                0
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Height <Int32>
+        The initial height of the VLC player window in pixels.
+        
+        Required?                    false
+        Position?                    3
+        Default value                0
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -X <Int32>
+        The initial X position of the VLC player window on screen.
+        
+        Required?                    false
+        Position?                    4
+        Default value                0
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Y <Int32>
+        The initial Y position of the VLC player window on screen.
+        
+        Required?                    false
+        Position?                    5
+        Default value                0
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -KeysToSend <String[]>
+        Keystrokes to send to the VLC player window after launch. See documentation for
+        GenXdev.Windows\Send-Key cmdlet for available key combinations.
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       true (ByPropertyName)
+        Aliases                      
+        Accept wildcard characters?  false
+        
     -Keywords <String[]>
         Keywords to search for in subtitle files (.srt) and media descriptions stored
         in alternate data streams.
@@ -405,102 +461,7 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  true
         
-    -AllDrives [<SwitchParameter>]
-        Search across all available drives instead of just the current directory.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -NoRecurse [<SwitchParameter>]
-        Do not recurse into subdirectories during the file search.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -OnlyVideos [<SwitchParameter>]
-        Filter to only include video files in the playlist (.mp4, .avi, .mkv, .mov,
-        .wmv).
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -OnlyAudio [<SwitchParameter>]
-        Filter to only include audio files in the playlist (.mp3, .flac, .wav, .midi,
-        .mid, .au, .aiff, .aac, .m4a, .ogg, .wma, .ra, .ram, .rm, .rmm).
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -OnlyPictures [<SwitchParameter>]
-        Filter to only include picture files in the playlist (.jpg, .jpeg, .png, .gif,
-        .bmp, .tiff, .tif).
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -IncludeVideos [<SwitchParameter>]
-        Additionally include video files in the playlist when other filters are applied.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -IncludeAudio [<SwitchParameter>]
-        Additionally include audio files in the playlist when other filters are applied.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -IncludePictures [<SwitchParameter>]
-        Additionally include picture files in the playlist when other filters are
-        applied.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -KeysToSend <String[]>
-        Keystrokes to send to the VLC player window after launch. See documentation for
-        GenXdev.Windows\Send-Key cmdlet for available key combinations.
-        
-        Required?                    false
-        Position?                    2
-        Default value                @("f")
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Escape [<SwitchParameter>]
+    -SendKeyEscape [<SwitchParameter>]
         Escape control characters and modifiers in the KeysToSend parameter.
         
         Required?                    false
@@ -510,7 +471,7 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
-    -ShiftEnter [<SwitchParameter>]
+    -SendKeyUseShiftEnter [<SwitchParameter>]
         Use Shift+Enter instead of Enter when processing KeysToSend.
         
         Required?                    false
@@ -520,7 +481,7 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
-    -DelayMilliSeconds <Int32>
+    -SendKeyDelayMilliSeconds <Int32>
         Delay between different input strings in milliseconds when sending keys.
         
         Required?                    false
@@ -530,272 +491,22 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
+    -SendKeyHoldKeyboardFocus [<SwitchParameter>]
+        Prevents returning keyboard focus to PowerShell after sending keys.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
     -Monitor <Int32>
         The monitor to display VLC on. 0 = default monitor, -1 = discard positioning.
         
         Required?                    false
         Position?                    named
-        Default value                -1
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -NoBorders [<SwitchParameter>]
-        Removes the window borders from the VLC player window.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Width <Int32>
-        The initial width of the VLC player window in pixels.
-        
-        Required?                    false
-        Position?                    named
-        Default value                -1
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Height <Int32>
-        The initial height of the VLC player window in pixels.
-        
-        Required?                    false
-        Position?                    named
-        Default value                -1
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -X <Int32>
-        The initial X position of the VLC player window on screen.
-        
-        Required?                    false
-        Position?                    named
-        Default value                -1
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Y <Int32>
-        The initial Y position of the VLC player window on screen.
-        
-        Required?                    false
-        Position?                    named
-        Default value                -1
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Left [<SwitchParameter>]
-        Place the VLC window on the left side of the screen.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Right [<SwitchParameter>]
-        Place the VLC window on the right side of the screen.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Top [<SwitchParameter>]
-        Place the VLC window on the top side of the screen.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Bottom [<SwitchParameter>]
-        Place the VLC window on the bottom side of the screen.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Centered [<SwitchParameter>]
-        Place the VLC window in the center of the screen.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Fullscreen [<SwitchParameter>]
-        Maximize the VLC window to fullscreen mode.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -PassThru [<SwitchParameter>]
-        Returns the window helper object for each VLC process launched.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -AlwaysOnTop [<SwitchParameter>]
-        Keeps the VLC window always on top of other windows.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Random [<SwitchParameter>]
-        Enables random playback order (shuffle mode) for the playlist.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Loop [<SwitchParameter>]
-        Enables playlist looping - repeats the entire playlist when finished.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Repeat [<SwitchParameter>]
-        Enables single item repeat - repeats the current media file indefinitely.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -StartPaused [<SwitchParameter>]
-        Starts VLC in paused state instead of immediately playing.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -PlayAndExit [<SwitchParameter>]
-        Automatically exits VLC when playback is completed.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -DisableAudio [<SwitchParameter>]
-        Completely disables audio output during playback.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -ReplayGainMode <String>
-        Sets the audio replay gain mode to normalize volume levels across tracks.
-        
-        Required?                    false
-        Position?                    named
-        Default value                
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -ReplayGainPreamp <Single>
-        Sets the replay gain preamp level in decibels (-20.0 to 20.0).
-        
-        Required?                    false
-        Position?                    named
-        Default value                0
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -ForceDolbySurround <String>
-        Forces detection of Dolby Surround audio encoding.
-        
-        Required?                    false
-        Position?                    named
-        Default value                
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -AudioFilters <String[]>
-        Specifies audio filter modules to apply during playback.
-        
-        Required?                    false
-        Position?                    named
-        Default value                
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Visualization <String>
-        Sets the audio visualization mode for audio-only content.
-        
-        Required?                    false
-        Position?                    named
-        Default value                
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Deinterlace <String>
-        Controls video deinterlacing for improved quality on interlaced content.
-        
-        Required?                    false
-        Position?                    named
-        Default value                
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -DeinterlaceMode <String>
-        Specifies the deinterlacing algorithm to use.
-        
-        Required?                    false
-        Position?                    named
-        Default value                
+        Default value                -2
         Accept pipeline input?       false
         Aliases                      
         Accept wildcard characters?  false
@@ -820,42 +531,12 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
-    -AutoScale [<SwitchParameter>]
-        Enables automatic video scaling to fit the window.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -VideoFilters <String[]>
-        Specifies video filter modules to apply during playback.
-        
-        Required?                    false
-        Position?                    named
-        Default value                
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
     -SubtitleFile <String>
         Path to an external subtitle file to use with video content.
         
         Required?                    false
         Position?                    named
         Default value                
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -DisableSubtitles [<SwitchParameter>]
-        Completely disables subtitle display during playback.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
         Accept pipeline input?       false
         Aliases                      
         Accept wildcard characters?  false
@@ -950,26 +631,6 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
-    -HighPriority [<SwitchParameter>]
-        Increases the process priority of the VLC player for better performance.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -EnableTimeStretch [<SwitchParameter>]
-        Enables audio time stretching to maintain pitch during speed changes.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
     -VLCPath <String>
         Full path to the VLC executable. Defaults to standard installation location.
         
@@ -980,22 +641,82 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
-    -NewWindow [<SwitchParameter>]
-        Forces opening a new VLC instance instead of using existing one.
+    -ReplayGainMode <String>
+        Sets the audio replay gain mode to normalize volume levels across tracks.
         
         Required?                    false
         Position?                    named
-        Default value                False
+        Default value                
         Accept pipeline input?       false
         Aliases                      
         Accept wildcard characters?  false
         
-    -EnableWallpaperMode [<SwitchParameter>]
-        Enables video wallpaper mode where video plays as desktop background.
+    -ReplayGainPreamp <Single>
+        Sets the replay gain preamp level in decibels (-20.0 to 20.0).
         
         Required?                    false
         Position?                    named
-        Default value                False
+        Default value                0
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -ForceDolbySurround <String>
+        Forces detection of Dolby Surround audio encoding.
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -AudioFilters <String[]>
+        Specifies audio filter modules to apply during playback.
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Visualization <String>
+        Sets the audio visualization mode for audio-only content.
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Deinterlace <String>
+        Controls video deinterlacing for improved quality on interlaced content.
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -DeinterlaceMode <String>
+        Specifies the deinterlacing algorithm to use.
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -VideoFilters <String[]>
+        Specifies video filter modules to apply during playback.
+        
+        Required?                    false
+        Position?                    named
+        Default value                
         Accept pipeline input?       false
         Aliases                      
         Accept wildcard characters?  false
@@ -1060,16 +781,6 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
-    -EnableAudioTimeStretch [<SwitchParameter>]
-        Enables advanced audio time stretching capabilities.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
     -Arguments <String>
         Additional command-line arguments to pass directly to VLC.
         
@@ -1080,9 +791,412 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
+    -AllDrives [<SwitchParameter>]
+        Search across all available drives instead of just the current directory.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -NoRecurse [<SwitchParameter>]
+        Do not recurse into subdirectories during the file search.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -OnlyVideos [<SwitchParameter>]
+        Filter to only include video files in the playlist (.mp4, .avi, .mkv, .mov,
+        .wmv).
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -OnlyAudio [<SwitchParameter>]
+        Filter to only include audio files in the playlist (.mp3, .flac, .wav, .midi,
+        .mid, .au, .aiff, .aac, .m4a, .ogg, .wma, .ra, .ram, .rm, .rmm).
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -OnlyPictures [<SwitchParameter>]
+        Filter to only include picture files in the playlist (.jpg, .jpeg, .png, .gif,
+        .bmp, .tiff, .tif).
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -IncludeVideos [<SwitchParameter>]
+        Additionally include video files in the playlist when other filters are applied.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -IncludeAudio [<SwitchParameter>]
+        Additionally include audio files in the playlist when other filters are applied.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -IncludePictures [<SwitchParameter>]
+        Additionally include picture files in the playlist when other filters are
+        applied.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -NoBorders [<SwitchParameter>]
+        Removes the window borders from the VLC player window.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Left [<SwitchParameter>]
+        Place the VLC window on the left side of the screen.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Right [<SwitchParameter>]
+        Place the VLC window on the right side of the screen.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Top [<SwitchParameter>]
+        Place the VLC window on the top side of the screen.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Bottom [<SwitchParameter>]
+        Place the VLC window on the bottom side of the screen.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Centered [<SwitchParameter>]
+        Place the VLC window in the center of the screen.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -FullScreen [<SwitchParameter>]
+        Maximize the VLC window to fullscreen mode.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -AlwaysOnTop [<SwitchParameter>]
+        Keeps the VLC window always on top of other windows.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Random [<SwitchParameter>]
+        Enables random playback order (shuffle mode) for the playlist.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Loop [<SwitchParameter>]
+        Enables playlist looping - repeats the entire playlist when finished.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Repeat [<SwitchParameter>]
+        Enables single item repeat - repeats the current media file indefinitely.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -StartPaused [<SwitchParameter>]
+        Starts VLC in paused state instead of immediately playing.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -PlayAndExit [<SwitchParameter>]
+        Automatically exits VLC when playback is completed.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -DisableAudio [<SwitchParameter>]
+        Completely disables audio output during playback.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -DisableSubtitles [<SwitchParameter>]
+        Completely disables subtitle display during playback.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -AutoScale [<SwitchParameter>]
+        Enables automatic video scaling to fit the window.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -HighPriority [<SwitchParameter>]
+        Increases the process priority of the VLC player for better performance.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -EnableTimeStretch [<SwitchParameter>]
+        Enables audio time stretching to maintain pitch during speed changes.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -NewWindow [<SwitchParameter>]
+        Forces opening a new VLC instance instead of using existing one.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -EnableWallpaperMode [<SwitchParameter>]
+        Enables video wallpaper mode where video plays as desktop background.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -EnableAudioTimeStretch [<SwitchParameter>]
+        Enables advanced audio time stretching capabilities.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Close [<SwitchParameter>]
+        Closes the VLC media player window.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
     -SideBySide [<SwitchParameter>]
         Places the VLC window side by side with PowerShell or on a different monitor
         for fullscreen mode.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -FocusWindow [<SwitchParameter>]
+        Focuses the VLC window after opening.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -SetForeground [<SwitchParameter>]
+        Sets the VLC window to foreground after opening.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Maximize [<SwitchParameter>]
+        Maximizes the VLC window.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -RestoreFocus [<SwitchParameter>]
+        Restores PowerShell window focus after opening VLC.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -SessionOnly [<SwitchParameter>]
+        Uses alternative settings stored in session for AI preferences.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -ClearSession [<SwitchParameter>]
+        Clears alternative settings stored in session for AI preferences.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -SkipSession [<SwitchParameter>]
+        Stores settings only in persistent preferences without affecting session.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -PassThru [<SwitchParameter>]
+        Returns the files found by the search.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -PassThruNoOpen [<SwitchParameter>]
+        Returns the files found by the search without opening VLC.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -PassThruWindow [<SwitchParameter>]
         
         Required?                    false
         Position?                    named
@@ -1112,10 +1226,10 @@ OUTPUTS
     
     -------------------------- EXAMPLE 2 --------------------------
     
-    PS > vlc ~\Pictures -OnlyPictures -Fullscreen
+    PS > vlcmedia ~\Pictures -OnlyPictures -Fullscreen
     
     Opens only picture files from the Pictures folder in fullscreen mode using the
-    alias 'vlc'.
+    alias 'vlcmedia'.
     
     
     
@@ -1126,7 +1240,6 @@ OUTPUTS
     
     Opens video files containing "birthday" in subtitles with looping enabled using
     the alias 'media'.
-            ##############################################################################
     
     
     
@@ -1167,8 +1280,7 @@ OUTPUTS
     -------------------------- EXAMPLE 1 --------------------------
     
     PS > SayDate
-            ###############################################################################Announces today's date using text-to-speech
-            ##############################################################################
+    Announces today's date using text-to-speech
     
     
     
@@ -1211,8 +1323,7 @@ OUTPUTS
     -------------------------- EXAMPLE 1 --------------------------
     
     PS > SayTime
-            ###############################################################################Speaks the current time, e.g. "The time is 14 hours and 30 minutes"
-            ##############################################################################
+    Speaks the current time, e.g. "The time is 14 hours and 30 minutes"
     
     
     
@@ -1282,7 +1393,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > ..
-            ##############################################################################
     
     
     
@@ -1343,7 +1453,6 @@ NOTES
     
     
         This function supports -WhatIf and -Confirm parameters through ShouldProcess.
-                ##############################################################################
     
     -------------------------- EXAMPLE 1 --------------------------
     
@@ -1425,7 +1534,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > ....
-            ##############################################################################
     
     
     
@@ -1488,7 +1596,6 @@ NOTES
     
         The alias '.....'' represents moving up four parent directories, where each dot
         represents one level up.
-                ##############################################################################
     
     -------------------------- EXAMPLE 1 --------------------------
     
@@ -1571,7 +1678,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > ......
-            ##############################################################################
     
     
     
@@ -1642,7 +1748,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > poweroff
-            ##############################################################################
     
     
     
@@ -1712,7 +1817,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > wake-monitor
-            ##############################################################################
     
     
     
@@ -1773,7 +1877,7 @@ OUTPUTS
     -------------------------- EXAMPLE 1 --------------------------
     
     PS > Set-VLCPlayerFocused
-            ###############################################################################Brings the VLC player window to front and gives it focus
+    Brings the VLC player window to front and gives it focus
     
     
     
@@ -1783,8 +1887,7 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > vlcf
-            ###############################################################################Same operation using the short alias
-            ##############################################################################
+    Same operation using the short alias
     
     
     
@@ -1910,7 +2013,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > "Hello World" | say
-            ##############################################################################
     
     
     
@@ -1973,12 +2075,11 @@ NOTES
     
         This cmdlet is commonly used in conjunction with Start-TextToSpeech (alias: say)
         and Skip-TextToSpeech (alias: sstSkip) for speech control.
-                ##############################################################################
     
     -------------------------- EXAMPLE 1 --------------------------
     
     PS C:\>Stop-TextToSpeech
-            ###############################################################################Immediately stops any ongoing speech
+    Immediately stops any ongoing speech
     
     
     
@@ -1988,7 +2089,7 @@ NOTES
     -------------------------- EXAMPLE 2 --------------------------
     
     PS C:\>say "Hello world"; sst
-            ###############################################################################Starts speaking but gets interrupted immediately
+    Starts speaking but gets interrupted immediately
     
     
     
@@ -2045,7 +2146,6 @@ OUTPUTS
     
     PS > $timestamp = (UtcNow).ToString("yyyy-MM-dd HH:mm:ss")
     Gets the current UTC time and formats it as a string.
-            ##############################################################################
     
     
     
@@ -2144,7 +2244,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > newplaylist "Road Trip Songs" -Collabrative
-            ##############################################################################
     
     
     
@@ -2216,7 +2315,6 @@ OUTPUTS
     -------------------------- EXAMPLE 3 --------------------------
     
     PS > Get-SpotifyCurrentlyPlaying | Add-SpotifyTracksToLiked
-            ##############################################################################
     
     
     
@@ -2300,7 +2398,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > "spotify:track:1234567890" | addtoplaylist "My Playlist"
-            ##############################################################################
     
     
     
@@ -2350,11 +2447,10 @@ NOTES
         Uses port 5642 as the default callback port for OAuth flow
         Minimizes browser window during authentication
         Automatically closes browser window after successful authentication
-                ##############################################################################
     
     -------------------------- EXAMPLE 1 --------------------------
     
-    PS > ###############################################################################Authenticate with Spotify and obtain access token
+    PS > Authenticate with Spotify and obtain access token
     Connect-SpotifyApiToken
     
     
@@ -2401,7 +2497,6 @@ OUTPUTS
     
     Returns all active Spotify devices for the current user, displaying properties
     like name, type, and volume.
-            ##############################################################################
     
     
     
@@ -2442,7 +2537,6 @@ OUTPUTS
     -------------------------- EXAMPLE 1 --------------------------
     
     PS > $token = Get-SpotifyApiToken
-            ##############################################################################
     
     
     
@@ -2508,7 +2602,6 @@ OUTPUTS
     
     PS C:\>(Get-SpotifyCurrentlyPlaying).Item.Name
     Returns just the name of the currently playing track.
-            ##############################################################################
     
     
     
@@ -2555,7 +2648,6 @@ NOTES
     
         Requires valid Spotify authentication token to function. The token is automatically
         retrieved using Get-SpotifyApiToken.
-                ##############################################################################
     
     -------------------------- EXAMPLE 1 --------------------------
     
@@ -2614,7 +2706,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > liked
-            ##############################################################################
     
     
     
@@ -2634,7 +2725,7 @@ SYNOPSIS
     
     
 SYNTAX
-    Get-SpotifyLyrics [-TrackId <String>] [[-Queries] <String[]>] [<CommonParameters>]
+    Get-SpotifyLyrics [[-TrackId] <String>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [[-Monitor] <Int32>] [-FullScreen] [[-Width] <Int32>] [[-Height] <Int32>] [[-Left] <Int32>] [[-Right] <Int32>] [[-Top] <Int32>] [[-Bottom] <Int32>] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-DisablePopupBlocker] [[-AcceptLang] <String>] [-SendKeyEscape] [-SendKeyHoldKeyboardFocus] [-SendKeyUseShiftEnter] [[-SendKeyDelayMilliSeconds] <Int32>] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-NewWindow] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders] [-SessionOnly] [-ClearSession] [-SkipSession] [-SideBySide] [<CommonParameters>]
     
     
 DESCRIPTION
@@ -2651,20 +2742,324 @@ PARAMETERS
         track or allows searching by name.
         
         Required?                    false
-        Position?                    named
+        Position?                    1
         Default value                
         Accept pipeline input?       true (ByPropertyName)
         Aliases                      
         Accept wildcard characters?  false
         
-    -Queries <String[]>
-        Search terms to find a track. Can include artist name and/or song title.
-        Results will be shown for selection.
+    -Private [<SwitchParameter>]
         
         Required?                    false
-        Position?                    1
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Force [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Edge [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Chrome [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Chromium [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Firefox [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Monitor <Int32>
+        
+        Required?                    false
+        Position?                    2
+        Default value                0
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -FullScreen [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Width <Int32>
+        
+        Required?                    false
+        Position?                    3
+        Default value                0
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Height <Int32>
+        
+        Required?                    false
+        Position?                    4
+        Default value                0
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Left <Int32>
+        
+        Required?                    false
+        Position?                    5
+        Default value                0
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Right <Int32>
+        
+        Required?                    false
+        Position?                    6
+        Default value                0
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Top <Int32>
+        
+        Required?                    false
+        Position?                    7
+        Default value                0
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Bottom <Int32>
+        
+        Required?                    false
+        Position?                    8
+        Default value                0
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Centered [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -ApplicationMode [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -NoBrowserExtensions [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -DisablePopupBlocker [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -AcceptLang <String>
+        
+        Required?                    false
+        Position?                    9
         Default value                
-        Accept pipeline input?       true (ByValue, ByPropertyName)
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -SendKeyEscape [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -SendKeyHoldKeyboardFocus [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -SendKeyUseShiftEnter [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -SendKeyDelayMilliSeconds <Int32>
+        
+        Required?                    false
+        Position?                    10
+        Default value                0
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -FocusWindow [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -SetForeground [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Maximize [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -RestoreFocus [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -NewWindow [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -ReturnURL [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -ReturnOnlyURL [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -NoBorders [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -SessionOnly [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -ClearSession [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -SkipSession [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -SideBySide [<SwitchParameter>]
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
         Aliases                      
         Accept wildcard characters?  false
         
@@ -2690,7 +3085,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > lyrics "bohemian rhapsody queen"
-            ##############################################################################
     
     
     
@@ -2757,7 +3151,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > "Chill Vibes" | Get-SpotifyPlaylistIdsByName
-            ##############################################################################
     
     
     
@@ -2843,7 +3236,6 @@ OUTPUTS
     -------------------------- EXAMPLE 3 --------------------------
     
     PS > "My Workout Mix" | getplaylist
-            ##############################################################################
     
     
     
@@ -2907,7 +3299,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > audiofeatures "1301WleyT98MSxVHPZCA6M", "6rqhFgbbKwnb9MLmUQDhG6"
-            ##############################################################################
     
     
     
@@ -2963,7 +3354,7 @@ OUTPUTS
     -------------------------- EXAMPLE 1 --------------------------
     
     PS > Get-SpotifyTrackById -TrackId "3n3Ppam7vgaVa1iaRUc9Lp"
-            ###############################################################################Returns full track details for "Mr. Brightside" by The Killers
+    Returns full track details for "Mr. Brightside" by The Killers
     
     
     
@@ -2973,7 +3364,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > gettrack "3n3Ppam7vgaVa1iaRUc9Lp"
-            ##############################################################################
     
     
     
@@ -3009,7 +3399,7 @@ PARAMETERS
         
         Required?                    false
         Position?                    1
-        Default value                @("*")
+        Default value                @('*')
         Accept pipeline input?       true (ByValue, ByPropertyName)
         Aliases                      
         Accept wildcard characters?  false
@@ -3046,7 +3436,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > "*Metal*" | gupl
-            ##############################################################################
     
     
     
@@ -3122,7 +3511,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > moveliked "My Archived Likes"
-            ##############################################################################
     
     
     
@@ -3202,7 +3590,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > dislike "1234567890abcdef"
-            ##############################################################################
     
     
     
@@ -3304,7 +3691,7 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > "spotify:track:1234567890" | removefromplaylist "My Playlist"
-            ##############################################################################
+    ##############################################################################
     
     
     
@@ -3377,9 +3764,8 @@ OUTPUTS
     
     -------------------------- EXAMPLE 2 --------------------------
     
-    PS > ###############################################################################Using alias and positional parameter
+    PS > Using alias and positional parameter
     fm "Dire Straits"
-    ##############################################################################
     
     
     
@@ -3459,7 +3845,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > fmq "Dire Straits You and your friend"
-            ##############################################################################
     
     
     
@@ -3539,7 +3924,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > fmp "Dire Straits You and your friend"
-            ##############################################################################
     
     
     
@@ -3625,7 +4009,6 @@ OUTPUTS
     
     PS > "1234567890abcdef" | Set-SpotifyActiveDevice
     Same as above but using pipeline input
-            ##############################################################################
     
     
     
@@ -3696,7 +4079,6 @@ OUTPUTS
     -------------------------- EXAMPLE 1 --------------------------
     
     PS > Set-SpotifyApiToken -ApiToken "YOUR-SPOTIFY-API-TOKEN"
-            ##############################################################################
     
     
     
@@ -3775,7 +4157,6 @@ OUTPUTS
     -------------------------- EXAMPLE 3 --------------------------
     
     PS > skip
-            ##############################################################################
     
     
     
@@ -3844,7 +4225,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > pausemusic
-            ##############################################################################
     
     
     
@@ -3984,7 +4364,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > spld "1234567890" "Weekend Mix" -Private -NoCollabrations
-            ##############################################################################
     
     
     
@@ -4100,9 +4479,8 @@ OUTPUTS
     
     -------------------------- EXAMPLE 2 --------------------------
     
-    PS > ###############################################################################Move last track to start of playlist
+    PS > Move last track to start of playlist
     Set-SpotifyPlaylistOrder "2v3iNvBX8Ay1Gt2uXtUKUT" 9 0
-    ##############################################################################
     
     
     
@@ -4180,7 +4558,6 @@ OUTPUTS
     -------------------------- EXAMPLE 3 --------------------------
     
     PS > prev
-            ##############################################################################
     
     
     
@@ -4242,7 +4619,6 @@ NOTES
     
         This cmdlet supports ShouldProcess, allowing use of -WhatIf and -Confirm parameters
         to control execution of state-changing operations.
-                ##############################################################################
     
     -------------------------- EXAMPLE 1 --------------------------
     
@@ -4334,7 +4710,6 @@ OUTPUTS
     -------------------------- EXAMPLE 3 --------------------------
     
     PS > repeatoff
-            ##############################################################################
     
     
     
@@ -4404,7 +4779,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > repeatsong
-            ##############################################################################
     
     
     
@@ -4482,7 +4856,6 @@ OUTPUTS
     -------------------------- EXAMPLE 3 --------------------------
     
     PS > shuffleoff
-            ##############################################################################
     
     
     
@@ -4551,7 +4924,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > shuffle
-            ##############################################################################
     
     
     
@@ -4621,7 +4993,6 @@ OUTPUTS
     -------------------------- EXAMPLE 2 --------------------------
     
     PS > play
-            ##############################################################################
     
     
     
@@ -4699,7 +5070,6 @@ OUTPUTS
     -------------------------- EXAMPLE 3 --------------------------
     
     PS > Stop-Music
-            ##############################################################################
     
     
     
@@ -4722,24 +5092,23 @@ SYNOPSIS
     
     
 SYNTAX
-    Open-VlcMediaPlayer [[-Path] <String[]>] [-KeysToSend <String[]>] [-Escape] [-ShiftEnter] [-DelayMilliSeconds <Int32>] [-Monitor <Int32>] [-NoBorders] [-Width <Int32>] [-Height <Int32>] [-X <Int32>] [-Y <Int32>] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-Fullscreen] [-PassThru] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-ReplayGainMode <String>] [-ReplayGainPreamp <Single>] [-ForceDolbySurround <String>] [-AudioFilters <String[]>] [-Visualization <String>] [-Deinterlace <String>] [-DeinterlaceMode <String>] [-AspectRatio <String>] [-Crop <String>] [-AutoScale] [-VideoFilters <String[]>] [-SubtitleFile <String>] [-DisableSubtitles] [-SubtitleScale <Int32>] [-SubtitleLanguage <String>] [-AudioLanguage <String>] [-PreferredAudioLanguage <String>] [-HttpProxy <String>] [-HttpProxyPassword <String>] [-VerbosityLevel <Int32>] [-SubdirectoryBehavior <String>] [-IgnoredExtensions <String>] [-HighPriority] [-EnableTimeStretch] [-VLCPath <String>] [-NewWindow] [-EnableWallpaperMode] [-VideoFilterModules <String[]>] [-Modules <String[]>] [-AudioFilterModules <String[]>] [-AudioVisualization <String>] [-PreferredSubtitleLanguage <String>] [-IgnoredFileExtensions <String>] [-EnableAudioTimeStretch] [-Arguments <String>] [-Close] [-SideBySide] [<CommonParameters>]
+    Open-VlcMediaPlayer [[-Path] <String[]>] [[-Width] <Int32>] [[-Height] <Int32>] [[-X] <Int32>] [[-Y] <Int32>] [-KeysToSend <String[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds <Int32>] [-SendKeyHoldKeyboardFocus] [-Monitor <Int32>] [-AspectRatio <String>] [-Crop <String>] [-SubtitleFile <String>] [-SubtitleScale <Int32>] [-SubtitleLanguage <String>] [-AudioLanguage <String>] [-PreferredAudioLanguage <String>] [-HttpProxy <String>] [-HttpProxyPassword <String>] [-VerbosityLevel <Int32>] [-SubdirectoryBehavior <String>] [-IgnoredExtensions <String>] [-VLCPath <String>] [-ReplayGainMode <String>] [-ReplayGainPreamp <Single>] [-ForceDolbySurround <String>] [-AudioFilters <String[]>] [-Visualization <String>] [-Deinterlace <String>] [-DeinterlaceMode <String>] [-VideoFilters <String[]>] [-VideoFilterModules <String[]>] [-Modules <String[]>] [-AudioFilterModules <String[]>] [-AudioVisualization <String>] [-PreferredSubtitleLanguage <String>] [-IgnoredFileExtensions <String>] [-Arguments <String>] [-NoBorders] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-FullScreen] [-PassThru] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-DisableSubtitles] [-AutoScale] [-HighPriority] [-EnableTimeStretch] [-NewWindow] [-EnableWallpaperMode] [-EnableAudioTimeStretch] [-Close] [-SideBySide] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-SessionOnly] [-ClearSession] [-SkipSession] [<CommonParameters>]
     
     
 DESCRIPTION
-    Provides a comprehensive interface to launch and control VLC Media Player with
-    support for:
-    - Window positioning and monitor selection
-    - Playback settings (speed, aspect ratio, etc)
-    - Audio/video filters and options
-    - Subtitle handling
-    - Multiple language support
-    - Network proxy settings
-    - Advanced performance options
+    This function provides a comprehensive interface to launch and control VLC
+    Media Player with support for window positioning, monitor selection, playback
+    settings, audio and video filters, subtitle handling, multiple language
+    support, network proxy settings, and advanced performance options. The
+    function can automatically install VLC if not present and provides extensive
+    customization for media playbook scenarios. It integrates seamlessly with the
+    GenXdev window management system and supports keyboard input automation through
+    the Send-Key functionality.
     
 
 PARAMETERS
     -Path <String[]>
-        The media file(s) or URL(s) to open in VLC.
+        The media file(s) or URL(s) to open in VLC. Supports local files, network
         
         Required?                    false
         Position?                    1
@@ -4748,17 +5117,60 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
+    -Width <Int32>
+        The initial width of the VLC window in pixels. Used for precise window sizing.
+        
+        Required?                    false
+        Position?                    2
+        Default value                -1
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Height <Int32>
+        The initial height of the VLC window in pixels. Used for precise window sizing.
+        
+        Required?                    false
+        Position?                    3
+        Default value                -1
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -X <Int32>
+        The initial X position of the VLC window on the screen in pixels.
+        
+        Required?                    false
+        Position?                    4
+        Default value                -1
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Y <Int32>
+        The initial Y position of the VLC window on the screen in pixels.
+        
+        Required?                    false
+        Position?                    5
+        Default value                -1
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
     -KeysToSend <String[]>
-        Keystrokes to send to the VLC window for control.
+        Keystrokes to send to the VLC Player Window after opening. Uses the same
+        syntax as the GenXdev.Windows\Send-Key function for automation purposes.
         
         Required?                    false
         Position?                    named
         Default value                
-        Accept pipeline input?       false
+        Accept pipeline input?       true (ByPropertyName)
         Aliases                      
         Accept wildcard characters?  false
         
-    -Escape [<SwitchParameter>]
+    -SendKeyEscape [<SwitchParameter>]
+        Escape control characters and modifiers when sending keys to VLC to ensure
+        literal key interpretation.
         
         Required?                    false
         Position?                    named
@@ -4767,7 +5179,8 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
-    -ShiftEnter [<SwitchParameter>]
+    -SendKeyUseShiftEnter [<SwitchParameter>]
+        Use Shift+Enter instead of Enter when sending keys to VLC for line breaks.
         
         Required?                    false
         Position?                    named
@@ -4776,17 +5189,31 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
-    -DelayMilliSeconds <Int32>
+    -SendKeyDelayMilliSeconds <Int32>
+        Delay between different input strings in milliseconds when sending keys to
+        ensure reliable delivery.
         
         Required?                    false
         Position?                    named
-        Default value                0
+        Default value                50
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -SendKeyHoldKeyboardFocus [<SwitchParameter>]
+        Hold keyboard focus on the VLC window after sending keys instead of returning
+        focus to PowerShell.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
         Accept pipeline input?       false
         Aliases                      
         Accept wildcard characters?  false
         
     -Monitor <Int32>
-        Monitor to display VLC on (-1=discard, 0=default, >0=specific monitor).
+        The monitor to use for VLC display. 0 = default monitor, -1 = discard
+        positioning, >0 = specific monitor number.
         
         Required?                    false
         Position?                    named
@@ -4795,253 +5222,8 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
-    -NoBorders [<SwitchParameter>]
-        Removes window borders for a cleaner look.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Width <Int32>
-        Initial window width in pixels.
-        
-        Required?                    false
-        Position?                    named
-        Default value                -1
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Height <Int32>
-        Initial window height in pixels.
-        
-        Required?                    false
-        Position?                    named
-        Default value                -1
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -X <Int32>
-        Initial window X position.
-        
-        Required?                    false
-        Position?                    named
-        Default value                -1
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Y <Int32>
-        Initial window Y position.
-        
-        Required?                    false
-        Position?                    named
-        Default value                -1
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Left [<SwitchParameter>]
-        Places window on left side of screen.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Right [<SwitchParameter>]
-        Places window on right side of screen.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Top [<SwitchParameter>]
-        Places window on top of screen.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Bottom [<SwitchParameter>]
-        Places window on bottom of screen.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Centered [<SwitchParameter>]
-        Centers the window on screen.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Fullscreen [<SwitchParameter>]
-        Maximizes the window.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -PassThru [<SwitchParameter>]
-        Returns the window helper object.
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -AlwaysOnTop [<SwitchParameter>]
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Random [<SwitchParameter>]
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Loop [<SwitchParameter>]
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Repeat [<SwitchParameter>]
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -StartPaused [<SwitchParameter>]
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -PlayAndExit [<SwitchParameter>]
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -DisableAudio [<SwitchParameter>]
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -ReplayGainMode <String>
-        
-        Required?                    false
-        Position?                    named
-        Default value                
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -ReplayGainPreamp <Single>
-        
-        Required?                    false
-        Position?                    named
-        Default value                0
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -ForceDolbySurround <String>
-        
-        Required?                    false
-        Position?                    named
-        Default value                
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -AudioFilters <String[]>
-        
-        Required?                    false
-        Position?                    named
-        Default value                
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Visualization <String>
-        
-        Required?                    false
-        Position?                    named
-        Default value                
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -Deinterlace <String>
-        
-        Required?                    false
-        Position?                    named
-        Default value                
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -DeinterlaceMode <String>
-        
-        Required?                    false
-        Position?                    named
-        Default value                
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
     -AspectRatio <String>
+        Source aspect ratio for video display to ensure correct proportions.
         
         Required?                    false
         Position?                    named
@@ -5051,24 +5233,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Crop <String>
-        
-        Required?                    false
-        Position?                    named
-        Default value                
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -AutoScale [<SwitchParameter>]
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -VideoFilters <String[]>
+        Video cropping settings to adjust the visible video area.
         
         Required?                    false
         Position?                    named
@@ -5078,6 +5243,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -SubtitleFile <String>
+        Path to subtitle file to use with the media for caption display.
         
         Required?                    false
         Position?                    named
@@ -5086,16 +5252,8 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
-    -DisableSubtitles [<SwitchParameter>]
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
     -SubtitleScale <Int32>
+        Subtitles text scaling factor percentage for readability adjustment.
         
         Required?                    false
         Position?                    named
@@ -5105,6 +5263,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -SubtitleLanguage <String>
+        Subtitle language preference for multi-language content selection.
         
         Required?                    false
         Position?                    named
@@ -5114,6 +5273,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -AudioLanguage <String>
+        Audio language preference for multi-language content selection.
         
         Required?                    false
         Position?                    named
@@ -5123,6 +5283,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -PreferredAudioLanguage <String>
+        Preferred audio language for multi-language content when multiple tracks exist.
         
         Required?                    false
         Position?                    named
@@ -5132,6 +5293,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -HttpProxy <String>
+        HTTP proxy server for network streams when behind corporate firewalls.
         
         Required?                    false
         Position?                    named
@@ -5141,6 +5303,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -HttpProxyPassword <String>
+        HTTP proxy password for authentication when required by proxy server.
         
         Required?                    false
         Position?                    named
@@ -5150,6 +5313,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -VerbosityLevel <Int32>
+        Verbosity level for VLC output to control logging detail.
         
         Required?                    false
         Position?                    named
@@ -5159,6 +5323,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -SubdirectoryBehavior <String>
+        How to handle subdirectories in playlists for folder-based media organization.
         
         Required?                    false
         Position?                    named
@@ -5168,6 +5333,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -IgnoredExtensions <String>
+        File extensions to ignore when building playlists to filter unwanted files.
         
         Required?                    false
         Position?                    named
@@ -5176,26 +5342,8 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
-    -HighPriority [<SwitchParameter>]
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
-    -EnableTimeStretch [<SwitchParameter>]
-        
-        Required?                    false
-        Position?                    named
-        Default value                False
-        Accept pipeline input?       false
-        Aliases                      
-        Accept wildcard characters?  false
-        
     -VLCPath <String>
-        Custom path to VLC executable.
+        Custom path to VLC executable when installed in non-standard location.
         
         Required?                    false
         Position?                    named
@@ -5204,26 +5352,88 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
-    -NewWindow [<SwitchParameter>]
-        Forces new VLC instance.
+    -ReplayGainMode <String>
+        Replay gain mode for audio normalization to maintain consistent volume levels.
         
         Required?                    false
         Position?                    named
-        Default value                False
+        Default value                
         Accept pipeline input?       false
         Aliases                      
         Accept wildcard characters?  false
         
-    -EnableWallpaperMode [<SwitchParameter>]
+    -ReplayGainPreamp <Single>
+        Replay gain preamp value in decibels for volume adjustment.
         
         Required?                    false
         Position?                    named
-        Default value                False
+        Default value                0
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -ForceDolbySurround <String>
+        Force detection of Dolby Surround audio for enhanced audio processing.
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -AudioFilters <String[]>
+        Audio filters to apply during playback for sound enhancement.
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Visualization <String>
+        Audio visualization type to display for audio-only content.
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Deinterlace <String>
+        Deinterlace video content to improve quality of interlaced video.
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -DeinterlaceMode <String>
+        Deinterlace algorithm to use for optimal video quality processing.
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -VideoFilters <String[]>
+        Video filters to apply during playback for visual enhancement.
+        
+        Required?                    false
+        Position?                    named
+        Default value                
         Accept pipeline input?       false
         Aliases                      
         Accept wildcard characters?  false
         
     -VideoFilterModules <String[]>
+        Video filter modules to load for advanced video processing.
         
         Required?                    false
         Position?                    named
@@ -5233,6 +5443,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -Modules <String[]>
+        Additional modules to load for extended VLC functionality.
         
         Required?                    false
         Position?                    named
@@ -5242,6 +5453,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -AudioFilterModules <String[]>
+        Audio filter modules to load for advanced audio processing.
         
         Required?                    false
         Position?                    named
@@ -5251,6 +5463,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -AudioVisualization <String>
+        Audio visualization mode for visual representation of audio content.
         
         Required?                    false
         Position?                    named
@@ -5260,6 +5473,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -PreferredSubtitleLanguage <String>
+        Preferred subtitle language for automatic subtitle selection.
         
         Required?                    false
         Position?                    named
@@ -5269,6 +5483,7 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -IgnoredFileExtensions <String>
+        File extensions to ignore during media file processing.
         
         Required?                    false
         Position?                    named
@@ -5277,7 +5492,18 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
-    -EnableAudioTimeStretch [<SwitchParameter>]
+    -Arguments <String>
+        Additional command-line arguments to pass to VLC for custom configuration.
+        
+        Required?                    false
+        Position?                    named
+        Default value                
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -NoBorders [<SwitchParameter>]
+        Removes window borders for a cleaner, distraction-free viewing experience.
         
         Required?                    false
         Position?                    named
@@ -5286,17 +5512,218 @@ PARAMETERS
         Aliases                      
         Accept wildcard characters?  false
         
-    -Arguments <String>
+    -Left [<SwitchParameter>]
+        Places VLC window on left side of screen for side-by-side arrangements.
         
         Required?                    false
         Position?                    named
-        Default value                
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Right [<SwitchParameter>]
+        Places VLC window on right side of screen for side-by-side arrangements.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Top [<SwitchParameter>]
+        Places VLC window on top side of screen for vertical arrangements.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Bottom [<SwitchParameter>]
+        Places VLC window on bottom side of screen for vertical arrangements.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Centered [<SwitchParameter>]
+        Centers the VLC window on screen for optimal viewing position.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -FullScreen [<SwitchParameter>]
+        Maximizes the VLC window to fullscreen for immersive viewing.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -PassThru [<SwitchParameter>]
+        Returns the window helper object for further manipulation and control.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -AlwaysOnTop [<SwitchParameter>]
+        Keeps the VLC window always on top of other windows for persistent visibility.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Random [<SwitchParameter>]
+        Play files randomly forever in shuffle mode for varied playback order.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Loop [<SwitchParameter>]
+        Repeat all files in the playlist continuously for extended viewing.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Repeat [<SwitchParameter>]
+        Repeat current item continuously for focused content consumption.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -StartPaused [<SwitchParameter>]
+        Start playback in paused state for manual playback control.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -PlayAndExit [<SwitchParameter>]
+        Play media and exit VLC when finished for automated batch processing.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -DisableAudio [<SwitchParameter>]
+        Disable audio output completely for silent video playback.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -DisableSubtitles [<SwitchParameter>]
+        Disable all subtitles for clean video display without captions.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -AutoScale [<SwitchParameter>]
+        Enable automatic video scaling for optimal display size adjustment.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -HighPriority [<SwitchParameter>]
+        Increase the priority of the VLC process for better performance.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -EnableTimeStretch [<SwitchParameter>]
+        Enable time stretching audio during playback for speed adjustments.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -NewWindow [<SwitchParameter>]
+        Open new VLC mediaplayer instance instead of reusing existing windows.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -EnableWallpaperMode [<SwitchParameter>]
+        Enable video wallpaper mode for desktop background video display.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -EnableAudioTimeStretch [<SwitchParameter>]
+        Enable audio time stretching for playback speed modifications.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
         Accept pipeline input?       false
         Aliases                      
         Accept wildcard characters?  false
         
     -Close [<SwitchParameter>]
-        Closes VLC window.
+        Close the VLC media player window and terminate the process.
         
         Required?                    false
         Position?                    named
@@ -5306,7 +5733,81 @@ PARAMETERS
         Accept wildcard characters?  false
         
     -SideBySide [<SwitchParameter>]
-        Places VLC window side by side with PowerShell window.
+        Will either set the window fullscreen on a different monitor than PowerShell,
+        or side by side with PowerShell on the same monitor for workflow optimization.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -FocusWindow [<SwitchParameter>]
+        Focus the VLC window after opening for immediate interaction readiness.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -SetForeground [<SwitchParameter>]
+        Set the VLC window to foreground after opening for visibility assurance.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -Maximize [<SwitchParameter>]
+        Maximize the VLC window after positioning for full-screen content display.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -RestoreFocus [<SwitchParameter>]
+        Restore PowerShell window focus after opening VLC for continued workflow.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -SessionOnly [<SwitchParameter>]
+        Use alternative settings stored in session for AI preferences during current
+        session only.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -ClearSession [<SwitchParameter>]
+        Clear alternative settings stored in session for AI preferences to reset
+        configuration.
+        
+        Required?                    false
+        Position?                    named
+        Default value                False
+        Accept pipeline input?       false
+        Aliases                      
+        Accept wildcard characters?  false
+        
+    -SkipSession [<SwitchParameter>]
+        Store settings only in persistent preferences without affecting session to
+        maintain separation.
         
         Required?                    false
         Position?                    named
@@ -5327,8 +5828,9 @@ OUTPUTS
     
     -------------------------- EXAMPLE 1 --------------------------
     
-    PS > ###############################################################################Open video fullscreen on monitor 0 with audio
-    Open-VlcMediaPlayer -Path "video.mp4" -Fullscreen -Monitor 0
+    PS > Open-VlcMediaPlayer -Path "video.mp4" -Fullscreen -Monitor 0
+    Opens a video file in fullscreen mode on the primary monitor for immersive
+    viewing experience.
     
     
     
@@ -5337,9 +5839,20 @@ OUTPUTS
     
     -------------------------- EXAMPLE 2 --------------------------
     
-    PS > ###############################################################################Short form using aliases
-    vlc "video.mp4" -fs -m 0
-    ##############################################################################
+    PS > vlc "video.mp4" -fs -m 0
+    Short form using aliases to open video fullscreen on monitor 0 with minimal
+    typing required.
+    
+    
+    
+    
+    
+    
+    -------------------------- EXAMPLE 3 --------------------------
+    
+    PS > Open-VlcMediaPlayer -Path "movie.mkv" -SubtitleFile "movie.srt" -AudioLanguage "English"
+    Opens a movie with external subtitles and specific audio language for
+    enhanced viewing with captions.
     
     
     
@@ -5355,7 +5868,7 @@ NAME
     Open-VlcMediaPlayerLyrics
     
 SYNTAX
-    Open-VlcMediaPlayerLyrics [[-Queries] <string[]>] [[-EndPoint] {Bing | Github | Google | IMDB | InstantStreetView | StackOverflow | Wikipedia | WikipediaNL | WolframAlpha | Youtube}] [[-Language] {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [-All] [-Monitor <int>] [-FullScreen] [-Width <int>] [-Height <int>] [-X <int>] [-Y <int>] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-AcceptLang <string>] [-RestoreFocus] [-NewWindow] [-PassThru] [-ReturnURL] [-ReturnOnlyURL] [<CommonParameters>]
+    Open-VlcMediaPlayerLyrics [[-Queries] <string[]>] [[-EndPoint] {Bing | Github | Google | IMDB | InstantStreetView | StackOverflow | Wikipedia | WikipediaNL | WolframAlpha | Youtube}] [[-Language] {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [-All] [-Monitor <int>] [-ShowWindow] [-Width <int>] [-Height <int>] [-X <int>] [-Y <int>] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-DisablePopupBlocker] [-AcceptLang <string>] [-KeysToSend <string[]>] [-SendKeyEscape] [-SendKeyHoldKeyboardFocus] [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds <int>] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-NewWindow] [-PassThru] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders] [-SessionOnly] [-ClearSession] [-SkipSession] [-SideBySide] [<CommonParameters>]
     
     
 PARAMETERS
@@ -5436,6 +5949,28 @@ PARAMETERS
         Dynamic?                     false
         Accept wildcard characters?  false
         
+    -ClearSession
+        Clear browser session data before opening the browser
+        
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      None
+        Dynamic?                     false
+        Accept wildcard characters?  false
+        
+    -DisablePopupBlocker
+        Disable the popup blocker
+        
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      allowpopups
+        Dynamic?                     false
+        Accept wildcard characters?  false
+        
     -Edge
         Opens in Microsoft Edge
         
@@ -5469,6 +6004,17 @@ PARAMETERS
         Dynamic?                     false
         Accept wildcard characters?  false
         
+    -FocusWindow
+        Focus the browser window after opening
+        
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      fw, focus
+        Dynamic?                     false
+        Accept wildcard characters?  false
+        
     -Force
         Force enable debugging port, stopping existing browsers if needed
         
@@ -5480,19 +6026,19 @@ PARAMETERS
         Dynamic?                     false
         Accept wildcard characters?  false
         
-    -FullScreen
-        Opens in fullscreen mode
+    -Height <int>
+        The initial height of the webbrowser window
         
         Required?                    false
         Position?                    Named
         Accept pipeline input?       false
         Parameter set name           (All)
-        Aliases                      fs, f
+        Aliases                      None
         Dynamic?                     false
         Accept wildcard characters?  false
         
-    -Height <int>
-        The initial height of the webbrowser window
+    -KeysToSend <string[]>
+        Keystrokes to send to the Browser window, see documentation for cmdlet GenXdev.Windows\Send-Key
         
         Required?                    false
         Position?                    Named
@@ -5524,6 +6070,17 @@ PARAMETERS
         Dynamic?                     false
         Accept wildcard characters?  false
         
+    -Maximize
+        Maximize the window after positioning
+        
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      None
+        Dynamic?                     false
+        Accept wildcard characters?  false
+        
     -Monitor <int>
         The monitor to use, 0 = default, -1 is discard, -2 = Configured secondary monitor, defaults to -1, no positioning
         
@@ -5546,6 +6103,17 @@ PARAMETERS
         Dynamic?                     false
         Accept wildcard characters?  false
         
+    -NoBorders
+        Removes window borders from the browser window
+        
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      nb
+        Dynamic?                     false
+        Accept wildcard characters?  false
+        
     -NoBrowserExtensions
         Prevent loading of browser extensions
         
@@ -5564,7 +6132,7 @@ PARAMETERS
         Position?                    Named
         Accept pipeline input?       false
         Parameter set name           (All)
-        Aliases                      None
+        Aliases                      pt
         Dynamic?                     false
         Accept wildcard characters?  false
         
@@ -5586,7 +6154,7 @@ PARAMETERS
         Position?                    0
         Accept pipeline input?       true (ByValue, ByPropertyName, FromRemainingArguments)
         Parameter set name           (All)
-        Aliases                      q, Value, Name, Text, Query
+        Aliases                      q, Name, Text, Query
         Dynamic?                     false
         Accept wildcard characters?  false
         
@@ -5597,7 +6165,7 @@ PARAMETERS
         Position?                    Named
         Accept pipeline input?       false
         Parameter set name           (All)
-        Aliases                      bg
+        Aliases                      rf, bg
         Dynamic?                     false
         Accept wildcard characters?  false
         
@@ -5631,6 +6199,105 @@ PARAMETERS
         Accept pipeline input?       false
         Parameter set name           (All)
         Aliases                      None
+        Dynamic?                     false
+        Accept wildcard characters?  false
+        
+    -SendKeyDelayMilliSeconds <int>
+        Delay between sending different key sequences in milliseconds
+        
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      DelayMilliSeconds
+        Dynamic?                     false
+        Accept wildcard characters?  false
+        
+    -SendKeyEscape
+        Escape control characters when sending keys
+        
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      Escape
+        Dynamic?                     false
+        Accept wildcard characters?  false
+        
+    -SendKeyHoldKeyboardFocus
+        Prevent returning keyboard focus to PowerShell after sending keys
+        
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      HoldKeyboardFocus
+        Dynamic?                     false
+        Accept wildcard characters?  false
+        
+    -SendKeyUseShiftEnter
+        Send Shift+Enter instead of regular Enter for line breaks
+        
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      UseShiftEnter
+        Dynamic?                     false
+        Accept wildcard characters?  false
+        
+    -SessionOnly
+        Use a session that is not persisted after closing the browser
+        
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      None
+        Dynamic?                     false
+        Accept wildcard characters?  false
+        
+    -SetForeground
+        Set the browser window to foreground after opening
+        
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      fg
+        Dynamic?                     false
+        Accept wildcard characters?  false
+        
+    -ShowWindow
+        Opens in fullscreen mode
+        
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      sw
+        Dynamic?                     false
+        Accept wildcard characters?  false
+        
+    -SideBySide
+        Open browser windows side by side
+        
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      sbs
+        Dynamic?                     false
+        Accept wildcard characters?  false
+        
+    -SkipSession
+        Skip using any existing browser session
+        
+        Required?                    false
+        Position?                    Named
+        Accept pipeline input?       false
+        Parameter set name           (All)
+        Aliases                      FromPreferences
         Dynamic?                     false
         Accept wildcard characters?  false
         

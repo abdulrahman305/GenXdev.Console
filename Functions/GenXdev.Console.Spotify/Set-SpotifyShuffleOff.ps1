@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Disables Spotify song-shuffle mode on the active device.
@@ -15,32 +15,31 @@ noshuffle
 
 .EXAMPLE
 shuffleoff
-        ###############################################################################>
+#>
 function Set-SpotifyShuffleOff {
 
     [CmdletBinding(SupportsShouldProcess)]
-    [Alias("noshuffle", "shuffleoff")]
+    [Alias('noshuffle', 'shuffleoff')]
     param()
 
     begin {
 
         # output information about the operation being performed
-        Microsoft.PowerShell.Utility\Write-Verbose "Disabling shuffle mode on active Spotify device..."
+        Microsoft.PowerShell.Utility\Write-Verbose 'Disabling shuffle mode on active Spotify device...'
     }
 
 
-process {
+    process {
 
         # only perform the action if ShouldProcess returns true
-        if ($PSCmdlet.ShouldProcess("Spotify", "Disable shuffle mode")) {
+        if ($PSCmdlet.ShouldProcess('Spotify', 'Disable shuffle mode')) {
 
             # retrieve the current api token for spotify authentication
             # and disable shuffle mode using the spotify helper class
-            [GenXdev.Helpers.Spotify]::ShuffleOff((GenXdev.Console\Get-SpotifyApiToken))
+                [GenXdev.Helpers.Spotify]::ShuffleOff((GenXdev.Console\Get-SpotifyApiToken))
         }
     }
 
     end {
     }
 }
-        ###############################################################################

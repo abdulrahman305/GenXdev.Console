@@ -23,36 +23,229 @@ Get-SpotifyLyrics -TrackId "1301WleyT98MSxVHPZCA6M"
 
 .EXAMPLE
 lyrics "bohemian rhapsody queen"
-        ###############################################################################>
+#>
 function Get-SpotifyLyrics {
 
-    [CmdLetBinding(DefaultParameterSetName = "")]
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "Get-SpotifyLyrics")]
-    [Alias("lyrics")]
+    [CmdLetBinding(DefaultParameterSetName = '')]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', 'Get-SpotifyLyrics')]
+    [Alias('lyrics')]
 
     param(
         ########################################################################
         [parameter(
             Mandatory = $false,
             ValueFromPipelineByPropertyName,
-            ParameterSetName = "",
-            HelpMessage = "Spotify track ID to lookup lyrics for"
+            ParameterSetName = '',
+            HelpMessage = 'Spotify track ID to lookup lyrics for'
         )]
-        [Alias("Id")]
+        [Alias('Id')]
         [string] $TrackId = $null,
 
-        ########################################################################
-        [parameter(
-            Mandatory = $false,
-            Position = 0,
-            ValueFromRemainingArguments,
-            ValueFromPipeline,
-            ValueFromPipelineByPropertyName,
-            HelpMessage = "Search terms to find a track"
-        )]
-        [Alias("q", "Value", "Name", "Text", "Query")]
-        [string[]] $Queries = $null
-        ########################################################################
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('incognito','inprivate')]
+        [parameter(Mandatory = $false, HelpMessage = 'Open browser in private/incognito mode')]
+        [switch] $Private,
+
+        ###############################################################################
+        [parameter(Mandatory = $false, HelpMessage = 'Force browser launch or override restrictions')]
+        [switch] $Force,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('e')]
+        [parameter(Mandatory = $false, HelpMessage = 'Use Microsoft Edge browser')]
+        [switch] $Edge,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('ch')]
+        [parameter(Mandatory = $false, HelpMessage = 'Use Google Chrome browser')]
+        [switch] $Chrome,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('c')]
+        [parameter(Mandatory = $false, HelpMessage = 'Use Chromium browser')]
+        [switch] $Chromium,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('ff')]
+        [parameter(Mandatory = $false, HelpMessage = 'Use Mozilla Firefox browser')]
+        [switch] $Firefox,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('m','mon')]
+        [parameter(Mandatory = $false, HelpMessage = 'Target monitor for browser window')]
+        [int] $Monitor,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('fs','f')]
+        [parameter(Mandatory = $false, HelpMessage = 'Open browser in full screen mode')]
+        [switch] $FullScreen,
+
+        ###############################################################################
+        [parameter(Mandatory = $false, HelpMessage = 'Width of browser window in pixels')]
+        [int] $Width,
+
+        ###############################################################################
+        [parameter(Mandatory = $false, HelpMessage = 'Height of browser window in pixels')]
+        [int] $Height,
+
+        ###############################################################################
+        [parameter(Mandatory = $false, HelpMessage = 'Left position of browser window')]
+        [int] $Left,
+
+        ###############################################################################
+        [parameter(Mandatory = $false, HelpMessage = 'Right position of browser window')]
+        [int] $Right,
+
+        ###############################################################################
+        [parameter(Mandatory = $false, HelpMessage = 'Top position of browser window')]
+        [int] $Top,
+
+        ###############################################################################
+        [parameter(Mandatory = $false, HelpMessage = 'Bottom position of browser window')]
+        [int] $Bottom,
+
+        ###############################################################################
+        [parameter(Mandatory = $false, HelpMessage = 'Center browser window on screen')]
+        [switch] $Centered,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('a','app','appmode')]
+        [parameter(Mandatory = $false, HelpMessage = 'Open browser in application mode')]
+        [switch] $ApplicationMode,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('de','ne','NoExtensions')]
+        [parameter(Mandatory = $false, HelpMessage = 'Disable browser extensions')]
+        [switch] $NoBrowserExtensions,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('allowpopups')]
+        [parameter(Mandatory = $false, HelpMessage = 'Disable popup blocker in browser')]
+        [switch] $DisablePopupBlocker,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('lang','locale')]
+        [parameter(Mandatory = $false, HelpMessage = 'Set Accept-Language HTTP header')]
+        [string] $AcceptLang,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('Escape')]
+        [parameter(Mandatory = $false, HelpMessage = 'Send Escape key after page load')]
+        [switch] $SendKeyEscape,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('HoldKeyboardFocus')]
+        [parameter(Mandatory = $false, HelpMessage = 'Hold keyboard focus after sending keys')]
+        [switch] $SendKeyHoldKeyboardFocus,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('UseShiftEnter')]
+        [parameter(Mandatory = $false, HelpMessage = 'Use Shift+Enter when sending keys')]
+        [switch] $SendKeyUseShiftEnter,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('DelayMilliSeconds')]
+        [parameter(Mandatory = $false, HelpMessage = 'Delay in milliseconds between sending keys')]
+        [int] $SendKeyDelayMilliSeconds,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('fw','focus')]
+        [parameter(Mandatory = $false, HelpMessage = 'Focus browser window after launch')]
+        [switch] $FocusWindow,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('fg')]
+        [parameter(Mandatory = $false, HelpMessage = 'Set browser window to foreground')]
+        [switch] $SetForeground,
+
+        ###############################################################################
+        [parameter(Mandatory = $false, HelpMessage = 'Maximize browser window')]
+        [switch] $Maximize,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('rf','bg')]
+        [parameter(Mandatory = $false, HelpMessage = 'Restore focus to previous window after closing browser')]
+        [switch] $RestoreFocus,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('nw','new')]
+        [parameter(Mandatory = $false, HelpMessage = 'Open link in a new browser window')]
+        [switch] $NewWindow,
+
+        ###############################################################################
+        [parameter(Mandatory = $false, HelpMessage = 'Return the URL after opening')]
+        [switch] $ReturnURL,
+
+        ###############################################################################
+        [parameter(Mandatory = $false, HelpMessage = 'Return only the URL, do not open browser')]
+        [switch] $ReturnOnlyURL,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('nb')]
+        [parameter(Mandatory = $false, HelpMessage = 'Open browser window without borders')]
+        [switch] $NoBorders,
+
+        ###############################################################################
+        [parameter(Mandatory = $false, HelpMessage = 'Use session-only mode for browser')]
+        [switch] $SessionOnly,
+
+        ###############################################################################
+        [parameter(Mandatory = $false, HelpMessage = 'Clear browser session before opening')]
+        [switch] $ClearSession,
+
+        ###############################################################################
+
+        ###############################################################################
+        [Alias('FromPreferences')]
+        [parameter(Mandatory = $false, HelpMessage = 'Skip using browser session')]
+        [switch] $SkipSession,
+
+        ###############################################################################
+        ###############################################################################
+        [Alias('sbs')]
+        [parameter(Mandatory = $false, HelpMessage = 'Open browser side by side with other windows')]
+        [switch] $SideBySide
+        ###############################################################################
     )
 
     begin {
@@ -78,7 +271,7 @@ function Get-SpotifyLyrics {
 
             $Queries = $new
             if ($new.Count -eq 0) {
-                Microsoft.PowerShell.Utility\Write-Warning "No tracks found matching search terms"
+                Microsoft.PowerShell.Utility\Write-Warning 'No tracks found matching search terms'
             }
         }
         else {
@@ -94,7 +287,7 @@ function Get-SpotifyLyrics {
             }
             else {
                 # get currently playing track
-                Microsoft.PowerShell.Utility\Write-Verbose "Getting currently playing track"
+                Microsoft.PowerShell.Utility\Write-Verbose 'Getting currently playing track'
                 $current = GenXdev.Console\Get-SpotifyCurrentlyPlaying
 
                 if ($null -ne $current) {
@@ -105,26 +298,30 @@ function Get-SpotifyLyrics {
         }
 
         if ($null -eq $Queries) {
-            throw "No song playing and no search terms provided"
+            throw 'No song playing and no search terms provided'
         }
 
-         if (@(Microsoft.PowerShell.Core\Get-Module GenXdev.Queries -ErrorAction SilentlyContinue).Count -eq 0) {
+        if (@(Microsoft.PowerShell.Core\Get-Module GenXdev.Queries -ErrorAction SilentlyContinue).Count -eq 0) {
 
-                $null = PowerShellGet\Install-Module GenXdev.Queries -SkipPublisherCheck
-                $null = Microsoft.PowerShell.Core\Import-Module GenXdev.Queries
-            }
+            $null = PowerShellGet\Install-Module GenXdev.Queries -SkipPublisherCheck
+            $null = Microsoft.PowerShell.Core\Import-Module GenXdev.Queries
+        }
+
+        $params = GenXdev.Helpers\Copy-IdenticalParamValues `
+            -FunctionName 'GenXdev.Queries\Open-GoogleQuery' `
+            -BoundParameters $PSBoundParameters `
+            -DefaultValues (Microsoft.PowerShell.Utility\Get-Variable -Scope Local -ErrorAction SilentlyContinue)
     }
 
 
-process {
+    process {
 
         foreach ($query in $Queries) {
-
             Microsoft.PowerShell.Utility\Write-Verbose "Searching Musixmatch for lyrics: $query"
 
             # encode query for URL
             $q = [Uri]::EscapeUriString($query)
-            [string] $html = ""
+            [string] $html = ''
 
             # attempt to get search results page
             try {
@@ -134,22 +331,22 @@ process {
             }
             catch {
                 Microsoft.PowerShell.Utility\Write-Warning "No results found for '$query'"
-                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
+                GenXdev.Queries\Open-GoogleQuery @params -Queries "lyrics $query"
                 continue
             }
 
             # extract best match URL from search results
-            [int] $idx = $html.IndexOf("Best Result")
+            [int] $idx = $html.IndexOf('Best Result')
             if ($idx -lt 0) {
                 Microsoft.PowerShell.Utility\Write-Warning "No results found for '$query'"
-                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
+                GenXdev.Queries\Open-GoogleQuery @params -Queries "lyrics $query"
                 continue
             }
 
             $idx = $html.IndexOf('<a class="title" href="', $idx)
             if ($idx -lt 0) {
                 Microsoft.PowerShell.Utility\Write-Warning "No results found for '$query'"
-                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
+                GenXdev.Queries\Open-GoogleQuery @params -Queries "lyrics $query"
                 continue
             }
 
@@ -158,7 +355,7 @@ process {
 
             if ($idx2 -lt 0) {
                 Microsoft.PowerShell.Utility\Write-Warning "No results found for '$query'"
-                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
+                GenXdev.Queries\Open-GoogleQuery @params -Queries "lyrics $query"
                 continue
             }
 
@@ -171,7 +368,7 @@ process {
             }
             catch {
                 Microsoft.PowerShell.Utility\Write-Warning "Failed to get lyrics for '$query'"
-                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
+                GenXdev.Queries\Open-GoogleQuery @params -Queries "lyrics $query"
                 continue
             }
 
@@ -179,7 +376,7 @@ process {
             $idx = $html.IndexOf('"body":"')
             if ($idx -lt 0) {
                 Microsoft.PowerShell.Utility\Write-Warning "No lyrics found for '$query'"
-                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
+                GenXdev.Queries\Open-GoogleQuery @params -Queries "lyrics $query"
                 continue
             }
 
@@ -188,21 +385,20 @@ process {
 
             if ($idx2 -lt 0) {
                 Microsoft.PowerShell.Utility\Write-Warning "No lyrics found for '$query'"
-                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
+                GenXdev.Queries\Open-GoogleQuery @params -Queries "lyrics $query"
                 continue
             }
 
             # parse and clean up lyrics
             $result = "`"$($html.Substring($idx, $idx2-$idx))`"" |
-            Microsoft.PowerShell.Utility\ConvertFrom-Json
+                Microsoft.PowerShell.Utility\ConvertFrom-Json
 
             if ([String]::IsNullOrWhiteSpace($result)) {
                 Microsoft.PowerShell.Utility\Write-Warning "Empty lyrics found for '$query'"
-                GenXdev.Queries\Open-GoogleQuery "lyrics $query"
+                GenXdev.Queries\Open-GoogleQuery @params -Queries "lyrics $query"
             }
 
-            $result.Replace("???", "'")
+            $result.Replace('???', "'")
         }
     }
 }
-        ###############################################################################

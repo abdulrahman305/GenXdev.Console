@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Enables playlist repeat mode for Spotify playback.
@@ -16,32 +16,31 @@ repeat
 .NOTES
 This cmdlet supports ShouldProcess, allowing use of -WhatIf and -Confirm parameters
 to control execution of state-changing operations.
-        ###############################################################################>
+#>
 function Set-SpotifyRepeatContext {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
-    [Alias("repeat")]
+    [Alias('repeat')]
 
     param()
 
     begin {
 
         # output information about enabling repeat mode
-        Microsoft.PowerShell.Utility\Write-Verbose "Enabling repeat mode for current Spotify context"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Enabling repeat mode for current Spotify context'
     }
 
 
-process {
+    process {
 
         # get the current api token for authentication
-        Microsoft.PowerShell.Utility\Write-Verbose "Retrieving Spotify API token"
         $token = GenXdev.Console\Get-SpotifyApiToken
 
         # enable repeat mode for the current context using the spotify helper
         # only if ShouldProcess confirms the action
-        if ($PSCmdlet.ShouldProcess("Current Spotify context", "Enable repeat mode")) {
+        if ($PSCmdlet.ShouldProcess('Current Spotify context', 'Enable repeat mode')) {
 
-            Microsoft.PowerShell.Utility\Write-Verbose "Setting repeat mode to context"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Setting repeat mode to context'
             [GenXdev.Helpers.Spotify]::RepeatContext($token)
         }
     }
@@ -49,4 +48,3 @@ process {
     end {
     }
 }
-        ###############################################################################

@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Enables song repeat mode in Spotify.
@@ -13,28 +13,28 @@ Set-SpotifyRepeatSong
 
 .EXAMPLE
 repeatsong
-        ###############################################################################>
+#>
 function Set-SpotifyRepeatSong {
 
     [CmdletBinding(SupportsShouldProcess)]
-    [Alias("repeatsong")]
+    [Alias('repeatsong')]
 
     param()
 
     begin {
 
         # inform user that we're about to enable repeat mode
-        Microsoft.PowerShell.Utility\Write-Verbose "Attempting to enable song repeat mode in Spotify..."
+        Microsoft.PowerShell.Utility\Write-Verbose 'Attempting to enable song repeat mode in Spotify...'
     }
 
 
-process {
+    process {
 
         # get the current spotify api authentication token
         $token = GenXdev.Console\Get-SpotifyApiToken
 
         # only proceed if ShouldProcess returns true
-        if ($PSCmdlet.ShouldProcess("Spotify", "Set repeat mode to 'track'")) {
+        if ($PSCmdlet.ShouldProcess('Spotify', "Set repeat mode to 'track'")) {
 
             # send api request to enable repeat mode for the current song
             [GenXdev.Helpers.Spotify]::RepeatSong($token)
@@ -47,4 +47,3 @@ process {
         Microsoft.PowerShell.Utility\Write-Verbose "Spotify repeat mode has been set to 'track'"
     }
 }
-        ###############################################################################

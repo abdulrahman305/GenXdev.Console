@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Navigates up two directory levels in the file system hierarchy.
@@ -15,11 +15,11 @@ Set-LocationParent2
 
 .NOTES
 This function supports -WhatIf and -Confirm parameters through ShouldProcess.
-        ###############################################################################>
+#>
 function Set-LocationParent2 {
 
     [CmdletBinding(SupportsShouldProcess)]
-    [Alias("...")]
+    [Alias('...')]
 
     param()
 
@@ -30,7 +30,7 @@ function Set-LocationParent2 {
     }
 
 
-process {
+    process {
 
         # navigate up two levels
         for ($i = 1; $i -le 2; $i++) {
@@ -38,7 +38,7 @@ process {
             # check if we can move up before attempting
             $parent = Microsoft.PowerShell.Management\Split-Path -Path (Microsoft.PowerShell.Management\Get-Location) -Parent
             if ($null -eq $parent) {
-                Microsoft.PowerShell.Utility\Write-Verbose "Cannot go up further - at root level"
+                Microsoft.PowerShell.Utility\Write-Verbose 'Cannot go up further - at root level'
                 break
             }
 
@@ -46,7 +46,7 @@ process {
             $target = "from '$(Microsoft.PowerShell.Management\Get-Location)' to '$parent' (level $i of 2)"
 
             # only navigate if ShouldProcess returns true
-            if ($PSCmdlet.ShouldProcess($target, "Change location")) {
+            if ($PSCmdlet.ShouldProcess($target, 'Change location')) {
                 Microsoft.PowerShell.Management\Set-Location -Path $parent
             }
             else {
@@ -66,4 +66,3 @@ process {
         Microsoft.PowerShell.Utility\Write-Verbose "Navigation completed to: $($PWD.Path)"
     }
 }
-        ###############################################################################

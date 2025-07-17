@@ -23,32 +23,32 @@ Get-SpotifyPlaylistTrack -PlaylistId "37i9dQZF1DXcBWIGoYBM5M"
 
 .EXAMPLE
 "My Workout Mix" | getplaylist
-        ###############################################################################>
+#>
 function Get-SpotifyPlaylistTrack {
 
-    [CmdletBinding(DefaultParameterSetName = "ByName")]
-    [Alias("getplaylist")]
+    [CmdletBinding(DefaultParameterSetName = 'ByName')]
+    [Alias('getplaylist')]
     [OutputType([System.Collections.Generic.List`1[SpotifyAPI.Web.PlaylistTrack`1[SpotifyAPI.Web.IPlayableItem]]])]
 
     param(
         ########################################################################
-        [Alias("Name")]
+        [Alias('Name')]
         [parameter(
-            ParameterSetName = "ByName",
+            ParameterSetName = 'ByName',
             Mandatory = $true,
             Position = 0,
-            HelpMessage = "The Spotify playlist to return tracks for",
+            HelpMessage = 'The Spotify playlist to return tracks for',
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
         [string] $PlaylistName,
         ########################################################################
-        [Alias("Id")]
+        [Alias('Id')]
         [parameter(
-            ParameterSetName = "ById",
+            ParameterSetName = 'ById',
             Mandatory = $true,
             Position = 0,
-            HelpMessage = "The Spotify playlist to return tracks for",
+            HelpMessage = 'The Spotify playlist to return tracks for',
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true
         )]
@@ -61,7 +61,7 @@ function Get-SpotifyPlaylistTrack {
         # get spotify api authentication token
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
 
-        Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API token"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Retrieved Spotify API token'
 
         # if playlist name provided, get its ID
         if ([string]::IsNullOrWhiteSpace($PlaylistName) -eq $false) {
@@ -69,14 +69,14 @@ function Get-SpotifyPlaylistTrack {
             Microsoft.PowerShell.Utility\Write-Verbose "Looking up playlist ID for name: $PlaylistName"
 
             $PlaylistId = @(GenXdev.Console\Get-SpotifyPlaylistIdsByName -PlaylistName @($PlaylistName)) |
-            Microsoft.PowerShell.Utility\Select-Object -First 1
+                Microsoft.PowerShell.Utility\Select-Object -First 1
 
             Microsoft.PowerShell.Utility\Write-Verbose "Found playlist ID: $PlaylistId"
         }
     }
 
 
-process {
+    process {
 
         Microsoft.PowerShell.Utility\Write-Verbose "Retrieving tracks for playlist ID: $PlaylistId"
 
@@ -87,4 +87,3 @@ process {
     end {
     }
 }
-        ###############################################################################

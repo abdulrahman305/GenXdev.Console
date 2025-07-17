@@ -21,33 +21,33 @@ Move-SpotifyLikedTracksToPlaylist -PlaylistName "My Archived Likes"
 
 .EXAMPLE
 moveliked "My Archived Likes"
-        ###############################################################################>
+#>
 function Move-SpotifyLikedTracksToPlaylist {
 
-    [CmdletBinding(DefaultParameterSetName = "ByName")]
-    [Alias("moveliked")]
+    [CmdletBinding(DefaultParameterSetName = 'ByName')]
+    [Alias('moveliked')]
 
     param(
         ########################################################################
-        [Alias("Name")]
+        [Alias('Name')]
         [parameter(
-            ParameterSetName = "ByName",
+            ParameterSetName = 'ByName',
             Mandatory = $true,
             Position = 0,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
-            HelpMessage = "The Spotify playlist where all liked tracks should move to"
+            HelpMessage = 'The Spotify playlist where all liked tracks should move to'
         )]
         [string[]] $PlaylistName,
         ########################################################################
-        [Alias("Id")]
+        [Alias('Id')]
         [parameter(
-            ParameterSetName = "ById",
+            ParameterSetName = 'ById',
             Mandatory = $true,
             Position = 0,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
-            HelpMessage = "The Spotify playlist ID where all liked tracks should move to"
+            HelpMessage = 'The Spotify playlist ID where all liked tracks should move to'
         )]
         [string[]] $PlaylistId
         ########################################################################
@@ -57,23 +57,23 @@ function Move-SpotifyLikedTracksToPlaylist {
         # if playlist names were provided, convert them to playlist IDs
         if ($PlaylistName.Length -gt 0) {
 
-            Microsoft.PowerShell.Utility\Write-Verbose "Converting playlist names to IDs"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Converting playlist names to IDs'
             $PlaylistId = GenXdev.Console\Get-SpotifyPlaylistIdsByName -PlaylistName $PlaylistName
         }
     }
 
 
-process {
+    process {
 
         # exit if no valid playlist IDs were found
         if ($PlaylistId.Length -eq 0) {
 
-            Microsoft.PowerShell.Utility\Write-Verbose "No valid playlist IDs found, exiting"
+            Microsoft.PowerShell.Utility\Write-Verbose 'No valid playlist IDs found, exiting'
             return
         }
 
         # retrieve all liked tracks from the user's library
-        Microsoft.PowerShell.Utility\Write-Verbose "Retrieving liked tracks from library"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Retrieving liked tracks from library'
         $likedTracks = GenXdev.Console\Get-SpotifyLikedTrack
 
         # track whether we successfully added tracks to at least one playlist
@@ -90,7 +90,7 @@ process {
         # if tracks were added successfully, remove them from liked songs
         if ($done) {
 
-            Microsoft.PowerShell.Utility\Write-Verbose "Removing tracks from liked songs"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Removing tracks from liked songs'
             GenXdev.Console\Remove-SpotifyTracksFromLiked -TrackId @($likedTracks.Track.Id)
 
             # return the tracks that were moved
@@ -101,4 +101,3 @@ process {
     end {
     }
 }
-        ###############################################################################

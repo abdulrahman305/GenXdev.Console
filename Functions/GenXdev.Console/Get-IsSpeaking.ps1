@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Returns true if the text-to-speech engine is speaking.
@@ -13,28 +13,28 @@ Get-IsSpeaking
 
 .EXAMPLE
 iss
-        ###############################################################################>
+#>
 function Get-IsSpeaking {
 
     [CmdletBinding()]
-    [Alias("iss")]
+    [Alias('iss')]
     [OutputType([System.Boolean])]
 
     param()
 
     begin {
 
-        Microsoft.PowerShell.Utility\Write-Verbose "Checking speech synthesizer states..."
+        Microsoft.PowerShell.Utility\Write-Verbose 'Checking speech synthesizer states...'
     }
 
 
-process {
+    process {
 
         try {
             # check both default and customized speech synthesizer states
             return (
-                ([GenXdev.Helpers.Misc]::Speech.State -eq "Speaking") -or
-                ([GenXdev.Helpers.Misc]::SpeechCustomized.State -eq "Speaking")
+                ([GenXdev.Helpers.Misc]::Speech.State -eq 'Speaking') -or
+                ([GenXdev.Helpers.Misc]::SpeechCustomized.State -eq 'Speaking')
             )
         }
         catch {
@@ -47,4 +47,3 @@ process {
     end {
     }
 }
-        ###############################################################################

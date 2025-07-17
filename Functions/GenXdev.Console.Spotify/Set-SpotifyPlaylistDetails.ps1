@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Sets the main properties of a Spotify playlist.
@@ -34,57 +34,57 @@ Set-SpotifyPlaylistDetails -PlaylistId "1234567890" -Name "My Playlist" `
 
 .EXAMPLE
 spld "1234567890" "Weekend Mix" -Private -NoCollabrations
-        ###############################################################################>
+#>
 function Set-SpotifyPlaylistDetails {
 
     [CmdletBinding(SupportsShouldProcess)]
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
-    [Alias("spld")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '')]
+    [Alias('spld')]
 
     param(
         ########################################################################
         [parameter(
             Mandatory = $true,
             Position = 0,
-            HelpMessage = "The Spotify playlist to make changes to"
+            HelpMessage = 'The Spotify playlist to make changes to'
         )]
         [string] $PlaylistId,
         ########################################################################
         [parameter(
             Mandatory = $true,
             Position = 1,
-            HelpMessage = "The name for the new playlist"
+            HelpMessage = 'The name for the new playlist'
         )]
         [string] $Name,
         ########################################################################
         [parameter(
             Mandatory = $false,
             Position = 2,
-            HelpMessage = "The description for the new playlist"
+            HelpMessage = 'The description for the new playlist'
         )]
-        [string] $Description = "",
+        [string] $Description = '',
         ########################################################################
         [parameter(
             Mandatory = $false,
-            HelpMessage = "Make this a public playlist"
+            HelpMessage = 'Make this a public playlist'
         )]
         [switch] $Public,
         ########################################################################
         [parameter(
             Mandatory = $false,
-            HelpMessage = "Allow others to make changes to this playlist"
+            HelpMessage = 'Allow others to make changes to this playlist'
         )]
         [switch] $Collabrative,
         ########################################################################
         [parameter(
             Mandatory = $false,
-            HelpMessage = "Make the playlist private"
+            HelpMessage = 'Make the playlist private'
         )]
         [switch] $Private,
         ########################################################################
         [parameter(
             Mandatory = $false,
-            HelpMessage = "Disallow others to make changes"
+            HelpMessage = 'Disallow others to make changes'
         )]
         [switch] $NoCollabrations
         ########################################################################
@@ -94,7 +94,7 @@ function Set-SpotifyPlaylistDetails {
 
         # get the spotify api authentication token
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
-        Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API token"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Retrieved Spotify API token'
 
         # initialize visibility and collaboration flags
         $publicFlag = $null
@@ -103,35 +103,35 @@ function Set-SpotifyPlaylistDetails {
         # set playlist visibility based on switches
         if ($Public -eq $true) {
             $publicFlag = $true
-            Microsoft.PowerShell.Utility\Write-Verbose "Setting playlist to public"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Setting playlist to public'
         }
 
         # set collaboration permission based on switches
         if ($Collabrative -eq $true) {
             $collabFlag = $true
-            Microsoft.PowerShell.Utility\Write-Verbose "Enabling playlist collaboration"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Enabling playlist collaboration'
         }
 
         # override public flag if private switch is used
         if ($Private -eq $true) {
             $publicFlag = $false
-            Microsoft.PowerShell.Utility\Write-Verbose "Setting playlist to private"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Setting playlist to private'
         }
 
         # override collab flag if no collaborations switch is used
         if ($NoCollabrations -eq $true) {
             $collabFlag = $false
-            Microsoft.PowerShell.Utility\Write-Verbose "Disabling playlist collaboration"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Disabling playlist collaboration'
         }
     }
 
 
-process {
+    process {
 
         Microsoft.PowerShell.Utility\Write-Verbose "Updating playlist $PlaylistId with new settings"
 
         # call spotify api to update playlist details only if ShouldProcess confirms the action
-        if ($PSCmdlet.ShouldProcess("Spotify playlist '$PlaylistId'", "Update playlist details")) {
+        if ($PSCmdlet.ShouldProcess("Spotify playlist '$PlaylistId'", 'Update playlist details')) {
 
             [GenXdev.Helpers.Spotify]::ChangePlaylistDetails(
                 $PlaylistId,
@@ -147,4 +147,3 @@ process {
     end {
     }
 }
-        ###############################################################################

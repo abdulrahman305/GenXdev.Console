@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Speaks the current date using text-to-speech synthesis.
@@ -10,8 +10,8 @@ the system's text-to-speech engine. The date is spoken in the format:
 
 .EXAMPLE
 SayDate
-        ###############################################################################Announces today's date using text-to-speech
-        ###############################################################################>
+Announces today's date using text-to-speech
+#>
 function SayDate {
 
     [CmdletBinding()]
@@ -21,14 +21,14 @@ function SayDate {
 
         # format current date into natural speech pattern
         # e.g. "It is Monday, January 1 2024"
-        $dateText = "It is " + [DateTime]::Now.ToString("dddd, MMMM d yyyy")
+        $dateText = 'It is ' + [DateTime]::Now.ToString('dddd, MMMM d yyyy')
 
         # log the text that will be spoken
         Microsoft.PowerShell.Utility\Write-Verbose "Preparing to speak: $dateText"
     }
 
 
-process {
+    process {
 
         # use text-to-speech engine to announce the date
         # suppress output by assigning to $null
@@ -38,4 +38,3 @@ process {
     end {
     }
 }
-        ###############################################################################

@@ -1,13 +1,13 @@
 function Switch-VlcMediaPlayerRepeat {
 
     [CmdletBinding()]
-    [Alias("vlcrepeat")]
+    [Alias('vlcrepeat')]
     param (
     )
 
 
-process {
+    process {
 
-        GenXdev.Console\Open-VlcMediaPlayer -KeysToSend "r"
+        GenXdev.Console\Open-VlcMediaPlayer -KeysToSend 'r' -RestoreFocus
     }
 }

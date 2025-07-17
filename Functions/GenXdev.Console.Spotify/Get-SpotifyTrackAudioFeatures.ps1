@@ -18,22 +18,22 @@ Get-SpotifyTrackAudioFeatures -TrackId "1301WleyT98MSxVHPZCA6M"
 
 .EXAMPLE
 audiofeatures "1301WleyT98MSxVHPZCA6M", "6rqhFgbbKwnb9MLmUQDhG6"
-        ###############################################################################>
+#>
 function Get-SpotifyTrackAudioFeatures {
 
     [CmdletBinding()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "Get-SpotifyTrackAudioFeatures")]
-    [Alias("audiofeatures")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', 'Get-SpotifyTrackAudioFeatures')]
+    [Alias('audiofeatures')]
 
     param(
         ########################################################################
-        [Alias("Id")]
+        [Alias('Id')]
         [parameter(
             Mandatory = $true,
             Position = 0,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
-            HelpMessage = "The Spotify track to return audio features for"
+            HelpMessage = 'The Spotify track to return audio features for'
         )]
         [string[]] $TrackId
         ########################################################################
@@ -41,12 +41,12 @@ function Get-SpotifyTrackAudioFeatures {
 
     begin {
         # obtain the spotify api authentication token for subsequent requests
-        Microsoft.PowerShell.Utility\Write-Verbose "Acquiring Spotify API authentication token"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Acquiring Spotify API authentication token'
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
 
-process {
+    process {
 
         # fetch audio features for the specified tracks using the spotify api
         Microsoft.PowerShell.Utility\Write-Verbose "Retrieving audio features for $($TrackId.Count) tracks"
@@ -56,4 +56,3 @@ process {
     end {
     }
 }
-        ###############################################################################

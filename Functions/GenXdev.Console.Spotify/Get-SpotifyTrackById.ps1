@@ -14,16 +14,16 @@ that can be found in the Spotify track URL or through the Spotify client.
 
 .EXAMPLE
 Get-SpotifyTrackById -TrackId "3n3Ppam7vgaVa1iaRUc9Lp"
-        ###############################################################################Returns full track details for "Mr. Brightside" by The Killers
+Returns full track details for "Mr. Brightside" by The Killers
 
 .EXAMPLE
 gettrack "3n3Ppam7vgaVa1iaRUc9Lp"
-        ###############################################################################>
+#>
 function Get-SpotifyTrackById {
 
     [CmdletBinding()]
     [OutputType([SpotifyAPI.Web.FullTrack])]
-    [Alias("gettrack")]
+    [Alias('gettrack')]
 
     param(
         #######################################################################
@@ -32,9 +32,9 @@ function Get-SpotifyTrackById {
             Position = 0,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
-            HelpMessage = "The Spotify track ID to lookup track information for"
+            HelpMessage = 'The Spotify track ID to lookup track information for'
         )]
-        [Alias("Id")]
+        [Alias('Id')]
         [string] $TrackId
         #######################################################################
     )
@@ -42,12 +42,12 @@ function Get-SpotifyTrackById {
     begin {
 
         # get authentication token for spotify api access
-        Microsoft.PowerShell.Utility\Write-Verbose "Acquiring Spotify API authentication token"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Acquiring Spotify API authentication token'
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
 
-process {
+    process {
 
         # fetch track information using the spotify api helper class
         Microsoft.PowerShell.Utility\Write-Verbose "Retrieving track information for ID: $TrackId"
@@ -57,4 +57,3 @@ process {
     end {
     }
 }
-        ###############################################################################

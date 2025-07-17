@@ -22,28 +22,28 @@ Add-SpotifyTracksToPlaylist -PlaylistName "My Favorites" `
 
 .EXAMPLE
 "spotify:track:1234567890" | addtoplaylist "My Playlist"
-        ###############################################################################>
+#>
 function Add-SpotifyTracksToPlaylist {
 
-    [CmdletBinding(DefaultParameterSetName = "ByName")]
-    [Alias("addtoplaylist")]
+    [CmdletBinding(DefaultParameterSetName = 'ByName')]
+    [Alias('addtoplaylist')]
 
     param(
         ########################################################################
-        [Alias("Name")]
+        [Alias('Name')]
         [parameter(
-            ParameterSetName = "ByName",
+            ParameterSetName = 'ByName',
             Mandatory = $true,
             Position = 0,
-            HelpMessage = "The Spotify playlist to add tracks to"
+            HelpMessage = 'The Spotify playlist to add tracks to'
         )]
         [string[]] $PlaylistName,
         ########################################################################
         [parameter(
-            ParameterSetName = "ById",
+            ParameterSetName = 'ById',
             Mandatory = $true,
             Position = 0,
-            HelpMessage = "The Spotify playlist to add tracks to"
+            HelpMessage = 'The Spotify playlist to add tracks to'
         )]
         [string[]] $PlaylistId,
         ########################################################################
@@ -52,7 +52,7 @@ function Add-SpotifyTracksToPlaylist {
             Position = 1,
             ValueFromPipeline,
             ValueFromPipelineByPropertyName,
-            HelpMessage = "The Spotify tracks that should be added to the playlist"
+            HelpMessage = 'The Spotify tracks that should be added to the playlist'
         )]
         [string[]] $Uri = @()
         ########################################################################
@@ -61,19 +61,19 @@ function Add-SpotifyTracksToPlaylist {
     begin {
         # get the spotify api authentication token
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
-        Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API token"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Retrieved Spotify API token'
 
         # if playlist names were provided, convert them to playlist ids
         if ($PlaylistName.Length -gt 0) {
 
-            Microsoft.PowerShell.Utility\Write-Verbose "Converting playlist names to IDs"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Converting playlist names to IDs'
             $PlaylistId = @(GenXdev.Console\Get-SpotifyPlaylistIdsByName -PlaylistName @($PlaylistName))
             Microsoft.PowerShell.Utility\Write-Verbose "Found $($PlaylistId.Length) matching playlists"
         }
     }
 
 
-process {
+    process {
 
         # add provided tracks to each specified playlist
         foreach ($Id in $PlaylistId) {
@@ -86,4 +86,3 @@ process {
     end {
     }
 }
-        ###############################################################################

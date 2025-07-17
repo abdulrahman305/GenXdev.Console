@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Navigates up five directory levels in the file system hierarchy.
@@ -13,11 +13,11 @@ Set-LocationParent5
 
 .EXAMPLE
 ......
-        ###############################################################################>
+#>
 function Set-LocationParent5 {
 
     [CmdletBinding(SupportsShouldProcess)]
-    [Alias("......")]
+    [Alias('......')]
 
     param (
         ########################################################################
@@ -29,7 +29,7 @@ function Set-LocationParent5 {
     }
 
 
-process {
+    process {
 
         # navigate up five levels
         for ($i = 1; $i -le 5; $i++) {
@@ -37,7 +37,7 @@ process {
             # check if we can move up before attempting
             $parent = Microsoft.PowerShell.Management\Split-Path -Path (Microsoft.PowerShell.Management\Get-Location) -Parent
             if ($null -eq $parent) {
-                Microsoft.PowerShell.Utility\Write-Verbose "Cannot go up further - at root level"
+                Microsoft.PowerShell.Utility\Write-Verbose 'Cannot go up further - at root level'
                 break
             }
 
@@ -45,7 +45,7 @@ process {
             $target = "from '$(Microsoft.PowerShell.Management\Get-Location)' to '$parent' (level $i of 5)"
 
             # only navigate if ShouldProcess returns true
-            if ($PSCmdlet.ShouldProcess($target, "Change location")) {
+            if ($PSCmdlet.ShouldProcess($target, 'Change location')) {
                 Microsoft.PowerShell.Management\Set-Location -Path $parent
             }
             else {
@@ -65,4 +65,3 @@ process {
         Microsoft.PowerShell.Utility\Write-Verbose "Completed navigation. New location: $PWD"
     }
 }
-        ###############################################################################

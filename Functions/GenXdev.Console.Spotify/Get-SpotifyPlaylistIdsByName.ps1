@@ -21,20 +21,20 @@ Get-SpotifyPlaylistIdsByName -PlaylistName "My Favorites", "Workout Mix"
 
 .EXAMPLE
 "Chill Vibes" | Get-SpotifyPlaylistIdsByName
-        ###############################################################################>
+#>
 function Get-SpotifyPlaylistIdsByName {
 
     [CmdletBinding()]
     param(
         ########################################################################
-        [Alias("Name")]
+        [Alias('Name')]
         [parameter(
-            ParameterSetName = "ByName",
+            ParameterSetName = 'ByName',
             Mandatory = $true,
             Position = 0,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
-            HelpMessage = "One or more Spotify playlist names to search for"
+            HelpMessage = 'One or more Spotify playlist names to search for'
         )]
         [string[]] $PlaylistName
         ########################################################################
@@ -46,7 +46,7 @@ function Get-SpotifyPlaylistIdsByName {
     }
 
 
-process {
+    process {
 
         # attempt to find playlists in current session
         $Results = @(GenXdev.Console\Get-SpotifyUserPlaylists -Filter $PlaylistName)
@@ -54,11 +54,11 @@ process {
         # handle case when no playlists found in current session
         if ($Results.Length -eq 0) {
 
-            Microsoft.PowerShell.Utility\Write-Verbose "No playlists found in session, checking local cache..."
+            Microsoft.PowerShell.Utility\Write-Verbose 'No playlists found in session, checking local cache...'
 
             # construct path to cache file
             $FilePath = GenXdev.FileSystem\Expand-Path `
-                -FilePath "$($Env:ALLAPPDATA)\GenXdev.PowerShell\Spotify.Playlists.json" `
+                -FilePath "$($Env:LOCALAPPDATA)\GenXdev.PowerShell\Spotify.Playlists.json" `
                 -CreateDirectory
 
             # get cache file info
@@ -68,14 +68,14 @@ process {
             if (!$PlaylistCache.Exists -or
                 ([datetime]::Now - $PlaylistCache.LastWriteTime -ge [System.TimeSpan]::FromHours(12))) {
 
-                Microsoft.PowerShell.Utility\Write-Verbose "Cache missing or expired, forcing playlist refresh..."
+                Microsoft.PowerShell.Utility\Write-Verbose 'Cache missing or expired, forcing playlist refresh...'
                 $Results = @(GenXdev.Console\Get-SpotifyUserPlaylists -Force -Filter $PlaylistName)
             }
         }
 
         # throw error if no matching playlists found
         if ($Results.Length -eq 0) {
-            throw "Playlist not found"
+            throw 'Playlist not found'
         }
 
         # return the IDs of matching playlists
@@ -85,4 +85,3 @@ process {
     end {
     }
 }
-        ###############################################################################

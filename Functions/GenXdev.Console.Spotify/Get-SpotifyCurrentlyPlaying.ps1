@@ -19,11 +19,11 @@ Uses the alias to get the currently playing track information.
 .EXAMPLE
 PS C:\> (Get-SpotifyCurrentlyPlaying).Item.Name
 Returns just the name of the currently playing track.
-        ###############################################################################>
+#>
 function Get-SpotifyCurrentlyPlaying {
 
     [CmdletBinding()]
-    [Alias("gcp")]
+    [Alias('gcp')]
     [OutputType([SpotifyAPI.Web.CurrentlyPlaying])]
 
     param()
@@ -31,19 +31,18 @@ function Get-SpotifyCurrentlyPlaying {
     begin {
 
         # retrieve the current spotify api authentication token
-        Microsoft.PowerShell.Utility\Write-Verbose "Getting Spotify API authentication token"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Getting Spotify API authentication token'
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
 
-process {
+    process {
 
         # query the spotify api for currently playing track information
-        Microsoft.PowerShell.Utility\Write-Verbose "Querying Spotify API for currently playing track"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Querying Spotify API for currently playing track'
         [GenXdev.Helpers.Spotify]::GetCurrentlyPlaying($apiToken)
     }
 
     end {
     }
 }
-        ###############################################################################

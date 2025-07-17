@@ -1,4 +1,4 @@
-        ###############################################################################
+##############################################################################
 
 <#
 .SYNOPSIS
@@ -28,38 +28,38 @@ Add-SpotifyNewPlaylist -Name "My Awesome Mix" -Description "Best songs of 2023" 
 
 .EXAMPLE
 newplaylist "Road Trip Songs" -Collabrative
-        ###############################################################################>
+#>
 function Add-SpotifyNewPlaylist {
 
     [CmdletBinding()]
     [OutputType([SpotifyAPI.Web.FullPlaylist])]
-    [Alias("newplaylist")]
+    [Alias('newplaylist')]
 
     param(
         ########################################################################
         [parameter(
             Mandatory = $true,
             Position = 0,
-            HelpMessage = "The name for the new playlist"
+            HelpMessage = 'The name for the new playlist'
         )]
         [string] $Name,
         ########################################################################
         [parameter(
             Mandatory = $false,
             Position = 1,
-            HelpMessage = "The description for the new playlist"
+            HelpMessage = 'The description for the new playlist'
         )]
-        [string] $Description = "",
+        [string] $Description = '',
         ########################################################################
         [parameter(
             Mandatory = $false,
-            HelpMessage = "Make this a public playlist"
+            HelpMessage = 'Make this a public playlist'
         )]
         [switch] $Public,
         ########################################################################
         [parameter(
             Mandatory = $false,
-            HelpMessage = "Allow others to make changes"
+            HelpMessage = 'Allow others to make changes'
         )]
         [switch] $Collabrative
         ########################################################################
@@ -68,12 +68,12 @@ function Add-SpotifyNewPlaylist {
     begin {
 
         # retrieve spotify api authentication token
-        Microsoft.PowerShell.Utility\Write-Verbose "Retrieving Spotify API authentication token"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Retrieving Spotify API authentication token'
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
 
-process {
+    process {
 
         # create new playlist using spotify api helper
         Microsoft.PowerShell.Utility\Write-Verbose "Creating new Spotify playlist '$Name'"
@@ -87,14 +87,14 @@ process {
         # update local playlist cache if it exists
         if ($Script:SpotifyPlaylistCache -is [System.Collections.Generic.List[object]]) {
 
-            Microsoft.PowerShell.Utility\Write-Verbose "Updating local playlist cache"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Updating local playlist cache'
             $null = $Script:SpotifyPlaylistCache.Insert(0, $result)
 
             # save updated cache to json file
-            $filePath = GenXdev.FileSystem\Expand-Path "$($Env:ALLAPPDATA)\GenXdev.PowerShell\Spotify.Playlists.json"
+            $filePath = GenXdev.FileSystem\Expand-Path "$($Env:LOCALAPPDATA)\GenXdev.PowerShell\Spotify.Playlists.json"
             $Script:SpotifyPlaylistCache |
-            Microsoft.PowerShell.Utility\ConvertTo-Json -Depth 100 |
-            Microsoft.PowerShell.Utility\Out-File $filePath -Force
+                Microsoft.PowerShell.Utility\ConvertTo-Json -Depth 100 |
+                Microsoft.PowerShell.Utility\Out-File $filePath -Force
         }
 
         # return the newly created playlist
@@ -104,5 +104,3 @@ process {
     end {
     }
 }
-
-        ###############################################################################

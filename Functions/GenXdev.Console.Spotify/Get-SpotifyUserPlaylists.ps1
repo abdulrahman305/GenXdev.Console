@@ -20,12 +20,12 @@ Get-SpotifyUserPlaylists -Filter "Rock*" -Force
 
 .EXAMPLE
 "*Metal*" | gupl
-        ###############################################################################>
+#>
 function Get-SpotifyUserPlaylists {
 
     [CmdletBinding()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseSingularNouns", "")]
-    [Alias("gupl")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute('PSUseSingularNouns', '')]
+    [Alias('gupl')]
 
     param(
         ########################################################################
@@ -34,14 +34,14 @@ function Get-SpotifyUserPlaylists {
             Position = 0,
             ValueFromPipeline,
             ValueFromPipelineByPropertyName,
-            HelpMessage = "Wildcard pattern to filter playlists by name"
+            HelpMessage = 'Wildcard pattern to filter playlists by name'
         )]
-        [Alias("Uri", "Id", "Name")]
-        [string[]] $Filter = @("*"),
+        [Alias('Uri', 'Id', 'Name')]
+        [string[]] $Filter = @('*'),
         ########################################################################
         [parameter(
             Mandatory = $false,
-            HelpMessage = "Force fresh data retrieval instead of using cache"
+            HelpMessage = 'Force fresh data retrieval instead of using cache'
         )]
         [switch] $Force
         ########################################################################
@@ -53,13 +53,13 @@ function Get-SpotifyUserPlaylists {
 
         # determine cache file location
         $filePath = GenXdev.FileSystem\Expand-Path `
-            "$($Env:ALLAPPDATA)\GenXdev.PowerShell\Spotify.Playlists.json"
+            "$($Env:LOCALAPPDATA)\GenXdev.PowerShell\Spotify.Playlists.json"
 
         Microsoft.PowerShell.Utility\Write-Verbose "Cache file: $filePath"
     }
 
 
-process {
+    process {
 
         # initialize playlist cache list
         [System.Collections.Generic.List[Object]] $SpotifyPlaylistCache = $null
@@ -70,7 +70,7 @@ process {
             # check if global cache is empty
             if ($null -eq $Script:SpotifyPlaylistCache) {
 
-                Microsoft.PowerShell.Utility\Write-Verbose "Global cache empty, checking file cache"
+                Microsoft.PowerShell.Utility\Write-Verbose 'Global cache empty, checking file cache'
 
                 # create file info object for cache file
                 $playlistCache = [System.IO.FileInfo]::new($filePath)
@@ -80,7 +80,7 @@ process {
                     ([datetime]::Now - $playlistCache.LastWriteTime -lt `
                             [System.TimeSpan]::FromHours(12))) {
 
-                    Microsoft.PowerShell.Utility\Write-Verbose "Loading playlists from cache file"
+                    Microsoft.PowerShell.Utility\Write-Verbose 'Loading playlists from cache file'
 
                     # load cached data from file
                     $SpotifyPlaylistCache = $playlistCache.OpenText().ReadToEnd() `
@@ -97,11 +97,11 @@ process {
         if (($Force -eq $true) -or ($null -eq $Script:SpotifyPlaylistCache) -or `
             ($Script:SpotifyPlaylistCache.Count -eq 0)) {
 
-            Microsoft.PowerShell.Utility\Write-Verbose "Retrieving fresh playlist data from Spotify API"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Retrieving fresh playlist data from Spotify API'
 
             # get playlists from spotify api
             $SpotifyPlaylistCache = `
-                [GenXdev.Helpers.Spotify]::GetUserPlaylists($apiToken, "*")
+                [GenXdev.Helpers.Spotify]::GetUserPlaylists($apiToken, '*')
 
             # update global cache
             Microsoft.PowerShell.Utility\Set-Variable -Name SpotifyPlaylistCache `
@@ -126,4 +126,3 @@ process {
     end {
     }
 }
-        ###############################################################################

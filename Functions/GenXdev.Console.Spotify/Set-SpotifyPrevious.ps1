@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Skips to the previous track in Spotify playback.
@@ -15,27 +15,27 @@ previous
 
 .EXAMPLE
 prev
-        ###############################################################################>
+#>
 function Set-SpotifyPrevious {
 
     [CmdletBinding(SupportsShouldProcess)]
-    [Alias("previous", "prev")]
+    [Alias('previous', 'prev')]
     param()
 
     begin {
 
         # output information about the operation
-        Microsoft.PowerShell.Utility\Write-Verbose "Attempting to skip to previous track in Spotify"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Attempting to skip to previous track in Spotify'
     }
 
 
-process {
+    process {
 
         # retrieve the current spotify api authentication token
         $token = GenXdev.Console\Get-SpotifyApiToken
 
         # check if should process is supported and confirmed
-        if ($PSCmdlet.ShouldProcess("Spotify", "Skip to previous track")) {
+        if ($PSCmdlet.ShouldProcess('Spotify', 'Skip to previous track')) {
 
             # call spotify api to skip to previous track
             [GenXdev.Helpers.Spotify]::Previous($token)
@@ -45,4 +45,3 @@ process {
     end {
     }
 }
-        ###############################################################################

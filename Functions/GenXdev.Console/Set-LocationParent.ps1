@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Changes the current location to the parent directory and lists its contents.
@@ -13,20 +13,20 @@ Set-LocationParent
 
 .EXAMPLE
 ..
-        ###############################################################################>
+#>
 function Set-LocationParent {
 
     [CmdletBinding(SupportsShouldProcess)]
-    [Alias("..")]
+    [Alias('..')]
     param()
 
     begin {
 
-        Microsoft.PowerShell.Utility\Write-Verbose "Changing location to parent directory"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Changing location to parent directory'
     }
 
 
-process {
+    process {
 
         # check if we can move up before attempting
         $parent = Microsoft.PowerShell.Management\Split-Path -Path (Microsoft.PowerShell.Management\Get-Location) -Parent
@@ -36,13 +36,13 @@ process {
             $target = "from '$(Microsoft.PowerShell.Management\Get-Location)' to '$parent'"
 
             # only navigate if ShouldProcess returns true
-            if ($PSCmdlet.ShouldProcess($target, "Change location")) {
+            if ($PSCmdlet.ShouldProcess($target, 'Change location')) {
                 # navigate up one directory level
                 Microsoft.PowerShell.Management\Set-Location ..
             }
         }
         else {
-            Microsoft.PowerShell.Utility\Write-Verbose "Cannot go up further - at root level"
+            Microsoft.PowerShell.Utility\Write-Verbose 'Cannot go up further - at root level'
         }
 
         # show contents of the new current directory
@@ -52,4 +52,3 @@ process {
     end {
     }
 }
-        ###############################################################################

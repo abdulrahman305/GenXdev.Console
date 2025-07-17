@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Navigates up four directory levels in the filesystem hierarchy.
@@ -17,11 +17,11 @@ Set-LocationParent4
 .NOTES
 The alias '.....'' represents moving up four parent directories, where each dot
 represents one level up.
-        ###############################################################################>
+#>
 function Set-LocationParent4 {
 
     [CmdletBinding(SupportsShouldProcess)]
-    [Alias(".....")]
+    [Alias('.....')]
     param()
 
     begin {
@@ -30,7 +30,7 @@ function Set-LocationParent4 {
     }
 
 
-process {
+    process {
 
         # navigate up four levels
         for ($i = 1; $i -le 4; $i++) {
@@ -38,7 +38,7 @@ process {
             # check if we can move up before attempting
             $parent = Microsoft.PowerShell.Management\Split-Path -Path (Microsoft.PowerShell.Management\Get-Location) -Parent
             if ($null -eq $parent) {
-                Microsoft.PowerShell.Utility\Write-Verbose "Cannot go up further - at root level"
+                Microsoft.PowerShell.Utility\Write-Verbose 'Cannot go up further - at root level'
                 break
             }
 
@@ -46,7 +46,7 @@ process {
             $target = "from '$(Microsoft.PowerShell.Management\Get-Location)' to '$parent' (level $i of 4)"
 
             # only navigate if ShouldProcess returns true
-            if ($PSCmdlet.ShouldProcess($target, "Change location")) {
+            if ($PSCmdlet.ShouldProcess($target, 'Change location')) {
                 Microsoft.PowerShell.Management\Set-Location -Path $parent
             }
             else {
@@ -66,4 +66,3 @@ process {
         Microsoft.PowerShell.Utility\Write-Verbose "Completed navigation. New location: $PWD"
     }
 }
-        ###############################################################################

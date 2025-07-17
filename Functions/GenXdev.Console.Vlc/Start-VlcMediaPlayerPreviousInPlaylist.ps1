@@ -1,16 +1,16 @@
 function Start-VlcMediaPlayerPreviousInPlaylist {
 
     [CmdletBinding(SupportsShouldProcess)]
-    [Alias("vlcprev", "vlcback")]
+    [Alias('vlcprev', 'vlcback')]
     param (
     )
 
 
-process {
+    process {
 
-        if ($PSCmdlet.ShouldProcess("VLC Media Player", "Go to previous item in playlist")) {
+        if ($PSCmdlet.ShouldProcess('VLC Media Player', 'Go to previous item in playlist')) {
 
-            GenXdev.Console\Open-VlcMediaPlayer -KeysToSend "p"
+            GenXdev.Console\Open-VlcMediaPlayer -KeysToSend 'p' -RestoreFocus
         }
     }
 }

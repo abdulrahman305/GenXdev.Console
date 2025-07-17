@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Sets the active Spotify playback device.
@@ -20,22 +20,22 @@ Transfers playback to the device with ID "1234567890abcdef"
 .EXAMPLE
 "1234567890abcdef" | Set-SpotifyActiveDevice
 Same as above but using pipeline input
-        ###############################################################################>
+#>
 function Set-SpotifyActiveDevice {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
     [OutputType([System.Collections.Generic.List[SpotifyAPI.Web.Device]])]
-    [Alias("Set-SpotifyDevice")]
+    [Alias('Set-SpotifyDevice')]
 
     param(
         ########################################################################
-        [Alias("Id")]
+        [Alias('Id')]
         [parameter(
             Mandatory = $true,
             Position = 0,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
-            HelpMessage = "The Spotify deviceId to transfer playback to"
+            HelpMessage = 'The Spotify deviceId to transfer playback to'
         )]
         [string] $DeviceId
         ########################################################################
@@ -45,16 +45,16 @@ function Set-SpotifyActiveDevice {
 
         # retrieve authentication token from spotify api for subsequent requests
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
-        Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API token for authentication"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Retrieved Spotify API token for authentication'
     }
 
 
-process {
+    process {
 
         # use spotify api to transfer playback to the specified device
         Microsoft.PowerShell.Utility\Write-Verbose "Attempting to transfer playback to device ID: $DeviceId"
 
-        if ($PSCmdlet.ShouldProcess("device $DeviceId", "Transfer Spotify playback")) {
+        if ($PSCmdlet.ShouldProcess("device $DeviceId", 'Transfer Spotify playback')) {
 
             [GenXdev.Helpers.Spotify]::SetActiveDevice($apiToken, $DeviceId)
         }
@@ -63,4 +63,3 @@ process {
     end {
     }
 }
-        ###############################################################################

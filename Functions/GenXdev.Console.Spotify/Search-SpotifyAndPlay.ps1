@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Performs a Spotify search and plays the first found item.
@@ -27,11 +27,11 @@ Search-SpotifyAndPlay -Queries "Rage against the machine" -SearchType Track
 
 .EXAMPLE
 fmp "Dire Straits You and your friend"
-        ###############################################################################>
+#>
 function Search-SpotifyAndPlay {
 
     [CmdletBinding()]
-    [Alias("smp", "fmp")]
+    [Alias('smp', 'fmp')]
 
     param (
         ########################################################################
@@ -40,17 +40,17 @@ function Search-SpotifyAndPlay {
             Position = 0,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
-            HelpMessage = "One or more search phrases to look for on Spotify"
+            HelpMessage = 'One or more search phrases to look for on Spotify'
         )]
-        [Alias("q", "Value", "Name", "Text", "Query")]
+        [Alias('q', 'Name', 'Text', 'Query')]
         [string[]] $Queries,
         ########################################################################
         [parameter(
             Position = 1,
             Mandatory = $false,
-            HelpMessage = "The type of content to search for"
+            HelpMessage = 'The type of content to search for'
         )]
-        [Alias("t")]
+        [Alias('t')]
         [SpotifyAPI.Web.SearchRequest+Types] $SearchType = [SpotifyAPI.Web.SearchRequest+Types]::Track
         ########################################################################
     )
@@ -60,7 +60,7 @@ function Search-SpotifyAndPlay {
     }
 
 
-process {
+    process {
 
         foreach ($Query in $Queries) {
 
@@ -68,18 +68,17 @@ process {
 
             # search spotify and play the first matching item
             [GenXdev.Helpers.Spotify]::SearchAndPlay(
-                (GenXdev.Console\Get-SpotifyApiToken),
+                            (GenXdev.Console\Get-SpotifyApiToken),
                 $Query,
                 $SearchType) |
-            Microsoft.PowerShell.Core\ForEach-Object {
-                if ($null -ne $PSItem) {
-                    $PSItem
-                }
-            } -ErrorAction SilentlyContinue
+                Microsoft.PowerShell.Core\ForEach-Object {
+                    if ($null -ne $PSItem) {
+                        $PSItem
+                    }
+                } -ErrorAction SilentlyContinue
         }
     }
 
     end {
     }
 }
-        ###############################################################################

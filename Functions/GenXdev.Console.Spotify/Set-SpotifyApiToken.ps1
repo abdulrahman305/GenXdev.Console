@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Caches a Spotify API token for later use in the local configuration.
@@ -13,7 +13,7 @@ The Spotify API authentication token to be cached locally.
 
 .EXAMPLE
 Set-SpotifyApiToken -ApiToken "YOUR-SPOTIFY-API-TOKEN"
-        ###############################################################################>
+#>
 function Set-SpotifyApiToken {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
@@ -22,7 +22,7 @@ function Set-SpotifyApiToken {
         [parameter(
             Mandatory = $true,
             Position = 0,
-            HelpMessage = "The Spotify API token to cache locally"
+            HelpMessage = 'The Spotify API token to cache locally'
         )]
         [string] $ApiToken
         ########################################################################
@@ -31,29 +31,29 @@ function Set-SpotifyApiToken {
     begin {
 
         # define the storage location for the api token
-        $dir = "$($Env:ALLAPPDATA)\GenXdev.PowerShell"
+        $dir = "$($Env:LOCALAPPDATA)\GenXdev.PowerShell"
         $path = GenXdev.FileSystem\Expand-Path "$dir\Spotify_Auth.json"
 
         Microsoft.PowerShell.Utility\Write-Verbose "Storing Spotify API token in: $path"
     }
 
 
-process {
+    process {
 
         # ensure the storage directory exists
         if (![IO.Directory]::Exists($dir)) {
 
             Microsoft.PowerShell.Utility\Write-Verbose "Creating directory: $dir"
 
-            if ($PSCmdlet.ShouldProcess($dir, "Create Directory")) {
+            if ($PSCmdlet.ShouldProcess($dir, 'Create Directory')) {
                 $null = [IO.Directory]::CreateDirectory($dir)
             }
         }
 
         # save the trimmed api token to the json file
-        Microsoft.PowerShell.Utility\Write-Verbose "Writing API token to file"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Writing API token to file'
 
-        if ($PSCmdlet.ShouldProcess($path, "Save Spotify API Token")) {
+        if ($PSCmdlet.ShouldProcess($path, 'Save Spotify API Token')) {
             [IO.File]::WriteAllText($path, $ApiToken.Trim("`r`n`t "))
         }
     }
@@ -61,4 +61,3 @@ process {
     end {
     }
 }
-        ###############################################################################

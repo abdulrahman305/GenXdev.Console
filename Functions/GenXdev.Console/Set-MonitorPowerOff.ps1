@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Turns off power to all connected monitors.
@@ -14,28 +14,28 @@ Set-MonitorPowerOff
 
 .EXAMPLE
 poweroff
-        ###############################################################################>
+#>
 function Set-MonitorPowerOff {
 
     [CmdletBinding(SupportsShouldProcess = $true)]
-    [Alias("poweroff")]
+    [Alias('poweroff')]
 
     param()
 
     begin {
 
         # inform user that monitor power-off sequence is starting
-        Microsoft.PowerShell.Utility\Write-Verbose "Preparing to turn off monitor(s)..."
+        Microsoft.PowerShell.Utility\Write-Verbose 'Preparing to turn off monitor(s)...'
     }
 
 
-process {
+    process {
 
         # wait briefly to allow any pending screen operations to complete
         Microsoft.PowerShell.Utility\Start-Sleep 2
 
         # check if we should proceed with turning off the monitors
-        if ($PSCmdlet.ShouldProcess("All Monitors", "Turn Off")) {
+        if ($PSCmdlet.ShouldProcess('All Monitors', 'Turn Off')) {
 
             # invoke windows power management api to trigger monitor power-off
             $null = [GenXdev.Helpers.WindowObj]::SleepMonitor();
@@ -45,4 +45,3 @@ process {
     end {
     }
 }
-        ###############################################################################

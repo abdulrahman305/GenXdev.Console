@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Removes tracks from a Spotify playlist.
@@ -22,28 +22,29 @@ Remove-SpotifyTracksFromPlaylist -PlaylistName "My Playlist" `
 
 .EXAMPLE
 "spotify:track:1234567890" | removefromplaylist "My Playlist"
-        ###############################################################################>
+##############################################################################
+#>
 
 function Remove-SpotifyTracksFromPlaylist {
 
-    [CmdletBinding(DefaultParameterSetName = "ByName", SupportsShouldProcess)]
-    [Alias("removefromplaylist")]
+    [CmdletBinding(DefaultParameterSetName = 'ByName', SupportsShouldProcess)]
+    [Alias('removefromplaylist')]
 
     param(
         ########################################################################
         [parameter(
-            ParameterSetName = "ByName",
+            ParameterSetName = 'ByName',
             Mandatory = $true,
             Position = 0,
-            HelpMessage = "The Spotify playlist to delete tracks from"
+            HelpMessage = 'The Spotify playlist to delete tracks from'
         )]
         [string[]] $PlaylistName,
         ########################################################################
         [parameter(
-            ParameterSetName = "ById",
+            ParameterSetName = 'ById',
             Mandatory = $true,
             Position = 0,
-            HelpMessage = "The Spotify playlist to delete tracks from"
+            HelpMessage = 'The Spotify playlist to delete tracks from'
         )]
         [string[]] $PlaylistId,
         ########################################################################
@@ -52,7 +53,7 @@ function Remove-SpotifyTracksFromPlaylist {
             Position = 1,
             ValueFromPipeline,
             ValueFromPipelineByPropertyName,
-            HelpMessage = "The Spotify tracks that should be removed from the playlist"
+            HelpMessage = 'The Spotify tracks that should be removed from the playlist'
         )]
         [string[]] $Uri = @()
         ########################################################################
@@ -60,21 +61,21 @@ function Remove-SpotifyTracksFromPlaylist {
 
     begin {
         # get authentication token for spotify api
-        $apiToken = GenXdev.Console\Get-SpotifyApiToken
+            $apiToken = GenXdev.Console\Get-SpotifyApiToken
 
-        Microsoft.PowerShell.Utility\Write-Verbose "Retrieved Spotify API token"
+        Microsoft.PowerShell.Utility\Write-Verbose 'Retrieved Spotify API token'
 
         # if playlist names were provided, convert them to playlist ids
         if ($PlaylistName.Length -gt 0) {
 
-            Microsoft.PowerShell.Utility\Write-Verbose "Converting playlist names to IDs"
-            $PlaylistId = @(GenXdev.Console\Get-SpotifyPlaylistIdsByName -PlaylistName $PlaylistName)
+            Microsoft.PowerShell.Utility\Write-Verbose 'Converting playlist names to IDs'
+                $PlaylistId = @(GenXdev.Console\Get-SpotifyPlaylistIdsByName -PlaylistName $PlaylistName)
             Microsoft.PowerShell.Utility\Write-Verbose "Found $($PlaylistId.Count) matching playlists"
         }
     }
 
 
-process {
+    process {
 
         # process each playlist id and remove the specified tracks
         foreach ($id in $PlaylistId) {
@@ -82,7 +83,7 @@ process {
             Microsoft.PowerShell.Utility\Write-Verbose "Preparing to remove tracks from playlist with ID: $id"
 
             # use shouldprocess to get confirmation before removing tracks
-            if ($PSCmdlet.ShouldProcess("Playlist ID: $id", "Remove tracks")) {
+            if ($PSCmdlet.ShouldProcess("Playlist ID: $id", 'Remove tracks')) {
 
                 Microsoft.PowerShell.Utility\Write-Verbose "Removing tracks from playlist with ID: $id"
                 [GenXdev.Helpers.Spotify]::RemoveFromPlaylist($apiToken, $id, $Uri)
@@ -93,4 +94,3 @@ process {
     end {
     }
 }
-        ###############################################################################

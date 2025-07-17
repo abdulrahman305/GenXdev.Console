@@ -1,13 +1,13 @@
 function Switch-VlcMediaPlayerPaused {
 
     [CmdletBinding()]
-    [Alias("vlcpause", "vlcplay")]
+    [Alias('vlcpause', 'vlcplay')]
     param (
     )
 
 
-process {
+    process {
 
-        GenXdev.Console\Open-VlcMediaPlayer -KeysToSend " "
+        GenXdev.Console\Open-VlcMediaPlayer -KeysToSend ' ' -RestoreFocus
     }
 }

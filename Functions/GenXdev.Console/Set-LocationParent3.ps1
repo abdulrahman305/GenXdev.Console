@@ -1,4 +1,4 @@
-###############################################################################
+﻿###############################################################################
 <#
 .SYNOPSIS
 Navigates up three directory levels in the file system hierarchy.
@@ -12,11 +12,11 @@ Set-LocationParent3
 
 .EXAMPLE
 ....
-        ###############################################################################>
+#>
 function Set-LocationParent3 {
 
     [CmdletBinding(SupportsShouldProcess)]
-    [Alias("....")]
+    [Alias('....')]
 
     param (
         ########################################################################
@@ -29,7 +29,7 @@ function Set-LocationParent3 {
     }
 
 
-process {
+    process {
 
         # navigate up three levels
         for ($i = 1; $i -le 3; $i++) {
@@ -37,7 +37,7 @@ process {
             # check if we can move up before attempting
             $parent = Microsoft.PowerShell.Management\Split-Path -Path (Microsoft.PowerShell.Management\Get-Location) -Parent
             if ($null -eq $parent) {
-                Microsoft.PowerShell.Utility\Write-Verbose "Cannot go up further - at root level"
+                Microsoft.PowerShell.Utility\Write-Verbose 'Cannot go up further - at root level'
                 break
             }
 
@@ -45,7 +45,7 @@ process {
             $target = "from '$(Microsoft.PowerShell.Management\Get-Location)' to '$parent' (level $i of 3)"
 
             # only navigate if ShouldProcess returns true
-            if ($PSCmdlet.ShouldProcess($target, "Change location")) {
+            if ($PSCmdlet.ShouldProcess($target, 'Change location')) {
                 Microsoft.PowerShell.Management\Set-Location -Path $parent
             }
             else {
@@ -66,4 +66,3 @@ process {
         Microsoft.PowerShell.Utility\Write-Verbose "Arrived at new location: $($PWD.Path)"
     }
 }
-        ###############################################################################
