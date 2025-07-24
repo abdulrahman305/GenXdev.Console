@@ -656,7 +656,7 @@ function Open-MediaFile {
             Mandatory = $false,
             HelpMessage = 'Search across all available drives'
         )]
-        [Alias('all')]
+
         [switch] $AllDrives,
         ########################################################################
         [Parameter(
