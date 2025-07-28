@@ -58,42 +58,42 @@ Update-Module
 
 # Cmdlet Index
 ### GenXdev.Console<hr/>
+### GenXdev.Console
 | Command | Aliases | Description |
 | --- | --- | --- |
-| [Enable-Screensaver](#enable-screensaver) |  | Starts the configured Windows screensaver. |
+| [Enable-Screensaver](#enable-screensaver) | &nbsp; | Starts the configured Windows screensaver. |
 | [Get-IsSpeaking](#get-isspeaking) | iss | Returns true if the text-to-speech engine is speaking. |
 | [New-MicrosoftShellTab](#new-microsoftshelltab) | x | Creates a new Windows Terminal tab running PowerShell. |
-| [Now](#now) |  | Returns the current system date and time as a DateTime object. |
-| [Open-MediaFile](#open-mediafile) | vlcmedia, media, findmedia |  |
-| [SayDate](#saydate) |  | Speaks the current date using text-to-speech synthesis. |
-| [SayTime](#saytime) |  | Announces the current time using text-to-speech. |
+| [Now](#now) | &nbsp; | Returns the current system date and time as a DateTime object. |
+| [Open-MediaFile](#open-mediafile) | vlcmedia, media, findmedia | &nbsp; |
+| [SayDate](#saydate) | &nbsp; | Speaks the current date using text-to-speech synthesis. |
+| [SayTime](#saytime) | &nbsp; | Announces the current time using text-to-speech. |
 | [Set-LocationParent](#set-locationparent) | .. | Changes the current location to the parent directory and lists its contents. |
 | [Set-LocationParent2](#set-locationparent2) | ... | Navigates up two directory levels in the file system hierarchy. |
-| [Set-LocationParent3](#set-locationparent3) |  | Navigates up three directory levels in the file system hierarchy. |
+| [Set-LocationParent3](#set-locationparent3) | &nbsp; | Navigates up three directory levels in the file system hierarchy. |
 | [Set-LocationParent4](#set-locationparent4) | ..... | Navigates up four directory levels in the filesystem hierarchy. |
-| [Set-LocationParent5](#set-locationparent5) |  | Navigates up five directory levels in the file system hierarchy. |
+| [Set-LocationParent5](#set-locationparent5) | &nbsp; | Navigates up five directory levels in the file system hierarchy. |
 | [Set-MonitorPowerOff](#set-monitorpoweroff) | poweroff | Turns off power to all connected monitors. |
 | [Set-MonitorPowerOn](#set-monitorpoweron) | wake-monitor | Turns the monitor power on. |
 | [Set-VLCPlayerFocused](#set-vlcplayerfocused) | showvlc, vlcf, fvlc | Sets focus to the VLC media player window. |
 | [Start-TextToSpeech](#start-texttospeech) | say | Converts text to speech using the Windows Speech API. |
 | [Stop-TextToSpeech](#stop-texttospeech) | sst | Immediately stops any ongoing text-to-speech output. |
-| [UtcNow](#utcnow) |  | Gets the current UTC (Coordinated Universal Time) date and time. |
+| [UtcNow](#utcnow) | &nbsp; | Gets the current UTC (Coordinated Universal Time) date and time. |
 
 ### GenXdev.Console.Spotify
 | Command | Aliases | Description |
 | --- | --- | --- |
-
 | [Add-SpotifyNewPlaylist](#add-spotifynewplaylist) | newplaylist | Creates a new Spotify playlist with customizable settings. |
 | [Add-SpotifyTracksToLiked](#add-spotifytrackstoliked) | like | Adds tracks to the user's Spotify liked songs library. |
 | [Add-SpotifyTracksToPlaylist](#add-spotifytrackstoplaylist) | addtoplaylist | Adds tracks to a Spotify playlist. |
-| [Connect-SpotifyApiToken](#connect-spotifyapitoken) |  | Authenticates with Spotify API using OAuth flow to obtain an access token. |
-| [Get-SpotifyActiveDevice](#get-spotifyactivedevice) |  | Returns all currently active Spotify devices for the current user. |
-| [Get-SpotifyApiToken](#get-spotifyapitoken) |  | Retrieves or generates a valid Spotify API authentication token. |
+| [Connect-SpotifyApiToken](#connect-spotifyapitoken) | &nbsp; | Authenticates with Spotify API using OAuth flow to obtain an access token. |
+| [Get-SpotifyActiveDevice](#get-spotifyactivedevice) | &nbsp; | Returns all currently active Spotify devices for the current user. |
+| [Get-SpotifyApiToken](#get-spotifyapitoken) | &nbsp; | Retrieves or generates a valid Spotify API authentication token. |
 | [Get-SpotifyCurrentlyPlaying](#get-spotifycurrentlyplaying) | gcp | Returns information about the currently playing track on Spotify. |
 | [Get-SpotifyDevice](#get-spotifydevice) | get-spotifydevices | Returns all currently available Spotify devices for current user. |
 | [Get-SpotifyLikedTrack](#get-spotifylikedtrack) | liked | Retrieves all tracks saved in the user's Spotify Library. |
 | [Get-SpotifyLyrics](#get-spotifylyrics) | lyrics | Retrieves lyrics for Spotify tracks from Musixmatch.com |
-| [Get-SpotifyPlaylistIdsByName](#get-spotifyplaylistidsbyname) |  | Retrieves Spotify playlist IDs by their names. |
+| [Get-SpotifyPlaylistIdsByName](#get-spotifyplaylistidsbyname) | &nbsp; | Retrieves Spotify playlist IDs by their names. |
 | [Get-SpotifyPlaylistTrack](#get-spotifyplaylisttrack) | getplaylist | Returns all tracks from a Spotify playlist. |
 | [Get-SpotifyTrackAudioFeatures](#get-spotifytrackaudiofeatures) | audiofeatures | Retrieves audio feature information for one or more Spotify tracks. |
 | [Get-SpotifyTrackById](#get-spotifytrackbyid) | gettrack | Retrieves detailed track information from Spotify using a track ID. |
@@ -105,11 +105,11 @@ Update-Module
 | [Search-SpotifyAndEnqueue](#search-spotifyandenqueue) | smq, fmq | Searches Spotify and adds the first matching item to the playback queue. |
 | [Search-SpotifyAndPlay](#search-spotifyandplay) | smp, fmp | Performs a Spotify search and plays the first found item. |
 | [Set-SpotifyActiveDevice](#set-spotifyactivedevice) | set-spotifydevice | Sets the active Spotify playback device. |
-| [Set-SpotifyApiToken](#set-spotifyapitoken) |  | Caches a Spotify API token for later use in the local configuration. |
+| [Set-SpotifyApiToken](#set-spotifyapitoken) | &nbsp; | Caches a Spotify API token for later use in the local configuration. |
 | [Set-SpotifyNext](#set-spotifynext) | next, skip | Skips to next track on Spotify. |
 | [Set-SpotifyPause](#set-spotifypause) | pausemusic, resume-music | Pauses Spotify playback |
 | [Set-SpotifyPlaylistDetails](#set-spotifyplaylistdetails) | spld | Sets the main properties of a Spotify playlist. |
-| [Set-SpotifyPlaylistOrder](#set-spotifyplaylistorder) |  |  |
+| [Set-SpotifyPlaylistOrder](#set-spotifyplaylistorder) | &nbsp; |  |
 | [Set-SpotifyPrevious](#set-spotifyprevious) | previous, prev | Skips to the previous track in Spotify playback. |
 | [Set-SpotifyRepeatContext](#set-spotifyrepeatcontext) | repeat | Enables playlist repeat mode for Spotify playback. |
 | [Set-SpotifyRepeatOff](#set-spotifyrepeatoff) | norepeat, repeatoff | Disables Spotify repeat mode for the currently active device. |
@@ -122,14 +122,13 @@ Update-Module
 ### GenXdev.Console.Vlc
 | Command | Aliases | Description |
 | --- | --- | --- |
-
 | [Open-VlcMediaPlayer](#open-vlcmediaplayer) | vlc | Launches and controls VLC Media Player with extensive configuration options. |
-| [Open-VlcMediaPlayerLyrics](#open-vlcmediaplayerlyrics) | vlclyrics |  |
-| [Start-VlcMediaPlayerNextInPlaylist](#start-vlcmediaplayernextinplaylist) |  |  |
-| [Start-VlcMediaPlayerPreviousInPlaylist](#start-vlcmediaplayerpreviousinplaylist) |  |  |
-| [Switch-VlcMediaPlayerMute](#switch-vlcmediaplayermute) |  |  |
-| [Switch-VLCMediaPlayerPaused](#switch-vlcmediaplayerpaused) |  |  |
-| [Switch-VlcMediaPlayerRepeat](#switch-vlcmediaplayerrepeat) |  |  |
+| [Open-VlcMediaPlayerLyrics](#open-vlcmediaplayerlyrics) | vlclyrics | &nbsp; |
+| [Start-VlcMediaPlayerNextInPlaylist](#start-vlcmediaplayernextinplaylist) | &nbsp; |  |
+| [Start-VlcMediaPlayerPreviousInPlaylist](#start-vlcmediaplayerpreviousinplaylist) | &nbsp; |  |
+| [Switch-VlcMediaPlayerMute](#switch-vlcmediaplayermute) | &nbsp; |  |
+| [Switch-VLCMediaPlayerPaused](#switch-vlcmediaplayerpaused) | &nbsp; |  |
+| [Switch-VlcMediaPlayerRepeat](#switch-vlcmediaplayerrepeat) | &nbsp; |  |
 
 <br/><hr/><hr/><br/>
 
