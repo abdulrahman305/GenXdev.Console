@@ -29,7 +29,7 @@ function Set-LocationParent {
     process {
 
         # check if we can move up before attempting
-        $parent = Microsoft.PowerShell.Management\Split-Path -Path (Microsoft.PowerShell.Management\Get-Location) -Parent
+        $parent = Microsoft.PowerShell.Management\Split-Path(Microsoft.PowerShell.Management\Get-Location) -Parent
         if ($null -ne $parent) {
 
             # prepare target description for ShouldProcess

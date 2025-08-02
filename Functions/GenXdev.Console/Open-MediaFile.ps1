@@ -1012,15 +1012,8 @@ function Open-MediaFile {
                     # if keywords specified, perform content-based filtering search
                     if ($Keywords.Length -gt 0) {
 
-                        # build path to potential subtitle files matching this media file
-                        $srtSearchMask = [IO.Path]::Combine(
-                            [IO.Path]::GetDirectoryName($PSItem.FullName),
-                            ([IO.Path]::GetFileNameWithoutExtension($PSItem.FullName) +
-                            '*.srt')
-                        );
-
                         # check all subtitle files for any keyword matches using wildcards
-                        Microsoft.PowerShell.Management\Get-ChildItem $srtSearchMask `
+                        Microsoft.PowerShell.Management\Get-ChildItem -LiteralPath [IO.Path]::GetDirectoryName($PSItem.FullName) -Filter ([IO.Path]::GetFileNameWithoutExtension($PSItem.FullName) +"*.srt") `
                             -File `
                             -ErrorAction SilentlyContinue |
                             Microsoft.PowerShell.Core\ForEach-Object {

@@ -47,7 +47,7 @@ function Set-LocationParent4 {
 
             # only navigate if ShouldProcess returns true
             if ($PSCmdlet.ShouldProcess($target, 'Change location')) {
-                Microsoft.PowerShell.Management\Set-Location -Path $parent
+                Microsoft.PowerShell.Management\Set-Location -LiteralPath $parent
             }
             else {
                 # exit the loop if user declined

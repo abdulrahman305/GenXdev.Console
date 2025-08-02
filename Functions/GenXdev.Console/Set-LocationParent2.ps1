@@ -36,7 +36,7 @@ function Set-LocationParent2 {
         for ($i = 1; $i -le 2; $i++) {
 
             # check if we can move up before attempting
-            $parent = Microsoft.PowerShell.Management\Split-Path -Path (Microsoft.PowerShell.Management\Get-Location) -Parent
+            $parent = Microsoft.PowerShell.Management\Split-Path (Microsoft.PowerShell.Management\Get-Location) -Parent
             if ($null -eq $parent) {
                 Microsoft.PowerShell.Utility\Write-Verbose 'Cannot go up further - at root level'
                 break
@@ -47,7 +47,7 @@ function Set-LocationParent2 {
 
             # only navigate if ShouldProcess returns true
             if ($PSCmdlet.ShouldProcess($target, 'Change location')) {
-                Microsoft.PowerShell.Management\Set-Location -Path $parent
+                Microsoft.PowerShell.Management\Set-Location -LiteralPath $parent
             }
             else {
                 # exit the loop if user declined

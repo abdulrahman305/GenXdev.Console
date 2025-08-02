@@ -789,7 +789,7 @@ function Open-VlcMediaPlayer {
 
         # ensure vlc is installed and install if needed
         if (-not (Microsoft.PowerShell.Management\Test-Path `
-                    "${env:ProgramFiles}\VideoLAN\VLC\vlc.exe")) {
+                    -LiteralPath "${env:ProgramFiles}\VideoLAN\VLC\vlc.exe")) {
 
             Microsoft.PowerShell.Utility\Write-Verbose `
                 'VLC not found, installing via WinGet...'
@@ -1050,7 +1050,7 @@ function Open-VlcMediaPlayer {
 
             # ensure vlc executable exists
             if (-not (Microsoft.PowerShell.Management\Test-Path `
-                        $processArgs.FilePath -ErrorAction SilentlyContinue)) {
+                        -LiteralPath $processArgs.FilePath -ErrorAction SilentlyContinue)) {
 
                 # install winget if needed
                 if (-not (Microsoft.PowerShell.Core\Get-Module -ListAvailable `
