@@ -981,6 +981,13 @@ function Open-VlcMediaPlayer {
         # initialize vlc argument list
         [System.Collections.Generic.List[string]]$vlcArgs = @()
 
+        if ($FullScreen) {
+
+            $vlcArgs.Add('--fullscreen')
+            $FullScreen = $false
+            $Maximize = $false
+        }
+
         # configure instance mode
         if ($NewWindow) {
 

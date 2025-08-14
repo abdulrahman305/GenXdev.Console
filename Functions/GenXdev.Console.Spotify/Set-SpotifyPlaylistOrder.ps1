@@ -31,7 +31,6 @@ Set-SpotifyPlaylistOrder -PlaylistId "2v3iNvBX8Ay1Gt2uXtUKUT" `
                         -RangeLength 2
 
 .EXAMPLE
-Move last track to start of playlist
 Set-SpotifyPlaylistOrder "2v3iNvBX8Ay1Gt2uXtUKUT" 9 0
 #>
 function Set-SpotifyPlaylistOrder {
@@ -39,35 +38,36 @@ function Set-SpotifyPlaylistOrder {
     [CmdletBinding(SupportsShouldProcess = $true)]
 
     param(
-        ########################################################################
+        ###############################################################################
         [parameter(
             Mandatory = $true,
             Position = 0,
             HelpMessage = 'The Spotify playlist identifier to modify'
         )]
         [string] $PlaylistId,
-        ########################################################################
+        ###############################################################################
         [parameter(
             Mandatory = $true,
             Position = 1,
             HelpMessage = 'The position of the first track to move'
         )]
         [int] $RangeStart,
-        ########################################################################
+        ###############################################################################
         [parameter(
             Mandatory = $true,
             Position = 2,
             HelpMessage = 'The position where tracks should be inserted'
         )]
         [int] $InsertBefore,
-        ########################################################################
+        ###############################################################################
         [parameter(
             Mandatory = $false,
             Position = 3,
-            HelpMessage = 'Number of consecutive tracks to move (defaults to 1)'
+            HelpMessage = ('Number of consecutive tracks to move ' +
+                          '(defaults to 1)')
         )]
         [System.Nullable[int]] $RangeLength = $null
-        ########################################################################
+        ###############################################################################
     )
 
     begin {
@@ -76,20 +76,27 @@ function Set-SpotifyPlaylistOrder {
         $apiToken = GenXdev.Console\Get-SpotifyApiToken
     }
 
-
     process {
 
-        # prepare message for should process and verbose output
-        $operationDescription = "Moving $($RangeLength ?? 1) tracks from position $RangeStart to position $InsertBefore"
-        $targetDescription = "Spotify playlist $PlaylistId"
+        # calculate the actual number of tracks to move
+        $tracksToMove = $RangeLength ?? 1
 
-        Microsoft.PowerShell.Utility\Write-Verbose "Reordering $targetDescription - $operationDescription"
+        # prepare descriptive message for should process and verbose output
+        $operationDescription = ("Moving ${tracksToMove} tracks from " +
+                               "position ${RangeStart} to position ${InsertBefore}")
 
-        # check if the action should be performed
+        $targetDescription = "Spotify playlist ${PlaylistId}"
+
+        # output verbose information about the reordering operation
+        Microsoft.PowerShell.Utility\Write-Verbose (
+            "Reordering ${targetDescription} - ${operationDescription}"
+        )
+
+        # check if the action should be performed based on whatif/confirm
         if ($PSCmdlet.ShouldProcess($targetDescription, $operationDescription)) {
 
             # call the spotify api to reorder the playlist tracks
-            [GenXdev.Helpers.Spotify]::ReorderPlaylist(
+            $null = [GenXdev.Helpers.Spotify]::ReorderPlaylist(
                 $apiToken,
                 $PlaylistId,
                 $RangeStart,
@@ -101,3 +108,4 @@ function Set-SpotifyPlaylistOrder {
     end {
     }
 }
+###############################################################################
