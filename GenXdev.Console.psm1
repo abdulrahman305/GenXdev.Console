@@ -11,6 +11,7 @@ if ($major -ne 10) {
 }
 
 
+
 . "$PSScriptRoot\Functions\GenXdev.Console\Enable-Screensaver.ps1"
 . "$PSScriptRoot\Functions\GenXdev.Console\Get-IsSpeaking.ps1"
 . "$PSScriptRoot\Functions\GenXdev.Console\New-MicrosoftShellTab.ps1"

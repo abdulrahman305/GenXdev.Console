@@ -11,6 +11,7 @@ if ($major -ne 10) {
 }
 
 
+
 . "$PSScriptRoot\Functions\GenXdev.Console.Spotify\Add-SpotifyNewPlaylist.ps1"
 . "$PSScriptRoot\Functions\GenXdev.Console.Spotify\Add-SpotifyTracksToLiked.ps1"
 . "$PSScriptRoot\Functions\GenXdev.Console.Spotify\Add-SpotifyTracksToPlaylist.ps1"

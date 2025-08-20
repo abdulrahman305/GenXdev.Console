@@ -11,6 +11,7 @@ if ($major -ne 10) {
 }
 
 
+
 . "$PSScriptRoot\Functions\GenXdev.Console.Vlc\Open-VlcMediaPlayer.ps1"
 . "$PSScriptRoot\Functions\GenXdev.Console.Vlc\Open-VlcMediaPlayerLyrics.ps1"
 . "$PSScriptRoot\Functions\GenXdev.Console.Vlc\Start-VlcMediaPlayerNextInPlaylist.ps1"
