@@ -40,206 +40,171 @@ function Get-SpotifyLyrics {
         )]
         [Alias('Id')]
         [string] $TrackId = $null,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('incognito','inprivate')]
         [parameter(Mandatory = $false, HelpMessage = 'Open browser in private/incognito mode')]
         [switch] $Private,
-
         ###############################################################################
         [parameter(Mandatory = $false, HelpMessage = 'Force browser launch or override restrictions')]
         [switch] $Force,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('e')]
         [parameter(Mandatory = $false, HelpMessage = 'Use Microsoft Edge browser')]
         [switch] $Edge,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('ch')]
         [parameter(Mandatory = $false, HelpMessage = 'Use Google Chrome browser')]
         [switch] $Chrome,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('c')]
         [parameter(Mandatory = $false, HelpMessage = 'Use Chromium browser')]
         [switch] $Chromium,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('ff')]
         [parameter(Mandatory = $false, HelpMessage = 'Use Mozilla Firefox browser')]
         [switch] $Firefox,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('m','mon')]
         [parameter(Mandatory = $false, HelpMessage = 'Target monitor for browser window')]
         [int] $Monitor,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('fs','f')]
         [parameter(Mandatory = $false, HelpMessage = 'Open browser in full screen mode')]
         [switch] $FullScreen,
-
         ###############################################################################
         [parameter(Mandatory = $false, HelpMessage = 'Width of browser window in pixels')]
         [int] $Width,
-
         ###############################################################################
         [parameter(Mandatory = $false, HelpMessage = 'Height of browser window in pixels')]
         [int] $Height,
-
         ###############################################################################
         [parameter(Mandatory = $false, HelpMessage = 'Left position of browser window')]
         [int] $Left,
-
         ###############################################################################
         [parameter(Mandatory = $false, HelpMessage = 'Right position of browser window')]
         [int] $Right,
-
         ###############################################################################
         [parameter(Mandatory = $false, HelpMessage = 'Top position of browser window')]
         [int] $Top,
-
         ###############################################################################
         [parameter(Mandatory = $false, HelpMessage = 'Bottom position of browser window')]
         [int] $Bottom,
-
         ###############################################################################
         [parameter(Mandatory = $false, HelpMessage = 'Center browser window on screen')]
         [switch] $Centered,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('a','app','appmode')]
         [parameter(Mandatory = $false, HelpMessage = 'Open browser in application mode')]
         [switch] $ApplicationMode,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('de','ne','NoExtensions')]
         [parameter(Mandatory = $false, HelpMessage = 'Disable browser extensions')]
         [switch] $NoBrowserExtensions,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('allowpopups')]
         [parameter(Mandatory = $false, HelpMessage = 'Disable popup blocker in browser')]
         [switch] $DisablePopupBlocker,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('lang','locale')]
         [parameter(Mandatory = $false, HelpMessage = 'Set Accept-Language HTTP header')]
         [string] $AcceptLang,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('Escape')]
         [parameter(Mandatory = $false, HelpMessage = 'Send Escape key after page load')]
         [switch] $SendKeyEscape,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('HoldKeyboardFocus')]
         [parameter(Mandatory = $false, HelpMessage = 'Hold keyboard focus after sending keys')]
         [switch] $SendKeyHoldKeyboardFocus,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('UseShiftEnter')]
         [parameter(Mandatory = $false, HelpMessage = 'Use Shift+Enter when sending keys')]
         [switch] $SendKeyUseShiftEnter,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('DelayMilliSeconds')]
         [parameter(Mandatory = $false, HelpMessage = 'Delay in milliseconds between sending keys')]
         [int] $SendKeyDelayMilliSeconds,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('fw','focus')]
         [parameter(Mandatory = $false, HelpMessage = 'Focus browser window after launch')]
         [switch] $FocusWindow,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('fg')]
         [parameter(Mandatory = $false, HelpMessage = 'Set browser window to foreground')]
         [switch] $SetForeground,
-
         ###############################################################################
         [parameter(Mandatory = $false, HelpMessage = 'Maximize browser window')]
         [switch] $Maximize,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('rf','bg')]
         [parameter(Mandatory = $false, HelpMessage = 'Restore focus to previous window after closing browser')]
         [switch] $RestoreFocus,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('nw','new')]
         [parameter(Mandatory = $false, HelpMessage = 'Open link in a new browser window')]
         [switch] $NewWindow,
-
         ###############################################################################
         [parameter(Mandatory = $false, HelpMessage = 'Return the URL after opening')]
         [switch] $ReturnURL,
-
         ###############################################################################
         [parameter(Mandatory = $false, HelpMessage = 'Return only the URL, do not open browser')]
         [switch] $ReturnOnlyURL,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('nb')]
         [parameter(Mandatory = $false, HelpMessage = 'Open browser window without borders')]
         [switch] $NoBorders,
-
         ###############################################################################
         [parameter(Mandatory = $false, HelpMessage = 'Use session-only mode for browser')]
         [switch] $SessionOnly,
-
         ###############################################################################
         [parameter(Mandatory = $false, HelpMessage = 'Clear browser session before opening')]
         [switch] $ClearSession,
-
         ###############################################################################
 
         ###############################################################################
         [Alias('FromPreferences')]
         [parameter(Mandatory = $false, HelpMessage = 'Skip using browser session')]
         [switch] $SkipSession,
-
         ###############################################################################
         ###############################################################################
         [Alias('sbs')]

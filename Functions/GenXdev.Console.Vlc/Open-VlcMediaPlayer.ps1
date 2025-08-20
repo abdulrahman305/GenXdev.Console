@@ -722,13 +722,12 @@ function Open-VlcMediaPlayer {
         )]
         [Alias('sbs')]
         [switch]$SideBySide,
-
         ###############################################################################
         [Parameter(
             Mandatory = $false,
             HelpMessage = 'Focus the VLC window after opening'
         )]
-        [Alias('fw','focus')]
+        [Alias('fw', 'focus')]
         [switch] $FocusWindow,
         ###############################################################################
         [Parameter(
@@ -1099,7 +1098,14 @@ function Open-VlcMediaPlayer {
         }
 
         # start vlc if needed
-        if (($null -eq $vlcWindow) -or ($processArgs.ArgumentList.Count -gt 1)) {
+        # Only restart VLC if:
+        # 1. VLC is not running, OR
+        # 2. We have media files to open (Path parameter provided), OR
+        # 3. We have significant configuration changes (more than just --one-instance)
+        $hasMediaFiles = ($null -ne $Path) -and ($Path.Count -gt 0)
+        $hasSignificantArgs = ($processArgs.ArgumentList.Count -gt 1) -and $hasMediaFiles
+
+        if (($null -eq $vlcWindow) -or $hasSignificantArgs) {
 
             # start vlc with configured arguments
             try {

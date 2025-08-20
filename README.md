@@ -12,7 +12,7 @@
 
 ## MIT License
 
-```text
+````text
 MIT License
 
 Copyright (c) 2025 GenXdev
@@ -46,21 +46,21 @@ SOFTWARE.
 ### DEPENDENCIES
 [![WinOS - Windows-10 or later](https://img.shields.io/badge/WinOS-Windows--10--10.0.19041--SP0-brightgreen)](https://www.microsoft.com/en-us/windows/get-windows-10)  [![GenXdev.Data](https://img.shields.io/powershellgallery/v/GenXdev.Data.svg?style=flat-square&label=GenXdev.Data)](https://www.powershellgallery.com/packages/GenXdev.Data/) [![GenXdev.Helpers](https://img.shields.io/powershellgallery/v/GenXdev.Helpers.svg?style=flat-square&label=GenXdev.Helpers)](https://www.powershellgallery.com/packages/GenXdev.Helpers/) [![GenXdev.Webbrowser](https://img.shields.io/powershellgallery/v/GenXdev.Webbrowser.svg?style=flat-square&label=GenXdev.Webbrowser)](https://www.powershellgallery.com/packages/GenXdev.Webbrowser/) [![GenXdev.FileSystem](https://img.shields.io/powershellgallery/v/GenXdev.Filesystem.svg?style=flat-square&label=GenXdev.FileSystem)](https://www.powershellgallery.com/packages/GenXdev.FileSystem/)
 ### INSTALLATION
-````PowerShell
+```PowerShell
 Install-Module "GenXdev.Console"
 Import-Module "GenXdev.Console"
-````
+```
 ### UPDATE
-````PowerShell
+```PowerShell
 Update-Module
-````
-<br/><hr/><hr/><br/>
+```
+
+<br/><hr/><br/>
 
 # Cmdlet Index
-### GenXdev.Console<hr/>
 ### GenXdev.Console
 | Command | Aliases | Description |
-| --- | --- | --- |
+| :--- | :--- | :--- |
 | [Enable-Screensaver](#enable-screensaver) | &nbsp; | Starts the configured Windows screensaver. |
 | [Get-IsSpeaking](#get-isspeaking) | iss | Returns true if the text-to-speech engine is speaking. |
 | [New-MicrosoftShellTab](#new-microsoftshelltab) | x | Creates a new Windows Terminal tab running PowerShell. |
@@ -82,7 +82,7 @@ Update-Module
 
 ### GenXdev.Console.Spotify
 | Command | Aliases | Description |
-| --- | --- | --- |
+| :--- | :--- | :--- |
 | [Add-SpotifyNewPlaylist](#add-spotifynewplaylist) | newplaylist | Creates a new Spotify playlist with customizable settings. |
 | [Add-SpotifyTracksToLiked](#add-spotifytrackstoliked) | like | Adds tracks to the user's Spotify liked songs library. |
 | [Add-SpotifyTracksToPlaylist](#add-spotifytrackstoplaylist) | addtoplaylist | Adds tracks to a Spotify playlist. |
@@ -109,7 +109,7 @@ Update-Module
 | [Set-SpotifyNext](#set-spotifynext) | next, skip | Skips to next track on Spotify. |
 | [Set-SpotifyPause](#set-spotifypause) | pausemusic, Resume-Music | Pauses Spotify playback |
 | [Set-SpotifyPlaylistDetails](#set-spotifyplaylistdetails) | spld | Sets the main properties of a Spotify playlist. |
-| [Set-SpotifyPlaylistOrder](#set-spotifyplaylistorder) | &nbsp; |  |
+| [Set-SpotifyPlaylistOrder](#set-spotifyplaylistorder) | &nbsp; | &nbsp; |
 | [Set-SpotifyPrevious](#set-spotifyprevious) | prev, previous | Skips to the previous track in Spotify playback. |
 | [Set-SpotifyRepeatContext](#set-spotifyrepeatcontext) | repeat | Enables playlist repeat mode for Spotify playback. |
 | [Set-SpotifyRepeatOff](#set-spotifyrepeatoff) | norepeat, repeatoff | Disables Spotify repeat mode for the currently active device. |
@@ -121,7 +121,7 @@ Update-Module
 
 ### GenXdev.Console.Vlc
 | Command | Aliases | Description |
-| --- | --- | --- |
+| :--- | :--- | :--- |
 | [Open-VlcMediaPlayer](#open-vlcmediaplayer) | vlc | Launches and controls VLC Media Player with extensive configuration options. |
 | [Open-VlcMediaPlayerLyrics](#open-vlcmediaplayerlyrics) | vlclyrics | Opens a web browser to search for lyrics of currently playing VLC media. |
 | [Start-VlcMediaPlayerNextInPlaylist](#start-vlcmediaplayernextinplaylist) | vlcnext | Advances VLC Media Player to the next item in the current playlist. |
@@ -130,7 +130,7 @@ Update-Module
 | [Switch-VLCMediaPlayerPaused](#switch-vlcmediaplayerpaused) | vlcpause, vlcplay | Toggles the pause/play state of the VLC Media Player. |
 | [Switch-VlcMediaPlayerRepeat](#switch-vlcmediaplayerrepeat) | vlcrepeat | Toggles the repeat mode in VLC Media Player. |
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
 
 
 # Cmdlets
@@ -139,7 +139,7 @@ Update-Module
 ###	GenXdev.Console<hr/> 
 
 ##	Enable-Screensaver 
-````PowerShell 
+```PowerShell 
 
    Enable-Screensaver  
 ```` 
@@ -148,7 +148,7 @@ Update-Module
     Starts the configured Windows screensaver.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Enable-Screensaver [<CommonParameters>] 
 ```` 
 
@@ -164,7 +164,7 @@ Enable-Screensaver [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        This function requires the Windows screensaver to be properly configured in the  
        system settings. The screensaver executable must exist at the default Windows  
@@ -173,11 +173,11 @@ Enable-Screensaver [<CommonParameters>]
    PS C:\> Enable-Screensaver  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-IsSpeaking 
-````PowerShell 
+```PowerShell 
 
    Get-IsSpeaking                       --> iss  
 ```` 
@@ -186,7 +186,7 @@ Enable-Screensaver [<CommonParameters>]
     Returns true if the text-to-speech engine is speaking.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-IsSpeaking [<CommonParameters>] 
 ```` 
 
@@ -202,11 +202,11 @@ Get-IsSpeaking [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	New-MicrosoftShellTab 
-````PowerShell 
+```PowerShell 
 
    New-MicrosoftShellTab                --> x  
 ```` 
@@ -215,7 +215,7 @@ Get-IsSpeaking [<CommonParameters>]
     Creates a new Windows Terminal tab running PowerShell.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 New-MicrosoftShellTab [-DontCloseThisTab] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -256,11 +256,11 @@ New-MicrosoftShellTab [-DontCloseThisTab] [-WhatIf] [-Confirm] [<CommonParameter
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Now 
-````PowerShell 
+```PowerShell 
 
    Now  
 ```` 
@@ -269,7 +269,7 @@ New-MicrosoftShellTab [-DontCloseThisTab] [-WhatIf] [-Confirm] [<CommonParameter
     Returns the current system date and time as a DateTime object.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Now [<CommonParameters>] 
 ```` 
 
@@ -285,11 +285,11 @@ Now [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Open-MediaFile 
-````PowerShell 
+```PowerShell 
 
    Open-MediaFile                       --> findmedia, media, vlcmedia  
 ```` 
@@ -299,7 +299,7 @@ Now [<CommonParameters>]
     configuration options.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Open-MediaFile [[-SearchMask] <String[]>] [-PlaylistPath <String>] [[-Width] <Int32>] [[-Height] <Int32>] [[-X] <Int32>] [[-Y] <Int32>] [-KeysToSend <String[]>] [-Keywords <String[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds <Int32>] [-SendKeyHoldKeyboardFocus] [-Monitor <Int32>] [-AspectRatio <String>] [-Crop <String>] [-SubtitleFile <String>] [-SubtitleScale <Int32>] [-SubtitleLanguage <String>] [-AudioLanguage <String>] [-PreferredAudioLanguage <String>] [-HttpProxy <String>] [-HttpProxyPassword <String>] [-VerbosityLevel <Int32>] [-SubdirectoryBehavior <String>] [-IgnoredExtensions <String>] [-VLCPath <String>] [-ReplayGainMode <String>] [-ReplayGainPreamp <Single>] [-ForceDolbySurround <String>] [-AudioFilters <String[]>] [-Visualization <String>] [-Deinterlace <String>] [-DeinterlaceMode <String>] [-VideoFilters <String[]>] [-VideoFilterModules <String[]>] [-Modules <String[]>] [-AudioFilterModules <String[]>] [-AudioVisualization <String>] [-PreferredSubtitleLanguage <String>] [-IgnoredFileExtensions <String>] [-Arguments <String>] [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio] [-OnlyPictures] [-IncludeVideos] [-IncludeAudio] [-IncludePictures] [-NoBorders] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-FullScreen] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-DisableSubtitles] [-AutoScale] [-HighPriority] [-EnableTimeStretch] [-NewWindow] [-EnableWallpaperMode] [-EnableAudioTimeStretch] [-Close] [-SideBySide] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-SessionOnly] [-ClearSession] [-SkipSession] [-PassThru] [-PassThruNoOpen] [-PassThruWindow] [<CommonParameters>] 
 ```` 
 
@@ -980,11 +980,11 @@ Open-MediaFile [[-SearchMask] <String[]>] [-PlaylistPath <String>] [[-Width] <In
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	SayDate 
-````PowerShell 
+```PowerShell 
 
    SayDate  
 ```` 
@@ -993,7 +993,7 @@ Open-MediaFile [[-SearchMask] <String[]>] [-PlaylistPath <String>] [[-Width] <In
     Speaks the current date using text-to-speech synthesis.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 SayDate [<CommonParameters>] 
 ```` 
 
@@ -1009,11 +1009,11 @@ SayDate [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	SayTime 
-````PowerShell 
+```PowerShell 
 
    SayTime  
 ```` 
@@ -1022,7 +1022,7 @@ SayDate [<CommonParameters>]
     Announces the current time using text-to-speech.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 SayTime [<CommonParameters>] 
 ```` 
 
@@ -1038,11 +1038,11 @@ SayTime [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-LocationParent 
-````PowerShell 
+```PowerShell 
 
    Set-LocationParent                   --> ..  
 ```` 
@@ -1051,7 +1051,7 @@ SayTime [<CommonParameters>]
     Changes the current location to the parent directory and lists its contents.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-LocationParent [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -1081,11 +1081,11 @@ Set-LocationParent [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-LocationParent2 
-````PowerShell 
+```PowerShell 
 
    Set-LocationParent2                  --> ...  
 ```` 
@@ -1094,7 +1094,7 @@ Set-LocationParent [-WhatIf] [-Confirm] [<CommonParameters>]
     Navigates up two directory levels in the file system hierarchy.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -1124,7 +1124,7 @@ Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        This function supports -WhatIf and -Confirm parameters through ShouldProcess.  
    -------------------------- EXAMPLE 1 --------------------------  
@@ -1133,11 +1133,11 @@ Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>]
    PS C:\> ...  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-LocationParent3 
-````PowerShell 
+```PowerShell 
 
    Set-LocationParent3                  --> ....  
 ```` 
@@ -1146,7 +1146,7 @@ Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>]
     Navigates up three directory levels in the file system hierarchy.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-LocationParent3 [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -1175,11 +1175,11 @@ Set-LocationParent3 [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-LocationParent4 
-````PowerShell 
+```PowerShell 
 
    Set-LocationParent4                  --> .....  
 ```` 
@@ -1188,7 +1188,7 @@ Set-LocationParent3 [-WhatIf] [-Confirm] [<CommonParameters>]
     Navigates up four directory levels in the filesystem hierarchy.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -1219,7 +1219,7 @@ Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        The alias '.....'' represents moving up four parent directories, where each dot  
        represents one level up.  
@@ -1229,11 +1229,11 @@ Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>]
    PS C:\> .....  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-LocationParent5 
-````PowerShell 
+```PowerShell 
 
    Set-LocationParent5                  --> ......  
 ```` 
@@ -1242,7 +1242,7 @@ Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>]
     Navigates up five directory levels in the file system hierarchy.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-LocationParent5 [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -1272,11 +1272,11 @@ Set-LocationParent5 [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-MonitorPowerOff 
-````PowerShell 
+```PowerShell 
 
    Set-MonitorPowerOff                  --> poweroff  
 ```` 
@@ -1285,7 +1285,7 @@ Set-LocationParent5 [-WhatIf] [-Confirm] [<CommonParameters>]
     Turns off power to all connected monitors.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-MonitorPowerOff [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -1316,11 +1316,11 @@ Set-MonitorPowerOff [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-MonitorPowerOn 
-````PowerShell 
+```PowerShell 
 
    Set-MonitorPowerOn                   --> wake-monitor  
 ```` 
@@ -1329,7 +1329,7 @@ Set-MonitorPowerOff [-WhatIf] [-Confirm] [<CommonParameters>]
     Turns the monitor power on.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-MonitorPowerOn [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -1359,11 +1359,11 @@ Set-MonitorPowerOn [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-VLCPlayerFocused 
-````PowerShell 
+```PowerShell 
 
    Set-VLCPlayerFocused                 --> fvlc, showvlc, vlcf  
 ```` 
@@ -1372,7 +1372,7 @@ Set-MonitorPowerOn [-WhatIf] [-Confirm] [<CommonParameters>]
     Sets focus to the VLC media player window.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-VLCPlayerFocused [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -1402,11 +1402,11 @@ Set-VLCPlayerFocused [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Start-TextToSpeech 
-````PowerShell 
+```PowerShell 
 
    Start-TextToSpeech                   --> say  
 ```` 
@@ -1415,7 +1415,7 @@ Set-VLCPlayerFocused [-WhatIf] [-Confirm] [<CommonParameters>]
     Converts text to speech using the Windows Speech API.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Start-TextToSpeech [-Lines] <String[]> [-Locale <String>] [-VoiceName <String>] [-PassThru] [-Wait] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -1491,11 +1491,11 @@ Start-TextToSpeech [-Lines] <String[]> [-Locale <String>] [-VoiceName <String>] 
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Stop-TextToSpeech 
-````PowerShell 
+```PowerShell 
 
    Stop-TextToSpeech                    --> sst  
 ```` 
@@ -1504,7 +1504,7 @@ Start-TextToSpeech [-Lines] <String[]> [-Locale <String>] [-VoiceName <String>] 
     Immediately stops any ongoing text-to-speech output.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Stop-TextToSpeech [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -1535,7 +1535,7 @@ Stop-TextToSpeech [-WhatIf] [-Confirm] [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        This cmdlet is commonly used in conjunction with Start-TextToSpeech (alias: say)  
        and Skip-TextToSpeech (alias: sstSkip) for speech control.  
@@ -1547,11 +1547,11 @@ Stop-TextToSpeech [-WhatIf] [-Confirm] [<CommonParameters>]
    Starts speaking but gets interrupted immediately  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	UtcNow 
-````PowerShell 
+```PowerShell 
 
    UtcNow  
 ```` 
@@ -1560,7 +1560,7 @@ Stop-TextToSpeech [-WhatIf] [-Confirm] [<CommonParameters>]
     Gets the current UTC (Coordinated Universal Time) date and time.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 UtcNow [<CommonParameters>] 
 ```` 
 
@@ -1577,14 +1577,14 @@ UtcNow [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 &nbsp;<hr/>
 ###	GenXdev.Console.Spotify<hr/> 
 
 ##	Add-SpotifyNewPlaylist 
-````PowerShell 
+```PowerShell 
 
    Add-SpotifyNewPlaylist               --> newplaylist  
 ```` 
@@ -1593,7 +1593,7 @@ UtcNow [<CommonParameters>]
     Creates a new Spotify playlist with customizable settings.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [<CommonParameters>] 
 ```` 
 
@@ -1643,11 +1643,11 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Add-SpotifyTracksToLiked 
-````PowerShell 
+```PowerShell 
 
    Add-SpotifyTracksToLiked             --> like  
 ```` 
@@ -1656,7 +1656,7 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
     Adds tracks to the user's Spotify liked songs library.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Add-SpotifyTracksToLiked [[-TrackId] <String[]>] [<CommonParameters>] 
 ```` 
 
@@ -1681,11 +1681,11 @@ Add-SpotifyTracksToLiked [[-TrackId] <String[]>] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Add-SpotifyTracksToPlaylist 
-````PowerShell 
+```PowerShell 
 
    Add-SpotifyTracksToPlaylist          --> addtoplaylist  
 ```` 
@@ -1694,7 +1694,7 @@ Add-SpotifyTracksToLiked [[-TrackId] <String[]>] [<CommonParameters>]
     Adds tracks to a Spotify playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<CommonParameters>]  
    Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<CommonParameters>] 
 ```` 
@@ -1734,11 +1734,11 @@ Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<Com
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Connect-SpotifyApiToken 
-````PowerShell 
+```PowerShell 
 
    Connect-SpotifyApiToken  
 ```` 
@@ -1747,7 +1747,7 @@ Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<Com
     Authenticates with Spotify API using OAuth flow to obtain an access token.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Connect-SpotifyApiToken [<CommonParameters>] 
 ```` 
 
@@ -1765,7 +1765,7 @@ Connect-SpotifyApiToken [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        Uses port 5642 as the default callback port for OAuth flow  
        Minimizes browser window during authentication  
@@ -1775,11 +1775,11 @@ Connect-SpotifyApiToken [<CommonParameters>]
    Connect-SpotifyApiToken  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyActiveDevice 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyActiveDevice  
 ```` 
@@ -1788,7 +1788,7 @@ Connect-SpotifyApiToken [<CommonParameters>]
     Returns all currently active Spotify devices for the current user.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyActiveDevice [<CommonParameters>] 
 ```` 
 
@@ -1804,11 +1804,11 @@ Get-SpotifyActiveDevice [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyApiToken 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyApiToken  
 ```` 
@@ -1817,7 +1817,7 @@ Get-SpotifyActiveDevice [<CommonParameters>]
     Retrieves or generates a valid Spotify API authentication token.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyApiToken [<CommonParameters>] 
 ```` 
 
@@ -1833,11 +1833,11 @@ Get-SpotifyApiToken [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyCurrentlyPlaying 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyCurrentlyPlaying          --> gcp  
 ```` 
@@ -1846,7 +1846,7 @@ Get-SpotifyApiToken [<CommonParameters>]
     Returns information about the currently playing track on Spotify.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyCurrentlyPlaying [<CommonParameters>] 
 ```` 
 
@@ -1862,11 +1862,11 @@ Get-SpotifyCurrentlyPlaying [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyDevice 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyDevice                    --> Get-SpotifyDevices  
 ```` 
@@ -1875,7 +1875,7 @@ Get-SpotifyCurrentlyPlaying [<CommonParameters>]
     Returns all currently available Spotify devices for current user.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyDevice [<CommonParameters>] 
 ```` 
 
@@ -1892,7 +1892,7 @@ Get-SpotifyDevice [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        Requires valid Spotify authentication token to function. The token is automatically  
        retrieved using Get-SpotifyApiToken.  
@@ -1901,11 +1901,11 @@ Get-SpotifyDevice [<CommonParameters>]
    This command returns all available Spotify devices for the current user.  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyLikedTrack 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyLikedTrack                --> liked  
 ```` 
@@ -1914,7 +1914,7 @@ Get-SpotifyDevice [<CommonParameters>]
     Retrieves all tracks saved in the user's Spotify Library.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyLikedTrack [<CommonParameters>] 
 ```` 
 
@@ -1931,11 +1931,11 @@ Get-SpotifyLikedTrack [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyLyrics 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyLyrics                    --> lyrics  
 ```` 
@@ -1944,7 +1944,7 @@ Get-SpotifyLikedTrack [<CommonParameters>]
     Retrieves lyrics for Spotify tracks from Musixmatch.com  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyLyrics [[-TrackId] <String>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [[-Monitor] <Int32>] [-FullScreen] [[-Width] <Int32>] [[-Height] <Int32>] [[-Left] <Int32>] [[-Right] <Int32>] [[-Top] <Int32>] [[-Bottom] <Int32>] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-DisablePopupBlocker] [[-AcceptLang] <String>] [-SendKeyEscape] [-SendKeyHoldKeyboardFocus] [-SendKeyUseShiftEnter] [[-SendKeyDelayMilliSeconds] <Int32>] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-NewWindow] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders] [-SessionOnly] [-ClearSession] [-SkipSession] [-SideBySide] [<CommonParameters>] 
 ```` 
 
@@ -2216,11 +2216,11 @@ Get-SpotifyLyrics [[-TrackId] <String>] [-Private] [-Force] [-Edge] [-Chrome] [-
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyPlaylistIdsByName 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyPlaylistIdsByName  
 ```` 
@@ -2229,7 +2229,7 @@ Get-SpotifyLyrics [[-TrackId] <String>] [-Private] [-Force] [-Edge] [-Chrome] [-
     Retrieves Spotify playlist IDs by their names.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyPlaylistIdsByName [-PlaylistName] <String[]> [<CommonParameters>] 
 ```` 
 
@@ -2257,11 +2257,11 @@ Get-SpotifyPlaylistIdsByName [-PlaylistName] <String[]> [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyPlaylistTrack 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyPlaylistTrack             --> getplaylist  
 ```` 
@@ -2270,7 +2270,7 @@ Get-SpotifyPlaylistIdsByName [-PlaylistName] <String[]> [<CommonParameters>]
     Returns all tracks from a Spotify playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyPlaylistTrack [-PlaylistName] <String> [<CommonParameters>]  
    Get-SpotifyPlaylistTrack [-PlaylistId] <String> [<CommonParameters>] 
 ```` 
@@ -2304,11 +2304,11 @@ Get-SpotifyPlaylistTrack [-PlaylistName] <String> [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyTrackAudioFeatures 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyTrackAudioFeatures        --> audiofeatures  
 ```` 
@@ -2317,7 +2317,7 @@ Get-SpotifyPlaylistTrack [-PlaylistName] <String> [<CommonParameters>]
     Retrieves audio feature information for one or more Spotify tracks.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyTrackAudioFeatures [-TrackId] <String[]> [<CommonParameters>] 
 ```` 
 
@@ -2343,11 +2343,11 @@ Get-SpotifyTrackAudioFeatures [-TrackId] <String[]> [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyTrackById 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyTrackById                 --> gettrack  
 ```` 
@@ -2356,7 +2356,7 @@ Get-SpotifyTrackAudioFeatures [-TrackId] <String[]> [<CommonParameters>]
     Retrieves detailed track information from Spotify using a track ID.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>] 
 ```` 
 
@@ -2381,11 +2381,11 @@ Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyUserPlaylists 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyUserPlaylists             --> gupl  
 ```` 
@@ -2394,7 +2394,7 @@ Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>]
     Returns a collection of Spotify playlists owned by the current user.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyUserPlaylists [[-Filter] <String[]>] [-Force] [<CommonParameters>] 
 ```` 
 
@@ -2427,11 +2427,11 @@ Get-SpotifyUserPlaylists [[-Filter] <String[]>] [-Force] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Move-SpotifyLikedTracksToPlaylist 
-````PowerShell 
+```PowerShell 
 
    Move-SpotifyLikedTracksToPlaylist    --> moveliked  
 ```` 
@@ -2440,7 +2440,7 @@ Get-SpotifyUserPlaylists [[-Filter] <String[]>] [-Force] [<CommonParameters>]
     Moves all liked tracks from your Spotify library to specified playlist(s)  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <String[]> [<CommonParameters>]  
    Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <String[]> [<CommonParameters>] 
 ```` 
@@ -2475,11 +2475,11 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <String[]> [<CommonParameters>
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Remove-SpotifyTracksFromLiked 
-````PowerShell 
+```PowerShell 
 
    Remove-SpotifyTracksFromLiked        --> dislike  
 ```` 
@@ -2488,7 +2488,7 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <String[]> [<CommonParameters>
     Removes tracks from the user's Spotify Library (Liked Songs).  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Remove-SpotifyTracksFromLiked [[-TrackId] <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -2526,11 +2526,11 @@ Remove-SpotifyTracksFromLiked [[-TrackId] <String[]>] [-WhatIf] [-Confirm] [<Com
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Remove-SpotifyTracksFromPlaylist 
-````PowerShell 
+```PowerShell 
 
    Remove-SpotifyTracksFromPlaylist     --> removefromplaylist  
 ```` 
@@ -2539,7 +2539,7 @@ Remove-SpotifyTracksFromLiked [[-TrackId] <String[]>] [-WhatIf] [-Confirm] [<Com
     Removes tracks from a Spotify playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]  
    Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
@@ -2593,11 +2593,11 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Search-Spotify 
-````PowerShell 
+```PowerShell 
 
    Search-Spotify                       --> fm, sm  
 ```` 
@@ -2606,7 +2606,7 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
     Performs a Spotify search and returns matching items.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Search-Spotify [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
 ```` 
 
@@ -2640,11 +2640,11 @@ Search-Spotify [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist |
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Search-SpotifyAndEnqueue 
-````PowerShell 
+```PowerShell 
 
    Search-SpotifyAndEnqueue             --> fmq, smq  
 ```` 
@@ -2653,7 +2653,7 @@ Search-Spotify [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist |
     Searches Spotify and adds the first matching item to the playback queue.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Search-SpotifyAndEnqueue [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
 ```` 
 
@@ -2693,11 +2693,11 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [[-SearchType] {Album | Artist | 
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Search-SpotifyAndPlay 
-````PowerShell 
+```PowerShell 
 
    Search-SpotifyAndPlay                --> fmp, smp  
 ```` 
@@ -2706,7 +2706,7 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [[-SearchType] {Album | Artist | 
     Performs a Spotify search and plays the first found item.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Search-SpotifyAndPlay [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
 ```` 
 
@@ -2746,11 +2746,11 @@ Search-SpotifyAndPlay [-Queries] <String[]> [[-SearchType] {Album | Artist | Pla
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyActiveDevice 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyActiveDevice              --> Set-SpotifyDevice  
 ```` 
@@ -2759,7 +2759,7 @@ Search-SpotifyAndPlay [-Queries] <String[]> [[-SearchType] {Album | Artist | Pla
     Sets the active Spotify playback device.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyActiveDevice [-DeviceId] <String> [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -2799,11 +2799,11 @@ Set-SpotifyActiveDevice [-DeviceId] <String> [-WhatIf] [-Confirm] [<CommonParame
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyApiToken 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyApiToken  
 ```` 
@@ -2812,7 +2812,7 @@ Set-SpotifyActiveDevice [-DeviceId] <String> [-WhatIf] [-Confirm] [<CommonParame
     Caches a Spotify API token for later use in the local configuration.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyApiToken [-ApiToken] <String> [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -2850,11 +2850,11 @@ Set-SpotifyApiToken [-ApiToken] <String> [-WhatIf] [-Confirm] [<CommonParameters
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyNext 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyNext                      --> next, skip  
 ```` 
@@ -2863,7 +2863,7 @@ Set-SpotifyApiToken [-ApiToken] <String> [-WhatIf] [-Confirm] [<CommonParameters
     Skips to next track on Spotify.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyNext [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -2893,11 +2893,11 @@ Set-SpotifyNext [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyPause 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyPause                     --> pausemusic, Resume-Music  
 ```` 
@@ -2906,7 +2906,7 @@ Set-SpotifyNext [-WhatIf] [-Confirm] [<CommonParameters>]
     Pauses Spotify playback  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyPause [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -2935,11 +2935,11 @@ Set-SpotifyPause [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyPlaylistDetails 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyPlaylistDetails           --> spld  
 ```` 
@@ -2948,7 +2948,7 @@ Set-SpotifyPause [-WhatIf] [-Confirm] [<CommonParameters>]
     Sets the main properties of a Spotify playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -3033,11 +3033,11 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyPlaylistOrder 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyPlaylistOrder  
 ```` 
@@ -3047,7 +3047,7 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
     position.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] <Int32> [[-RangeLength] <Nullable`1>] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -3112,11 +3112,11 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyPrevious 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyPrevious                  --> prev, previous  
 ```` 
@@ -3125,7 +3125,7 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
     Skips to the previous track in Spotify playback.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyPrevious [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -3154,11 +3154,11 @@ Set-SpotifyPrevious [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyRepeatContext 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyRepeatContext             --> repeat  
 ```` 
@@ -3167,7 +3167,7 @@ Set-SpotifyPrevious [-WhatIf] [-Confirm] [<CommonParameters>]
     Enables playlist repeat mode for Spotify playback.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -3197,7 +3197,7 @@ Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        This cmdlet supports ShouldProcess, allowing use of -WhatIf and -Confirm parameters  
        to control execution of state-changing operations.  
@@ -3207,11 +3207,11 @@ Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>]
    PS C:\> repeat  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyRepeatOff 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyRepeatOff                 --> norepeat, repeatoff  
 ```` 
@@ -3220,7 +3220,7 @@ Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>]
     Disables Spotify repeat mode for the currently active device.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyRepeatOff [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -3250,11 +3250,11 @@ Set-SpotifyRepeatOff [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyRepeatSong 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyRepeatSong                --> repeatsong  
 ```` 
@@ -3263,7 +3263,7 @@ Set-SpotifyRepeatOff [-WhatIf] [-Confirm] [<CommonParameters>]
     Enables song repeat mode in Spotify.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyRepeatSong [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -3293,11 +3293,11 @@ Set-SpotifyRepeatSong [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyShuffleOff 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyShuffleOff                --> noshuffle, shuffleoff  
 ```` 
@@ -3306,7 +3306,7 @@ Set-SpotifyRepeatSong [-WhatIf] [-Confirm] [<CommonParameters>]
     Disables Spotify song-shuffle mode on the active device.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyShuffleOff [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -3335,11 +3335,11 @@ Set-SpotifyShuffleOff [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyShuffleOn 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyShuffleOn                 --> shuffle, shuffleon  
 ```` 
@@ -3348,7 +3348,7 @@ Set-SpotifyShuffleOff [-WhatIf] [-Confirm] [<CommonParameters>]
     Enables Spotify song-shuffle mode.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyShuffleOn [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -3377,11 +3377,11 @@ Set-SpotifyShuffleOn [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyStart 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyStart                     --> play, Start-Music  
 ```` 
@@ -3390,7 +3390,7 @@ Set-SpotifyShuffleOn [-WhatIf] [-Confirm] [<CommonParameters>]
     Starts Spotify playback on the currently active device.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyStart [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -3420,11 +3420,11 @@ Set-SpotifyStart [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyStop 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyStop                      --> stop  
 ```` 
@@ -3433,7 +3433,7 @@ Set-SpotifyStart [-WhatIf] [-Confirm] [<CommonParameters>]
     Stops Spotify playback on the active device.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyStop [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -3462,14 +3462,14 @@ Set-SpotifyStop [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 &nbsp;<hr/>
 ###	GenXdev.Console.Vlc<hr/> 
 
 ##	Open-VlcMediaPlayer 
-````PowerShell 
+```PowerShell 
 
    Open-VlcMediaPlayer                  --> vlc  
 ```` 
@@ -3478,7 +3478,7 @@ Set-SpotifyStop [-WhatIf] [-Confirm] [<CommonParameters>]
     Launches and controls VLC Media Player with extensive configuration options.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Open-VlcMediaPlayer [[-Path] <String[]>] [[-Width] <Int32>] [[-Height] <Int32>] [[-X] <Int32>] [[-Y] <Int32>] [-KeysToSend <String[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds <Int32>] [-SendKeyHoldKeyboardFocus] [-Monitor <Int32>] [-AspectRatio <String>] [-Crop <String>] [-SubtitleFile <String>] [-SubtitleScale <Int32>] [-SubtitleLanguage <String>] [-AudioLanguage <String>] [-PreferredAudioLanguage <String>] [-HttpProxy <String>] [-HttpProxyPassword <String>] [-VerbosityLevel <Int32>] [-SubdirectoryBehavior <String>] [-IgnoredExtensions <String>] [-VLCPath <String>] [-ReplayGainMode <String>] [-ReplayGainPreamp <Single>] [-ForceDolbySurround <String>] [-AudioFilters <String[]>] [-Visualization <String>] [-Deinterlace <String>] [-DeinterlaceMode <String>] [-VideoFilters <String[]>] [-VideoFilterModules <String[]>] [-Modules <String[]>] [-AudioFilterModules <String[]>] [-AudioVisualization <String>] [-PreferredSubtitleLanguage <String>] [-IgnoredFileExtensions <String>] [-Arguments <String>] [-NoBorders] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-FullScreen] [-PassThru] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-DisableSubtitles] [-AutoScale] [-HighPriority] [-EnableTimeStretch] [-NewWindow] [-EnableWallpaperMode] [-EnableAudioTimeStretch] [-Close] [-SideBySide] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-SessionOnly] [-ClearSession] [-SkipSession] [<CommonParameters>] 
 ```` 
 
@@ -4068,11 +4068,11 @@ Open-VlcMediaPlayer [[-Path] <String[]>] [[-Width] <Int32>] [[-Height] <Int32>] 
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Open-VlcMediaPlayerLyrics 
-````PowerShell 
+```PowerShell 
 
    Open-VlcMediaPlayerLyrics            --> vlclyrics  
 ```` 
@@ -4081,7 +4081,7 @@ Open-VlcMediaPlayer [[-Path] <String[]>] [[-Width] <Int32>] [[-Height] <Int32>] 
     Opens a web browser to search for lyrics of currently playing VLC media.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Open-VlcMediaPlayerLyrics [[-Queries] <String[]>] [[-EndPoint] <String>] [[-Language] <String>] [-Monitor <Int32>] [-Width <Int32>] [-Height <Int32>] [-X <Int32>] [-Y <Int32>] [-AcceptLang <String>] [-KeysToSend <String[]>] [-SendKeyDelayMilliSeconds <Int32>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [-All] [-ShowWindow] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-DisablePopupBlocker] [-SendKeyEscape] [-SendKeyHoldKeyboardFocus] [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-NewWindow] [-PassThru] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders] [-SessionOnly] [-ClearSession] [-SkipSession] [-SideBySide] [<CommonParameters>] 
 ```` 
 
@@ -4451,11 +4451,11 @@ Open-VlcMediaPlayerLyrics [[-Queries] <String[]>] [[-EndPoint] <String>] [[-Lang
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Start-VlcMediaPlayerNextInPlaylist 
-````PowerShell 
+```PowerShell 
 
    Start-VlcMediaPlayerNextInPlaylist   --> vlcnext  
 ```` 
@@ -4464,7 +4464,7 @@ Open-VlcMediaPlayerLyrics [[-Queries] <String[]>] [[-EndPoint] <String>] [[-Lang
     Advances VLC Media Player to the next item in the current playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -4495,11 +4495,11 @@ Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Start-VlcMediaPlayerPreviousInPlaylist 
-````PowerShell 
+```PowerShell 
 
    Start-VlcMediaPlayerPreviousInPlaylist --> vlcback, vlcprev  
 ```` 
@@ -4508,7 +4508,7 @@ Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>]
     Moves to the previous item in the VLC Media Player playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -4538,11 +4538,11 @@ Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Switch-VlcMediaPlayerMute 
-````PowerShell 
+```PowerShell 
 
    Switch-VlcMediaPlayerMute            --> vlcmute, vlcunmute  
 ```` 
@@ -4551,7 +4551,7 @@ Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>]
     Toggles the mute state of the VLC Media Player.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Switch-VlcMediaPlayerMute [<CommonParameters>] 
 ```` 
 
@@ -4567,11 +4567,11 @@ Switch-VlcMediaPlayerMute [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Switch-VLCMediaPlayerPaused 
-````PowerShell 
+```PowerShell 
 
    Switch-VLCMediaPlayerPaused          --> vlcpause, vlcplay  
 ```` 
@@ -4580,7 +4580,7 @@ Switch-VlcMediaPlayerMute [<CommonParameters>]
     Toggles the pause/play state of the VLC Media Player.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Switch-VLCMediaPlayerPaused [<CommonParameters>] 
 ```` 
 
@@ -4596,11 +4596,11 @@ Switch-VLCMediaPlayerPaused [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Switch-VlcMediaPlayerRepeat 
-````PowerShell 
+```PowerShell 
 
    Switch-VlcMediaPlayerRepeat          --> vlcrepeat  
 ```` 
@@ -4609,7 +4609,7 @@ Switch-VLCMediaPlayerPaused [<CommonParameters>]
     Toggles the repeat mode in VLC Media Player.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Switch-VlcMediaPlayerRepeat [<CommonParameters>] 
 ```` 
 
@@ -4626,14 +4626,14 @@ Switch-VlcMediaPlayerRepeat [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 &nbsp;<hr/>
 ###	GenXdev.Console<hr/> 
 
 ##	Enable-Screensaver 
-````PowerShell 
+```PowerShell 
 
    Enable-Screensaver  
 ```` 
@@ -4642,7 +4642,7 @@ Switch-VlcMediaPlayerRepeat [<CommonParameters>]
     Starts the configured Windows screensaver.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Enable-Screensaver [<CommonParameters>] 
 ```` 
 
@@ -4658,7 +4658,7 @@ Enable-Screensaver [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        This function requires the Windows screensaver to be properly configured in the  
        system settings. The screensaver executable must exist at the default Windows  
@@ -4667,11 +4667,11 @@ Enable-Screensaver [<CommonParameters>]
    PS C:\> Enable-Screensaver  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-IsSpeaking 
-````PowerShell 
+```PowerShell 
 
    Get-IsSpeaking                       --> iss  
 ```` 
@@ -4680,7 +4680,7 @@ Enable-Screensaver [<CommonParameters>]
     Returns true if the text-to-speech engine is speaking.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-IsSpeaking [<CommonParameters>] 
 ```` 
 
@@ -4696,11 +4696,11 @@ Get-IsSpeaking [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	New-MicrosoftShellTab 
-````PowerShell 
+```PowerShell 
 
    New-MicrosoftShellTab                --> x  
 ```` 
@@ -4709,7 +4709,7 @@ Get-IsSpeaking [<CommonParameters>]
     Creates a new Windows Terminal tab running PowerShell.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 New-MicrosoftShellTab [-DontCloseThisTab] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -4750,11 +4750,11 @@ New-MicrosoftShellTab [-DontCloseThisTab] [-WhatIf] [-Confirm] [<CommonParameter
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Now 
-````PowerShell 
+```PowerShell 
 
    Now  
 ```` 
@@ -4763,7 +4763,7 @@ New-MicrosoftShellTab [-DontCloseThisTab] [-WhatIf] [-Confirm] [<CommonParameter
     Returns the current system date and time as a DateTime object.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Now [<CommonParameters>] 
 ```` 
 
@@ -4779,11 +4779,11 @@ Now [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Open-MediaFile 
-````PowerShell 
+```PowerShell 
 
    Open-MediaFile                       --> findmedia, media, vlcmedia  
 ```` 
@@ -4793,7 +4793,7 @@ Now [<CommonParameters>]
     configuration options.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Open-MediaFile [[-SearchMask] <String[]>] [-PlaylistPath <String>] [[-Width] <Int32>] [[-Height] <Int32>] [[-X] <Int32>] [[-Y] <Int32>] [-KeysToSend <String[]>] [-Keywords <String[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds <Int32>] [-SendKeyHoldKeyboardFocus] [-Monitor <Int32>] [-AspectRatio <String>] [-Crop <String>] [-SubtitleFile <String>] [-SubtitleScale <Int32>] [-SubtitleLanguage <String>] [-AudioLanguage <String>] [-PreferredAudioLanguage <String>] [-HttpProxy <String>] [-HttpProxyPassword <String>] [-VerbosityLevel <Int32>] [-SubdirectoryBehavior <String>] [-IgnoredExtensions <String>] [-VLCPath <String>] [-ReplayGainMode <String>] [-ReplayGainPreamp <Single>] [-ForceDolbySurround <String>] [-AudioFilters <String[]>] [-Visualization <String>] [-Deinterlace <String>] [-DeinterlaceMode <String>] [-VideoFilters <String[]>] [-VideoFilterModules <String[]>] [-Modules <String[]>] [-AudioFilterModules <String[]>] [-AudioVisualization <String>] [-PreferredSubtitleLanguage <String>] [-IgnoredFileExtensions <String>] [-Arguments <String>] [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio] [-OnlyPictures] [-IncludeVideos] [-IncludeAudio] [-IncludePictures] [-NoBorders] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-FullScreen] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-DisableSubtitles] [-AutoScale] [-HighPriority] [-EnableTimeStretch] [-NewWindow] [-EnableWallpaperMode] [-EnableAudioTimeStretch] [-Close] [-SideBySide] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-SessionOnly] [-ClearSession] [-SkipSession] [-PassThru] [-PassThruNoOpen] [-PassThruWindow] [<CommonParameters>] 
 ```` 
 
@@ -5474,11 +5474,11 @@ Open-MediaFile [[-SearchMask] <String[]>] [-PlaylistPath <String>] [[-Width] <In
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	SayDate 
-````PowerShell 
+```PowerShell 
 
    SayDate  
 ```` 
@@ -5487,7 +5487,7 @@ Open-MediaFile [[-SearchMask] <String[]>] [-PlaylistPath <String>] [[-Width] <In
     Speaks the current date using text-to-speech synthesis.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 SayDate [<CommonParameters>] 
 ```` 
 
@@ -5503,11 +5503,11 @@ SayDate [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	SayTime 
-````PowerShell 
+```PowerShell 
 
    SayTime  
 ```` 
@@ -5516,7 +5516,7 @@ SayDate [<CommonParameters>]
     Announces the current time using text-to-speech.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 SayTime [<CommonParameters>] 
 ```` 
 
@@ -5532,11 +5532,11 @@ SayTime [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-LocationParent 
-````PowerShell 
+```PowerShell 
 
    Set-LocationParent                   --> ..  
 ```` 
@@ -5545,7 +5545,7 @@ SayTime [<CommonParameters>]
     Changes the current location to the parent directory and lists its contents.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-LocationParent [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -5575,11 +5575,11 @@ Set-LocationParent [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-LocationParent2 
-````PowerShell 
+```PowerShell 
 
    Set-LocationParent2                  --> ...  
 ```` 
@@ -5588,7 +5588,7 @@ Set-LocationParent [-WhatIf] [-Confirm] [<CommonParameters>]
     Navigates up two directory levels in the file system hierarchy.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -5618,7 +5618,7 @@ Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        This function supports -WhatIf and -Confirm parameters through ShouldProcess.  
    -------------------------- EXAMPLE 1 --------------------------  
@@ -5627,11 +5627,11 @@ Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>]
    PS C:\> ...  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-LocationParent3 
-````PowerShell 
+```PowerShell 
 
    Set-LocationParent3                  --> ....  
 ```` 
@@ -5640,7 +5640,7 @@ Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>]
     Navigates up three directory levels in the file system hierarchy.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-LocationParent3 [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -5669,11 +5669,11 @@ Set-LocationParent3 [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-LocationParent4 
-````PowerShell 
+```PowerShell 
 
    Set-LocationParent4                  --> .....  
 ```` 
@@ -5682,7 +5682,7 @@ Set-LocationParent3 [-WhatIf] [-Confirm] [<CommonParameters>]
     Navigates up four directory levels in the filesystem hierarchy.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -5713,7 +5713,7 @@ Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        The alias '.....'' represents moving up four parent directories, where each dot  
        represents one level up.  
@@ -5723,11 +5723,11 @@ Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>]
    PS C:\> .....  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-LocationParent5 
-````PowerShell 
+```PowerShell 
 
    Set-LocationParent5                  --> ......  
 ```` 
@@ -5736,7 +5736,7 @@ Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>]
     Navigates up five directory levels in the file system hierarchy.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-LocationParent5 [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -5766,11 +5766,11 @@ Set-LocationParent5 [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-MonitorPowerOff 
-````PowerShell 
+```PowerShell 
 
    Set-MonitorPowerOff                  --> poweroff  
 ```` 
@@ -5779,7 +5779,7 @@ Set-LocationParent5 [-WhatIf] [-Confirm] [<CommonParameters>]
     Turns off power to all connected monitors.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-MonitorPowerOff [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -5810,11 +5810,11 @@ Set-MonitorPowerOff [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-MonitorPowerOn 
-````PowerShell 
+```PowerShell 
 
    Set-MonitorPowerOn                   --> wake-monitor  
 ```` 
@@ -5823,7 +5823,7 @@ Set-MonitorPowerOff [-WhatIf] [-Confirm] [<CommonParameters>]
     Turns the monitor power on.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-MonitorPowerOn [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -5853,11 +5853,11 @@ Set-MonitorPowerOn [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-VLCPlayerFocused 
-````PowerShell 
+```PowerShell 
 
    Set-VLCPlayerFocused                 --> fvlc, showvlc, vlcf  
 ```` 
@@ -5866,7 +5866,7 @@ Set-MonitorPowerOn [-WhatIf] [-Confirm] [<CommonParameters>]
     Sets focus to the VLC media player window.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-VLCPlayerFocused [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -5896,11 +5896,11 @@ Set-VLCPlayerFocused [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Start-TextToSpeech 
-````PowerShell 
+```PowerShell 
 
    Start-TextToSpeech                   --> say  
 ```` 
@@ -5909,7 +5909,7 @@ Set-VLCPlayerFocused [-WhatIf] [-Confirm] [<CommonParameters>]
     Converts text to speech using the Windows Speech API.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Start-TextToSpeech [-Lines] <String[]> [-Locale <String>] [-VoiceName <String>] [-PassThru] [-Wait] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -5985,11 +5985,11 @@ Start-TextToSpeech [-Lines] <String[]> [-Locale <String>] [-VoiceName <String>] 
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Stop-TextToSpeech 
-````PowerShell 
+```PowerShell 
 
    Stop-TextToSpeech                    --> sst  
 ```` 
@@ -5998,7 +5998,7 @@ Start-TextToSpeech [-Lines] <String[]> [-Locale <String>] [-VoiceName <String>] 
     Immediately stops any ongoing text-to-speech output.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Stop-TextToSpeech [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -6029,7 +6029,7 @@ Stop-TextToSpeech [-WhatIf] [-Confirm] [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        This cmdlet is commonly used in conjunction with Start-TextToSpeech (alias: say)  
        and Skip-TextToSpeech (alias: sstSkip) for speech control.  
@@ -6041,11 +6041,11 @@ Stop-TextToSpeech [-WhatIf] [-Confirm] [<CommonParameters>]
    Starts speaking but gets interrupted immediately  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	UtcNow 
-````PowerShell 
+```PowerShell 
 
    UtcNow  
 ```` 
@@ -6054,7 +6054,7 @@ Stop-TextToSpeech [-WhatIf] [-Confirm] [<CommonParameters>]
     Gets the current UTC (Coordinated Universal Time) date and time.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 UtcNow [<CommonParameters>] 
 ```` 
 
@@ -6071,14 +6071,14 @@ UtcNow [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 &nbsp;<hr/>
 ###	GenXdev.Console.Spotify<hr/> 
 
 ##	Add-SpotifyNewPlaylist 
-````PowerShell 
+```PowerShell 
 
    Add-SpotifyNewPlaylist               --> newplaylist  
 ```` 
@@ -6087,7 +6087,7 @@ UtcNow [<CommonParameters>]
     Creates a new Spotify playlist with customizable settings.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [<CommonParameters>] 
 ```` 
 
@@ -6137,11 +6137,11 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Add-SpotifyTracksToLiked 
-````PowerShell 
+```PowerShell 
 
    Add-SpotifyTracksToLiked             --> like  
 ```` 
@@ -6150,7 +6150,7 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
     Adds tracks to the user's Spotify liked songs library.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Add-SpotifyTracksToLiked [[-TrackId] <String[]>] [<CommonParameters>] 
 ```` 
 
@@ -6175,11 +6175,11 @@ Add-SpotifyTracksToLiked [[-TrackId] <String[]>] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Add-SpotifyTracksToPlaylist 
-````PowerShell 
+```PowerShell 
 
    Add-SpotifyTracksToPlaylist          --> addtoplaylist  
 ```` 
@@ -6188,7 +6188,7 @@ Add-SpotifyTracksToLiked [[-TrackId] <String[]>] [<CommonParameters>]
     Adds tracks to a Spotify playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<CommonParameters>]  
    Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<CommonParameters>] 
 ```` 
@@ -6228,11 +6228,11 @@ Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<Com
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Connect-SpotifyApiToken 
-````PowerShell 
+```PowerShell 
 
    Connect-SpotifyApiToken  
 ```` 
@@ -6241,7 +6241,7 @@ Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<Com
     Authenticates with Spotify API using OAuth flow to obtain an access token.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Connect-SpotifyApiToken [<CommonParameters>] 
 ```` 
 
@@ -6259,7 +6259,7 @@ Connect-SpotifyApiToken [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        Uses port 5642 as the default callback port for OAuth flow  
        Minimizes browser window during authentication  
@@ -6269,11 +6269,11 @@ Connect-SpotifyApiToken [<CommonParameters>]
    Connect-SpotifyApiToken  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyActiveDevice 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyActiveDevice  
 ```` 
@@ -6282,7 +6282,7 @@ Connect-SpotifyApiToken [<CommonParameters>]
     Returns all currently active Spotify devices for the current user.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyActiveDevice [<CommonParameters>] 
 ```` 
 
@@ -6298,11 +6298,11 @@ Get-SpotifyActiveDevice [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyApiToken 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyApiToken  
 ```` 
@@ -6311,7 +6311,7 @@ Get-SpotifyActiveDevice [<CommonParameters>]
     Retrieves or generates a valid Spotify API authentication token.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyApiToken [<CommonParameters>] 
 ```` 
 
@@ -6327,11 +6327,11 @@ Get-SpotifyApiToken [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyCurrentlyPlaying 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyCurrentlyPlaying          --> gcp  
 ```` 
@@ -6340,7 +6340,7 @@ Get-SpotifyApiToken [<CommonParameters>]
     Returns information about the currently playing track on Spotify.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyCurrentlyPlaying [<CommonParameters>] 
 ```` 
 
@@ -6356,11 +6356,11 @@ Get-SpotifyCurrentlyPlaying [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyDevice 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyDevice                    --> Get-SpotifyDevices  
 ```` 
@@ -6369,7 +6369,7 @@ Get-SpotifyCurrentlyPlaying [<CommonParameters>]
     Returns all currently available Spotify devices for current user.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyDevice [<CommonParameters>] 
 ```` 
 
@@ -6386,7 +6386,7 @@ Get-SpotifyDevice [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        Requires valid Spotify authentication token to function. The token is automatically  
        retrieved using Get-SpotifyApiToken.  
@@ -6395,11 +6395,11 @@ Get-SpotifyDevice [<CommonParameters>]
    This command returns all available Spotify devices for the current user.  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyLikedTrack 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyLikedTrack                --> liked  
 ```` 
@@ -6408,7 +6408,7 @@ Get-SpotifyDevice [<CommonParameters>]
     Retrieves all tracks saved in the user's Spotify Library.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyLikedTrack [<CommonParameters>] 
 ```` 
 
@@ -6425,11 +6425,11 @@ Get-SpotifyLikedTrack [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyLyrics 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyLyrics                    --> lyrics  
 ```` 
@@ -6438,7 +6438,7 @@ Get-SpotifyLikedTrack [<CommonParameters>]
     Retrieves lyrics for Spotify tracks from Musixmatch.com  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyLyrics [[-TrackId] <String>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [[-Monitor] <Int32>] [-FullScreen] [[-Width] <Int32>] [[-Height] <Int32>] [[-Left] <Int32>] [[-Right] <Int32>] [[-Top] <Int32>] [[-Bottom] <Int32>] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-DisablePopupBlocker] [[-AcceptLang] <String>] [-SendKeyEscape] [-SendKeyHoldKeyboardFocus] [-SendKeyUseShiftEnter] [[-SendKeyDelayMilliSeconds] <Int32>] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-NewWindow] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders] [-SessionOnly] [-ClearSession] [-SkipSession] [-SideBySide] [<CommonParameters>] 
 ```` 
 
@@ -6710,11 +6710,11 @@ Get-SpotifyLyrics [[-TrackId] <String>] [-Private] [-Force] [-Edge] [-Chrome] [-
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyPlaylistIdsByName 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyPlaylistIdsByName  
 ```` 
@@ -6723,7 +6723,7 @@ Get-SpotifyLyrics [[-TrackId] <String>] [-Private] [-Force] [-Edge] [-Chrome] [-
     Retrieves Spotify playlist IDs by their names.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyPlaylistIdsByName [-PlaylistName] <String[]> [<CommonParameters>] 
 ```` 
 
@@ -6751,11 +6751,11 @@ Get-SpotifyPlaylistIdsByName [-PlaylistName] <String[]> [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyPlaylistTrack 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyPlaylistTrack             --> getplaylist  
 ```` 
@@ -6764,7 +6764,7 @@ Get-SpotifyPlaylistIdsByName [-PlaylistName] <String[]> [<CommonParameters>]
     Returns all tracks from a Spotify playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyPlaylistTrack [-PlaylistName] <String> [<CommonParameters>]  
    Get-SpotifyPlaylistTrack [-PlaylistId] <String> [<CommonParameters>] 
 ```` 
@@ -6798,11 +6798,11 @@ Get-SpotifyPlaylistTrack [-PlaylistName] <String> [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyTrackAudioFeatures 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyTrackAudioFeatures        --> audiofeatures  
 ```` 
@@ -6811,7 +6811,7 @@ Get-SpotifyPlaylistTrack [-PlaylistName] <String> [<CommonParameters>]
     Retrieves audio feature information for one or more Spotify tracks.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyTrackAudioFeatures [-TrackId] <String[]> [<CommonParameters>] 
 ```` 
 
@@ -6837,11 +6837,11 @@ Get-SpotifyTrackAudioFeatures [-TrackId] <String[]> [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyTrackById 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyTrackById                 --> gettrack  
 ```` 
@@ -6850,7 +6850,7 @@ Get-SpotifyTrackAudioFeatures [-TrackId] <String[]> [<CommonParameters>]
     Retrieves detailed track information from Spotify using a track ID.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>] 
 ```` 
 
@@ -6875,11 +6875,11 @@ Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyUserPlaylists 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyUserPlaylists             --> gupl  
 ```` 
@@ -6888,7 +6888,7 @@ Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>]
     Returns a collection of Spotify playlists owned by the current user.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyUserPlaylists [[-Filter] <String[]>] [-Force] [<CommonParameters>] 
 ```` 
 
@@ -6921,11 +6921,11 @@ Get-SpotifyUserPlaylists [[-Filter] <String[]>] [-Force] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Move-SpotifyLikedTracksToPlaylist 
-````PowerShell 
+```PowerShell 
 
    Move-SpotifyLikedTracksToPlaylist    --> moveliked  
 ```` 
@@ -6934,7 +6934,7 @@ Get-SpotifyUserPlaylists [[-Filter] <String[]>] [-Force] [<CommonParameters>]
     Moves all liked tracks from your Spotify library to specified playlist(s)  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <String[]> [<CommonParameters>]  
    Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <String[]> [<CommonParameters>] 
 ```` 
@@ -6969,11 +6969,11 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <String[]> [<CommonParameters>
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Remove-SpotifyTracksFromLiked 
-````PowerShell 
+```PowerShell 
 
    Remove-SpotifyTracksFromLiked        --> dislike  
 ```` 
@@ -6982,7 +6982,7 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <String[]> [<CommonParameters>
     Removes tracks from the user's Spotify Library (Liked Songs).  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Remove-SpotifyTracksFromLiked [[-TrackId] <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -7020,11 +7020,11 @@ Remove-SpotifyTracksFromLiked [[-TrackId] <String[]>] [-WhatIf] [-Confirm] [<Com
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Remove-SpotifyTracksFromPlaylist 
-````PowerShell 
+```PowerShell 
 
    Remove-SpotifyTracksFromPlaylist     --> removefromplaylist  
 ```` 
@@ -7033,7 +7033,7 @@ Remove-SpotifyTracksFromLiked [[-TrackId] <String[]>] [-WhatIf] [-Confirm] [<Com
     Removes tracks from a Spotify playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]  
    Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
@@ -7087,11 +7087,11 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Search-Spotify 
-````PowerShell 
+```PowerShell 
 
    Search-Spotify                       --> fm, sm  
 ```` 
@@ -7100,7 +7100,7 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
     Performs a Spotify search and returns matching items.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Search-Spotify [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
 ```` 
 
@@ -7134,11 +7134,11 @@ Search-Spotify [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist |
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Search-SpotifyAndEnqueue 
-````PowerShell 
+```PowerShell 
 
    Search-SpotifyAndEnqueue             --> fmq, smq  
 ```` 
@@ -7147,7 +7147,7 @@ Search-Spotify [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist |
     Searches Spotify and adds the first matching item to the playback queue.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Search-SpotifyAndEnqueue [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
 ```` 
 
@@ -7187,11 +7187,11 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [[-SearchType] {Album | Artist | 
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Search-SpotifyAndPlay 
-````PowerShell 
+```PowerShell 
 
    Search-SpotifyAndPlay                --> fmp, smp  
 ```` 
@@ -7200,7 +7200,7 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [[-SearchType] {Album | Artist | 
     Performs a Spotify search and plays the first found item.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Search-SpotifyAndPlay [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
 ```` 
 
@@ -7240,11 +7240,11 @@ Search-SpotifyAndPlay [-Queries] <String[]> [[-SearchType] {Album | Artist | Pla
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyActiveDevice 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyActiveDevice              --> Set-SpotifyDevice  
 ```` 
@@ -7253,7 +7253,7 @@ Search-SpotifyAndPlay [-Queries] <String[]> [[-SearchType] {Album | Artist | Pla
     Sets the active Spotify playback device.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyActiveDevice [-DeviceId] <String> [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -7293,11 +7293,11 @@ Set-SpotifyActiveDevice [-DeviceId] <String> [-WhatIf] [-Confirm] [<CommonParame
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyApiToken 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyApiToken  
 ```` 
@@ -7306,7 +7306,7 @@ Set-SpotifyActiveDevice [-DeviceId] <String> [-WhatIf] [-Confirm] [<CommonParame
     Caches a Spotify API token for later use in the local configuration.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyApiToken [-ApiToken] <String> [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -7344,11 +7344,11 @@ Set-SpotifyApiToken [-ApiToken] <String> [-WhatIf] [-Confirm] [<CommonParameters
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyNext 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyNext                      --> next, skip  
 ```` 
@@ -7357,7 +7357,7 @@ Set-SpotifyApiToken [-ApiToken] <String> [-WhatIf] [-Confirm] [<CommonParameters
     Skips to next track on Spotify.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyNext [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -7387,11 +7387,11 @@ Set-SpotifyNext [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyPause 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyPause                     --> pausemusic, Resume-Music  
 ```` 
@@ -7400,7 +7400,7 @@ Set-SpotifyNext [-WhatIf] [-Confirm] [<CommonParameters>]
     Pauses Spotify playback  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyPause [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -7429,11 +7429,11 @@ Set-SpotifyPause [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyPlaylistDetails 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyPlaylistDetails           --> spld  
 ```` 
@@ -7442,7 +7442,7 @@ Set-SpotifyPause [-WhatIf] [-Confirm] [<CommonParameters>]
     Sets the main properties of a Spotify playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -7527,11 +7527,11 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyPlaylistOrder 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyPlaylistOrder  
 ```` 
@@ -7541,7 +7541,7 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
     position.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] <Int32> [[-RangeLength] <Nullable`1>] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -7606,11 +7606,11 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyPrevious 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyPrevious                  --> prev, previous  
 ```` 
@@ -7619,7 +7619,7 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
     Skips to the previous track in Spotify playback.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyPrevious [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -7648,11 +7648,11 @@ Set-SpotifyPrevious [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyRepeatContext 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyRepeatContext             --> repeat  
 ```` 
@@ -7661,7 +7661,7 @@ Set-SpotifyPrevious [-WhatIf] [-Confirm] [<CommonParameters>]
     Enables playlist repeat mode for Spotify playback.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -7691,7 +7691,7 @@ Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        This cmdlet supports ShouldProcess, allowing use of -WhatIf and -Confirm parameters  
        to control execution of state-changing operations.  
@@ -7701,11 +7701,11 @@ Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>]
    PS C:\> repeat  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyRepeatOff 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyRepeatOff                 --> norepeat, repeatoff  
 ```` 
@@ -7714,7 +7714,7 @@ Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>]
     Disables Spotify repeat mode for the currently active device.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyRepeatOff [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -7744,11 +7744,11 @@ Set-SpotifyRepeatOff [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyRepeatSong 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyRepeatSong                --> repeatsong  
 ```` 
@@ -7757,7 +7757,7 @@ Set-SpotifyRepeatOff [-WhatIf] [-Confirm] [<CommonParameters>]
     Enables song repeat mode in Spotify.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyRepeatSong [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -7787,11 +7787,11 @@ Set-SpotifyRepeatSong [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyShuffleOff 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyShuffleOff                --> noshuffle, shuffleoff  
 ```` 
@@ -7800,7 +7800,7 @@ Set-SpotifyRepeatSong [-WhatIf] [-Confirm] [<CommonParameters>]
     Disables Spotify song-shuffle mode on the active device.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyShuffleOff [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -7829,11 +7829,11 @@ Set-SpotifyShuffleOff [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyShuffleOn 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyShuffleOn                 --> shuffle, shuffleon  
 ```` 
@@ -7842,7 +7842,7 @@ Set-SpotifyShuffleOff [-WhatIf] [-Confirm] [<CommonParameters>]
     Enables Spotify song-shuffle mode.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyShuffleOn [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -7871,11 +7871,11 @@ Set-SpotifyShuffleOn [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyStart 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyStart                     --> play, Start-Music  
 ```` 
@@ -7884,7 +7884,7 @@ Set-SpotifyShuffleOn [-WhatIf] [-Confirm] [<CommonParameters>]
     Starts Spotify playback on the currently active device.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyStart [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -7914,11 +7914,11 @@ Set-SpotifyStart [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyStop 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyStop                      --> stop  
 ```` 
@@ -7927,7 +7927,7 @@ Set-SpotifyStart [-WhatIf] [-Confirm] [<CommonParameters>]
     Stops Spotify playback on the active device.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyStop [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -7956,14 +7956,14 @@ Set-SpotifyStop [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 &nbsp;<hr/>
 ###	GenXdev.Console.Vlc<hr/> 
 
 ##	Open-VlcMediaPlayer 
-````PowerShell 
+```PowerShell 
 
    Open-VlcMediaPlayer                  --> vlc  
 ```` 
@@ -7972,7 +7972,7 @@ Set-SpotifyStop [-WhatIf] [-Confirm] [<CommonParameters>]
     Launches and controls VLC Media Player with extensive configuration options.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Open-VlcMediaPlayer [[-Path] <String[]>] [[-Width] <Int32>] [[-Height] <Int32>] [[-X] <Int32>] [[-Y] <Int32>] [-KeysToSend <String[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds <Int32>] [-SendKeyHoldKeyboardFocus] [-Monitor <Int32>] [-AspectRatio <String>] [-Crop <String>] [-SubtitleFile <String>] [-SubtitleScale <Int32>] [-SubtitleLanguage <String>] [-AudioLanguage <String>] [-PreferredAudioLanguage <String>] [-HttpProxy <String>] [-HttpProxyPassword <String>] [-VerbosityLevel <Int32>] [-SubdirectoryBehavior <String>] [-IgnoredExtensions <String>] [-VLCPath <String>] [-ReplayGainMode <String>] [-ReplayGainPreamp <Single>] [-ForceDolbySurround <String>] [-AudioFilters <String[]>] [-Visualization <String>] [-Deinterlace <String>] [-DeinterlaceMode <String>] [-VideoFilters <String[]>] [-VideoFilterModules <String[]>] [-Modules <String[]>] [-AudioFilterModules <String[]>] [-AudioVisualization <String>] [-PreferredSubtitleLanguage <String>] [-IgnoredFileExtensions <String>] [-Arguments <String>] [-NoBorders] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-FullScreen] [-PassThru] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-DisableSubtitles] [-AutoScale] [-HighPriority] [-EnableTimeStretch] [-NewWindow] [-EnableWallpaperMode] [-EnableAudioTimeStretch] [-Close] [-SideBySide] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-SessionOnly] [-ClearSession] [-SkipSession] [<CommonParameters>] 
 ```` 
 
@@ -8562,11 +8562,11 @@ Open-VlcMediaPlayer [[-Path] <String[]>] [[-Width] <Int32>] [[-Height] <Int32>] 
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Open-VlcMediaPlayerLyrics 
-````PowerShell 
+```PowerShell 
 
    Open-VlcMediaPlayerLyrics            --> vlclyrics  
 ```` 
@@ -8575,7 +8575,7 @@ Open-VlcMediaPlayer [[-Path] <String[]>] [[-Width] <Int32>] [[-Height] <Int32>] 
     Opens a web browser to search for lyrics of currently playing VLC media.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Open-VlcMediaPlayerLyrics [[-Queries] <String[]>] [[-EndPoint] <String>] [[-Language] <String>] [-Monitor <Int32>] [-Width <Int32>] [-Height <Int32>] [-X <Int32>] [-Y <Int32>] [-AcceptLang <String>] [-KeysToSend <String[]>] [-SendKeyDelayMilliSeconds <Int32>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [-All] [-ShowWindow] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-DisablePopupBlocker] [-SendKeyEscape] [-SendKeyHoldKeyboardFocus] [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-NewWindow] [-PassThru] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders] [-SessionOnly] [-ClearSession] [-SkipSession] [-SideBySide] [<CommonParameters>] 
 ```` 
 
@@ -8945,11 +8945,11 @@ Open-VlcMediaPlayerLyrics [[-Queries] <String[]>] [[-EndPoint] <String>] [[-Lang
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Start-VlcMediaPlayerNextInPlaylist 
-````PowerShell 
+```PowerShell 
 
    Start-VlcMediaPlayerNextInPlaylist   --> vlcnext  
 ```` 
@@ -8958,7 +8958,7 @@ Open-VlcMediaPlayerLyrics [[-Queries] <String[]>] [[-EndPoint] <String>] [[-Lang
     Advances VLC Media Player to the next item in the current playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -8989,11 +8989,11 @@ Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Start-VlcMediaPlayerPreviousInPlaylist 
-````PowerShell 
+```PowerShell 
 
    Start-VlcMediaPlayerPreviousInPlaylist --> vlcback, vlcprev  
 ```` 
@@ -9002,7 +9002,7 @@ Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>]
     Moves to the previous item in the VLC Media Player playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -9032,11 +9032,11 @@ Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Switch-VlcMediaPlayerMute 
-````PowerShell 
+```PowerShell 
 
    Switch-VlcMediaPlayerMute            --> vlcmute, vlcunmute  
 ```` 
@@ -9045,7 +9045,7 @@ Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>]
     Toggles the mute state of the VLC Media Player.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Switch-VlcMediaPlayerMute [<CommonParameters>] 
 ```` 
 
@@ -9061,11 +9061,11 @@ Switch-VlcMediaPlayerMute [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Switch-VLCMediaPlayerPaused 
-````PowerShell 
+```PowerShell 
 
    Switch-VLCMediaPlayerPaused          --> vlcpause, vlcplay  
 ```` 
@@ -9074,7 +9074,7 @@ Switch-VlcMediaPlayerMute [<CommonParameters>]
     Toggles the pause/play state of the VLC Media Player.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Switch-VLCMediaPlayerPaused [<CommonParameters>] 
 ```` 
 
@@ -9090,11 +9090,11 @@ Switch-VLCMediaPlayerPaused [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Switch-VlcMediaPlayerRepeat 
-````PowerShell 
+```PowerShell 
 
    Switch-VlcMediaPlayerRepeat          --> vlcrepeat  
 ```` 
@@ -9103,7 +9103,7 @@ Switch-VLCMediaPlayerPaused [<CommonParameters>]
     Toggles the repeat mode in VLC Media Player.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Switch-VlcMediaPlayerRepeat [<CommonParameters>] 
 ```` 
 
@@ -9120,14 +9120,14 @@ Switch-VlcMediaPlayerRepeat [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 &nbsp;<hr/>
 ###	GenXdev.Console<hr/> 
 
 ##	Enable-Screensaver 
-````PowerShell 
+```PowerShell 
 
    Enable-Screensaver  
 ```` 
@@ -9136,7 +9136,7 @@ Switch-VlcMediaPlayerRepeat [<CommonParameters>]
     Starts the configured Windows screensaver.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Enable-Screensaver [<CommonParameters>] 
 ```` 
 
@@ -9152,7 +9152,7 @@ Enable-Screensaver [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        This function requires the Windows screensaver to be properly configured in the  
        system settings. The screensaver executable must exist at the default Windows  
@@ -9161,11 +9161,11 @@ Enable-Screensaver [<CommonParameters>]
    PS C:\> Enable-Screensaver  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-IsSpeaking 
-````PowerShell 
+```PowerShell 
 
    Get-IsSpeaking                       --> iss  
 ```` 
@@ -9174,7 +9174,7 @@ Enable-Screensaver [<CommonParameters>]
     Returns true if the text-to-speech engine is speaking.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-IsSpeaking [<CommonParameters>] 
 ```` 
 
@@ -9190,11 +9190,11 @@ Get-IsSpeaking [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	New-MicrosoftShellTab 
-````PowerShell 
+```PowerShell 
 
    New-MicrosoftShellTab                --> x  
 ```` 
@@ -9203,7 +9203,7 @@ Get-IsSpeaking [<CommonParameters>]
     Creates a new Windows Terminal tab running PowerShell.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 New-MicrosoftShellTab [-DontCloseThisTab] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -9244,11 +9244,11 @@ New-MicrosoftShellTab [-DontCloseThisTab] [-WhatIf] [-Confirm] [<CommonParameter
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Now 
-````PowerShell 
+```PowerShell 
 
    Now  
 ```` 
@@ -9257,7 +9257,7 @@ New-MicrosoftShellTab [-DontCloseThisTab] [-WhatIf] [-Confirm] [<CommonParameter
     Returns the current system date and time as a DateTime object.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Now [<CommonParameters>] 
 ```` 
 
@@ -9273,11 +9273,11 @@ Now [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Open-MediaFile 
-````PowerShell 
+```PowerShell 
 
    Open-MediaFile                       --> findmedia, media, vlcmedia  
 ```` 
@@ -9287,7 +9287,7 @@ Now [<CommonParameters>]
     configuration options.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Open-MediaFile [[-SearchMask] <String[]>] [-PlaylistPath <String>] [[-Width] <Int32>] [[-Height] <Int32>] [[-X] <Int32>] [[-Y] <Int32>] [-KeysToSend <String[]>] [-Keywords <String[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds <Int32>] [-SendKeyHoldKeyboardFocus] [-Monitor <Int32>] [-AspectRatio <String>] [-Crop <String>] [-SubtitleFile <String>] [-SubtitleScale <Int32>] [-SubtitleLanguage <String>] [-AudioLanguage <String>] [-PreferredAudioLanguage <String>] [-HttpProxy <String>] [-HttpProxyPassword <String>] [-VerbosityLevel <Int32>] [-SubdirectoryBehavior <String>] [-IgnoredExtensions <String>] [-VLCPath <String>] [-ReplayGainMode <String>] [-ReplayGainPreamp <Single>] [-ForceDolbySurround <String>] [-AudioFilters <String[]>] [-Visualization <String>] [-Deinterlace <String>] [-DeinterlaceMode <String>] [-VideoFilters <String[]>] [-VideoFilterModules <String[]>] [-Modules <String[]>] [-AudioFilterModules <String[]>] [-AudioVisualization <String>] [-PreferredSubtitleLanguage <String>] [-IgnoredFileExtensions <String>] [-Arguments <String>] [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio] [-OnlyPictures] [-IncludeVideos] [-IncludeAudio] [-IncludePictures] [-NoBorders] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-FullScreen] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-DisableSubtitles] [-AutoScale] [-HighPriority] [-EnableTimeStretch] [-NewWindow] [-EnableWallpaperMode] [-EnableAudioTimeStretch] [-Close] [-SideBySide] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-SessionOnly] [-ClearSession] [-SkipSession] [-PassThru] [-PassThruNoOpen] [-PassThruWindow] [<CommonParameters>] 
 ```` 
 
@@ -9968,11 +9968,11 @@ Open-MediaFile [[-SearchMask] <String[]>] [-PlaylistPath <String>] [[-Width] <In
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	SayDate 
-````PowerShell 
+```PowerShell 
 
    SayDate  
 ```` 
@@ -9981,7 +9981,7 @@ Open-MediaFile [[-SearchMask] <String[]>] [-PlaylistPath <String>] [[-Width] <In
     Speaks the current date using text-to-speech synthesis.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 SayDate [<CommonParameters>] 
 ```` 
 
@@ -9997,11 +9997,11 @@ SayDate [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	SayTime 
-````PowerShell 
+```PowerShell 
 
    SayTime  
 ```` 
@@ -10010,7 +10010,7 @@ SayDate [<CommonParameters>]
     Announces the current time using text-to-speech.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 SayTime [<CommonParameters>] 
 ```` 
 
@@ -10026,11 +10026,11 @@ SayTime [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-LocationParent 
-````PowerShell 
+```PowerShell 
 
    Set-LocationParent                   --> ..  
 ```` 
@@ -10039,7 +10039,7 @@ SayTime [<CommonParameters>]
     Changes the current location to the parent directory and lists its contents.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-LocationParent [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -10069,11 +10069,11 @@ Set-LocationParent [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-LocationParent2 
-````PowerShell 
+```PowerShell 
 
    Set-LocationParent2                  --> ...  
 ```` 
@@ -10082,7 +10082,7 @@ Set-LocationParent [-WhatIf] [-Confirm] [<CommonParameters>]
     Navigates up two directory levels in the file system hierarchy.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -10112,7 +10112,7 @@ Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        This function supports -WhatIf and -Confirm parameters through ShouldProcess.  
    -------------------------- EXAMPLE 1 --------------------------  
@@ -10121,11 +10121,11 @@ Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>]
    PS C:\> ...  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-LocationParent3 
-````PowerShell 
+```PowerShell 
 
    Set-LocationParent3                  --> ....  
 ```` 
@@ -10134,7 +10134,7 @@ Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>]
     Navigates up three directory levels in the file system hierarchy.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-LocationParent3 [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -10163,11 +10163,11 @@ Set-LocationParent3 [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-LocationParent4 
-````PowerShell 
+```PowerShell 
 
    Set-LocationParent4                  --> .....  
 ```` 
@@ -10176,7 +10176,7 @@ Set-LocationParent3 [-WhatIf] [-Confirm] [<CommonParameters>]
     Navigates up four directory levels in the filesystem hierarchy.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -10207,7 +10207,7 @@ Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        The alias '.....'' represents moving up four parent directories, where each dot  
        represents one level up.  
@@ -10217,11 +10217,11 @@ Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>]
    PS C:\> .....  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-LocationParent5 
-````PowerShell 
+```PowerShell 
 
    Set-LocationParent5                  --> ......  
 ```` 
@@ -10230,7 +10230,7 @@ Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>]
     Navigates up five directory levels in the file system hierarchy.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-LocationParent5 [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -10260,11 +10260,11 @@ Set-LocationParent5 [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-MonitorPowerOff 
-````PowerShell 
+```PowerShell 
 
    Set-MonitorPowerOff                  --> poweroff  
 ```` 
@@ -10273,7 +10273,7 @@ Set-LocationParent5 [-WhatIf] [-Confirm] [<CommonParameters>]
     Turns off power to all connected monitors.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-MonitorPowerOff [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -10304,11 +10304,11 @@ Set-MonitorPowerOff [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-MonitorPowerOn 
-````PowerShell 
+```PowerShell 
 
    Set-MonitorPowerOn                   --> wake-monitor  
 ```` 
@@ -10317,7 +10317,7 @@ Set-MonitorPowerOff [-WhatIf] [-Confirm] [<CommonParameters>]
     Turns the monitor power on.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-MonitorPowerOn [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -10347,11 +10347,11 @@ Set-MonitorPowerOn [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-VLCPlayerFocused 
-````PowerShell 
+```PowerShell 
 
    Set-VLCPlayerFocused                 --> fvlc, showvlc, vlcf  
 ```` 
@@ -10360,7 +10360,7 @@ Set-MonitorPowerOn [-WhatIf] [-Confirm] [<CommonParameters>]
     Sets focus to the VLC media player window.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-VLCPlayerFocused [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -10390,11 +10390,11 @@ Set-VLCPlayerFocused [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Start-TextToSpeech 
-````PowerShell 
+```PowerShell 
 
    Start-TextToSpeech                   --> say  
 ```` 
@@ -10403,7 +10403,7 @@ Set-VLCPlayerFocused [-WhatIf] [-Confirm] [<CommonParameters>]
     Converts text to speech using the Windows Speech API.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Start-TextToSpeech [-Lines] <String[]> [-Locale <String>] [-VoiceName <String>] [-PassThru] [-Wait] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -10479,11 +10479,11 @@ Start-TextToSpeech [-Lines] <String[]> [-Locale <String>] [-VoiceName <String>] 
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Stop-TextToSpeech 
-````PowerShell 
+```PowerShell 
 
    Stop-TextToSpeech                    --> sst  
 ```` 
@@ -10492,7 +10492,7 @@ Start-TextToSpeech [-Lines] <String[]> [-Locale <String>] [-VoiceName <String>] 
     Immediately stops any ongoing text-to-speech output.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Stop-TextToSpeech [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -10523,7 +10523,7 @@ Stop-TextToSpeech [-WhatIf] [-Confirm] [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        This cmdlet is commonly used in conjunction with Start-TextToSpeech (alias: say)  
        and Skip-TextToSpeech (alias: sstSkip) for speech control.  
@@ -10535,11 +10535,11 @@ Stop-TextToSpeech [-WhatIf] [-Confirm] [<CommonParameters>]
    Starts speaking but gets interrupted immediately  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	UtcNow 
-````PowerShell 
+```PowerShell 
 
    UtcNow  
 ```` 
@@ -10548,7 +10548,7 @@ Stop-TextToSpeech [-WhatIf] [-Confirm] [<CommonParameters>]
     Gets the current UTC (Coordinated Universal Time) date and time.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 UtcNow [<CommonParameters>] 
 ```` 
 
@@ -10565,14 +10565,14 @@ UtcNow [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 &nbsp;<hr/>
 ###	GenXdev.Console.Spotify<hr/> 
 
 ##	Add-SpotifyNewPlaylist 
-````PowerShell 
+```PowerShell 
 
    Add-SpotifyNewPlaylist               --> newplaylist  
 ```` 
@@ -10581,7 +10581,7 @@ UtcNow [<CommonParameters>]
     Creates a new Spotify playlist with customizable settings.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [<CommonParameters>] 
 ```` 
 
@@ -10631,11 +10631,11 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Add-SpotifyTracksToLiked 
-````PowerShell 
+```PowerShell 
 
    Add-SpotifyTracksToLiked             --> like  
 ```` 
@@ -10644,7 +10644,7 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
     Adds tracks to the user's Spotify liked songs library.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Add-SpotifyTracksToLiked [[-TrackId] <String[]>] [<CommonParameters>] 
 ```` 
 
@@ -10669,11 +10669,11 @@ Add-SpotifyTracksToLiked [[-TrackId] <String[]>] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Add-SpotifyTracksToPlaylist 
-````PowerShell 
+```PowerShell 
 
    Add-SpotifyTracksToPlaylist          --> addtoplaylist  
 ```` 
@@ -10682,7 +10682,7 @@ Add-SpotifyTracksToLiked [[-TrackId] <String[]>] [<CommonParameters>]
     Adds tracks to a Spotify playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<CommonParameters>]  
    Add-SpotifyTracksToPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [<CommonParameters>] 
 ```` 
@@ -10722,11 +10722,11 @@ Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<Com
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Connect-SpotifyApiToken 
-````PowerShell 
+```PowerShell 
 
    Connect-SpotifyApiToken  
 ```` 
@@ -10735,7 +10735,7 @@ Add-SpotifyTracksToPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [<Com
     Authenticates with Spotify API using OAuth flow to obtain an access token.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Connect-SpotifyApiToken [<CommonParameters>] 
 ```` 
 
@@ -10753,7 +10753,7 @@ Connect-SpotifyApiToken [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        Uses port 5642 as the default callback port for OAuth flow  
        Minimizes browser window during authentication  
@@ -10763,11 +10763,11 @@ Connect-SpotifyApiToken [<CommonParameters>]
    Connect-SpotifyApiToken  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyActiveDevice 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyActiveDevice  
 ```` 
@@ -10776,7 +10776,7 @@ Connect-SpotifyApiToken [<CommonParameters>]
     Returns all currently active Spotify devices for the current user.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyActiveDevice [<CommonParameters>] 
 ```` 
 
@@ -10792,11 +10792,11 @@ Get-SpotifyActiveDevice [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyApiToken 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyApiToken  
 ```` 
@@ -10805,7 +10805,7 @@ Get-SpotifyActiveDevice [<CommonParameters>]
     Retrieves or generates a valid Spotify API authentication token.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyApiToken [<CommonParameters>] 
 ```` 
 
@@ -10821,11 +10821,11 @@ Get-SpotifyApiToken [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyCurrentlyPlaying 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyCurrentlyPlaying          --> gcp  
 ```` 
@@ -10834,7 +10834,7 @@ Get-SpotifyApiToken [<CommonParameters>]
     Returns information about the currently playing track on Spotify.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyCurrentlyPlaying [<CommonParameters>] 
 ```` 
 
@@ -10850,11 +10850,11 @@ Get-SpotifyCurrentlyPlaying [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyDevice 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyDevice                    --> Get-SpotifyDevices  
 ```` 
@@ -10863,7 +10863,7 @@ Get-SpotifyCurrentlyPlaying [<CommonParameters>]
     Returns all currently available Spotify devices for current user.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyDevice [<CommonParameters>] 
 ```` 
 
@@ -10880,7 +10880,7 @@ Get-SpotifyDevice [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        Requires valid Spotify authentication token to function. The token is automatically  
        retrieved using Get-SpotifyApiToken.  
@@ -10889,11 +10889,11 @@ Get-SpotifyDevice [<CommonParameters>]
    This command returns all available Spotify devices for the current user.  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyLikedTrack 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyLikedTrack                --> liked  
 ```` 
@@ -10902,7 +10902,7 @@ Get-SpotifyDevice [<CommonParameters>]
     Retrieves all tracks saved in the user's Spotify Library.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyLikedTrack [<CommonParameters>] 
 ```` 
 
@@ -10919,11 +10919,11 @@ Get-SpotifyLikedTrack [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyLyrics 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyLyrics                    --> lyrics  
 ```` 
@@ -10932,7 +10932,7 @@ Get-SpotifyLikedTrack [<CommonParameters>]
     Retrieves lyrics for Spotify tracks from Musixmatch.com  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyLyrics [[-TrackId] <String>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [[-Monitor] <Int32>] [-FullScreen] [[-Width] <Int32>] [[-Height] <Int32>] [[-Left] <Int32>] [[-Right] <Int32>] [[-Top] <Int32>] [[-Bottom] <Int32>] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-DisablePopupBlocker] [[-AcceptLang] <String>] [-SendKeyEscape] [-SendKeyHoldKeyboardFocus] [-SendKeyUseShiftEnter] [[-SendKeyDelayMilliSeconds] <Int32>] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-NewWindow] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders] [-SessionOnly] [-ClearSession] [-SkipSession] [-SideBySide] [<CommonParameters>] 
 ```` 
 
@@ -11204,11 +11204,11 @@ Get-SpotifyLyrics [[-TrackId] <String>] [-Private] [-Force] [-Edge] [-Chrome] [-
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyPlaylistIdsByName 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyPlaylistIdsByName  
 ```` 
@@ -11217,7 +11217,7 @@ Get-SpotifyLyrics [[-TrackId] <String>] [-Private] [-Force] [-Edge] [-Chrome] [-
     Retrieves Spotify playlist IDs by their names.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyPlaylistIdsByName [-PlaylistName] <String[]> [<CommonParameters>] 
 ```` 
 
@@ -11245,11 +11245,11 @@ Get-SpotifyPlaylistIdsByName [-PlaylistName] <String[]> [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyPlaylistTrack 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyPlaylistTrack             --> getplaylist  
 ```` 
@@ -11258,7 +11258,7 @@ Get-SpotifyPlaylistIdsByName [-PlaylistName] <String[]> [<CommonParameters>]
     Returns all tracks from a Spotify playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyPlaylistTrack [-PlaylistName] <String> [<CommonParameters>]  
    Get-SpotifyPlaylistTrack [-PlaylistId] <String> [<CommonParameters>] 
 ```` 
@@ -11292,11 +11292,11 @@ Get-SpotifyPlaylistTrack [-PlaylistName] <String> [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyTrackAudioFeatures 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyTrackAudioFeatures        --> audiofeatures  
 ```` 
@@ -11305,7 +11305,7 @@ Get-SpotifyPlaylistTrack [-PlaylistName] <String> [<CommonParameters>]
     Retrieves audio feature information for one or more Spotify tracks.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyTrackAudioFeatures [-TrackId] <String[]> [<CommonParameters>] 
 ```` 
 
@@ -11331,11 +11331,11 @@ Get-SpotifyTrackAudioFeatures [-TrackId] <String[]> [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyTrackById 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyTrackById                 --> gettrack  
 ```` 
@@ -11344,7 +11344,7 @@ Get-SpotifyTrackAudioFeatures [-TrackId] <String[]> [<CommonParameters>]
     Retrieves detailed track information from Spotify using a track ID.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>] 
 ```` 
 
@@ -11369,11 +11369,11 @@ Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Get-SpotifyUserPlaylists 
-````PowerShell 
+```PowerShell 
 
    Get-SpotifyUserPlaylists             --> gupl  
 ```` 
@@ -11382,7 +11382,7 @@ Get-SpotifyTrackById [-TrackId] <String> [<CommonParameters>]
     Returns a collection of Spotify playlists owned by the current user.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Get-SpotifyUserPlaylists [[-Filter] <String[]>] [-Force] [<CommonParameters>] 
 ```` 
 
@@ -11415,11 +11415,11 @@ Get-SpotifyUserPlaylists [[-Filter] <String[]>] [-Force] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Move-SpotifyLikedTracksToPlaylist 
-````PowerShell 
+```PowerShell 
 
    Move-SpotifyLikedTracksToPlaylist    --> moveliked  
 ```` 
@@ -11428,7 +11428,7 @@ Get-SpotifyUserPlaylists [[-Filter] <String[]>] [-Force] [<CommonParameters>]
     Moves all liked tracks from your Spotify library to specified playlist(s)  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <String[]> [<CommonParameters>]  
    Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <String[]> [<CommonParameters>] 
 ```` 
@@ -11463,11 +11463,11 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <String[]> [<CommonParameters>
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Remove-SpotifyTracksFromLiked 
-````PowerShell 
+```PowerShell 
 
    Remove-SpotifyTracksFromLiked        --> dislike  
 ```` 
@@ -11476,7 +11476,7 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <String[]> [<CommonParameters>
     Removes tracks from the user's Spotify Library (Liked Songs).  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Remove-SpotifyTracksFromLiked [[-TrackId] <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -11514,11 +11514,11 @@ Remove-SpotifyTracksFromLiked [[-TrackId] <String[]>] [-WhatIf] [-Confirm] [<Com
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Remove-SpotifyTracksFromPlaylist 
-````PowerShell 
+```PowerShell 
 
    Remove-SpotifyTracksFromPlaylist     --> removefromplaylist  
 ```` 
@@ -11527,7 +11527,7 @@ Remove-SpotifyTracksFromLiked [[-TrackId] <String[]>] [-WhatIf] [-Confirm] [<Com
     Removes tracks from a Spotify playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]  
    Remove-SpotifyTracksFromPlaylist [-PlaylistId] <String[]> [[-Uri] <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
@@ -11581,11 +11581,11 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Search-Spotify 
-````PowerShell 
+```PowerShell 
 
    Search-Spotify                       --> fm, sm  
 ```` 
@@ -11594,7 +11594,7 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistName] <String[]> [[-Uri] <String[]>] 
     Performs a Spotify search and returns matching items.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Search-Spotify [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
 ```` 
 
@@ -11628,11 +11628,11 @@ Search-Spotify [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist |
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Search-SpotifyAndEnqueue 
-````PowerShell 
+```PowerShell 
 
    Search-SpotifyAndEnqueue             --> fmq, smq  
 ```` 
@@ -11641,7 +11641,7 @@ Search-Spotify [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist |
     Searches Spotify and adds the first matching item to the playback queue.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Search-SpotifyAndEnqueue [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
 ```` 
 
@@ -11681,11 +11681,11 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [[-SearchType] {Album | Artist | 
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Search-SpotifyAndPlay 
-````PowerShell 
+```PowerShell 
 
    Search-SpotifyAndPlay                --> fmp, smp  
 ```` 
@@ -11694,7 +11694,7 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [[-SearchType] {Album | Artist | 
     Performs a Spotify search and plays the first found item.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Search-SpotifyAndPlay [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
 ```` 
 
@@ -11734,11 +11734,11 @@ Search-SpotifyAndPlay [-Queries] <String[]> [[-SearchType] {Album | Artist | Pla
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyActiveDevice 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyActiveDevice              --> Set-SpotifyDevice  
 ```` 
@@ -11747,7 +11747,7 @@ Search-SpotifyAndPlay [-Queries] <String[]> [[-SearchType] {Album | Artist | Pla
     Sets the active Spotify playback device.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyActiveDevice [-DeviceId] <String> [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -11787,11 +11787,11 @@ Set-SpotifyActiveDevice [-DeviceId] <String> [-WhatIf] [-Confirm] [<CommonParame
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyApiToken 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyApiToken  
 ```` 
@@ -11800,7 +11800,7 @@ Set-SpotifyActiveDevice [-DeviceId] <String> [-WhatIf] [-Confirm] [<CommonParame
     Caches a Spotify API token for later use in the local configuration.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyApiToken [-ApiToken] <String> [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -11838,11 +11838,11 @@ Set-SpotifyApiToken [-ApiToken] <String> [-WhatIf] [-Confirm] [<CommonParameters
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyNext 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyNext                      --> next, skip  
 ```` 
@@ -11851,7 +11851,7 @@ Set-SpotifyApiToken [-ApiToken] <String> [-WhatIf] [-Confirm] [<CommonParameters
     Skips to next track on Spotify.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyNext [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -11881,11 +11881,11 @@ Set-SpotifyNext [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyPause 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyPause                     --> pausemusic, Resume-Music  
 ```` 
@@ -11894,7 +11894,7 @@ Set-SpotifyNext [-WhatIf] [-Confirm] [<CommonParameters>]
     Pauses Spotify playback  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyPause [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -11923,11 +11923,11 @@ Set-SpotifyPause [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyPlaylistDetails 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyPlaylistDetails           --> spld  
 ```` 
@@ -11936,7 +11936,7 @@ Set-SpotifyPause [-WhatIf] [-Confirm] [<CommonParameters>]
     Sets the main properties of a Spotify playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -12021,11 +12021,11 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyPlaylistOrder 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyPlaylistOrder  
 ```` 
@@ -12035,7 +12035,7 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <String> [-Name] <String> [[-Descriptio
     position.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBefore] <Int32> [[-RangeLength] <Nullable`1>] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -12100,11 +12100,11 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyPrevious 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyPrevious                  --> prev, previous  
 ```` 
@@ -12113,7 +12113,7 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <String> [-RangeStart] <Int32> [-InsertBe
     Skips to the previous track in Spotify playback.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyPrevious [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -12142,11 +12142,11 @@ Set-SpotifyPrevious [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyRepeatContext 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyRepeatContext             --> repeat  
 ```` 
@@ -12155,7 +12155,7 @@ Set-SpotifyPrevious [-WhatIf] [-Confirm] [<CommonParameters>]
     Enables playlist repeat mode for Spotify playback.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -12185,7 +12185,7 @@ Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>]
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
 ### NOTES 
-````PowerShell 
+```PowerShell 
 
        This cmdlet supports ShouldProcess, allowing use of -WhatIf and -Confirm parameters  
        to control execution of state-changing operations.  
@@ -12195,11 +12195,11 @@ Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>]
    PS C:\> repeat  
 ```` 
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyRepeatOff 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyRepeatOff                 --> norepeat, repeatoff  
 ```` 
@@ -12208,7 +12208,7 @@ Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>]
     Disables Spotify repeat mode for the currently active device.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyRepeatOff [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -12238,11 +12238,11 @@ Set-SpotifyRepeatOff [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyRepeatSong 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyRepeatSong                --> repeatsong  
 ```` 
@@ -12251,7 +12251,7 @@ Set-SpotifyRepeatOff [-WhatIf] [-Confirm] [<CommonParameters>]
     Enables song repeat mode in Spotify.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyRepeatSong [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -12281,11 +12281,11 @@ Set-SpotifyRepeatSong [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyShuffleOff 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyShuffleOff                --> noshuffle, shuffleoff  
 ```` 
@@ -12294,7 +12294,7 @@ Set-SpotifyRepeatSong [-WhatIf] [-Confirm] [<CommonParameters>]
     Disables Spotify song-shuffle mode on the active device.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyShuffleOff [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -12323,11 +12323,11 @@ Set-SpotifyShuffleOff [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyShuffleOn 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyShuffleOn                 --> shuffle, shuffleon  
 ```` 
@@ -12336,7 +12336,7 @@ Set-SpotifyShuffleOff [-WhatIf] [-Confirm] [<CommonParameters>]
     Enables Spotify song-shuffle mode.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyShuffleOn [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -12365,11 +12365,11 @@ Set-SpotifyShuffleOn [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyStart 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyStart                     --> play, Start-Music  
 ```` 
@@ -12378,7 +12378,7 @@ Set-SpotifyShuffleOn [-WhatIf] [-Confirm] [<CommonParameters>]
     Starts Spotify playback on the currently active device.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyStart [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -12408,11 +12408,11 @@ Set-SpotifyStart [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Set-SpotifyStop 
-````PowerShell 
+```PowerShell 
 
    Set-SpotifyStop                      --> stop  
 ```` 
@@ -12421,7 +12421,7 @@ Set-SpotifyStart [-WhatIf] [-Confirm] [<CommonParameters>]
     Stops Spotify playback on the active device.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Set-SpotifyStop [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -12450,14 +12450,14 @@ Set-SpotifyStop [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 &nbsp;<hr/>
 ###	GenXdev.Console.Vlc<hr/> 
 
 ##	Open-VlcMediaPlayer 
-````PowerShell 
+```PowerShell 
 
    Open-VlcMediaPlayer                  --> vlc  
 ```` 
@@ -12466,7 +12466,7 @@ Set-SpotifyStop [-WhatIf] [-Confirm] [<CommonParameters>]
     Launches and controls VLC Media Player with extensive configuration options.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Open-VlcMediaPlayer [[-Path] <String[]>] [[-Width] <Int32>] [[-Height] <Int32>] [[-X] <Int32>] [[-Y] <Int32>] [-KeysToSend <String[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds <Int32>] [-SendKeyHoldKeyboardFocus] [-Monitor <Int32>] [-AspectRatio <String>] [-Crop <String>] [-SubtitleFile <String>] [-SubtitleScale <Int32>] [-SubtitleLanguage <String>] [-AudioLanguage <String>] [-PreferredAudioLanguage <String>] [-HttpProxy <String>] [-HttpProxyPassword <String>] [-VerbosityLevel <Int32>] [-SubdirectoryBehavior <String>] [-IgnoredExtensions <String>] [-VLCPath <String>] [-ReplayGainMode <String>] [-ReplayGainPreamp <Single>] [-ForceDolbySurround <String>] [-AudioFilters <String[]>] [-Visualization <String>] [-Deinterlace <String>] [-DeinterlaceMode <String>] [-VideoFilters <String[]>] [-VideoFilterModules <String[]>] [-Modules <String[]>] [-AudioFilterModules <String[]>] [-AudioVisualization <String>] [-PreferredSubtitleLanguage <String>] [-IgnoredFileExtensions <String>] [-Arguments <String>] [-NoBorders] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-FullScreen] [-PassThru] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-DisableSubtitles] [-AutoScale] [-HighPriority] [-EnableTimeStretch] [-NewWindow] [-EnableWallpaperMode] [-EnableAudioTimeStretch] [-Close] [-SideBySide] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-SessionOnly] [-ClearSession] [-SkipSession] [<CommonParameters>] 
 ```` 
 
@@ -13056,11 +13056,11 @@ Open-VlcMediaPlayer [[-Path] <String[]>] [[-Width] <Int32>] [[-Height] <Int32>] 
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Open-VlcMediaPlayerLyrics 
-````PowerShell 
+```PowerShell 
 
    Open-VlcMediaPlayerLyrics            --> vlclyrics  
 ```` 
@@ -13069,7 +13069,7 @@ Open-VlcMediaPlayer [[-Path] <String[]>] [[-Width] <Int32>] [[-Height] <Int32>] 
     Opens a web browser to search for lyrics of currently playing VLC media.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Open-VlcMediaPlayerLyrics [[-Queries] <String[]>] [[-EndPoint] <String>] [[-Language] <String>] [-Monitor <Int32>] [-Width <Int32>] [-Height <Int32>] [-X <Int32>] [-Y <Int32>] [-AcceptLang <String>] [-KeysToSend <String[]>] [-SendKeyDelayMilliSeconds <Int32>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [-All] [-ShowWindow] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-DisablePopupBlocker] [-SendKeyEscape] [-SendKeyHoldKeyboardFocus] [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-NewWindow] [-PassThru] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders] [-SessionOnly] [-ClearSession] [-SkipSession] [-SideBySide] [<CommonParameters>] 
 ```` 
 
@@ -13439,11 +13439,11 @@ Open-VlcMediaPlayerLyrics [[-Queries] <String[]>] [[-EndPoint] <String>] [[-Lang
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Start-VlcMediaPlayerNextInPlaylist 
-````PowerShell 
+```PowerShell 
 
    Start-VlcMediaPlayerNextInPlaylist   --> vlcnext  
 ```` 
@@ -13452,7 +13452,7 @@ Open-VlcMediaPlayerLyrics [[-Queries] <String[]>] [[-EndPoint] <String>] [[-Lang
     Advances VLC Media Player to the next item in the current playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -13483,11 +13483,11 @@ Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Start-VlcMediaPlayerPreviousInPlaylist 
-````PowerShell 
+```PowerShell 
 
    Start-VlcMediaPlayerPreviousInPlaylist --> vlcback, vlcprev  
 ```` 
@@ -13496,7 +13496,7 @@ Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>]
     Moves to the previous item in the VLC Media Player playlist.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
@@ -13526,11 +13526,11 @@ Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Switch-VlcMediaPlayerMute 
-````PowerShell 
+```PowerShell 
 
    Switch-VlcMediaPlayerMute            --> vlcmute, vlcunmute  
 ```` 
@@ -13539,7 +13539,7 @@ Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>]
     Toggles the mute state of the VLC Media Player.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Switch-VlcMediaPlayerMute [<CommonParameters>] 
 ```` 
 
@@ -13555,11 +13555,11 @@ Switch-VlcMediaPlayerMute [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Switch-VLCMediaPlayerPaused 
-````PowerShell 
+```PowerShell 
 
    Switch-VLCMediaPlayerPaused          --> vlcpause, vlcplay  
 ```` 
@@ -13568,7 +13568,7 @@ Switch-VlcMediaPlayerMute [<CommonParameters>]
     Toggles the pause/play state of the VLC Media Player.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Switch-VLCMediaPlayerPaused [<CommonParameters>] 
 ```` 
 
@@ -13584,11 +13584,11 @@ Switch-VLCMediaPlayerPaused [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
  
 
 ##	Switch-VlcMediaPlayerRepeat 
-````PowerShell 
+```PowerShell 
 
    Switch-VlcMediaPlayerRepeat          --> vlcrepeat  
 ```` 
@@ -13597,7 +13597,7 @@ Switch-VLCMediaPlayerPaused [<CommonParameters>]
     Toggles the repeat mode in VLC Media Player.  
 
 ### SYNTAX 
-````PowerShell 
+```PowerShell 
 Switch-VlcMediaPlayerRepeat [<CommonParameters>] 
 ```` 
 
@@ -13614,4 +13614,4 @@ Switch-VlcMediaPlayerRepeat [<CommonParameters>]
         OutBuffer, PipelineVariable, and OutVariable. For more information, see  
         about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 
-<br/><hr/><hr/><br/>
+<br/><hr/><br/>
