@@ -1126,12 +1126,14 @@ function Open-VlcMediaPlayer {
             }
         }
 
-        # wait for vlc to initialize
-        Microsoft.PowerShell.Utility\Start-Sleep 2
-
-        # get vlc window handle
-        $vlcWindow = GenXdev.Windows\Get-Window -ProcessName vlc `
+        # wait up to 20 seconds for vlc window to appear
+        $vlcWindow = $null
+        for ($i = 0; $i -lt 20; $i++) {
+            $vlcWindow = GenXdev.Windows\Get-Window -ProcessName vlc `
             -ErrorAction SilentlyContinue
+            if ($vlcWindow) { break }
+            Microsoft.PowerShell.Utility\Start-Sleep -Seconds 1
+        }
 
         # verify vlc window was found
         if ($null -eq $vlcWindow) {
