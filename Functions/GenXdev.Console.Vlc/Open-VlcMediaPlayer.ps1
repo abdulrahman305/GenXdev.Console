@@ -1,4 +1,32 @@
-﻿###############################################################################
+<##############################################################################
+Part of PowerShell module : GenXdev.Console.Vlc
+Original cmdlet filename  : Open-VlcMediaPlayer.ps1
+Original author           : René Vaessen / GenXdev
+Version                   : 1.264.2025
+################################################################################
+MIT License
+
+Copyright 2021-2025 GenXdev
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+################################################################################>
+###############################################################################
 <#
 .SYNOPSIS
 Launches and controls VLC Media Player with extensive configuration options.
@@ -298,7 +326,7 @@ function Open-VlcMediaPlayer {
             HelpMessage = ('Keystrokes to send to the VLC Player Window, ' +
                 'see documentation for cmdlet GenXdev.Windows\Send-Key')
         )]
-        [string[]] $KeysToSend,
+        [string[]] $KeysToSend = @(),
         ###########################################################################
         [Parameter(
             Mandatory = $false,
@@ -786,6 +814,57 @@ function Open-VlcMediaPlayer {
             return
         }
 
+        $positioningParams = @(
+            "Monitor",
+            "NoBorders",
+            "Width",
+            "Height",
+            "X",
+            "Y",
+            "Left",
+            "Right",
+            "Top",
+            "Bottom",
+            "Centered",
+            "Fullscreen",
+            "RestoreFocus",
+            "SideBySide",
+            "FocusWindow",
+            "SetForeground",
+            "Minimize",
+            "Maximize",
+            "KeysToSend",
+            "SendKeyEscape",
+            "SendKeyHoldKeyboardFocus",
+            "SendKeyUseShiftEnter",
+            "SendKeyDelayMilliSeconds"
+        );
+
+        $haveOnlyPositioningParams = $true;
+        foreach ($param in $PSBoundParameters.Keys) {
+            if ($positioningParams -notcontains $param) {
+                $haveOnlyPositioningParams = $false;
+                break;
+            }
+        }
+
+        if ($haveOnlyPositioningParams) {
+
+            $params = GenXdev.Helpers\Copy-IdenticalParamValues `
+                -BoundParameters $PSBoundParameters `
+                -FunctionName 'GenXdev.Windows\Set-WindowPosition' `
+                -DefaultValues (Microsoft.PowerShell.Utility\Get-Variable -Scope Local -ErrorAction SilentlyContinue)
+
+            $params.KeysToSend = @($FullScreen ? @("f") : @()) + $KeysToSend
+            $params.RestoreFocus = $FullScreen
+
+            GenXdev.Windows\Set-WindowPosition @params -ProcessName 'vlc'
+
+            Microsoft.PowerShell.Utility\Write-Verbose `
+                'Only positioning parameters specified, exiting...';
+            return;
+        }
+
         # ensure vlc is installed and install if needed
         if (-not (Microsoft.PowerShell.Management\Test-Path `
                     -LiteralPath "${env:ProgramFiles}\VideoLAN\VLC\vlc.exe")) {
@@ -1158,6 +1237,20 @@ function Open-VlcMediaPlayer {
 
         $invocationParams.WindowHelper = $vlcWindow
 
+        if  (-not $PSBoundParameters.ContainsKey('Monitor')) {
+
+            $invocationParams.Monitor = -2
+            $Fullscreen = $true
+        }
+
+        if ($FullScreen) {
+
+            $invocationParams.Maximize = $true
+            $invocationParams.Fullscreen = $false
+            $invocationParams.KeysToSend = @('f')
+            $invocationParams.RestoreFocus = $true
+        }
+
         # apply window positioning if parameters specified
         $null = GenXdev.Windows\Set-WindowPosition @invocationParams
     }
@@ -1184,6 +1277,11 @@ function Open-VlcMediaPlayer {
             return
         }
 
+        if ($haveOnlyPositioningParams) {
+
+            return
+        }
+
         # exit if no keys to send
         if ($null -eq $KeysToSend -or ($KeysToSend.Count -eq 0)) {
 
@@ -1206,6 +1304,11 @@ function Open-VlcMediaPlayer {
 
     end {
 
+       if ($haveOnlyPositioningParams) {
+
+            return
+        }
+
         # restore focus to powershell window if requested
         if ($RestoreFocus) {
 
@@ -1215,7 +1318,7 @@ function Open-VlcMediaPlayer {
             # restore powershell window focus
             if ($null -ne $pwshWindow) {
 
-                $null = $pwshWindow.SetForeground()
+                $null = $pwshWindow.Focus()
             }
         }
 
