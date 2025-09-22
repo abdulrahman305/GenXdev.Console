@@ -1,8 +1,8 @@
-<##############################################################################
+﻿<##############################################################################
 Part of PowerShell module : GenXdev.Console
 Original cmdlet filename  : New-MicrosoftShellTab.ps1
 Original author           : René Vaessen / GenXdev
-Version                   : 1.276.2025
+Version                   : 1.278.2025
 ################################################################################
 MIT License
 
@@ -71,6 +71,45 @@ function New-MicrosoftShellTab {
 
     begin {
 
+        $additionalKeystrokes = [System.Collections.Generic.List[string]]::new();
+
+        while ([console]::KeyAvailable) {
+
+            $key = [console]::ReadKey($true);
+            $str = $key.KeyChar;
+            switch ($key.Key) {
+                13 { $str = "{ENTER}}" }
+                9 { $str = "{TAB}" }
+                8 { $str = "{BACKSPACE}" }
+                27 { $str = "{ESC}" }
+                32 { $str = "{SPACE}" }
+                112..123 { $str = "{F$($key.Key - 111)}" }
+                37 { $str = "{LEFT}" }
+                38 { $str = "{UP}" }
+                39 { $str = "{RIGHT}" }
+                40 { $str = "{DOWN}" }
+                36 { $str = "{HOME}" }
+                35 { $str = "{END}" }
+                33 { $str = "{PGUP}" }
+                34 { $str = "{PGDN}" }
+                46 { $str = "{DEL}" }
+                45 { $str = "{INS}" }
+
+                default { }
+            }
+
+            switch ($key.Modifiers) {
+                1 { $str = "%$str" }
+                2 { $str = "+$str" }
+                3 { $str = "+%str" }
+                4 { $str = "^$str" }
+                5 { $str = "%^$str" }
+                6 { $str = "+%$str" }
+                7 { $str = "^%$str" }
+            }
+            $null = $additionalKeystrokes.Add($str);
+        }
+
         # activate the powershell window to enable keyboard input processing
         Microsoft.PowerShell.Utility\Write-Verbose 'Bringing PowerShell window to foreground'
         $w = (GenXdev.Windows\Get-PowershellMainWindow);
@@ -87,7 +126,14 @@ function New-MicrosoftShellTab {
             if ($PSCmdlet.ShouldProcess('Windows Terminal', 'Create new tab')) {
                 # simulate ctrl+shift+t keystroke to trigger new tab creation
                 Microsoft.PowerShell.Utility\Write-Verbose 'Sending Ctrl+Shift+T to create new tab'
+
                 $null = $helper.sendKeys('^+t')
+                Microsoft.PowerShell.Utility\Start-Sleep -Milliseconds 2000;
+
+                $additionalKeystrokes | Microsoft.PowerShell.Core\ForEach-Object {
+
+                    $null = $helper.sendKeys($_)
+                }
 
                 # handle tab closure if not explicitly prevented
                 if ($DontCloseThisTab -ne $true) {

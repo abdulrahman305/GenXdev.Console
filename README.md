@@ -188,7 +188,8 @@ Get-IsSpeaking [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-New-MicrosoftShellTab [-DontCloseThisTab] [-WhatIf] [-Confirm] [<CommonParameters>] 
+New-MicrosoftShellTab [-DontCloseThisTab] [-WhatIf]
+    [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -255,7 +256,134 @@ Now [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>] [[-Height] <int>] [[-X] <int>] [[-Y] <int>] [-PlaylistPath <string>] [-KeysToSend <string[]>] [-Keywords <string[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds <int>] [-SendKeyHoldKeyboardFocus] [-Monitor <int>] [-AspectRatio <string>] [-Crop <string>] [-SubtitleFile <string>] [-SubtitleScale <int>] [-SubtitleLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-AudioLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-PreferredAudioLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-HttpProxy <string>] [-HttpProxyPassword <string>] [-VerbosityLevel <int>] [-SubdirectoryBehavior {None | Collapse | Expand}] [-IgnoredExtensions <string>] [-VLCPath <string>] [-ReplayGainMode {None | Track | Album}] [-ReplayGainPreamp <float>] [-ForceDolbySurround {Auto | On | Off}] [-AudioFilters <string[]>] [-Visualization {None | Goom | ProjectM | Visual | GLSpectrum}] [-Deinterlace {Off | Automatic | On}] [-DeinterlaceMode {Auto | Discard | Blend | Mean | Bob | Linear | X | Yadif | Yadif2x | Phosphor | IVTC}] [-VideoFilters <string[]>] [-VideoFilterModules <string[]>] [-Modules <string[]>] [-AudioFilterModules <string[]>] [-AudioVisualization {None | Goom | ProjectM | Visual | GLSpectrum}] [-PreferredSubtitleLanguage <string>] [-IgnoredFileExtensions <string>] [-Arguments <string>] [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio] [-OnlyPictures] [-IncludeVideos] [-IncludeAudio] [-IncludePictures] [-NoBorders] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-FullScreen] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-DisableSubtitles] [-AutoScale] [-HighPriority] [-EnableTimeStretch] [-NewWindow] [-EnableWallpaperMode] [-EnableAudioTimeStretch] [-Close] [-SideBySide] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-SessionOnly] [-ClearSession] [-SkipSession] [-PassThru] [-PassThruNoOpen] [-PassThruWindow] [<CommonParameters>] 
+Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
+    [[-Height] <int>] [[-X] <int>] [[-Y] <int>]
+    [-PlaylistPath <string>] [-KeysToSend <string[]>]
+    [-Keywords <string[]>] [-SendKeyEscape]
+    [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds
+    <int>] [-SendKeyHoldKeyboardFocus] [-Monitor <int>]
+    [-AspectRatio <string>] [-Crop <string>] [-SubtitleFile
+    <string>] [-SubtitleScale <int>] [-SubtitleLanguage
+    {Afrikaans | Akan | Albanian | Amharic | Arabic |
+    Armenian | Azerbaijani | Basque | Belarusian | Bemba |
+    Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton
+    | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa
+    | Chinese (Simplified) | Chinese (Traditional) |
+    Corsican | Croatian | Czech | Danish | Dutch | Elmer
+    Fudd | English | Esperanto | Estonian | Ewe | Faroese |
+    Filipino | Finnish | French | Frisian | Ga | Galician |
+    Georgian | German | Greek | Guarani | Gujarati | Hacker
+    | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi |
+    Hungarian | Icelandic | Igbo | Indonesian | Interlingua
+    | Irish | Italian | Japanese | Javanese | Kannada |
+    Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo |
+    Korean | Krio (Sierra Leone) | Kurdish | Kurdish
+    (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala
+    | Lithuanian | Lozi | Luganda | Luo | Macedonian |
+    Malagasy | Malay | Malayalam | Maltese | Maori | Marathi
+    | Mauritian Creole | Moldavian | Mongolian | Montenegrin
+    | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian
+    | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto
+    | Persian | Pirate | Polish | Portuguese (Brazil) |
+    Portuguese (Portugal) | Punjabi | Quechua | Romanian |
+    Romansh | Runyakitara | Russian | Scots Gaelic | Serbian
+    | Serbo-Croatian | Sesotho | Setswana | Seychellois
+    Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian
+    | Somali | Spanish | Spanish (Latin American) |
+    Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar |
+    Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka |
+    Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu |
+    Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish |
+    Yoruba | Zulu}] [-AudioLanguage {Afrikaans | Akan |
+    Albanian | Amharic | Arabic | Armenian | Azerbaijani |
+    Basque | Belarusian | Bemba | Bengali | Bihari | Bork,
+    bork, bork! | Bosnian | Breton | Bulgarian | Cambodian |
+    Catalan | Cherokee | Chichewa | Chinese (Simplified) |
+    Chinese (Traditional) | Corsican | Croatian | Czech |
+    Danish | Dutch | Elmer Fudd | English | Esperanto |
+    Estonian | Ewe | Faroese | Filipino | Finnish | French |
+    Frisian | Ga | Galician | Georgian | German | Greek |
+    Guarani | Gujarati | Hacker | Haitian Creole | Hausa |
+    Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo
+    | Indonesian | Interlingua | Irish | Italian | Japanese
+    | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi |
+    Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish
+    | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian
+    | Lingala | Lithuanian | Lozi | Luganda | Luo |
+    Macedonian | Malagasy | Malay | Malayalam | Maltese |
+    Maori | Marathi | Mauritian Creole | Moldavian |
+    Mongolian | Montenegrin | Nepali | Nigerian Pidgin |
+    Northern Sotho | Norwegian | Norwegian (Nynorsk) |
+    Occitan | Oriya | Oromo | Pashto | Persian | Pirate |
+    Polish | Portuguese (Brazil) | Portuguese (Portugal) |
+    Punjabi | Quechua | Romanian | Romansh | Runyakitara |
+    Russian | Scots Gaelic | Serbian | Serbo-Croatian |
+    Sesotho | Setswana | Seychellois Creole | Shona | Sindhi
+    | Sinhalese | Slovak | Slovenian | Somali | Spanish |
+    Spanish (Latin American) | Sundanese | Swahili | Swedish
+    | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya |
+    Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi |
+    Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh |
+    Wolof | Xhosa | Yiddish | Yoruba | Zulu}]
+    [-PreferredAudioLanguage {Afrikaans | Akan | Albanian |
+    Amharic | Arabic | Armenian | Azerbaijani | Basque |
+    Belarusian | Bemba | Bengali | Bihari | Bork, bork,
+    bork! | Bosnian | Breton | Bulgarian | Cambodian |
+    Catalan | Cherokee | Chichewa | Chinese (Simplified) |
+    Chinese (Traditional) | Corsican | Croatian | Czech |
+    Danish | Dutch | Elmer Fudd | English | Esperanto |
+    Estonian | Ewe | Faroese | Filipino | Finnish | French |
+    Frisian | Ga | Galician | Georgian | German | Greek |
+    Guarani | Gujarati | Hacker | Haitian Creole | Hausa |
+    Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo
+    | Indonesian | Interlingua | Irish | Italian | Japanese
+    | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi |
+    Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish
+    | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian
+    | Lingala | Lithuanian | Lozi | Luganda | Luo |
+    Macedonian | Malagasy | Malay | Malayalam | Maltese |
+    Maori | Marathi | Mauritian Creole | Moldavian |
+    Mongolian | Montenegrin | Nepali | Nigerian Pidgin |
+    Northern Sotho | Norwegian | Norwegian (Nynorsk) |
+    Occitan | Oriya | Oromo | Pashto | Persian | Pirate |
+    Polish | Portuguese (Brazil) | Portuguese (Portugal) |
+    Punjabi | Quechua | Romanian | Romansh | Runyakitara |
+    Russian | Scots Gaelic | Serbian | Serbo-Croatian |
+    Sesotho | Setswana | Seychellois Creole | Shona | Sindhi
+    | Sinhalese | Slovak | Slovenian | Somali | Spanish |
+    Spanish (Latin American) | Sundanese | Swahili | Swedish
+    | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya |
+    Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi |
+    Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh |
+    Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-HttpProxy
+    <string>] [-HttpProxyPassword <string>] [-VerbosityLevel
+    <int>] [-SubdirectoryBehavior {None | Collapse |
+    Expand}] [-IgnoredExtensions <string>] [-VLCPath
+    <string>] [-ReplayGainMode {None | Track | Album}]
+    [-ReplayGainPreamp <float>] [-ForceDolbySurround {Auto |
+    On | Off}] [-AudioFilters <string[]>] [-Visualization
+    {None | Goom | ProjectM | Visual | GLSpectrum}]
+    [-Deinterlace {Off | Automatic | On}] [-DeinterlaceMode
+    {Auto | Discard | Blend | Mean | Bob | Linear | X |
+    Yadif | Yadif2x | Phosphor | IVTC}] [-VideoFilters
+    <string[]>] [-VideoFilterModules <string[]>] [-Modules
+    <string[]>] [-AudioFilterModules <string[]>]
+    [-AudioVisualization {None | Goom | ProjectM | Visual |
+    GLSpectrum}] [-PreferredSubtitleLanguage <string>]
+    [-IgnoredFileExtensions <string>] [-Arguments <string>]
+    [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio]
+    [-OnlyPictures] [-IncludeVideos] [-IncludeAudio]
+    [-IncludePictures] [-NoBorders] [-Left] [-Right] [-Top]
+    [-Bottom] [-Centered] [-FullScreen] [-AlwaysOnTop]
+    [-Random] [-Loop] [-Repeat] [-StartPaused]
+    [-PlayAndExit] [-DisableAudio] [-DisableSubtitles]
+    [-AutoScale] [-HighPriority] [-EnableTimeStretch]
+    [-NewWindow] [-EnableWallpaperMode]
+    [-EnableAudioTimeStretch] [-Close] [-SideBySide]
+    [-FocusWindow] [-SetForeground] [-Maximize]
+    [-RestoreFocus] [-SessionOnly] [-ClearSession]
+    [-SkipSession] [-PassThru] [-PassThruNoOpen]
+    [-PassThruWindow] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -1093,7 +1221,8 @@ Set-LocationParent [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-LocationParent2 [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -1130,7 +1259,8 @@ Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-LocationParent3 [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-LocationParent3 [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -1167,7 +1297,8 @@ Set-LocationParent3 [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-LocationParent4 [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -1204,7 +1335,8 @@ Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-LocationParent5 [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-LocationParent5 [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -1241,7 +1373,8 @@ Set-LocationParent5 [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-MonitorPowerOff [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-MonitorPowerOff [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -1315,7 +1448,8 @@ Set-MonitorPowerOn [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-VLCPlayerFocused [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-VLCPlayerFocused [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -1352,7 +1486,9 @@ Set-VLCPlayerFocused [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Start-TextToSpeech [-Lines] <string[]> [-Locale <string>] [-VoiceName <string>] [-PassThru] [-Wait] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Start-TextToSpeech [-Lines] <string[]> [-Locale <string>]
+    [-VoiceName <string>] [-PassThru] [-Wait] [-WhatIf]
+    [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -1517,7 +1653,8 @@ UtcNow [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [<CommonParameters>] 
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description]
+    <String>] [-Public] [-Collabrative] [<CommonParameters>] 
 ```` 
 
 ### DESCRIPTION 
@@ -1577,7 +1714,8 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
 
 ### SYNTAX 
 ```PowerShell 
-Add-SpotifyTracksToLiked [[-TrackId] <string[]>] [<CommonParameters>] 
+Add-SpotifyTracksToLiked [[-TrackId] <string[]>]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -1607,8 +1745,10 @@ Add-SpotifyTracksToLiked [[-TrackId] <string[]>] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Add-SpotifyTracksToPlaylist [-PlaylistName] <string[]> [[-Uri] <string[]>] [<CommonParameters>]  
-   Add-SpotifyTracksToPlaylist [-PlaylistId] <string[]> [[-Uri] <string[]>] [<CommonParameters>] 
+Add-SpotifyTracksToPlaylist [-PlaylistName] <string[]>
+    [[-Uri] <string[]>] [<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistId] <string[]> [[-Uri]
+    <string[]>] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -1782,7 +1922,19 @@ Get-SpotifyLikedTrack [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>] [[-Width] <int>] [[-Height] <int>] [[-Left] <int>] [[-Right] <int>] [[-Top] <int>] [[-Bottom] <int>] [[-AcceptLang] <string>] [[-SendKeyDelayMilliSeconds] <int>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [-FullScreen] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-DisablePopupBlocker] [-SendKeyEscape] [-SendKeyHoldKeyboardFocus] [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-NewWindow] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders] [-SessionOnly] [-ClearSession] [-SkipSession] [-SideBySide] [<CommonParameters>] 
+Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
+    [[-Width] <int>] [[-Height] <int>] [[-Left] <int>]
+    [[-Right] <int>] [[-Top] <int>] [[-Bottom] <int>]
+    [[-AcceptLang] <string>] [[-SendKeyDelayMilliSeconds]
+    <int>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium]
+    [-Firefox] [-FullScreen] [-Centered] [-ApplicationMode]
+    [-NoBrowserExtensions] [-DisablePopupBlocker]
+    [-SendKeyEscape] [-SendKeyHoldKeyboardFocus]
+    [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground]
+    [-Maximize] [-RestoreFocus] [-NewWindow] [-ReturnURL]
+    [-ReturnOnlyURL] [-NoBorders] [-SessionOnly]
+    [-ClearSession] [-SkipSession] [-SideBySide]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2127,7 +2279,8 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>] [[-Width] <int>] [[-H
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyPlaylistIdsByName [-PlaylistName] <string[]> [<CommonParameters>] 
+Get-SpotifyPlaylistIdsByName [-PlaylistName] <string[]>
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2157,8 +2310,10 @@ Get-SpotifyPlaylistIdsByName [-PlaylistName] <string[]> [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyPlaylistTrack [-PlaylistName] <string> [<CommonParameters>]  
-   Get-SpotifyPlaylistTrack [-PlaylistId] <string> [<CommonParameters>] 
+Get-SpotifyPlaylistTrack [-PlaylistName] <string>
+    [<CommonParameters>]
+Get-SpotifyPlaylistTrack [-PlaylistId] <string>
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2197,7 +2352,8 @@ Get-SpotifyPlaylistTrack [-PlaylistName] <string> [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyTrackAudioFeatures [-TrackId] <string[]> [<CommonParameters>] 
+Get-SpotifyTrackAudioFeatures [-TrackId] <string[]>
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2227,7 +2383,8 @@ Get-SpotifyTrackAudioFeatures [-TrackId] <string[]> [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyTrackById [-TrackId] <string> [<CommonParameters>] 
+Get-SpotifyTrackById [-TrackId] <string>
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2257,7 +2414,8 @@ Get-SpotifyTrackById [-TrackId] <string> [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyUserPlaylists [[-Filter] <string[]>] [-Force] [<CommonParameters>] 
+Get-SpotifyUserPlaylists [[-Filter] <string[]>] [-Force]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2296,8 +2454,10 @@ Get-SpotifyUserPlaylists [[-Filter] <string[]>] [-Force] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <string[]> [<CommonParameters>]  
-   Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <string[]> [<CommonParameters>] 
+Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <string[]>
+    [<CommonParameters>]
+Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <string[]>
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2336,7 +2496,8 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <string[]> [<CommonParameters>
 
 ### SYNTAX 
 ```PowerShell 
-Remove-SpotifyTracksFromLiked [[-TrackId] <string[]>] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Remove-SpotifyTracksFromLiked [[-TrackId] <string[]>]
+    [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2382,8 +2543,12 @@ Remove-SpotifyTracksFromLiked [[-TrackId] <string[]>] [-WhatIf] [-Confirm] [<Com
 
 ### SYNTAX 
 ```PowerShell 
-Remove-SpotifyTracksFromPlaylist [-PlaylistName] <string[]> [[-Uri] <string[]>] [-WhatIf] [-Confirm] [<CommonParameters>]  
-   Remove-SpotifyTracksFromPlaylist [-PlaylistId] <string[]> [[-Uri] <string[]>] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Remove-SpotifyTracksFromPlaylist [-PlaylistName] <string[]>
+    [[-Uri] <string[]>] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <string[]>
+    [[-Uri] <string[]>] [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2447,7 +2612,9 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistName] <string[]> [[-Uri] <string[]>] 
 
 ### SYNTAX 
 ```PowerShell 
-Search-Spotify [-Queries] <string[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
+Search-Spotify [-Queries] <string[]> [[-SearchType] {Album |
+    Artist | Playlist | Track | Show | Episode | All}]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2489,7 +2656,9 @@ Search-Spotify [-Queries] <string[]> [[-SearchType] {Album | Artist | Playlist |
 
 ### SYNTAX 
 ```PowerShell 
-Search-SpotifyAndEnqueue [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
+Search-SpotifyAndEnqueue [-Queries] <String[]>
+    [[-SearchType] {Album | Artist | Playlist | Track | Show
+    | Episode | All}] [<CommonParameters>] 
 ```` 
 
 ### DESCRIPTION 
@@ -2539,7 +2708,9 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [[-SearchType] {Album | Artist | 
 
 ### SYNTAX 
 ```PowerShell 
-Search-SpotifyAndPlay [-Queries] <string[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
+Search-SpotifyAndPlay [-Queries] <string[]> [[-SearchType]
+    {Album | Artist | Playlist | Track | Show | Episode |
+    All}] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2578,7 +2749,8 @@ Search-SpotifyAndPlay [-Queries] <string[]> [[-SearchType] {Album | Artist | Pla
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyActiveDevice [-DeviceId] <string> [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyActiveDevice [-DeviceId] <string> [-WhatIf]
+    [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2624,7 +2796,8 @@ Set-SpotifyActiveDevice [-DeviceId] <string> [-WhatIf] [-Confirm] [<CommonParame
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyApiToken [-ApiToken] <string> [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyApiToken [-ApiToken] <string> [-WhatIf]
+    [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2749,7 +2922,10 @@ Set-SpotifyPause [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyPlaylistDetails [-PlaylistId] <string> [-Name] <string> [[-Description] <string>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyPlaylistDetails [-PlaylistId] <string> [-Name]
+    <string> [[-Description] <string>] [-Public]
+    [-Collabrative] [-Private] [-NoCollabrations] [-WhatIf]
+    [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2849,7 +3025,10 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <string> [-Name] <string> [[-Descriptio
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyPlaylistOrder [-PlaylistId] <string> [-RangeStart] <int> [-InsertBefore] <int> [[-RangeLength] <int>] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyPlaylistOrder [-PlaylistId] <string>
+    [-RangeStart] <int> [-InsertBefore] <int>
+    [[-RangeLength] <int>] [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2922,7 +3101,8 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <string> [-RangeStart] <int> [-InsertBefo
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyPrevious [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyPrevious [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2959,7 +3139,8 @@ Set-SpotifyPrevious [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyRepeatContext [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -2996,7 +3177,8 @@ Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyRepeatOff [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyRepeatOff [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -3033,7 +3215,8 @@ Set-SpotifyRepeatOff [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyRepeatSong [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyRepeatSong [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -3070,7 +3253,8 @@ Set-SpotifyRepeatSong [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyShuffleOff [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyShuffleOff [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -3110,7 +3294,8 @@ Set-SpotifyShuffleOff [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyShuffleOn [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyShuffleOn [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### DESCRIPTION 
@@ -3226,7 +3411,130 @@ Set-SpotifyStop [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Open-VlcMediaPlayer [[-Path] <string[]>] [[-Width] <int>] [[-Height] <int>] [[-X] <int>] [[-Y] <int>] [-KeysToSend <string[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds <int>] [-SendKeyHoldKeyboardFocus] [-Monitor <int>] [-AspectRatio <string>] [-Crop <string>] [-SubtitleFile <string>] [-SubtitleScale <int>] [-SubtitleLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-AudioLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-PreferredAudioLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-HttpProxy <string>] [-HttpProxyPassword <string>] [-VerbosityLevel <int>] [-SubdirectoryBehavior {None | Collapse | Expand}] [-IgnoredExtensions <string>] [-VLCPath <string>] [-ReplayGainMode {None | Track | Album}] [-ReplayGainPreamp <float>] [-ForceDolbySurround {Auto | On | Off}] [-AudioFilters <string[]>] [-Visualization {None | Goom | ProjectM | Visual | GLSpectrum}] [-Deinterlace {Off | Automatic | On}] [-DeinterlaceMode {Auto | Discard | Blend | Mean | Bob | Linear | X | Yadif | Yadif2x | Phosphor | IVTC}] [-VideoFilters <string[]>] [-VideoFilterModules <string[]>] [-Modules <string[]>] [-AudioFilterModules <string[]>] [-AudioVisualization {None | Goom | ProjectM | Visual | GLSpectrum}] [-PreferredSubtitleLanguage <string>] [-IgnoredFileExtensions <string>] [-Arguments <string>] [-NoBorders] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-FullScreen] [-PassThru] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-DisableSubtitles] [-AutoScale] [-HighPriority] [-EnableTimeStretch] [-NewWindow] [-EnableWallpaperMode] [-EnableAudioTimeStretch] [-Close] [-SideBySide] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-SessionOnly] [-ClearSession] [-SkipSession] [<CommonParameters>] 
+Open-VlcMediaPlayer [[-Path] <string[]>] [[-Width] <int>]
+    [[-Height] <int>] [[-X] <int>] [[-Y] <int>] [-KeysToSend
+    <string[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter]
+    [-SendKeyDelayMilliSeconds <int>]
+    [-SendKeyHoldKeyboardFocus] [-Monitor <int>]
+    [-AspectRatio <string>] [-Crop <string>] [-SubtitleFile
+    <string>] [-SubtitleScale <int>] [-SubtitleLanguage
+    {Afrikaans | Akan | Albanian | Amharic | Arabic |
+    Armenian | Azerbaijani | Basque | Belarusian | Bemba |
+    Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton
+    | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa
+    | Chinese (Simplified) | Chinese (Traditional) |
+    Corsican | Croatian | Czech | Danish | Dutch | Elmer
+    Fudd | English | Esperanto | Estonian | Ewe | Faroese |
+    Filipino | Finnish | French | Frisian | Ga | Galician |
+    Georgian | German | Greek | Guarani | Gujarati | Hacker
+    | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi |
+    Hungarian | Icelandic | Igbo | Indonesian | Interlingua
+    | Irish | Italian | Japanese | Javanese | Kannada |
+    Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo |
+    Korean | Krio (Sierra Leone) | Kurdish | Kurdish
+    (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala
+    | Lithuanian | Lozi | Luganda | Luo | Macedonian |
+    Malagasy | Malay | Malayalam | Maltese | Maori | Marathi
+    | Mauritian Creole | Moldavian | Mongolian | Montenegrin
+    | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian
+    | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto
+    | Persian | Pirate | Polish | Portuguese (Brazil) |
+    Portuguese (Portugal) | Punjabi | Quechua | Romanian |
+    Romansh | Runyakitara | Russian | Scots Gaelic | Serbian
+    | Serbo-Croatian | Sesotho | Setswana | Seychellois
+    Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian
+    | Somali | Spanish | Spanish (Latin American) |
+    Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar |
+    Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka |
+    Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu |
+    Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish |
+    Yoruba | Zulu}] [-AudioLanguage {Afrikaans | Akan |
+    Albanian | Amharic | Arabic | Armenian | Azerbaijani |
+    Basque | Belarusian | Bemba | Bengali | Bihari | Bork,
+    bork, bork! | Bosnian | Breton | Bulgarian | Cambodian |
+    Catalan | Cherokee | Chichewa | Chinese (Simplified) |
+    Chinese (Traditional) | Corsican | Croatian | Czech |
+    Danish | Dutch | Elmer Fudd | English | Esperanto |
+    Estonian | Ewe | Faroese | Filipino | Finnish | French |
+    Frisian | Ga | Galician | Georgian | German | Greek |
+    Guarani | Gujarati | Hacker | Haitian Creole | Hausa |
+    Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo
+    | Indonesian | Interlingua | Irish | Italian | Japanese
+    | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi |
+    Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish
+    | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian
+    | Lingala | Lithuanian | Lozi | Luganda | Luo |
+    Macedonian | Malagasy | Malay | Malayalam | Maltese |
+    Maori | Marathi | Mauritian Creole | Moldavian |
+    Mongolian | Montenegrin | Nepali | Nigerian Pidgin |
+    Northern Sotho | Norwegian | Norwegian (Nynorsk) |
+    Occitan | Oriya | Oromo | Pashto | Persian | Pirate |
+    Polish | Portuguese (Brazil) | Portuguese (Portugal) |
+    Punjabi | Quechua | Romanian | Romansh | Runyakitara |
+    Russian | Scots Gaelic | Serbian | Serbo-Croatian |
+    Sesotho | Setswana | Seychellois Creole | Shona | Sindhi
+    | Sinhalese | Slovak | Slovenian | Somali | Spanish |
+    Spanish (Latin American) | Sundanese | Swahili | Swedish
+    | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya |
+    Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi |
+    Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh |
+    Wolof | Xhosa | Yiddish | Yoruba | Zulu}]
+    [-PreferredAudioLanguage {Afrikaans | Akan | Albanian |
+    Amharic | Arabic | Armenian | Azerbaijani | Basque |
+    Belarusian | Bemba | Bengali | Bihari | Bork, bork,
+    bork! | Bosnian | Breton | Bulgarian | Cambodian |
+    Catalan | Cherokee | Chichewa | Chinese (Simplified) |
+    Chinese (Traditional) | Corsican | Croatian | Czech |
+    Danish | Dutch | Elmer Fudd | English | Esperanto |
+    Estonian | Ewe | Faroese | Filipino | Finnish | French |
+    Frisian | Ga | Galician | Georgian | German | Greek |
+    Guarani | Gujarati | Hacker | Haitian Creole | Hausa |
+    Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo
+    | Indonesian | Interlingua | Irish | Italian | Japanese
+    | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi |
+    Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish
+    | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian
+    | Lingala | Lithuanian | Lozi | Luganda | Luo |
+    Macedonian | Malagasy | Malay | Malayalam | Maltese |
+    Maori | Marathi | Mauritian Creole | Moldavian |
+    Mongolian | Montenegrin | Nepali | Nigerian Pidgin |
+    Northern Sotho | Norwegian | Norwegian (Nynorsk) |
+    Occitan | Oriya | Oromo | Pashto | Persian | Pirate |
+    Polish | Portuguese (Brazil) | Portuguese (Portugal) |
+    Punjabi | Quechua | Romanian | Romansh | Runyakitara |
+    Russian | Scots Gaelic | Serbian | Serbo-Croatian |
+    Sesotho | Setswana | Seychellois Creole | Shona | Sindhi
+    | Sinhalese | Slovak | Slovenian | Somali | Spanish |
+    Spanish (Latin American) | Sundanese | Swahili | Swedish
+    | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya |
+    Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi |
+    Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh |
+    Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-HttpProxy
+    <string>] [-HttpProxyPassword <string>] [-VerbosityLevel
+    <int>] [-SubdirectoryBehavior {None | Collapse |
+    Expand}] [-IgnoredExtensions <string>] [-VLCPath
+    <string>] [-ReplayGainMode {None | Track | Album}]
+    [-ReplayGainPreamp <float>] [-ForceDolbySurround {Auto |
+    On | Off}] [-AudioFilters <string[]>] [-Visualization
+    {None | Goom | ProjectM | Visual | GLSpectrum}]
+    [-Deinterlace {Off | Automatic | On}] [-DeinterlaceMode
+    {Auto | Discard | Blend | Mean | Bob | Linear | X |
+    Yadif | Yadif2x | Phosphor | IVTC}] [-VideoFilters
+    <string[]>] [-VideoFilterModules <string[]>] [-Modules
+    <string[]>] [-AudioFilterModules <string[]>]
+    [-AudioVisualization {None | Goom | ProjectM | Visual |
+    GLSpectrum}] [-PreferredSubtitleLanguage <string>]
+    [-IgnoredFileExtensions <string>] [-Arguments <string>]
+    [-NoBorders] [-Left] [-Right] [-Top] [-Bottom]
+    [-Centered] [-FullScreen] [-PassThru] [-AlwaysOnTop]
+    [-Random] [-Loop] [-Repeat] [-StartPaused]
+    [-PlayAndExit] [-DisableAudio] [-DisableSubtitles]
+    [-AutoScale] [-HighPriority] [-EnableTimeStretch]
+    [-NewWindow] [-EnableWallpaperMode]
+    [-EnableAudioTimeStretch] [-Close] [-SideBySide]
+    [-FocusWindow] [-SetForeground] [-Maximize]
+    [-RestoreFocus] [-SessionOnly] [-ClearSession]
+    [-SkipSession] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -3877,7 +4185,51 @@ Open-VlcMediaPlayer [[-Path] <string[]>] [[-Width] <int>] [[-Height] <int>] [[-X
 
 ### SYNTAX 
 ```PowerShell 
-Open-VlcMediaPlayerLyrics [[-Queries] <string[]>] [[-EndPoint] {Bing | Github | Google | Youtube}] [[-Language] {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-Monitor <int>] [-Width <int>] [-Height <int>] [-X <int>] [-Y <int>] [-AcceptLang <string>] [-KeysToSend <string[]>] [-SendKeyDelayMilliSeconds <int>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [-All] [-ShowWindow] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-DisablePopupBlocker] [-SendKeyEscape] [-SendKeyHoldKeyboardFocus] [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-NewWindow] [-PassThru] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders] [-SessionOnly] [-ClearSession] [-SkipSession] [-SideBySide] [<CommonParameters>] 
+Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
+    [[-EndPoint] {Bing | Github | Google | Youtube}]
+    [[-Language] {Afrikaans | Akan | Albanian | Amharic |
+    Arabic | Armenian | Azerbaijani | Basque | Belarusian |
+    Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian |
+    Breton | Bulgarian | Cambodian | Catalan | Cherokee |
+    Chichewa | Chinese (Simplified) | Chinese (Traditional)
+    | Corsican | Croatian | Czech | Danish | Dutch | Elmer
+    Fudd | English | Esperanto | Estonian | Ewe | Faroese |
+    Filipino | Finnish | French | Frisian | Ga | Galician |
+    Georgian | German | Greek | Guarani | Gujarati | Hacker
+    | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi |
+    Hungarian | Icelandic | Igbo | Indonesian | Interlingua
+    | Irish | Italian | Japanese | Javanese | Kannada |
+    Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo |
+    Korean | Krio (Sierra Leone) | Kurdish | Kurdish
+    (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala
+    | Lithuanian | Lozi | Luganda | Luo | Macedonian |
+    Malagasy | Malay | Malayalam | Maltese | Maori | Marathi
+    | Mauritian Creole | Moldavian | Mongolian | Montenegrin
+    | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian
+    | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto
+    | Persian | Pirate | Polish | Portuguese (Brazil) |
+    Portuguese (Portugal) | Punjabi | Quechua | Romanian |
+    Romansh | Runyakitara | Russian | Scots Gaelic | Serbian
+    | Serbo-Croatian | Sesotho | Setswana | Seychellois
+    Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian
+    | Somali | Spanish | Spanish (Latin American) |
+    Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar |
+    Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka |
+    Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu |
+    Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish |
+    Yoruba | Zulu}] [-Monitor <int>] [-Width <int>] [-Height
+    <int>] [-X <int>] [-Y <int>] [-AcceptLang <string>]
+    [-KeysToSend <string[]>] [-SendKeyDelayMilliSeconds
+    <int>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium]
+    [-Firefox] [-All] [-ShowWindow] [-Left] [-Right] [-Top]
+    [-Bottom] [-Centered] [-ApplicationMode]
+    [-NoBrowserExtensions] [-DisablePopupBlocker]
+    [-SendKeyEscape] [-SendKeyHoldKeyboardFocus]
+    [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground]
+    [-Maximize] [-RestoreFocus] [-NewWindow] [-PassThru]
+    [-ReturnURL] [-ReturnOnlyURL] [-NoBorders]
+    [-SessionOnly] [-ClearSession] [-SkipSession]
+    [-SideBySide] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -4285,7 +4637,8 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>] [[-EndPoint] {Bing | Github | 
 
 ### SYNTAX 
 ```PowerShell 
-Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>] 
+Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -4322,7 +4675,8 @@ Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>] 
+Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -4467,7 +4821,8 @@ Get-IsSpeaking [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-New-MicrosoftShellTab [-DontCloseThisTab] [-WhatIf] [-Confirm] [<CommonParameters>] 
+New-MicrosoftShellTab [-DontCloseThisTab] [-WhatIf]
+    [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -4534,7 +4889,134 @@ Now [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>] [[-Height] <int>] [[-X] <int>] [[-Y] <int>] [-PlaylistPath <string>] [-KeysToSend <string[]>] [-Keywords <string[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds <int>] [-SendKeyHoldKeyboardFocus] [-Monitor <int>] [-AspectRatio <string>] [-Crop <string>] [-SubtitleFile <string>] [-SubtitleScale <int>] [-SubtitleLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-AudioLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-PreferredAudioLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-HttpProxy <string>] [-HttpProxyPassword <string>] [-VerbosityLevel <int>] [-SubdirectoryBehavior {None | Collapse | Expand}] [-IgnoredExtensions <string>] [-VLCPath <string>] [-ReplayGainMode {None | Track | Album}] [-ReplayGainPreamp <float>] [-ForceDolbySurround {Auto | On | Off}] [-AudioFilters <string[]>] [-Visualization {None | Goom | ProjectM | Visual | GLSpectrum}] [-Deinterlace {Off | Automatic | On}] [-DeinterlaceMode {Auto | Discard | Blend | Mean | Bob | Linear | X | Yadif | Yadif2x | Phosphor | IVTC}] [-VideoFilters <string[]>] [-VideoFilterModules <string[]>] [-Modules <string[]>] [-AudioFilterModules <string[]>] [-AudioVisualization {None | Goom | ProjectM | Visual | GLSpectrum}] [-PreferredSubtitleLanguage <string>] [-IgnoredFileExtensions <string>] [-Arguments <string>] [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio] [-OnlyPictures] [-IncludeVideos] [-IncludeAudio] [-IncludePictures] [-NoBorders] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-FullScreen] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-DisableSubtitles] [-AutoScale] [-HighPriority] [-EnableTimeStretch] [-NewWindow] [-EnableWallpaperMode] [-EnableAudioTimeStretch] [-Close] [-SideBySide] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-SessionOnly] [-ClearSession] [-SkipSession] [-PassThru] [-PassThruNoOpen] [-PassThruWindow] [<CommonParameters>] 
+Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
+    [[-Height] <int>] [[-X] <int>] [[-Y] <int>]
+    [-PlaylistPath <string>] [-KeysToSend <string[]>]
+    [-Keywords <string[]>] [-SendKeyEscape]
+    [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds
+    <int>] [-SendKeyHoldKeyboardFocus] [-Monitor <int>]
+    [-AspectRatio <string>] [-Crop <string>] [-SubtitleFile
+    <string>] [-SubtitleScale <int>] [-SubtitleLanguage
+    {Afrikaans | Akan | Albanian | Amharic | Arabic |
+    Armenian | Azerbaijani | Basque | Belarusian | Bemba |
+    Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton
+    | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa
+    | Chinese (Simplified) | Chinese (Traditional) |
+    Corsican | Croatian | Czech | Danish | Dutch | Elmer
+    Fudd | English | Esperanto | Estonian | Ewe | Faroese |
+    Filipino | Finnish | French | Frisian | Ga | Galician |
+    Georgian | German | Greek | Guarani | Gujarati | Hacker
+    | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi |
+    Hungarian | Icelandic | Igbo | Indonesian | Interlingua
+    | Irish | Italian | Japanese | Javanese | Kannada |
+    Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo |
+    Korean | Krio (Sierra Leone) | Kurdish | Kurdish
+    (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala
+    | Lithuanian | Lozi | Luganda | Luo | Macedonian |
+    Malagasy | Malay | Malayalam | Maltese | Maori | Marathi
+    | Mauritian Creole | Moldavian | Mongolian | Montenegrin
+    | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian
+    | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto
+    | Persian | Pirate | Polish | Portuguese (Brazil) |
+    Portuguese (Portugal) | Punjabi | Quechua | Romanian |
+    Romansh | Runyakitara | Russian | Scots Gaelic | Serbian
+    | Serbo-Croatian | Sesotho | Setswana | Seychellois
+    Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian
+    | Somali | Spanish | Spanish (Latin American) |
+    Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar |
+    Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka |
+    Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu |
+    Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish |
+    Yoruba | Zulu}] [-AudioLanguage {Afrikaans | Akan |
+    Albanian | Amharic | Arabic | Armenian | Azerbaijani |
+    Basque | Belarusian | Bemba | Bengali | Bihari | Bork,
+    bork, bork! | Bosnian | Breton | Bulgarian | Cambodian |
+    Catalan | Cherokee | Chichewa | Chinese (Simplified) |
+    Chinese (Traditional) | Corsican | Croatian | Czech |
+    Danish | Dutch | Elmer Fudd | English | Esperanto |
+    Estonian | Ewe | Faroese | Filipino | Finnish | French |
+    Frisian | Ga | Galician | Georgian | German | Greek |
+    Guarani | Gujarati | Hacker | Haitian Creole | Hausa |
+    Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo
+    | Indonesian | Interlingua | Irish | Italian | Japanese
+    | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi |
+    Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish
+    | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian
+    | Lingala | Lithuanian | Lozi | Luganda | Luo |
+    Macedonian | Malagasy | Malay | Malayalam | Maltese |
+    Maori | Marathi | Mauritian Creole | Moldavian |
+    Mongolian | Montenegrin | Nepali | Nigerian Pidgin |
+    Northern Sotho | Norwegian | Norwegian (Nynorsk) |
+    Occitan | Oriya | Oromo | Pashto | Persian | Pirate |
+    Polish | Portuguese (Brazil) | Portuguese (Portugal) |
+    Punjabi | Quechua | Romanian | Romansh | Runyakitara |
+    Russian | Scots Gaelic | Serbian | Serbo-Croatian |
+    Sesotho | Setswana | Seychellois Creole | Shona | Sindhi
+    | Sinhalese | Slovak | Slovenian | Somali | Spanish |
+    Spanish (Latin American) | Sundanese | Swahili | Swedish
+    | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya |
+    Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi |
+    Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh |
+    Wolof | Xhosa | Yiddish | Yoruba | Zulu}]
+    [-PreferredAudioLanguage {Afrikaans | Akan | Albanian |
+    Amharic | Arabic | Armenian | Azerbaijani | Basque |
+    Belarusian | Bemba | Bengali | Bihari | Bork, bork,
+    bork! | Bosnian | Breton | Bulgarian | Cambodian |
+    Catalan | Cherokee | Chichewa | Chinese (Simplified) |
+    Chinese (Traditional) | Corsican | Croatian | Czech |
+    Danish | Dutch | Elmer Fudd | English | Esperanto |
+    Estonian | Ewe | Faroese | Filipino | Finnish | French |
+    Frisian | Ga | Galician | Georgian | German | Greek |
+    Guarani | Gujarati | Hacker | Haitian Creole | Hausa |
+    Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo
+    | Indonesian | Interlingua | Irish | Italian | Japanese
+    | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi |
+    Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish
+    | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian
+    | Lingala | Lithuanian | Lozi | Luganda | Luo |
+    Macedonian | Malagasy | Malay | Malayalam | Maltese |
+    Maori | Marathi | Mauritian Creole | Moldavian |
+    Mongolian | Montenegrin | Nepali | Nigerian Pidgin |
+    Northern Sotho | Norwegian | Norwegian (Nynorsk) |
+    Occitan | Oriya | Oromo | Pashto | Persian | Pirate |
+    Polish | Portuguese (Brazil) | Portuguese (Portugal) |
+    Punjabi | Quechua | Romanian | Romansh | Runyakitara |
+    Russian | Scots Gaelic | Serbian | Serbo-Croatian |
+    Sesotho | Setswana | Seychellois Creole | Shona | Sindhi
+    | Sinhalese | Slovak | Slovenian | Somali | Spanish |
+    Spanish (Latin American) | Sundanese | Swahili | Swedish
+    | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya |
+    Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi |
+    Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh |
+    Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-HttpProxy
+    <string>] [-HttpProxyPassword <string>] [-VerbosityLevel
+    <int>] [-SubdirectoryBehavior {None | Collapse |
+    Expand}] [-IgnoredExtensions <string>] [-VLCPath
+    <string>] [-ReplayGainMode {None | Track | Album}]
+    [-ReplayGainPreamp <float>] [-ForceDolbySurround {Auto |
+    On | Off}] [-AudioFilters <string[]>] [-Visualization
+    {None | Goom | ProjectM | Visual | GLSpectrum}]
+    [-Deinterlace {Off | Automatic | On}] [-DeinterlaceMode
+    {Auto | Discard | Blend | Mean | Bob | Linear | X |
+    Yadif | Yadif2x | Phosphor | IVTC}] [-VideoFilters
+    <string[]>] [-VideoFilterModules <string[]>] [-Modules
+    <string[]>] [-AudioFilterModules <string[]>]
+    [-AudioVisualization {None | Goom | ProjectM | Visual |
+    GLSpectrum}] [-PreferredSubtitleLanguage <string>]
+    [-IgnoredFileExtensions <string>] [-Arguments <string>]
+    [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio]
+    [-OnlyPictures] [-IncludeVideos] [-IncludeAudio]
+    [-IncludePictures] [-NoBorders] [-Left] [-Right] [-Top]
+    [-Bottom] [-Centered] [-FullScreen] [-AlwaysOnTop]
+    [-Random] [-Loop] [-Repeat] [-StartPaused]
+    [-PlayAndExit] [-DisableAudio] [-DisableSubtitles]
+    [-AutoScale] [-HighPriority] [-EnableTimeStretch]
+    [-NewWindow] [-EnableWallpaperMode]
+    [-EnableAudioTimeStretch] [-Close] [-SideBySide]
+    [-FocusWindow] [-SetForeground] [-Maximize]
+    [-RestoreFocus] [-SessionOnly] [-ClearSession]
+    [-SkipSession] [-PassThru] [-PassThruNoOpen]
+    [-PassThruWindow] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -5372,7 +5854,8 @@ Set-LocationParent [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-LocationParent2 [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -5409,7 +5892,8 @@ Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-LocationParent3 [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-LocationParent3 [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -5446,7 +5930,8 @@ Set-LocationParent3 [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-LocationParent4 [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -5483,7 +5968,8 @@ Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-LocationParent5 [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-LocationParent5 [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -5520,7 +6006,8 @@ Set-LocationParent5 [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-MonitorPowerOff [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-MonitorPowerOff [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -5594,7 +6081,8 @@ Set-MonitorPowerOn [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-VLCPlayerFocused [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-VLCPlayerFocused [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -5631,7 +6119,9 @@ Set-VLCPlayerFocused [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Start-TextToSpeech [-Lines] <string[]> [-Locale <string>] [-VoiceName <string>] [-PassThru] [-Wait] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Start-TextToSpeech [-Lines] <string[]> [-Locale <string>]
+    [-VoiceName <string>] [-PassThru] [-Wait] [-WhatIf]
+    [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -5796,7 +6286,8 @@ UtcNow [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [<CommonParameters>] 
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description]
+    <String>] [-Public] [-Collabrative] [<CommonParameters>] 
 ```` 
 
 ### DESCRIPTION 
@@ -5856,7 +6347,8 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
 
 ### SYNTAX 
 ```PowerShell 
-Add-SpotifyTracksToLiked [[-TrackId] <string[]>] [<CommonParameters>] 
+Add-SpotifyTracksToLiked [[-TrackId] <string[]>]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -5886,8 +6378,10 @@ Add-SpotifyTracksToLiked [[-TrackId] <string[]>] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Add-SpotifyTracksToPlaylist [-PlaylistName] <string[]> [[-Uri] <string[]>] [<CommonParameters>]  
-   Add-SpotifyTracksToPlaylist [-PlaylistId] <string[]> [[-Uri] <string[]>] [<CommonParameters>] 
+Add-SpotifyTracksToPlaylist [-PlaylistName] <string[]>
+    [[-Uri] <string[]>] [<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistId] <string[]> [[-Uri]
+    <string[]>] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -6061,7 +6555,19 @@ Get-SpotifyLikedTrack [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>] [[-Width] <int>] [[-Height] <int>] [[-Left] <int>] [[-Right] <int>] [[-Top] <int>] [[-Bottom] <int>] [[-AcceptLang] <string>] [[-SendKeyDelayMilliSeconds] <int>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [-FullScreen] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-DisablePopupBlocker] [-SendKeyEscape] [-SendKeyHoldKeyboardFocus] [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-NewWindow] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders] [-SessionOnly] [-ClearSession] [-SkipSession] [-SideBySide] [<CommonParameters>] 
+Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
+    [[-Width] <int>] [[-Height] <int>] [[-Left] <int>]
+    [[-Right] <int>] [[-Top] <int>] [[-Bottom] <int>]
+    [[-AcceptLang] <string>] [[-SendKeyDelayMilliSeconds]
+    <int>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium]
+    [-Firefox] [-FullScreen] [-Centered] [-ApplicationMode]
+    [-NoBrowserExtensions] [-DisablePopupBlocker]
+    [-SendKeyEscape] [-SendKeyHoldKeyboardFocus]
+    [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground]
+    [-Maximize] [-RestoreFocus] [-NewWindow] [-ReturnURL]
+    [-ReturnOnlyURL] [-NoBorders] [-SessionOnly]
+    [-ClearSession] [-SkipSession] [-SideBySide]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -6406,7 +6912,8 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>] [[-Width] <int>] [[-H
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyPlaylistIdsByName [-PlaylistName] <string[]> [<CommonParameters>] 
+Get-SpotifyPlaylistIdsByName [-PlaylistName] <string[]>
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -6436,8 +6943,10 @@ Get-SpotifyPlaylistIdsByName [-PlaylistName] <string[]> [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyPlaylistTrack [-PlaylistName] <string> [<CommonParameters>]  
-   Get-SpotifyPlaylistTrack [-PlaylistId] <string> [<CommonParameters>] 
+Get-SpotifyPlaylistTrack [-PlaylistName] <string>
+    [<CommonParameters>]
+Get-SpotifyPlaylistTrack [-PlaylistId] <string>
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -6476,7 +6985,8 @@ Get-SpotifyPlaylistTrack [-PlaylistName] <string> [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyTrackAudioFeatures [-TrackId] <string[]> [<CommonParameters>] 
+Get-SpotifyTrackAudioFeatures [-TrackId] <string[]>
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -6506,7 +7016,8 @@ Get-SpotifyTrackAudioFeatures [-TrackId] <string[]> [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyTrackById [-TrackId] <string> [<CommonParameters>] 
+Get-SpotifyTrackById [-TrackId] <string>
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -6536,7 +7047,8 @@ Get-SpotifyTrackById [-TrackId] <string> [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyUserPlaylists [[-Filter] <string[]>] [-Force] [<CommonParameters>] 
+Get-SpotifyUserPlaylists [[-Filter] <string[]>] [-Force]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -6575,8 +7087,10 @@ Get-SpotifyUserPlaylists [[-Filter] <string[]>] [-Force] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <string[]> [<CommonParameters>]  
-   Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <string[]> [<CommonParameters>] 
+Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <string[]>
+    [<CommonParameters>]
+Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <string[]>
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -6615,7 +7129,8 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <string[]> [<CommonParameters>
 
 ### SYNTAX 
 ```PowerShell 
-Remove-SpotifyTracksFromLiked [[-TrackId] <string[]>] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Remove-SpotifyTracksFromLiked [[-TrackId] <string[]>]
+    [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -6661,8 +7176,12 @@ Remove-SpotifyTracksFromLiked [[-TrackId] <string[]>] [-WhatIf] [-Confirm] [<Com
 
 ### SYNTAX 
 ```PowerShell 
-Remove-SpotifyTracksFromPlaylist [-PlaylistName] <string[]> [[-Uri] <string[]>] [-WhatIf] [-Confirm] [<CommonParameters>]  
-   Remove-SpotifyTracksFromPlaylist [-PlaylistId] <string[]> [[-Uri] <string[]>] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Remove-SpotifyTracksFromPlaylist [-PlaylistName] <string[]>
+    [[-Uri] <string[]>] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <string[]>
+    [[-Uri] <string[]>] [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -6726,7 +7245,9 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistName] <string[]> [[-Uri] <string[]>] 
 
 ### SYNTAX 
 ```PowerShell 
-Search-Spotify [-Queries] <string[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
+Search-Spotify [-Queries] <string[]> [[-SearchType] {Album |
+    Artist | Playlist | Track | Show | Episode | All}]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -6768,7 +7289,9 @@ Search-Spotify [-Queries] <string[]> [[-SearchType] {Album | Artist | Playlist |
 
 ### SYNTAX 
 ```PowerShell 
-Search-SpotifyAndEnqueue [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
+Search-SpotifyAndEnqueue [-Queries] <String[]>
+    [[-SearchType] {Album | Artist | Playlist | Track | Show
+    | Episode | All}] [<CommonParameters>] 
 ```` 
 
 ### DESCRIPTION 
@@ -6818,7 +7341,9 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [[-SearchType] {Album | Artist | 
 
 ### SYNTAX 
 ```PowerShell 
-Search-SpotifyAndPlay [-Queries] <string[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
+Search-SpotifyAndPlay [-Queries] <string[]> [[-SearchType]
+    {Album | Artist | Playlist | Track | Show | Episode |
+    All}] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -6857,7 +7382,8 @@ Search-SpotifyAndPlay [-Queries] <string[]> [[-SearchType] {Album | Artist | Pla
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyActiveDevice [-DeviceId] <string> [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyActiveDevice [-DeviceId] <string> [-WhatIf]
+    [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -6903,7 +7429,8 @@ Set-SpotifyActiveDevice [-DeviceId] <string> [-WhatIf] [-Confirm] [<CommonParame
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyApiToken [-ApiToken] <string> [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyApiToken [-ApiToken] <string> [-WhatIf]
+    [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -7028,7 +7555,10 @@ Set-SpotifyPause [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyPlaylistDetails [-PlaylistId] <string> [-Name] <string> [[-Description] <string>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyPlaylistDetails [-PlaylistId] <string> [-Name]
+    <string> [[-Description] <string>] [-Public]
+    [-Collabrative] [-Private] [-NoCollabrations] [-WhatIf]
+    [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -7128,7 +7658,10 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <string> [-Name] <string> [[-Descriptio
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyPlaylistOrder [-PlaylistId] <string> [-RangeStart] <int> [-InsertBefore] <int> [[-RangeLength] <int>] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyPlaylistOrder [-PlaylistId] <string>
+    [-RangeStart] <int> [-InsertBefore] <int>
+    [[-RangeLength] <int>] [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -7201,7 +7734,8 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <string> [-RangeStart] <int> [-InsertBefo
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyPrevious [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyPrevious [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -7238,7 +7772,8 @@ Set-SpotifyPrevious [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyRepeatContext [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -7275,7 +7810,8 @@ Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyRepeatOff [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyRepeatOff [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -7312,7 +7848,8 @@ Set-SpotifyRepeatOff [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyRepeatSong [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyRepeatSong [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -7349,7 +7886,8 @@ Set-SpotifyRepeatSong [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyShuffleOff [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyShuffleOff [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -7389,7 +7927,8 @@ Set-SpotifyShuffleOff [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyShuffleOn [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyShuffleOn [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### DESCRIPTION 
@@ -7505,7 +8044,130 @@ Set-SpotifyStop [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Open-VlcMediaPlayer [[-Path] <string[]>] [[-Width] <int>] [[-Height] <int>] [[-X] <int>] [[-Y] <int>] [-KeysToSend <string[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds <int>] [-SendKeyHoldKeyboardFocus] [-Monitor <int>] [-AspectRatio <string>] [-Crop <string>] [-SubtitleFile <string>] [-SubtitleScale <int>] [-SubtitleLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-AudioLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-PreferredAudioLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-HttpProxy <string>] [-HttpProxyPassword <string>] [-VerbosityLevel <int>] [-SubdirectoryBehavior {None | Collapse | Expand}] [-IgnoredExtensions <string>] [-VLCPath <string>] [-ReplayGainMode {None | Track | Album}] [-ReplayGainPreamp <float>] [-ForceDolbySurround {Auto | On | Off}] [-AudioFilters <string[]>] [-Visualization {None | Goom | ProjectM | Visual | GLSpectrum}] [-Deinterlace {Off | Automatic | On}] [-DeinterlaceMode {Auto | Discard | Blend | Mean | Bob | Linear | X | Yadif | Yadif2x | Phosphor | IVTC}] [-VideoFilters <string[]>] [-VideoFilterModules <string[]>] [-Modules <string[]>] [-AudioFilterModules <string[]>] [-AudioVisualization {None | Goom | ProjectM | Visual | GLSpectrum}] [-PreferredSubtitleLanguage <string>] [-IgnoredFileExtensions <string>] [-Arguments <string>] [-NoBorders] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-FullScreen] [-PassThru] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-DisableSubtitles] [-AutoScale] [-HighPriority] [-EnableTimeStretch] [-NewWindow] [-EnableWallpaperMode] [-EnableAudioTimeStretch] [-Close] [-SideBySide] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-SessionOnly] [-ClearSession] [-SkipSession] [<CommonParameters>] 
+Open-VlcMediaPlayer [[-Path] <string[]>] [[-Width] <int>]
+    [[-Height] <int>] [[-X] <int>] [[-Y] <int>] [-KeysToSend
+    <string[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter]
+    [-SendKeyDelayMilliSeconds <int>]
+    [-SendKeyHoldKeyboardFocus] [-Monitor <int>]
+    [-AspectRatio <string>] [-Crop <string>] [-SubtitleFile
+    <string>] [-SubtitleScale <int>] [-SubtitleLanguage
+    {Afrikaans | Akan | Albanian | Amharic | Arabic |
+    Armenian | Azerbaijani | Basque | Belarusian | Bemba |
+    Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton
+    | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa
+    | Chinese (Simplified) | Chinese (Traditional) |
+    Corsican | Croatian | Czech | Danish | Dutch | Elmer
+    Fudd | English | Esperanto | Estonian | Ewe | Faroese |
+    Filipino | Finnish | French | Frisian | Ga | Galician |
+    Georgian | German | Greek | Guarani | Gujarati | Hacker
+    | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi |
+    Hungarian | Icelandic | Igbo | Indonesian | Interlingua
+    | Irish | Italian | Japanese | Javanese | Kannada |
+    Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo |
+    Korean | Krio (Sierra Leone) | Kurdish | Kurdish
+    (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala
+    | Lithuanian | Lozi | Luganda | Luo | Macedonian |
+    Malagasy | Malay | Malayalam | Maltese | Maori | Marathi
+    | Mauritian Creole | Moldavian | Mongolian | Montenegrin
+    | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian
+    | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto
+    | Persian | Pirate | Polish | Portuguese (Brazil) |
+    Portuguese (Portugal) | Punjabi | Quechua | Romanian |
+    Romansh | Runyakitara | Russian | Scots Gaelic | Serbian
+    | Serbo-Croatian | Sesotho | Setswana | Seychellois
+    Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian
+    | Somali | Spanish | Spanish (Latin American) |
+    Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar |
+    Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka |
+    Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu |
+    Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish |
+    Yoruba | Zulu}] [-AudioLanguage {Afrikaans | Akan |
+    Albanian | Amharic | Arabic | Armenian | Azerbaijani |
+    Basque | Belarusian | Bemba | Bengali | Bihari | Bork,
+    bork, bork! | Bosnian | Breton | Bulgarian | Cambodian |
+    Catalan | Cherokee | Chichewa | Chinese (Simplified) |
+    Chinese (Traditional) | Corsican | Croatian | Czech |
+    Danish | Dutch | Elmer Fudd | English | Esperanto |
+    Estonian | Ewe | Faroese | Filipino | Finnish | French |
+    Frisian | Ga | Galician | Georgian | German | Greek |
+    Guarani | Gujarati | Hacker | Haitian Creole | Hausa |
+    Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo
+    | Indonesian | Interlingua | Irish | Italian | Japanese
+    | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi |
+    Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish
+    | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian
+    | Lingala | Lithuanian | Lozi | Luganda | Luo |
+    Macedonian | Malagasy | Malay | Malayalam | Maltese |
+    Maori | Marathi | Mauritian Creole | Moldavian |
+    Mongolian | Montenegrin | Nepali | Nigerian Pidgin |
+    Northern Sotho | Norwegian | Norwegian (Nynorsk) |
+    Occitan | Oriya | Oromo | Pashto | Persian | Pirate |
+    Polish | Portuguese (Brazil) | Portuguese (Portugal) |
+    Punjabi | Quechua | Romanian | Romansh | Runyakitara |
+    Russian | Scots Gaelic | Serbian | Serbo-Croatian |
+    Sesotho | Setswana | Seychellois Creole | Shona | Sindhi
+    | Sinhalese | Slovak | Slovenian | Somali | Spanish |
+    Spanish (Latin American) | Sundanese | Swahili | Swedish
+    | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya |
+    Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi |
+    Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh |
+    Wolof | Xhosa | Yiddish | Yoruba | Zulu}]
+    [-PreferredAudioLanguage {Afrikaans | Akan | Albanian |
+    Amharic | Arabic | Armenian | Azerbaijani | Basque |
+    Belarusian | Bemba | Bengali | Bihari | Bork, bork,
+    bork! | Bosnian | Breton | Bulgarian | Cambodian |
+    Catalan | Cherokee | Chichewa | Chinese (Simplified) |
+    Chinese (Traditional) | Corsican | Croatian | Czech |
+    Danish | Dutch | Elmer Fudd | English | Esperanto |
+    Estonian | Ewe | Faroese | Filipino | Finnish | French |
+    Frisian | Ga | Galician | Georgian | German | Greek |
+    Guarani | Gujarati | Hacker | Haitian Creole | Hausa |
+    Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo
+    | Indonesian | Interlingua | Irish | Italian | Japanese
+    | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi |
+    Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish
+    | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian
+    | Lingala | Lithuanian | Lozi | Luganda | Luo |
+    Macedonian | Malagasy | Malay | Malayalam | Maltese |
+    Maori | Marathi | Mauritian Creole | Moldavian |
+    Mongolian | Montenegrin | Nepali | Nigerian Pidgin |
+    Northern Sotho | Norwegian | Norwegian (Nynorsk) |
+    Occitan | Oriya | Oromo | Pashto | Persian | Pirate |
+    Polish | Portuguese (Brazil) | Portuguese (Portugal) |
+    Punjabi | Quechua | Romanian | Romansh | Runyakitara |
+    Russian | Scots Gaelic | Serbian | Serbo-Croatian |
+    Sesotho | Setswana | Seychellois Creole | Shona | Sindhi
+    | Sinhalese | Slovak | Slovenian | Somali | Spanish |
+    Spanish (Latin American) | Sundanese | Swahili | Swedish
+    | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya |
+    Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi |
+    Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh |
+    Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-HttpProxy
+    <string>] [-HttpProxyPassword <string>] [-VerbosityLevel
+    <int>] [-SubdirectoryBehavior {None | Collapse |
+    Expand}] [-IgnoredExtensions <string>] [-VLCPath
+    <string>] [-ReplayGainMode {None | Track | Album}]
+    [-ReplayGainPreamp <float>] [-ForceDolbySurround {Auto |
+    On | Off}] [-AudioFilters <string[]>] [-Visualization
+    {None | Goom | ProjectM | Visual | GLSpectrum}]
+    [-Deinterlace {Off | Automatic | On}] [-DeinterlaceMode
+    {Auto | Discard | Blend | Mean | Bob | Linear | X |
+    Yadif | Yadif2x | Phosphor | IVTC}] [-VideoFilters
+    <string[]>] [-VideoFilterModules <string[]>] [-Modules
+    <string[]>] [-AudioFilterModules <string[]>]
+    [-AudioVisualization {None | Goom | ProjectM | Visual |
+    GLSpectrum}] [-PreferredSubtitleLanguage <string>]
+    [-IgnoredFileExtensions <string>] [-Arguments <string>]
+    [-NoBorders] [-Left] [-Right] [-Top] [-Bottom]
+    [-Centered] [-FullScreen] [-PassThru] [-AlwaysOnTop]
+    [-Random] [-Loop] [-Repeat] [-StartPaused]
+    [-PlayAndExit] [-DisableAudio] [-DisableSubtitles]
+    [-AutoScale] [-HighPriority] [-EnableTimeStretch]
+    [-NewWindow] [-EnableWallpaperMode]
+    [-EnableAudioTimeStretch] [-Close] [-SideBySide]
+    [-FocusWindow] [-SetForeground] [-Maximize]
+    [-RestoreFocus] [-SessionOnly] [-ClearSession]
+    [-SkipSession] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -8156,7 +8818,51 @@ Open-VlcMediaPlayer [[-Path] <string[]>] [[-Width] <int>] [[-Height] <int>] [[-X
 
 ### SYNTAX 
 ```PowerShell 
-Open-VlcMediaPlayerLyrics [[-Queries] <string[]>] [[-EndPoint] {Bing | Github | Google | Youtube}] [[-Language] {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-Monitor <int>] [-Width <int>] [-Height <int>] [-X <int>] [-Y <int>] [-AcceptLang <string>] [-KeysToSend <string[]>] [-SendKeyDelayMilliSeconds <int>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [-All] [-ShowWindow] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-DisablePopupBlocker] [-SendKeyEscape] [-SendKeyHoldKeyboardFocus] [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-NewWindow] [-PassThru] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders] [-SessionOnly] [-ClearSession] [-SkipSession] [-SideBySide] [<CommonParameters>] 
+Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
+    [[-EndPoint] {Bing | Github | Google | Youtube}]
+    [[-Language] {Afrikaans | Akan | Albanian | Amharic |
+    Arabic | Armenian | Azerbaijani | Basque | Belarusian |
+    Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian |
+    Breton | Bulgarian | Cambodian | Catalan | Cherokee |
+    Chichewa | Chinese (Simplified) | Chinese (Traditional)
+    | Corsican | Croatian | Czech | Danish | Dutch | Elmer
+    Fudd | English | Esperanto | Estonian | Ewe | Faroese |
+    Filipino | Finnish | French | Frisian | Ga | Galician |
+    Georgian | German | Greek | Guarani | Gujarati | Hacker
+    | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi |
+    Hungarian | Icelandic | Igbo | Indonesian | Interlingua
+    | Irish | Italian | Japanese | Javanese | Kannada |
+    Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo |
+    Korean | Krio (Sierra Leone) | Kurdish | Kurdish
+    (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala
+    | Lithuanian | Lozi | Luganda | Luo | Macedonian |
+    Malagasy | Malay | Malayalam | Maltese | Maori | Marathi
+    | Mauritian Creole | Moldavian | Mongolian | Montenegrin
+    | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian
+    | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto
+    | Persian | Pirate | Polish | Portuguese (Brazil) |
+    Portuguese (Portugal) | Punjabi | Quechua | Romanian |
+    Romansh | Runyakitara | Russian | Scots Gaelic | Serbian
+    | Serbo-Croatian | Sesotho | Setswana | Seychellois
+    Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian
+    | Somali | Spanish | Spanish (Latin American) |
+    Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar |
+    Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka |
+    Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu |
+    Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish |
+    Yoruba | Zulu}] [-Monitor <int>] [-Width <int>] [-Height
+    <int>] [-X <int>] [-Y <int>] [-AcceptLang <string>]
+    [-KeysToSend <string[]>] [-SendKeyDelayMilliSeconds
+    <int>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium]
+    [-Firefox] [-All] [-ShowWindow] [-Left] [-Right] [-Top]
+    [-Bottom] [-Centered] [-ApplicationMode]
+    [-NoBrowserExtensions] [-DisablePopupBlocker]
+    [-SendKeyEscape] [-SendKeyHoldKeyboardFocus]
+    [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground]
+    [-Maximize] [-RestoreFocus] [-NewWindow] [-PassThru]
+    [-ReturnURL] [-ReturnOnlyURL] [-NoBorders]
+    [-SessionOnly] [-ClearSession] [-SkipSession]
+    [-SideBySide] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -8564,7 +9270,8 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>] [[-EndPoint] {Bing | Github | 
 
 ### SYNTAX 
 ```PowerShell 
-Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>] 
+Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -8601,7 +9308,8 @@ Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>] 
+Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -8746,7 +9454,8 @@ Get-IsSpeaking [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-New-MicrosoftShellTab [-DontCloseThisTab] [-WhatIf] [-Confirm] [<CommonParameters>] 
+New-MicrosoftShellTab [-DontCloseThisTab] [-WhatIf]
+    [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -8813,7 +9522,134 @@ Now [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>] [[-Height] <int>] [[-X] <int>] [[-Y] <int>] [-PlaylistPath <string>] [-KeysToSend <string[]>] [-Keywords <string[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds <int>] [-SendKeyHoldKeyboardFocus] [-Monitor <int>] [-AspectRatio <string>] [-Crop <string>] [-SubtitleFile <string>] [-SubtitleScale <int>] [-SubtitleLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-AudioLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-PreferredAudioLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-HttpProxy <string>] [-HttpProxyPassword <string>] [-VerbosityLevel <int>] [-SubdirectoryBehavior {None | Collapse | Expand}] [-IgnoredExtensions <string>] [-VLCPath <string>] [-ReplayGainMode {None | Track | Album}] [-ReplayGainPreamp <float>] [-ForceDolbySurround {Auto | On | Off}] [-AudioFilters <string[]>] [-Visualization {None | Goom | ProjectM | Visual | GLSpectrum}] [-Deinterlace {Off | Automatic | On}] [-DeinterlaceMode {Auto | Discard | Blend | Mean | Bob | Linear | X | Yadif | Yadif2x | Phosphor | IVTC}] [-VideoFilters <string[]>] [-VideoFilterModules <string[]>] [-Modules <string[]>] [-AudioFilterModules <string[]>] [-AudioVisualization {None | Goom | ProjectM | Visual | GLSpectrum}] [-PreferredSubtitleLanguage <string>] [-IgnoredFileExtensions <string>] [-Arguments <string>] [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio] [-OnlyPictures] [-IncludeVideos] [-IncludeAudio] [-IncludePictures] [-NoBorders] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-FullScreen] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-DisableSubtitles] [-AutoScale] [-HighPriority] [-EnableTimeStretch] [-NewWindow] [-EnableWallpaperMode] [-EnableAudioTimeStretch] [-Close] [-SideBySide] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-SessionOnly] [-ClearSession] [-SkipSession] [-PassThru] [-PassThruNoOpen] [-PassThruWindow] [<CommonParameters>] 
+Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
+    [[-Height] <int>] [[-X] <int>] [[-Y] <int>]
+    [-PlaylistPath <string>] [-KeysToSend <string[]>]
+    [-Keywords <string[]>] [-SendKeyEscape]
+    [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds
+    <int>] [-SendKeyHoldKeyboardFocus] [-Monitor <int>]
+    [-AspectRatio <string>] [-Crop <string>] [-SubtitleFile
+    <string>] [-SubtitleScale <int>] [-SubtitleLanguage
+    {Afrikaans | Akan | Albanian | Amharic | Arabic |
+    Armenian | Azerbaijani | Basque | Belarusian | Bemba |
+    Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton
+    | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa
+    | Chinese (Simplified) | Chinese (Traditional) |
+    Corsican | Croatian | Czech | Danish | Dutch | Elmer
+    Fudd | English | Esperanto | Estonian | Ewe | Faroese |
+    Filipino | Finnish | French | Frisian | Ga | Galician |
+    Georgian | German | Greek | Guarani | Gujarati | Hacker
+    | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi |
+    Hungarian | Icelandic | Igbo | Indonesian | Interlingua
+    | Irish | Italian | Japanese | Javanese | Kannada |
+    Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo |
+    Korean | Krio (Sierra Leone) | Kurdish | Kurdish
+    (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala
+    | Lithuanian | Lozi | Luganda | Luo | Macedonian |
+    Malagasy | Malay | Malayalam | Maltese | Maori | Marathi
+    | Mauritian Creole | Moldavian | Mongolian | Montenegrin
+    | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian
+    | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto
+    | Persian | Pirate | Polish | Portuguese (Brazil) |
+    Portuguese (Portugal) | Punjabi | Quechua | Romanian |
+    Romansh | Runyakitara | Russian | Scots Gaelic | Serbian
+    | Serbo-Croatian | Sesotho | Setswana | Seychellois
+    Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian
+    | Somali | Spanish | Spanish (Latin American) |
+    Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar |
+    Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka |
+    Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu |
+    Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish |
+    Yoruba | Zulu}] [-AudioLanguage {Afrikaans | Akan |
+    Albanian | Amharic | Arabic | Armenian | Azerbaijani |
+    Basque | Belarusian | Bemba | Bengali | Bihari | Bork,
+    bork, bork! | Bosnian | Breton | Bulgarian | Cambodian |
+    Catalan | Cherokee | Chichewa | Chinese (Simplified) |
+    Chinese (Traditional) | Corsican | Croatian | Czech |
+    Danish | Dutch | Elmer Fudd | English | Esperanto |
+    Estonian | Ewe | Faroese | Filipino | Finnish | French |
+    Frisian | Ga | Galician | Georgian | German | Greek |
+    Guarani | Gujarati | Hacker | Haitian Creole | Hausa |
+    Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo
+    | Indonesian | Interlingua | Irish | Italian | Japanese
+    | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi |
+    Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish
+    | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian
+    | Lingala | Lithuanian | Lozi | Luganda | Luo |
+    Macedonian | Malagasy | Malay | Malayalam | Maltese |
+    Maori | Marathi | Mauritian Creole | Moldavian |
+    Mongolian | Montenegrin | Nepali | Nigerian Pidgin |
+    Northern Sotho | Norwegian | Norwegian (Nynorsk) |
+    Occitan | Oriya | Oromo | Pashto | Persian | Pirate |
+    Polish | Portuguese (Brazil) | Portuguese (Portugal) |
+    Punjabi | Quechua | Romanian | Romansh | Runyakitara |
+    Russian | Scots Gaelic | Serbian | Serbo-Croatian |
+    Sesotho | Setswana | Seychellois Creole | Shona | Sindhi
+    | Sinhalese | Slovak | Slovenian | Somali | Spanish |
+    Spanish (Latin American) | Sundanese | Swahili | Swedish
+    | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya |
+    Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi |
+    Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh |
+    Wolof | Xhosa | Yiddish | Yoruba | Zulu}]
+    [-PreferredAudioLanguage {Afrikaans | Akan | Albanian |
+    Amharic | Arabic | Armenian | Azerbaijani | Basque |
+    Belarusian | Bemba | Bengali | Bihari | Bork, bork,
+    bork! | Bosnian | Breton | Bulgarian | Cambodian |
+    Catalan | Cherokee | Chichewa | Chinese (Simplified) |
+    Chinese (Traditional) | Corsican | Croatian | Czech |
+    Danish | Dutch | Elmer Fudd | English | Esperanto |
+    Estonian | Ewe | Faroese | Filipino | Finnish | French |
+    Frisian | Ga | Galician | Georgian | German | Greek |
+    Guarani | Gujarati | Hacker | Haitian Creole | Hausa |
+    Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo
+    | Indonesian | Interlingua | Irish | Italian | Japanese
+    | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi |
+    Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish
+    | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian
+    | Lingala | Lithuanian | Lozi | Luganda | Luo |
+    Macedonian | Malagasy | Malay | Malayalam | Maltese |
+    Maori | Marathi | Mauritian Creole | Moldavian |
+    Mongolian | Montenegrin | Nepali | Nigerian Pidgin |
+    Northern Sotho | Norwegian | Norwegian (Nynorsk) |
+    Occitan | Oriya | Oromo | Pashto | Persian | Pirate |
+    Polish | Portuguese (Brazil) | Portuguese (Portugal) |
+    Punjabi | Quechua | Romanian | Romansh | Runyakitara |
+    Russian | Scots Gaelic | Serbian | Serbo-Croatian |
+    Sesotho | Setswana | Seychellois Creole | Shona | Sindhi
+    | Sinhalese | Slovak | Slovenian | Somali | Spanish |
+    Spanish (Latin American) | Sundanese | Swahili | Swedish
+    | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya |
+    Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi |
+    Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh |
+    Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-HttpProxy
+    <string>] [-HttpProxyPassword <string>] [-VerbosityLevel
+    <int>] [-SubdirectoryBehavior {None | Collapse |
+    Expand}] [-IgnoredExtensions <string>] [-VLCPath
+    <string>] [-ReplayGainMode {None | Track | Album}]
+    [-ReplayGainPreamp <float>] [-ForceDolbySurround {Auto |
+    On | Off}] [-AudioFilters <string[]>] [-Visualization
+    {None | Goom | ProjectM | Visual | GLSpectrum}]
+    [-Deinterlace {Off | Automatic | On}] [-DeinterlaceMode
+    {Auto | Discard | Blend | Mean | Bob | Linear | X |
+    Yadif | Yadif2x | Phosphor | IVTC}] [-VideoFilters
+    <string[]>] [-VideoFilterModules <string[]>] [-Modules
+    <string[]>] [-AudioFilterModules <string[]>]
+    [-AudioVisualization {None | Goom | ProjectM | Visual |
+    GLSpectrum}] [-PreferredSubtitleLanguage <string>]
+    [-IgnoredFileExtensions <string>] [-Arguments <string>]
+    [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio]
+    [-OnlyPictures] [-IncludeVideos] [-IncludeAudio]
+    [-IncludePictures] [-NoBorders] [-Left] [-Right] [-Top]
+    [-Bottom] [-Centered] [-FullScreen] [-AlwaysOnTop]
+    [-Random] [-Loop] [-Repeat] [-StartPaused]
+    [-PlayAndExit] [-DisableAudio] [-DisableSubtitles]
+    [-AutoScale] [-HighPriority] [-EnableTimeStretch]
+    [-NewWindow] [-EnableWallpaperMode]
+    [-EnableAudioTimeStretch] [-Close] [-SideBySide]
+    [-FocusWindow] [-SetForeground] [-Maximize]
+    [-RestoreFocus] [-SessionOnly] [-ClearSession]
+    [-SkipSession] [-PassThru] [-PassThruNoOpen]
+    [-PassThruWindow] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -9651,7 +10487,8 @@ Set-LocationParent [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-LocationParent2 [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -9688,7 +10525,8 @@ Set-LocationParent2 [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-LocationParent3 [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-LocationParent3 [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -9725,7 +10563,8 @@ Set-LocationParent3 [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-LocationParent4 [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -9762,7 +10601,8 @@ Set-LocationParent4 [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-LocationParent5 [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-LocationParent5 [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -9799,7 +10639,8 @@ Set-LocationParent5 [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-MonitorPowerOff [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-MonitorPowerOff [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -9873,7 +10714,8 @@ Set-MonitorPowerOn [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-VLCPlayerFocused [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-VLCPlayerFocused [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -9910,7 +10752,9 @@ Set-VLCPlayerFocused [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Start-TextToSpeech [-Lines] <string[]> [-Locale <string>] [-VoiceName <string>] [-PassThru] [-Wait] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Start-TextToSpeech [-Lines] <string[]> [-Locale <string>]
+    [-VoiceName <string>] [-PassThru] [-Wait] [-WhatIf]
+    [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -10075,7 +10919,8 @@ UtcNow [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Collabrative] [<CommonParameters>] 
+Add-SpotifyNewPlaylist [-Name] <String> [[-Description]
+    <String>] [-Public] [-Collabrative] [<CommonParameters>] 
 ```` 
 
 ### DESCRIPTION 
@@ -10135,7 +10980,8 @@ Add-SpotifyNewPlaylist [-Name] <String> [[-Description] <String>] [-Public] [-Co
 
 ### SYNTAX 
 ```PowerShell 
-Add-SpotifyTracksToLiked [[-TrackId] <string[]>] [<CommonParameters>] 
+Add-SpotifyTracksToLiked [[-TrackId] <string[]>]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -10165,8 +11011,10 @@ Add-SpotifyTracksToLiked [[-TrackId] <string[]>] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Add-SpotifyTracksToPlaylist [-PlaylistName] <string[]> [[-Uri] <string[]>] [<CommonParameters>]  
-   Add-SpotifyTracksToPlaylist [-PlaylistId] <string[]> [[-Uri] <string[]>] [<CommonParameters>] 
+Add-SpotifyTracksToPlaylist [-PlaylistName] <string[]>
+    [[-Uri] <string[]>] [<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistId] <string[]> [[-Uri]
+    <string[]>] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -10340,7 +11188,19 @@ Get-SpotifyLikedTrack [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>] [[-Width] <int>] [[-Height] <int>] [[-Left] <int>] [[-Right] <int>] [[-Top] <int>] [[-Bottom] <int>] [[-AcceptLang] <string>] [[-SendKeyDelayMilliSeconds] <int>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [-FullScreen] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-DisablePopupBlocker] [-SendKeyEscape] [-SendKeyHoldKeyboardFocus] [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-NewWindow] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders] [-SessionOnly] [-ClearSession] [-SkipSession] [-SideBySide] [<CommonParameters>] 
+Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
+    [[-Width] <int>] [[-Height] <int>] [[-Left] <int>]
+    [[-Right] <int>] [[-Top] <int>] [[-Bottom] <int>]
+    [[-AcceptLang] <string>] [[-SendKeyDelayMilliSeconds]
+    <int>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium]
+    [-Firefox] [-FullScreen] [-Centered] [-ApplicationMode]
+    [-NoBrowserExtensions] [-DisablePopupBlocker]
+    [-SendKeyEscape] [-SendKeyHoldKeyboardFocus]
+    [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground]
+    [-Maximize] [-RestoreFocus] [-NewWindow] [-ReturnURL]
+    [-ReturnOnlyURL] [-NoBorders] [-SessionOnly]
+    [-ClearSession] [-SkipSession] [-SideBySide]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -10685,7 +11545,8 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>] [[-Width] <int>] [[-H
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyPlaylistIdsByName [-PlaylistName] <string[]> [<CommonParameters>] 
+Get-SpotifyPlaylistIdsByName [-PlaylistName] <string[]>
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -10715,8 +11576,10 @@ Get-SpotifyPlaylistIdsByName [-PlaylistName] <string[]> [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyPlaylistTrack [-PlaylistName] <string> [<CommonParameters>]  
-   Get-SpotifyPlaylistTrack [-PlaylistId] <string> [<CommonParameters>] 
+Get-SpotifyPlaylistTrack [-PlaylistName] <string>
+    [<CommonParameters>]
+Get-SpotifyPlaylistTrack [-PlaylistId] <string>
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -10755,7 +11618,8 @@ Get-SpotifyPlaylistTrack [-PlaylistName] <string> [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyTrackAudioFeatures [-TrackId] <string[]> [<CommonParameters>] 
+Get-SpotifyTrackAudioFeatures [-TrackId] <string[]>
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -10785,7 +11649,8 @@ Get-SpotifyTrackAudioFeatures [-TrackId] <string[]> [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyTrackById [-TrackId] <string> [<CommonParameters>] 
+Get-SpotifyTrackById [-TrackId] <string>
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -10815,7 +11680,8 @@ Get-SpotifyTrackById [-TrackId] <string> [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Get-SpotifyUserPlaylists [[-Filter] <string[]>] [-Force] [<CommonParameters>] 
+Get-SpotifyUserPlaylists [[-Filter] <string[]>] [-Force]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -10854,8 +11720,10 @@ Get-SpotifyUserPlaylists [[-Filter] <string[]>] [-Force] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <string[]> [<CommonParameters>]  
-   Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <string[]> [<CommonParameters>] 
+Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <string[]>
+    [<CommonParameters>]
+Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <string[]>
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -10894,7 +11762,8 @@ Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <string[]> [<CommonParameters>
 
 ### SYNTAX 
 ```PowerShell 
-Remove-SpotifyTracksFromLiked [[-TrackId] <string[]>] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Remove-SpotifyTracksFromLiked [[-TrackId] <string[]>]
+    [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -10940,8 +11809,12 @@ Remove-SpotifyTracksFromLiked [[-TrackId] <string[]>] [-WhatIf] [-Confirm] [<Com
 
 ### SYNTAX 
 ```PowerShell 
-Remove-SpotifyTracksFromPlaylist [-PlaylistName] <string[]> [[-Uri] <string[]>] [-WhatIf] [-Confirm] [<CommonParameters>]  
-   Remove-SpotifyTracksFromPlaylist [-PlaylistId] <string[]> [[-Uri] <string[]>] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Remove-SpotifyTracksFromPlaylist [-PlaylistName] <string[]>
+    [[-Uri] <string[]>] [-WhatIf] [-Confirm]
+    [<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <string[]>
+    [[-Uri] <string[]>] [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -11005,7 +11878,9 @@ Remove-SpotifyTracksFromPlaylist [-PlaylistName] <string[]> [[-Uri] <string[]>] 
 
 ### SYNTAX 
 ```PowerShell 
-Search-Spotify [-Queries] <string[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
+Search-Spotify [-Queries] <string[]> [[-SearchType] {Album |
+    Artist | Playlist | Track | Show | Episode | All}]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -11047,7 +11922,9 @@ Search-Spotify [-Queries] <string[]> [[-SearchType] {Album | Artist | Playlist |
 
 ### SYNTAX 
 ```PowerShell 
-Search-SpotifyAndEnqueue [-Queries] <String[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
+Search-SpotifyAndEnqueue [-Queries] <String[]>
+    [[-SearchType] {Album | Artist | Playlist | Track | Show
+    | Episode | All}] [<CommonParameters>] 
 ```` 
 
 ### DESCRIPTION 
@@ -11097,7 +11974,9 @@ Search-SpotifyAndEnqueue [-Queries] <String[]> [[-SearchType] {Album | Artist | 
 
 ### SYNTAX 
 ```PowerShell 
-Search-SpotifyAndPlay [-Queries] <string[]> [[-SearchType] {Album | Artist | Playlist | Track | Show | Episode | All}] [<CommonParameters>] 
+Search-SpotifyAndPlay [-Queries] <string[]> [[-SearchType]
+    {Album | Artist | Playlist | Track | Show | Episode |
+    All}] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -11136,7 +12015,8 @@ Search-SpotifyAndPlay [-Queries] <string[]> [[-SearchType] {Album | Artist | Pla
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyActiveDevice [-DeviceId] <string> [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyActiveDevice [-DeviceId] <string> [-WhatIf]
+    [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -11182,7 +12062,8 @@ Set-SpotifyActiveDevice [-DeviceId] <string> [-WhatIf] [-Confirm] [<CommonParame
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyApiToken [-ApiToken] <string> [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyApiToken [-ApiToken] <string> [-WhatIf]
+    [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -11307,7 +12188,10 @@ Set-SpotifyPause [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyPlaylistDetails [-PlaylistId] <string> [-Name] <string> [[-Description] <string>] [-Public] [-Collabrative] [-Private] [-NoCollabrations] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyPlaylistDetails [-PlaylistId] <string> [-Name]
+    <string> [[-Description] <string>] [-Public]
+    [-Collabrative] [-Private] [-NoCollabrations] [-WhatIf]
+    [-Confirm] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -11407,7 +12291,10 @@ Set-SpotifyPlaylistDetails [-PlaylistId] <string> [-Name] <string> [[-Descriptio
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyPlaylistOrder [-PlaylistId] <string> [-RangeStart] <int> [-InsertBefore] <int> [[-RangeLength] <int>] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyPlaylistOrder [-PlaylistId] <string>
+    [-RangeStart] <int> [-InsertBefore] <int>
+    [[-RangeLength] <int>] [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -11480,7 +12367,8 @@ Set-SpotifyPlaylistOrder [-PlaylistId] <string> [-RangeStart] <int> [-InsertBefo
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyPrevious [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyPrevious [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -11517,7 +12405,8 @@ Set-SpotifyPrevious [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyRepeatContext [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -11554,7 +12443,8 @@ Set-SpotifyRepeatContext [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyRepeatOff [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyRepeatOff [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -11591,7 +12481,8 @@ Set-SpotifyRepeatOff [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyRepeatSong [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyRepeatSong [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -11628,7 +12519,8 @@ Set-SpotifyRepeatSong [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyShuffleOff [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyShuffleOff [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -11668,7 +12560,8 @@ Set-SpotifyShuffleOff [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Set-SpotifyShuffleOn [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-SpotifyShuffleOn [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### DESCRIPTION 
@@ -11784,7 +12677,130 @@ Set-SpotifyStop [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Open-VlcMediaPlayer [[-Path] <string[]>] [[-Width] <int>] [[-Height] <int>] [[-X] <int>] [[-Y] <int>] [-KeysToSend <string[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds <int>] [-SendKeyHoldKeyboardFocus] [-Monitor <int>] [-AspectRatio <string>] [-Crop <string>] [-SubtitleFile <string>] [-SubtitleScale <int>] [-SubtitleLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-AudioLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-PreferredAudioLanguage {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-HttpProxy <string>] [-HttpProxyPassword <string>] [-VerbosityLevel <int>] [-SubdirectoryBehavior {None | Collapse | Expand}] [-IgnoredExtensions <string>] [-VLCPath <string>] [-ReplayGainMode {None | Track | Album}] [-ReplayGainPreamp <float>] [-ForceDolbySurround {Auto | On | Off}] [-AudioFilters <string[]>] [-Visualization {None | Goom | ProjectM | Visual | GLSpectrum}] [-Deinterlace {Off | Automatic | On}] [-DeinterlaceMode {Auto | Discard | Blend | Mean | Bob | Linear | X | Yadif | Yadif2x | Phosphor | IVTC}] [-VideoFilters <string[]>] [-VideoFilterModules <string[]>] [-Modules <string[]>] [-AudioFilterModules <string[]>] [-AudioVisualization {None | Goom | ProjectM | Visual | GLSpectrum}] [-PreferredSubtitleLanguage <string>] [-IgnoredFileExtensions <string>] [-Arguments <string>] [-NoBorders] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-FullScreen] [-PassThru] [-AlwaysOnTop] [-Random] [-Loop] [-Repeat] [-StartPaused] [-PlayAndExit] [-DisableAudio] [-DisableSubtitles] [-AutoScale] [-HighPriority] [-EnableTimeStretch] [-NewWindow] [-EnableWallpaperMode] [-EnableAudioTimeStretch] [-Close] [-SideBySide] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-SessionOnly] [-ClearSession] [-SkipSession] [<CommonParameters>] 
+Open-VlcMediaPlayer [[-Path] <string[]>] [[-Width] <int>]
+    [[-Height] <int>] [[-X] <int>] [[-Y] <int>] [-KeysToSend
+    <string[]>] [-SendKeyEscape] [-SendKeyUseShiftEnter]
+    [-SendKeyDelayMilliSeconds <int>]
+    [-SendKeyHoldKeyboardFocus] [-Monitor <int>]
+    [-AspectRatio <string>] [-Crop <string>] [-SubtitleFile
+    <string>] [-SubtitleScale <int>] [-SubtitleLanguage
+    {Afrikaans | Akan | Albanian | Amharic | Arabic |
+    Armenian | Azerbaijani | Basque | Belarusian | Bemba |
+    Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton
+    | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa
+    | Chinese (Simplified) | Chinese (Traditional) |
+    Corsican | Croatian | Czech | Danish | Dutch | Elmer
+    Fudd | English | Esperanto | Estonian | Ewe | Faroese |
+    Filipino | Finnish | French | Frisian | Ga | Galician |
+    Georgian | German | Greek | Guarani | Gujarati | Hacker
+    | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi |
+    Hungarian | Icelandic | Igbo | Indonesian | Interlingua
+    | Irish | Italian | Japanese | Javanese | Kannada |
+    Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo |
+    Korean | Krio (Sierra Leone) | Kurdish | Kurdish
+    (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala
+    | Lithuanian | Lozi | Luganda | Luo | Macedonian |
+    Malagasy | Malay | Malayalam | Maltese | Maori | Marathi
+    | Mauritian Creole | Moldavian | Mongolian | Montenegrin
+    | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian
+    | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto
+    | Persian | Pirate | Polish | Portuguese (Brazil) |
+    Portuguese (Portugal) | Punjabi | Quechua | Romanian |
+    Romansh | Runyakitara | Russian | Scots Gaelic | Serbian
+    | Serbo-Croatian | Sesotho | Setswana | Seychellois
+    Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian
+    | Somali | Spanish | Spanish (Latin American) |
+    Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar |
+    Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka |
+    Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu |
+    Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish |
+    Yoruba | Zulu}] [-AudioLanguage {Afrikaans | Akan |
+    Albanian | Amharic | Arabic | Armenian | Azerbaijani |
+    Basque | Belarusian | Bemba | Bengali | Bihari | Bork,
+    bork, bork! | Bosnian | Breton | Bulgarian | Cambodian |
+    Catalan | Cherokee | Chichewa | Chinese (Simplified) |
+    Chinese (Traditional) | Corsican | Croatian | Czech |
+    Danish | Dutch | Elmer Fudd | English | Esperanto |
+    Estonian | Ewe | Faroese | Filipino | Finnish | French |
+    Frisian | Ga | Galician | Georgian | German | Greek |
+    Guarani | Gujarati | Hacker | Haitian Creole | Hausa |
+    Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo
+    | Indonesian | Interlingua | Irish | Italian | Japanese
+    | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi |
+    Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish
+    | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian
+    | Lingala | Lithuanian | Lozi | Luganda | Luo |
+    Macedonian | Malagasy | Malay | Malayalam | Maltese |
+    Maori | Marathi | Mauritian Creole | Moldavian |
+    Mongolian | Montenegrin | Nepali | Nigerian Pidgin |
+    Northern Sotho | Norwegian | Norwegian (Nynorsk) |
+    Occitan | Oriya | Oromo | Pashto | Persian | Pirate |
+    Polish | Portuguese (Brazil) | Portuguese (Portugal) |
+    Punjabi | Quechua | Romanian | Romansh | Runyakitara |
+    Russian | Scots Gaelic | Serbian | Serbo-Croatian |
+    Sesotho | Setswana | Seychellois Creole | Shona | Sindhi
+    | Sinhalese | Slovak | Slovenian | Somali | Spanish |
+    Spanish (Latin American) | Sundanese | Swahili | Swedish
+    | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya |
+    Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi |
+    Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh |
+    Wolof | Xhosa | Yiddish | Yoruba | Zulu}]
+    [-PreferredAudioLanguage {Afrikaans | Akan | Albanian |
+    Amharic | Arabic | Armenian | Azerbaijani | Basque |
+    Belarusian | Bemba | Bengali | Bihari | Bork, bork,
+    bork! | Bosnian | Breton | Bulgarian | Cambodian |
+    Catalan | Cherokee | Chichewa | Chinese (Simplified) |
+    Chinese (Traditional) | Corsican | Croatian | Czech |
+    Danish | Dutch | Elmer Fudd | English | Esperanto |
+    Estonian | Ewe | Faroese | Filipino | Finnish | French |
+    Frisian | Ga | Galician | Georgian | German | Greek |
+    Guarani | Gujarati | Hacker | Haitian Creole | Hausa |
+    Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo
+    | Indonesian | Interlingua | Irish | Italian | Japanese
+    | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi |
+    Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish
+    | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian
+    | Lingala | Lithuanian | Lozi | Luganda | Luo |
+    Macedonian | Malagasy | Malay | Malayalam | Maltese |
+    Maori | Marathi | Mauritian Creole | Moldavian |
+    Mongolian | Montenegrin | Nepali | Nigerian Pidgin |
+    Northern Sotho | Norwegian | Norwegian (Nynorsk) |
+    Occitan | Oriya | Oromo | Pashto | Persian | Pirate |
+    Polish | Portuguese (Brazil) | Portuguese (Portugal) |
+    Punjabi | Quechua | Romanian | Romansh | Runyakitara |
+    Russian | Scots Gaelic | Serbian | Serbo-Croatian |
+    Sesotho | Setswana | Seychellois Creole | Shona | Sindhi
+    | Sinhalese | Slovak | Slovenian | Somali | Spanish |
+    Spanish (Latin American) | Sundanese | Swahili | Swedish
+    | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya |
+    Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi |
+    Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh |
+    Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-HttpProxy
+    <string>] [-HttpProxyPassword <string>] [-VerbosityLevel
+    <int>] [-SubdirectoryBehavior {None | Collapse |
+    Expand}] [-IgnoredExtensions <string>] [-VLCPath
+    <string>] [-ReplayGainMode {None | Track | Album}]
+    [-ReplayGainPreamp <float>] [-ForceDolbySurround {Auto |
+    On | Off}] [-AudioFilters <string[]>] [-Visualization
+    {None | Goom | ProjectM | Visual | GLSpectrum}]
+    [-Deinterlace {Off | Automatic | On}] [-DeinterlaceMode
+    {Auto | Discard | Blend | Mean | Bob | Linear | X |
+    Yadif | Yadif2x | Phosphor | IVTC}] [-VideoFilters
+    <string[]>] [-VideoFilterModules <string[]>] [-Modules
+    <string[]>] [-AudioFilterModules <string[]>]
+    [-AudioVisualization {None | Goom | ProjectM | Visual |
+    GLSpectrum}] [-PreferredSubtitleLanguage <string>]
+    [-IgnoredFileExtensions <string>] [-Arguments <string>]
+    [-NoBorders] [-Left] [-Right] [-Top] [-Bottom]
+    [-Centered] [-FullScreen] [-PassThru] [-AlwaysOnTop]
+    [-Random] [-Loop] [-Repeat] [-StartPaused]
+    [-PlayAndExit] [-DisableAudio] [-DisableSubtitles]
+    [-AutoScale] [-HighPriority] [-EnableTimeStretch]
+    [-NewWindow] [-EnableWallpaperMode]
+    [-EnableAudioTimeStretch] [-Close] [-SideBySide]
+    [-FocusWindow] [-SetForeground] [-Maximize]
+    [-RestoreFocus] [-SessionOnly] [-ClearSession]
+    [-SkipSession] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -12435,7 +13451,51 @@ Open-VlcMediaPlayer [[-Path] <string[]>] [[-Width] <int>] [[-Height] <int>] [[-X
 
 ### SYNTAX 
 ```PowerShell 
-Open-VlcMediaPlayerLyrics [[-Queries] <string[]>] [[-EndPoint] {Bing | Github | Google | Youtube}] [[-Language] {Afrikaans | Akan | Albanian | Amharic | Arabic | Armenian | Azerbaijani | Basque | Belarusian | Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian | Breton | Bulgarian | Cambodian | Catalan | Cherokee | Chichewa | Chinese (Simplified) | Chinese (Traditional) | Corsican | Croatian | Czech | Danish | Dutch | Elmer Fudd | English | Esperanto | Estonian | Ewe | Faroese | Filipino | Finnish | French | Frisian | Ga | Galician | Georgian | German | Greek | Guarani | Gujarati | Hacker | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi | Hungarian | Icelandic | Igbo | Indonesian | Interlingua | Irish | Italian | Japanese | Javanese | Kannada | Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo | Korean | Krio (Sierra Leone) | Kurdish | Kurdish (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala | Lithuanian | Lozi | Luganda | Luo | Macedonian | Malagasy | Malay | Malayalam | Maltese | Maori | Marathi | Mauritian Creole | Moldavian | Mongolian | Montenegrin | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto | Persian | Pirate | Polish | Portuguese (Brazil) | Portuguese (Portugal) | Punjabi | Quechua | Romanian | Romansh | Runyakitara | Russian | Scots Gaelic | Serbian | Serbo-Croatian | Sesotho | Setswana | Seychellois Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian | Somali | Spanish | Spanish (Latin American) | Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar | Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka | Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu | Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish | Yoruba | Zulu}] [-Monitor <int>] [-Width <int>] [-Height <int>] [-X <int>] [-Y <int>] [-AcceptLang <string>] [-KeysToSend <string[]>] [-SendKeyDelayMilliSeconds <int>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium] [-Firefox] [-All] [-ShowWindow] [-Left] [-Right] [-Top] [-Bottom] [-Centered] [-ApplicationMode] [-NoBrowserExtensions] [-DisablePopupBlocker] [-SendKeyEscape] [-SendKeyHoldKeyboardFocus] [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground] [-Maximize] [-RestoreFocus] [-NewWindow] [-PassThru] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders] [-SessionOnly] [-ClearSession] [-SkipSession] [-SideBySide] [<CommonParameters>] 
+Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
+    [[-EndPoint] {Bing | Github | Google | Youtube}]
+    [[-Language] {Afrikaans | Akan | Albanian | Amharic |
+    Arabic | Armenian | Azerbaijani | Basque | Belarusian |
+    Bemba | Bengali | Bihari | Bork, bork, bork! | Bosnian |
+    Breton | Bulgarian | Cambodian | Catalan | Cherokee |
+    Chichewa | Chinese (Simplified) | Chinese (Traditional)
+    | Corsican | Croatian | Czech | Danish | Dutch | Elmer
+    Fudd | English | Esperanto | Estonian | Ewe | Faroese |
+    Filipino | Finnish | French | Frisian | Ga | Galician |
+    Georgian | German | Greek | Guarani | Gujarati | Hacker
+    | Haitian Creole | Hausa | Hawaiian | Hebrew | Hindi |
+    Hungarian | Icelandic | Igbo | Indonesian | Interlingua
+    | Irish | Italian | Japanese | Javanese | Kannada |
+    Kazakh | Kinyarwanda | Kirundi | Klingon | Kongo |
+    Korean | Krio (Sierra Leone) | Kurdish | Kurdish
+    (Soranî) | Kyrgyz | Laothian | Latin | Latvian | Lingala
+    | Lithuanian | Lozi | Luganda | Luo | Macedonian |
+    Malagasy | Malay | Malayalam | Maltese | Maori | Marathi
+    | Mauritian Creole | Moldavian | Mongolian | Montenegrin
+    | Nepali | Nigerian Pidgin | Northern Sotho | Norwegian
+    | Norwegian (Nynorsk) | Occitan | Oriya | Oromo | Pashto
+    | Persian | Pirate | Polish | Portuguese (Brazil) |
+    Portuguese (Portugal) | Punjabi | Quechua | Romanian |
+    Romansh | Runyakitara | Russian | Scots Gaelic | Serbian
+    | Serbo-Croatian | Sesotho | Setswana | Seychellois
+    Creole | Shona | Sindhi | Sinhalese | Slovak | Slovenian
+    | Somali | Spanish | Spanish (Latin American) |
+    Sundanese | Swahili | Swedish | Tajik | Tamil | Tatar |
+    Telugu | Thai | Tigrinya | Tonga | Tshiluba | Tumbuka |
+    Turkish | Turkmen | Twi | Uighur | Ukrainian | Urdu |
+    Uzbek | Vietnamese | Welsh | Wolof | Xhosa | Yiddish |
+    Yoruba | Zulu}] [-Monitor <int>] [-Width <int>] [-Height
+    <int>] [-X <int>] [-Y <int>] [-AcceptLang <string>]
+    [-KeysToSend <string[]>] [-SendKeyDelayMilliSeconds
+    <int>] [-Private] [-Force] [-Edge] [-Chrome] [-Chromium]
+    [-Firefox] [-All] [-ShowWindow] [-Left] [-Right] [-Top]
+    [-Bottom] [-Centered] [-ApplicationMode]
+    [-NoBrowserExtensions] [-DisablePopupBlocker]
+    [-SendKeyEscape] [-SendKeyHoldKeyboardFocus]
+    [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground]
+    [-Maximize] [-RestoreFocus] [-NewWindow] [-PassThru]
+    [-ReturnURL] [-ReturnOnlyURL] [-NoBorders]
+    [-SessionOnly] [-ClearSession] [-SkipSession]
+    [-SideBySide] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -12843,7 +13903,8 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>] [[-EndPoint] {Bing | Github | 
 
 ### SYNTAX 
 ```PowerShell 
-Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>] 
+Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -12880,7 +13941,8 @@ Start-VlcMediaPlayerNextInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm] [<CommonParameters>] 
+Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
