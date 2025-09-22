@@ -1,8 +1,8 @@
-﻿<##############################################################################
+<##############################################################################
 Part of PowerShell module : GenXdev.Console
 Original cmdlet filename  : New-MicrosoftShellTab.ps1
 Original author           : René Vaessen / GenXdev
-Version                   : 1.278.2025
+Version                   : 1.280.2025
 ################################################################################
 MIT License
 

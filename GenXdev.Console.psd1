@@ -12,7 +12,7 @@
 RootModule = 'GenXdev.Console.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.278.2025'
+ModuleVersion = '1.280.2025'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -52,7 +52,7 @@ ProcessorArchitecture = 'Amd64'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'PSReadLine'; ModuleVersion = '2.3.6'; }, 
-               @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion = '1.278.2025'; })
+               @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion = '1.280.2025'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -130,41 +130,41 @@ FileList = 'GenXdev.Console.psd1', 'GenXdev.Console.psm1',
                'Functions\GenXdev.Console\New-MicrosoftShellTab.ps1', 
                'Functions\GenXdev.Console\Now.ps1', 
                'Functions\GenXdev.Console\Open-MediaFile.ps1', 
-               'Functions\GenXdev.Console.Spotify\Add-SpotifyNewPlaylist.ps1', 
                'Functions\GenXdev.Console\SayDate.ps1', 
-               'Functions\GenXdev.Console.Spotify\Add-SpotifyTracksToLiked.ps1', 
                'Functions\GenXdev.Console\SayTime.ps1', 
-               'Functions\GenXdev.Console.Spotify\Add-SpotifyTracksToPlaylist.ps1', 
                'Functions\GenXdev.Console\Set-LocationParent.ps1', 
-               'Functions\GenXdev.Console.Spotify\Connect-SpotifyApiToken.ps1', 
                'Functions\GenXdev.Console\Set-LocationParent2.ps1', 
-               'Functions\GenXdev.Console.Spotify\Get-SpotifyActiveDevice.ps1', 
                'Functions\GenXdev.Console\Set-LocationParent3.ps1', 
                'Functions\GenXdev.Console\Set-LocationParent4.ps1', 
-               'Functions\GenXdev.Console.Spotify\Get-SpotifyApiToken.ps1', 
                'Functions\GenXdev.Console\Set-LocationParent5.ps1', 
-               'Functions\GenXdev.Console.Spotify\Get-SpotifyCurrentlyPlaying.ps1', 
                'Functions\GenXdev.Console\Set-MonitorPowerOff.ps1', 
-               'Functions\GenXdev.Console.Spotify\Get-SpotifyDevice.ps1', 
-               'Functions\GenXdev.Console.Vlc\Open-VlcMediaPlayer.ps1', 
                'Functions\GenXdev.Console\Set-MonitorPowerOn.ps1', 
-               'Functions\GenXdev.Console.Spotify\Get-SpotifyLikedTrack.ps1', 
-               'Functions\GenXdev.Console.Vlc\Open-VlcMediaPlayerLyrics.ps1', 
-               'Functions\GenXdev.Console.Spotify\Get-SpotifyLyrics.ps1', 
                'Functions\GenXdev.Console\Set-VLCPlayerFocused.ps1', 
-               'Functions\GenXdev.Console.Vlc\Start-VlcMediaPlayerNextInPlaylist.ps1', 
-               'Functions\GenXdev.Console.Spotify\Get-SpotifyPlaylistIdsByName.ps1', 
                'Functions\GenXdev.Console\Start-TextToSpeech.ps1', 
-               'Functions\GenXdev.Console.Spotify\Get-SpotifyPlaylistTrack.ps1', 
-               'Functions\GenXdev.Console.Vlc\Start-VlcMediaPlayerPreviousInPlaylist.ps1', 
                'Functions\GenXdev.Console\Stop-TextToSpeech.ps1', 
-               'Functions\GenXdev.Console.Spotify\Get-SpotifyTrackAudioFeatures.ps1', 
-               'Functions\GenXdev.Console.Vlc\Switch-VlcMediaPlayerMute.ps1', 
                'Functions\GenXdev.Console\UtcNow.ps1', 
-               'Functions\GenXdev.Console.Spotify\Get-SpotifyTrackById.ps1', 
+               'Functions\GenXdev.Console.Spotify\Add-SpotifyNewPlaylist.ps1', 
+               'Functions\GenXdev.Console.Vlc\Open-VlcMediaPlayer.ps1', 
+               'Functions\GenXdev.Console.Spotify\Add-SpotifyTracksToLiked.ps1', 
+               'Functions\GenXdev.Console.Vlc\Open-VlcMediaPlayerLyrics.ps1', 
+               'Functions\GenXdev.Console.Spotify\Add-SpotifyTracksToPlaylist.ps1', 
+               'Functions\GenXdev.Console.Vlc\Start-VlcMediaPlayerNextInPlaylist.ps1', 
+               'Functions\GenXdev.Console.Spotify\Connect-SpotifyApiToken.ps1', 
+               'Functions\GenXdev.Console.Vlc\Start-VlcMediaPlayerPreviousInPlaylist.ps1', 
+               'Functions\GenXdev.Console.Spotify\Get-SpotifyActiveDevice.ps1', 
+               'Functions\GenXdev.Console.Vlc\Switch-VlcMediaPlayerMute.ps1', 
+               'Functions\GenXdev.Console.Spotify\Get-SpotifyApiToken.ps1', 
                'Functions\GenXdev.Console.Vlc\Switch-VLCMediaPlayerPaused.ps1', 
-               'Functions\GenXdev.Console.Spotify\Get-SpotifyUserPlaylists.ps1', 
+               'Functions\GenXdev.Console.Spotify\Get-SpotifyCurrentlyPlaying.ps1', 
                'Functions\GenXdev.Console.Vlc\Switch-VlcMediaPlayerRepeat.ps1', 
+               'Functions\GenXdev.Console.Spotify\Get-SpotifyDevice.ps1', 
+               'Functions\GenXdev.Console.Spotify\Get-SpotifyLikedTrack.ps1', 
+               'Functions\GenXdev.Console.Spotify\Get-SpotifyLyrics.ps1', 
+               'Functions\GenXdev.Console.Spotify\Get-SpotifyPlaylistIdsByName.ps1', 
+               'Functions\GenXdev.Console.Spotify\Get-SpotifyPlaylistTrack.ps1', 
+               'Functions\GenXdev.Console.Spotify\Get-SpotifyTrackAudioFeatures.ps1', 
+               'Functions\GenXdev.Console.Spotify\Get-SpotifyTrackById.ps1', 
+               'Functions\GenXdev.Console.Spotify\Get-SpotifyUserPlaylists.ps1', 
                'Functions\GenXdev.Console.Spotify\Move-SpotifyLikedTracksToPlaylist.ps1', 
                'Functions\GenXdev.Console.Spotify\Remove-SpotifyTracksFromLiked.ps1', 
                'Functions\GenXdev.Console.Spotify\Remove-SpotifyTracksFromPlaylist.ps1', 
