@@ -12,7 +12,7 @@
 RootModule = 'GenXdev.Console.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.284.2025'
+ModuleVersion = '1.286.2025'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -52,7 +52,7 @@ ProcessorArchitecture = 'Amd64'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'PSReadLine'; ModuleVersion = '2.3.6'; }, 
-               @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion = '1.284.2025'; })
+               @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion = '1.286.2025'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -140,12 +140,12 @@ FileList = 'GenXdev.Console.psd1', 'GenXdev.Console.psm1',
                'Functions\GenXdev.Console\Set-MonitorPowerOff.ps1', 
                'Functions\GenXdev.Console\Set-MonitorPowerOn.ps1', 
                'Functions\GenXdev.Console\Set-VLCPlayerFocused.ps1', 
-               'Functions\GenXdev.Console\Start-TextToSpeech.ps1', 
-               'Functions\GenXdev.Console\Stop-TextToSpeech.ps1', 
-               'Functions\GenXdev.Console\UtcNow.ps1', 
                'Functions\GenXdev.Console.Spotify\Add-SpotifyNewPlaylist.ps1', 
+               'Functions\GenXdev.Console\Start-TextToSpeech.ps1', 
                'Functions\GenXdev.Console.Spotify\Add-SpotifyTracksToLiked.ps1', 
+               'Functions\GenXdev.Console\Stop-TextToSpeech.ps1', 
                'Functions\GenXdev.Console.Spotify\Add-SpotifyTracksToPlaylist.ps1', 
+               'Functions\GenXdev.Console\UtcNow.ps1', 
                'Functions\GenXdev.Console.Spotify\Connect-SpotifyApiToken.ps1', 
                'Functions\GenXdev.Console.Spotify\Get-SpotifyActiveDevice.ps1', 
                'Functions\GenXdev.Console.Spotify\Get-SpotifyApiToken.ps1', 
