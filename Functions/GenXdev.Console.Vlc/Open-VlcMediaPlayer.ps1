@@ -2,7 +2,7 @@
 Part of PowerShell module : GenXdev.Console.Vlc
 Original cmdlet filename  : Open-VlcMediaPlayer.ps1
 Original author           : René Vaessen / GenXdev
-Version                   : 1.288.2025
+Version                   : 1.290.2025
 ################################################################################
 MIT License
 
@@ -872,9 +872,31 @@ function Open-VlcMediaPlayer {
             Microsoft.PowerShell.Utility\Write-Verbose `
                 'VLC not found, installing via WinGet...'
 
+            # check consent for VLC installation
+            $vlcConsent = GenXdev.FileSystem\Confirm-InstallationConsent `
+                -ApplicationName 'VLC Media Player' `
+                -Source 'WinGet' `
+                -Description 'Media player required for video/audio playback functionality' `
+                -Publisher 'VideoLAN'
+
+            if (-not $vlcConsent) {
+                throw 'Installation consent denied for VLC Media Player. Cannot proceed without media player.'
+            }
+
             # check and install winget module if not present
             if (-not (Microsoft.PowerShell.Core\Get-Module -ListAvailable `
                         -Name 'Microsoft.WinGet.Client')) {
+
+                # check consent for WinGet client module installation
+                $wingetConsent = GenXdev.FileSystem\Confirm-InstallationConsent `
+                    -ApplicationName 'Microsoft.WinGet.Client' `
+                    -Source 'PowerShell Gallery' `
+                    -Description 'Required PowerShell module for installing VLC Media Player' `
+                    -Publisher 'Microsoft'
+
+                if (-not $wingetConsent) {
+                    throw 'Installation consent denied for Microsoft.WinGet.Client module. Cannot install VLC without WinGet client.'
+                }
 
                 Microsoft.PowerShell.Utility\Write-Verbose `
                     'Installing WinGet client module'
@@ -888,6 +910,17 @@ function Open-VlcMediaPlayer {
 
                 Microsoft.PowerShell.Core\Import-Module `
                     -Name 'Microsoft.WinGet.Client'
+            }
+
+            # check consent for VLC installation
+            $vlcConsent = GenXdev.FileSystem\Confirm-InstallationConsent `
+                -ApplicationName 'VLC Media Player' `
+                -Source 'WinGet' `
+                -Description 'Media player required for video/audio playback functionality' `
+                -Publisher 'VideoLAN'
+
+            if (-not $vlcConsent) {
+                throw 'Installation consent denied for VLC Media Player. Cannot proceed without media player.'
             }
 
             # install vlc media player using winget
@@ -1141,6 +1174,17 @@ function Open-VlcMediaPlayer {
                 if (-not (Microsoft.PowerShell.Core\Get-Module -ListAvailable `
                             -Name 'Microsoft.WinGet.Client')) {
 
+                    # check consent for WinGet client module installation
+                    $wingetConsent = GenXdev.FileSystem\Confirm-InstallationConsent `
+                        -ApplicationName 'Microsoft.WinGet.Client' `
+                        -Source 'PowerShell Gallery' `
+                        -Description 'Required PowerShell module for installing VLC Media Player' `
+                        -Publisher 'Microsoft'
+
+                    if (-not $wingetConsent) {
+                        throw 'Installation consent denied for Microsoft.WinGet.Client module. Cannot install VLC without WinGet client.'
+                    }
+
                     Microsoft.PowerShell.Utility\Write-Verbose `
                         'Installing WinGet client module'
 
@@ -1153,6 +1197,17 @@ function Open-VlcMediaPlayer {
 
                     Microsoft.PowerShell.Core\Import-Module `
                         -Name 'Microsoft.WinGet.Client'
+                }
+
+                # check consent for VLC installation
+                $vlcConsent = GenXdev.FileSystem\Confirm-InstallationConsent `
+                    -ApplicationName 'VLC Media Player' `
+                    -Source 'WinGet' `
+                    -Description 'Media player required for video/audio playback functionality' `
+                    -Publisher 'VideoLAN'
+
+                if (-not $vlcConsent) {
+                    throw 'Installation consent denied for VLC Media Player. Cannot proceed without media player.'
                 }
 
                 Microsoft.PowerShell.Utility\Write-Verbose `
