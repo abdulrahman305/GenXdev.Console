@@ -1,8 +1,8 @@
-﻿<##############################################################################
+<##############################################################################
 Part of PowerShell module : GenXdev.Console.Vlc
 Original cmdlet filename  : Open-VlcMediaPlayer.ps1
 Original author           : René Vaessen / GenXdev
-Version                   : 1.292.2025
+Version                   : 1.296.2025
 ################################################################################
 MIT License
 
@@ -830,6 +830,7 @@ function Open-VlcMediaPlayer {
             "Fullscreen",
             "SideBySide",
             "FocusWindow",
+#            "RestoreFocus",
             "SetForeground",
             "Minimize",
             "Maximize",
@@ -1147,7 +1148,7 @@ autoscale=0
         # Set-WindowPosition for accurate positioning instead.
 
         # Only add --fullscreen if no positioning will occur, since positioning handles fullscreen via F11
-        if ($FullScreen -and (-not $hasPositioningParams)) {
+        if ($FullScreen -and (-not $hasPositioningParams) -and ($null -eq $KeysToSend -or $KeysToSend.Count -eq 0)) {
             $vlcArgs.Add('--fullscreen')
             $FullScreen = $false
             $Maximize = $false
@@ -1219,6 +1220,7 @@ autoscale=0
 
         # Start VLC minimized if we'll be positioning it later to prevent visual jumping
         if ($hasPositioningParams) {
+
             Microsoft.PowerShell.Utility\Write-Verbose 'Starting VLC minimized since positioning will occur'
             $processArgs.WindowStyle = 'Minimized'
         }
@@ -1296,15 +1298,37 @@ autoscale=0
             return
         }
 
+        # Check if any positioning param (other than KeysToSend and RestoreFocus) was explicitly provided
+        $hasPositioningParams = $PSBoundParameters.Keys | Microsoft.PowerShell.Core\Where-Object {
+            $_ -in @('Monitor', 'NoBorders', 'Width', 'Height', 'X', 'Y',
+                     'Left', 'Right', 'Top', 'Bottom', 'Centered', 'Fullscreen',
+                     'SideBySide', 'FocusWindow', 'SetForeground', 'Minimize', 'Maximize')
+        }
+
+        # Check if this is a "keys only" operation (no positioning, no new media)
+        $isKeysOnlyOperation = ($null -ne $KeysToSend) -and ($KeysToSend.Count -gt 0) -and
+                               (-not $hasPositioningParams) -and
+                               (-not $PSBoundParameters.ContainsKey('Path'))
+
         # prepare window positioning parameters
         if ($PSBoundParameters.ContainsKey('Process')) {
-
             $null = $PSBoundParameters.Remove('Process')
         }
 
-        # copy window positioning parameters using helper function
+        # copy window positioning parameters using helper function, but exclude RestoreFocus for keys-only operations
+        $parametersToCopy = $PSBoundParameters
+        if ($isKeysOnlyOperation) {
+            # Create a copy without RestoreFocus to prevent unwanted positioning
+            $parametersToCopy = @{}
+            $PSBoundParameters.GetEnumerator() | Microsoft.PowerShell.Core\ForEach-Object {
+                if ($_.Key -ne 'RestoreFocus') {
+                    $parametersToCopy[$_.Key] = $_.Value
+                }
+            }
+        }
+
         $invocationParams = GenXdev.Helpers\Copy-IdenticalParamValues `
-            -BoundParameters $PSBoundParameters `
+            -BoundParameters $parametersToCopy `
             -FunctionName 'GenXdev.Windows\Set-WindowPosition' `
             -DefaultValues @((Microsoft.PowerShell.Utility\Get-Variable -Name 'Monitor' -Scope Local))
 
@@ -1313,21 +1337,14 @@ autoscale=0
 
         # Only set default monitor and fullscreen if we have actual positioning params
         # OR if Path is provided (opening VLC, not just sending keys)
-        # Check if any positioning param (other than KeysToSend) was explicitly provided
-        $hasPositioningParams = $PSBoundParameters.Keys | Microsoft.PowerShell.Core\Where-Object {
-            $_ -in @('Monitor', 'NoBorders', 'Width', 'Height', 'X', 'Y',
-                     'Left', 'Right', 'Top', 'Bottom', 'Centered', 'Fullscreen',
-                     'SideBySide', 'FocusWindow', 'SetForeground', 'Minimize', 'Maximize')
-        }
-
-        if  ((-not $PSBoundParameters.ContainsKey('Monitor')) -and (-not $SideBySide) -and ($hasPositioningParams -or $PSBoundParameters.ContainsKey('Path'))) {
-
+        if  ((-not $PSBoundParameters.ContainsKey('Monitor')) -and (-not $SideBySide) -and ($hasPositioningParams -or $PSBoundParameters.ContainsKey('Path')) -and
+             ($KeysToSend -eq $null -or $KeysToSend.Count -eq 0)
+        ) {
             $invocationParams.Monitor = -2
             $Fullscreen = $true
         }
 
         if ($FullScreen) {
-
             # $invocationParams.Maximize = $true
             $invocationParams.Fullscreen = $false
             # Only set fullscreen keystroke if user didn't provide KeysToSend
@@ -1337,8 +1354,11 @@ autoscale=0
             $invocationParams.RestoreFocus = $true
         }
 
-        # apply window positioning if parameters specified
-        $null = GenXdev.Windows\Set-WindowPosition @invocationParams
+        # Only apply window positioning if not a keys-only operation
+        if (-not $isKeysOnlyOperation) {
+            # apply window positioning if parameters specified
+            $null = GenXdev.Windows\Set-WindowPosition @invocationParams
+        }
 
         Microsoft.PowerShell.Utility\Start-Sleep -Milliseconds 500
     }
@@ -1400,14 +1420,11 @@ autoscale=0
         # restore focus to powershell window if requested
         if ($RestoreFocus) {
 
-            # get powershell window reference
-            $pwshWindow = GenXdev.Windows\Get-PowershellMainWindow
+            Microsoft.PowerShell.Utility\Write-Verbose `
+                'Restoring PowerShell window focus'
 
             # restore powershell window focus
-            if ($null -ne $pwshWindow) {
-
-                $null = $pwshWindow.Focus()
-            }
+            $null = GenXdev.Windows\Set-WindowPosition -FocusWindow -SetForeground
         }
 
         # return window helper if requested
