@@ -1,8 +1,8 @@
-<##############################################################################
+﻿<##############################################################################
 Part of PowerShell module : GenXdev.Console.Vlc
 Original cmdlet filename  : Open-VlcMediaPlayer.ps1
 Original author           : René Vaessen / GenXdev
-Version                   : 1.290.2025
+Version                   : 1.292.2025
 ################################################################################
 MIT License
 
@@ -243,7 +243,10 @@ Focus the VLC window after opening for immediate interaction readiness.
 Set the VLC window to foreground after opening for visibility assurance.
 
 .PARAMETER Maximize
-Maximize the VLC window after positioning for full-screen content display.
+Maximize the window after positioning
+
+.PARAMETER SetRestored
+Restore the window to normal state after positioning
 
 .PARAMETER RestoreFocus
 Restore PowerShell window focus after opening VLC for continued workflow.
@@ -286,8 +289,6 @@ function Open-VlcMediaPlayer {
         [Parameter(
             Position = 0,
             Mandatory = $false,
-            ValueFromPipeline = $true,
-            ValueFromPipelineByPropertyName = $true,
             HelpMessage = 'The media file(s) or URL(s) to open in VLC'
         )]
         [string[]]$Path,
@@ -362,7 +363,7 @@ function Open-VlcMediaPlayer {
             Mandatory = $false,
             HelpMessage = 'The monitor to use, 0 = default, -1 is discard'
         )]
-        [int] $Monitor = -2,
+        [int] $Monitor,
         ###########################################################################
         [Parameter(
             Mandatory = $false,
@@ -827,7 +828,6 @@ function Open-VlcMediaPlayer {
             "Bottom",
             "Centered",
             "Fullscreen",
-            "RestoreFocus",
             "SideBySide",
             "FocusWindow",
             "SetForeground",
@@ -855,8 +855,12 @@ function Open-VlcMediaPlayer {
                 -FunctionName 'GenXdev.Windows\Set-WindowPosition' `
                 -DefaultValues (Microsoft.PowerShell.Utility\Get-Variable -Scope Local -ErrorAction SilentlyContinue)
 
-            $params.KeysToSend = @($FullScreen ? @("f") : @()) + $KeysToSend
-            $params.RestoreFocus = $FullScreen
+            # Only add fullscreen keystroke if user explicitly requested Fullscreen
+            # Don't use $FullScreen variable here as it may be set by default logic later
+            if ($PSBoundParameters.ContainsKey('Fullscreen') -and $Fullscreen) {
+                $params.KeysToSend = @("f") + $KeysToSend
+                $params.RestoreFocus = $true
+            }
 
             GenXdev.Windows\Set-WindowPosition @params -ProcessName 'vlc'
 
@@ -912,23 +916,62 @@ function Open-VlcMediaPlayer {
                     -Name 'Microsoft.WinGet.Client'
             }
 
-            # check consent for VLC installation
-            $vlcConsent = GenXdev.FileSystem\Confirm-InstallationConsent `
-                -ApplicationName 'VLC Media Player' `
-                -Source 'WinGet' `
-                -Description 'Media player required for video/audio playback functionality' `
-                -Publisher 'VideoLAN'
-
-            if (-not $vlcConsent) {
-                throw 'Installation consent denied for VLC Media Player. Cannot proceed without media player.'
-            }
-
             # install vlc media player using winget
             Microsoft.PowerShell.Utility\Write-Verbose `
                 'Installing VLC media player'
 
             Microsoft.WinGet.Client\Install-WinGetPackage `
                 -Id 'VideoLAN.VLC' -Scope System -Force
+
+            # Configure VLC to not resize window on media change
+            Microsoft.PowerShell.Utility\Write-Verbose `
+                'Configuring VLC to prevent window auto-resizing'
+
+            $vlcConfigPath = "${env:APPDATA}\vlc"
+            $vlcrcPath = Microsoft.PowerShell.Management\Join-Path $vlcConfigPath 'vlcrc'
+
+            # Ensure config directory exists
+            if (-not (Microsoft.PowerShell.Management\Test-Path $vlcConfigPath)) {
+                $null = Microsoft.PowerShell.Management\New-Item `
+                    -Path $vlcConfigPath -ItemType Directory -Force
+            }
+
+            # Configure settings to prevent window resizing
+            if (Microsoft.PowerShell.Management\Test-Path $vlcrcPath) {
+                # Read existing config
+                $vlcConfig = Microsoft.PowerShell.Management\Get-Content `
+                    -Path $vlcrcPath -Raw
+
+                # Update or add qt-video-autoresize setting
+                if ($vlcConfig -match '#?qt-video-autoresize=') {
+                    $vlcConfig = $vlcConfig -replace '#?qt-video-autoresize=.*', 'qt-video-autoresize=0'
+                } else {
+                    $vlcConfig += "`nqt-video-autoresize=0"
+                }
+
+                # Update or add autoscale setting
+                if ($vlcConfig -match '#?autoscale=') {
+                    $vlcConfig = $vlcConfig -replace '#?autoscale=.*', 'autoscale=0'
+                } else {
+                    $vlcConfig += "`nautoscale=0"
+                }
+
+                # Write updated config
+                Microsoft.PowerShell.Management\Set-Content `
+                    -Path $vlcrcPath -Value $vlcConfig -Force
+            } else {
+                # Create new config file with settings
+                $newConfig = @"
+# VLC media player preferences
+qt-video-autoresize=0
+autoscale=0
+"@
+                Microsoft.PowerShell.Management\Set-Content `
+                    -Path $vlcrcPath -Value $newConfig -Force
+            }
+
+            Microsoft.PowerShell.Utility\Write-Verbose `
+                'VLC configured: window auto-resize disabled'
         }
 
         # create vlc parameter conversion function
@@ -1092,8 +1135,19 @@ function Open-VlcMediaPlayer {
         # initialize vlc argument list
         [System.Collections.Generic.List[string]]$vlcArgs = @()
 
-        if ($FullScreen) {
+        # Check if positioning parameters are supplied
+        $hasPositioningParams = $PSBoundParameters.Keys | Microsoft.PowerShell.Core\Where-Object {
+            $_ -in @('Monitor', 'Width', 'Height', 'X', 'Y',
+                     'Left', 'Right', 'Top', 'Bottom', 'Centered', 'Fullscreen',
+                     'SideBySide')
+        }
 
+        # Note: VLC's initial positioning arguments (--video-x, --video-y, --width, --height)
+        # are unreliable for main window positioning. We'll rely entirely on post-launch
+        # Set-WindowPosition for accurate positioning instead.
+
+        # Only add --fullscreen if no positioning will occur, since positioning handles fullscreen via F11
+        if ($FullScreen -and (-not $hasPositioningParams)) {
             $vlcArgs.Add('--fullscreen')
             $FullScreen = $false
             $Maximize = $false
@@ -1163,6 +1217,12 @@ function Open-VlcMediaPlayer {
             ErrorAction  = 'SilentlyContinue'
         }
 
+        # Start VLC minimized if we'll be positioning it later to prevent visual jumping
+        if ($hasPositioningParams) {
+            Microsoft.PowerShell.Utility\Write-Verbose 'Starting VLC minimized since positioning will occur'
+            $processArgs.WindowStyle = 'Minimized'
+        }
+
         # handle existing vlc instance
         if ($null -eq $vlcWindow) {
 
@@ -1170,51 +1230,7 @@ function Open-VlcMediaPlayer {
             if (-not (Microsoft.PowerShell.Management\Test-Path `
                         -LiteralPath $processArgs.FilePath -ErrorAction SilentlyContinue)) {
 
-                # install winget if needed
-                if (-not (Microsoft.PowerShell.Core\Get-Module -ListAvailable `
-                            -Name 'Microsoft.WinGet.Client')) {
-
-                    # check consent for WinGet client module installation
-                    $wingetConsent = GenXdev.FileSystem\Confirm-InstallationConsent `
-                        -ApplicationName 'Microsoft.WinGet.Client' `
-                        -Source 'PowerShell Gallery' `
-                        -Description 'Required PowerShell module for installing VLC Media Player' `
-                        -Publisher 'Microsoft'
-
-                    if (-not $wingetConsent) {
-                        throw 'Installation consent denied for Microsoft.WinGet.Client module. Cannot install VLC without WinGet client.'
-                    }
-
-                    Microsoft.PowerShell.Utility\Write-Verbose `
-                        'Installing WinGet client module'
-
-                    $null = PowerShellGet\Install-Module `
-                        -Name 'Microsoft.WinGet.Client' `
-                        -Force -Scope CurrentUser -AllowClobber -SkipPublisherCheck
-
-                    Microsoft.PowerShell.Utility\Write-Verbose `
-                        'Importing WinGet client module'
-
-                    Microsoft.PowerShell.Core\Import-Module `
-                        -Name 'Microsoft.WinGet.Client'
-                }
-
-                # check consent for VLC installation
-                $vlcConsent = GenXdev.FileSystem\Confirm-InstallationConsent `
-                    -ApplicationName 'VLC Media Player' `
-                    -Source 'WinGet' `
-                    -Description 'Media player required for video/audio playback functionality' `
-                    -Publisher 'VideoLAN'
-
-                if (-not $vlcConsent) {
-                    throw 'Installation consent denied for VLC Media Player. Cannot proceed without media player.'
-                }
-
-                Microsoft.PowerShell.Utility\Write-Verbose `
-                    'Installing VLC media player'
-
-                Microsoft.WinGet.Client\Install-WinGetPackage `
-                    -Id 'VideoLAN.VLC' -Scope System -Force
+                throw 'VLC Media Player executable not found. Please ensure VLC is properly installed.'
             }
 
             # close any existing vlc processes
@@ -1252,6 +1268,8 @@ function Open-VlcMediaPlayer {
 
                 Microsoft.PowerShell.Utility\Write-Verbose `
                     "VLC started with PID: $($vlcProcess.Id)"
+
+                Microsoft.PowerShell.Utility\Start-Sleep -Milliseconds 2500
             }
             catch {
 
@@ -1291,8 +1309,18 @@ function Open-VlcMediaPlayer {
             -DefaultValues @((Microsoft.PowerShell.Utility\Get-Variable -Name 'Monitor' -Scope Local))
 
         $invocationParams.WindowHelper = $vlcWindow
+        $invocationParams.SideBySide = $SideBySide
 
-        if  (-not $PSBoundParameters.ContainsKey('Monitor')) {
+        # Only set default monitor and fullscreen if we have actual positioning params
+        # OR if Path is provided (opening VLC, not just sending keys)
+        # Check if any positioning param (other than KeysToSend) was explicitly provided
+        $hasPositioningParams = $PSBoundParameters.Keys | Microsoft.PowerShell.Core\Where-Object {
+            $_ -in @('Monitor', 'NoBorders', 'Width', 'Height', 'X', 'Y',
+                     'Left', 'Right', 'Top', 'Bottom', 'Centered', 'Fullscreen',
+                     'SideBySide', 'FocusWindow', 'SetForeground', 'Minimize', 'Maximize')
+        }
+
+        if  ((-not $PSBoundParameters.ContainsKey('Monitor')) -and (-not $SideBySide) -and ($hasPositioningParams -or $PSBoundParameters.ContainsKey('Path'))) {
 
             $invocationParams.Monitor = -2
             $Fullscreen = $true
@@ -1300,14 +1328,19 @@ function Open-VlcMediaPlayer {
 
         if ($FullScreen) {
 
-            $invocationParams.Maximize = $true
+            # $invocationParams.Maximize = $true
             $invocationParams.Fullscreen = $false
-            $invocationParams.KeysToSend = @('f')
+            # Only set fullscreen keystroke if user didn't provide KeysToSend
+            if (-not $PSBoundParameters.ContainsKey('KeysToSend')) {
+                $invocationParams.KeysToSend = @('f')
+            }
             $invocationParams.RestoreFocus = $true
         }
 
         # apply window positioning if parameters specified
         $null = GenXdev.Windows\Set-WindowPosition @invocationParams
+
+        Microsoft.PowerShell.Utility\Start-Sleep -Milliseconds 500
     }
 
 

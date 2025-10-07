@@ -256,10 +256,11 @@ Now [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
+Open-MediaFile [[-Name] <string[]>] [[-Width] <int>]
     [[-Height] <int>] [[-X] <int>] [[-Y] <int>]
-    [-PlaylistPath <string>] [-KeysToSend <string[]>]
-    [-Keywords <string[]>] [-SendKeyEscape]
+    [-InputObject <Object>] [-PlaylistPath <string>]
+    [-KeysToSend <string[]>] [-MaxDegreeOfParallelism <int>]
+    [-TimeoutSeconds <int>] [-SendKeyEscape]
     [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds
     <int>] [-SendKeyHoldKeyboardFocus] [-Monitor <int>]
     [-AspectRatio <string>] [-Crop <string>] [-SubtitleFile
@@ -371,7 +372,10 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
     [-AudioVisualization {None | Goom | ProjectM | Visual |
     GLSpectrum}] [-PreferredSubtitleLanguage <string>]
     [-IgnoredFileExtensions <string>] [-Arguments <string>]
-    [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio]
+    [-AllDrives] [-IncludeAlternateFileStreams] [-NoRecurse]
+    [-FollowSymlinkAndJunctions] [-IncludeOpticalDiskDrives]
+    [-SearchDrives <string[]>] [-DriveLetter <char[]>]
+    [-Root <string[]>] [-OnlyVideos] [-OnlyAudio]
     [-OnlyPictures] [-IncludeVideos] [-IncludeAudio]
     [-IncludePictures] [-NoBorders] [-Left] [-Right] [-Top]
     [-Bottom] [-Centered] [-FullScreen] [-AlwaysOnTop]
@@ -382,8 +386,16 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
     [-EnableAudioTimeStretch] [-Close] [-SideBySide]
     [-FocusWindow] [-SetForeground] [-Maximize]
     [-RestoreFocus] [-SessionOnly] [-ClearSession]
-    [-SkipSession] [-PassThru] [-PassThruNoOpen]
-    [-PassThruWindow] [<CommonParameters>] 
+    [-SkipSession] [-CaseNameMatching {PlatformDefault |
+    CaseSensitive | CaseInsensitive}] [-MaxRecursionDepth
+    <int>] [-MaxFileSize <long>] [-MinFileSize <long>]
+    [-ModifiedAfter <datetime>] [-ModifiedBefore <datetime>]
+    [-AttributesToSkip {None | ReadOnly | Hidden | System |
+    Directory | Archive | Device | Normal | Temporary |
+    SparseFile | ReparsePoint | Compressed | Offline |
+    NotContentIndexed | Encrypted | IntegrityStream |
+    NoScrubData}] [-Exclude <string[]>] [-PassThru]
+    [-PassThruNoOpen] [-PassThruWindow] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -421,6 +433,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -AttributesToSkip <FileAttributes>  
+        File attributes to skip (e.g., System, Hidden or None).  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      skipattr  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -AudioFilterModules <string[]>  
@@ -475,6 +496,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -CaseNameMatching <MatchCasing>  
+        Gets or sets the case-sensitivity for files and directories  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      casing, CaseSearchMaskMatching  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -Centered  
@@ -549,6 +579,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -DriveLetter <char[]>  
+        Optional: search specific drives  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
     -EnableAudioTimeStretch  
         Enable audio time stretching  
         Required?                    false  
@@ -576,6 +615,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -Exclude <string[]>  
+        Exclude files or directories matching these wildcard patterns (e.g., *.tmp, *\\bin\\*).  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      skiplike  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
     -FocusWindow  
         Focus the VLC window after opening  
         Required?                    false  
@@ -583,6 +631,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      fw, focus  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -FollowSymlinkAndJunctions  
+        Follow symlinks and junctions during directory traversal  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      symlinks, sl  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -ForceDolbySurround <string>  
@@ -657,8 +714,26 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -IncludeAlternateFileStreams  
+        Include alternate data streams in search results  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      ads  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
     -IncludeAudio  
         Additionally include audio files in the playlist  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -IncludeOpticalDiskDrives  
+        Include optical disk drives  
         Required?                    false  
         Position?                    Named  
         Accept pipeline input?       false  
@@ -684,6 +759,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -InputObject <Object>  
+        File name or pattern to search for from pipeline input. Default is "*"  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      FullName  
+        Dynamic?                     false  
+        Accept wildcard characters?  true  
     -KeysToSend <string[]>  
         Keystrokes to send to the VLC Player Window, see documentation for cmdlet GenXdev.Windows\Send-Key  
         Required?                    false  
@@ -693,15 +777,6 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
-    -Keywords <string[]>  
-        Keywords to search in file metadata  
-        Required?                    false  
-        Position?                    Named  
-        Accept pipeline input?       false  
-        Parameter set name           (All)  
-        Aliases                      None  
-        Dynamic?                     false  
-        Accept wildcard characters?  true  
     -Left  
         Place window on the left side of the screen  
         Required?                    false  
@@ -720,6 +795,33 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -MaxDegreeOfParallelism <int>  
+        Maximum degree of parallelism for directory tasks  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      threads  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -MaxFileSize <long>  
+        Maximum file size in bytes to include in results. 0 means unlimited.  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      maxlength, maxsize  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -MaxRecursionDepth <int>  
+        Maximum recursion depth for directory traversal. 0 means unlimited.  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      md, depth, maxdepth  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
     -Maximize  
         Maximize the window  
         Required?                    false  
@@ -727,6 +829,33 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -MinFileSize <long>  
+        Minimum file size in bytes to include in results. 0 means no minimum.  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      minsize, minlength  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -ModifiedAfter <datetime>  
+        Only include files modified after this date/time (UTC).  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      ma, after  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -ModifiedBefore <datetime>  
+        Only include files modified before this date/time (UTC).  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      before, mb  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -Modules <string[]>  
@@ -747,6 +876,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      m, mon  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -Name <string[]>  
+        File name or pattern to search for. Default is '*'  
+        Required?                    false  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      like, Path, LiteralPath, Query, SearchMask, Include  
+        Dynamic?                     false  
+        Accept wildcard characters?  true  
     -NewWindow  
         Open new VLC mediaplayer instance  
         Required?                    false  
@@ -838,7 +976,7 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -PlaylistPath <string>  
-        Playlist path to save the media files to. If not specified, the playlist will be saved in a temperary directory.  
+        Playlist path to save the media files to. If not specified, the playlist will be saved in a temporary directory.  
         Required?                    false  
         Position?                    Named  
         Accept pipeline input?       false  
@@ -918,15 +1056,24 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
-    -SearchMask <string[]>  
-        File name or pattern to search for. Default is '*'  
+    -Root <string[]>  
+        Optional: search specific base folders combined with provided Names  
         Required?                    false  
-        Position?                    0  
-        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Position?                    Named  
+        Accept pipeline input?       false  
         Parameter set name           (All)  
-        Aliases                      like, l, Path, Name, file, Query, FullName  
+        Aliases                      None  
         Dynamic?                     false  
-        Accept wildcard characters?  true  
+        Accept wildcard characters?  false  
+    -SearchDrives <string[]>  
+        Optional: search specific drives  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      drives  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
     -SendKeyDelayMilliSeconds <int>  
         Delay between different input strings in milliseconds when sending keys to VLC  
         Required?                    false  
@@ -1042,6 +1189,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -TimeoutSeconds <int>  
+        Optional: cancellation timeout in seconds  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      maxseconds  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -Top  
@@ -3884,7 +4040,7 @@ Open-VlcMediaPlayer [[-Path] <string[]>] [[-Width] <int>]
         The media file(s) or URL(s) to open in VLC  
         Required?                    false  
         Position?                    0  
-        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      None  
         Dynamic?                     false  
@@ -4226,8 +4382,8 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
     [-NoBrowserExtensions] [-DisablePopupBlocker]
     [-SendKeyEscape] [-SendKeyHoldKeyboardFocus]
     [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground]
-    [-Maximize] [-RestoreFocus] [-NewWindow] [-PassThru]
-    [-ReturnURL] [-ReturnOnlyURL] [-NoBorders]
+    [-Maximize] [-SetRestored] [-RestoreFocus] [-NewWindow]
+    [-PassThru] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders]
     [-SessionOnly] [-ClearSession] [-SkipSession]
     [-SideBySide] [<CommonParameters>] 
 ```` 
@@ -4555,6 +4711,15 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      fg  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -SetRestored  
+        Restore the window to normal state after positioning  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -ShowWindow  
@@ -4889,10 +5054,11 @@ Now [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
+Open-MediaFile [[-Name] <string[]>] [[-Width] <int>]
     [[-Height] <int>] [[-X] <int>] [[-Y] <int>]
-    [-PlaylistPath <string>] [-KeysToSend <string[]>]
-    [-Keywords <string[]>] [-SendKeyEscape]
+    [-InputObject <Object>] [-PlaylistPath <string>]
+    [-KeysToSend <string[]>] [-MaxDegreeOfParallelism <int>]
+    [-TimeoutSeconds <int>] [-SendKeyEscape]
     [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds
     <int>] [-SendKeyHoldKeyboardFocus] [-Monitor <int>]
     [-AspectRatio <string>] [-Crop <string>] [-SubtitleFile
@@ -5004,7 +5170,10 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
     [-AudioVisualization {None | Goom | ProjectM | Visual |
     GLSpectrum}] [-PreferredSubtitleLanguage <string>]
     [-IgnoredFileExtensions <string>] [-Arguments <string>]
-    [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio]
+    [-AllDrives] [-IncludeAlternateFileStreams] [-NoRecurse]
+    [-FollowSymlinkAndJunctions] [-IncludeOpticalDiskDrives]
+    [-SearchDrives <string[]>] [-DriveLetter <char[]>]
+    [-Root <string[]>] [-OnlyVideos] [-OnlyAudio]
     [-OnlyPictures] [-IncludeVideos] [-IncludeAudio]
     [-IncludePictures] [-NoBorders] [-Left] [-Right] [-Top]
     [-Bottom] [-Centered] [-FullScreen] [-AlwaysOnTop]
@@ -5015,8 +5184,16 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
     [-EnableAudioTimeStretch] [-Close] [-SideBySide]
     [-FocusWindow] [-SetForeground] [-Maximize]
     [-RestoreFocus] [-SessionOnly] [-ClearSession]
-    [-SkipSession] [-PassThru] [-PassThruNoOpen]
-    [-PassThruWindow] [<CommonParameters>] 
+    [-SkipSession] [-CaseNameMatching {PlatformDefault |
+    CaseSensitive | CaseInsensitive}] [-MaxRecursionDepth
+    <int>] [-MaxFileSize <long>] [-MinFileSize <long>]
+    [-ModifiedAfter <datetime>] [-ModifiedBefore <datetime>]
+    [-AttributesToSkip {None | ReadOnly | Hidden | System |
+    Directory | Archive | Device | Normal | Temporary |
+    SparseFile | ReparsePoint | Compressed | Offline |
+    NotContentIndexed | Encrypted | IntegrityStream |
+    NoScrubData}] [-Exclude <string[]>] [-PassThru]
+    [-PassThruNoOpen] [-PassThruWindow] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -5054,6 +5231,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -AttributesToSkip <FileAttributes>  
+        File attributes to skip (e.g., System, Hidden or None).  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      skipattr  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -AudioFilterModules <string[]>  
@@ -5108,6 +5294,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -CaseNameMatching <MatchCasing>  
+        Gets or sets the case-sensitivity for files and directories  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      casing, CaseSearchMaskMatching  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -Centered  
@@ -5182,6 +5377,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -DriveLetter <char[]>  
+        Optional: search specific drives  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
     -EnableAudioTimeStretch  
         Enable audio time stretching  
         Required?                    false  
@@ -5209,6 +5413,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -Exclude <string[]>  
+        Exclude files or directories matching these wildcard patterns (e.g., *.tmp, *\\bin\\*).  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      skiplike  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
     -FocusWindow  
         Focus the VLC window after opening  
         Required?                    false  
@@ -5216,6 +5429,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      fw, focus  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -FollowSymlinkAndJunctions  
+        Follow symlinks and junctions during directory traversal  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      symlinks, sl  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -ForceDolbySurround <string>  
@@ -5290,8 +5512,26 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -IncludeAlternateFileStreams  
+        Include alternate data streams in search results  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      ads  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
     -IncludeAudio  
         Additionally include audio files in the playlist  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -IncludeOpticalDiskDrives  
+        Include optical disk drives  
         Required?                    false  
         Position?                    Named  
         Accept pipeline input?       false  
@@ -5317,6 +5557,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -InputObject <Object>  
+        File name or pattern to search for from pipeline input. Default is "*"  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      FullName  
+        Dynamic?                     false  
+        Accept wildcard characters?  true  
     -KeysToSend <string[]>  
         Keystrokes to send to the VLC Player Window, see documentation for cmdlet GenXdev.Windows\Send-Key  
         Required?                    false  
@@ -5326,15 +5575,6 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
-    -Keywords <string[]>  
-        Keywords to search in file metadata  
-        Required?                    false  
-        Position?                    Named  
-        Accept pipeline input?       false  
-        Parameter set name           (All)  
-        Aliases                      None  
-        Dynamic?                     false  
-        Accept wildcard characters?  true  
     -Left  
         Place window on the left side of the screen  
         Required?                    false  
@@ -5353,6 +5593,33 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -MaxDegreeOfParallelism <int>  
+        Maximum degree of parallelism for directory tasks  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      threads  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -MaxFileSize <long>  
+        Maximum file size in bytes to include in results. 0 means unlimited.  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      maxlength, maxsize  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -MaxRecursionDepth <int>  
+        Maximum recursion depth for directory traversal. 0 means unlimited.  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      md, depth, maxdepth  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
     -Maximize  
         Maximize the window  
         Required?                    false  
@@ -5360,6 +5627,33 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -MinFileSize <long>  
+        Minimum file size in bytes to include in results. 0 means no minimum.  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      minsize, minlength  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -ModifiedAfter <datetime>  
+        Only include files modified after this date/time (UTC).  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      ma, after  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -ModifiedBefore <datetime>  
+        Only include files modified before this date/time (UTC).  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      before, mb  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -Modules <string[]>  
@@ -5380,6 +5674,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      m, mon  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -Name <string[]>  
+        File name or pattern to search for. Default is '*'  
+        Required?                    false  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      like, Path, LiteralPath, Query, SearchMask, Include  
+        Dynamic?                     false  
+        Accept wildcard characters?  true  
     -NewWindow  
         Open new VLC mediaplayer instance  
         Required?                    false  
@@ -5471,7 +5774,7 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -PlaylistPath <string>  
-        Playlist path to save the media files to. If not specified, the playlist will be saved in a temperary directory.  
+        Playlist path to save the media files to. If not specified, the playlist will be saved in a temporary directory.  
         Required?                    false  
         Position?                    Named  
         Accept pipeline input?       false  
@@ -5551,15 +5854,24 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
-    -SearchMask <string[]>  
-        File name or pattern to search for. Default is '*'  
+    -Root <string[]>  
+        Optional: search specific base folders combined with provided Names  
         Required?                    false  
-        Position?                    0  
-        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Position?                    Named  
+        Accept pipeline input?       false  
         Parameter set name           (All)  
-        Aliases                      like, l, Path, Name, file, Query, FullName  
+        Aliases                      None  
         Dynamic?                     false  
-        Accept wildcard characters?  true  
+        Accept wildcard characters?  false  
+    -SearchDrives <string[]>  
+        Optional: search specific drives  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      drives  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
     -SendKeyDelayMilliSeconds <int>  
         Delay between different input strings in milliseconds when sending keys to VLC  
         Required?                    false  
@@ -5675,6 +5987,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -TimeoutSeconds <int>  
+        Optional: cancellation timeout in seconds  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      maxseconds  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -Top  
@@ -8517,7 +8838,7 @@ Open-VlcMediaPlayer [[-Path] <string[]>] [[-Width] <int>]
         The media file(s) or URL(s) to open in VLC  
         Required?                    false  
         Position?                    0  
-        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      None  
         Dynamic?                     false  
@@ -8859,8 +9180,8 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
     [-NoBrowserExtensions] [-DisablePopupBlocker]
     [-SendKeyEscape] [-SendKeyHoldKeyboardFocus]
     [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground]
-    [-Maximize] [-RestoreFocus] [-NewWindow] [-PassThru]
-    [-ReturnURL] [-ReturnOnlyURL] [-NoBorders]
+    [-Maximize] [-SetRestored] [-RestoreFocus] [-NewWindow]
+    [-PassThru] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders]
     [-SessionOnly] [-ClearSession] [-SkipSession]
     [-SideBySide] [<CommonParameters>] 
 ```` 
@@ -9188,6 +9509,15 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      fg  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -SetRestored  
+        Restore the window to normal state after positioning  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -ShowWindow  
@@ -9522,10 +9852,11 @@ Now [<CommonParameters>]
 
 ### SYNTAX 
 ```PowerShell 
-Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
+Open-MediaFile [[-Name] <string[]>] [[-Width] <int>]
     [[-Height] <int>] [[-X] <int>] [[-Y] <int>]
-    [-PlaylistPath <string>] [-KeysToSend <string[]>]
-    [-Keywords <string[]>] [-SendKeyEscape]
+    [-InputObject <Object>] [-PlaylistPath <string>]
+    [-KeysToSend <string[]>] [-MaxDegreeOfParallelism <int>]
+    [-TimeoutSeconds <int>] [-SendKeyEscape]
     [-SendKeyUseShiftEnter] [-SendKeyDelayMilliSeconds
     <int>] [-SendKeyHoldKeyboardFocus] [-Monitor <int>]
     [-AspectRatio <string>] [-Crop <string>] [-SubtitleFile
@@ -9637,7 +9968,10 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
     [-AudioVisualization {None | Goom | ProjectM | Visual |
     GLSpectrum}] [-PreferredSubtitleLanguage <string>]
     [-IgnoredFileExtensions <string>] [-Arguments <string>]
-    [-AllDrives] [-NoRecurse] [-OnlyVideos] [-OnlyAudio]
+    [-AllDrives] [-IncludeAlternateFileStreams] [-NoRecurse]
+    [-FollowSymlinkAndJunctions] [-IncludeOpticalDiskDrives]
+    [-SearchDrives <string[]>] [-DriveLetter <char[]>]
+    [-Root <string[]>] [-OnlyVideos] [-OnlyAudio]
     [-OnlyPictures] [-IncludeVideos] [-IncludeAudio]
     [-IncludePictures] [-NoBorders] [-Left] [-Right] [-Top]
     [-Bottom] [-Centered] [-FullScreen] [-AlwaysOnTop]
@@ -9648,8 +9982,16 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
     [-EnableAudioTimeStretch] [-Close] [-SideBySide]
     [-FocusWindow] [-SetForeground] [-Maximize]
     [-RestoreFocus] [-SessionOnly] [-ClearSession]
-    [-SkipSession] [-PassThru] [-PassThruNoOpen]
-    [-PassThruWindow] [<CommonParameters>] 
+    [-SkipSession] [-CaseNameMatching {PlatformDefault |
+    CaseSensitive | CaseInsensitive}] [-MaxRecursionDepth
+    <int>] [-MaxFileSize <long>] [-MinFileSize <long>]
+    [-ModifiedAfter <datetime>] [-ModifiedBefore <datetime>]
+    [-AttributesToSkip {None | ReadOnly | Hidden | System |
+    Directory | Archive | Device | Normal | Temporary |
+    SparseFile | ReparsePoint | Compressed | Offline |
+    NotContentIndexed | Encrypted | IntegrityStream |
+    NoScrubData}] [-Exclude <string[]>] [-PassThru]
+    [-PassThruNoOpen] [-PassThruWindow] [<CommonParameters>] 
 ```` 
 
 ### PARAMETERS 
@@ -9687,6 +10029,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -AttributesToSkip <FileAttributes>  
+        File attributes to skip (e.g., System, Hidden or None).  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      skipattr  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -AudioFilterModules <string[]>  
@@ -9741,6 +10092,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -CaseNameMatching <MatchCasing>  
+        Gets or sets the case-sensitivity for files and directories  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      casing, CaseSearchMaskMatching  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -Centered  
@@ -9815,6 +10175,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -DriveLetter <char[]>  
+        Optional: search specific drives  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
     -EnableAudioTimeStretch  
         Enable audio time stretching  
         Required?                    false  
@@ -9842,6 +10211,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -Exclude <string[]>  
+        Exclude files or directories matching these wildcard patterns (e.g., *.tmp, *\\bin\\*).  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      skiplike  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
     -FocusWindow  
         Focus the VLC window after opening  
         Required?                    false  
@@ -9849,6 +10227,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      fw, focus  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -FollowSymlinkAndJunctions  
+        Follow symlinks and junctions during directory traversal  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      symlinks, sl  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -ForceDolbySurround <string>  
@@ -9923,8 +10310,26 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -IncludeAlternateFileStreams  
+        Include alternate data streams in search results  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      ads  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
     -IncludeAudio  
         Additionally include audio files in the playlist  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -IncludeOpticalDiskDrives  
+        Include optical disk drives  
         Required?                    false  
         Position?                    Named  
         Accept pipeline input?       false  
@@ -9950,6 +10355,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -InputObject <Object>  
+        File name or pattern to search for from pipeline input. Default is "*"  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      FullName  
+        Dynamic?                     false  
+        Accept wildcard characters?  true  
     -KeysToSend <string[]>  
         Keystrokes to send to the VLC Player Window, see documentation for cmdlet GenXdev.Windows\Send-Key  
         Required?                    false  
@@ -9959,15 +10373,6 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
-    -Keywords <string[]>  
-        Keywords to search in file metadata  
-        Required?                    false  
-        Position?                    Named  
-        Accept pipeline input?       false  
-        Parameter set name           (All)  
-        Aliases                      None  
-        Dynamic?                     false  
-        Accept wildcard characters?  true  
     -Left  
         Place window on the left side of the screen  
         Required?                    false  
@@ -9986,6 +10391,33 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -MaxDegreeOfParallelism <int>  
+        Maximum degree of parallelism for directory tasks  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      threads  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -MaxFileSize <long>  
+        Maximum file size in bytes to include in results. 0 means unlimited.  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      maxlength, maxsize  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -MaxRecursionDepth <int>  
+        Maximum recursion depth for directory traversal. 0 means unlimited.  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      md, depth, maxdepth  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
     -Maximize  
         Maximize the window  
         Required?                    false  
@@ -9993,6 +10425,33 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -MinFileSize <long>  
+        Minimum file size in bytes to include in results. 0 means no minimum.  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      minsize, minlength  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -ModifiedAfter <datetime>  
+        Only include files modified after this date/time (UTC).  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      ma, after  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -ModifiedBefore <datetime>  
+        Only include files modified before this date/time (UTC).  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      before, mb  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -Modules <string[]>  
@@ -10013,6 +10472,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      m, mon  
         Dynamic?                     false  
         Accept wildcard characters?  false  
+    -Name <string[]>  
+        File name or pattern to search for. Default is '*'  
+        Required?                    false  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      like, Path, LiteralPath, Query, SearchMask, Include  
+        Dynamic?                     false  
+        Accept wildcard characters?  true  
     -NewWindow  
         Open new VLC mediaplayer instance  
         Required?                    false  
@@ -10104,7 +10572,7 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -PlaylistPath <string>  
-        Playlist path to save the media files to. If not specified, the playlist will be saved in a temperary directory.  
+        Playlist path to save the media files to. If not specified, the playlist will be saved in a temporary directory.  
         Required?                    false  
         Position?                    Named  
         Accept pipeline input?       false  
@@ -10184,15 +10652,24 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
-    -SearchMask <string[]>  
-        File name or pattern to search for. Default is '*'  
+    -Root <string[]>  
+        Optional: search specific base folders combined with provided Names  
         Required?                    false  
-        Position?                    0  
-        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Position?                    Named  
+        Accept pipeline input?       false  
         Parameter set name           (All)  
-        Aliases                      like, l, Path, Name, file, Query, FullName  
+        Aliases                      None  
         Dynamic?                     false  
-        Accept wildcard characters?  true  
+        Accept wildcard characters?  false  
+    -SearchDrives <string[]>  
+        Optional: search specific drives  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      drives  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
     -SendKeyDelayMilliSeconds <int>  
         Delay between different input strings in milliseconds when sending keys to VLC  
         Required?                    false  
@@ -10308,6 +10785,15 @@ Open-MediaFile [[-SearchMask] <string[]>] [[-Width] <int>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -TimeoutSeconds <int>  
+        Optional: cancellation timeout in seconds  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      maxseconds  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -Top  
@@ -13150,7 +13636,7 @@ Open-VlcMediaPlayer [[-Path] <string[]>] [[-Width] <int>]
         The media file(s) or URL(s) to open in VLC  
         Required?                    false  
         Position?                    0  
-        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      None  
         Dynamic?                     false  
@@ -13492,8 +13978,8 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
     [-NoBrowserExtensions] [-DisablePopupBlocker]
     [-SendKeyEscape] [-SendKeyHoldKeyboardFocus]
     [-SendKeyUseShiftEnter] [-FocusWindow] [-SetForeground]
-    [-Maximize] [-RestoreFocus] [-NewWindow] [-PassThru]
-    [-ReturnURL] [-ReturnOnlyURL] [-NoBorders]
+    [-Maximize] [-SetRestored] [-RestoreFocus] [-NewWindow]
+    [-PassThru] [-ReturnURL] [-ReturnOnlyURL] [-NoBorders]
     [-SessionOnly] [-ClearSession] [-SkipSession]
     [-SideBySide] [<CommonParameters>] 
 ```` 
@@ -13821,6 +14307,15 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
         Accept pipeline input?       false  
         Parameter set name           (All)  
         Aliases                      fg  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+    -SetRestored  
+        Restore the window to normal state after positioning  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
         Dynamic?                     false  
         Accept wildcard characters?  false  
     -ShowWindow  

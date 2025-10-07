@@ -2,7 +2,7 @@
 Part of PowerShell module : GenXdev.Console.Vlc
 Original cmdlet filename  : Open-VlcMediaPlayerLyrics.ps1
 Original author           : René Vaessen / GenXdev
-Version                   : 1.290.2025
+Version                   : 1.292.2025
 ################################################################################
 MIT License
 
@@ -143,7 +143,10 @@ Focus the browser window after opening to bring it to the foreground.
 Set the browser window to foreground after opening for immediate visibility.
 
 .PARAMETER Maximize
-Maximize the browser window after positioning.
+Maximize the window after positioning
+
+.PARAMETER SetRestored
+Restore the window to normal state after positioning
 
 .PARAMETER RestoreFocus
 Restore PowerShell window focus after opening the browser.
@@ -579,6 +582,12 @@ function Open-VlcMediaPlayerLyrics {
             HelpMessage = 'Maximize the window after positioning'
         )]
         [switch] $Maximize,
+        ########################################################################
+        [Parameter(
+            Mandatory = $false,
+            HelpMessage = 'Restore the window to normal state after positioning'
+        )]
+        [switch] $SetRestored,
         ###############################################################################
         [Parameter(
             Mandatory = $false,
