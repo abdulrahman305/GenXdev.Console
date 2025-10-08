@@ -2,7 +2,7 @@
 Part of PowerShell module : GenXdev.Console.Vlc
 Original cmdlet filename  : Open-VlcMediaPlayerLyrics.ps1
 Original author           : René Vaessen / GenXdev
-Version                   : 1.296.2025
+Version                   : 1.298.2025
 ################################################################################
 MIT License
 
@@ -719,7 +719,7 @@ function Open-VlcMediaPlayerLyrics {
             }
 
             # copy parameters to pass through to the google query function
-            $invocationArguments = GenXdev.Helpers\Copy-IdenticalParamValues `
+            $invocationArguments = GenXdev.FileSystem\Copy-IdenticalParamValues `
                 -FunctionName 'GenXdev.Queries\Open-GoogleQuery' `
                 -BoundParameters $PSBoundParameters
 

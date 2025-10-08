@@ -1,9 +1,37 @@
+<##############################################################################
+Part of PowerShell module : GenXdev.Console
+Original cmdlet filename  : Open-MediaFile.ps1
+Original author           : René Vaessen / GenXdev
+Version                   : 1.298.2025
+################################################################################
+MIT License
+
+Copyright 2021-2025 GenXdev
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+################################################################################>
 ################################################################################
 <##############################################################################
 Part of PowerShell module : GenXdev.Console
 Original cmdlet filename  : Open-MediaFile.ps1
 Original author           : René Vaessen / GenXdev
-Version                   : 1.296.2025
+Version                   : 1.298.2025
 ################################################################################
 MIT License
 
@@ -328,294 +356,6 @@ Returns the files found by the search without opening VLC.
 
 .PARAMETER PassThruWindow
 Returns the window helper for each process.
-
-.PARAMETER Width
-The initial width of the VLC player window in pixels.
-
-.PARAMETER Height
-The initial height of the VLC player window in pixels.
-
-.PARAMETER X
-The initial X position of the VLC player window on screen.
-
-.PARAMETER Y
-The initial Y position of the VLC player window on screen.
-
-.PARAMETER KeysToSend
-Keystrokes to send to the VLC player window after launch. See documentation for
-GenXdev.Windows\Send-Key cmdlet for available key combinations.
-
-.PARAMETER SendKeyEscape
-Escape control characters and modifiers in the KeysToSend parameter.
-
-.PARAMETER SendKeyUseShiftEnter
-Use Shift+Enter instead of Enter when processing KeysToSend.
-
-.PARAMETER SendKeyDelayMilliSeconds
-Delay between different input strings in milliseconds when sending keys.
-
-.PARAMETER SendKeyHoldKeyboardFocus
-Prevents returning keyboard focus to PowerShell after sending keys.
-
-.PARAMETER Monitor
-The monitor to display VLC on. 0 = default monitor, -1 = discard positioning.
-
-.PARAMETER AspectRatio
-Forces a specific aspect ratio for video content.
-
-.PARAMETER Crop
-Applies video cropping with specified dimensions.
-
-.PARAMETER SubtitleFile
-Path to an external subtitle file to use with video content.
-
-.PARAMETER SubtitleScale
-Sets the subtitle text scaling factor (10-500 percent).
-
-.PARAMETER SubtitleLanguage
-Specifies the preferred subtitle language from available tracks.
-
-.PARAMETER AudioLanguage
-Specifies the preferred audio language from available tracks.
-
-.PARAMETER PreferredAudioLanguage
-Sets the default preferred audio language for future playback.
-
-.PARAMETER HttpProxy
-HTTP proxy server address for network streaming content.
-
-.PARAMETER HttpProxyPassword
-Password for HTTP proxy authentication.
-
-.PARAMETER VerbosityLevel
-Sets VLC's log verbosity level (0=quiet, 1=errors, 2=verbose).
-
-.PARAMETER SubdirectoryBehavior
-Controls how subdirectories are handled in the playlist.
-
-.PARAMETER IgnoredExtensions
-File extensions to ignore during media file scanning.
-
-.PARAMETER VLCPath
-Full path to the VLC executable. Defaults to standard installation location.
-
-.PARAMETER ReplayGainMode
-Sets the audio replay gain mode to normalize volume levels across tracks.
-
-.PARAMETER ReplayGainPreamp
-Sets the replay gain preamp level in decibels (-20.0 to 20.0).
-
-.PARAMETER ForceDolbySurround
-Forces detection of Dolby Surround audio encoding.
-
-.PARAMETER AudioFilters
-Specifies audio filter modules to apply during playback.
-
-.PARAMETER Visualization
-Sets the audio visualization mode for audio-only content.
-
-.PARAMETER Deinterlace
-Controls video deinterlacing for improved quality on interlaced content.
-
-.PARAMETER DeinterlaceMode
-Specifies the deinterlacing algorithm to use.
-
-.PARAMETER VideoFilters
-Specifies video filter modules to apply during playback.
-
-.PARAMETER VideoFilterModules
-Additional video filter modules to load and apply.
-
-.PARAMETER Modules
-General VLC modules to load during startup.
-
-.PARAMETER AudioFilterModules
-Additional audio filter modules to load and apply.
-
-.PARAMETER AudioVisualization
-Sets the audio visualization mode for enhanced audio-only experience.
-
-.PARAMETER PreferredSubtitleLanguage
-Sets the default preferred subtitle language for future playback.
-
-.PARAMETER IgnoredFileExtensions
-File extensions to completely ignore during scanning.
-
-.PARAMETER Arguments
-Additional command-line arguments to pass directly to VLC.
-
-.PARAMETER AllDrives
-Search across all available drives instead of just the current directory.
-
-.PARAMETER IncludeAlternateFileStreams
-Include alternate data streams in search results.
-
-.PARAMETER FollowSymlinkAndJunctions
-Follow symlinks and junctions during directory traversal.
-
-.PARAMETER IncludeOpticalDiskDrives
-Include optical disk drives.
-
-.PARAMETER SearchDrives
-Optional: search specific drives.
-
-.PARAMETER DriveLetter
-Optional: search specific drives.
-
-.PARAMETER Root
-Optional: search specific base folders combined with provided Names.
-
-.PARAMETER CaseNameMatching
-Gets or sets the case-sensitivity for files and directories.
-
-.PARAMETER MaxRecursionDepth
-Maximum recursion depth for directory traversal. 0 means unlimited.
-
-.PARAMETER MaxFileSize
-Maximum file size in bytes to include in results. 0 means unlimited.
-
-.PARAMETER MinFileSize
-Minimum file size in bytes to include in results. 0 means no minimum.
-
-.PARAMETER ModifiedAfter
-Only include files modified after this date/time (UTC).
-
-.PARAMETER ModifiedBefore
-Only include files modified before this date/time (UTC).
-
-.PARAMETER AttributesToSkip
-File attributes to skip (e.g., System, Hidden or None).
-
-.PARAMETER Exclude
-Exclude files or directories matching these wildcard patterns.
-
-.PARAMETER PassThruWindow
-Returns the window helper for each process.
-
-.PARAMETER NoRecurse
-Do not recurse into subdirectories during the file search.
-
-.PARAMETER OnlyVideos
-Filter to only include video files in the playlist (.mp4, .avi, .mkv, .mov,
-.wmv).
-
-.PARAMETER OnlyAudio
-Filter to only include audio files in the playlist (.mp3, .flac, .wav, .midi,
-.mid, .au, .aiff, .aac, .m4a, .ogg, .wma, .ra, .ram, .rm, .rmm).
-
-.PARAMETER OnlyPictures
-Filter to only include picture files in the playlist (.jpg, .jpeg, .png, .gif,
-.bmp, .tiff, .tif).
-
-.PARAMETER IncludeVideos
-Additionally include video files in the playlist when other filters are applied.
-
-.PARAMETER IncludeAudio
-Additionally include audio files in the playlist when other filters are applied.
-
-.PARAMETER IncludePictures
-Additionally include picture files in the playlist when other filters are
-applied.
-
-.PARAMETER NoBorders
-Removes the window borders from the VLC player window.
-
-.PARAMETER Left
-Place the VLC window on the left side of the screen.
-
-.PARAMETER Right
-Place the VLC window on the right side of the screen.
-
-.PARAMETER Top
-Place the VLC window on the top side of the screen.
-
-.PARAMETER Bottom
-Place the VLC window on the bottom side of the screen.
-
-.PARAMETER Centered
-Place the VLC window in the center of the screen.
-
-.PARAMETER Fullscreen
-Maximize the VLC window to fullscreen mode.
-
-.PARAMETER AlwaysOnTop
-Keeps the VLC window always on top of other windows.
-
-.PARAMETER Random
-Enables random playback order (shuffle mode) for the playlist.
-
-.PARAMETER Loop
-Enables playlist looping - repeats the entire playlist when finished.
-
-.PARAMETER Repeat
-Enables single item repeat - repeats the current media file indefinitely.
-
-.PARAMETER StartPaused
-Starts VLC in paused state instead of immediately playing.
-
-.PARAMETER PlayAndExit
-Automatically exits VLC when playback is completed.
-
-.PARAMETER DisableAudio
-Completely disables audio output during playback.
-
-.PARAMETER DisableSubtitles
-Completely disables subtitle display during playback.
-
-.PARAMETER AutoScale
-Enables automatic video scaling to fit the window.
-
-.PARAMETER HighPriority
-Increases the process priority of the VLC player for better performance.
-
-.PARAMETER EnableTimeStretch
-Enables audio time stretching to maintain pitch during speed changes.
-
-.PARAMETER NewWindow
-Forces opening a new VLC instance instead of using existing one.
-
-.PARAMETER EnableWallpaperMode
-Enables video wallpaper mode where video plays as desktop background.
-
-.PARAMETER EnableAudioTimeStretch
-Enables advanced audio time stretching capabilities.
-
-.PARAMETER Close
-Closes the VLC media player window.
-
-.PARAMETER SideBySide
-Places the VLC window side by side with PowerShell or on a different monitor
-for fullscreen mode.
-
-.PARAMETER FocusWindow
-Focuses the VLC window after opening.
-
-.PARAMETER SetForeground
-Sets the VLC window to foreground after opening.
-
-.PARAMETER Maximize
-Maximize the window after positioning
-
-.PARAMETER SetRestored
-Restore the window to normal state after positioning
-
-.PARAMETER RestoreFocus
-Restores PowerShell window focus after opening VLC.
-
-.PARAMETER SessionOnly
-Uses alternative settings stored in session for AI preferences.
-
-.PARAMETER ClearSession
-Clears alternative settings stored in session for AI preferences.
-
-.PARAMETER SkipSession
-Stores settings only in persistent preferences without affecting session.
-
-.PARAMETER PassThru
-Returns the files found by the search.
-
-.PARAMETER PassThruNoOpen
-Returns the files found by the search without opening VLC.
 
 .EXAMPLE
 Open-MediaFile
@@ -1396,7 +1136,7 @@ function Open-MediaFile {
 
         # copy parameters from current function to find-item function parameters
         # this maintains consistency in parameter handling across functions
-        $invocationParams = GenXdev.Helpers\Copy-IdenticalParamValues `
+        $invocationParams = GenXdev.FileSystem\Copy-IdenticalParamValues `
             -FunctionName 'GenXdev.FileSystem\Find-Item' `
             -BoundParameters $PSBoundParameters `
             -DefaultValues (Microsoft.PowerShell.Utility\Get-Variable -Scope Local -ErrorAction SilentlyContinue)
@@ -1424,9 +1164,6 @@ function Open-MediaFile {
 
             $invocationParams.Category = @('Videos', 'Music', 'Pictures')
         }
-
-        # ensure we get file objects back for further processing
-        $invocationParams.PassThru = $true
 
         # log the search parameters for troubleshooting purposes
         Microsoft.PowerShell.Utility\Write-Verbose ('Searching for files with ' +
@@ -1633,7 +1370,7 @@ function Open-MediaFile {
 
         # copy all relevant parameters from current function to vlc media player
         # this ensures consistent parameter handling and reduces code duplication
-        $invocationParams = GenXdev.Helpers\Copy-IdenticalParamValues `
+        $invocationParams = GenXdev.FileSystem\Copy-IdenticalParamValues `
             -FunctionName 'GenXdev.Console\Open-VlcMediaPlayer' `
             -BoundParameters $PSBoundParameters `
             (Microsoft.PowerShell.Utility\Get-Variable -Scope Local -ErrorAction SilentlyContinue |

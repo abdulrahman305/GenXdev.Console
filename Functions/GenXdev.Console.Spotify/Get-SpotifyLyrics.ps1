@@ -2,7 +2,7 @@
 Part of PowerShell module : GenXdev.Console.Spotify
 Original cmdlet filename  : Get-SpotifyLyrics.ps1
 Original author           : René Vaessen / GenXdev
-Version                   : 1.296.2025
+Version                   : 1.298.2025
 ################################################################################
 MIT License
 
@@ -300,7 +300,7 @@ function Get-SpotifyLyrics {
             $null = Microsoft.PowerShell.Core\Import-Module GenXdev.Queries
         }
 
-        $params = GenXdev.Helpers\Copy-IdenticalParamValues `
+        $params = GenXdev.FileSystem\Copy-IdenticalParamValues `
             -FunctionName 'GenXdev.Queries\Open-GoogleQuery' `
             -BoundParameters $PSBoundParameters `
             -DefaultValues (Microsoft.PowerShell.Utility\Get-Variable -Scope Local -ErrorAction SilentlyContinue)

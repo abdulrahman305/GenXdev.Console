@@ -2,7 +2,7 @@
 Part of PowerShell module : GenXdev.Console.Vlc
 Original cmdlet filename  : Open-VlcMediaPlayer.ps1
 Original author           : René Vaessen / GenXdev
-Version                   : 1.296.2025
+Version                   : 1.298.2025
 ################################################################################
 MIT License
 
@@ -851,7 +851,7 @@ function Open-VlcMediaPlayer {
 
         if ($haveOnlyPositioningParams) {
 
-            $params = GenXdev.Helpers\Copy-IdenticalParamValues `
+            $params = GenXdev.FileSystem\Copy-IdenticalParamValues `
                 -BoundParameters $PSBoundParameters `
                 -FunctionName 'GenXdev.Windows\Set-WindowPosition' `
                 -DefaultValues (Microsoft.PowerShell.Utility\Get-Variable -Scope Local -ErrorAction SilentlyContinue)
@@ -1327,7 +1327,7 @@ autoscale=0
             }
         }
 
-        $invocationParams = GenXdev.Helpers\Copy-IdenticalParamValues `
+        $invocationParams = GenXdev.FileSystem\Copy-IdenticalParamValues `
             -BoundParameters $parametersToCopy `
             -FunctionName 'GenXdev.Windows\Set-WindowPosition' `
             -DefaultValues @((Microsoft.PowerShell.Utility\Get-Variable -Name 'Monitor' -Scope Local))
@@ -1338,7 +1338,7 @@ autoscale=0
         # Only set default monitor and fullscreen if we have actual positioning params
         # OR if Path is provided (opening VLC, not just sending keys)
         if  ((-not $PSBoundParameters.ContainsKey('Monitor')) -and (-not $SideBySide) -and ($hasPositioningParams -or $PSBoundParameters.ContainsKey('Path')) -and
-             ($KeysToSend -eq $null -or $KeysToSend.Count -eq 0)
+             ($null -eq $KeysToSend -or $KeysToSend.Count -eq 0)
         ) {
             $invocationParams.Monitor = -2
             $Fullscreen = $true
@@ -1400,7 +1400,7 @@ autoscale=0
             'Sending keystrokes to VLC window'
 
         # copy key sending parameters using helper function
-        $invocationParams = GenXdev.Helpers\Copy-IdenticalParamValues `
+        $invocationParams = GenXdev.FileSystem\Copy-IdenticalParamValues `
             -BoundParameters $PSBoundParameters `
             -FunctionName 'GenXdev.Windows\Send-Key'
 
