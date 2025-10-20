@@ -2,7 +2,7 @@
 Part of PowerShell module : GenXdev.Console
 Original cmdlet filename  : UtcNow.ps1
 Original author           : René Vaessen / GenXdev
-Version                   : 1.300.2025
+Version                   : 1.302.2025
 ################################################################################
 Copyright (c)  René Vaessen / GenXdev
 
@@ -27,7 +27,7 @@ Gets the current UTC (Coordinated Universal Time) date and time.
 Returns the current UTC date and time as a System.DateTime object. This function
 provides a standardized way to retrieve UTC time across different systems and
 time zones. The returned DateTime object can be used for timestamp
-synchronization, logging, and cross-timezone operations.
+ synchronization, logging, and cross-timezone operations.
 
 .EXAMPLE
 $currentUtc = UtcNow

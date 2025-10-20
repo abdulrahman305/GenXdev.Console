@@ -1,6 +1,6 @@
 <##############################################################################
-Part of PowerShell module : GenXdev.Console
-Original cmdlet filename  : Now.ps1
+Part of PowerShell module : GenXdev.Console.Spotify
+Original cmdlet filename  : Set-SpotifyPrevious.ps1
 Original author           : René Vaessen / GenXdev
 Version                   : 1.302.2025
 ################################################################################
@@ -21,39 +21,45 @@ limitations under the License.
 ###############################################################################
 <#
 .SYNOPSIS
-Returns the current system date and time as a DateTime object.
+Skips to the previous track in Spotify playback.
 
 .DESCRIPTION
-Provides a simple way to get the current system date and time without any
-parameters. Returns a standard .NET DateTime object that can be used for
-datetime calculations, formatting, and comparisons.
+Controls Spotify playback by skipping to the previous track on the currently
+active device. Requires valid Spotify API authentication token.
 
 .EXAMPLE
-Now
-Returns the current system date and time as a DateTime object
+Set-SpotifyPrevious
 
 .EXAMPLE
-$timestamp = Now
-Stores the current date and time in a variable for later use
+previous
+
+.EXAMPLE
+prev
 #>
-function Now {
+function Set-SpotifyPrevious {
 
-    [CmdletBinding()]
-    [OutputType([System.DateTime])]
+    [CmdletBinding(SupportsShouldProcess)]
+    [Alias('previous', 'prev')]
     param()
 
     begin {
 
-        # log function start with verbose output
-        Microsoft.PowerShell.Utility\Write-Verbose 'Starting Now function to retrieve system date and time'
+        # output information about the operation
+        Microsoft.PowerShell.Utility\Write-Verbose 'Attempting to skip to previous track in Spotify'
     }
 
 
     process {
 
-        # return the current system datetime using .NET DateTime.Now property
-        # this provides high-precision timestamp including date and time
-        return [DateTime]::Now
+        # retrieve the current spotify api authentication token
+        $token = GenXdev.Console\Get-SpotifyApiToken
+
+        # check if should process is supported and confirmed
+        if ($PSCmdlet.ShouldProcess('Spotify', 'Skip to previous track')) {
+
+            # call spotify api to skip to previous track
+            [GenXdev.Helpers.Spotify]::Previous($token)
+        }
     }
 
     end {

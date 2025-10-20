@@ -2,7 +2,7 @@
 Part of PowerShell module : GenXdev.Console
 Original cmdlet filename  : Open-MediaFile.ps1
 Original author           : René Vaessen / GenXdev
-Version                   : 1.300.2025
+Version                   : 1.302.2025
 ################################################################################
 Copyright (c)  René Vaessen / GenXdev
 
@@ -18,7 +18,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ################################################################################>
-################################################################################
 <#
 .SYNOPSIS
 Opens and plays media files using VLC media player with advanced filtering and
@@ -962,7 +961,7 @@ function Open-MediaFile {
             Mandatory = $false,
             HelpMessage = 'Focus the VLC window after opening'
         )]
-        [Alias('fw','focus')]
+        [Alias('fw', 'focus')]
         [switch] $FocusWindow,
         ########################################################################
         [Parameter(
@@ -1084,13 +1083,13 @@ function Open-MediaFile {
 
         # set comfortable default that can be overridden by user
         $RestoreFocus = $PSBoundParameters.ContainsKey('RestoreFocus') ?
-            $RestoreFocus : $true;
+        $RestoreFocus : $true;
 
         $SideBySide = $PSBoundParameters.ContainsKey('SideBySide') ?
-            $SideBySide : (GenXdev.Windows\Get-MonitorCount) -lt 2;
+        $SideBySide : (GenXdev.Windows\Get-MonitorCount) -lt 2;
 
         $FullScreen = $PSBoundParameters.ContainsKey('FullScreen') ?
-            $FullScreen : (-not $SideBySide);
+        $FullScreen : (-not $SideBySide);
 
         # expand the playlist path and ensure directory exists for m3u file
         $PlaylistPath = GenXdev.FileSystem\Expand-Path $PlaylistPath `
@@ -1110,16 +1109,16 @@ function Open-MediaFile {
         # determine which media categories to search for based on user filters
         $invocationParams.Category = @(
             (
-                @($OnlyVideo ? 'Videos' : (
-                    $OnlyAudio ? 'Music' : (
-                        $OnlyPictures ? 'Pictures' : @()
-                    )
-                )) +
+                @($OnlyVideos ? 'Videos' : (
+                        $OnlyAudio ? 'Music' : (
+                            $OnlyPictures ? 'Pictures' : @()
+                        )
+                    )) +
                 ($IncludeVideos ? 'Videos' : @()) +
                 ($IncludeAudio ? 'Music' : @()) +
                 ($IncludePictures ? 'Pictures' : @())
             ) |
-            Microsoft.PowerShell.Utility\Select-Object -Unique
+                Microsoft.PowerShell.Utility\Select-Object -Unique
         )
 
         # default to all media types if no specific category filters applied
@@ -1236,7 +1235,7 @@ function Open-MediaFile {
             # OR if we received directories/strings that need to be searched
             # BUT NOT if we already have FileInfo objects from pipeline
             $shouldUseFindItem = ($PSBoundParameters.ContainsKey("Name") -or
-                                 ($inputFiles.Count -gt 0) -or ($allFiles.Count -eq 0))
+                ($inputFiles.Count -gt 0) -or ($allFiles.Count -eq 0))
 
             if ($shouldUseFindItem) {
 
@@ -1274,7 +1273,7 @@ function Open-MediaFile {
                 Microsoft.PowerShell.Utility\Write-Verbose ('Adding file to ' +
                     'playlist: ' + $_.FullName)
 
-                    # create more readable display names by cleaning up file names
+                # create more readable display names by cleaning up file names
                 $displayName = $_.Name.Replace('_', ' ').Replace('.', ' ').Replace('  ', ' ')
 
                 # build m3u format entry with duration (-1 = unknown) and file path
@@ -1336,9 +1335,9 @@ function Open-MediaFile {
         $invocationParams = GenXdev.FileSystem\Copy-IdenticalParamValues `
             -FunctionName 'GenXdev.Console\Open-VlcMediaPlayer' `
             -BoundParameters $PSBoundParameters `
-            (Microsoft.PowerShell.Utility\Get-Variable -Scope Local -ErrorAction SilentlyContinue |
+        (Microsoft.PowerShell.Utility\Get-Variable -Scope Local -ErrorAction SilentlyContinue |
                 Microsoft.PowerShell.Core\Where-Object {
-                    $_.Value -isnot [int] -or  $_.Value -ne 0
+                    $_.Value -isnot [int] -or $_.Value -ne 0
                 })
 
         # configure specific parameters for vlc media player invocation

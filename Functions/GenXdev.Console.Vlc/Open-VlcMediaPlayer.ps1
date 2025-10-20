@@ -2,7 +2,7 @@
 Part of PowerShell module : GenXdev.Console.Vlc
 Original cmdlet filename  : Open-VlcMediaPlayer.ps1
 Original author           : René Vaessen / GenXdev
-Version                   : 1.300.2025
+Version                   : 1.302.2025
 ################################################################################
 Copyright (c)  René Vaessen / GenXdev
 
@@ -355,7 +355,7 @@ function Open-VlcMediaPlayer {
             Mandatory = $false,
             HelpMessage = 'The monitor to use, 0 = default, -1 is discard'
         )]
-        [int] $Monitor,
+        [int] $Monitor = -1,
         ###########################################################################
         [Parameter(
             Mandatory = $false,
@@ -822,7 +822,7 @@ function Open-VlcMediaPlayer {
             "Fullscreen",
             "SideBySide",
             "FocusWindow",
-#            "RestoreFocus",
+            #            "RestoreFocus",
             "SetForeground",
             "Minimize",
             "Maximize",
@@ -841,6 +841,33 @@ function Open-VlcMediaPlayer {
             }
         }
 
+        if (-not $PSBoundParameters.ContainsKey('Monitor')) {
+            $Monitor = -1
+            $PSBoundParameters['Monitor'] = $Monitor
+        }
+
+        # Check if VLC is already running and we have no positioning parameters (just focus)
+        $vlcWindow = GenXdev.Windows\Get-Window -ProcessName vlc -ErrorAction SilentlyContinue
+        $hasPositioningParams = $PSBoundParameters.Keys | Microsoft.PowerShell.Core\Where-Object {
+            $_ -in $positioningParams
+        }
+        $hasNonPositioningParams = $PSBoundParameters.Keys | Microsoft.PowerShell.Core\Where-Object {
+            $_ -notin $positioningParams
+        }
+
+        # If VLC is running and we only have positioning params, just focus without repositioning
+        if (($null -ne $vlcWindow) -and (-not $hasNonPositioningParams)) {
+            Microsoft.PowerShell.Utility\Write-Verbose 'VLC already running with only positioning params, just focusing window without repositioning'
+
+            # Just focus the existing VLC window without any repositioning
+            GenXdev.Windows\Set-WindowPosition -WindowHelper $vlcWindow -FocusWindow -SetForeground
+
+            return
+        }
+
+        # If VLC is running and we have non-positioning params, skip window positioning entirely
+        $skipWindowPositioning = ($null -ne $vlcWindow) -and $hasNonPositioningParams -and (-not $hasPositioningParams)
+
         if ($haveOnlyPositioningParams) {
 
             $params = GenXdev.FileSystem\Copy-IdenticalParamValues `
@@ -853,6 +880,11 @@ function Open-VlcMediaPlayer {
             if ($PSBoundParameters.ContainsKey('Fullscreen') -and $Fullscreen) {
                 $params.KeysToSend = @("f") + $KeysToSend
                 $params.RestoreFocus = $true
+            }
+
+            if ($params.ContainsKey(("KeysToSend"))) {
+
+                $null = $params.Remove("KeysToSend")
             }
 
             GenXdev.Windows\Set-WindowPosition @params -ProcessName 'vlc'
@@ -938,21 +970,24 @@ function Open-VlcMediaPlayer {
                 # Update or add qt-video-autoresize setting
                 if ($vlcConfig -match '#?qt-video-autoresize=') {
                     $vlcConfig = $vlcConfig -replace '#?qt-video-autoresize=.*', 'qt-video-autoresize=0'
-                } else {
+                }
+                else {
                     $vlcConfig += "`nqt-video-autoresize=0"
                 }
 
                 # Update or add autoscale setting
                 if ($vlcConfig -match '#?autoscale=') {
                     $vlcConfig = $vlcConfig -replace '#?autoscale=.*', 'autoscale=0'
-                } else {
+                }
+                else {
                     $vlcConfig += "`nautoscale=0"
                 }
 
                 # Write updated config
                 Microsoft.PowerShell.Management\Set-Content `
                     -Path $vlcrcPath -Value $vlcConfig -Force
-            } else {
+            }
+            else {
                 # Create new config file with settings
                 $newConfig = @"
 # VLC media player preferences
@@ -1119,11 +1154,12 @@ autoscale=0
             }
         }
 
-        # check if vlc is already running
+        # check if vlc is already running (if not already checked above)
         $vlcProcess = $null
-
-        $vlcWindow = GenXdev.Windows\Get-Window -ProcessName vlc `
-            -ErrorAction SilentlyContinue
+        if ($null -eq $vlcWindow) {
+            $vlcWindow = GenXdev.Windows\Get-Window -ProcessName vlc `
+                -ErrorAction SilentlyContinue
+        }
 
         # initialize vlc argument list
         [System.Collections.Generic.List[string]]$vlcArgs = @()
@@ -1131,8 +1167,8 @@ autoscale=0
         # Check if positioning parameters are supplied
         $hasPositioningParams = $PSBoundParameters.Keys | Microsoft.PowerShell.Core\Where-Object {
             $_ -in @('Monitor', 'Width', 'Height', 'X', 'Y',
-                     'Left', 'Right', 'Top', 'Bottom', 'Centered', 'Fullscreen',
-                     'SideBySide')
+                'Left', 'Right', 'Top', 'Bottom', 'Centered', 'Fullscreen',
+                'SideBySide')
         }
 
         # Note: VLC's initial positioning arguments (--video-x, --video-y, --width, --height)
@@ -1276,7 +1312,7 @@ autoscale=0
         $vlcWindow = $null
         for ($i = 0; $i -lt 20; $i++) {
             $vlcWindow = GenXdev.Windows\Get-Window -ProcessName vlc `
-            -ErrorAction SilentlyContinue
+                -ErrorAction SilentlyContinue
             if ($vlcWindow) { break }
             Microsoft.PowerShell.Utility\Start-Sleep -Seconds 1
         }
@@ -1293,14 +1329,14 @@ autoscale=0
         # Check if any positioning param (other than KeysToSend and RestoreFocus) was explicitly provided
         $hasPositioningParams = $PSBoundParameters.Keys | Microsoft.PowerShell.Core\Where-Object {
             $_ -in @('Monitor', 'NoBorders', 'Width', 'Height', 'X', 'Y',
-                     'Left', 'Right', 'Top', 'Bottom', 'Centered', 'Fullscreen',
-                     'SideBySide', 'FocusWindow', 'SetForeground', 'Minimize', 'Maximize')
+                'Left', 'Right', 'Top', 'Bottom', 'Centered', 'Fullscreen',
+                'SideBySide', 'FocusWindow', 'SetForeground', 'Minimize', 'Maximize')
         }
 
         # Check if this is a "keys only" operation (no positioning, no new media)
         $isKeysOnlyOperation = ($null -ne $KeysToSend) -and ($KeysToSend.Count -gt 0) -and
-                               (-not $hasPositioningParams) -and
-                               (-not $PSBoundParameters.ContainsKey('Path'))
+        (-not $hasPositioningParams) -and
+        (-not $PSBoundParameters.ContainsKey('Path'))
 
         # prepare window positioning parameters
         if ($PSBoundParameters.ContainsKey('Process')) {
@@ -1319,8 +1355,9 @@ autoscale=0
             }
         }
 
+        # If we're skipping window positioning, exclude KeysToSend params since they'll be handled separately
         $invocationParams = GenXdev.FileSystem\Copy-IdenticalParamValues `
-            -BoundParameters $parametersToCopy `
+            -BoundParameters $PSBoundParameters `
             -FunctionName 'GenXdev.Windows\Set-WindowPosition' `
             -DefaultValues @((Microsoft.PowerShell.Utility\Get-Variable -Name 'Monitor' -Scope Local))
 
@@ -1329,13 +1366,13 @@ autoscale=0
 
         # Only set default monitor and fullscreen if we have actual positioning params
         # OR if Path is provided (opening VLC, not just sending keys)
-        if  ((-not $PSBoundParameters.ContainsKey('Monitor')) -and (-not $SideBySide) -and ($hasPositioningParams -or $PSBoundParameters.ContainsKey('Path')) -and
-             ($null -eq $KeysToSend -or $KeysToSend.Count -eq 0)
+        # AND we're not skipping window positioning
+        if ((-not $PSBoundParameters.ContainsKey('Monitor')) -and (-not $SideBySide) -and ($hasPositioningParams -or $PSBoundParameters.ContainsKey('Path')) -and
+            ($null -eq $KeysToSend -or $KeysToSend.Count -eq 0) -and (-not $skipWindowPositioning)
         ) {
             $invocationParams.Monitor = -2
             $Fullscreen = $true
         }
-
         if ($FullScreen) {
             # $invocationParams.Maximize = $true
             $invocationParams.Fullscreen = $false
@@ -1346,8 +1383,13 @@ autoscale=0
             $invocationParams.RestoreFocus = $true
         }
 
-        # Only apply window positioning if not a keys-only operation
-        if (-not $isKeysOnlyOperation) {
+        if ($invocationParams.ContainsKey(("KeysToSend"))) {
+
+            $null = $invocationParams.Remove("KeysToSend")
+        }
+
+        # Only apply window positioning if not a keys-only operation AND not skipping window positioning
+        if (-not $isKeysOnlyOperation -and -not $skipWindowPositioning) {
             # apply window positioning if parameters specified
             $null = GenXdev.Windows\Set-WindowPosition @invocationParams
         }
@@ -1404,7 +1446,7 @@ autoscale=0
 
     end {
 
-       if ($haveOnlyPositioningParams) {
+        if ($haveOnlyPositioningParams) {
 
             return
         }

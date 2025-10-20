@@ -11,16 +11,10 @@ if ($major -ne 10) {
 
 
 
-. "$PSScriptRoot\Functions\GenXdev.Console\Enable-Screensaver.ps1"
-. "$PSScriptRoot\Functions\GenXdev.Console\Get-IsSpeaking.ps1"
 . "$PSScriptRoot\Functions\GenXdev.Console\New-MicrosoftShellTab.ps1"
 . "$PSScriptRoot\Functions\GenXdev.Console\Now.ps1"
 . "$PSScriptRoot\Functions\GenXdev.Console\Open-MediaFile.ps1"
 . "$PSScriptRoot\Functions\GenXdev.Console\SayDate.ps1"
 . "$PSScriptRoot\Functions\GenXdev.Console\SayTime.ps1"
-. "$PSScriptRoot\Functions\GenXdev.Console\Set-MonitorPowerOff.ps1"
-. "$PSScriptRoot\Functions\GenXdev.Console\Set-MonitorPowerOn.ps1"
-. "$PSScriptRoot\Functions\GenXdev.Console\Set-VLCPlayerFocused.ps1"
-. "$PSScriptRoot\Functions\GenXdev.Console\Start-TextToSpeech.ps1"
-. "$PSScriptRoot\Functions\GenXdev.Console\Stop-TextToSpeech.ps1"
+. "$PSScriptRoot\Functions\GenXdev.Console\Start-SnakeGame.ps1"
 . "$PSScriptRoot\Functions\GenXdev.Console\UtcNow.ps1"
