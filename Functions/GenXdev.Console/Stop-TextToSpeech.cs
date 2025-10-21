@@ -1,8 +1,8 @@
 // ################################################################################
 // Part of PowerShell module : GenXdev.Console
-// Original cmdlet filename  : Set-TextToSpeechStopped.cs
+// Original cmdlet filename  : Stop-TextToSpeech.cs
 // Original author           : René Vaessen / GenXdev
-// Version                   : 1.302.2025
+// Version                   : 1.304.2025
 // ################################################################################
 // Copyright (c)  René Vaessen / GenXdev
 //
@@ -21,29 +21,6 @@
 
 
 
-/*
-<#
-.SYNOPSIS
-Immediately stops any ongoing text-to-speech output.
-
-.DESCRIPTION
-Halts all active and queued speech synthesis by canceling both standard and
-customized speech operations. This provides an immediate silence for any ongoing
-text-to-speech activities.
-
-.EXAMPLE
-PS C:\> Set-TextToSpeechStopped
-Immediately stops any ongoing speech
-
-.EXAMPLE
-PS C:\> say "Hello world"; sst
-Starts speaking but gets interrupted immediately
-
-.NOTES
-This cmdlet is commonly used in conjunction with Start-TextToSpeech (alias: say)
-and Skip-TextToSpeech (alias: sstSkip) for speech control.
-#>
-*/
 using System;
 using System.Management.Automation;
 using GenXdev.Helpers;
@@ -65,7 +42,7 @@ namespace GenXdev.Console
     /// <para>Example description</para>
     /// <para>Detailed explanation of the example.</para>
     /// <code>
-    /// Set-TextToSpeechStopped
+    /// Stop-TextToSpeech
     /// </code>
     /// </example>
     ///
@@ -77,8 +54,8 @@ namespace GenXdev.Console
     /// </code>
     /// </example>
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "TextToSpeechStopped")]
-    [Alias("sst", "Set-TextToSpeechStopped")]
+    [Cmdlet("Stop", "TextToSpeech")]
+    [Alias("sst")]
     [OutputType(typeof(void))]
     public class StopTextToSpeechCommand : PSGenXdevCmdlet
     {

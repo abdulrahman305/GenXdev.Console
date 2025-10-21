@@ -62,10 +62,10 @@ Update-Module
 | [SayTime](#saytime) | &nbsp; | Announces the current time using text-to-speech. |
 | [Set-MonitorPowerOff](#set-monitorpoweroff) | poweroff | Turns off power to all connected monitors. |
 | [Set-MonitorPowerOn](#set-monitorpoweron) | monitoroff, wakemonitor | Turns the monitor power on. |
-| [Set-TextToSpeechStopped](#set-texttospeechstopped) | Set-TextToSpeechStopped, sst | Immediately stops any ongoing text-to-speech output. |
 | [Set-VLCPlayerFocused](#set-vlcplayerfocused) | fvlc, showvlc, vlcf | Sets focus to the VLC media player window. |
 | [Start-SnakeGame](#start-snakegame) | snake | &nbsp; |
 | [Start-TextToSpeech](#start-texttospeech) | say | Converts text to speech using the Windows Speech API. |
+| [Stop-TextToSpeech](#stop-texttospeech) | sst | Immediately stops any ongoing text-to-speech output. |
 | [UtcNow](#utcnow) | &nbsp; | Gets the current UTC (Coordinated Universal Time) date and time. |
 
 ### GenXdev.Console.Spotify
@@ -3586,18 +3586,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Enable-Screensaver  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Enable-Screensaver [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3609,18 +3612,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Get-IsSpeaking                       --> iss  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-IsSpeaking [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3632,18 +3638,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-MonitorPowerOff                  --> poweroff  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-MonitorPowerOff [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3655,22 +3664,22 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-MonitorPowerOn                   --> monitoroff, wakemonitor  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-MonitorPowerOn [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
 ``` 
-
-<br/><hr/><br/>
- 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
+``` 
 
 <br/><hr/><br/>
  
@@ -3681,18 +3690,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-VLCPlayerFocused                 --> fvlc, showvlc, vlcf  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-VLCPlayerFocused [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3704,18 +3716,104 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Start-TextToSpeech                   --> say  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Start-TextToSpeech [-Lines] <string[]> [-Locale <string>]
+    [-VoiceName <string>] [-PassThru] [-Wait]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Lines <string[]>  
+        Text to be spoken  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue)  
+        Parameter set name           strings  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Locale <string>  
+        The language locale id to use, e.g. 'en-US'  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PassThru  
+        Output the text being spoken to the pipeline  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      pt  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -VoiceName <string>  
+        Name of the voice to use for speech  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Wait  
+        Wait for speech to complete before continuing  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
+``` 
+
+<br/><hr/><br/>
+ 
+
+##	Stop-TextToSpeech 
+```PowerShell 
+
+   Stop-TextToSpeech                    --> sst  
+``` 
+
+### SYNTAX 
+```PowerShell 
+Stop-TextToSpeech [<CommonParameters>] 
+``` 
+
+### PARAMETERS 
+```yaml 
+ 
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3730,18 +3828,66 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Add-SpotifyNewPlaylist               --> newplaylist  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Add-SpotifyNewPlaylist [-Name] <string> [[-Description]
+    <string>] [-Public] [-Collabrative] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Collabrative  
+        Allow others to make changes  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Description <string>  
+        The description for the new playlist  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Name <string>  
+        The name for the new playlist  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Public  
+        Make this a public playlist  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3753,18 +3899,33 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Add-SpotifyTracksToLiked             --> like  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Add-SpotifyTracksToLiked [[-TrackId] <string[]>]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -TrackId <string[]>  
+        The Spotify track IDs to add to liked songs  
+        Required?                    false  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3776,18 +3937,57 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Add-SpotifyTracksToPlaylist          --> addtoplaylist  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Add-SpotifyTracksToPlaylist [-PlaylistName] <string[]>
+    [[-Uri] <string[]>] [<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistId] <string[]> [[-Uri]
+    <string[]>] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -PlaylistId <string[]>  
+        The Spotify playlist to add tracks to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           ById  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistName <string[]>  
+        The Spotify playlist to add tracks to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           ByName  
+        Aliases                      Name  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Uri <string[]>  
+        The Spotify tracks that should be added to the playlist  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3799,18 +3999,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Connect-SpotifyApiToken  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Connect-SpotifyApiToken [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3822,18 +4025,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Get-SpotifyActiveDevice  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyActiveDevice [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3845,18 +4051,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Get-SpotifyApiToken  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyApiToken [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3868,18 +4077,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Get-SpotifyCurrentlyPlaying          --> gcp  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyCurrentlyPlaying [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3891,18 +4103,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Get-SpotifyDevice  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyDevice [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3914,18 +4129,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Get-SpotifyLikedTrack                --> liked  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyLikedTrack [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3937,18 +4155,33 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Get-SpotifyPlaylistIdsByName  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyPlaylistIdsByName [-PlaylistName] <string[]>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -PlaylistName <string[]>  
+        One or more Spotify playlist names to search for  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           ByName  
+        Aliases                      Name  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3960,18 +4193,46 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Get-SpotifyPlaylistTrack             --> getplaylist  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyPlaylistTrack [-PlaylistName] <string>
+    [<CommonParameters>]
+Get-SpotifyPlaylistTrack [-PlaylistId] <string>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -PlaylistId <string>  
+        The Spotify playlist to return tracks for  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           ById  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistName <string>  
+        The Spotify playlist to return tracks for  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           ByName  
+        Aliases                      Name  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -3983,18 +4244,33 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Get-SpotifyTrackAudioFeatures        --> audiofeatures  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyTrackAudioFeatures [-TrackId] <string[]>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -TrackId <string[]>  
+        The Spotify track to return audio features for  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4006,18 +4282,33 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Get-SpotifyTrackById                 --> gettrack  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyTrackById [-TrackId] <string>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -TrackId <string>  
+        The Spotify track ID to lookup track information for  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4029,18 +4320,44 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Get-SpotifyUserPlaylists             --> gupl  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyUserPlaylists [[-Filter] <string[]>] [-Force]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Filter <string[]>  
+        Wildcard pattern to filter playlists by name  
+        Required?                    false  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Uri, Id, Name  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Force  
+        Force fresh data retrieval instead of using cache  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4052,18 +4369,46 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Move-SpotifyLikedTracksToPlaylist    --> moveliked  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <string[]>
+    [<CommonParameters>]
+Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <string[]>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -PlaylistId <string[]>  
+        The Spotify playlist ID where all liked tracks should move to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           ById  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistName <string[]>  
+        The Spotify playlist where all liked tracks should move to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           ByName  
+        Aliases                      Name  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4075,18 +4420,53 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Remove-SpotifyTracksFromLiked        --> dislike  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Remove-SpotifyTracksFromLiked [[-TrackId] <string[]>]
+    [-WhatIf] [-Confirm] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Confirm  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      cf  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -TrackId <string[]>  
+        The Spotify track IDs to remove from Liked Songs  
+        Required?                    false  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -WhatIf  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      wi  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4098,18 +4478,57 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Remove-SpotifyTracksFromPlaylist     --> removefromplaylist  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Remove-SpotifyTracksFromPlaylist [-PlaylistName] <string[]>
+    [[-Uri] <string[]>] [<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <string[]>
+    [[-Uri] <string[]>] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -PlaylistId <string[]>  
+        The Spotify playlist to delete tracks from  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           ById  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistName <string[]>  
+        The Spotify playlist to delete tracks from  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           ByName  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Uri <string[]>  
+        The Spotify tracks that should be removed from the playlist  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4121,18 +4540,45 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Search-Spotify                       --> fm, sm  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Search-Spotify [-Queries] <string[]> [[-SearchType] {Album |
+    Artist | Playlist | Track | Show | Episode | All}]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Queries <string[]>  
+        The query to perform  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      q, Name, Text, Query  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -SearchType <SearchRequest+Types>  
+        Type of content to search for  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      t  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4144,18 +4590,45 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Search-SpotifyAndEnqueue             --> fmq, smq  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Search-SpotifyAndEnqueue [-Queries] <string[]>
+    [[-SearchType] {Album | Artist | Playlist | Track | Show
+    | Episode | All}] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Queries <string[]>  
+        The query to perform  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      q, Name, Text, Query  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -SearchType <SearchRequest+Types>  
+        The type of content to search for  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      t  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4167,18 +4640,45 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Search-SpotifyAndPlay                --> fmp, smp  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Search-SpotifyAndPlay [-Queries] <string[]> [[-SearchType]
+    {Album | Artist | Playlist | Track | Show | Episode |
+    All}] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Queries <string[]>  
+        One or more search phrases to look for on Spotify  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      q, Name, Text, Query  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -SearchType <SearchRequest+Types>  
+        The type of content to search for  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      t  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4190,18 +4690,33 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-SpotifyActiveDevice  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyActiveDevice [-DeviceId] <string>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -DeviceId <string>  
+        The Spotify deviceId to transfer playback to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4213,18 +4728,33 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-SpotifyApiToken  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyApiToken [-ApiToken] <string>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -ApiToken <string>  
+        The Spotify API token to cache locally  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4236,18 +4766,41 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-SpotifyNext                      --> next, skip  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyNext [-WhatIf] [-Confirm] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Confirm  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      cf  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -WhatIf  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      wi  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4259,18 +4812,41 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-SpotifyPause                     --> pausemusic, togglepausemusic  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyPause [-WhatIf] [-Confirm] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Confirm  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      cf  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -WhatIf  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      wi  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4282,18 +4858,101 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-SpotifyPlaylistDetails           --> spld  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyPlaylistDetails [-PlaylistId] <string> [-Name]
+    <string> [[-Description] <string>] [-Public]
+    [-Collabrative] [-Private] [-NoCollabrations]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Collabrative  
+        Allow others to make changes to this playlist  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Description <string>  
+        The description for the new playlist  
+        Required?                    false  
+        Position?                    2  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Name <string>  
+        The name for the new playlist  
+        Required?                    true  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -NoCollabrations  
+        Disallow others to make changes  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistId <string>  
+        The Spotify playlist to make changes to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Private  
+        Make the playlist private  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Public  
+        Make this a public playlist  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4305,18 +4964,67 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-SpotifyPlaylistOrder  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyPlaylistOrder [-PlaylistId] <string>
+    [-RangeStart] <int> [-InsertBefore] <int>
+    [[-RangeLength] <int>] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -InsertBefore <int>  
+        The position where tracks should be inserted  
+        Required?                    true  
+        Position?                    2  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistId <string>  
+        The Spotify playlist identifier to modify  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -RangeLength <int>  
+        Number of consecutive tracks to move (defaults to 1)  
+        Required?                    false  
+        Position?                    3  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -RangeStart <int>  
+        The position of the first track to move  
+        Required?                    true  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4328,18 +5036,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-SpotifyPrevious                  --> prev, previous  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyPrevious [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4351,18 +5062,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-SpotifyRepeatContext             --> repeat  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyRepeatContext [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4374,18 +5088,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-SpotifyRepeatOff                 --> norepeat, repeatoff  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyRepeatOff [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4397,18 +5114,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-SpotifyRepeatSong                --> repeatsong  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyRepeatSong [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4420,18 +5140,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-SpotifyShuffleOff  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyShuffleOff [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4443,18 +5166,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-SpotifyShuffleOn                 --> shuffle, shuffleon  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyShuffleOn [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4466,18 +5192,41 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-SpotifyStart                     --> play, startmusic  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyStart [-WhatIf] [-Confirm] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Confirm  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      cf  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -WhatIf  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      wi  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4489,18 +5238,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Set-SpotifyStop                      --> stop  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyStop [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4515,18 +5267,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Start-VlcMediaPlayerNextInPlaylist   --> vlcnext  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Start-VlcMediaPlayerNextInPlaylist [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4538,18 +5293,42 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Start-VlcMediaPlayerPreviousInPlaylist --> vlcback, vlcprev  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Confirm  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      cf  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -WhatIf  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      wi  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4561,18 +5340,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Switch-VlcMediaPlayerMute            --> vlcmute, vlcunmute  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Switch-VlcMediaPlayerMute [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4584,18 +5366,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Switch-VLCMediaPlayerPaused          --> vlcpause, vlcplay  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Switch-VLCMediaPlayerPaused [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -4607,18 +5392,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Switch-VlcMediaPlayerRepeat          --> vlcrepeat  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Switch-VlcMediaPlayerRepeat [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6171,18 +6959,21 @@ UtcNow [<CommonParameters>]
    Enable-Screensaver  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Enable-Screensaver [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6194,18 +6985,21 @@ UtcNow [<CommonParameters>]
    Get-IsSpeaking                       --> iss  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-IsSpeaking [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6217,18 +7011,21 @@ UtcNow [<CommonParameters>]
    Set-MonitorPowerOff                  --> poweroff  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-MonitorPowerOff [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6240,22 +7037,22 @@ UtcNow [<CommonParameters>]
    Set-MonitorPowerOn                   --> monitoroff, wakemonitor  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-MonitorPowerOn [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
 ``` 
-
-<br/><hr/><br/>
- 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
+``` 
 
 <br/><hr/><br/>
  
@@ -6266,18 +7063,21 @@ UtcNow [<CommonParameters>]
    Set-VLCPlayerFocused                 --> fvlc, showvlc, vlcf  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-VLCPlayerFocused [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6289,18 +7089,104 @@ UtcNow [<CommonParameters>]
    Start-TextToSpeech                   --> say  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Start-TextToSpeech [-Lines] <string[]> [-Locale <string>]
+    [-VoiceName <string>] [-PassThru] [-Wait]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Lines <string[]>  
+        Text to be spoken  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue)  
+        Parameter set name           strings  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Locale <string>  
+        The language locale id to use, e.g. 'en-US'  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PassThru  
+        Output the text being spoken to the pipeline  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      pt  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -VoiceName <string>  
+        Name of the voice to use for speech  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Wait  
+        Wait for speech to complete before continuing  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
+``` 
+
+<br/><hr/><br/>
+ 
+
+##	Stop-TextToSpeech 
+```PowerShell 
+
+   Stop-TextToSpeech                    --> sst  
+``` 
+
+### SYNTAX 
+```PowerShell 
+Stop-TextToSpeech [<CommonParameters>] 
+``` 
+
+### PARAMETERS 
+```yaml 
+ 
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6749,18 +7635,66 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Add-SpotifyNewPlaylist               --> newplaylist  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Add-SpotifyNewPlaylist [-Name] <string> [[-Description]
+    <string>] [-Public] [-Collabrative] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Collabrative  
+        Allow others to make changes  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Description <string>  
+        The description for the new playlist  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Name <string>  
+        The name for the new playlist  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Public  
+        Make this a public playlist  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6772,18 +7706,33 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Add-SpotifyTracksToLiked             --> like  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Add-SpotifyTracksToLiked [[-TrackId] <string[]>]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -TrackId <string[]>  
+        The Spotify track IDs to add to liked songs  
+        Required?                    false  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6795,18 +7744,57 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Add-SpotifyTracksToPlaylist          --> addtoplaylist  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Add-SpotifyTracksToPlaylist [-PlaylistName] <string[]>
+    [[-Uri] <string[]>] [<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistId] <string[]> [[-Uri]
+    <string[]>] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -PlaylistId <string[]>  
+        The Spotify playlist to add tracks to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           ById  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistName <string[]>  
+        The Spotify playlist to add tracks to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           ByName  
+        Aliases                      Name  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Uri <string[]>  
+        The Spotify tracks that should be added to the playlist  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6818,18 +7806,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Connect-SpotifyApiToken  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Connect-SpotifyApiToken [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6841,18 +7832,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyActiveDevice  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyActiveDevice [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6864,18 +7858,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyApiToken  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyApiToken [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6887,18 +7884,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyCurrentlyPlaying          --> gcp  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyCurrentlyPlaying [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6910,18 +7910,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyDevice  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyDevice [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6933,18 +7936,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyLikedTrack                --> liked  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyLikedTrack [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6956,18 +7962,33 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyPlaylistIdsByName  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyPlaylistIdsByName [-PlaylistName] <string[]>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -PlaylistName <string[]>  
+        One or more Spotify playlist names to search for  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           ByName  
+        Aliases                      Name  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -6979,18 +8000,46 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyPlaylistTrack             --> getplaylist  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyPlaylistTrack [-PlaylistName] <string>
+    [<CommonParameters>]
+Get-SpotifyPlaylistTrack [-PlaylistId] <string>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -PlaylistId <string>  
+        The Spotify playlist to return tracks for  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           ById  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistName <string>  
+        The Spotify playlist to return tracks for  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           ByName  
+        Aliases                      Name  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7002,18 +8051,33 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyTrackAudioFeatures        --> audiofeatures  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyTrackAudioFeatures [-TrackId] <string[]>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -TrackId <string[]>  
+        The Spotify track to return audio features for  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7025,18 +8089,33 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyTrackById                 --> gettrack  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyTrackById [-TrackId] <string>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -TrackId <string>  
+        The Spotify track ID to lookup track information for  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7048,18 +8127,44 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyUserPlaylists             --> gupl  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyUserPlaylists [[-Filter] <string[]>] [-Force]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Filter <string[]>  
+        Wildcard pattern to filter playlists by name  
+        Required?                    false  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Uri, Id, Name  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Force  
+        Force fresh data retrieval instead of using cache  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7071,18 +8176,46 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Move-SpotifyLikedTracksToPlaylist    --> moveliked  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <string[]>
+    [<CommonParameters>]
+Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <string[]>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -PlaylistId <string[]>  
+        The Spotify playlist ID where all liked tracks should move to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           ById  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistName <string[]>  
+        The Spotify playlist where all liked tracks should move to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           ByName  
+        Aliases                      Name  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7094,18 +8227,53 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Remove-SpotifyTracksFromLiked        --> dislike  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Remove-SpotifyTracksFromLiked [[-TrackId] <string[]>]
+    [-WhatIf] [-Confirm] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Confirm  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      cf  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -TrackId <string[]>  
+        The Spotify track IDs to remove from Liked Songs  
+        Required?                    false  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -WhatIf  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      wi  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7117,18 +8285,57 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Remove-SpotifyTracksFromPlaylist     --> removefromplaylist  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Remove-SpotifyTracksFromPlaylist [-PlaylistName] <string[]>
+    [[-Uri] <string[]>] [<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <string[]>
+    [[-Uri] <string[]>] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -PlaylistId <string[]>  
+        The Spotify playlist to delete tracks from  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           ById  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistName <string[]>  
+        The Spotify playlist to delete tracks from  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           ByName  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Uri <string[]>  
+        The Spotify tracks that should be removed from the playlist  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7140,18 +8347,45 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Search-Spotify                       --> fm, sm  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Search-Spotify [-Queries] <string[]> [[-SearchType] {Album |
+    Artist | Playlist | Track | Show | Episode | All}]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Queries <string[]>  
+        The query to perform  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      q, Name, Text, Query  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -SearchType <SearchRequest+Types>  
+        Type of content to search for  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      t  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7163,18 +8397,45 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Search-SpotifyAndEnqueue             --> fmq, smq  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Search-SpotifyAndEnqueue [-Queries] <string[]>
+    [[-SearchType] {Album | Artist | Playlist | Track | Show
+    | Episode | All}] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Queries <string[]>  
+        The query to perform  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      q, Name, Text, Query  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -SearchType <SearchRequest+Types>  
+        The type of content to search for  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      t  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7186,18 +8447,45 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Search-SpotifyAndPlay                --> fmp, smp  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Search-SpotifyAndPlay [-Queries] <string[]> [[-SearchType]
+    {Album | Artist | Playlist | Track | Show | Episode |
+    All}] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Queries <string[]>  
+        One or more search phrases to look for on Spotify  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      q, Name, Text, Query  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -SearchType <SearchRequest+Types>  
+        The type of content to search for  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      t  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7209,18 +8497,33 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyActiveDevice  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyActiveDevice [-DeviceId] <string>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -DeviceId <string>  
+        The Spotify deviceId to transfer playback to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7232,18 +8535,33 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyApiToken  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyApiToken [-ApiToken] <string>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -ApiToken <string>  
+        The Spotify API token to cache locally  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7255,18 +8573,41 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyNext                      --> next, skip  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyNext [-WhatIf] [-Confirm] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Confirm  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      cf  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -WhatIf  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      wi  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7278,18 +8619,41 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyPause                     --> pausemusic, togglepausemusic  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyPause [-WhatIf] [-Confirm] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Confirm  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      cf  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -WhatIf  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      wi  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7301,18 +8665,101 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyPlaylistDetails           --> spld  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyPlaylistDetails [-PlaylistId] <string> [-Name]
+    <string> [[-Description] <string>] [-Public]
+    [-Collabrative] [-Private] [-NoCollabrations]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Collabrative  
+        Allow others to make changes to this playlist  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Description <string>  
+        The description for the new playlist  
+        Required?                    false  
+        Position?                    2  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Name <string>  
+        The name for the new playlist  
+        Required?                    true  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -NoCollabrations  
+        Disallow others to make changes  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistId <string>  
+        The Spotify playlist to make changes to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Private  
+        Make the playlist private  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Public  
+        Make this a public playlist  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7324,18 +8771,67 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyPlaylistOrder  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyPlaylistOrder [-PlaylistId] <string>
+    [-RangeStart] <int> [-InsertBefore] <int>
+    [[-RangeLength] <int>] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -InsertBefore <int>  
+        The position where tracks should be inserted  
+        Required?                    true  
+        Position?                    2  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistId <string>  
+        The Spotify playlist identifier to modify  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -RangeLength <int>  
+        Number of consecutive tracks to move (defaults to 1)  
+        Required?                    false  
+        Position?                    3  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -RangeStart <int>  
+        The position of the first track to move  
+        Required?                    true  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7347,18 +8843,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyPrevious                  --> prev, previous  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyPrevious [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7370,18 +8869,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyRepeatContext             --> repeat  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyRepeatContext [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7393,18 +8895,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyRepeatOff                 --> norepeat, repeatoff  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyRepeatOff [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7416,18 +8921,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyRepeatSong                --> repeatsong  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyRepeatSong [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7439,18 +8947,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyShuffleOff  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyShuffleOff [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7462,18 +8973,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyShuffleOn                 --> shuffle, shuffleon  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyShuffleOn [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7485,18 +8999,41 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyStart                     --> play, startmusic  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyStart [-WhatIf] [-Confirm] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Confirm  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      cf  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -WhatIf  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      wi  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -7508,18 +9045,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyStop                      --> stop  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyStop [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -9007,18 +10547,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Start-VlcMediaPlayerNextInPlaylist   --> vlcnext  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Start-VlcMediaPlayerNextInPlaylist [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -9030,18 +10573,42 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Start-VlcMediaPlayerPreviousInPlaylist --> vlcback, vlcprev  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Confirm  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      cf  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -WhatIf  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      wi  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -9053,18 +10620,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Switch-VlcMediaPlayerMute            --> vlcmute, vlcunmute  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Switch-VlcMediaPlayerMute [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -9076,18 +10646,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Switch-VLCMediaPlayerPaused          --> vlcpause, vlcplay  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Switch-VLCMediaPlayerPaused [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -9099,18 +10672,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Switch-VlcMediaPlayerRepeat          --> vlcrepeat  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Switch-VlcMediaPlayerRepeat [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -10663,18 +12239,21 @@ UtcNow [<CommonParameters>]
    Enable-Screensaver  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Enable-Screensaver [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -10686,18 +12265,21 @@ UtcNow [<CommonParameters>]
    Get-IsSpeaking                       --> iss  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-IsSpeaking [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -10709,18 +12291,21 @@ UtcNow [<CommonParameters>]
    Set-MonitorPowerOff                  --> poweroff  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-MonitorPowerOff [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -10732,22 +12317,22 @@ UtcNow [<CommonParameters>]
    Set-MonitorPowerOn                   --> monitoroff, wakemonitor  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-MonitorPowerOn [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
 ``` 
-
-<br/><hr/><br/>
- 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
+``` 
 
 <br/><hr/><br/>
  
@@ -10758,18 +12343,21 @@ UtcNow [<CommonParameters>]
    Set-VLCPlayerFocused                 --> fvlc, showvlc, vlcf  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-VLCPlayerFocused [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -10781,18 +12369,104 @@ UtcNow [<CommonParameters>]
    Start-TextToSpeech                   --> say  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Start-TextToSpeech [-Lines] <string[]> [-Locale <string>]
+    [-VoiceName <string>] [-PassThru] [-Wait]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Lines <string[]>  
+        Text to be spoken  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue)  
+        Parameter set name           strings  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Locale <string>  
+        The language locale id to use, e.g. 'en-US'  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PassThru  
+        Output the text being spoken to the pipeline  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      pt  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -VoiceName <string>  
+        Name of the voice to use for speech  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Wait  
+        Wait for speech to complete before continuing  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
+``` 
+
+<br/><hr/><br/>
+ 
+
+##	Stop-TextToSpeech 
+```PowerShell 
+
+   Stop-TextToSpeech                    --> sst  
+``` 
+
+### SYNTAX 
+```PowerShell 
+Stop-TextToSpeech [<CommonParameters>] 
+``` 
+
+### PARAMETERS 
+```yaml 
+ 
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11241,18 +12915,66 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Add-SpotifyNewPlaylist               --> newplaylist  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Add-SpotifyNewPlaylist [-Name] <string> [[-Description]
+    <string>] [-Public] [-Collabrative] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Collabrative  
+        Allow others to make changes  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Description <string>  
+        The description for the new playlist  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Name <string>  
+        The name for the new playlist  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Public  
+        Make this a public playlist  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11264,18 +12986,33 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Add-SpotifyTracksToLiked             --> like  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Add-SpotifyTracksToLiked [[-TrackId] <string[]>]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -TrackId <string[]>  
+        The Spotify track IDs to add to liked songs  
+        Required?                    false  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11287,18 +13024,57 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Add-SpotifyTracksToPlaylist          --> addtoplaylist  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Add-SpotifyTracksToPlaylist [-PlaylistName] <string[]>
+    [[-Uri] <string[]>] [<CommonParameters>]
+Add-SpotifyTracksToPlaylist [-PlaylistId] <string[]> [[-Uri]
+    <string[]>] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -PlaylistId <string[]>  
+        The Spotify playlist to add tracks to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           ById  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistName <string[]>  
+        The Spotify playlist to add tracks to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           ByName  
+        Aliases                      Name  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Uri <string[]>  
+        The Spotify tracks that should be added to the playlist  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11310,18 +13086,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Connect-SpotifyApiToken  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Connect-SpotifyApiToken [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11333,18 +13112,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyActiveDevice  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyActiveDevice [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11356,18 +13138,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyApiToken  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyApiToken [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11379,18 +13164,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyCurrentlyPlaying          --> gcp  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyCurrentlyPlaying [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11402,18 +13190,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyDevice  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyDevice [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11425,18 +13216,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyLikedTrack                --> liked  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyLikedTrack [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11448,18 +13242,33 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyPlaylistIdsByName  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyPlaylistIdsByName [-PlaylistName] <string[]>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -PlaylistName <string[]>  
+        One or more Spotify playlist names to search for  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           ByName  
+        Aliases                      Name  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11471,18 +13280,46 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyPlaylistTrack             --> getplaylist  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyPlaylistTrack [-PlaylistName] <string>
+    [<CommonParameters>]
+Get-SpotifyPlaylistTrack [-PlaylistId] <string>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -PlaylistId <string>  
+        The Spotify playlist to return tracks for  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           ById  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistName <string>  
+        The Spotify playlist to return tracks for  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           ByName  
+        Aliases                      Name  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11494,18 +13331,33 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyTrackAudioFeatures        --> audiofeatures  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyTrackAudioFeatures [-TrackId] <string[]>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -TrackId <string[]>  
+        The Spotify track to return audio features for  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11517,18 +13369,33 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyTrackById                 --> gettrack  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyTrackById [-TrackId] <string>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -TrackId <string>  
+        The Spotify track ID to lookup track information for  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11540,18 +13407,44 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Get-SpotifyUserPlaylists             --> gupl  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Get-SpotifyUserPlaylists [[-Filter] <string[]>] [-Force]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Filter <string[]>  
+        Wildcard pattern to filter playlists by name  
+        Required?                    false  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Uri, Id, Name  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Force  
+        Force fresh data retrieval instead of using cache  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11563,18 +13456,46 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Move-SpotifyLikedTracksToPlaylist    --> moveliked  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Move-SpotifyLikedTracksToPlaylist [-PlaylistName] <string[]>
+    [<CommonParameters>]
+Move-SpotifyLikedTracksToPlaylist [-PlaylistId] <string[]>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -PlaylistId <string[]>  
+        The Spotify playlist ID where all liked tracks should move to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           ById  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistName <string[]>  
+        The Spotify playlist where all liked tracks should move to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           ByName  
+        Aliases                      Name  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11586,18 +13507,53 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Remove-SpotifyTracksFromLiked        --> dislike  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Remove-SpotifyTracksFromLiked [[-TrackId] <string[]>]
+    [-WhatIf] [-Confirm] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Confirm  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      cf  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -TrackId <string[]>  
+        The Spotify track IDs to remove from Liked Songs  
+        Required?                    false  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -WhatIf  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      wi  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11609,18 +13565,57 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Remove-SpotifyTracksFromPlaylist     --> removefromplaylist  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Remove-SpotifyTracksFromPlaylist [-PlaylistName] <string[]>
+    [[-Uri] <string[]>] [<CommonParameters>]
+Remove-SpotifyTracksFromPlaylist [-PlaylistId] <string[]>
+    [[-Uri] <string[]>] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -PlaylistId <string[]>  
+        The Spotify playlist to delete tracks from  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           ById  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistName <string[]>  
+        The Spotify playlist to delete tracks from  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           ByName  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Uri <string[]>  
+        The Spotify tracks that should be removed from the playlist  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11632,18 +13627,45 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Search-Spotify                       --> fm, sm  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Search-Spotify [-Queries] <string[]> [[-SearchType] {Album |
+    Artist | Playlist | Track | Show | Episode | All}]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Queries <string[]>  
+        The query to perform  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      q, Name, Text, Query  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -SearchType <SearchRequest+Types>  
+        Type of content to search for  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      t  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11655,18 +13677,45 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Search-SpotifyAndEnqueue             --> fmq, smq  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Search-SpotifyAndEnqueue [-Queries] <string[]>
+    [[-SearchType] {Album | Artist | Playlist | Track | Show
+    | Episode | All}] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Queries <string[]>  
+        The query to perform  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      q, Name, Text, Query  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -SearchType <SearchRequest+Types>  
+        The type of content to search for  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      t  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11678,18 +13727,45 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Search-SpotifyAndPlay                --> fmp, smp  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Search-SpotifyAndPlay [-Queries] <string[]> [[-SearchType]
+    {Album | Artist | Playlist | Track | Show | Episode |
+    All}] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Queries <string[]>  
+        One or more search phrases to look for on Spotify  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      q, Name, Text, Query  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -SearchType <SearchRequest+Types>  
+        The type of content to search for  
+        Required?                    false  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      t  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11701,18 +13777,33 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyActiveDevice  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyActiveDevice [-DeviceId] <string>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -DeviceId <string>  
+        The Spotify deviceId to transfer playback to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       true (ByValue, ByPropertyName)  
+        Parameter set name           (All)  
+        Aliases                      Id  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11724,18 +13815,33 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyApiToken  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyApiToken [-ApiToken] <string>
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -ApiToken <string>  
+        The Spotify API token to cache locally  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11747,18 +13853,41 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyNext                      --> next, skip  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyNext [-WhatIf] [-Confirm] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Confirm  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      cf  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -WhatIf  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      wi  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11770,18 +13899,41 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyPause                     --> pausemusic, togglepausemusic  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyPause [-WhatIf] [-Confirm] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Confirm  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      cf  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -WhatIf  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      wi  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11793,18 +13945,101 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyPlaylistDetails           --> spld  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyPlaylistDetails [-PlaylistId] <string> [-Name]
+    <string> [[-Description] <string>] [-Public]
+    [-Collabrative] [-Private] [-NoCollabrations]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Collabrative  
+        Allow others to make changes to this playlist  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Description <string>  
+        The description for the new playlist  
+        Required?                    false  
+        Position?                    2  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Name <string>  
+        The name for the new playlist  
+        Required?                    true  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -NoCollabrations  
+        Disallow others to make changes  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistId <string>  
+        The Spotify playlist to make changes to  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Private  
+        Make the playlist private  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -Public  
+        Make this a public playlist  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11816,18 +14051,67 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyPlaylistOrder  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyPlaylistOrder [-PlaylistId] <string>
+    [-RangeStart] <int> [-InsertBefore] <int>
+    [[-RangeLength] <int>] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -InsertBefore <int>  
+        The position where tracks should be inserted  
+        Required?                    true  
+        Position?                    2  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -PlaylistId <string>  
+        The Spotify playlist identifier to modify  
+        Required?                    true  
+        Position?                    0  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -RangeLength <int>  
+        Number of consecutive tracks to move (defaults to 1)  
+        Required?                    false  
+        Position?                    3  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -RangeStart <int>  
+        The position of the first track to move  
+        Required?                    true  
+        Position?                    1  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      None  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11839,18 +14123,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyPrevious                  --> prev, previous  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyPrevious [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11862,18 +14149,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyRepeatContext             --> repeat  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyRepeatContext [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11885,18 +14175,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyRepeatOff                 --> norepeat, repeatoff  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyRepeatOff [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11908,18 +14201,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyRepeatSong                --> repeatsong  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyRepeatSong [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11931,18 +14227,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyShuffleOff  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyShuffleOff [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11954,18 +14253,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyShuffleOn                 --> shuffle, shuffleon  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyShuffleOn [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -11977,18 +14279,41 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyStart                     --> play, startmusic  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyStart [-WhatIf] [-Confirm] [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Confirm  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      cf  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -WhatIf  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      wi  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -12000,18 +14325,21 @@ Get-SpotifyLyrics [[-TrackId] <string>] [[-Monitor] <int>]
    Set-SpotifyStop                      --> stop  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Set-SpotifyStop [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -13499,18 +15827,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Start-VlcMediaPlayerNextInPlaylist   --> vlcnext  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Start-VlcMediaPlayerNextInPlaylist [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -13522,18 +15853,42 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Start-VlcMediaPlayerPreviousInPlaylist --> vlcback, vlcprev  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Start-VlcMediaPlayerPreviousInPlaylist [-WhatIf] [-Confirm]
+    [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    -Confirm  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      cf  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    -WhatIf  
+        Required?                    false  
+        Position?                    Named  
+        Accept pipeline input?       false  
+        Parameter set name           (All)  
+        Aliases                      wi  
+        Dynamic?                     false  
+        Accept wildcard characters?  false  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -13545,18 +15900,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Switch-VlcMediaPlayerMute            --> vlcmute, vlcunmute  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Switch-VlcMediaPlayerMute [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -13568,18 +15926,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Switch-VLCMediaPlayerPaused          --> vlcpause, vlcplay  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Switch-VLCMediaPlayerPaused [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
@@ -13591,18 +15952,21 @@ Open-VlcMediaPlayerLyrics [[-Queries] <string[]>]
    Switch-VlcMediaPlayerRepeat          --> vlcrepeat  
 ``` 
 
-### SYNOPSIS 
-
 ### SYNTAX 
 ```PowerShell 
- 
+Switch-VlcMediaPlayerRepeat [<CommonParameters>] 
 ``` 
-
-### DESCRIPTION 
 
 ### PARAMETERS 
 ```yaml 
  
+``` 
+```yaml 
+    <CommonParameters>  
+        This cmdlet supports the common parameters: Verbose, Debug,  
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,  
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see  
+        about_CommonParameters     (https://go.microsoft.com/fwlink/?LinkID=113216).   
 ``` 
 
 <br/><hr/><br/>
