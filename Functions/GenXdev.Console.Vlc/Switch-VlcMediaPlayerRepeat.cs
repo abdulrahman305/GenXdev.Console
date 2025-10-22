@@ -2,7 +2,7 @@
 // Part of PowerShell module : GenXdev.Console.Vlc
 // Original cmdlet filename  : Switch-VlcMediaPlayerRepeat.cs
 // Original author           : René Vaessen / GenXdev
-// Version                   : 1.304.2025
+// Version                   : 1.308.2025
 // ################################################################################
 // Copyright (c)  René Vaessen / GenXdev
 //

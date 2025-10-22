@@ -2,7 +2,7 @@
 // Part of PowerShell module : GenXdev.Console.Spotify
 // Original cmdlet filename  : Connect-SpotifyApiToken.cs
 // Original author           : René Vaessen / GenXdev
-// Version                   : 1.304.2025
+// Version                   : 1.308.2025
 // ################################################################################
 // Copyright (c)  René Vaessen / GenXdev
 //
@@ -25,7 +25,7 @@
 Part of PowerShell module : GenXdev.Console.Spotify
 Original cmdlet filename  : Connect-SpotifyApiToken.cs
 Original author           : René Vaessen / GenXdev
-Version                   : 1.304.2025
+Version                   : 1.308.2025
 ###############################################################################
 Copyright (c)  René Vaessen / GenXdev
 

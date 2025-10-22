@@ -2,7 +2,7 @@
 Part of PowerShell module : GenXdev.Console
 Original cmdlet filename  : Open-MediaFile.ps1
 Original author           : René Vaessen / GenXdev
-Version                   : 1.304.2025
+Version                   : 1.308.2025
 ################################################################################
 Copyright (c)  René Vaessen / GenXdev
 
@@ -354,7 +354,7 @@ function Open-MediaFile {
         [string[]] $Name = '*',
         ########################################################################
         [Parameter(
-            Mandatory = $false<#  #>,
+            Mandatory = $false,
             ValueFromPipeline = $true,
             ValueFromPipelineByPropertyName = $true,
             HelpMessage = 'File name or pattern to search for from pipeline input. Default is "*"'
