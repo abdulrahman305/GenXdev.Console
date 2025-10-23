@@ -12,7 +12,7 @@
 RootModule = 'GenXdev.Console.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.308.2025'
+ModuleVersion = '2.1.2025'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -33,7 +33,7 @@ Copyright = 'Copyright 2021-2025 GenXdev'
 Description = 'A Windows PowerShell module for enhancing the commandline experience'
 
 # Minimum version of the PowerShell engine required by this module
-PowerShellVersion = '7.5.0'
+PowerShellVersion = '7.5.4'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''
@@ -52,7 +52,7 @@ ProcessorArchitecture = 'Amd64'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'PSReadLine'; ModuleVersion = '2.3.6'; }, 
-               @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion = '1.308.2025'; })
+               @{ModuleName = 'GenXdev.Webbrowser'; ModuleVersion = '2.1.2025'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'lib\GenXdev.Console.dll'
@@ -150,19 +150,12 @@ FileList = '.gitignore', 'GenXdev.Console.csproj', 'GenXdev.Console.psd1',
                'Functions\GenXdev.Console.Spotify\Get-SpotifyDevice.cs', 
                'Functions\GenXdev.Console.Spotify\Get-SpotifyLikedTrack.cs', 
                'Functions\GenXdev.Console.Spotify\Get-SpotifyLyrics.ps1', 
-               'Functions\GenXdev.Console.Vlc\Open-VlcMediaPlayer.ps1', 
                'Functions\GenXdev.Console.Spotify\Get-SpotifyPlaylistIdsByName.cs', 
-               'Functions\GenXdev.Console.Vlc\Open-VlcMediaPlayerLyrics.ps1', 
                'Functions\GenXdev.Console.Spotify\Get-SpotifyPlaylistTrack.cs', 
-               'Functions\GenXdev.Console.Vlc\Start-VlcMediaPlayerNextInPlaylist.cs', 
                'Functions\GenXdev.Console.Spotify\Get-SpotifyTrackAudioFeatures.cs', 
-               'Functions\GenXdev.Console.Vlc\Start-VlcMediaPlayerPreviousInPlaylist.cs', 
                'Functions\GenXdev.Console.Spotify\Get-SpotifyTrackById.cs', 
-               'Functions\GenXdev.Console.Vlc\Switch-VlcMediaPlayerMute.cs', 
                'Functions\GenXdev.Console.Spotify\Get-SpotifyUserPlaylists.cs', 
-               'Functions\GenXdev.Console.Vlc\Switch-VLCMediaPlayerPaused.cs', 
                'Functions\GenXdev.Console.Spotify\Move-SpotifyLikedTracksToPlaylist.cs', 
-               'Functions\GenXdev.Console.Vlc\Switch-VlcMediaPlayerRepeat.cs', 
                'Functions\GenXdev.Console.Spotify\Remove-SpotifyTracksFromLiked.cs', 
                'Functions\GenXdev.Console.Spotify\Remove-SpotifyTracksFromPlaylist.cs', 
                'Functions\GenXdev.Console.Spotify\Search-Spotify.cs', 
@@ -183,19 +176,13 @@ FileList = '.gitignore', 'GenXdev.Console.csproj', 'GenXdev.Console.psd1',
                'Functions\GenXdev.Console.Spotify\Set-SpotifyShuffleOn.cs', 
                'Functions\GenXdev.Console.Spotify\Set-SpotifyStart.cs', 
                'Functions\GenXdev.Console.Spotify\Set-SpotifyStop.cs', 
-               'lib\lib\Microsoft.Extensions.Configuration.UserSecrets.dll', 
-               'lib\runtimes\win-x64\ggml-base-whisper.dll', 
-               'lib\runtimes\win-arm64\ggml-base-whisper.dll', 
-               'lib\runtimes\win-x64\ggml-cpu-whisper.dll', 
-               'lib\runtimes\win-arm64\ggml-cpu-whisper.dll', 
-               'lib\runtimes\win-x64\ggml-whisper.dll', 
-               'lib\runtimes\win-arm64\ggml-whisper.dll', 
-               'lib\runtimes\win-x64\whisper.dll', 
-               'lib\runtimes\win-arm64\whisper.dll', 
-               'lib\runtimes\win-x86\ggml-base-whisper.dll', 
-               'lib\runtimes\win-x86\ggml-cpu-whisper.dll', 
-               'lib\runtimes\win-x86\ggml-whisper.dll', 
-               'lib\runtimes\win-x86\whisper.dll'
+               'Functions\GenXdev.Console.Vlc\Open-VlcMediaPlayer.ps1', 
+               'Functions\GenXdev.Console.Vlc\Open-VlcMediaPlayerLyrics.ps1', 
+               'Functions\GenXdev.Console.Vlc\Start-VlcMediaPlayerNextInPlaylist.cs', 
+               'Functions\GenXdev.Console.Vlc\Start-VlcMediaPlayerPreviousInPlaylist.cs', 
+               'Functions\GenXdev.Console.Vlc\Switch-VlcMediaPlayerMute.cs', 
+               'Functions\GenXdev.Console.Vlc\Switch-VLCMediaPlayerPaused.cs', 
+               'Functions\GenXdev.Console.Vlc\Switch-VlcMediaPlayerRepeat.cs'
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
